@@ -26,10 +26,10 @@ set listchars=tab:>-
 
 
 """""""""""
-""" Plugins 
+""" Plugins
 """""""""""
 
-" Setup pathogen
+""" Pathogen
 execute pathogen#infect()
 syntax on
 filetype plugin indent on
@@ -50,7 +50,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 let NERDTreeShowHidden=1
 
 
-" Lightline
+""" Lightline
 set laststatus=2
 let g:lightline = {
       \ 'colorscheme': 'wombat',
@@ -112,3 +112,7 @@ endfunction
 function! LightlineMode()
   return winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
+
+
+""" Vim Better Whitespace
+autocmd BufEnter * EnableStripWhitespaceOnSave
