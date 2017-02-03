@@ -20,10 +20,6 @@ set smarttab
 set nobackup
 set noswapfile
 
-" Listing tab chars
-set list
-set listchars=tab:>-
-
 
 """""""""""
 """ Plugins
