@@ -9,7 +9,7 @@ set number
 set showcmd
 
 " 4 soft tabs
-set tabstop=4 shiftwidth=4 expandtab
+set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 
 " indent helpers
 set autoindent
