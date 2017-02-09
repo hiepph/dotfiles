@@ -12,8 +12,7 @@ set showcmd
 set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 
 " indent helpers
-set autoindent
-set smartindent
+filetype indent on
 set smarttab
 
 " Stop creating .swp files
