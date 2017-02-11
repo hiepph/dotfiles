@@ -41,7 +41,13 @@ zstyle ':prezto:load' pmodule \
   'syntax-highlighting' \
   'history-substring-search' \
   'prompt' \
-  'autosuggestions'
+  'autosuggestions' \
+  'archive' \
+  'fasd' \
+  'helper' \
+  'rsync' \
+  'tmux' \
+  'utility'
 
 #
 # Auto Suggestions
