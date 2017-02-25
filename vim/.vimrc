@@ -63,8 +63,8 @@ let g:lightline = {
       \   'fileencoding': 'LightlineFileencoding',
       \   'mode': 'LightlineMode',
       \ },
-      \ 'separator': { 'left': '⮀', 'right': '⮂' },
-      \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
+      \ 'separator': { 'left': '<', 'right': '>' },
+      \ 'subseparator': { 'left': '<<', 'right': '>>' }
       \ }
 
 function! LightlineModified()
@@ -72,7 +72,7 @@ function! LightlineModified()
 endfunction
 
 function! LightlineReadonly()
-  return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '⭤' : ''
+  return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '!' : ''
 endfunction
 
 function! LightlineFilename()
@@ -87,7 +87,7 @@ endfunction
 function! LightlineFugitive()
   if &ft !~? 'vimfiler\|gundo' && exists("*fugitive#head")
     let branch = fugitive#head()
-    return branch !=# '' ? '⭠ '.branch : ''
+    return branch !=# '' ? '# '.branch : ''
   endif
   return ''
 endfunction
