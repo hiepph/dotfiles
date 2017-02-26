@@ -29,10 +29,7 @@ set noswapfile
 """"
 "THEME
 """
-set background=dark
-let g:hybrid_custom_term_colors = 1
-let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
-colorscheme hybrid
+color dracula
 
 
 """""""""""
@@ -57,7 +54,7 @@ let NERDTreeShowHidden=1
 """ Lightline
 set laststatus=2
 let g:lightline = {
-      \ 'colorscheme': 'hybrid',
+      \ 'colorscheme': 'Dracula',
       \ 'mode_map': { 'c': 'NORMAL' },
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]

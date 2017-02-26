@@ -4,7 +4,6 @@ https://github.com/scrooloose/nerdtree.git
 https://github.com/itchyny/lightline.vim.git
 https://github.com/ntpeters/vim-better-whitespace.git
 https://github.com/junegunn/fzf.vim
+https://github.com/tpope/vim-surround.git
 
 # Themes
-https://github.com/w0ng/vim-hybrid.git
-https://github.com/tpope/vim-surround.git
