@@ -29,7 +29,7 @@ set noswapfile
 """"
 "THEME
 """
-color dracula
+source .theme.vim
 
 
 """""""""""
