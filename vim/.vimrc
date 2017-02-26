@@ -1,3 +1,9 @@
+"" Pathogen
+execute pathogen#infect()
+syntax on
+filetype plugin indent on
+
+
 """""""""""""""""""""""
 """ Basic Configuration
 """""""""""""""""""""""
@@ -20,17 +26,18 @@ set nobackup
 set noswapfile
 
 
+""""
+"THEME
+"""
+set background=dark
+colorscheme hybrid
+
+
 """""""""""
 """ Plugins
 """""""""""
 
-""" Pathogen
-execute pathogen#infect()
-syntax on
-filetype plugin indent on
-
-
-""" NERD Tree
+"""" NERD Tree
 " toggle
 map <C-\> :NERDTreeToggle<CR>
 
@@ -48,7 +55,7 @@ let NERDTreeShowHidden=1
 """ Lightline
 set laststatus=2
 let g:lightline = {
-      \ 'colorscheme': 'wombat',
+      \ 'colorscheme': 'hybrid',
       \ 'mode_map': { 'c': 'NORMAL' },
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
