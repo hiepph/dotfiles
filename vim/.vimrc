@@ -29,7 +29,10 @@ set noswapfile
 """"
 "THEME
 """
+try
 source ~/.theme.vim
+catch
+endtry
 
 
 """""""""""
