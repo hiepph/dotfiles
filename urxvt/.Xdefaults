@@ -12,7 +12,8 @@
 
 ! █▓▒░ fonts
 urxvt*font: xft:gohufont:size=11:antialias=false, \
-            xft:Symbola:pixelsize=14:antialias=true:hinting=slight
+            xft:Symbola:pixelsize=14:antialias=true:hinting=slight, \
+            xft:Terminess Powerline:size=11
 !urxvt*font: -*-creep-regular-*-*--16-*-*-*-*-*-*-1
 !urxvt*font: -*-lime-*-*-*--11-*-*-*-*-*-*-1
 !urxvt*font: xft:creep:size=16:antialias=true
