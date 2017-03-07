@@ -1,4 +1,6 @@
+! colors
 #include ".Xcolors"
+xterm*termName: xterm-256color
 
 ! fonts
 xterm*faceName: Terminess Powerline:size=10
