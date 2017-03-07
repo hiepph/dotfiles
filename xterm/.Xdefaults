@@ -3,6 +3,7 @@
 xterm*termName: xterm-256color
 
 ! fonts
+XTerm*renderFont: true
 xterm*faceName: Terminess Powerline:size=10
 
 ! Clipboard

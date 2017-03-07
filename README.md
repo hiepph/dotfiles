@@ -28,4 +28,14 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 
 ## Fonts
 
-* Source: https://github.com/ryanoasis/nerd-fonts.git
+* Source: 
+
++ https://github.com/ryanoasis/nerd-fonts.git
+
++ https://github.com/powerline/fonts.git
+
+* Basic fonts for icons:
+
+```
+pacaur -S ttf-dejavu ttf-liberation terminus-font noto-fonts noto-fonts-cjk noto-fonts-emoji
+```
