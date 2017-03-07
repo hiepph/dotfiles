@@ -1,0 +1,10 @@
+#include ".Xcolors"
+
+! fonts
+xterm*faceName: Terminess Powerline:size=10
+
+! Clipboard
+XTerm*selectToClipboard: true
+xterm*VT100.Translations: #override \
+	Ctrl Shift <Key>V: insert-selection(CLIPBOARD) \n\
+	Ctrl Shift <Key>C: copy-selection(CLIPBOARD)
