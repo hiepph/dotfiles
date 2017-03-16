@@ -1,6 +1,6 @@
 ## Terminal
 
-* Prezto: https://github.com/sorin-ionescu/prezto 
+* Prezto: https://github.com/sorin-ionescu/prezto
 
 ```
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
@@ -28,7 +28,7 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 
 ## Fonts
 
-* Source: 
+* Source:
 
 + https://github.com/ryanoasis/nerd-fonts.git
 
@@ -37,5 +37,5 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 * Basic fonts for icons:
 
 ```
-pacaur -S ttf-dejavu ttf-liberation terminus-font noto-fonts noto-fonts-cjk noto-fonts-emoji
+pacaur -S ttf-dejavu ttf-liberation terminus-font noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-font-awesome
 ```
