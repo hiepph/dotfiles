@@ -22,6 +22,9 @@ Plug 'https://github.com/scrooloose/nerdtree'
 Plug 'https://github.com/fatih/vim-go'
 Plug 'https://github.com/rust-lang/rust.vim'
 
+" Theme
+Plug 'https://github.com/dracula/vim'
+
 call plug#end()
 
 ""
