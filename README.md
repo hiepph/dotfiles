@@ -22,9 +22,14 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 
 ## Vim
 
-* Plugins:
++ Plugins managed with [vim-plug](https://github.com/junegunn/vim-plug#installation), install with:
 
-+ https://github.com/jiangmiao/auto-pairs
+```
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+```
+
+Then in `vim`: `[NORMAL] :PlugInstall`
 
 ## Fonts
 

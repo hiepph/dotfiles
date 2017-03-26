@@ -1,12 +1,32 @@
-"" Pathogen
-execute pathogen#infect()
-syntax on
-filetype plugin indent on
+""
+" Plugins mananger
+" (Plug) https://github.com/junegunn/vim-plug
+"
+" curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+"    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"
+call plug#begin('~/.vim/plugged')
 
+" Helpers
+Plug 'https://github.com/jiangmiao/auto-pairs'
+Plug 'https://github.com/ntpeters/vim-better-whitespace'
+Plug 'https://github.com/junegunn/fzf.vim'
+Plug 'https://github.com/tpope/vim-fugitive'
+Plug 'https://github.com/tpope/vim-surround'
 
-"""""""""""""""""""""""
-""" Basic Configuration
-"""""""""""""""""""""""
+" Structures
+Plug 'https://github.com/itchyny/lightline.vim'
+Plug 'https://github.com/scrooloose/nerdtree'
+
+" Languages
+Plug 'https://github.com/fatih/vim-go'
+Plug 'https://github.com/rust-lang/rust.vim'
+
+call plug#end()
+
+""
+" Basic Configuration
+"
 
 " show number
 set number
@@ -26,20 +46,19 @@ set nobackup
 set noswapfile
 
 
-""""
-"THEME
-"""
+""
+" Theme
+"
 try
 source ~/.theme.vim
 catch
 endtry
 
+""
+" Plugins configuration
+"
 
-"""""""""""
-""" Plugins
-"""""""""""
-
-"""" NERD Tree
+" NERD Tree
 " toggle
 map <C-\> :NERDTreeToggle<CR>
 
@@ -53,8 +72,8 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " Display hidden files
 let NERDTreeShowHidden=1
 
-
-""" Lightline
+" Lightline
+" Needs font-awesome
 set laststatus=2
 let g:lightline = {
       \ 'colorscheme': 'Dracula',
@@ -117,12 +136,10 @@ function! LightlineMode()
   return winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
 
-
-""" Vim Better Whitespace
+" Vim Better Whitespace
 autocmd BufEnter * EnableStripWhitespaceOnSave
 
-
-""" Go
+" Go
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_fields = 1
