@@ -162,8 +162,10 @@ bindsym $mod+r mode "resize"
 bindsym button3 floating toggle
 
 # Media keys
-bindsym XF86MonBrightnessUp exec xbacklight +10
-bindsym XF86MonBrightnessDown exec xbacklight -10
+#bindsym XF86MonBrightnessUp exec xbacklight +10
+bindsym XF86MonBrightnessUp exec xrandr --output eDP-1 --brightness 1
+#bindsym XF86MonBrightnessDown exec xbacklight -10
+bindsym XF86MonBrightnessDown exec xrandr --output eDP-1 --brightness 0
 bindsym XF86AudioRaiseVolume exec "amixer -q sset Master -q 5%+"
 bindsym XF86AudioLowerVolume exec "amixer -q sset Master -q 5%-"
 bindsym XF86AudioMute exec "amixer -q sset Master,0 toggle"
@@ -199,13 +201,13 @@ bar {
 exec_always xrandr --output eDP1 --auto --output HDMI1 --auto --right-of eDP1
 
 # Set brightness default to 80%
-exec_always xrandr --output eDP1 --brightness 0.8
+exec_always xrandr --output eDP1 --brightness 1
 
 # set primary display
 exec_always xrandr --output eDP1 --primary
 
 # set wallpaper
-exec_always feh --bg-scale ~/Pictures/Wallpapers/earth.jpg
+exec_always feh --bg-fill ~/Pictures/Wallpapers/earth.jpg
 
 # start ibus
 exec_always ibus-daemon -drx
