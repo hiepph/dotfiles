@@ -211,3 +211,6 @@ exec_always feh --bg-fill ~/Pictures/Wallpapers/earth.jpg
 
 # start ibus
 exec_always ibus-daemon -drx
+
+# Start dunst notify daemon
+exec_always dunst
