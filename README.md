@@ -1,3 +1,11 @@
+## SSH
+
+Generate SSH key:
+
+```
+$ ssh-keygen -t rsa -b 4096 -C "hoanghiepjp96@gmail.com"
+```
+
 ## Terminal
 
 * Prezto: https://github.com/sorin-ionescu/prezto
