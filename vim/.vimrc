@@ -21,6 +21,7 @@ Plug 'https://github.com/scrooloose/nerdtree'
 " Languages
 Plug 'https://github.com/fatih/vim-go'
 Plug 'https://github.com/rust-lang/rust.vim'
+Plug 'https://github.com/IN3D/vim-raml'
 
 " Theme
 Plug 'https://github.com/dracula/vim'
