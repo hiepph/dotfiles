@@ -44,4 +44,14 @@ urxvt.iso14755: false
 ! █▓▒░ clipboard
 URxvt.keysym.Shift-Control-V: perl:clipboard:paste
 URxvt.iso14755: False
-URxvt.perl-ext-common: default,clipboard
+URxvt.perl-ext-common: default,clipboard,matcher,tabbed
+
+! █▓▒░ clickable URLs
+URxvt.url-launcher: usr/bin/firefox
+URxvt.matcher.button: 1
+
+! █▓▒░ cursor
+URxvt.cursorBlink: true
+
+! Pointer
+URxvt.pointerBlank: true
