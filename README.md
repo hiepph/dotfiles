@@ -39,6 +39,14 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 
 Then in `vim`: `[NORMAL] :PlugInstall`
 
+## Tmux
+
++ Go into a tmux session and install plugins:
+
+```
+Prefix + I
+```
+
 ## Fonts
 
 * Source:
