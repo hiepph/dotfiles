@@ -35,7 +35,7 @@ urxvt.iso14755: false
 URxvt.keysym.Shift-Control-V: perl:clipboard:paste
 URxvt.iso14755: False
 ! some other extensions: tabbed
-URxvt.perl-ext-common: default,clipboard,matcher,keyboard-select,url-select,digital-clock
+URxvt.perl-ext-common: default,clipboard,matcher,keyboard-select,url-select,tabbed
 
 URxvt.matcher.button: 1
 
