@@ -14,15 +14,6 @@
 urxvt*font: xft:gohufont:size=11:antialias=false, \
             xft:Symbola:pixelsize=14:antialias=true:hinting=slight, \
             xft:Terminess Powerline:size=11
-!urxvt*font: -*-creep-regular-*-*--16-*-*-*-*-*-*-1
-!urxvt*font: -*-lime-*-*-*--11-*-*-*-*-*-*-1
-!urxvt*font: xft:creep:size=16:antialias=true
-!urxvt*font: xft:envy code r:size=9:antialias=false
-!urxvt*font: xft:lemon:size=16:antialias=false
-!urxvt*font: xft:lime:size=16:antialias=false
-!urxvt*font: xft:neep:size=11:antialias=false
-!urxvt*font: xft:perfect dos vga 437:size=11:antialias=false
-!urxvt*font: xft:tewi:size=11:antialias=false
 
 urxvt*boldFont:
 urxvt*italicFont:
@@ -39,15 +30,13 @@ urxvt*transparent: false
 ! █▓▒░ misc
 urxvt.saveLines: 9999
 urxvt.iso14755: false
-!URxvt*altSendsEscape: true
 
 ! █▓▒░ clipboard
 URxvt.keysym.Shift-Control-V: perl:clipboard:paste
 URxvt.iso14755: False
-URxvt.perl-ext-common: default,clipboard,matcher,tabbed,keyboard-select,url-select
+! some other extensions: tabbed
+URxvt.perl-ext-common: default,clipboard,matcher,keyboard-select,url-select,digital-clock
 
-! █▓▒░ clickable URLs
-URxvt.url-launcher: /usr/bin/firefox
 URxvt.matcher.button: 1
 
 ! █▓▒░ cursor
