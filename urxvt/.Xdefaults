@@ -11,16 +11,16 @@
 #include ".Xcolors"
 
 ! █▓▒░ fonts
-#urxvt*font: xft:gohufont:size=13:antialias=false, \
+#urxvt*font: xft:gohufont:size=12:antialias=false, \
 #            xft:Symbola:pixelsize=14:antialias=true:hinting=slight, \
-#            xft:Terminess Powerline:size=13
+#            xft:Terminess Powerline:size=12
 #urxvt*boldFont:
 #urxvt*italicFont:
 #urxvt*bolditalicFont:
-URxvt.font: xft:Fira Code:regular:pixelsize=13:antialias=true:hinting=true,xft:Source Code Pro:regular:pixelsize=13:antialias=true:hinting=true,xft:DejaVu Sans Mono:pixelsize=13:antialias=true:hinting=true,xft:Droid Sans Mono:pixelsize=13:antialias=true:hinting=true,xft:Symbola
-URxvt.boldFont: xft:Fira Code:bold:pixelsize=13:antialias=true:hinting=true,xft:Source Code Pro:bold:pixelsize=13:antialias=true:hinting=true,xft:DejaVu Sans Mono:bold:pixelsize=13:antialias=true:hinting=true,xft:Droid Sans Mono:bold:pixelsize=13:antialias=true:hinting=true,xft:Symbola
-URxvt.italicFont: xft:Fira Code:italic:pixelsize=13:antialias=true:hinting=true,xft:Source Code Pro:italic:pixelsize=13:antialias=true:hinting=true,xft:DejaVu Sans Mono:italic:pixelsize=13:antialias=true:hinting=true,xft:Droid Sans Mono:italic:pixelsize=13:antialias=true:hinting=true,xft:Symbola
-URxvt.boldItalicFont: xft:Fira Code:bold:italic:pixelsize=13:antialias=true:hinting=true,xft:Source Code Pro:bold:italic:pixelsize=13:antialias=true:hinting=true,xft:DejaVu Sans Mono:bold:italic:pixelsize=13:antialias=true:hinting=true,xft:Droid Sans Mono:bold:italic:pixelsize=13:antialias=true:hinting=true,xft:Symbola
+URxvt.font: xft:Fira Code:regular:pixelsize=12:antialias=true:hinting=true,xft:Source Code Pro:regular:pixelsize=12:antialias=true:hinting=true,xft:DejaVu Sans Mono:pixelsize=12:antialias=true:hinting=true,xft:Droid Sans Mono:pixelsize=12:antialias=true:hinting=true,xft:Symbola
+URxvt.boldFont: xft:Fira Code:bold:pixelsize=12:antialias=true:hinting=true,xft:Source Code Pro:bold:pixelsize=12:antialias=true:hinting=true,xft:DejaVu Sans Mono:bold:pixelsize=12:antialias=true:hinting=true,xft:Droid Sans Mono:bold:pixelsize=12:antialias=true:hinting=true,xft:Symbola
+URxvt.italicFont: xft:Fira Code:italic:pixelsize=12:antialias=true:hinting=true,xft:Source Code Pro:italic:pixelsize=12:antialias=true:hinting=true,xft:DejaVu Sans Mono:italic:pixelsize=12:antialias=true:hinting=true,xft:Droid Sans Mono:italic:pixelsize=12:antialias=true:hinting=true,xft:Symbola
+URxvt.boldItalicFont: xft:Fira Code:bold:italic:pixelsize=12:antialias=true:hinting=true,xft:Source Code Pro:bold:italic:pixelsize=12:antialias=true:hinting=true,xft:DejaVu Sans Mono:bold:italic:pixelsize=12:antialias=true:hinting=true,xft:Droid Sans Mono:bold:italic:pixelsize=12:antialias=true:hinting=true,xft:Symbola
 
 URxvt.letterSpace: -1
 #URxvt.lineSpace: 0
