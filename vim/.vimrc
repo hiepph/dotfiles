@@ -25,6 +25,7 @@ Plug 'https://github.com/IN3D/vim-raml'
 
 " Theme
 Plug 'https://github.com/dracula/vim'
+Plug 'https://github.com/joshdick/onedark.vim'
 
 call plug#end()
 
