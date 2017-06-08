@@ -58,5 +58,5 @@ Prefix + I
 * Basic fonts for icons:
 
 ```
-pacaur -S ttf-dejavu ttf-liberation terminus-font noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-font-awesome
+pacaur -S ttf-dejavu ttf-liberation terminus-font noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-font-awesome fira-code-git
 ```
