@@ -1,1 +1,2 @@
-color dracula
+syntax on
+colorscheme onedark
