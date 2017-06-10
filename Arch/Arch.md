@@ -9,7 +9,7 @@
 ## Essential packages
 
 ```
-pacaur -S tmux xsel vim
+pacaur -S tmux xsel vim stow termite
 ```
 
 ## Fonts
