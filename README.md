@@ -13,7 +13,7 @@ Simply integrate config with `stow package`.
 
 Generate SSH key:
 ```
-$ ssh-keygen -t rsa -b 4096 -C "hoanghiepjp96@gmail.com"
+ssh-keygen -t rsa -b 4096 -C "hoanghiepjp96@gmail.com"
 ```
 
 
