@@ -1,3 +1,8 @@
+## Basic OS install
+
++ Arch: `Arch/Arch.md`
+
+
 ## SSH
 
 Generate SSH key:
@@ -6,27 +11,46 @@ Generate SSH key:
 $ ssh-keygen -t rsa -b 4096 -C "hoanghiepjp96@gmail.com"
 ```
 
-## Terminal
 
-* Prezto: https://github.com/sorin-ionescu/prezto
+## Shell
+
+* [Prezto](https://github.com/sorin-ionescu/prezto)
 
 ```
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 
 setopt EXTENDED_GLOB
 for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
-  ln -fs "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+  sudo ln -fs "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
 done
 
 chsh -s /bin/zsh
 ```
 
-* FZF: https://github.com/junegunn/fzf.git
+* [FZF](https://github.com/junegunn/fzf.git)
 
 ```
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 ```
+
+## Tmux
+
++ Tmux config for user and root
+
+```
+ln -s /m/config/tmux/tmux.conf ~/.tmux.conf
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+sudo ln -s /m/config/tmux/tmux.conf /root/.tmux.conf
+sudo git clone https://github.com/tmux-plugins/tpm /root/.tmux/plugins/tpm
+```
+
++ Go into a tmux session and install plugins:
+
+```
+Prefix + I
+```
+
 
 ## Vim
 
@@ -37,26 +61,4 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
 
-Then in `vim`: `[NORMAL] :PlugInstall`
-
-## Tmux
-
-+ Go into a tmux session and install plugins:
-
-```
-Prefix + I
-```
-
-## Fonts
-
-* Source:
-
-+ https://github.com/ryanoasis/nerd-fonts.git
-
-+ https://github.com/powerline/fonts.git
-
-* Basic fonts for icons:
-
-```
-pacaur -S ttf-dejavu ttf-liberation terminus-font noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-font-awesome fira-code-git
-```
+Then in vim's `NORMAL` mode: `:PlugInstall`
