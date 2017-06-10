@@ -1,5 +1,7 @@
 # Overview
 
+![demo](https://i.imgur.com/TakDKKE.png)
+
 `dotfiles` is managed with [GNU Stow](https://www.gnu.org/software/stow/manual/stow.html).
 Simply integrate config with `stow package`.
 
