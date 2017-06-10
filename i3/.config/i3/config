@@ -213,7 +213,7 @@ exec_always feh --bg-fill ~/Pictures/Wallpapers/earth.jpg
 exec_always ibus-daemon -drx
 
 # start blue-light blocking
-exec_always redshift
+# exec_always redshift
 
 # Start dunst notify daemon
 exec_always dunst
