@@ -4,7 +4,7 @@
 Simply integrate config with `stow package`.
 
 
-## Basic OS install
+## Basic OS setup
 
 + Arch: `Arch/Arch.md`
 
