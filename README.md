@@ -55,6 +55,11 @@ sudo git clone https://github.com/tmux-plugins/tpm /root/.tmux/plugins/tpm
 Prefix + I
 ```
 
++ To update plugins:
+```
+Prefix + U
+```
+
 
 ## Vim
 
