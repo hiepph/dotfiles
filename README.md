@@ -39,6 +39,11 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 ```
 
+* [Autojump](https://github.com/wting/autojump)
+```
+source /usr/share/autojump/autojump.sh
+```
+
 
 ## Tmux
 

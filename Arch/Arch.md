@@ -8,8 +8,21 @@
 
 ## Essential packages
 
++ Shell:
 ```
-pacaur -S tmux xsel vim stow termite
+pacaur -S vim termite autojump tmux
+```
+
++ Helpers:
+```
+pacaur -S stow xsel
+```
+
+## Utilities
+
++ Brightness and color temperature:
+```
+pacaur -S redshift
 ```
 
 ## Fonts
