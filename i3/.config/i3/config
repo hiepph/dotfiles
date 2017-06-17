@@ -207,7 +207,7 @@ exec_always xrandr --output eDP1 --brightness 1
 exec_always xrandr --output eDP1 --primary
 
 # set wallpaper
-exec_always feh --bg-fill ~/Pictures/Wallpapers/earth.jpg
+exec_always feh --bg-fill ~/Pictures/Wallpapers/aoi_miyamori.png
 
 # start ibus
 exec_always ibus-daemon -drx
