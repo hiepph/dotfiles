@@ -23,6 +23,7 @@ Plug 'https://github.com/scrooloose/nerdtree'
 Plug 'https://github.com/fatih/vim-go'
 Plug 'https://github.com/rust-lang/rust.vim'
 Plug 'https://github.com/IN3D/vim-raml'
+Plug 'https://github.com/derekwyatt/vim-scala'
 
 " Theme
 Plug 'https://github.com/dracula/vim'
