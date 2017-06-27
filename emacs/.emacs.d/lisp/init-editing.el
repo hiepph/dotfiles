@@ -43,6 +43,8 @@
 
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
+; Auto-pair
+(require-package 'autopair)
+(autopair-global-mode) ;; enable autopair in all buffers
+
 (provide 'init-editing)
-
-
