@@ -23,9 +23,11 @@
 
 (load-theme 'atom-one-dark t)
 
-(blink-cursor-mode 0)
-(setq-default cursor-type 'bar)
-(set-cursor-color "#cccccc")
+; Cursor
+; (blink-cursor-mode 0)
+; (setq-default cursor-type 'bar)
+; (set-cursor-color "#cccccc")
+
 (setq ring-bell-function 'ignore)
 
 (golden-ratio-mode 1)
