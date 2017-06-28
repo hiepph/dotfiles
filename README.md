@@ -22,16 +22,25 @@ ssh-keygen -t rsa -b 4096 -C "hoanghiepjp96@gmail.com"
 ## Shell
 
 * [Prezto](https://github.com/sorin-ionescu/prezto)
-```
-git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 
-setopt EXTENDED_GLOB
-for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
-  sudo ln -fs "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
-done
+    + Setup:
+    ```
+    git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 
-chsh -s /bin/zsh
-```
+    setopt EXTENDED_GLOB
+    for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
+      sudo ln -fs "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+    done
+
+    chsh -s /bin/zsh
+    ```
+
+    + Update:
+    ```
+    git pull origin master
+    git submodule update --init --recursive
+    ```
+
 
 * [FZF](https://github.com/junegunn/fzf.git)
 ```
