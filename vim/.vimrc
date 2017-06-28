@@ -29,6 +29,7 @@ Plug 'https://github.com/derekwyatt/vim-scala'
 Plug 'https://github.com/dracula/vim'
 Plug 'https://github.com/joshdick/onedark.vim'
 Plug 'https://github.com/kristijanhusak/vim-hybrid-material'
+Plug 'https://github.com/NLKNguyen/papercolor-theme'
 
 call plug#end()
 
