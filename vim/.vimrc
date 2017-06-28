@@ -7,25 +7,28 @@
 "
 call plug#begin('~/.vim/plugged')
 
-" Helpers
+""" Helpers
 Plug 'https://github.com/jiangmiao/auto-pairs'
 Plug 'https://github.com/ntpeters/vim-better-whitespace'
 Plug 'https://github.com/junegunn/fzf.vim'
 Plug 'https://github.com/tpope/vim-fugitive'
 Plug 'https://github.com/tpope/vim-surround'
 Plug 'https://github.com/airblade/vim-gitgutter'
+Plug 'https://github.com/tpope/vim-commentary'
 
-" Structures
+""" Structures
 Plug 'https://github.com/itchyny/lightline.vim'
 Plug 'https://github.com/scrooloose/nerdtree'
+" 1 nerd tree for all tabs
+Plug 'https://github.com/jistr/vim-nerdtree-tabs'
 
-" Languages
+""" Languages
 Plug 'https://github.com/fatih/vim-go'
 Plug 'https://github.com/rust-lang/rust.vim'
 Plug 'https://github.com/IN3D/vim-raml'
 Plug 'https://github.com/derekwyatt/vim-scala'
 
-" Theme
+""" Theme
 Plug 'https://github.com/dracula/vim'
 Plug 'https://github.com/joshdick/onedark.vim'
 Plug 'https://github.com/kristijanhusak/vim-hybrid-material'
@@ -76,14 +79,14 @@ autocmd Filetype ruby setlocal ts=2 sts=2 sw=2 expandtab
 
 " NERD Tree
 " toggle
-map <C-\> :NERDTreeToggle<CR>
+map <C-\> :NERDTreeTabsToggle<CR>
 
 " open NERD tree auto when vim starts up on opening a directory
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTreeTabs' argv()[0] | wincmd p | ene | endif
 
 " close vim if only window left open is NERD
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeTabs") && b:NERDTree.isTabTree()) | q | endif
 
 " Display hidden files
 let NERDTreeShowHidden=1
