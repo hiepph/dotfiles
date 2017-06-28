@@ -82,8 +82,8 @@ autocmd Filetype ruby setlocal ts=2 sts=2 sw=2 expandtab
 map <C-\> :NERDTreeTabsToggle<CR>
 
 " open NERD tree auto when vim starts up on opening a directory
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTreeTabs' argv()[0] | wincmd p | ene | endif
+let g:nerdtree_tabs_open_on_console_startup = 2
+let g:nerdtree_tabs_autofind = 1
 
 " close vim if only window left open is NERD
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeTabs") && b:NERDTree.isTabTree()) | q | endif
