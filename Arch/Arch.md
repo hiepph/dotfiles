@@ -10,7 +10,7 @@
 
 + Shell:
 ```
-pacaur -S vim termite autojump tmux
+pacaur -S vim termite tmux fzf fasd
 ```
 
 + Helpers:
