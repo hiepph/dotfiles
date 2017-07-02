@@ -15,12 +15,12 @@ visudo
 
 + Shell:
 ```
-pkg install vim
+sudo pkg install vim
 ```
 
 + Helpers:
 ```
-pacaur -S stow xsel
+sudo pkg stow xsel
 ```
 
 ## Fonts
@@ -28,5 +28,5 @@ pacaur -S stow xsel
 - Basic fonts for icons:
 
 ```
-pkg install x11-fonts/firacode x11-fonts/powerline-fonts
+sudo pkg install x11-fonts/firacode x11-fonts/powerline-fonts
 ```
