@@ -53,7 +53,6 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 
 + Tmux config for user and root
 ```
-ln -s /m/config/tmux/tmux.conf ~/.tmux.conf
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 sudo ln -s /m/config/tmux/tmux.conf /root/.tmux.conf
 sudo git clone https://github.com/tmux-plugins/tpm /root/.tmux/plugins/tpm
