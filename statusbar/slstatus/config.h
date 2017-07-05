@@ -48,8 +48,8 @@ static const struct arg args[] = {
     { wifi_essid, "[%s", "wlp3s0" },
     { ip, " %s ", "wlp3s0"},
     { wifi_perc, "%s%]", "wlp3s0" },
-	{ cpu_perc, "[CPU %3s%%]", NULL    },
+    { cpu_perc, "[CPU %3s%%]", NULL    },
     { temp, "[TEMP %sC]", "/sys/class/thermal/thermal_zone0/temp" },
-	{ ram_perc, "[RAM %2s%%]", NULL    },
-	{ datetime, "[%s]",       "%b-%d %H:%M" },
+    { ram_perc, "[RAM %2s%%]", NULL    },
+    { datetime, "[%s]",       "%b-%d %H:%M" },
 };
