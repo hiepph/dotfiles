@@ -33,8 +33,8 @@
 (golden-ratio-mode 1)
 
 ;; Fonts
-(set-default-font "Inconsolata for Powerline")
-(set-face-attribute 'default nil :height 110)
+(set-default-font "Fira Code")
+(set-face-attribute 'default nil :height 90)
 
 ;; Line numbers
 (global-linum-mode t)

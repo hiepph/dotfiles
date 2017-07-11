@@ -1,36 +1,24 @@
-!  ██     ██      ██           ████                    ██   ██
-! ░░██   ██      ░██          ░██░                    ░██  ░██
-!  ░░██ ██       ░██  █████  ██████  ██████   ██   ██ ░██ ██████  ██████
-!   ░░███     ██████ ██░░░██░░░██░  ░░░░░░██ ░██  ░██ ░██░░░██░  ██░░░░
-!    ██░██   ██░░░██░███████  ░██    ███████ ░██  ░██ ░██  ░██  ░░█████
-!   ██ ░░██ ░██  ░██░██░░░░   ░██   ██░░░░██ ░██  ░██ ░██  ░██   ░░░░░██
-!  ██   ░░██░░██████░░██████  ░██  ░░████████░░██████ ███  ░░██  ██████
-! ░░     ░░  ░░░░░░  ░░░░░░   ░░    ░░░░░░░░  ░░░░░░ ░░░    ░░  ░░░░░░
-!
-
 #include ".Xcolors"
 
 ! fonts
-URxvt.font: xft:Fira Code:regular:pixelsize=12:antialias=true:hinting=true,xft:Source Code Pro:regular:pixelsize=12:antialias=true:hinting=true,xft:DejaVu Sans Mono:pixelsize=12:antialias=true:hinting=true,xft:Droid Sans Mono:pixelsize=12:antialias=true:hinting=true,xft:Symbola
-URxvt.boldFont: xft:Fira Code:bold:pixelsize=12:antialias=true:hinting=true,xft:Source Code Pro:bold:pixelsize=12:antialias=true:hinting=true,xft:DejaVu Sans Mono:bold:pixelsize=12:antialias=true:hinting=true,xft:Droid Sans Mono:bold:pixelsize=12:antialias=true:hinting=true,xft:Symbola
-URxvt.italicFont: xft:Fira Code:italic:pixelsize=12:antialias=true:hinting=true,xft:Source Code Pro:italic:pixelsize=12:antialias=true:hinting=true,xft:DejaVu Sans Mono:italic:pixelsize=12:antialias=true:hinting=true,xft:Droid Sans Mono:italic:pixelsize=12:antialias=true:hinting=true,xft:Symbola
-URxvt.boldItalicFont: xft:Fira Code:bold:italic:pixelsize=12:antialias=true:hinting=true,xft:Source Code Pro:bold:italic:pixelsize=12:antialias=true:hinting=true,xft:DejaVu Sans Mono:bold:italic:pixelsize=12:antialias=true:hinting=true,xft:Droid Sans Mono:bold:italic:pixelsize=12:antialias=true:hinting=true,xft:Symbola
+URxvt.font: xft:Fira Code:regular:antialias=true:hinting=true
+URxvt.boldFont: xft:Fira Code:bold:antialias=true:hinting=true
+URxvt.italicFont: xft:Fira Code:italic:antialias=true:hinting=true
+URxvt.boldItalicFont: xft:Fira Code:bold:italic:antialias=true:hinting=true
 
 URxvt.letterSpace: -1
 
 ! interface
 urxvt*scrollBar: false
 urxvt*transparent: false
-!urxvt*shading: 38
 
 ! misc
 urxvt.saveLines: 9999
 urxvt.iso14755: false
 
 ! clipboard
-URxvt.keysym.Shift-Control-V: perl:clipboard:paste
 URxvt.iso14755: False
-URxvt.perl-ext-common: default,clipboard,matcher,keyboard-select,url-select,tabbed
+URxvt.perl-ext-common: default,clipboard,matcher,keyboard-select,url-select
 
 ! URLs
 URxvt.matcher.button: 1
