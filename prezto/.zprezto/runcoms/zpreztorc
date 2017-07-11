@@ -10,7 +10,7 @@
 #
 
 # Set case-sensitivity for completion, history lookup, etc.
-# zstyle ':prezto:*:*' case-sensitive 'yes'
+zstyle ':prezto:*:*' case-sensitive 'yes'
 
 # Color output (auto set to 'no' on dumb terminals).
 zstyle ':prezto:*:*' color 'yes'
@@ -33,10 +33,6 @@ zstyle ':prezto:load' pmodule \
   'utility' \
   'ssh' \
   'completion' \
-  'homebrew' \
-  'osx' \
-  'ruby' \
-  'rails' \
   'git' \
   'syntax-highlighting' \
   'history-substring-search' \
@@ -48,7 +44,6 @@ zstyle ':prezto:load' pmodule \
   'rsync' \
   'tmux' \
   'utility'
-
 
 #
 # Autosuggestions
@@ -113,6 +108,7 @@ zstyle ':prezto:module:gnu-utility' prefix 'g'
 # Auto set to 'off' on dumb terminals.
 zstyle ':prezto:module:prompt' theme 'sorin'
 
+
 # Set how themes that use promptpwd function display the pwd, can be 'short', 'long', or 'full'
 # zstyle ':prezto:module:prompt' pwd-length 'short'
 
@@ -158,8 +154,8 @@ zstyle ':prezto:module:syntax-highlighting' highlighters \
    'brackets' \
    'pattern' \
    'line' \
-   'cursor' \
    'root'
+
 #
 # Set syntax highlighting styles.
 # zstyle ':prezto:module:syntax-highlighting' styles \
