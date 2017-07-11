@@ -207,13 +207,13 @@ exec_always xrandr --output eDP1 --brightness 1
 exec_always xrandr --output eDP1 --primary
 
 # set wallpaper
-exec_always feh --bg-fill ~/Pictures/Wallpapers/aoi_miyamori.png
+exec_always feh --bg-fill ~/Pictures/Wallpapers/spidey.jpg
 
 # start ibus
 exec_always ibus-daemon -drx
 
 # start blue-light blocking
-exec redshift -t 5500:4500
+exec redshift -t 5000:4500
 
 # Start dunst notify daemon
 exec_always dunst
