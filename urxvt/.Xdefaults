@@ -18,7 +18,7 @@ urxvt.iso14755: false
 
 ! clipboard
 URxvt.iso14755: False
-URxvt.perl-ext-common: default,clipboard,matcher,keyboard-select,url-select,tabbed
+URxvt.perl-ext-common: default,clipboard,matcher,keyboard-select,url-select
 
 ! URLs
 URxvt.matcher.button: 1
