@@ -178,7 +178,7 @@ client.unfocused        #3c3836 #504945 #d5c4a1 #504945
 client.urgent           #7c6f64 #fabd2f #3c3836 #fabd2f
 
 # $i3-background
-exec_always --no-startup-id xsetroot -solid '#3c3836'
+# exec_always --no-startup-id xsetroot -solid '#3c3836'
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -198,22 +198,22 @@ bar {
 }
 
 # Set 2 screen: eDP1 & HDMI1
-exec_always xrandr --output eDP1 --auto --output HDMI1 --auto --right-of eDP1
+# exec_always xrandr --output eDP1 --auto --output HDMI1 --auto --right-of eDP1
 
 # Set brightness default to 80%
-exec_always xrandr --output eDP1 --brightness 1
+# exec_always xrandr --output eDP1 --brightness 1
 
 # set primary display
-exec_always xrandr --output eDP1 --primary
+# exec_always xrandr --output eDP1 --primary
 
 # set wallpaper
-exec_always feh --bg-fill ~/Pictures/Wallpapers/onodera.jpg
+# exec_always feh --bg-fill ~/Pictures/Wallpapers/onodera.jpg
 
 # start ibus
-exec_always ibus-daemon -drx
+# exec_always ibus-daemon -drx
 
 # start blue-light blocking
-exec redshift -t 5000:4500
+# exec_always redshift -t 5000:4500
 
 # Start dunst notify daemon
-exec_always dunst
+# exec_always dunst
