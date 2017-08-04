@@ -11,6 +11,7 @@
 ```sh
 # /etc/pacman.conf
 SigLevel = Optional TrustAll
+# SigLevel = Never # This skips validity check, kind of dangerous
 ```
 
 And now:
