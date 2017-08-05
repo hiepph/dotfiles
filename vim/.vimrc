@@ -40,6 +40,9 @@ call plug#end()
 " Basic Configuration
 "
 
+" Set to auto read when a file is changed from the outside
+set autoread
+
 " show number
 set number
 
@@ -47,15 +50,25 @@ set number
 set showcmd
 
 " 4 soft tabs
-set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
-
-" indent helpers
-filetype indent on
 set smarttab
+set expandtab
+set tabstop=4 softtabstop=0 shiftwidth=4
+
+" Indent helpers
+filetype plugin indent on
+set smarttab
+set smartindent
 
 " Stop creating .swp files
 set nobackup
 set noswapfile
+
+
+""
+" Custom file type config
+"
+autocmd Filetype ruby setlocal ts=2 sts=2 sw=2 expandtab
+autocmd Filetype eruby setlocal ts=2 sts=2 sw=2 expandtab
 
 
 ""
@@ -65,13 +78,6 @@ try
 source ~/.theme.vim
 catch
 endtry
-
-
-""
-" File type
-"
-autocmd Filetype ruby setlocal ts=2 sts=2 sw=2 expandtab
-autocmd Filetype eruby setlocal ts=2 sts=2 sw=2 expandtab
 
 
 ""
@@ -166,3 +172,5 @@ let g:go_highlight_fields = 1
 let g:go_highlight_types = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
+let g:go_highlight_generate_tags = 0
+let g:go_template_autocreate = 0
