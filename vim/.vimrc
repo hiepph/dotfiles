@@ -15,6 +15,7 @@ Plug 'https://github.com/tpope/vim-fugitive'
 Plug 'https://github.com/tpope/vim-surround'
 Plug 'https://github.com/airblade/vim-gitgutter'
 Plug 'https://github.com/tpope/vim-commentary'
+Plug 'https://github.com/haya14busa/incsearch.vim'
 
 """ Structures
 Plug 'https://github.com/itchyny/lightline.vim'
@@ -40,9 +41,6 @@ call plug#end()
 " Basic Configuration
 "
 
-" Set to auto read when a file is changed from the outside
-set autoread
-
 " show number
 set number
 
@@ -62,6 +60,20 @@ set smartindent
 " Stop creating .swp files
 set nobackup
 set noswapfile
+
+" Set to auto read when a file is changed from the outside
+set autoread
+
+" Turn on wildmenu
+set wildmenu
+
+" Searching
+set incsearch
+set hlsearch
+set smartcase
+
+" For regular expressions turn magic on
+set magic
 
 
 ""
@@ -174,3 +186,13 @@ let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_generate_tags = 0
 let g:go_template_autocreate = 0
+
+" Incseach
+" :h g:incsearch#auto_nohlsearch
+let g:incsearch#auto_nohlsearch = 1
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
