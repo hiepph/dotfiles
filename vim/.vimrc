@@ -16,6 +16,7 @@ Plug 'https://github.com/tpope/vim-surround'
 Plug 'https://github.com/airblade/vim-gitgutter'
 Plug 'https://github.com/tpope/vim-commentary'
 Plug 'https://github.com/haya14busa/incsearch.vim'
+Plug 'https://github.com/ctrlpvim/ctrlp.vim'
 
 """ Structures
 Plug 'https://github.com/itchyny/lightline.vim'
