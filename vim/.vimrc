@@ -35,7 +35,6 @@ Plug 'https://github.com/elubow/cql-vim'
 Plug 'https://github.com/dracula/vim'
 Plug 'https://github.com/joshdick/onedark.vim'
 Plug 'https://github.com/kristijanhusak/vim-hybrid-material'
-Plug 'https://github.com/NLKNguyen/papercolor-theme'
 Plug 'dracula/vim'
 
 call plug#end()
