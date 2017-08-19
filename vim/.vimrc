@@ -30,6 +30,7 @@ Plug 'https://github.com/rust-lang/rust.vim'
 Plug 'https://github.com/IN3D/vim-raml'
 Plug 'https://github.com/derekwyatt/vim-scala'
 Plug 'https://github.com/elubow/cql-vim'
+Plug 'https://github.com/elixir-editors/vim-elixir'
 
 """ Theme
 Plug 'https://github.com/dracula/vim'
