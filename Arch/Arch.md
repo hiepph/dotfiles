@@ -2,8 +2,24 @@
 
 + Use `pacaur` over `pacman`:
 
-```
+```sh
 ./pacaur_install.sh
+```
+
++ Config `pacman`:
+
+```sh
+# /etc/pacman.conf
+SigLevel = Optional TrustAll
+# SigLevel = Never # This skips validity check, kind of dangerous
+```
+
+And now:
+
+```sh
+sudo pacman-key --init
+sudo pacman-key --populate archlinux
+sudo pacman -Syy
 ```
 
 ## Essential packages
