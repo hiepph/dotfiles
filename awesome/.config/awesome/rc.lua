@@ -12,6 +12,9 @@ local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
 -- Enable VIM help for hotkeys widget when client with matching name is opened:
 require("awful.hotkeys_popup.keys.vim")
+-- Plugins library
+local battery_widget = require('battery-widget')
+local battery = battery_widget({adapter = "BAT0"})
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -217,6 +220,7 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             mykeyboardlayout,
+            battery.widget,
             wibox.widget.systray(),
             mytextclock,
             s.mylayoutbox,

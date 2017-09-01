@@ -1,0 +1,55 @@
+[options]
+
+    font = Inconsolata 13
+    resize_grip = false
+    scroll_on_output = false
+    scroll_on_keystroke = true
+    visible_bell = false
+    mouse_autohide = true
+    allow_bold = true
+    dynamic_title = true
+    urgent_on_bell = true
+    clickable_url = true
+    scrollback_lines = 10000
+    search_wrap = true
+    cursor_blink = system
+
+[colors]
+
+    # special
+    foreground      = #f7f7f7
+    foreground_bold = #f7f7f7
+    cursor          = #f7f7f7
+    background      = #1b1b1b
+
+    # black
+    color0  = #000000
+    color8  = #7a7a7a
+
+    # red
+    color1  = #b84131
+    color9  = #d6837c
+
+    # green
+    color2  = #7da900
+    color10 = #c4f137
+
+    # yellow
+    color3  = #c4a500
+    color11 = #fee14d
+
+    # blue
+    color4  = #62a3c4
+    color12 = #8dcff0
+
+    # magenta
+    color5  = #ba8acc
+    color13 = #f79aff
+
+    # cyan
+    color6  = #207383
+    color14 = #6ad9cf
+
+    # white
+    color7  = #a1a1a1
+    color15 = #f7f7f7
