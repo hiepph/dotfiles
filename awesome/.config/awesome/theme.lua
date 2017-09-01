@@ -7,7 +7,7 @@ local themes_path = require("gears.filesystem").get_themes_dir()
 
 -- {{{ Main
 local theme = {}
-theme.wallpaper = "/home/hiepph/.config/wallpapers/devil.png"
+theme.wallpaper = "/home/hiepph/Pictures/Wallpapers/shiina.png"
 -- }}}
 
 -- {{{ Styles
