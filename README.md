@@ -22,6 +22,14 @@ ssh-keygen -t rsa -b 4096 -C "hoanghiepjp96@gmail.com"
 ```
 
 
+## Git
+
+```sh
+git config --global user.email "hoanghiepjp96@gmail.com"
+git config --global user.name "Hiep Pham"
+```
+
+
 ## Shell
 
 * [Prezto](https://github.com/sorin-ionescu/prezto)
