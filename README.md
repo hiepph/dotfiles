@@ -63,6 +63,14 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ```
 
 
+### Termite
+
+```sh
+mkdir -p ~/.config/termite
+ln -s ~/dotfiles/termite/gruvbox ~/.config/termite/config
+```
+
+
 ## Tmux
 
 + Tmux config for user and root
