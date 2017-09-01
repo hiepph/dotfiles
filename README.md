@@ -106,3 +106,12 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 ```sh
 :PlugUpdate
 ```
+
+
+## Awesome
+
++ Support widgets:
+
+```sh
+git clone https://github.com/deficient/battery-widget.git ~/.config/awesome/battery-widget
+```
