@@ -22,24 +22,20 @@ sudo pacman-key --populate archlinux
 sudo pacman -Syy
 ```
 
+
 ## Essential packages
 
-+ Shell:
 ```
-pacaur -S vim termite tmux fasd
+pacaur -S vim termite tmux fasd stow xsel ibus ibus-qt ibus-unikey ibus-anthy
 ```
 
-+ Helpers:
-```
-pacaur -S stow xsel
-```
 
 ## Utilities
 
-+ Brightness and color temperature:
 ```
 pacaur -S redshift
 ```
+
 
 ## Fonts
 

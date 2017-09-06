@@ -11,7 +11,7 @@ theme.wallpaper = "/home/hiepph/Pictures/Wallpapers/shiina.png"
 -- }}}
 
 -- {{{ Styles
-theme.font      = "Inconsolata 10"
+theme.font      = "Inconsolata 11"
 
 -- {{{ Colors
 theme.fg_normal  = "#DCDCCC"
