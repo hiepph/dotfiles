@@ -35,7 +35,6 @@ Plug 'https://github.com/elixir-editors/vim-elixir'
 Plug 'https://github.com/dracula/vim'
 Plug 'https://github.com/joshdick/onedark.vim'
 Plug 'https://github.com/kristijanhusak/vim-hybrid-material'
-Plug 'https://github.com/slindberg/vim-colors-smyck'
 Plug 'dracula/vim'
 
 call plug#end()
