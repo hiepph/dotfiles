@@ -19,7 +19,6 @@
     # special
     foreground      = #f7f7f7
     foreground_bold = #f7f7f7
-    cursor          = #f7f7f7
     background      = #1b1b1b
 
     # black

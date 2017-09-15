@@ -7,17 +7,17 @@ local themes_path = require("gears.filesystem").get_themes_dir()
 
 -- {{{ Main
 local theme = {}
-theme.wallpaper = "/home/hiepph/Pictures/Wallpapers/shiina.png"
+theme.wallpaper = "/home/hiepph/Pictures/Wallpapers/kamui.png"
 -- }}}
 
 -- {{{ Styles
 theme.font      = "Inconsolata 11"
 
 -- {{{ Colors
-theme.fg_normal  = "#DCDCCC"
-theme.fg_focus   = "#F0DFAF"
+theme.fg_normal  = "#7A7A7A"
+theme.fg_focus   = "#8DCFF0"
 theme.fg_urgent  = "#CC9393"
-theme.bg_normal  = "#3F3F3F"
+theme.bg_normal  = "#1B1B1B"
 theme.bg_focus   = "#1E2320"
 theme.bg_urgent  = "#3F3F3F"
 theme.bg_systray = theme.bg_normal
