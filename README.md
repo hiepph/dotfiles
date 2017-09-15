@@ -125,12 +125,3 @@ export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
 ibus-daemon -drx
 ```
-
-
-## Awesome
-
-+ Support widgets:
-
-```sh
-git clone https://github.com/deficient/battery-widget.git ~/.config/awesome/battery-widget
-```
