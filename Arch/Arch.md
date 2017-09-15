@@ -26,7 +26,7 @@ sudo pacman -Syy
 ## Essential packages
 
 ```
-pacaur -S vim termite tmux fasd stow xsel ibus ibus-qt ibus-unikey ibus-anthy
+pacaur -S vim termite tmux fasd stow xsel ibus ibus-qt ibus-unikey ibus-anthy pulseaudio alsamixer xbindkeys
 ```
 
 

@@ -1,3 +1,6 @@
+# Key bindings
+xbindkeys
+
 # Ibus
 export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus

@@ -12,9 +12,16 @@ local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
 -- Enable VIM help for hotkeys widget when client with matching name is opened:
 require("awful.hotkeys_popup.keys.vim")
--- Plugins library
+
+-- *** Plugins library
+-- battery
 local battery_widget = require('battery-widget')
 local battery = battery_widget({adapter = "BAT0"})
+
+-- volume
+local volume_control = require("volume-control")
+volumecfg = volume_control({})
+
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -77,6 +84,10 @@ awful.layout.layouts = {
     -- awful.layout.suit.corner.se,
 }
 -- }}}
+
+-- Volume keys
+-- awful.key({ }, "XF86AudioRaiseVolume",    function () awful.util.spawn("amixer set Master 5+") end),
+-- awful.key({ }, "XF86AudioLowerVolume",    function () awful.util.spawn("amixer set Master 5-") end)
 
 -- {{{ Helper functions
 local function client_menu_toggle_fn()
@@ -220,9 +231,10 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             mykeyboardlayout,
+            volumecfg.widget,
             battery.widget,
-            wibox.widget.systray(),
             mytextclock,
+            wibox.widget.systray(),
             s.mylayoutbox,
         },
     }
