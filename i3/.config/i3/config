@@ -162,8 +162,8 @@ bindsym $mod+r mode "resize"
 bindsym button3 floating toggle
 
 # Media keys
-bindsym XF86MonBrightnessUp exec "xbacklight +5"
-bindsym XF86MonBrightnessDown exec "xbacklight -5"
+bindsym XF86MonBrightnessUp exec "xbacklight +3"
+bindsym XF86MonBrightnessDown exec "xbacklight -3"
 bindsym XF86AudioRaiseVolume exec "amixer -q sset Master -q 5%+"
 bindsym XF86AudioLowerVolume exec "amixer -q sset Master -q 5%-"
 bindsym XF86AudioMute exec "amixer -q sset Master,0 toggle"
