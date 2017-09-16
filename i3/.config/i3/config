@@ -162,10 +162,8 @@ bindsym $mod+r mode "resize"
 bindsym button3 floating toggle
 
 # Media keys
-#bindsym XF86MonBrightnessUp exec xbacklight +10
-bindsym XF86MonBrightnessUp exec xrandr --output eDP-1 --brightness 1
-#bindsym XF86MonBrightnessDown exec xbacklight -10
-bindsym XF86MonBrightnessDown exec xrandr --output eDP-1 --brightness 0
+bindsym XF86MonBrightnessUp exec "xbacklight +5"
+bindsym XF86MonBrightnessDown exec "xbacklight -5"
 bindsym XF86AudioRaiseVolume exec "amixer -q sset Master -q 5%+"
 bindsym XF86AudioLowerVolume exec "amixer -q sset Master -q 5%-"
 bindsym XF86AudioMute exec "amixer -q sset Master,0 toggle"
@@ -196,24 +194,3 @@ bar {
             urgent_workspace   #7c6f64 #fabd2f #3c3836
         }
 }
-
-# Set 2 screen: eDP1 & HDMI1
-# exec_always xrandr --output eDP1 --auto --output HDMI1 --auto --right-of eDP1
-
-# Set brightness default to 80%
-# exec_always xrandr --output eDP1 --brightness 1
-
-# set primary display
-# exec_always xrandr --output eDP1 --primary
-
-# set wallpaper
-# exec_always feh --bg-fill ~/Pictures/Wallpapers/onodera.jpg
-
-# start ibus
-# exec_always ibus-daemon -drx
-
-# start blue-light blocking
-# exec_always redshift -t 5000:4500
-
-# Start dunst notify daemon
-# exec_always dunst
