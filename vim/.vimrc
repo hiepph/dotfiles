@@ -22,6 +22,7 @@ Plug 'https://github.com/wellle/targets.vim'
 """ Structures
 Plug 'https://github.com/itchyny/lightline.vim'
 Plug 'https://github.com/scrooloose/nerdtree'
+
 " 1 nerd tree for all tabs
 Plug 'https://github.com/jistr/vim-nerdtree-tabs'
 
@@ -45,6 +46,7 @@ call plug#end()
 "
 
 " show number
+set number
 set relativenumber
 
 " show command in NORMAL mode
