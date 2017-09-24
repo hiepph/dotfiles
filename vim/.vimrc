@@ -46,8 +46,8 @@ call plug#end()
 "
 
 " show number
-set number
-set relativenumber
+set number relativenumber
+nnoremap <F2> :set nonumber! norelativenumber!<CR>
 
 " show command in NORMAL mode
 set showcmd
