@@ -17,6 +17,7 @@ Plug 'https://github.com/airblade/vim-gitgutter'
 Plug 'https://github.com/tpope/vim-commentary'
 Plug 'https://github.com/haya14busa/incsearch.vim'
 Plug 'https://github.com/ctrlpvim/ctrlp.vim'
+Plug 'https://github.com/wellle/targets.vim'
 
 """ Structures
 Plug 'https://github.com/itchyny/lightline.vim'
@@ -77,7 +78,6 @@ set smartcase
 
 " For regular expressions turn magic on
 set magic
-
 
 ""
 " Custom file type config
