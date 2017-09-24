@@ -45,7 +45,6 @@ call plug#end()
 "
 
 " show number
-set number
 set relativenumber
 
 " show command in NORMAL mode
