@@ -33,7 +33,7 @@ pacaur -S vim termite tmux fasd stow xsel ibus ibus-qt ibus-unikey ibus-anthy pu
 ## Utilities
 
 ```
-pacaur -S redshift
+pacaur -S redshift zathura zathura-pdf-poppler
 ```
 
 
