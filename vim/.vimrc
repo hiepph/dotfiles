@@ -32,6 +32,7 @@ Plug 'https://github.com/rust-lang/rust.vim'
 Plug 'https://github.com/IN3D/vim-raml'
 Plug 'https://github.com/derekwyatt/vim-scala'
 Plug 'https://github.com/elixir-editors/vim-elixir'
+Plug 'octol/vim-cpp-enhanced-highlight'
 
 """ Theme
 Plug 'https://github.com/dracula/vim'
@@ -204,3 +205,11 @@ map *  <Plug>(incsearch-nohl-*)
 map #  <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
+
+" Cpp enhancement
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highlight = 1
+let g:cpp_experimental_template_highlight = 1
+let g:cpp_concepts_highlight = 1
+let c_no_curly_error=1
