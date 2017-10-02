@@ -50,6 +50,12 @@ call plug#end()
 set number relativenumber
 nnoremap <F2> :set nonumber! norelativenumber!<CR>
 
+" highlight current line
+set cursorline
+
+" max line-length mark
+set colorcolumn=100
+
 " show command in NORMAL mode
 set showcmd
 
