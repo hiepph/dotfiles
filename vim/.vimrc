@@ -54,7 +54,7 @@ nnoremap <F2> :set nonumber! norelativenumber!<CR>
 set cursorline
 
 " max line-length mark
-set colorcolumn=100
+" set colorcolumn=100
 
 " show command in NORMAL mode
 set showcmd
@@ -92,6 +92,7 @@ set magic
 "
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2 expandtab
 autocmd Filetype eruby setlocal ts=2 sts=2 sw=2 expandtab
+autocmd Filetype lisp setlocal ts=2 sw=2 expandtab
 au Filetype rust let b:AutoPairs={'(':')', '[':']', '{':'}','"':'"', '`':'`'}
 
 
