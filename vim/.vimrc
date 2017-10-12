@@ -19,6 +19,7 @@ Plug 'https://github.com/haya14busa/incsearch.vim'
 Plug 'https://github.com/ctrlpvim/ctrlp.vim'
 Plug 'https://github.com/wellle/targets.vim'
 Plug 'https://github.com/Yggdroot/indentLine'
+Plug 'https://github.com/kien/rainbow_parentheses.vim'
 
 """ Structures
 Plug 'https://github.com/itchyny/lightline.vim'
@@ -226,3 +227,9 @@ let c_no_curly_error=1
 
 " Indent line toggle
 nnoremap <F3> :IndentLinesToggle<CR>
+
+" Rainbow parentheses
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
