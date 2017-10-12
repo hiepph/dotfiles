@@ -110,7 +110,6 @@ source ~/.theme.vim
 catch
 endtry
 
-
 ""
 " Plugins configuration
 "
@@ -133,6 +132,7 @@ let NERDTreeShowHidden=1
 " Needs font-awesome
 set laststatus=2
 let g:lightline = {
+      \ 'colorscheme': 'wombat',
       \ 'mode_map': { 'c': 'NORMAL' },
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
@@ -150,6 +150,12 @@ let g:lightline = {
       \ 'separator': { 'left': '', 'right': '' },
       \ 'subseparator': { 'left': '', 'right': '' }
       \ }
+
+" custom
+try
+source ~/.lightline.vim
+catch
+endtry
 
 function! LightlineModified()
   return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
