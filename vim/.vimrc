@@ -18,6 +18,7 @@ Plug 'https://github.com/tpope/vim-commentary'
 Plug 'https://github.com/haya14busa/incsearch.vim'
 Plug 'https://github.com/ctrlpvim/ctrlp.vim'
 Plug 'https://github.com/wellle/targets.vim'
+Plug 'https://github.com/Yggdroot/indentLine'
 
 """ Structures
 Plug 'https://github.com/itchyny/lightline.vim'
@@ -129,7 +130,6 @@ let NERDTreeShowHidden=1
 " Needs font-awesome
 set laststatus=2
 let g:lightline = {
-      \ 'colorscheme': 'Dracula',
       \ 'mode_map': { 'c': 'NORMAL' },
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
@@ -223,3 +223,6 @@ let g:cpp_class_decl_highlight = 1
 let g:cpp_experimental_template_highlight = 1
 let g:cpp_concepts_highlight = 1
 let c_no_curly_error=1
+
+" Indent line toggle
+nnoremap <F3> :IndentLinesToggle<CR>
