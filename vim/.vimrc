@@ -24,7 +24,6 @@ Plug 'https://github.com/kien/rainbow_parentheses.vim'
 """ Structures
 Plug 'https://github.com/itchyny/lightline.vim'
 Plug 'https://github.com/scrooloose/nerdtree'
-
 " 1 nerd tree for all tabs
 Plug 'https://github.com/jistr/vim-nerdtree-tabs'
 
@@ -42,6 +41,9 @@ Plug 'https://github.com/joshdick/onedark.vim'
 Plug 'https://github.com/kristijanhusak/vim-hybrid-material'
 Plug 'dracula/vim'
 Plug 'https://github.com/morhetz/gruvbox'
+
+""" UI
+Plug 'mhinz/vim-startify'
 
 call plug#end()
 
