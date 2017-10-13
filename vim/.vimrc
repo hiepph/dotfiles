@@ -36,11 +36,8 @@ Plug 'https://github.com/elixir-editors/vim-elixir'
 Plug 'octol/vim-cpp-enhanced-highlight'
 
 """ Theme
-Plug 'https://github.com/dracula/vim'
-Plug 'https://github.com/joshdick/onedark.vim'
-Plug 'https://github.com/kristijanhusak/vim-hybrid-material'
-Plug 'dracula/vim'
-Plug 'https://github.com/morhetz/gruvbox'
+Plug 'https://github.com/flazz/vim-colorschemes'
+Plug 'https://github.com/rafi/awesome-vim-colorschemes'
 
 """ UI
 Plug 'mhinz/vim-startify'
@@ -103,18 +100,8 @@ au Filetype rust let b:AutoPairs={'(':')', '[':']', '{':'}','"':'"', '`':'`'}
 
 
 ""
-" Theme
-"
-try
-source ~/.theme.vim
-catch
-endtry
-
-
-""
 " Plugins configuration
 "
-
 " NERD Tree
 " toggle
 map <C-\> :NERDTreeTabsToggle<CR>
@@ -236,3 +223,12 @@ au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
+
+""
+" Custom config for each machine
+" $ touch ~/.custom.vim
+"
+try
+    source ~/.custom.vim
+catch
+endtry
