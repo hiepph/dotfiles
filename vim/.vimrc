@@ -133,6 +133,7 @@ let NERDTreeShowHidden=1
 " Needs font-awesome
 set laststatus=2
 let g:lightline = {
+      \ 'colorscheme': 'wombat',
       \ 'mode_map': { 'c': 'NORMAL' },
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
