@@ -10,7 +10,6 @@ call plug#begin('~/.vim/plugged')
 """ Helpers
 Plug 'https://github.com/jiangmiao/auto-pairs'
 Plug 'https://github.com/ntpeters/vim-better-whitespace'
-Plug 'https://github.com/junegunn/fzf.vim'
 Plug 'https://github.com/tpope/vim-fugitive'
 Plug 'https://github.com/tpope/vim-surround'
 Plug 'https://github.com/airblade/vim-gitgutter'
