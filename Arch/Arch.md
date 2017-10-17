@@ -14,12 +14,19 @@ SigLevel = Optional TrustAll
 # SigLevel = Never # This skips validity check, kind of dangerous
 ```
 
-And now:
++ Init key:
 
 ```sh
 sudo pacman-key --init
 sudo pacman-key --populate archlinux
-sudo pacman -Syy
+```
+
++ Add mirros:
+
+```sh
+pacaur -S reflector
+reflector --latest 10 --protocol http --protocol https --sort rate --save /etc/pacman.d/mirrorlist --verbose
+pacaur -Syy
 ```
 
 
