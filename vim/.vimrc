@@ -94,6 +94,7 @@ set magic
 "
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2 expandtab
 autocmd Filetype eruby setlocal ts=2 sts=2 sw=2 expandtab
+autocmd Filetype yaml setlocal ts=2 sw=2 expandtab
 autocmd Filetype lisp setlocal ts=2 sts=2 sw=2 expandtab
 au Filetype lisp let b:AutoPairs={'(':')', '[':']', '{':'}','"':'"', '`':'`'}
 au Filetype rust let b:AutoPairs={'(':')', '[':']', '{':'}','"':'"', '`':'`'}
