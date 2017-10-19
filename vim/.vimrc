@@ -25,6 +25,7 @@ Plug 'https://github.com/itchyny/lightline.vim'
 Plug 'https://github.com/scrooloose/nerdtree'
 " 1 nerd tree for all tabs
 Plug 'https://github.com/jistr/vim-nerdtree-tabs'
+Plug 'junegunn/goyo.vim'
 
 """ Languages
 Plug 'https://github.com/fatih/vim-go'
@@ -317,6 +318,10 @@ command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-h
 " Ctrl-P fake mode
 map <C-P> :Files<CR>
 map <C-L> :Buffers<CR>
+
+
+" Goyo
+nnoremap <F12> :Goyo<CR>
 
 """"""""" LAST """"""""""""""""""
 " Custom config for each machine
