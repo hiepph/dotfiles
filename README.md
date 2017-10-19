@@ -64,6 +64,13 @@ git config --global user.name "Hiep Pham"
     ~/.fzf/install
     ```
 
+    * Ripgrep fusion:
+
+    ```sh
+    # ~/.zshrc
+    export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+    ```
+
     * Update:
 
     ```sh

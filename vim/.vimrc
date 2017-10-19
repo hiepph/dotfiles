@@ -1,6 +1,5 @@
 ""
-" Plugins mananger
-" (Plug) https://github.com/junegunn/vim-plug
+" Plugins mananger " (Plug) https://github.com/junegunn/vim-plug
 "
 " curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 "    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -312,8 +311,12 @@ inoremap <expr> <c-x><c-s> fzf#complete({
   \ 'options': '--multi --reverse --margin 15%,0',
   \ 'left':    20})
 
+" rg power
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
+
 " Ctrl-P fake mode
 map <C-P> :Files<CR>
+map <C-L> :Buffers<CR>
 
 """"""""" LAST """"""""""""""""""
 " Custom config for each machine
