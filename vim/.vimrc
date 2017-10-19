@@ -15,10 +15,11 @@ Plug 'https://github.com/tpope/vim-surround'
 Plug 'https://github.com/airblade/vim-gitgutter'
 Plug 'https://github.com/tpope/vim-commentary'
 Plug 'https://github.com/haya14busa/incsearch.vim'
-Plug 'https://github.com/ctrlpvim/ctrlp.vim'
 Plug 'https://github.com/wellle/targets.vim'
 Plug 'https://github.com/Yggdroot/indentLine'
 Plug 'https://github.com/kien/rainbow_parentheses.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 """ Structures
 Plug 'https://github.com/itchyny/lightline.vim'
@@ -224,13 +225,97 @@ let c_no_curly_error=1
 " Indent line toggle
 nnoremap <F3> :IndentLinesToggle<CR>
 
+" Paste toggle
+set pastetoggle=<F4>
+
 " Rainbow parentheses
 au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
-""
+" FZF
+" This is the default extra key bindings
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
+
+" An action can be a reference to a function that processes selected lines
+function! s:build_quickfix_list(lines)
+  call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
+  copen
+  cc
+endfunction
+
+let g:fzf_action = {
+  \ 'ctrl-q': function('s:build_quickfix_list'),
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
+
+" Default fzf layout
+" - down / up / left / right
+let g:fzf_layout = { 'down': '~40%' }
+
+" You can set up fzf window using a Vim command (Neovim or latest Vim 8 required)
+" let g:fzf_layout = { 'window': 'enew' }
+" let g:fzf_layout = { 'window': '-tabnew' }
+" let g:fzf_layout = { 'window': '10split enew' }
+
+" Customize fzf colors to match your color scheme
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+" Enable per-command history.
+" CTRL-N and CTRL-P will be automatically bound to next-history and
+" previous-history instead of down and up. If you don't like the change,
+" explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
+let g:fzf_history_dir = '~/.local/share/fzf-history'
+
+" Mapping selecting mappings
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+
+" Insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+
+" Advanced customization using autoload functions
+inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
+
+" Replace the default dictionary completion with fzf-based fuzzy completion
+inoremap <expr> <c-x><c-k> fzf#complete('cat /usr/share/dict/words')
+
+function! s:make_sentence(lines)
+  return substitute(join(a:lines), '^.', '\=toupper(submatch(0))', '').'.'
+endfunction
+
+inoremap <expr> <c-x><c-s> fzf#complete({
+  \ 'source':  'cat /usr/share/dict/words',
+  \ 'reducer': function('<sid>make_sentence'),
+  \ 'options': '--multi --reverse --margin 15%,0',
+  \ 'left':    20})
+
+" Ctrl-P fake mode
+map <C-P> :Files<CR>
+
+""""""""" LAST """"""""""""""""""
 " Custom config for each machine
 " $ touch ~/.custom.vim
 "
