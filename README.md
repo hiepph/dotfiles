@@ -57,10 +57,25 @@ git config --global user.name "Hiep Pham"
 
 * [FZF](https://github.com/junegunn/fzf.git)
 
-```sh
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install
-```
+    * Install:
+
+    ```sh
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+    ~/.fzf/install
+    ```
+
+    * Ripgrep fusion:
+
+    ```sh
+    # ~/.zshrc
+    export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+    ```
+
+    * Update:
+
+    ```sh
+    cd ~/.fzf && git pull && ./install
+    ```
 
 
 ### Termite
