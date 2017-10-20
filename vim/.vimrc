@@ -16,7 +16,7 @@ Plug 'https://github.com/tpope/vim-commentary'
 Plug 'https://github.com/haya14busa/incsearch.vim'
 Plug 'https://github.com/wellle/targets.vim'
 Plug 'https://github.com/Yggdroot/indentLine'
-Plug 'https://github.com/kien/rainbow_parentheses.vim'
+Plug 'tpope/vim-endwise'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
@@ -36,6 +36,7 @@ Plug 'https://github.com/rafi/awesome-vim-colorschemes'
 
 """ UI
 Plug 'mhinz/vim-startify'
+Plug 'https://github.com/kien/rainbow_parentheses.vim'
 
 call plug#end()
 
