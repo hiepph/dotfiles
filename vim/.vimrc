@@ -28,12 +28,7 @@ Plug 'https://github.com/jistr/vim-nerdtree-tabs'
 Plug 'junegunn/goyo.vim'
 
 """ Languages
-Plug 'https://github.com/fatih/vim-go'
-Plug 'https://github.com/rust-lang/rust.vim'
-Plug 'https://github.com/IN3D/vim-raml'
-Plug 'https://github.com/derekwyatt/vim-scala'
-Plug 'https://github.com/elixir-editors/vim-elixir'
-Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'sheerun/vim-polyglot'
 
 """ Theme
 Plug 'https://github.com/flazz/vim-colorschemes'
