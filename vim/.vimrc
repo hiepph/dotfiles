@@ -15,7 +15,6 @@ Plug 'https://github.com/airblade/vim-gitgutter'
 Plug 'https://github.com/tpope/vim-commentary'
 Plug 'https://github.com/haya14busa/incsearch.vim'
 Plug 'https://github.com/wellle/targets.vim'
-Plug 'https://github.com/Yggdroot/indentLine'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-sleuth'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
