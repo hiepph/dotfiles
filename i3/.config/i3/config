@@ -197,4 +197,4 @@ bar {
 }
 
 # Wallpaper
-exec_always feh --bg-fill ~/Pictures/Wallpapers/onodera.jpg
+exec_always feh --bg-fill ~/Pictures/Wallpapers/erina.png

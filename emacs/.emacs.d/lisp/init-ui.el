@@ -33,8 +33,6 @@
 (golden-ratio-mode 1)
 
 ;; Fonts
-(set-default-font "Fira Code")
-(set-face-attribute 'default nil :height 90)
 
 ;; Line numbers
 (global-linum-mode t)
