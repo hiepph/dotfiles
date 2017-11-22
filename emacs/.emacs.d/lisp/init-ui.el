@@ -2,16 +2,21 @@
 
 (require-package 'sublime-themes)
 
-;; Themes
+; Themes
 (load-theme 'junio t)
 
-;; Fonts
+; Fonts
 
 ;; Line numbers
 (global-linum-mode t)
 
-;; Startup
+; Startup
+(setq inhibit-splash-screen t)
+;; Disable the splash screen (to enable it agin, replace the t with 0)
 (setq inhibit-startup-message t)
+;; Enable transient mark mode
+(transient-mark-mode 1)
+
 (menu-bar-mode -1)
 (when (fboundp 'tool-bar-mode)
   (tool-bar-mode -1))

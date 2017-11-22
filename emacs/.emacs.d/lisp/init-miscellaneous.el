@@ -4,4 +4,7 @@
 ;; No need for ~ files when editing
 (setq create-lockfiles nil)
 
+;; Default browser
+(setq browse-url-browser-function 'browse-url-chromium)
+
 (provide 'init-miscellaneous)
