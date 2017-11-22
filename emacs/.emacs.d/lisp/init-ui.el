@@ -33,6 +33,7 @@
 (golden-ratio-mode 1)
 
 ;; Fonts
+(set-face-attribute 'default nil :height 100)
 
 ;; Line numbers
 (global-linum-mode t)
