@@ -4,12 +4,19 @@
 (require-package 'autopair)
 (require-package 'rainbow-delimiters)
 
+; Autopair
 ;; enable autopair in all buffers
 (autopair-global-mode)
 ;; except [org]
 (add-hook 'org-mode-hook
 	  #'(lambda ()
 	      (autopair-mode -1)))
+
+; Trailing white space
+;; show
+(setq-default show-trailing-whitespace t)
+;; Auto-delete
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; Highlights matching parenthesis
 (show-paren-mode 1)
