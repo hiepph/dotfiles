@@ -1,33 +1,46 @@
 (require 'init-elpa)
 
 (require-package 'sublime-themes)
+(require-package 'neotree)
+(require-package 'all-the-icons)
 
-; Themes
-(load-theme 'junio t)
-
-; Fonts
-
-;; Line numbers
-(global-linum-mode t)
-
-; Startup
-(setq inhibit-splash-screen t)
+; Basic
 ;; Disable the splash screen (to enable it agin, replace the t with 0)
-(setq inhibit-startup-message t)
-;; Enable transient mark mode
-(transient-mark-mode 1)
+(setq inhibit-splash-screen t)
 
+;; Disable startup message
+(setq inhibit-startup-message t)
+
+;; Disable Menu/toolbar/scroll
 (menu-bar-mode -1)
 (when (fboundp 'tool-bar-mode)
   (tool-bar-mode -1))
 (when (fboundp 'scroll-bar-mode)
   (scroll-bar-mode -1))
 
-; (setq
-;       x-select-enable-clipboard t
-;       x-select-enable-primary t
-;       save-interprogram-paste-before-kill t
-;       apropos-do-all t
-;       mouse-yank-at-point t)
+;; Line numbers
+(global-linum-mode t)
+
+;; Enable transient mark mode
+(transient-mark-mode 1)
+
+; Themes
+(load-theme 'junio t)
+
+; Fonts
+(set-frame-font "Fira Mono for Powerline" nil t)
+
+; Tree
+(global-set-key [f8] 'neotree-toggle)
+;; pull all fonts/icons
+; (all-the-icons-install-fonts)
+;; enable icons
+; (all-the-icons-icon-for-buffer)
+; (all-the-icons-icon-for-file)
+; (all-the-icons-icon-for-mode)
+;; slow rendering
+(setq inhibit-compacting-font-caches t)
+;; set icons theme
+(setq neo-theme (if (display-graphic-p) 'icons 'arrow))
 
 (provide 'init-ui)
