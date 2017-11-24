@@ -1,7 +1,12 @@
 (require 'init-elpa)
 
 (require-package 'git-gutter)
+(require-package 'magit)
 
+; Magit
+(global-set-key (kbd "C-x g") 'magit-status)
+
+; Git Gutter
 ;; Enable git-gutter on all mode
 (global-git-gutter-mode +1)
 
