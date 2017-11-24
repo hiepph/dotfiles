@@ -11,4 +11,7 @@
 
 (setq org-log-done 'time)
 
+;; Turn off auto-fold
+(setq org-startup-folded nil)
+
 (provide 'init-mode)

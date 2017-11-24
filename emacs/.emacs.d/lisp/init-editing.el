@@ -13,6 +13,9 @@
 	      (autopair-mode -1)))
 
 ; Trailing white space
+;; Load white space mode
+; (autoload 'whitespace-mode           "whitespace" "Toggle whitespace visualization."        t)
+; (autoload 'whitespace-toggle-options "whitespace" "Toggle local `whitespace-mode' options." t)
 ;; show
 (setq-default show-trailing-whitespace t)
 ;; Auto-delete

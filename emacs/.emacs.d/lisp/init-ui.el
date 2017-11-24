@@ -1,8 +1,8 @@
 (require 'init-elpa)
 
-(require-package 'sublime-themes)
 (require-package 'neotree)
 (require-package 'all-the-icons)
+(require-package 'dracula-theme)
 
 ; Basic
 ;; Disable the splash screen (to enable it agin, replace the t with 0)
@@ -25,7 +25,7 @@
 (transient-mark-mode 1)
 
 ; Themes
-(load-theme 'junio t)
+(load-theme 'dracula t)
 
 ; Fonts
 (set-frame-font "Fira Mono for Powerline" nil t)
