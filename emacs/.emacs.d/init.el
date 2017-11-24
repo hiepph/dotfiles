@@ -12,6 +12,8 @@
 (require 'init-editing)
 (require 'init-navigation)
 (require 'init-mode)
+(require 'init-search)
+(require 'init-helper)
 (require 'init-miscellaneous)
 
 ; Lang support
@@ -23,7 +25,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (golden-ratio atom-one-dark-theme))))
+ '(package-selected-packages
+   (quote
+    (git-gutter ripgrep ripGrep markdown-mode golden-ratio atom-one-dark-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

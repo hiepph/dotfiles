@@ -7,4 +7,6 @@
 ;; Default browser
 (setq browse-url-browser-function 'browse-url-chromium)
 
+;; <f5> for restart emacs
+
 (provide 'init-miscellaneous)

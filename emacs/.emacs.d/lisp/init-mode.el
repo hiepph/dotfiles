@@ -1,6 +1,7 @@
 (require 'init-elpa)
 
 (require-package 'org)
+(require-package 'markdown-mode)
 
 (add-hook 'org-mode-hook 'turn-on-font-lock)
 
