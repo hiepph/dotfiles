@@ -8,5 +8,6 @@
 (setq browse-url-browser-function 'browse-url-chromium)
 
 ;; <f5> for restart emacs
+(global-set-key [f5] 'eval-buffer)
 
 (provide 'init-miscellaneous)
