@@ -3,6 +3,10 @@
 (require 'saveplace)
 (require-package 'autopair)
 (require-package 'rainbow-delimiters)
+(require-package 'auto-complete)
+
+;; Disable tabs mode
+;; (setq-default indent-tabs-mode nil)
 
 ; Autopair
 ;; enable autopair in all buffers
@@ -58,5 +62,8 @@
   (interactive)
   (comment-or-uncomment-region (line-beginning-position) (line-end-position)))
 (global-set-key (kbd "C-;") 'toggle-comment-on-line)
+
+;; Auto compleete config
+(ac-config-default)
 
 (provide 'init-editing)
