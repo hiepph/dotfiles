@@ -2,6 +2,7 @@
 
 (require 'saveplace)
 (require-package 'autopair)
+(require-package 'expand-region)
 (require-package 'rainbow-delimiters)
 (require-package 'auto-complete)
 
@@ -18,6 +19,9 @@
 (add-hook 'org-mode-hook
 	  #'(lambda ()
 	      (autopair-mode -1)))
+
+;; Expand region
+(global-set-key (kbd "C-=") 'er/expand-region)
 
 ; Trailing white space
 ;; Load white space mode
