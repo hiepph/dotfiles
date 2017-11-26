@@ -52,6 +52,6 @@
 (setq projectile-switch-project-action 'neotree-projectile-action)
 
 ;; show hidden files
-(setq-default neo-show-hidden-files t)
+;; (setq-default neo-show-hidden-files t)
 
 (provide 'init-ui)
