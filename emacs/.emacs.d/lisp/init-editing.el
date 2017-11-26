@@ -68,5 +68,7 @@
 
 ;; Auto compleete config
 (ac-config-default)
+;; also enable inside string
+(setq ac-disable-faces nil)
 
 (provide 'init-editing)
