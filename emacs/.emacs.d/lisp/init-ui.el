@@ -4,7 +4,7 @@
 (require-package 'all-the-icons)
 (require-package 'dracula-theme)
 
-; Basic
+;; Basic
 ;; Disable the splash screen (to enable it agin, replace the t with 0)
 (setq inhibit-splash-screen t)
 
@@ -24,13 +24,13 @@
 ;; Enable transient mark mode
 (transient-mark-mode 1)
 
-; Themes
+;; Themes
 (load-theme 'dracula t)
 
-; Fonts
-(set-frame-font "Fira Mono for Powerline" nil t)
+;; Fonts
+(set-frame-font "Fira Mono" nil t)
 
-; Tree
+;; Tree
 (global-set-key [f8] 'neotree-toggle)
 ;; pull all fonts/icons
 ; (all-the-icons-install-fonts)

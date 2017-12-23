@@ -1,6 +1,6 @@
 [options]
 
-    font = Inconsolata 13
+    font = Fira Mono
     resize_grip = false
     scroll_on_output = false
     scroll_on_keystroke = true
