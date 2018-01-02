@@ -87,8 +87,8 @@
 (global-undo-tree-mode 1)
 (defalias 'redo 'undo-tree-redo)
 ;; Undo
-(global-set-key (kbd "C-z") 'undo)
+(global-set-key (kbd "C-/") 'undo)
 ;; Redo
-(global-set-key (kbd "C-y") 'redo)
+(global-set-key (kbd "C-S-/") 'redo)
 
 (provide 'init-editing)
