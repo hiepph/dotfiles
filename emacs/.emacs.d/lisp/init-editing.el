@@ -1,6 +1,7 @@
 (require 'init-elpa)
 
 (require 'saveplace)
+(require-package 'undo-tree)
 (require-package 'autopair)
 (require-package 'expand-region)
 (require-package 'rainbow-delimiters)
@@ -77,9 +78,17 @@
   (delete-indentation 1))
 (global-set-key (kbd "C-^") 'top-join-line)
 
-;; Auto compleete config
+;; Auto complete config
 (ac-config-default)
 ;; also enable inside string
 (setq ac-disable-faces nil)
+
+;; Undo tree
+(global-undo-tree-mode 1)
+(defalias 'redo 'undo-tree-redo)
+;; Undo
+(global-set-key (kbd "C-z") 'undo)
+;; Redo
+(global-set-key (kbd "C-y") 'redo)
 
 (provide 'init-editing)
