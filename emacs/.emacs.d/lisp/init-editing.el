@@ -7,6 +7,9 @@
 (require-package 'rainbow-delimiters)
 (require-package 'auto-complete)
 
+;; replace highlight text with typing action
+(delete-selection-mode 1)
+
 ;; Disable tabs mode
 ;; (setq-default indent-tabs-mode nil)
 
