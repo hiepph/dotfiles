@@ -6,6 +6,8 @@
 (require-package 'expand-region)
 (require-package 'rainbow-delimiters)
 (require-package 'auto-complete)
+(require-package 'pos-tip)
+(require-package 'popup)
 
 ;; replace highlight text with typing action
 (delete-selection-mode 1)
@@ -85,6 +87,10 @@
 (ac-config-default)
 ;; also enable inside string
 (setq ac-disable-faces nil)
+;; Distinguish case
+(setq ac-ignore-case nil)
+;; Display tip in autocomplete with height 6
+(setq ac-menu-height 6)
 
 ;; Undo tree
 (global-undo-tree-mode 1)

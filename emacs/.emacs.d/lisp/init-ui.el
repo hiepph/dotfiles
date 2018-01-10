@@ -24,6 +24,9 @@
 ;; Enable transient mark mode
 (transient-mark-mode 1)
 
+;; Show column
+(setq column-number-mode t)
+
 ;; Themes
 (load-theme 'dracula t)
 
