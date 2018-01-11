@@ -140,8 +140,12 @@
 (add-hook 'after-init-hook 'global-company-mode)
 ;; show help
 (company-quickhelp-mode 1)
-;; bind 'company-complete to C-tab
-(global-set-key [C-tab] 'company-complete)
+;; bind 'company-complete to C-\
+(global-set-key (kbd "C-\\") 'company-complete)
+;; Activate after 2 chars
+(setq company-minimum-prefix-length 2)
+;; Zero-delay
+(setq company-idle-delay 0)
 
 ;; Undo tree
 (global-undo-tree-mode 1)
