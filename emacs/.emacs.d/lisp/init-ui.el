@@ -1,6 +1,7 @@
 (require 'init-elpa)
 
 (require-package 'neotree)
+(require-package 'indent-guide)
 (require-package 'all-the-icons)
 (require-package 'dracula-theme)
 
@@ -56,5 +57,8 @@
 
 ;; show hidden files
 (setq-default neo-show-hidden-files t)
+
+;; indent guide
+(indent-guide-global-mode)
 
 (provide 'init-ui)
