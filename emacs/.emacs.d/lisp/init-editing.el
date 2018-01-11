@@ -9,6 +9,7 @@
 (require-package 'pos-tip)
 (require-package 'popup)
 (require-package 'whitespace)
+(require-package 'aggressive-indent)
 
 ;; replace highlight text with typing action
 (delete-selection-mode 1)
@@ -43,6 +44,49 @@
 ;; ‘whitespace-line-column’ default value is 80
 (setq whitespace-style '(face empty tabs lines-tail trailing))
 (global-whitespace-mode t)
+
+
+;; Auto-indentation
+(electric-indent-mode 1)
+
+;; Ignoring electric indentation
+(defun electric-indent-ignore-python (char)
+  "Ignore electric indentation for python-mode"
+  (if (equal major-mode 'python-mode)
+      'no-indent
+    nil))
+(add-hook 'electric-indent-functions 'electric-indent-ignore-python)
+
+;; Enter key executes newline-and-indent
+(defun set-newline-and-indent ()
+  "Map the return key with `newline-and-indent'"
+  (local-set-key (kbd "RET") 'newline-and-indent))
+(add-hook 'python-mode-hook 'set-newline-and-indent)
+
+;; Auto indent for pasted code
+(dolist (command '(yank yank-pop))
+  (eval `(defadvice ,command (after indent-region activate)
+		   (and (not current-prefix-arg)
+				(member major-mode '(emacs-lisp-mode lisp-mode
+													 clojure-mode    scheme-mode
+													 haskell-mode    ruby-mode
+													 rspec-mode      python-mode
+													 c-mode          c++-mode
+													 objc-mode       latex-mode
+													 plain-tex-mode))
+				(let ((mark-even-if-inactive transient-mark-mode))
+				  (indent-region (region-beginning) (region-end) nil))))))
+
+(defun yank-and-indent ()
+  "Yank and then indent the newly formed region according to mode."
+  (interactive)
+  (yank)
+  (call-interactively 'indent-region))
+
+(global-set-key "\C-y" 'yank-and-indent)
+
+;; Aggressive (force) indent block of code
+(global-aggressive-indent-mode)
 
 
 ;; Highlights matching parenthesis
