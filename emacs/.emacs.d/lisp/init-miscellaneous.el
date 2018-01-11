@@ -1,3 +1,7 @@
+(require 'init-elpa)
+
+(require-package 'nyan-mode)
+
 ;; Changes all yes/no questions to y/n type
 (fset 'yes-or-no-p 'y-or-n-p)
 
@@ -9,5 +13,10 @@
 
 ;; <f5> for restart emacs
 (global-set-key [f5] 'eval-buffer)
+
+;; Nyan! at startup
+(nyan-mode)
+(nyan-start-animation)
+;; (nyan-toggle-wavy-trail)
 
 (provide 'init-miscellaneous)
