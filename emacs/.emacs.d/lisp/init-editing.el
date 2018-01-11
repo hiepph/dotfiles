@@ -1,11 +1,12 @@
 (require 'init-elpa)
 
 (require 'saveplace)
+(require-package 'company)
+(require-package 'company-quickhelp)
 (require-package 'undo-tree)
 (require-package 'autopair)
 (require-package 'expand-region)
 (require-package 'rainbow-delimiters)
-(require-package 'auto-complete)
 (require-package 'pos-tip)
 (require-package 'popup)
 (require-package 'whitespace)
@@ -134,14 +135,13 @@
   (delete-indentation 1))
 (global-set-key (kbd "C-^") 'top-join-line)
 
-;; Auto complete config
-(ac-config-default)
-;; also enable inside string
-(setq ac-disable-faces nil)
-;; Distinguish case
-(setq ac-ignore-case nil)
-;; Display tip in autocomplete with height 6
-(setq ac-menu-height 6)
+
+;; Auto complete
+(add-hook 'after-init-hook 'global-company-mode)
+;; show help
+(company-quickhelp-mode 1)
+;; bind 'company-complete to C-tab
+(global-set-key [C-tab] 'company-complete)
 
 ;; Undo tree
 (global-undo-tree-mode 1)
