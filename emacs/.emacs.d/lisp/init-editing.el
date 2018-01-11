@@ -8,12 +8,13 @@
 (require-package 'auto-complete)
 (require-package 'pos-tip)
 (require-package 'popup)
+(require-package 'whitespace)
 
 ;; replace highlight text with typing action
 (delete-selection-mode 1)
 
 ;; Disable tabs mode
-;; (setq-default indent-tabs-mode nil)
+(setq-default indent-tabs-mode nil)
 
 ;; View tabs as 4 spaces
 (setq default-tab-width 4)
@@ -29,14 +30,20 @@
 ;; Expand region
 (global-set-key (kbd "C-=") 'er/expand-region)
 
-; Trailing white space
-;; Load white space mode
-; (autoload 'whitespace-mode           "whitespace" "Toggle whitespace visualization."        t)
-; (autoload 'whitespace-toggle-options "whitespace" "Toggle local `whitespace-mode' options." t)
+
+;; Trailing white space
 ;; show
-(setq-default show-trailing-whitespace t)
+;; (setq-default show-trailing-whitespace t)
+
 ;; Auto-delete
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+;; lines’, will highlight lines that go beyond the columns limit defined in ‘whitespace-line-column’
+;; ‘lines-tail’, same as above but only the part that goes beyond the limit of ‘whitespace-line-column’ gets highlighted.
+;; ‘whitespace-line-column’ default value is 80
+(setq whitespace-style '(face empty tabs lines-tail trailing))
+(global-whitespace-mode t)
+
 
 ;; Highlights matching parenthesis
 (show-paren-mode 1)
