@@ -20,13 +20,13 @@
 ;; View tabs as 4 spaces
 (setq default-tab-width 4)
 
-; Autopair
+                                        ; Autopair
 ;; enable autopair in all buffers
 (autopair-global-mode)
 ;; except [org]
 (add-hook 'org-mode-hook
-	  #'(lambda ()
-	      (autopair-mode -1)))
+          #'(lambda ()
+              (autopair-mode -1)))
 
 ;; Expand region
 (global-set-key (kbd "C-=") 'er/expand-region)
@@ -66,16 +66,16 @@
 ;; Auto indent for pasted code
 (dolist (command '(yank yank-pop))
   (eval `(defadvice ,command (after indent-region activate)
-		   (and (not current-prefix-arg)
-				(member major-mode '(emacs-lisp-mode lisp-mode
-													 clojure-mode    scheme-mode
-													 haskell-mode    ruby-mode
-													 rspec-mode      python-mode
-													 c-mode          c++-mode
-													 objc-mode       latex-mode
-													 plain-tex-mode))
-				(let ((mark-even-if-inactive transient-mark-mode))
-				  (indent-region (region-beginning) (region-end) nil))))))
+           (and (not current-prefix-arg)
+                (member major-mode '(emacs-lisp-mode lisp-mode
+                                                     clojure-mode    scheme-mode
+                                                     haskell-mode    ruby-mode
+                                                     rspec-mode      python-mode
+                                                     c-mode          c++-mode
+                                                     objc-mode       latex-mode
+                                                     plain-tex-mode))
+                (let ((mark-even-if-inactive transient-mark-mode))
+                  (indent-region (region-beginning) (region-end) nil))))))
 
 (defun yank-and-indent ()
   "Yank and then indent the newly formed region according to mode."
@@ -86,7 +86,7 @@
 (global-set-key "\C-y" 'yank-and-indent)
 
 ;; Aggressive (force) indent block of code
-(global-aggressive-indent-mode)
+;; (global-aggressive-indent-mode)
 
 
 ;; Highlights matching parenthesis
