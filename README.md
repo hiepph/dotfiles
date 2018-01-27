@@ -83,6 +83,9 @@ git config --global user.name "Hiep Pham"
 ```sh
 mkdir -p ~/.config/termite
 ln -s ~/dotfiles/termite/gruvbox ~/.config/termite/config
+
+# ~/.zshrc
+export TERM=xterm-256color
 ```
 
 

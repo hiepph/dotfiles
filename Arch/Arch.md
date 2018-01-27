@@ -1,9 +1,9 @@
 ## Package manager
 
-+ Use `pacaur` over `pacman`:
++ Use `trizen` over `pacman`:
 
 ```sh
-./pacaur_install.sh
+sudo pacman -S trizen
 ```
 
 + Config `pacman`:
@@ -24,23 +24,23 @@ sudo pacman-key --populate archlinux
 + Add mirros:
 
 ```sh
-pacaur -S reflector
+trizen -S reflector
 reflector --latest 10 --protocol http --protocol https --sort rate --save /etc/pacman.d/mirrorlist --verbose
-pacaur -Syy
+trizen -Syy
 ```
 
 
 ## Essential packages
 
 ```
-pacaur -S vim termite tmux fasd stow xsel ibus ibus-qt ibus-unikey ibus-anthy pulseaudio alsamixer xbindkeys
+trizen -S vim termite tmux fasd stow xsel ibus ibus-qt ibus-unikey ibus-anthy pulseaudio alsamixer xbindkeys
 ```
 
 
 ## Utilities
 
 ```
-pacaur -S redshift zathura zathura-pdf-poppler
+trizen -S redshift zathura zathura-pdf-poppler
 ```
 
 
@@ -49,5 +49,5 @@ pacaur -S redshift zathura zathura-pdf-poppler
 - Basic fonts for icons:
 
 ```
-pacaur -S ttf-dejavu ttf-liberation terminus-font noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-font-awesome fira-code-git powerline-fonts-git
+trizen -S ttf-dejavu ttf-liberation terminus-font noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-font-awesome fira-code-git powerline-fonts-git
 ```
