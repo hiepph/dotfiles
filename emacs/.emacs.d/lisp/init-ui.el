@@ -4,6 +4,8 @@
 (require-package 'indent-guide)
 (require-package 'all-the-icons)
 (require-package 'dracula-theme)
+(require-package 'atom-one-dark)
+
 
 ;; Basic
 ;; Disable the splash screen (to enable it agin, replace the t with 0)
@@ -28,8 +30,14 @@
 ;; Show column
 (setq column-number-mode t)
 
+
 ;; Themes
-(load-theme 'dracula t)
+;; Specify folder contains themes
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+
+;; Choose theme here
+;; (load-theme 'dracula t)
+(load-theme 'atom-one-dark t)
 
 ;; Fonts
 (set-frame-font "Fira Mono" nil t)
@@ -37,11 +45,11 @@
 ;; Tree
 (global-set-key [f8] 'neotree-toggle)
 ;; pull all fonts/icons
-; (all-the-icons-install-fonts)
+                                        ; (all-the-icons-install-fonts)
 ;; enable icons
-; (all-the-icons-icon-for-buffer)
-; (all-the-icons-icon-for-file)
-; (all-the-icons-icon-for-mode)
+                                        ; (all-the-icons-icon-for-buffer)
+                                        ; (all-the-icons-icon-for-file)
+                                        ; (all-the-icons-icon-for-mode)
 
 ;; slow rendering
 (setq inhibit-compacting-font-caches t)
