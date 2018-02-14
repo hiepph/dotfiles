@@ -1,6 +1,7 @@
 (require 'init-elpa)
 
 (require-package 'neotree)
+(require-package 'tabbar-ruler)
 (require-package 'indent-guide)
 (require-package 'all-the-icons)
 (require-package 'dracula-theme)
@@ -39,8 +40,10 @@
 ;; (load-theme 'dracula t)
 (load-theme 'atom-one-dark t)
 
+
 ;; Fonts
 (set-frame-font "Fira Mono" nil t)
+
 
 ;; Tree
 (global-set-key [f8] 'neotree-toggle)
@@ -66,7 +69,24 @@
 ;; show hidden files
 (setq-default neo-show-hidden-files t)
 
+
 ;; indent guide
 (indent-guide-global-mode)
+
+
+;; Tabbar
+(setq tabbar-ruler-global-tabbar t)    ; get tabbar
+;; (setq tabbar-ruler-global-ruler t)     ; get global ruler
+(setq tabbar-ruler-popup-menu t)       ; get popup menu.
+(setq tabbar-ruler-popup-toolbar t)    ; get popup toolbar
+(setq tabbar-ruler-popup-scrollbar t)  ; show scroll-bar on mouse-move
+(require 'tabbar-ruler)
+(tabbar-ruler-group-by-projectile-project)
+
+;; shorcut keys
+(global-set-key (kbd "C-c t") 'tabbar-ruler-move)
+(global-set-key (kbd "C-<") 'tabbar-ruler-backward)
+(global-set-key (kbd "C->") 'tabbar-ruler-forward)
+
 
 (provide 'init-ui)
