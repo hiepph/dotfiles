@@ -4,7 +4,7 @@
 (require-package 'indent-guide)
 (require-package 'all-the-icons)
 (require-package 'dracula-theme)
-(require-package 'atom-one-dark)
+(require-package 'atom-one-dark-theme)
 
 
 ;; Basic
