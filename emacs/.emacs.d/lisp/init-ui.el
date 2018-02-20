@@ -87,6 +87,8 @@
 (global-set-key (kbd "C-c t") 'tabbar-ruler-move)
 (global-set-key (kbd "C-<") 'tabbar-ruler-backward)
 (global-set-key (kbd "C->") 'tabbar-ruler-forward)
+(global-set-key (kbd "C-S-p") 'tabbar-ruler-tabbar-backward-group)
+(global-set-key (kbd "C-S-n") 'tabbar-ruler-tabbar-forward-group)
 
 
 (provide 'init-ui)
