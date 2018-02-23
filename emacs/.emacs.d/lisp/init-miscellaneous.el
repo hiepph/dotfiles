@@ -28,4 +28,8 @@
 ;; Set the banner
 (setq dashboard-startup-banner "~/.emacs.d/assets/yuru_camp.png")
 
+
+;; Auto-refresh all buffers when files have changed on disk
+(global-auto-revert-mode t)
+
 (provide 'init-miscellaneous)
