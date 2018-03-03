@@ -40,11 +40,11 @@
 ;; Auto-delete
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-;; lines’, will highlight lines that go beyond the columns limit defined in ‘whitespace-line-column’
-;; ‘lines-tail’, same as above but only the part that goes beyond the limit
-;; of ‘whitespace-line-column’ (default 80) gets highlighted
+
 (setq whitespace-line-column 100)
-(setq whitespace-style '(face tabs lines-tail trailing))
+;; `lines-tail` highlight part of lines that goes beyond ‘whitespace-line-column’ (default: 80)
+;; `trailing` highlight trailing white-spaces
+(setq whitespace-style '(face lines-tail trailing))
 (global-whitespace-mode t)
 
 
