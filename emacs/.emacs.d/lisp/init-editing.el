@@ -15,13 +15,15 @@
 ;; replace highlight text with typing action
 (delete-selection-mode 1)
 
+
 ;; Disable tabs mode
 (setq-default indent-tabs-mode nil)
 
 ;; View tabs as 4 spaces
 (setq default-tab-width 4)
 
-                                        ; Autopair
+
+;; Autopair
 ;; enable autopair in all buffers
 (autopair-global-mode)
 ;; except [org]
@@ -29,13 +31,14 @@
           #'(lambda ()
               (autopair-mode -1)))
 
+
 ;; Expand region
 (global-set-key (kbd "C-=") 'er/expand-region)
 
 
-;; Trailing white space
-;; show
-;; (setq-default show-trailing-whitespace t)
+;; Truncate lines instead of wrap-lines
+(setq-default truncate-lines t)
+
 
 ;; Auto-delete
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
