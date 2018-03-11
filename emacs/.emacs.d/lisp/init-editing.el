@@ -11,6 +11,8 @@
 (require-package 'popup)
 (require-package 'whitespace)
 (require-package 'aggressive-indent)
+(require-package 'flycheck)
+
 
 ;; replace highlight text with typing action
 (delete-selection-mode 1)
@@ -150,6 +152,13 @@
 (setq company-minimum-prefix-length 2)
 ;; Zero-delay
 (setq company-idle-delay 0)
+
+
+;; Flycheck
+(global-flycheck-mode)
+;; Install back-end checker
+;; pip install pylint flake8
+
 
 ;; Undo tree
 (global-undo-tree-mode 1)
