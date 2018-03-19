@@ -1,9 +1,17 @@
 # Overview
 
-![demo](https://i.imgur.com/r7Gcmxe.png)
-
 `dotfiles` is managed with [GNU Stow](https://www.gnu.org/software/stow/manual/stow.html).
-Simply integrate config with `stow package`.
+Simply integrate config with `stow <package>`.
+
+Some demo images:
+
++ Vim with tmux
+
+![vim-tmux](https://i.imgur.com/r7Gcmxe.png)
+
++ Emacs
+
+![emacs](demo/emacs-03-19-2018.png)
 
 
 ## Basic OS setup
@@ -17,14 +25,14 @@ Simply integrate config with `stow package`.
 
 Generate SSH key:
 
-```sh
+```
 ssh-keygen -t rsa -b 4096 -C "hoanghiepjp96@gmail.com"
 ```
 
 
 ## Git
 
-```sh
+```
 git config --global user.email "hoanghiepjp96@gmail.com"
 git config --global user.name "Hiep Pham"
 ```
@@ -36,7 +44,7 @@ git config --global user.name "Hiep Pham"
 
     + Setup:
 
-    ```sh
+    ```
     git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 
     setopt EXTENDED_GLOB
@@ -49,7 +57,7 @@ git config --global user.name "Hiep Pham"
 
     + Update:
 
-    ```sh
+    ```
     git pull origin master
     git submodule update --init --recursive
     ```
@@ -59,32 +67,36 @@ git config --global user.name "Hiep Pham"
 
     * Install:
 
-    ```sh
+    ```
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
     ~/.fzf/install
     ```
 
     * Ripgrep fusion:
 
-    ```sh
-    # ~/.zshrc
+    In `~/.zshrc`:
+
+    ```
     export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
     ```
 
     * Update:
 
-    ```sh
+    ```
     cd ~/.fzf && git pull && ./install
     ```
 
 
 ### Termite
 
-```sh
+```
 mkdir -p ~/.config/termite
-ln -s ~/dotfiles/termite/gruvbox ~/.config/termite/config
+ln  -s ~/dotfiles/termite/gruvbox ~/.config/termite/config
+```
 
-# ~/.zshrc
+In `~/.zshrc`:
+
+```
 export TERM=xterm-256color
 ```
 
@@ -93,7 +105,7 @@ export TERM=xterm-256color
 
 + Tmux config for user and root
 
-```sh
+```
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 sudo ln -s /m/config/tmux/tmux.conf /root/.tmux.conf
 sudo git clone https://github.com/tmux-plugins/tpm /root/.tmux/plugins/tpm
@@ -101,13 +113,13 @@ sudo git clone https://github.com/tmux-plugins/tpm /root/.tmux/plugins/tpm
 
 + Go into a tmux session and install plugins:
 
-```sh
+```
 Prefix + I
 ```
 
 + To update plugins:
 
-```sh
+```
 Prefix + U
 ```
 
@@ -123,21 +135,22 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 
 + Then in vim:
 
-```sh
+```
 :PlugInstall
 ```
 
 + To update all plugins:
 
-```sh
+```
 :PlugUpdate
 ```
 
 
 ## IBus
 
-```sh
-# .xinitrc
+In `~/.xinitrc`:
+
+```
 export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
