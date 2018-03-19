@@ -3,6 +3,7 @@
 (require-package 'org)
 (require-package 'markdown-mode)
 
+;; Org-mode
 (add-hook 'org-mode-hook 'turn-on-font-lock)
 
 (global-set-key "\C-cl" 'org-store-link)
@@ -14,5 +15,11 @@
 
 ;; Turn off auto-fold
 (setq org-startup-folded nil)
+
+
+;; For Markdown preview
+;; npm install -g livedown
+;; livedown start README.md --open
+
 
 (provide 'init-mode)
