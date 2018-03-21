@@ -15,13 +15,21 @@ require("awful.hotkeys_popup.keys.vim")
 
 -- *** Plugins library
 -- battery
-local battery_widget = require('battery-widget')
+local battery_widget = require("widgets/battery-widget")
 local battery = battery_widget({adapter = "BAT0"})
 
 -- volume
-local volume_control = require("volume-control")
+local volume_control = require("widgets/volume-control")
 volumecfg = volume_control({})
 
+-- spotify
+local spotify_widget = require("widgets/spotify-widget/spotify")
+
+-- ram
+local ram_widget = require("widgets/ram-widget/ram-widget")
+
+-- cpu
+local cpu_widget = require("widgets/cpu-widget/cpu-widget")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -231,7 +239,10 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             mykeyboardlayout,
+            spotify_widget,
             volumecfg.widget,
+            cpu_widget,
+            ram_widget,
             battery.widget,
             mytextclock,
             wibox.widget.systray(),
@@ -497,7 +508,7 @@ awful.rules.rules = {
 
     -- Add titlebars to normal clients and dialogs
     { rule_any = {type = { "normal", "dialog" }
-      }, properties = { titlebars_enabled = false }
+      }, properties = { titlebars_enabled = true }
     },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
