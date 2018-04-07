@@ -2,6 +2,8 @@
 
 (require-package 'org)
 (require-package 'markdown-mode)
+;; Instal AUCTeX
+(require 'tex-site)
 
 
 ;; Org-mode
@@ -30,7 +32,6 @@
 (setq TeX-PDF-mode t) ;; .pdf statt .dvi per default:
 
 ;; Setup for AUCTeX
-(require 'tex-site)
 (autoload 'reftex-mode "reftex" "RefTeX Minor Mode" t)
 (autoload 'turn-on-reftex "reftex" "RefTeX Minor Mode" nil)
 (autoload 'reftex-citation "reftex-cite" "Make citation" nil)
@@ -51,6 +52,10 @@
 
 ;; Realtime preview
 ;; latexmk -pvc -pdf file.tex
+
+
+;; Remote
+(setq tramp-default-method "sshx")
 
 
 (provide 'init-mode)
