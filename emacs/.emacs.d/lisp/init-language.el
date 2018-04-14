@@ -4,6 +4,7 @@
 (require-package 'clojure-mode)
 (require-package 'yaml-mode)
 (require-package 'rust-mode)
+(require-package 'ess)
 
 
 ;; Go
