@@ -8,12 +8,12 @@
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
 (require 'init-elpa)
+(require 'init-language)
 (require 'init-ui)
 (require 'init-editing)
 (require 'init-navigation)
 (require 'init-mode)
 (require 'init-search)
-(require 'init-language)
 (require 'init-helper)
 (require 'init-miscellaneous)
 

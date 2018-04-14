@@ -28,10 +28,27 @@
 ;; Autopair
 ;; enable autopair in all buffers
 (autopair-global-mode)
+
+;; auto-wrap word into pair
+(setq autopair-autowrap t)
+
 ;; except [org]
 (add-hook 'org-mode-hook
           #'(lambda ()
               (autopair-mode -1)))
+
+;; Triple quote in python
+(add-hook 'python-mode-hook
+          #'(lambda ()
+              (setq autopair-handle-action-fns
+                    (list #'autopair-default-handle-action
+                          #'autopair-python-triple-quote-action))))
+
+;; prevent '<' being paired in Rust
+;; (add-hook 'rust-mode-hook
+;;           #'(lambda ()
+;;               (push ?<
+;;                     (getf autopair-dont-pair :code))))
 
 
 ;; Expand region
@@ -39,7 +56,7 @@
 
 
 ;; Truncate lines instead of wrap-lines
-(setq-default truncate-lines t)
+;; (setq-default truncate-lines t)
 
 
 ;; Auto-delete
@@ -176,6 +193,9 @@
         ((looking-at "\\s\)") (forward-char 1) (backward-list 1))
         (t (self-insert-command (or arg 1)))))
 (global-set-key (kbd "C-%") 'goto-match-paren)
+
+
+;; Tab
 
 
 (provide 'init-editing)
