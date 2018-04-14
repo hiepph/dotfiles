@@ -4,8 +4,6 @@
 (require-package 'tabbar-ruler)
 (require-package 'indent-guide)
 (require-package 'all-the-icons)
-(require-package 'dracula-theme)
-(require-package 'atom-one-dark-theme)
 
 
 ;; Basic
@@ -37,8 +35,11 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 
 ;; Choose theme here
+(require-package 'dracula-theme)
+(require-package 'atom-one-dark-theme)
+
 ;; (load-theme 'dracula t)
-(load-theme 'atom-one-dark t)
+;; (load-theme 'atom-one-dark t)
 
 
 ;; Fonts
