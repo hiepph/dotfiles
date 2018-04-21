@@ -10,6 +10,8 @@
 
 ;; format before saving
 (add-hook 'before-save-hook 'gofmt-before-save)
+;; import before saving
+(setq gofmt-command "goimports")
 
 
 ;; Rust
