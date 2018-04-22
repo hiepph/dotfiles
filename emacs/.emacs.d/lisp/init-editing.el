@@ -24,6 +24,9 @@
 ;; View tabs as 4 spaces
 (setq default-tab-width 4)
 
+;; Tab as 4 spaces
+(setq tab-width 4)
+
 
 ;; Autopair
 ;; enable autopair in all buffers
