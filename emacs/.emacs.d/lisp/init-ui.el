@@ -43,17 +43,17 @@
 
 
 ;; Fonts
-(set-frame-font "Fira Mono" nil t)
+;; (set-frame-font "Fira Mono" nil t)
 
 
 ;; Tree
 (global-set-key [f8] 'neotree-toggle)
 ;; pull all fonts/icons
-                                        ; (all-the-icons-install-fonts)
+;; (all-the-icons-install-fonts)
 ;; enable icons
-                                        ; (all-the-icons-icon-for-buffer)
-                                        ; (all-the-icons-icon-for-file)
-                                        ; (all-the-icons-icon-for-mode)
+;; (all-the-icons-icon-for-buffer)
+;; (all-the-icons-icon-for-file)
+;; (all-the-icons-icon-for-mode)
 
 ;; slow rendering
 (setq inhibit-compacting-font-caches t)
