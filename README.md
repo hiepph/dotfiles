@@ -26,15 +26,15 @@ Some demo images:
 Generate SSH key:
 
 ```
-ssh-keygen -t rsa -b 4096 -C "hoanghiepjp96@gmail.com"
+ssh-keygen -t rsa -b 4096
 ```
 
 
 ## Git
 
 ```
-git config --global user.email "hoanghiepjp96@gmail.com"
-git config --global user.name "Hiep Pham"
+git config --global user.email [email]
+git config --global user.name [name]
 ```
 
 
