@@ -45,7 +45,7 @@ call plug#end()
 "
 
 " show number
-set number relativenumber
+set number
 nnoremap <F2> :set nonumber! norelativenumber!<CR>
 
 " highlight current line
