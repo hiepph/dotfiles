@@ -41,6 +41,7 @@
 
 ;; (load-theme 'dracula t)
 ;; (load-theme 'atom-one-dark t)
+(add-hook 'after-init-hook (lambda () (load-theme 'tomorrow-night)))
 
 
 ;; Fonts
