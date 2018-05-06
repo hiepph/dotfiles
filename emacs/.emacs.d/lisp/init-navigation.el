@@ -21,16 +21,18 @@
 
 ;; IDO
 (require 'ido)
-;; (require-package 'ido-ubiquitous)
+(require-package 'ido-completing-read+)
 (require-package 'smex)
-(ido-mode t)
+
+;; enable IDO
+(ido-mode 1)
+(ido-everywhere 1)
+(ido-ubiquitous-mode 1)
 
 (setq ido-enable-flex-matching t)
 (setq ido-use-filename-at-point nil)
 (setq ido-auto-merge-work-directories-length -1)
 (setq ido-use-virtual-buffers t)
-
-;; (ido-ubiquitous-mode 1)
 
 ;; Shows a list of buffers
 (global-set-key (kbd "C-x C-b") 'ibuffer)
