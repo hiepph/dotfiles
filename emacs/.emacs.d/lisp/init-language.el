@@ -2,7 +2,7 @@
 
 (require-package 'clojure-mode)
 (require-package 'yaml-mode)
-(require-package 'ess)
+;; (require-package 'ess)
 
 
 ;; Go
@@ -20,6 +20,10 @@
 
 (with-eval-after-load 'rust-mode
   (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
+
+
+;; Scala
+;; (require-package 'ensime)
 
 
 (provide 'init-language)
