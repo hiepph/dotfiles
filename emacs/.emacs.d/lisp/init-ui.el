@@ -39,9 +39,7 @@
 (require-package 'dracula-theme)
 (require-package 'atom-one-dark-theme)
 
-;; (load-theme 'dracula t)
-;; (load-theme 'atom-one-dark t)
-(add-hook 'after-init-hook (lambda () (load-theme 'tomorrow-night)))
+(add-hook 'after-init-hook (lambda () (load-theme 'atom-one-dark)))
 
 
 ;; Fonts
