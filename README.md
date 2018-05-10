@@ -146,6 +146,11 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 ```
 
 
+## Emacs
+
++ Setting for Lisp: [link](http://lisp-lang.org/learn/getting-started/)
+
+
 ## IBus
 
 In `~/.xinitrc`:
