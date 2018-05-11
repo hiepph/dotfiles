@@ -46,7 +46,7 @@ call plug#end()
 
 " show number
 set number
-nnoremap <F2> :set nonumber! norelativenumber!<CR>
+nnoremap <F2> :set nonumber!<CR>
 
 " highlight current line
 " set cursorline
