@@ -27,7 +27,7 @@
 
 
 ;; Lisp
-(load (expand-file-name "~/.quicklisp/slime-helper.el"))
+(require-package 'slime)
 (setq inferior-lisp-program "sbcl")
 
 
