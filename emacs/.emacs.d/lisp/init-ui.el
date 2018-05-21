@@ -41,7 +41,7 @@
 (require-package 'doom-themes)
 
 ;; Doom
-(add-hook 'after-init-hook (lambda () (load-theme 'doom-peacock)))
+(add-hook 'after-init-hook (lambda () (load-theme 'doom-one)))
 ;; Global settings (defaults)
 (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
       doom-themes-enable-italic t) ; if nil, italics is universally disabled
