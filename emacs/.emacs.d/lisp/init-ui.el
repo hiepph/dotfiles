@@ -38,17 +38,9 @@
 ;; Choose theme here
 (require-package 'dracula-theme)
 (require-package 'atom-one-dark-theme)
-(require-package 'doom-themes)
 
-;; Doom
-(add-hook 'after-init-hook (lambda () (load-theme 'doom-one)))
-;; Global settings (defaults)
-(setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-      doom-themes-enable-italic t) ; if nil, italics is universally disabled
-;; Enable flashing mode-line on errors
-(doom-themes-visual-bell-config)
-;; Corrects (and improves) org-mode's native fontification.
-(doom-themes-org-config)
+;; Theme
+(add-hook 'after-init-hook (lambda () (load-theme 'atom-one-dark)))
 
 
 ;; Fonts
