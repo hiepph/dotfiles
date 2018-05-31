@@ -113,7 +113,7 @@
 ;; (global-set-key "\C-y" 'yank-and-indent)
 
 ;; Aggressive (force) indent block of code
-(global-aggressive-indent-mode)
+;; (global-aggressive-indent-mode)
 
 
 ;; Highlights matching parenthesis
