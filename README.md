@@ -145,6 +145,8 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 :PlugUpdate
 ```
 
+*Note*: Some plugins require [Powerline](https://github.com/powerline/fonts) and Awesome fonts.
+
 
 ## Emacs
 
