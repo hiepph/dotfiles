@@ -175,7 +175,7 @@
 
 
 ;; Flycheck
-;; (global-flycheck-mode)
+(global-flycheck-mode)
 ;; Install back-end checker
 ;; pip install pylint flake8
 
