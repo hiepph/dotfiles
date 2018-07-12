@@ -34,7 +34,7 @@
 (require-package 'web-mode)
 (require-package 'js2-mode)
 (require-package 'vue-mode)
-;; (setq sgml-quick-keys 'indent)
+(require-package 'vue-html-mode)
 (setq web-mode-enable-auto-closing t)
 
 
