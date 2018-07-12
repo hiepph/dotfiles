@@ -30,5 +30,12 @@
 (require-package 'slime)
 (setq inferior-lisp-program "sbcl")
 
+;; Javascript & Web-related
+(require-package 'web-mode)
+(require-package 'js2-mode)
+(require-package 'vue-mode)
+;; (setq sgml-quick-keys 'indent)
+(setq web-mode-enable-auto-closing t)
+
 
 (provide 'init-language)
