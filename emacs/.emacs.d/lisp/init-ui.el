@@ -29,6 +29,12 @@
 ;; Show column
 (setq column-number-mode t)
 
+;; Save customization
+; (setq custom-file "~/.emacs.d/custom.el")
+; (load custom-file)
+; (add-hook 'kill-emacs-query-functions
+;           'custom-prompt-customize-unsaved-options)
+
 
 ;; Themes
 ;; Specify folder contains themes
@@ -36,17 +42,12 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 
 ;; Choose theme here
+(require-package 'powerline)
 (require-package 'dracula-theme)
 (require-package 'atom-one-dark-theme)
 
-;; Theme
-;; (add-hook 'after-init-hook (lambda () (load-theme 'atom-one-dark)))
-(add-hook 'after-init-hook (lambda () (load-theme 'dracula)))
-
-
 ;; Fonts
-;; (set-frame-font "Fira Mono" nil t)
-
+;; (set-frame-font "Fira Code")
 
 ;; Tree
 (global-set-key [f8] 'neotree-toggle)

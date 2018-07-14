@@ -151,7 +151,6 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 
 + Setting for Lisp: [link](http://lisp-lang.org/learn/getting-started/) (skip `slime`)
 
-
 ## IBus
 
 In `~/.xinitrc`:
