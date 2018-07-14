@@ -33,8 +33,6 @@
 ;; Javascript & Web-related
 (require-package 'web-mode)
 (require-package 'js2-mode)
-(require-package 'vue-mode)
-(require-package 'vue-html-mode)
 (setq web-mode-enable-auto-closing t)
 
 
