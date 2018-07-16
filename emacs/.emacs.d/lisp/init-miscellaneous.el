@@ -17,20 +17,4 @@
 (global-auto-revert-mode t)
 
 
-;; Nyan Nyan!
-;; (require-package 'nyan-mode)
-;; (nyan-mode)
-;; (nyan-start-animation)
-;; (nyan-toggle-wavy-trail)
-
-
-;; Dashboard
-;; (require-package 'dashboard)
-;; (dashboard-setup-startup-hook)
-;; Set the title
-;; (setq dashboard-banner-logo-title "Fly me to the moon...")
-;; Set the banner
-;; (setq dashboard-startup-banner "~/.emacs.d/assets/yuru_camp.png")
-
-
 (provide 'init-miscellaneous)

@@ -1,17 +1,22 @@
 (require 'package)
 
-(defun require-package (package)
-  "Install given PACKAGE if it was not installed before."
-  (if (package-installed-p package)
-      t
-    (progn
-      (unless (assoc package package-archive-contents)
-	(package-refresh-contents))
-      (package-install package))))
-
-(add-to-list 'package-archives
-             '("melpa" . "https://melpa.org/packages/") t)
-
+(require 'package)
+(setq package-enable-at-startup nil)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
 (package-initialize)
+
+;; use-package
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(eval-when-compile
+  (require 'use-package))
+(use-package diminish
+  :ensure t)
+(use-package bind-key
+  :ensure t)
 
 (provide 'init-elpa)
