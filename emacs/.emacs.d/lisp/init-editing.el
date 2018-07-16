@@ -11,7 +11,6 @@
 (require-package 'popup)
 (require-package 'whitespace)
 (require-package 'aggressive-indent)
-(require-package 'flycheck)
 
 
 ;; replace highlight text with typing action
@@ -175,9 +174,13 @@
 
 
 ;; Flycheck
-(global-flycheck-mode)
+(require-package 'flycheck)
 ;; Install back-end checker
-;; pip install pylint flake8
+;; pip install pylint
+
+(global-flycheck-mode
+ ;; bind on-off switch
+ (global-set-key [f2] 'flycheck-mode)
 
 
 ;; Undo tree

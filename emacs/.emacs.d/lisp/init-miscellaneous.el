@@ -13,23 +13,19 @@
 (setq browse-url-browser-function 'browse-url-chromium)
 
 
-;; <f5> for restart emacs
-(global-set-key [f5] 'eval-buffer)
-
-
 ;; Auto-refresh all buffers when files have changed on disk
 (global-auto-revert-mode t)
 
 
 ;; Nyan Nyan!
-(require-package 'nyan-mode)
-(nyan-mode)
-(nyan-start-animation)
+;; (require-package 'nyan-mode)
+;; (nyan-mode)
+;; (nyan-start-animation)
 ;; (nyan-toggle-wavy-trail)
 
 
 ;; Dashboard
-(require-package 'dashboard)
+;; (require-package 'dashboard)
 ;; (dashboard-setup-startup-hook)
 ;; Set the title
 ;; (setq dashboard-banner-logo-title "Fly me to the moon...")
