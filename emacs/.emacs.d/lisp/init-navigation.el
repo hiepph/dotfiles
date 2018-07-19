@@ -77,7 +77,11 @@
 
 ;; Enable move point from window to window using Shift and the arrow keys
 (windmove-default-keybindings)
-
+;; and C-c + {h,j,k,l}
+(global-set-key (kbd "C-c h")  'windmove-left)
+(global-set-key (kbd "C-c l") 'windmove-right)
+(global-set-key (kbd "C-c k")    'windmove-up)
+(global-set-key (kbd "C-c j")  'windmove-down)
 
 ;; Virtual desktop
 (use-package eyebrowse
