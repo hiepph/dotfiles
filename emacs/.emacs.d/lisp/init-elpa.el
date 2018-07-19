@@ -1,6 +1,5 @@
 (require 'package)
 
-(require 'package)
 (setq package-enable-at-startup nil)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
@@ -15,8 +14,10 @@
 (eval-when-compile
   (require 'use-package))
 (use-package diminish
-  :ensure t)
+  :ensure t
+  :defer t)
 (use-package bind-key
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (provide 'init-elpa)
