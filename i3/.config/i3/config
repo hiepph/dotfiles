@@ -199,6 +199,3 @@ bar {
             urgent_workspace   #7c6f64 #fabd2f #3c3836
         }
 }
-
-# Wallpaper
-exec_always feh --bg-fill ~/Pictures/wallpaper.png

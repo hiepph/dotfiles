@@ -1,0 +1,23 @@
+# Start GNOME Keyring
+eval $(/usr/bin/gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh)
+export SSH_AUTH_SOCK
+export GPG_AGENT_INFO
+export GNOME_KEYRING_CONTROL
+export GNOME_KEYRING_PID
+export OOO_FORCE_DESKTOP=gnome
+
+# Ibus
+export GTK_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT_IM_MODULE=ibus
+ibus-daemon -drx &
+
+# Display
+xrandr --output eDP-1-1 --auto --primary
+xrandr --output HDMI-1-1 --auto --right-of eDP-1-1
+
+# Wallpaper
+feh --bg-fill ~/Pictures/Wallpapers/2b.png
+
+# Redshift
+redshift &
