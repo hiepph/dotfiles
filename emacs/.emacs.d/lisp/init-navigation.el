@@ -61,6 +61,7 @@
 ;; IDO
 (use-package ido
   :diminish ido-mode
+  :bind ("C-x C-b" . 'ibuffer)   ;; Shows a list of buffers
   :config (progn
             (ido-mode 1)
             (ido-everywhere 1)
@@ -68,9 +69,7 @@
             (setq ido-enable-flex-matching t)
             (setq ido-use-filename-at-point nil)
             (setq ido-auto-merge-work-directories-length -1)
-            (setq ido-use-virtual-buffers t)
-            ;; Shows a list of buffers
-            (global-set-key (kbd "C-x C-b") 'ibuffer)))
+            (setq ido-use-virtual-buffers t)))
 
 (use-package ido-completing-read+)
 
