@@ -1,6 +1,5 @@
 (require 'init-elpa)
 
-
 ;; Basic
 ;; replace highlight text with typing action
 (delete-selection-mode 1)
@@ -99,13 +98,18 @@
 (global-hl-line-mode 1)
 
 
-;; Interactive search key bindings.
-;; By default, C-s runs isearch-forward, so this swaps the bindings
-(global-set-key (kbd "C-s") 'isearch-forward-regexp)
-(global-set-key (kbd "C-r") 'isearch-backward-regexp)
-(global-set-key (kbd "C-M-s") 'isearch-forward)
-(global-set-key (kbd "C-M-r") 'isearch-backward)
+;; Search with Ivy
+(use-package swiper-helm
+  :ensure t
+  :diminish
+  (ivy-mode counsel-mode)
+  :init
+  (setq ivy-use-virtual-buffers t)
+  (setq enable-recursive-minibuffers t)
+  :bind
+  ("C-s" . 'swiper))
 
+;; Enter automatically indent code
 (define-key global-map (kbd "RET") 'newline-and-indent)
 
 

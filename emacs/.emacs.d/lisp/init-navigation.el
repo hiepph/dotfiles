@@ -45,6 +45,7 @@
          ("M-x" . 'helm-M-x)
          ("C-x r b" . helm-filtered-bookmarks)
          ("C-x b" . 'helm-mini)
+         ("C-x s" . 'helm-do-grep-ag) ;; Search with rg
          ("C-x C-f" . 'helm-find-files)
          ;; Show kill ring
          ("M-y" . 'helm-show-kill-ring)))
@@ -62,7 +63,7 @@
 (use-package ido
   :diminish ido-mode
   :bind ("C-x C-b" . 'ibuffer)   ;; Shows a list of buffers
-  :config 
+  :config
   (ido-mode 1)
   (ido-everywhere 1)
   (ido-ubiquitous-mode 1)
