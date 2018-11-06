@@ -131,9 +131,7 @@ let g:lightline = {
       \   'filetype': 'LightlineFiletype',
       \   'fileencoding': 'LightlineFileencoding',
       \   'mode': 'LightlineMode',
-      \ },
-      \ 'separator': { 'left': '||', 'right': '||' },
-      \ 'subseparator': { 'left': '>', 'right': '<' }
+      \ }
       \ }
 
 " custom
