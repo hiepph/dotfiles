@@ -14,7 +14,7 @@
          ("C-x g" . 'magit-status)
          ;; shortcuts help
          ("C-x M-g" . 'magit-dispatch-popup))
-  :config
+  :init
   ;; When 'C-c C-c' is pressed in the magit commit message buffer,
   ;; delete the magit-diff buffer related to the current repo.
   (add-hook 'git-commit-setup-hook
