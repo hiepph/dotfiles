@@ -40,21 +40,15 @@
 
 
 ;; Trailing white-space
-(use-package whitespace
-  :ensure t
-  :diminish whitespace-mode
-  :init
-  (setq whitespace-line-column 100)
-  ;; `lines-tail` highlight part of lines that goes beyond ‘whitespace-line-column’ (default: 80)
-  ;; `trailing` highlight trailing white-spaces
-  (setq whitespace-style '(face lines-tail trailing))
+(require 'whitespace)
 
-  :hook (before-save . delete-whitespace-rectangle)
+(global-whitespace-mode t)
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-  :config
-  (global-whitespace-mode t)
-  (add-hook 'before-save-hook 'delete-trailing-whitespace))
-
+(setq whitespace-line-column 100)
+;; `lines-tail` highlight part of lines that goes beyond ‘whitespace-line-column’ (default: 80)
+;; `trailing` highlight trailing white-spaces
+(setq whitespace-style '(face lines-tail trailing))
 
 ;; Indent
 ;; Auto-indentation
