@@ -1,0 +1,57 @@
+[options]
+
+    font = Meslo LG L
+    resize_grip = false
+    scroll_on_output = false
+    scroll_on_keystroke = true
+    visible_bell = false
+    mouse_autohide = true
+    allow_bold = true
+    dynamic_title = true
+    urgent_on_bell = true
+    clickable_url = true
+    scrollback_lines = 10000
+    search_wrap = true
+    cursor_blink = system
+
+[colors]
+
+[colors]
+
+# special
+foreground      = #cfd6e4
+foreground_bold = #cfd6e4
+cursor          = #cfd6e4
+background      = #232731
+
+# black
+color0  = #2d3241
+color8  = #3b4457
+
+# red
+color1  = #b04b57
+color9  = #b04b57
+
+# green
+color2  = #93b379
+color10 = #93b379
+
+# yellow
+color3  = #e5c179
+color11 = #e5c179
+
+# blue
+color4  = #6f8fb4
+color12 = #6f8fb4
+
+# magenta
+color5  = #a4799d
+color13 = #a4799d
+
+# cyan
+color6  = #77b3c5
+color14 = #7eafad
+
+# white
+color7  = #dfe3ec
+color15 = #e7ebf1
