@@ -171,7 +171,7 @@
   :config
   ;; Off by default
   ;; (global-flycheck-mode)
-  :bind ("<f2>" . 'flycheck-mode))
+  :bind ("<f12>" . 'flycheck-mode))
 
 
 ;; Undo tree

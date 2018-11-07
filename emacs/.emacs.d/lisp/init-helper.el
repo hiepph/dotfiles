@@ -10,10 +10,12 @@
 
 (use-package magit
   :ensure t
-  :bind (;; git status
-         ("C-x g" . 'magit-status)
-         ;; shortcuts help
-         ("C-x M-g" . 'magit-dispatch-popup))
+  :bind
+  ;; git status
+  ("C-x g" . 'magit-status)
+  ;; shortcuts help
+  ("C-x M-g" . 'magit-dispatch-popup)
+  ("<f4>" . 'magit-dispatch-popup)
   :init
   ;; When 'C-c C-c' is pressed in the magit commit message buffer,
   ;; delete the magit-diff buffer related to the current repo.
