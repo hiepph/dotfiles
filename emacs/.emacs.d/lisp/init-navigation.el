@@ -96,4 +96,13 @@
             (setq eyebrowse-new-workspace t)))
 
 
+(use-package resize-window
+  :ensure t
+  :diminish resize-mode
+  :bind
+  ("C-c ;" . 'resize-window)
+  :config
+  (push '(?l helm-mini "run helm-mini" nil) resize-window-dispatch-alist))
+
+
 (provide 'init-navigation)
