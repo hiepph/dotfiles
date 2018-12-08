@@ -1,30 +1,28 @@
-#include ".Xcolors"
+! theme, and also custom config
+#include ".Xcustom"
 
-! fonts
-URxvt.font: xft:Fira Code:regular:antialias=true:hinting=true
-URxvt.boldFont: xft:Fira Code:bold:antialias=true:hinting=true
-URxvt.italicFont: xft:Fira Code:italic:antialias=true:hinting=true
-URxvt.boldItalicFont: xft:Fira Code:bold:italic:antialias=true:hinting=true
+! basic
+URxvt.scrollBar: false
 
-URxvt.letterSpace: -1
+! do not scroll with output
+!URxvt*scrollTtyOutput: false
 
-! interface
-urxvt*scrollBar: false
-urxvt*transparent: false
+! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+URxvt*scrollWithBuffer: true
 
-! misc
-urxvt.saveLines: 9999
-urxvt.iso14755: false
+! scroll back to the bottom on keypress
+URxvt*scrollTtyKeypress: true
 
-! clipboard
-URxvt.iso14755: False
-URxvt.perl-ext-common: default,clipboard,matcher,keyboard-select,url-select
-
-! URLs
+! url
+URxvt.perl-ext-common: default,matcher
+URxvt.url-launcher: /usr/bin/xdg-open
 URxvt.matcher.button: 1
 
-! cursor
-URxvt.cursorBlink: true
+URxvt.keysym.C-Delete: perl:matcher:last
+URxvt.keysym.M-Delete: perl:matcher:list
 
-! Pointer
-URxvt.pointerBlank: true
+URxvt.matcher.rend.0: Uline Bold fg5
+
+! extension
+! copy with Ctrl-Alt-c, paste with Ctrl-Alt-v
+URxvt.perl-ext-common: selection-to-clipboard
