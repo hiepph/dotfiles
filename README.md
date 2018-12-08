@@ -50,7 +50,7 @@ git config --global core.editor "vim"
 
     setopt EXTENDED_GLOB
     for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
-      sudo ln -fs "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+      ln -fs "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
     done
 
     chsh -s /bin/zsh
@@ -62,6 +62,12 @@ git config --global core.editor "vim"
     git pull origin master
     git submodule update --init --recursive
     ```
+
+    + Install:
+
+        ```
+        ./prezto.sh
+        ```
 
 
 * [FZF](https://github.com/junegunn/fzf.git)
@@ -88,18 +94,11 @@ git config --global core.editor "vim"
     ```
 
 
-### Termite
+## Terminal
 
-```
-mkdir -p ~/.config/termite
-ln  -s ~/dotfiles/termite/gruvbox ~/.config/termite/config
-```
++ Termite: Config goes with themes, see example installation in `./termite.sh`
 
-In `~/.zshrc`:
-
-```
-export TERM=xterm-256color
-```
++ Urxvt: custom config with `~/.Xcustom`
 
 
 ## Tmux
@@ -147,9 +146,8 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 *Note*: Some plugins require [Powerline](https://github.com/powerline/fonts) and Awesome fonts.
 
 
-## Emacs
++ Custom config: '~/.custom.vim'
 
-+ Setting for Lisp: [link](http://lisp-lang.org/learn/getting-started/) (skip `slime`)
 
 ## IBus
 
