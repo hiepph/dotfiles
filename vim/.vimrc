@@ -45,11 +45,15 @@ call plug#end()
 "
 
 " show number
-set number
-nnoremap <F2> :set nonumber!<CR>
+set relativenumber
 
 " highlight current line
-" set cursorline
+set cursorline
+hi CursorLine term=bold cterm=bold guibg=Grey40
+
+" turn off annoying beep
+set noerrorbells visualbell t_vb=
+autocmd GUIEnter * set visualbell t_vb=
 
 " max line-length mark
 " set colorcolumn=100
@@ -218,9 +222,6 @@ let c_no_curly_error=1
 
 " Indent line toggle
 nnoremap <F3> :IndentLinesToggle<CR>
-
-" Paste toggle
-set pastetoggle=<F4>
 
 " Rainbow parentheses
 au VimEnter * RainbowParenthesesToggle
