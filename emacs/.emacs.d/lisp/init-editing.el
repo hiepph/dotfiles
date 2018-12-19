@@ -83,6 +83,14 @@
 (global-set-key (kbd "C-S-y") 'yank-and-indent)
 
 
+(use-package indent-guide
+  :ensure t
+  :config
+  (indent-guide-global-mode)
+  (set-face-background 'indent-guide-face "dimgray")
+  (setq indent-guide-delay 0.1))
+
+
 ;; Highlights matching parenthesis
 (show-paren-mode 1)
 
