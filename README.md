@@ -33,10 +33,17 @@ ssh-keygen -t rsa -b 4096
 ## Git
 
 ```
-git config --global user.email [email]
-git config --global user.name [name]
+git config --global user.email $MY_EMAIL
+git config --global user.name $MY_USERNAME
 git config --global core.editor "vim"
 ```
+
++ GPG:
+
+    ```
+    gpg --gen-key
+    git config --global user.signingkey $MY_KEY
+    ```
 
 
 ## Shell
