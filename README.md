@@ -41,8 +41,9 @@ git config --global core.editor "vim"
 + GPG:
 
     ```
-    gpg --gen-key
+    gpg --full-gen-key
     git config --global user.signingkey $MY_KEY
+    gpg --armor --export $MY_KEY
     ```
 
 
