@@ -49,6 +49,8 @@ git config --global core.editor "vim"
 
 ## Shell
 
+### Zsh
+
 * [Prezto](https://github.com/sorin-ionescu/prezto)
 
     + Setup:
@@ -71,7 +73,7 @@ git config --global core.editor "vim"
     git submodule update --init --recursive
     ```
 
-    + Install:
+    + Install config:
 
         ```
         ./prezto.sh
@@ -101,6 +103,16 @@ git config --global core.editor "vim"
     cd ~/.fzf && git pull && ./install
     ```
 
+
+### Fish
+
++ [Oh my Fish](https://github.com/oh-my-fish/oh-my-fish):
+
+    + setup:
+
+    ```
+    https://github.com/oh-my-fish/oh-my-fish
+    ```
 
 ## Terminal
 
