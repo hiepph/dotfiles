@@ -79,8 +79,20 @@ git config --global core.editor "vim"
         ./prezto.sh
         ```
 
+### Fish
 
-* [FZF](https://github.com/junegunn/fzf.git)
++ [Oh my Fish](https://github.com/oh-my-fish/oh-my-fish):
+
+    + setup:
+
+    ```
+    curl -L https://get.oh-my.fish | fish
+    ```
+
+    + custom config in `~/.config/fish/config.fish`
+
+
+### [FZF](https://github.com/junegunn/fzf.git)
 
     * Install:
 
@@ -103,16 +115,6 @@ git config --global core.editor "vim"
     cd ~/.fzf && git pull && ./install
     ```
 
-
-### Fish
-
-+ [Oh my Fish](https://github.com/oh-my-fish/oh-my-fish):
-
-    + setup:
-
-    ```
-    https://github.com/oh-my-fish/oh-my-fish
-    ```
 
 ## Terminal
 
