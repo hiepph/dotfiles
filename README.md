@@ -40,9 +40,21 @@ git config --global core.editor "vim"
 
 + GPG:
 
+    + setup:
     ```
     gpg --full-gen-key
     git config --global user.signingkey $MY_KEY
+    ```
+
+    + auto sign in commit:
+
+    ```
+    git config --global commit.gpgSign true
+    ```
+
+    + export key:
+
+    ```
     gpg --armor --export $MY_KEY
     ```
 
