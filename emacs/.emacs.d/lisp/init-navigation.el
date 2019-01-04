@@ -65,7 +65,7 @@
   :bind ("C-x C-b" . 'ibuffer)   ;; Shows a list of buffers
   :config
   (ido-mode 1)
-  (ido-everywhere 1)
+  ;; (ido-everywhere 1)
   (ido-ubiquitous-mode 1)
   (setq ido-enable-flex-matching t)
   (setq ido-use-filename-at-point nil)
