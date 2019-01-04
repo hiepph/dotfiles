@@ -47,7 +47,7 @@
 
 
 ;; Remote
-(setq tramp-default-method "sshx")
+; (setq tramp-default-method "sshx")
 
 ;; Disable Ctrl-Z (freeze)
 (global-unset-key (kbd "C-z"))
