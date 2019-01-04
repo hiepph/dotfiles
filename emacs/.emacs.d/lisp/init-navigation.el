@@ -5,7 +5,11 @@
 (use-package projectile
   :ensure t
   :diminish projectile-mode
-  :config (projectile-global-mode))
+  :config
+  ;; (projectile-global-mode)
+  (projectile-mode +1)
+  (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
 
 
 ;; Power-up by helm
