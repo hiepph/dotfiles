@@ -1,5 +1,8 @@
 # Overview
 
+
+![gif](https://thumbs.gfycat.com/AlarmingCoordinatedEarwig-max-1mb.gif)
+
 `dotfiles` is managed with [GNU Stow](https://www.gnu.org/software/stow/manual/stow.html).
 Simply integrate config with `stow <package>`.
 
@@ -7,11 +10,11 @@ Some demo images:
 
 + Vim with tmux
 
-![vim-tmux](https://i.imgur.com/r7Gcmxe.png)
+![vim](misc/vim.png)
 
 + Emacs
 
-![emacs](demo/emacs-03-19-2018.png)
+![emacs](misc/emacs.png)
 
 
 ## Basic OS setup
