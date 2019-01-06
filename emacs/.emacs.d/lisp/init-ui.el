@@ -54,7 +54,7 @@
 (use-package neotree
   :ensure t
   :bind ("<f8>" . 'neotree-toggle)
-  :init 
+  :init
   ;; pull all fonts/icons
   ;; (all-the-icons-install-fonts)
   ;; enable icons

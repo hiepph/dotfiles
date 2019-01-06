@@ -203,4 +203,18 @@
 (global-set-key (kbd "C-%") 'goto-match-paren)
 
 
+;; Multiple cursors
+(use-package multiple-cursors
+  :ensure t
+  :bind
+  ("C-S-c C-S-c" . 'mc/edit-lines)
+  ("C-S-f" . 'mc/mark-next-like-this)
+  ("C-S-b" . 'mc/mark-previous-like-this)
+  ("C-S-d" . 'mc/mark-all-like-this)
+
+  :config
+  (global-unset-key (kbd "C-<down-mouse-1>"))
+  (global-set-key (kbd "C-<mouse-1>") 'mc/add-cursor-on-click))
+
+
 (provide 'init-editing)
