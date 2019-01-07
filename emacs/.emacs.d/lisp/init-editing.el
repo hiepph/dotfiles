@@ -148,7 +148,9 @@
 (use-package company
   :ensure t
   :config
-  (add-hook 'after-init-hook 'global-company-mode))
+  (add-hook 'after-init-hook 'global-company-mode)
+  ;; case sensitive completion
+  (setq company-dabbrev-downcase nil))
 
 (use-package pos-tip
   :ensure t)
