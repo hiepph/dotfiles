@@ -90,19 +90,20 @@
 ;; Tabbar
 (use-package tabbar-ruler
   :ensure t
-  :init (progn
-          (setq tabbar-ruler-global-tabbar t)    ; get tabbar
-          ;; (setq tabbar-ruler-global-ruler t)     ; get global ruler
-          ;; (setq tabbar-ruler-popup-menu t)       ; get popup menu.
-          ;; (setq tabbar-ruler-popup-toolbar t)    ; get popup toolbar
-          ;; (setq tabbar-ruler-popup-scrollbar t)  ; show scroll-bar on mouse-move
-          )
-  :config (tabbar-ruler-group-by-projectile-project)
-  :bind (("C-c t" . 'tabbar-ruler-move)
-         ("C-<" . 'tabbar-ruler-backward)
-         ("C->" . 'tabbar-ruler-forward)
-         ("C-S-p" . 'tabbar-ruler-tabbar-backward-group)
-         ("C-S-n" . 'tabbar-ruler-tabbar-forward-group)))
+  :init
+  (setq tabbar-ruler-global-tabbar t)    ; get tabbar
+  ;; (setq tabbar-ruler-global-ruler t)     ; get global ruler
+  ;; (setq tabbar-ruler-popup-menu t)       ; get popup menu.
+  ;; (setq tabbar-ruler-popup-toolbar t)    ; get popup toolbar
+  ;; (setq tabbar-ruler-popup-scrollbar t)  ; show scroll-bar on mouse-move
+  :config
+  (tabbar-ruler-group-by-projectile-project)
+  :bind
+  ("C-c t" . 'tabbar-ruler-move)
+  ("C-<" . 'tabbar-ruler-backward)
+  ("C->" . 'tabbar-ruler-forward)
+  ("C-S-p" . 'tabbar-ruler-tabbar-backward-group)
+  ("C-S-n" . 'tabbar-ruler-tabbar-forward-group))
 
 ;; sexy mode line
 (use-package smart-mode-line
