@@ -16,6 +16,8 @@
   ;; shortcuts help
   ("C-x M-g" . 'magit-dispatch-popup)
   ("<f4>" . 'magit-dispatch-popup)
+  ("C-c m d" . 'magit-diff-buffer-file)
+  ("C-c m f" . 'magit-file-popup)
   :init
   ;; When 'C-c C-c' is pressed in the magit commit message buffer,
   ;; delete the magit-diff buffer related to the current repo.
