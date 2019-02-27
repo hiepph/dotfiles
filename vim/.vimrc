@@ -29,6 +29,7 @@ Plug 'junegunn/goyo.vim'
 
 """ Languages
 Plug 'sheerun/vim-polyglot'
+Plug 'python-mode/python-mode'
 
 """ Theme
 Plug 'https://github.com/flazz/vim-colorschemes'
