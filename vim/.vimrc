@@ -90,7 +90,10 @@ set smartcase
 " For regular expressions turn magic on
 set magic
 
-""
+" Shortcuts
+" Paste mode
+:map <F4> :set relativenumber! paste! <bar> GitGutterToggle<CR>
+
 " Custom file type config
 "
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2 expandtab
