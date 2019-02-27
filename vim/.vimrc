@@ -25,11 +25,9 @@ Plug 'https://github.com/itchyny/lightline.vim'
 Plug 'https://github.com/scrooloose/nerdtree'
 " 1 nerd tree for all tabs
 Plug 'https://github.com/jistr/vim-nerdtree-tabs'
-Plug 'junegunn/goyo.vim'
 
 """ Languages
 Plug 'sheerun/vim-polyglot'
-Plug 'python-mode/python-mode'
 
 """ Theme
 Plug 'https://github.com/flazz/vim-colorschemes'
@@ -57,15 +55,13 @@ set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
 
 " max line-length mark
-" set colorcolumn=100
+set colorcolumn=120
 
 " show command in NORMAL mode
 set showcmd
 
 " 4 soft tabs
-set smarttab
-set expandtab
-set tabstop=4 softtabstop=0 shiftwidth=4
+set expandtab smarttab tabstop=4 softtabstop=0 shiftwidth=4
 
 " Indent helpers
 filetype plugin indent on
