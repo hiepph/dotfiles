@@ -69,7 +69,7 @@ set tabstop=4 softtabstop=0 shiftwidth=4
 " Indent helpers
 filetype plugin indent on
 set smarttab
-set smartindent
+" set smartindent
 
 " Stop creating .swp files
 set nobackup
@@ -137,12 +137,6 @@ let g:lightline = {
       \   'mode': 'LightlineMode',
       \ }
       \ }
-
-" custom
-try
-source ~/.lightline.vim
-catch
-endtry
 
 function! LightlineModified()
   return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
