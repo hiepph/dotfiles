@@ -17,6 +17,20 @@ Plug 'https://github.com/haya14busa/incsearch.vim'
 Plug 'https://github.com/wellle/targets.vim'
 Plug 'https://github.com/terryma/vim-expand-region'
 Plug 'tpope/vim-sleuth'
+Plug 'sakshamgupta05/vim-todo-highlight'
+let g:todo_highlight_config = {
+      \   'REVIEW': {},
+      \   'HACK': {},
+      \   'FIXME': {
+      \     'cterm_bg_color': '10'
+      \   },
+      \   'BUG': {
+      \     'cterm_bg_color': '196'
+      \   },
+      \   'NOTE': {
+      \     'cterm_bg_color': '63'
+      \   }
+      \ }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
