@@ -17,13 +17,6 @@ Some demo images:
 ![emacs](misc/emacs.png)
 
 
-## Basic OS setup
-
-+ Arch: `Arch/Arch.md`
-
-+ FreeBSD: `FreeBSD/FreeBSD.md`
-
-
 ## SSH
 
 Generate SSH key:
@@ -36,8 +29,8 @@ ssh-keygen -t rsa -b 4096
 ## Git
 
 ```
-git config --global user.email $MY_EMAIL
-git config --global user.name $MY_USERNAME
+git config --global user.email "hiepph.2406@gmail.com"
+git config --global user.name "Hiep Pham"
 git config --global core.editor "vim"
 ```
 
@@ -93,18 +86,6 @@ git config --global core.editor "vim"
         ```
         ./prezto.sh
         ```
-
-### Fish
-
-+ [Oh my Fish](https://github.com/oh-my-fish/oh-my-fish):
-
-    + setup:
-
-    ```
-    curl -L https://get.oh-my.fish | fish
-    ```
-
-    + custom config in `~/.config/fish/config.fish`
 
 
 ### [FZF](https://github.com/junegunn/fzf.git)
