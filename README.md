@@ -167,6 +167,22 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 + Custom config: '~/.custom.vim'
 
 
+### Neovim
+
++ Install vim-plug:
+
+    ```
+    curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    ```
+
++ Link to neovim config:
+
+    ```
+    mkdir -p $HOME/.config/nvim
+    ln -s $HOME/.vimrc $HOME/.config/init.vim
+    ```
+
 ## IBus
 
 In `~/.xinitrc`:

@@ -1,62 +1,6 @@
-""
-" Plugins mananger " (Plug) https://github.com/junegunn/vim-plug
-"
-" curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-"    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-"
-call plug#begin('~/.vim/plugged')
-
-""" Helpers
-Plug 'https://github.com/jiangmiao/auto-pairs'
-Plug 'https://github.com/ntpeters/vim-better-whitespace'
-Plug 'https://github.com/tpope/vim-fugitive'
-Plug 'https://github.com/tpope/vim-surround'
-Plug 'https://github.com/airblade/vim-gitgutter'
-Plug 'https://github.com/tpope/vim-commentary'
-Plug 'https://github.com/haya14busa/incsearch.vim'
-Plug 'https://github.com/wellle/targets.vim'
-Plug 'https://github.com/terryma/vim-expand-region'
-Plug 'tpope/vim-sleuth'
-Plug 'sakshamgupta05/vim-todo-highlight'
-let g:todo_highlight_config = {
-      \   'REVIEW': {},
-      \   'HACK': {},
-      \   'FIXME': {
-      \     'cterm_bg_color': '10'
-      \   },
-      \   'BUG': {
-      \     'cterm_bg_color': '196'
-      \   },
-      \   'NOTE': {
-      \     'cterm_bg_color': '63'
-      \   }
-      \ }
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-
-""" Structures
-Plug 'https://github.com/itchyny/lightline.vim'
-Plug 'https://github.com/scrooloose/nerdtree'
-" 1 nerd tree for all tabs
-Plug 'https://github.com/jistr/vim-nerdtree-tabs'
-
-""" Languages
-Plug 'sheerun/vim-polyglot'
-
-""" Theme
-Plug 'https://github.com/flazz/vim-colorschemes'
-Plug 'https://github.com/rafi/awesome-vim-colorschemes'
-
-""" UI
-Plug 'mhinz/vim-startify'
-Plug 'https://github.com/kien/rainbow_parentheses.vim'
-
-call plug#end()
-
-""
-" Basic Configuration
-"
-
+"""""""""""""""""""""""""""""""""""
+" Basic
+""""""""""""""""""""""""""""""""""""
 " show number
 set relativenumber
 
@@ -69,7 +13,7 @@ set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
 
 " max line-length mark
-set colorcolumn=120
+" set colorcolumn=120
 
 " show command in NORMAL mode
 set showcmd
@@ -114,99 +58,38 @@ au Filetype lisp let b:AutoPairs={'(':')', '[':']', '{':'}','"':'"'}
 au Filetype rust let b:AutoPairs={'(':')', '[':']', '{':'}','"':'"', '`':'`'}
 
 
-""
-" Plugins configuration
-"
-" NERD Tree
-" toggle
-map <C-\> :NERDTreeTabsToggle<CR>
+""""""""""""""""""""""""""""""
+""" Plugins (vim-plug)
+""""""""""""""""""""""""""""""
+call plug#begin('~/.vim/plugged')
 
-" open NERD tree auto when vim starts up on opening a directory
-let g:nerdtree_tabs_open_on_console_startup = 2
-let g:nerdtree_tabs_autofind = 1
+"""""" Pair
+Plug 'https://github.com/jiangmiao/auto-pairs'
+Plug 'https://github.com/tpope/vim-surround'
+Plug 'https://github.com/terryma/vim-expand-region'
+Plug 'https://github.com/wellle/targets.vim'
 
-" close vim if only window left open is NERD
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeTabs") && b:NERDTree.isTabTree()) | q | endif
+" Rainbow parentheses
+Plug 'https://github.com/kien/rainbow_parentheses.vim'
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
 
-" Display hidden files
-let NERDTreeShowHidden=1
-
-" Lightline
-" Needs font-awesome
-set laststatus=2
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ 'mode_map': { 'c': 'NORMAL' },
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
-      \ },
-      \ 'component_function': {
-      \   'modified': 'LightlineModified',
-      \   'readonly': 'LightlineReadonly',
-      \   'fugitive': 'LightlineFugitive',
-      \   'filename': 'LightlineFilename',
-      \   'fileformat': 'LightlineFileformat',
-      \   'filetype': 'LightlineFiletype',
-      \   'fileencoding': 'LightlineFileencoding',
-      \   'mode': 'LightlineMode',
-      \ }
-      \ }
-
-function! LightlineModified()
-  return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
-endfunction
-
-function! LightlineReadonly()
-  return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '' : ''
-endfunction
-
-function! LightlineFilename()
-  return ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
-        \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
-        \  &ft == 'unite' ? unite#get_status_string() :
-        \  &ft == 'vimshell' ? vimshell#get_status_string() :
-        \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
-        \ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
-endfunction
-
-function! LightlineFugitive()
-  if &ft !~? 'vimfiler\|gundo' && exists("*fugitive#head")
-    let branch = fugitive#head()
-    return branch !=# '' ? ' '.branch : ''
-  endif
-  return ''
-endfunction
-
-function! LightlineFileformat()
-  return winwidth(0) > 70 ? &fileformat : ''
-endfunction
-
-function! LightlineFiletype()
-  return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
-endfunction
-
-function! LightlineFileencoding()
-  return winwidth(0) > 70 ? (&fenc !=# '' ? &fenc : &enc) : ''
-endfunction
-
-function! LightlineMode()
-  return winwidth(0) > 60 ? lightline#mode() : ''
-endfunction
-
-" Vim Better Whitespace
+"""""""" White space
+Plug 'https://github.com/ntpeters/vim-better-whitespace'
 autocmd BufEnter * EnableStripWhitespaceOnSave
 
-" Go
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_types = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_generate_tags = 0
-let g:go_template_autocreate = 0
+"""""""""""" Git support
+Plug 'https://github.com/tpope/vim-fugitive'
+Plug 'https://github.com/airblade/vim-gitgutter'
 
+"""""""" Comment
+Plug 'https://github.com/tpope/vim-commentary'
+
+"""""""""" Search
 " Incseach
+Plug 'https://github.com/haya14busa/incsearch.vim'
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
@@ -220,24 +103,9 @@ map #  <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
 
-" Cpp enhancement
-let g:cpp_class_scope_highlight = 1
-let g:cpp_member_variable_highlight = 1
-let g:cpp_class_decl_highlight = 1
-let g:cpp_experimental_template_highlight = 1
-let g:cpp_concepts_highlight = 1
-let c_no_curly_error=1
-
-" Indent line toggle
-nnoremap <F3> :IndentLinesToggle<CR>
-
-" Rainbow parentheses
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
-
 " FZF
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 " This is the default extra key bindings
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
@@ -318,13 +186,107 @@ inoremap <expr> <c-x><c-s> fzf#complete({
 " rg power
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
 
-" Ctrl-P fake mode
+" Fake CTRL-P
 map <C-P> :Files<CR>
 map <C-L> :Buffers<CR>
 
 
-" Goyo
-nnoremap <F12> :Goyo<CR>
+" Search all files (like `grep`)
+Plug 'brooth/far.vim'
+
+"""""""""" Config support
+Plug 'tpope/vim-sleuth'
+
+"""""""""""" UI
+Plug 'mhinz/vim-startify'
+
+" Lightline
+" Needs font-awesome
+Plug 'https://github.com/itchyny/lightline.vim'
+set laststatus=2
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'mode_map': { 'c': 'NORMAL' },
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
+      \ },
+      \ 'component_function': {
+      \   'modified': 'LightlineModified',
+      \   'readonly': 'LightlineReadonly',
+      \   'fugitive': 'LightlineFugitive',
+      \   'filename': 'LightlineFilename',
+      \   'fileformat': 'LightlineFileformat',
+      \   'filetype': 'LightlineFiletype',
+      \   'fileencoding': 'LightlineFileencoding',
+      \   'mode': 'LightlineMode',
+      \ }
+      \ }
+
+function! LightlineModified()
+  return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
+
+function! LightlineReadonly()
+  return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '' : ''
+endfunction
+
+function! LightlineFilename()
+  return ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
+        \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
+        \  &ft == 'unite' ? unite#get_status_string() :
+        \  &ft == 'vimshell' ? vimshell#get_status_string() :
+        \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
+        \ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
+endfunction
+
+function! LightlineFugitive()
+  if &ft !~? 'vimfiler\|gundo' && exists("*fugitive#head")
+    let branch = fugitive#head()
+    return branch !=# '' ? ' '.branch : ''
+  endif
+  return ''
+endfunction
+
+function! LightlineFileformat()
+  return winwidth(0) > 70 ? &fileformat : ''
+endfunction
+
+function! LightlineFiletype()
+  return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
+endfunction
+
+function! LightlineFileencoding()
+  return winwidth(0) > 70 ? (&fenc !=# '' ? &fenc : &enc) : ''
+endfunction
+
+function! LightlineMode()
+  return winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
+
+" NERD tree
+Plug 'https://github.com/scrooloose/nerdtree'
+Plug 'https://github.com/jistr/vim-nerdtree-tabs'
+
+map <C-\> :NERDTreeTabsToggle<CR>
+
+" open NERD tree auto when vim starts up on opening a directory
+let g:nerdtree_tabs_open_on_console_startup = 2
+let g:nerdtree_tabs_autofind = 1
+
+" close vim if only window left open is NERD
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeTabs") && b:NERDTree.isTabTree()) | q | endif
+
+" Display hidden files
+let NERDTreeShowHidden=1
+
+""""""""""" Languages
+Plug 'sheerun/vim-polyglot'
+
+"""""""""""" Theme
+Plug 'https://github.com/flazz/vim-colorschemes'
+Plug 'https://github.com/rafi/awesome-vim-colorschemes'
+
+call plug#end()
 
 """"""""" LAST """"""""""""""""""
 " Custom config for each machine
@@ -332,5 +294,5 @@ nnoremap <F12> :Goyo<CR>
 "
 try
     source ~/.custom.vim
-catch
+catch E484 " file not found
 endtry
