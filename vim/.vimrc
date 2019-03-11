@@ -46,7 +46,7 @@ set magic
 
 " Shortcuts
 " Paste mode
-:map <F4> :set relativenumber! paste! <bar> GitGutterToggle<CR>
+:map <F4> :set relativenumber! paste! <bar> GitGutterToggle <bar> IndentLinesToggle<CR>
 
 " Custom file type config
 "
@@ -199,6 +199,9 @@ Plug 'tpope/vim-sleuth'
 
 """""""""""" UI
 Plug 'mhinz/vim-startify'
+
+" show indent line
+Plug 'Yggdroot/indentLine'
 
 " Lightline
 " Needs font-awesome
