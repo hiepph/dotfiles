@@ -289,6 +289,21 @@ Plug 'sheerun/vim-polyglot'
 Plug 'https://github.com/flazz/vim-colorschemes'
 Plug 'https://github.com/rafi/awesome-vim-colorschemes'
 
+"""""""""""" Completion
+" require python 3.6+
+" pip install nvim
+if has('nvim')
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'roxma/nvim-yarp'
+    Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
+
+" Python
+Plug 'deoplete-plugins/deoplete-jedi'
+
 call plug#end()
 
 """"""""" LAST """"""""""""""""""
