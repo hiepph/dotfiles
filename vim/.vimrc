@@ -300,6 +300,8 @@ else
     Plug 'roxma/vim-hug-neovim-rpc'
 endif
 let g:deoplete#enable_at_startup = 1
+" TAB completion
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"<Paste>
 
 " Python
 Plug 'deoplete-plugins/deoplete-jedi'
