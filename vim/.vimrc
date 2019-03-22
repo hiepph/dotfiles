@@ -19,7 +19,7 @@ autocmd GUIEnter * set visualbell t_vb=
 set showcmd
 
 " 4 soft tabs
-set expandtab smarttab tabstop=4 softtabstop=0 shiftwidth=4
+set expandtab smarttab tabstop=4 softtabstop=4 shiftwidth=4
 
 " Indent helpers
 filetype plugin indent on
@@ -79,6 +79,7 @@ au Syntax * RainbowParenthesesLoadBraces
 """""""" White space
 Plug 'https://github.com/ntpeters/vim-better-whitespace'
 autocmd BufEnter * EnableStripWhitespaceOnSave
+let g:strip_whitespace_confirm=0
 
 """""""""""" Git support
 Plug 'https://github.com/tpope/vim-fugitive'
@@ -285,6 +286,22 @@ let NERDTreeShowHidden=1
 """"""""""" Languages
 Plug 'sheerun/vim-polyglot'
 
+" disable header folding
+let g:vim_markdown_folding_disabled = 1
+
+" do not use conceal feature, the implementation is not so good
+let g:vim_markdown_conceal = 0
+
+" disable math tex conceal feature
+let g:tex_conceal = ""
+let g:vim_markdown_math = 1
+
+" support front matter of various format
+let g:vim_markdown_frontmatter = 1  " for YAML format
+let g:vim_markdown_toml_frontmatter = 1  " for TOML format
+let g:vim_markdown_json_frontmatter = 1  " for JSON format
+
+
 """""""""""" Theme
 Plug 'https://github.com/flazz/vim-colorschemes'
 Plug 'https://github.com/rafi/awesome-vim-colorschemes'
@@ -306,6 +323,7 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " Python
 Plug 'deoplete-plugins/deoplete-jedi'
+
 
 call plug#end()
 
