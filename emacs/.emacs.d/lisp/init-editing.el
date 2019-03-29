@@ -180,7 +180,42 @@
   :ensure t
   :config
   ;; Off by default
-  ;; (global-flycheck-mode)
+  (global-flycheck-mode)
+  (setq-default flycheck-emacs-lisp-load-path 'inherit)
+  (setq flycheck-flake8-maximum-line-length 120)
+  (set-face-attribute 'flycheck-error nil :underline '(:color "#d32e00"))
+  (set-face-attribute 'flycheck-warning nil :underline '(:color "#e3795c"))
+  (set-face-attribute 'flycheck-info nil :underline '(:color "ForestGreen"))
+
+  ;; theme
+
+  (define-fringe-bitmap 'flycheck-fringe-bitmap-ball
+    (vector #b00000000
+            #b00000000
+            #b00000000
+            #b00000000
+            #b00000000
+            #b00111000
+            #b01111100
+            #b11111110
+            #b11111110
+            #b01111100
+            #b00111000
+            #b00000000
+            #b00000000
+            #b00000000
+            #b00000000
+            #b00000000
+            #b00000000))
+
+  (flycheck-define-error-level 'error
+    :severity 100
+    :compilation-level 2
+    :overlay-category 'flycheck-error-overlay
+    :fringe-bitmap 'flycheck-fringe-bitmap-ball
+    :fringe-face 'flycheck-fringe-error
+    :error-list-face 'flycheck-error-list-error)
+
   :bind ("<f12>" . 'flycheck-mode))
 
 
