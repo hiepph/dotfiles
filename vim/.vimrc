@@ -308,7 +308,7 @@ Plug 'https://github.com/rafi/awesome-vim-colorschemes'
 
 """""""""""" Completion
 " require python 3.6+
-" pip install nvim
+" $ pip install nvim
 if has('nvim')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
@@ -324,6 +324,13 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " Python
 Plug 'deoplete-plugins/deoplete-jedi'
 
+"""""""""""""" Syntax checking
+" $ pip install flake8 pylint
+Plug 'w0rp/ale'
+let g:ale_sign_error = '✘'
+let g:ale_sign_warning = '•'
+highlight ALEErrorSign ctermbg=NONE ctermfg=red
+highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
 
 call plug#end()
 
