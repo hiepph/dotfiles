@@ -180,7 +180,7 @@
   :ensure t
   :config
   ;; Off by default
-  ;; (global-flycheck-mode)
+  (global-flycheck-mode)
   :bind ("<f12>" . 'flycheck-mode))
 
 
