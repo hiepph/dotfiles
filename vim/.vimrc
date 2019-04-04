@@ -19,7 +19,23 @@ autocmd GUIEnter * set visualbell t_vb=
 set showcmd
 
 " 4 soft tabs
-set expandtab smarttab tabstop=4 softtabstop=4 shiftwidth=4
+let my_tab=4
+execute "set shiftwidth=".my_tab
+execute "set softtabstop=".my_tab
+set expandtab
+" allow toggling between local and default mode
+function! TabToggle()
+  if &expandtab
+    set shiftwidth=8
+    set softtabstop=0
+    set noexpandtab
+  else
+    execute "set shiftwidth=".g:my_tab
+    execute "set softtabstop=".g:my_tab
+    set expandtab
+  endif
+endfunction
+nmap <F9> mz:execute TabToggle()<CR>'z
 
 " Indent helpers
 filetype plugin indent on
@@ -79,7 +95,7 @@ au Syntax * RainbowParenthesesLoadBraces
 """""""" White space
 Plug 'https://github.com/ntpeters/vim-better-whitespace'
 autocmd BufEnter * EnableStripWhitespaceOnSave
-let g:strip_whitespace_confirm=0
+" let g:strip_whitespace_confirm=0
 
 """""""""""" Git support
 Plug 'https://github.com/tpope/vim-fugitive'
