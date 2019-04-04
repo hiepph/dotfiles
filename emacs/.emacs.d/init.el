@@ -34,4 +34,6 @@
 (require 'init-miscellaneous)
 (require 'init-custom nil 'no-error)
 
+(setq projectile-mode-line "Projectile")
+
 (provide 'init)
