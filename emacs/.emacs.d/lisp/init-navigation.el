@@ -108,4 +108,9 @@
   (push '(?l helm-mini "run helm-mini" nil) resize-window-dispatch-alist))
 
 
+;; Dired mode
+(put 'dired-find-alternate-file 'disabled nil)
+(add-hook 'dired-mode-hook (lambda () (local-set-key (kbd "<mouse-2>") #'dired-find-alternate-file)))
+
+
 (provide 'init-navigation)
