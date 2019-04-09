@@ -180,7 +180,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 
     ```
     mkdir -p $HOME/.config/nvim
-    ln -s $HOME/.vimrc $HOME/.config/init.vim
+    ln -s $HOME/.vimrc $HOME/.config/nvim/init.vim
     ```
 
 ## IBus
