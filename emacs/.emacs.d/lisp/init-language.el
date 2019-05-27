@@ -39,6 +39,15 @@
   :ensure t
   :config (setq inferior-lisp-program "sbcl"))
 
+
+;; Scala
+(use-package scala-mode
+  :ensure t
+  :interpreter
+  ("scala" . scala-mode))
+
+
+
 ;; Javascript & Web-related
 (use-package web-mode
   :ensure t
