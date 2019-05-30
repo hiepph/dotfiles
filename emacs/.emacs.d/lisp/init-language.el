@@ -63,6 +63,11 @@
           (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))))
 
 
+;; clojure
+(use-package clojure-mode
+  :ensure t)
+
+
 ;; Org-mode
 (use-package org
   :ensure t
