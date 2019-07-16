@@ -39,6 +39,15 @@
   :ensure t
   :config (setq inferior-lisp-program "sbcl"))
 
+
+;; Scala
+(use-package scala-mode
+  :ensure t
+  :interpreter
+  ("scala" . scala-mode))
+
+
+
 ;; Javascript & Web-related
 (use-package web-mode
   :ensure t
@@ -52,6 +61,11 @@
           (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
           (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
           (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))))
+
+
+;; clojure
+(use-package clojure-mode
+  :ensure t)
 
 
 ;; Org-mode

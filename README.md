@@ -1,5 +1,6 @@
-# Overview
+# dotfiles &middot; [![forthebadge](https://forthebadge.com/images/badges/contains-cat-gifs.svg)](https://forthebadge.com)
 
+## Overview
 
 ![gif](https://thumbs.gfycat.com/AlarmingCoordinatedEarwig-max-1mb.gif)
 
