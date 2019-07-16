@@ -325,7 +325,7 @@ Plug 'https://github.com/rafi/awesome-vim-colorschemes'
 
 """""""""""" Completion
 " require python 3.6+
-" $ pip install nvim
+" $ pip install pynvim
 if has('nvim')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else

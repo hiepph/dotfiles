@@ -34,9 +34,7 @@ git config --global user.email "hiepph.2406@gmail.com"
 git config --global user.name "Hiep Pham"
 git config --global core.editor "vim"
 ```
-
 + GPG:
-
     + setup:
     ```
     gpg --full-gen-key
@@ -166,6 +164,12 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 
 
 + Custom config: '~/.custom.vim'
+
++ (*Optional*) Syntax checking and autocomplete in Python:
+
+    ```
+    pip install pynvim flake8 pylint
+    ```
 
 
 ### Neovim
