@@ -69,13 +69,13 @@
   :config
   (ido-mode 1)
   ;; (ido-everywhere 1)
-  (ido-ubiquitous-mode 1)
+  ;; (ido-ubiquitous-mode 1)
   (setq ido-enable-flex-matching t)
   (setq ido-use-filename-at-point nil)
   (setq ido-auto-merge-work-directories-length -1)
   (setq ido-use-virtual-buffers t))
 
-(use-package ido-completing-read+)
+;; (use-package ido-completing-read+)
 
 
 ;; Enable move point from window to window using Shift and the arrow keys

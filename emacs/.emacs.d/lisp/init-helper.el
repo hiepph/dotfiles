@@ -29,9 +29,11 @@
 
 
 ;; Git Gutter (+)
-(use-package git-gutter
+(use-package git-gutter-fringe
   :ensure t
-  :config (global-git-gutter+-mode))
+  :config
+  (global-git-gutter-mode)
+  (setq git-gutter-fr:side 'right-fringe))
 
 
 ;; Enable highlighting TODO, FIXME, etc.
