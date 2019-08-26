@@ -98,7 +98,7 @@ au Syntax * RainbowParenthesesLoadBraces
 """""""" White space
 Plug 'https://github.com/ntpeters/vim-better-whitespace'
 autocmd BufEnter * EnableStripWhitespaceOnSave
-" let g:strip_whitespace_confirm=0
+let g:strip_whitespace_confirm=0
 
 """""""""""" Git support
 Plug 'https://github.com/tpope/vim-fugitive'
