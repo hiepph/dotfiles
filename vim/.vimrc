@@ -326,20 +326,20 @@ Plug 'https://github.com/rafi/awesome-vim-colorschemes'
 """""""""""" Completion
 " require python 3.6+
 " $ pip install pynvim
-if has('nvim')
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-    Plug 'Shougo/deoplete.nvim'
-    Plug 'roxma/nvim-yarp'
-    Plug 'roxma/vim-hug-neovim-rpc'
-endif
-let g:deoplete#enable_at_startup = 1
-set completeopt-=preview
-" TAB completion
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" if has('nvim')
+"     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" else
+"     Plug 'Shougo/deoplete.nvim'
+"     Plug 'roxma/nvim-yarp'
+"     Plug 'roxma/vim-hug-neovim-rpc'
+" endif
+" let g:deoplete#enable_at_startup = 1
+" set completeopt-=preview
+" " TAB completion
+" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
-" Python
-Plug 'deoplete-plugins/deoplete-jedi'
+" " Python
+" Plug 'deoplete-plugins/deoplete-jedi'
 
 """""""""""""" Syntax checking
 " $ pip install flake8 pylint
