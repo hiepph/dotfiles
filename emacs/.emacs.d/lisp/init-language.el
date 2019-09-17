@@ -40,6 +40,10 @@
   :config (setq inferior-lisp-program "sbcl"))
 
 
+(use-package elixir-mode
+  :ensure t)
+
+
 ;; Scala
 (use-package scala-mode
   :ensure t
