@@ -89,14 +89,14 @@ git config --global core.editor "vim"
 
 ### [FZF](https://github.com/junegunn/fzf.git)
 
-    * Install:
+* Install:
 
     ```
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
     ~/.fzf/install
     ```
 
-    * Ripgrep fusion:
+* Ripgrep fusion:
 
     In `~/.zshrc`:
 
@@ -104,7 +104,7 @@ git config --global core.editor "vim"
     export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
     ```
 
-    * Update:
+* Update:
 
     ```
     cd ~/.fzf && git pull && ./install
