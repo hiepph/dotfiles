@@ -111,13 +111,6 @@ git config --global core.editor "vim"
     ```
 
 
-## Terminal
-
-+ Termite: Config goes with themes, see example installation in `./termite.sh`
-
-+ Urxvt: custom config with `~/.Xcustom`
-
-
 ## Tmux
 
 + Tmux config for user:
@@ -180,6 +173,22 @@ touch ~/.custom.vim
     mkdir -p $HOME/.config/nvim
     ln -s $HOME/.vimrc $HOME/.config/nvim/init.vim
     ```
+
+
+## i3
+
+To theme alongside with default config:
+
+```
+mkdir $HOME/src
+git clone git@github.com:hiepph/i3wm-themer.git ~/HOME/src/i3wm-themer
+
+cd $HOME/src/i3wm-themer
+pip install -r requirements.txt
+./install_arch.sh
+```
+
+Choose theme: `./change.sh 001`
 
 
 ## IBus
