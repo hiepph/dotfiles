@@ -83,7 +83,7 @@ git config --global core.editor "vim"
     + Install config:
 
         ```
-        ./prezto.sh
+        cp prezto/.zprezto/runcoms/zpreztorc ~/.zprezto/runcoms/
         ```
 
 
@@ -146,6 +146,8 @@ Prefix + U
 ```
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+touch ~/.custom.vim
 ```
 
 + Then in vim:
@@ -160,17 +162,6 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 :PlugUpdate
 ```
 
-*Note*: Some plugins require [Powerline](https://github.com/powerline/fonts) and Awesome fonts.
-
-
-+ Custom config: '~/.custom.vim'
-
-+ (*Optional*) Syntax checking and autocomplete in Python:
-
-    ```
-    pip install pynvim flake8 pylint
-    ```
-
 
 ### Neovim
 
@@ -179,6 +170,8 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     ```
     curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+    touch ~/.custom.vim
     ```
 
 + Link to neovim config:
@@ -187,6 +180,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     mkdir -p $HOME/.config/nvim
     ln -s $HOME/.vimrc $HOME/.config/nvim/init.vim
     ```
+
 
 ## IBus
 
@@ -197,4 +191,24 @@ export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
 ibus-daemon -drx
+```
+
+
+## Fonts
+
++ Some basic fonts for Arch:
+
+```
+mkdir $HOME/src
+
+# use trizen for AUR
+sudo pacman -S trizen
+
+# powerline
+git clone https://github.com/powerline/fonts.git $HOME/src/powerline-fonts --depth 1
+cd $HOME/src/powerline-fonts
+./install.sh
+
+# basic fonts for icons
+trizen -S ttf-dejavu ttf-liberation terminus-font noto-fonts noto-fonts-cjk noto-fonts-emoji fira-code-git ttf-font-awesome
 ```
