@@ -1,4 +1,4 @@
-# dotfiles &middot; [![forthebadge](https://forthebadge.com/images/badges/contains-cat-gifs.svg)](https://forthebadge.com)
+# dotfiles
 
 ## Overview
 
@@ -175,22 +175,6 @@ touch ~/.custom.vim
     ```
 
 
-## i3
-
-To theme alongside with default config:
-
-```
-mkdir $HOME/src
-git clone git@github.com:hiepph/i3wm-themer.git ~/HOME/src/i3wm-themer
-
-cd $HOME/src/i3wm-themer
-pip install -r requirements.txt
-./install_arch.sh
-```
-
-Choose theme: `./change.sh 001`
-
-
 ## IBus
 
 In `~/.xinitrc`:
@@ -220,4 +204,36 @@ cd $HOME/src/powerline-fonts
 
 # basic fonts for icons
 trizen -S ttf-dejavu ttf-liberation terminus-font noto-fonts noto-fonts-cjk noto-fonts-emoji fira-code-git ttf-font-awesome
+```
+
+
+## Theming
+
++ Auto switch theme based on wallpaper with [pwal](https://github.com/dylanaraps/pywal):
+
+```
+pip install pwal
+wal -i /path/to/image
+```
+
++ To start with boot:
+
+```
+# .xinitrc
+wal -R
+```
+
++ Apply to shell:
+
+```
+# Import colorscheme from 'wal' asynchronously
+# &   # Run the process in the background.
+# ( ) # Hide shell job control messages.
+(cat ~/.cache/wal/sequences &)
+
+# Alternative (blocks terminal for 0-3ms)
+cat ~/.cache/wal/sequences
+
+# To add support for TTYs this line can be optionally added.
+source ~/.cache/wal/colors-tty.sh
 ```

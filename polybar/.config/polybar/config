@@ -1,3 +1,25 @@
+[colors]
+background = ${xrdb:color0}
+background-alt = ${xrdb:color8}
+foreground = ${xrdb:color15}
+foreground-alt = ${xrdb:color15}
+black = ${xrdb:color0}
+dark-grey = ${xrdb:color8}
+dark-red = ${xrdb:color1}
+red = ${xrdb:color9}
+dark-green = ${xrdb:color2}
+green = ${xrdb:color10}
+dark-yellow = ${xrdb:color3}
+yellow = ${xrdb:color11}
+dark-blue = ${xrdb:color4}
+blue = ${xrdb:color12}
+dark-magenta = ${xrdb:color5}
+magenta = ${xrdb:color13}
+dark-cyan = ${xrdb:color6}
+cyan = ${xrdb:color14}
+light-grey = ${xrdb:color7}
+white = ${xrdb:color15}
+
 [bar/i3wmthemer_bar]
 monitor = HDMI-0
 bottom = true
@@ -6,8 +28,8 @@ height = 27
 radius = 0
 fixed-center = false
 
-background = #1d1f21
-foreground = #c5c8c6
+background = ${colors.background}
+foreground = ${colors.foreground}
 
 line-size = 3
 line-color =
@@ -33,7 +55,6 @@ modules-right =  wlan eth cpu memory pulseaudio powermenu
 tray-position = right
 tray-padding = 0
 tray-transparent = false
-;tray-background = #0063ff
 tray-detached = false
 
 cursor-click = pointer
@@ -44,35 +65,6 @@ type = custom/script
 exec = ~/src/polybar-scripts/polybar-scripts/openweathermap-forecast/openweathermap-forecast.sh
 interval = 600
 label-font = 4
-
-[module/i3]
-type = internal/i3
-format = <label-state> <label-mode>
-index-sort = true
-wrapping-scroll = false
-
-label-mode-padding = 2
-label-mode-foreground = #c5c8c6
-label-mode-background = #282a2e
-
-label-focused = %index%
-label-focused-background = #373b41
-label-focused-foreground = #6b7443
-label-focused-padding = 2
-
-label-unfocused = %index%
-label-unfocused-background = #282a2e
-label-unfocused-foreground = #c5c8c6
-label-unfocused-padding = 2
-
-label-visible = %index%
-label-visible-background = #282a2e
-label-visible-foreground = #c5c8c6
-label-visible-padding = 2
-
-label-urgent = %index%
-label-urgent-background = #BA2922
-label-urgent-padding = 2
 
 [module/memory]
 type = internal/memory
@@ -311,3 +303,35 @@ screenchange-reload = true
 [global/wm]
 margin-top = 0
 margin-bottom = 0
+
+[module/i3]
+type = internal/i3
+
+format = <label-state> <label-mode>
+index-sort=true
+wrapping-scroll=false
+pin-workspaces = true
+
+label-mode-padding = 2
+label-mode-foreground = ${colors.black}
+label-mode-background = ${colors.blue}
+
+label-focused = %index%
+label-focused-background = ${colors.yellow}
+label-focused-foreground = ${colors.background}
+label-focused-padding = 2
+
+label-unfocused = %index%
+label-unfocused-padding = 2
+label-unfocused-background = ${colors.blue}
+label-unfocused-foreground = ${colors.background}
+
+label-urgent = %index%
+label-urgent-padding = 2
+label-urgent-background = ${colors.magenta}
+label-urgent-foreground = ${colors.background}
+
+label-visible = %index%
+label-visible-padding = 2
+label-visible-foreground = ${colors.background}
+label-visible-background = ${colors.blue}
