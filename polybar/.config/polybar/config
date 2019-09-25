@@ -1,3 +1,25 @@
+[colors]
+background = ${xrdb:color0}
+background-alt = ${xrdb:color8}
+foreground = ${xrdb:color15}
+foreground-alt = ${xrdb:color15}
+black = ${xrdb:color0}
+dark-grey = ${xrdb:color8}
+dark-red = ${xrdb:color1}
+red = ${xrdb:color9}
+dark-green = ${xrdb:color2}
+green = ${xrdb:color10}
+dark-yellow = ${xrdb:color3}
+yellow = ${xrdb:color11}
+dark-blue = ${xrdb:color4}
+blue = ${xrdb:color12}
+dark-magenta = ${xrdb:color5}
+magenta = ${xrdb:color13}
+dark-cyan = ${xrdb:color6}
+cyan = ${xrdb:color14}
+light-grey = ${xrdb:color7}
+white = ${xrdb:color15}
+
 [bar/i3wmthemer_bar]
 monitor = HDMI-0
 bottom = true
@@ -6,8 +28,8 @@ height = 27
 radius = 0
 fixed-center = false
 
-background = #1E272B
-foreground = #EAD49B
+background = ${colors.background}
+foreground = ${colors.foreground}
 
 line-size = 3
 line-color =
@@ -33,7 +55,6 @@ modules-right =  wlan eth cpu memory pulseaudio powermenu
 tray-position = right
 tray-padding = 0
 tray-transparent = false
-;tray-background = #0063ff
 tray-detached = false
 
 cursor-click = pointer
@@ -44,35 +65,6 @@ type = custom/script
 exec = ~/src/polybar-scripts/polybar-scripts/openweathermap-forecast/openweathermap-forecast.sh
 interval = 600
 label-font = 4
-
-[module/i3]
-type = internal/i3
-format = <label-state> <label-mode>
-index-sort = true
-wrapping-scroll = false
-
-label-mode-padding = 2
-label-mode-foreground = #1E272B
-label-mode-background = #78824b
-
-label-focused = %index%
-label-focused-background = #78824b
-label-focused-foreground = #6b7443
-label-focused-padding = 2
-
-label-unfocused = %index%
-label-unfocused-background = #78824b
-label-unfocused-foreground = #1E272B
-label-unfocused-padding = 2
-
-label-visible = %index%
-label-visible-background = #78824b
-label-visible-foreground = #1E272B
-label-visible-padding = 2
-
-label-urgent = %index%
-label-urgent-background = #BA2922
-label-urgent-padding = 2
 
 [module/memory]
 type = internal/memory
@@ -183,8 +175,8 @@ interface = wlp3s0
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
-format-connected-foreground = #1E272B
-format-connected-background = #9d6a47
+format-connected-foreground = #c5c8c6
+format-connected-background = #282a2e
 format-connected-padding = 2
 label-connected = %essid%
 
@@ -195,7 +187,7 @@ ramp-signal-1 = 
 ramp-signal-2 = 
 ramp-signal-3 = 
 ramp-signal-4 = 
-ramp-signal-foreground = #1E272B
+ramp-signal-foreground = #c5c8c6
 
 [module/eth]
 type = internal/network
@@ -203,10 +195,10 @@ interface = enp2s0
 interval = 3.0
 
 format-connected-padding = 2
-format-connected-foreground = #1E272B
-format-connected-background = #9d6a47
+format-connected-foreground = #c5c8c6
+format-connected-background = #282a2e
 format-connected-prefix = " "
-format-connected-prefix-foreground = #1E272B
+format-connected-prefix-foreground = #c5c8c6
 label-connected = %local_ip%
 
 format-disconnected =
@@ -222,8 +214,8 @@ time = %H:%M
 time-alt = %H:%M:%S
 
 format-prefix = 
-format-foreground = #1E272B
-format-background = #d99f57
+format-foreground = #c5c8c6
+format-background = #282a2e
 format-padding = 2
 
 label = %date% %time%
@@ -236,11 +228,11 @@ expand-right = true
 format-spacing = 1
 
 label-open = 
-label-open-foreground = #9d6a47
+label-open-foreground = #c5c8c6
 label-close =  cancel
-label-close-foreground = #9d6a47
+label-close-foreground = #c5c8c6
 label-separator = |
-label-separator-foreground = #9d6a47
+label-separator-foreground = #c5c8c6
 
 menu-0-0 = reboot
 menu-0-0-exec = menu-open-1
@@ -311,3 +303,35 @@ screenchange-reload = true
 [global/wm]
 margin-top = 0
 margin-bottom = 0
+
+[module/i3]
+type = internal/i3
+
+format = <label-state> <label-mode>
+index-sort=true
+wrapping-scroll=false
+pin-workspaces = true
+
+label-mode-padding = 2
+label-mode-foreground = ${colors.black}
+label-mode-background = ${colors.blue}
+
+label-focused = %index%
+label-focused-background = ${colors.yellow}
+label-focused-foreground = ${colors.background}
+label-focused-padding = 2
+
+label-unfocused = %index%
+label-unfocused-padding = 2
+label-unfocused-background = ${colors.blue}
+label-unfocused-foreground = ${colors.background}
+
+label-urgent = %index%
+label-urgent-padding = 2
+label-urgent-background = ${colors.magenta}
+label-urgent-foreground = ${colors.background}
+
+label-visible = %index%
+label-visible-padding = 2
+label-visible-foreground = ${colors.background}
+label-visible-background = ${colors.blue}

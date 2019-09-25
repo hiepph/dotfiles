@@ -20,6 +20,9 @@ bindsym $mod+Shift+q kill
 # start program launcher
 bindsym $mod+d exec --no-startup-id rofi -show run
 
+# lock
+bindsym $mod+Escape exec  --no-startup-id betterlockscreen -l dim
+
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -211,7 +214,7 @@ mode "resize" {
 }
 
 # Autostart applications
-exec --no-startup-id nitrogen --restore; sleep 1; compton -b
+#exec --no-startup-id nitrogen --restore; sleep 1; compton -b
 exec --no-startup-id nm-applet
 # exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
@@ -220,14 +223,22 @@ exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 exec_always --no-startup-id /$HOME/.config/polybar/i3wmthemer_bar_launch.sh
 
-# Theme colors
-# class                   border  backgr. text    indic.   child_border
-client.focused #707880 #1d1f21 #707880 #8c9440 #8c9440
-client.focused_inactive #707880 #1d1f21 #707880 #5f819d #5f819d
-client.urgent #EAD49B #1E272B #EAD49B #78824B #78824B
-client.placeholder #EAD49B #1E272B #EAD49B #78824B #78824B
+# Set colors from Xresources
+# Change 'color7' and 'color2' to whatever colors you want i3 to use
+# from the generated scheme.
+# NOTE: The '#f0f0f0' in the lines below is the color i3 will use if
+# it fails to get colors from Xresources.
+set_from_resource $fg i3wm.color7 #f0f0f0
+set_from_resource $bg i3wm.color2 #f0f0f0
 
-client.background #1d1f21
+# class                 border  backgr. text indicator child_border
+client.focused          $bg     $bg     $fg  $bg       $bg
+client.focused_inactive $bg     $bg     $fg  $bg       $bg
+client.unfocused        $bg     $bg     $fg  $bg       $bg
+client.urgent           $bg     $bg     $fg  $bg       $bg
+client.placeholder      $bg     $bg     $fg  $bg       $bg
+
+client.background       $bg
 
 
 # Gaps
