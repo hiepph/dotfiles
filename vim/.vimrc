@@ -325,6 +325,7 @@ let g:vim_markdown_json_frontmatter = 1  " for JSON format
 """""""""""" Theme
 Plug 'https://github.com/flazz/vim-colorschemes'
 Plug 'https://github.com/rafi/awesome-vim-colorschemes'
+Plug 'dylanaraps/wal.vim'
 
 """""""""""" Completion
 " require python 3.6+
