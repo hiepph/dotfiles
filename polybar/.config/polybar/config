@@ -21,7 +21,7 @@ light-grey = ${xrdb:color7}
 white = ${xrdb:color15}
 
 [bar/i3wmthemer_bar]
-monitor = HDMI-0
+monitor = ${env:MONITOR:}
 bottom = true
 width = 100%
 height = 27
@@ -108,10 +108,7 @@ label = RAM %gb_used%/%gb_free%
 ; Only applies if <bar-used> is used
 bar-used-indicator =
 bar-used-width = 50
-bar-used-foreground-0 = #55aa55
-bar-used-foreground-1 = #557755
-bar-used-foreground-2 = #f5a70a
-bar-used-foreground-3 = #ff5555
+bar-used-foreground-0 = ${colors.green}
 bar-used-fill = ▐
 bar-used-empty = ▐
 bar-used-empty-foreground = #444444
@@ -193,6 +190,7 @@ ramp-signal-foreground = #c5c8c6
 type = internal/network
 interface = enp2s0
 interval = 3.0
+format-background = ${colors.blue}
 
 format-connected-padding = 2
 format-connected-foreground = #c5c8c6
@@ -215,7 +213,7 @@ time-alt = %H:%M:%S
 
 format-prefix = 
 format-foreground = #c5c8c6
-format-background = #282a2e
+format-background = ${colors.red}
 format-padding = 2
 
 label = %date% %time%
