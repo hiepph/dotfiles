@@ -326,6 +326,7 @@ let g:vim_markdown_json_frontmatter = 1  " for JSON format
 Plug 'https://github.com/flazz/vim-colorschemes'
 Plug 'https://github.com/rafi/awesome-vim-colorschemes'
 Plug 'dylanaraps/wal.vim'
+Plug 'Rigellute/rigel'
 
 """""""""""" Completion
 " require python 3.6+
