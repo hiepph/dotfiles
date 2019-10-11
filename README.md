@@ -237,3 +237,35 @@ cat ~/.cache/wal/sequences
 # To add support for TTYs this line can be optionally added.
 source ~/.cache/wal/colors-tty.sh
 ```
+
+
+## Mopidy
+
++ Install:
+
+```
+trizen -S mopidy mopidy-spotify ncmpcpp
+
+mkdir -p ~/.config/mopidy
+```
+
++ Setup:
+
+```
+# ~//mopidy.conf
+
+[spotify]
+enabled = true
+username = ...
+password = ...
+bitrate = 320
+client_id = ...
+client_secret = ...
+```
+
++ Enable service:
+
+
+```
+sudo systemctl enable mopidy --now
+```
