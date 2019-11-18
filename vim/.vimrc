@@ -5,7 +5,7 @@
 set encoding=utf-8
 
 " show number
-set relativenumber
+set number
 
 " highlight current line
 set cursorline
@@ -328,23 +328,23 @@ Plug 'https://github.com/rafi/awesome-vim-colorschemes'
 Plug 'dylanaraps/wal.vim'
 Plug 'Rigellute/rigel'
 
-"""""""""""" Completion
-" require python 3.6+
-" $ pip install pynvim
-if has('nvim')
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-    Plug 'Shougo/deoplete.nvim'
-    Plug 'roxma/nvim-yarp'
-    Plug 'roxma/vim-hug-neovim-rpc'
-endif
-let g:deoplete#enable_at_startup = 1
-set completeopt-=preview
-" TAB completion
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+"""""""""""""" Completion
+function! BuildYCM(info)
+  " info is a dictionary with 3 fields
+  " - name:   name of the plugin
+  " - status: 'installed', 'updated', or 'unchanged'
+  " - force:  set on PlugInstall! or PlugUpdate!
+  if a:info.status == 'installed' || a:info.force
+    !python install.py --clang-completer
+  endif
+endfunction
 
-" Python
-Plug 'deoplete-plugins/deoplete-jedi'
+Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+let g:ycm_python_binary_path = 'python'
+let g:ycm_auto_trigger = 1
+let g:ycm_autoclose_preview_window_after_completion=1
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
 
 """""""""""""" Syntax checking
 " $ pip install flake8 pylint
