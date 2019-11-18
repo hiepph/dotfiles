@@ -82,5 +82,8 @@
           (setq org-startup-folded nil)))
 (add-hook 'org-mode-hook 'turn-on-font-lock)
 
+;; custom
+(add-to-list 'auto-mode-alist '("\\.cu\\'" . c++-mode))
+
 
 (provide 'init-language)
