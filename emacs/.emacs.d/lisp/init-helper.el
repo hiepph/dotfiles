@@ -15,7 +15,6 @@
   ("C-x g" . 'magit-status)
   ;; shortcuts help
   ("C-x M-g" . 'magit-dispatch-popup)
-  ("<f4>" . 'magit-dispatch-popup)
   ("C-c m d" . 'magit-diff-buffer-file)
   ("C-c m f" . 'magit-file-popup)
   :init

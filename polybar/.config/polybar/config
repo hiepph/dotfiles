@@ -213,7 +213,7 @@ time-alt = %H:%M:%S
 
 format-prefix = 
 format-foreground = #c5c8c6
-format-background = ${colors.red}
+format-background = ${colors.dark-blue}
 format-padding = 2
 
 label = %date% %time%
