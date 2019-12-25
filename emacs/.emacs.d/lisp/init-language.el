@@ -34,22 +34,8 @@
             (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)))
 
 
-;; Lisp
-(use-package slime
-  :ensure t
-  :config (setq inferior-lisp-program "sbcl"))
-
-
 (use-package elixir-mode
   :ensure t)
-
-
-;; Scala
-(use-package scala-mode
-  :ensure t
-  :interpreter
-  ("scala" . scala-mode))
-
 
 
 ;; Javascript & Web-related
@@ -67,9 +53,18 @@
           (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))))
 
 
-;; clojure
+;;; Functional
 (use-package clojure-mode
   :ensure t)
+
+(use-package haskell-mode
+  :ensure t)
+
+;; Lisp
+(use-package slime
+  :ensure t
+  :config (setq inferior-lisp-program "sbcl"))
+
 
 
 ;; Org-mode
