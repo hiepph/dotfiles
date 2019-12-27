@@ -49,9 +49,17 @@
 (global-set-key (kbd "C-0") (lambda () (interactive) (text-scale-increase 0)))
 
 
-;; Remote
-;; (setq tramp-default-method "sshx")
-;; key authentication
+
+;; Search with Ivy
+(use-package swiper-helm
+  :ensure t
+  :diminish
+  (ivy-mode counsel-mode)
+  :init
+  (setq ivy-use-virtual-buffers t)
+  (setq enable-recursive-minibuffers t)
+  :bind
+  ("C-s" . 'swiper))
 
 
 ;; Disable Ctrl-Z (freeze)

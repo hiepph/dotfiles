@@ -55,7 +55,7 @@
 
 ;; start emacs server
 ;; easy to open files in existing emacs windows: emacsclient -n file1 file2 ...
-(server-start)
+;; (server-start)
 
 (require 'init-elpa)
 (require 'init-language)
@@ -65,7 +65,5 @@
 (require 'init-helper)
 (require 'init-miscellaneous)
 (require 'init-custom nil 'no-error)
-
-(setq projectile-mode-line "Projectile")
 
 (provide 'init)

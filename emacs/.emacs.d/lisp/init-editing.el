@@ -95,17 +95,6 @@
 (global-hl-line-mode 1)
 
 
-;; Search with Ivy
-(use-package swiper-helm
-  :ensure t
-  :diminish
-  (ivy-mode counsel-mode)
-  :init
-  (setq ivy-use-virtual-buffers t)
-  (setq enable-recursive-minibuffers t)
-  :bind
-  ("C-s" . 'swiper))
-
 ;; Enter automatically indent code
 (define-key global-map (kbd "RET") 'newline-and-indent)
 

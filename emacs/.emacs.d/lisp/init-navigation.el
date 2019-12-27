@@ -1,24 +1,6 @@
 (require 'init-elpa)
 
 
-;; ;; Projectile
-;; (use-package projectile
-;;   :ensure t
-;;   :diminish projectile-mode
-;;   :config
-;;   ;; (projectile-global-mode)
-;;   (projectile-mode +1)
-;;   (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
-;;   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
-
-;; ;; Power-up by helm
-;; (use-package helm-projectile
-;;   :diminish helm-mode
-;;   :ensure t
-;;   :config (progn
-;;             (setq projectile-completion-system 'helm)
-;;             (helm-projectile-on)))
-
 ;; Helm
 (use-package helm
   :ensure t
@@ -53,6 +35,7 @@
          ;; Show kill ring
          ("M-y" . 'helm-show-kill-ring)))
 
+
 ;; Recent files
 (use-package recentf
   :config (progn
@@ -75,16 +58,15 @@
   (setq ido-auto-merge-work-directories-length -1)
   (setq ido-use-virtual-buffers t))
 
-;; (use-package ido-completing-read+)
-
 
 ;; Enable move point from window to window using Shift and the arrow keys
 (windmove-default-keybindings)
-;; and C-c + {h,j,k,l}
+;; and C-c + {h,j,k,l} (vim way of moving)
 (global-set-key (kbd "C-c h")  'windmove-left)
 (global-set-key (kbd "C-c l") 'windmove-right)
 (global-set-key (kbd "C-c k")    'windmove-up)
 (global-set-key (kbd "C-c j")  'windmove-down)
+
 
 ;; Virtual desktop
 (use-package eyebrowse
@@ -108,9 +90,12 @@
   (push '(?l helm-mini "run helm-mini" nil) resize-window-dispatch-alist))
 
 
-;; Dired mode
-(put 'dired-find-alternate-file 'disabled nil)
-(add-hook 'dired-mode-hook (lambda () (local-set-key (kbd "<mouse-2>") #'dired-find-alternate-file)))
+
+;; Ranger (replacement of dired)
+(use-package ranger
+  :ensure t
+  :init
+  (ranger-override-dired-mode t))
 
 
 (provide 'init-navigation)
