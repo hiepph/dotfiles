@@ -14,22 +14,11 @@
 (setq tab-width 4)
 
 ;; Autopair
-(use-package autopair
+(use-package smartparens
   :ensure t
-  :diminish autopair-mode
-
-  :init
-  ;; auto-wrap word into pair
-  (setq autopair-autowrap t)
-
   :config
-  (autopair-global-mode)
-  ;; Triple quote in python
-  (add-hook 'python-mode-hook
-            #'(lambda ()
-                (setq autopair-handle-action-fns
-                      (list #'autopair-default-handle-action
-                            #'autopair-python-triple-quote-action)))))
+  (require 'smartparens-config)
+  (smartparens-global-mode t))
 
 
 ;; Expand region
