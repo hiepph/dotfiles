@@ -1,23 +1,23 @@
 (require 'init-elpa)
 
 
-;; Projectile
-(use-package projectile
-  :ensure t
-  :diminish projectile-mode
-  :config
-  ;; (projectile-global-mode)
-  (projectile-mode +1)
-  (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
-  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
+;; ;; Projectile
+;; (use-package projectile
+;;   :ensure t
+;;   :diminish projectile-mode
+;;   :config
+;;   ;; (projectile-global-mode)
+;;   (projectile-mode +1)
+;;   (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+;;   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
 
-;; Power-up by helm
-(use-package helm-projectile
-  :diminish helm-mode
-  :ensure t
-  :config (progn
-            (setq projectile-completion-system 'helm)
-            (helm-projectile-on)))
+;; ;; Power-up by helm
+;; (use-package helm-projectile
+;;   :diminish helm-mode
+;;   :ensure t
+;;   :config (progn
+;;             (setq projectile-completion-system 'helm)
+;;             (helm-projectile-on)))
 
 ;; Helm
 (use-package helm

@@ -50,10 +50,31 @@
 
 
 ;; Remote
-; (setq tramp-default-method "sshx")
+;; (setq tramp-default-method "sshx")
+;; key authentication
+
 
 ;; Disable Ctrl-Z (freeze)
 (global-unset-key (kbd "C-z"))
 
+
+;; Kill all buffer
+(defun kill-all-buffers ()
+  "kill all buffers"
+  (interactive)
+  (mapc 'kill-buffer (buffer-list)))
+
+
+(defun kill-other-buffers ()
+  "Kill other buffers"
+  (interactive)
+  (mapc 'kill-buffer
+        (delq (current-buffer)
+              (remove-if-not 'buffer-file-name (buffer-list)))))
+
+
+;; String manipulation
+(use-package s
+  :ensure t)
 
 (provide 'init-helper)
