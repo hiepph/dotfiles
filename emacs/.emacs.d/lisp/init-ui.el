@@ -18,7 +18,22 @@
                 atom-one-dark-theme
                 doom-themes)))
   (dolist (look looks) (unless (package-installed-p look)
-                           (package-install theme))))
+                         (package-install theme))))
+
+
+;; Powerline
+;; (use-package telephone-line
+;;   :ensure t
+;;   :init
+;;   (telephone-line-mode 1))
+(use-package spaceline
+  :ensure t
+  :init
+  (require 'spaceline-config)
+  :config
+  (spaceline-emacs-theme)
+  (spaceline-helm-mode))
+
 
 ;; Basic
 ;; Disable the splash screen (to enable it agin, replace the t with 0)
@@ -42,12 +57,6 @@
 
 ;; Show column
 (setq column-number-mode t)
-
-;; Save customization
-; (setq custom-file "~/.emacs.d/custom.el")
-; (load custom-file)
-; (add-hook 'kill-emacs-query-functions
-;           'custom-prompt-customize-unsaved-options)
 
 
 ;; Tree
