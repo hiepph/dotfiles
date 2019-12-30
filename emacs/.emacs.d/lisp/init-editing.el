@@ -13,12 +13,16 @@
 ;; Tab as 4 spaces
 (setq tab-width 4)
 
+
 ;; Autopair
 (use-package smartparens
   :ensure t
-  :config
+  :init
   (require 'smartparens-config)
-  (smartparens-global-mode t))
+  (smartparens-global-mode t)
+  :bind
+  ;; TODO: delete wrapping parentheses/quote/etc.
+  ("C-x C-d" . sp-splice-sexp))
 
 
 ;; Expand region
