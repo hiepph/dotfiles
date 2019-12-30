@@ -14,7 +14,7 @@
  '(jdee-db-spec-breakpoint-face-colors (cons "#0d0d0d" "#5a5b5a"))
  '(package-selected-packages
    (quote
-    (abs-mode racket-mode ewal-spacemacs-themes ewal hl-todo resize-window helm-projectile multiple-cursors undo-tree company-quickhelp company ido-completing-read+ swiper-helm eyebrowse telephone-line smart-mode-line ess melancholy-theme ample-theme color-theme-sanityinc-tomorrow popup-pos-tip pos-tip rust-mode clojure-mode expand-region go-mode edit-indirect auto-complete fzf git-gutter-fringe+ git-gutter+ magit sublime-themes smex ripgrep rainbow-delimiters projectile neotree markdown-mode ido-ubiquitous golden-ratio git-gutter dracula-theme autopair atom-one-dark-theme all-the-icons)))
+    (ivy-hydra abs-mode racket-mode ewal-spacemacs-themes ewal hl-todo resize-window helm-projectile multiple-cursors undo-tree company-quickhelp company ido-completing-read+ swiper-helm eyebrowse telephone-line smart-mode-line ess melancholy-theme ample-theme color-theme-sanityinc-tomorrow popup-pos-tip pos-tip rust-mode clojure-mode expand-region go-mode edit-indirect auto-complete fzf git-gutter-fringe+ git-gutter+ magit sublime-themes smex ripgrep rainbow-delimiters projectile neotree markdown-mode ido-ubiquitous golden-ratio git-gutter dracula-theme autopair atom-one-dark-theme all-the-icons)))
  '(vc-annotate-background "#1d1f21")
  '(vc-annotate-color-map
    (list

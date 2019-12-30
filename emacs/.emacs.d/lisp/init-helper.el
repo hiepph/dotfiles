@@ -16,7 +16,6 @@
   ;; shortcuts help
   ("C-x M-g" . 'magit-dispatch-popup)
   ("C-c m d" . 'magit-diff-buffer-file)
-  ("C-c m f" . 'magit-file-popup)
   :init
   ;; When 'C-c C-c' is pressed in the magit commit message buffer,
   ;; delete the magit-diff buffer related to the current repo.
@@ -51,15 +50,29 @@
 
 
 ;; Search with Ivy
-(use-package swiper-helm
+(defun bjm-swiper-recenter (&rest args)
+  "recenter display after swiper"
+  (recenter))
+
+(use-package swiper
   :ensure t
   :diminish
   (ivy-mode counsel-mode)
   :init
   (setq ivy-use-virtual-buffers t)
   (setq enable-recursive-minibuffers t)
+  :config
+  (setq ivy-display-style 'fancy)
+  (advice-add 'swiper :after #'bjm-swiper-recenter)
+  ;; M-c to toggle sensitive search
+  (define-key ivy-minibuffer-map (kbd "M-c") 'ivy-toggle-case-fold)
   :bind
   ("C-s" . 'swiper))
+
+
+;; Binding keys with Hydra
+(use-package ivy-hydra
+  :ensure t)
 
 
 ;; Disable Ctrl-Z (freeze)
