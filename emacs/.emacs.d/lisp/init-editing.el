@@ -129,7 +129,23 @@
   :config
   (add-hook 'after-init-hook 'global-company-mode)
   ;; case sensitive completion
-  (setq company-dabbrev-downcase nil))
+  (setq company-dabbrev-downcase nil)
+
+  ;; dabbrev completion (https://www.gnu.org/software/emacs/manual/html_node/emacs/Dynamic-Abbrevs.html)
+  (add-to-list 'company-backends '(company-capf company-dabbrev))
+
+  ;; fuzzy matching
+  (setq company-require-match nil)  ; Don't require match, so you can still move your cursor as expected.
+  (setq company-tooltip-align-annotations t)  ; Align annotation to the right side.
+  (setq company-eclim-auto-save nil)          ; Stop eclim auto save.
+  (setq company-dabbrev-downcase nil)         ; No downcase when completion.
+  :config
+  ;; Enable downcase only when completing the completion.
+  (defun jcs--company-complete-selection--advice-around (fn)
+    "Advice execute around `company-complete-selection' command."
+    (let ((company-dabbrev-downcase t))
+      (call-interactively fn)))
+  (advice-add 'company-complete-selection :around #'jcs--company-complete-selection--advice-around))
 
 (use-package pos-tip
   :ensure t)
@@ -147,8 +163,8 @@
   ;; Zero-delay
   (setq company-idle-delay 0)
 
-  :bind (
-         ("C-\\" . 'company-complete)))
+  :bind
+  ("C-\\" . 'company-complete))
 
 
 
@@ -158,7 +174,7 @@
   ;; pip install pylint
   :ensure t
   :config
-  ;; Off by default
+  ;; off by default
   (global-flycheck-mode)
   (setq-default flycheck-emacs-lisp-load-path 'inherit)
   (setq flycheck-flake8-maximum-line-length 120)
@@ -167,7 +183,6 @@
   (set-face-attribute 'flycheck-info nil :underline '(:color "ForestGreen"))
 
   ;; theme
-
   (define-fringe-bitmap 'flycheck-fringe-bitmap-ball
     (vector #b00000000
             #b00000000
@@ -194,6 +209,9 @@
     :fringe-bitmap 'flycheck-fringe-bitmap-ball
     :fringe-face 'flycheck-fringe-error
     :error-list-face 'flycheck-error-list-error)
+
+  ;; check only when save file or change the major mode
+  (setq flycheck-check-syntax-automatically '(save mode-enable))
 
   :bind ("<f12>" . 'flycheck-mode))
 

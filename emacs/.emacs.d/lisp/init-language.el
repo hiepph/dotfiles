@@ -79,6 +79,7 @@
 
 ;; custom
 (add-to-list 'auto-mode-alist '("\\.cu\\'" . c++-mode))
+(add-to-list 'auto-mode-alist '("\\.zsh\\'" . sh-mode))
 
 
 (provide 'init-language)
