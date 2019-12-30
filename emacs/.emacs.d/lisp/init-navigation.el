@@ -5,35 +5,37 @@
 (use-package helm
   :ensure t
   ;; :diminish helm-mode
-  :init (progn
-          ;; Set Helm to use `ripgrep`
-          (setq helm-grep-ag-command "rg --color=always --colors 'match:fg:black' --colors 'match:bg:yellow' --smart-case --no-heading --line-number %s %s %s")
-          (setq helm-grep-ag-pipe-cmd-switches '("--colors 'match:fg:black'" "--colors 'match:bg:yellow'"))
-          ;; Always stay as separated below window
-          (setq helm-always-two-windows t)
-          (setq helm-split-window-in-side-p t)
-          (setq helm-split-window-default-side 'below)
+  :init
+  ;; Set Helm to use `ripgrep`
+  (setq helm-grep-ag-command "rg --color=always --colors 'match:fg:black' --colors 'match:bg:yellow' --smart-case --no-heading --line-number %s %s %s")
+  (setq helm-grep-ag-pipe-cmd-switches '("--colors 'match:fg:black'" "--colors 'match:bg:yellow'"))
+  ;; Always stay as separated below window
+  (setq helm-always-two-windows t)
+  (setq helm-split-window-in-side-p t)
+  (setq helm-split-window-default-side 'below)
 
-          ;; Fuzzy match
-          (setq helm-M-x-fuzzy-match t)
-          (setq helm-buffers-fuzzy-matching t
-                helm-recentf-fuzzy-match t))
-  :config (progn
-            (helm-mode 1)
-            (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to do persistent action
-            (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB works in terminal
-            (define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
-            ;; Auto resize to fit the number of candidates
-            (helm-autoresize-mode t))
-  :bind (
-         ;; Replace default Emacs utilities with Helm
-         ("M-x" . 'helm-M-x)
-         ("C-x r b" . helm-filtered-bookmarks)
-         ("C-x b" . 'helm-mini)
-         ("C-x s" . 'helm-do-grep-ag) ;; Search with rg
-         ("C-x C-f" . 'helm-find-files)
-         ;; Show kill ring
-         ("M-y" . 'helm-show-kill-ring)))
+  ;; Fuzzy match
+  (setq helm-M-x-fuzzy-match t)
+  (setq helm-buffers-fuzzy-matching t
+        helm-recentf-fuzzy-match t)
+  :config
+  (helm-mode 1)
+  (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to do persistent action
+  (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB works in terminal
+  (define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
+  ;; Auto resize to fit the number of candidates
+  (helm-autoresize-mode t)
+  :bind
+  ;; Replace default Emacs utilities with Helm
+  ("M-x" . 'helm-M-x)
+  ("C-x r b" . helm-filtered-bookmarks)
+  ("C-x b" . 'helm-mini)
+  ("C-x s" . 'helm-do-grep-ag) ;; Search with rg
+  ("C-x C-f" . 'helm-find-files)
+  ;; Show kill ring
+  ("M-y" . 'helm-show-kill-ring)
+  ("C-j" . 'helm-find-files-up-one-level)
+  ("C-k" . 'helm-execute-persistent-action))
 
 
 ;; Recent files
