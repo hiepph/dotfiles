@@ -4,7 +4,7 @@
 ;; Helm
 (use-package helm
   :ensure t
-  ;; :diminish helm-mode
+//  ;; :diminish helm-mode
   :init
   ;; Set Helm to use `ripgrep`
   (setq helm-grep-ag-command "rg --color=always --colors 'match:fg:black' --colors 'match:bg:yellow' --smart-case --no-heading --line-number %s %s %s")
@@ -25,6 +25,9 @@
   (define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
   ;; Auto resize to fit the number of candidates
   (helm-autoresize-mode t)
+
+  (define-key helm-find-files-map (kbd "C-h") 'helm-find-files-up-one-level)
+  (define-key helm-find-files-map (kbd "C-l") 'helm-execute-persistent-action)
   :bind
   ;; Replace default Emacs utilities with Helm
   ("M-x" . 'helm-M-x)
@@ -33,9 +36,7 @@
   ("C-x s" . 'helm-do-grep-ag) ;; Search with rg
   ("C-x C-f" . 'helm-find-files)
   ;; Show kill ring
-  ("M-y" . 'helm-show-kill-ring)
-  ("C-j" . 'helm-find-files-up-one-level)
-  ("C-k" . 'helm-execute-persistent-action))
+  ("M-y" . 'helm-show-kill-ring))
 
 
 ;; Recent files
@@ -90,14 +91,6 @@
   ("C-c ;" . 'resize-window)
   :config
   (push '(?l helm-mini "run helm-mini" nil) resize-window-dispatch-alist))
-
-
-
-;; Ranger (replacement of dired)
-(use-package ranger
-  :ensure t
-  :init
-  (ranger-override-dired-mode t))
 
 
 (provide 'init-navigation)

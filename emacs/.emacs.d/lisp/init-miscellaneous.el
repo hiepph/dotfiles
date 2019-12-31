@@ -10,7 +10,7 @@
 
 
 ;; Default browser
-(setq browse-url-browser-function 'browse-url-chromium)
+;; (setq browse-url-browser-function 'browse-url-chromium)
 
 
 ;; Auto-refresh all buffers when files have changed on disk
