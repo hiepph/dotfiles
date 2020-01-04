@@ -4,6 +4,9 @@
 ;; You may delete these explanatory comments.
 (package-initialize)
 
+;; Set custom variables file
+(setq custom-file (concat user-emacs-directory "/custom.el"))
+
 ;; Custom scripts
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 

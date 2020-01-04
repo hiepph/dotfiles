@@ -94,10 +94,4 @@
   :config (indent-guide-global-mode))
 
 
-;; sexy mode line
-(use-package smart-mode-line
-  :ensure t
-  :config (sml/setup))
-
-
 (provide 'init-ui)
