@@ -6,3 +6,5 @@ projectile-bookmarks.eld
 auto-save-list/
 ido.last
 init-custom.el
+transient/
+session.*
