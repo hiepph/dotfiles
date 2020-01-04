@@ -8,3 +8,4 @@ ido.last
 init-custom.el
 transient/
 session.*
+custom.el

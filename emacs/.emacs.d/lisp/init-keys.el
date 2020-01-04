@@ -15,11 +15,11 @@
   :ensure t
   :config
   :bind
-  ("C-w-m" . 'hydra-window/body)
+  ("C-x m" . 'hydra-window/body)
   )
 
 
-(defhydra hydra-window (:color red :idle 2)
+(defhydra hydra-window (:color blue :idle 2)
   "
 Move: _h_, _j_, _k_, _l_ (vim style)
 Split: _v_ert _x_:horz
