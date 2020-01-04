@@ -19,10 +19,7 @@
   :ensure t
   :init
   (require 'smartparens-config)
-  (smartparens-global-mode t)
-  :bind
-  ;; TODO: delete wrapping parentheses/quote/etc.
-  ("C-x C-d" . sp-splice-sexp))
+  (smartparens-global-mode t))
 
 
 ;; Expand region

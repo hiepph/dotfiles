@@ -20,8 +20,10 @@
         helm-recentf-fuzzy-match t)
   :config
   (helm-mode 1)
-  (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to do persistent action
-  (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB works in terminal
+  ;; rebind tab to do persistent action
+  (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
+  ;; make TAB works in terminal
+  (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action)
   (define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
   ;; Auto resize to fit the number of candidates
   (helm-autoresize-mode t)
@@ -62,15 +64,6 @@
   (setq ido-use-virtual-buffers t))
 
 
-;; Enable move point from window to window using Shift and the arrow keys
-(windmove-default-keybindings)
-;; and C-c + {h,j,k,l} (vim way of moving)
-(global-set-key (kbd "C-c h")  'windmove-left)
-(global-set-key (kbd "C-c l") 'windmove-right)
-(global-set-key (kbd "C-c k")    'windmove-up)
-(global-set-key (kbd "C-c j")  'windmove-down)
-
-
 ;; Virtual desktop
 (use-package eyebrowse
   :ensure t
@@ -82,15 +75,6 @@
             (define-key eyebrowse-mode-map (kbd "M-4") 'eyebrowse-switch-to-window-config-4)
             (eyebrowse-mode t)
             (setq eyebrowse-new-workspace t)))
-
-
-(use-package resize-window
-  :ensure t
-  :diminish resize-mode
-  :bind
-  ("C-c ;" . 'resize-window)
-  :config
-  (push '(?l helm-mini "run helm-mini" nil) resize-window-dispatch-alist))
 
 
 (provide 'init-navigation)
