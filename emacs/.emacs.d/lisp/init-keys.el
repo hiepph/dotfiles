@@ -11,11 +11,21 @@
 
 
 ;;; Code:
+
+
+;;; Simplify keybindings for some frequent tasks
+(global-set-key (kbd "<f2>") #'save-buffer)
+(global-set-key (kbd "<f3>") #'helm-find-files)
+(global-set-key (kbd "<f4>") #'save-buffer-kill-terrminal)
+
+
+;;; Hydra
 (use-package hydra
   :ensure t
   :config
   :bind
   ("C-x m" . 'hydra-window/body)
+  ("C-x p" . 'hydra-pair/body)
   )
 
 
@@ -31,6 +41,17 @@ Split: _v_ert _x_:horz
 
   ("v" split-window-right)
   ("x" split-window-below))
+
+
+(defhydra hydra-pair (:color blue :idle 2)
+  "
+Pair processing
+---------------
+_e_xpand region
+_d_elete surround
+"
+  ("e" er/expand-region)
+  ("d" sp-splice-sexp))
 
 
 (provide 'init-keys)

@@ -24,8 +24,7 @@
 
 ;; Expand region
 (use-package expand-region
-  :ensure t
-  :bind ("C-=" . 'er/expand-region))
+  :ensure t)
 
 
 ;; Trailing white-space
