@@ -120,7 +120,6 @@
   "Join the current line with the line beneath it."
   (interactive)
   (delete-indentation 1))
-(global-set-key (kbd "C-^") 'top-join-line)
 
 
 ;; Auto complete

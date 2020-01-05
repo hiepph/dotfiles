@@ -1,18 +1,20 @@
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
+;;; init.el --- Control all config iles
+
+;;; Commentary:
+;;;
+;;; @hiepph's Emacs
+;;; Philosophy:
+;;; - Text is a universal interface
+
 (package-initialize)
+
+;;; Code:
 
 ;; Set custom variables file
 (setq custom-file (concat user-emacs-directory "/custom.el"))
 
 ;; Custom scripts
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
-
-;; start emacs server
-;; easy to open files in existing emacs windows: emacsclient -n file1 file2 ...
-;; (server-start)
 
 (require 'init-elpa)
 (require 'init-language)
@@ -25,3 +27,4 @@
 (require 'init-custom nil 'no-error)
 
 (provide 'init)
+;;; init.el ends here

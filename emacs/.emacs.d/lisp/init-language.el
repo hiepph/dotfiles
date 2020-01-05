@@ -1,16 +1,14 @@
+;;; init-language.el --- Programming languages and modes
+
+;;; Commentary:
+;;;
 (require 'init-elpa)
 
-(let ((languages '(go-mode
-                   yaml-mode
-                   rust-mode
-                   js2-mode)))
-  (dolist (lang languages) (unless (package-installed-p lang)
-                             (package-install lang))))
+;;; Code:
 
 ;; Python
-;; Ignoring electric indentation
 (defun electric-indent-ignore-python (char)
-  "Ignore electric indentation for python-mode"
+  "Ignore electric indentation for python-mode."
   (if (equal major-mode 'python-mode)
       'no-indent
     nil))
@@ -34,6 +32,7 @@
             (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)))
 
 
+;; Elixir
 (use-package elixir-mode
   :ensure t)
 
@@ -53,29 +52,33 @@
           (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))))
 
 
-;;; Functional
-(use-package clojure-mode
-  :ensure t)
-
+;; Haskell
 (use-package haskell-mode
   :ensure t)
-
-;; Lisp
-(use-package slime
-  :ensure t
-  :config (setq inferior-lisp-program "sbcl"))
-
 
 
 ;; Org-mode
 (use-package org
   :ensure t
-  :init (progn
-          (setq org-log-done 'time)
+  :init
+  (setq org-log-done 'time)
+  (add-hook 'org-mode-hook 'turn-on-font-lock)
 
-          ;; Turn off auto-fold
-          (setq org-startup-folded nil)))
-(add-hook 'org-mode-hook 'turn-on-font-lock)
+  ;; Turn off auto-fold
+  (setq org-startup-folded nil)
+
+  :config
+  (setq org-confirm-babel-evaluate nil
+        org-src-fontify-natively t
+        org-src-tab-acts-natively t)
+
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((shell      . t)
+     (emacs-lisp . t)
+     (python     . t)))
+  )
+
 
 ;; custom
 (add-to-list 'auto-mode-alist '("\\.cu\\'" . c++-mode))
@@ -83,3 +86,4 @@
 
 
 (provide 'init-language)
+;;; init-language.el ends here

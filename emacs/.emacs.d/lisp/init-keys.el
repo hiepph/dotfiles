@@ -26,6 +26,7 @@
   :bind
   ("C-x m" . 'hydra-window/body)
   ("C-x p" . 'hydra-pair/body)
+  ("C-x t" . 'hydra-text/body)
   )
 
 
@@ -53,6 +54,13 @@ _d_elete surround
   ("e" er/expand-region)
   ("d" sp-splice-sexp))
 
+
+(defhydra hydra-text (:color blue :idle 2)
+  "
+Text editing
+------------
+_j_oin lines"
+  ("j" top-join-line))
 
 (provide 'init-keys)
 ;;; init-keys.el ends here
