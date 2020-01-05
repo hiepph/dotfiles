@@ -9,3 +9,4 @@ init-custom.el
 transient/
 session.*
 custom.el
+network-security*
