@@ -63,9 +63,11 @@ Text editing
 
   ("e" er/expand-region "expand-region" :column "Pair")
   ("d" sp-splice-sexp "delete surround")
+  ("r" sp-rewrap-sexp "rewrap surround")
+  ("f" sp-forward-sexp "forward to closed wrapping")
+  ("b" sp-backward-sexp "backward to open wrapping")
 
-  ("q" nil "quit" :column nil)
-  )
+  ("q" nil "quit" :column nil))
 
 
 (defhydra hydra-multiple-cursors (:color red :idle 2)
