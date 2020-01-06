@@ -3,9 +3,17 @@
 ;;; Commentary:
 ;;
 ;; Principle
-;; The first 2 principles are borrowed from @cmpitg.  Thanks!
-;; - Be simple and mnemonic
-;; - Descriptive
+;; - Be simple and mnemonic (The first principle is borrowed from @cmpitg.  Thanks!)
+;; i.e. C-x t(ext editing) e(xpand region)
+;;
+;; - Be descriptive (Magit inspired)
+;; i.e. Windmove
+;;   window    | split
+;;   --------- | -----
+;;   h: ←      | v: vertical
+;;   j: ↓      | x: horizontal
+;;   k: ↑      |
+;;   l: →      |
 
 (require 'init-elpa)
 
@@ -16,7 +24,7 @@
 ;;; Simplify keybindings for some frequent tasks
 (global-set-key (kbd "<f2>") #'save-buffer)
 (global-set-key (kbd "<f3>") #'helm-find-files)
-(global-set-key (kbd "<f4>") #'save-buffer-kill-terrminal)
+(global-set-key (kbd "<f4>") #'save-buffers-kill-terminal)
 
 
 ;;; Hydra
@@ -25,42 +33,55 @@
   :config
   :bind
   ("C-x m" . 'hydra-window/body)
-  ("C-x p" . 'hydra-pair/body)
   ("C-x t" . 'hydra-text/body)
+  ("C-x c" . 'hydra-multiple-cursors/body)
   )
 
 
-(defhydra hydra-window (:color blue :idle 2)
+(defhydra hydra-window (:color red :idle 2)
   "
-Move: _h_, _j_, _k_, _l_ (vim style)
-Split: _v_ert _x_:horz
+Windmove
+--------
 "
-  ("h" windmove-left)
-  ("j" windmove-down)
-  ("k" windmove-up)
-  ("l" windmove-right)
+  ("h" windmove-left  "←" :column "Window")
+  ("j" windmove-down "↓")
+  ("k" windmove-up "↑")
+  ("l" windmove-right "→")
 
-  ("v" split-window-right)
-  ("x" split-window-below))
+  ("v" split-window-right "vertical" :column "Split")
+  ("x" split-window-below "horizontal")
 
-
-(defhydra hydra-pair (:color blue :idle 2)
-  "
-Pair processing
----------------
-_e_xpand region
-_d_elete surround
-"
-  ("e" er/expand-region)
-  ("d" sp-splice-sexp))
+  ("q" nil "quit" :column nil))
 
 
-(defhydra hydra-text (:color blue :idle 2)
+(defhydra hydra-text (:color red :idle 2)
   "
 Text editing
 ------------
-_j_oin lines"
-  ("j" top-join-line))
+"
+  ("j" top-join-line "join lines" :column "Text")
+
+  ("e" er/expand-region "expand-region" :column "Pair")
+  ("d" sp-splice-sexp "delete surround")
+
+  ("q" nil "quit" :column nil)
+  )
+
+
+(defhydra hydra-multiple-cursors (:color red :idle 2)
+  "
+Multiple cursors
+----------------
+"
+  ("c" mc/edit-lines "edit lines")
+  ("f" mc/mark-next-like-this "next")
+  ("b" mc/mark-previous-like-this "prev")
+  ("d" mc/mark-all-like-this "all")
+  )
+
+(global-set-key (kbd "C-S-y") 'yank-and-indent)
+
+
 
 (provide 'init-keys)
 ;;; init-keys.el ends here
