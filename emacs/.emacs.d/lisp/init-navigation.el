@@ -41,15 +41,6 @@
   ("M-y" . 'helm-show-kill-ring))
 
 
-;; Recent files
-(use-package recentf
-  :config (progn
-            (setq recentf-save-file (concat user-emacs-directory ".recentf"))
-            (recentf-mode 1)
-            (setq recentf-max-menu-items 40))
-  :bind ("C-x C-r" . 'recentf-open-files))
-
-
 ;; IDO
 (use-package ido
   :diminish ido-mode

@@ -48,7 +48,6 @@
 (global-set-key (kbd "C-0") (lambda () (interactive) (text-scale-increase 0)))
 
 
-
 ;; Search with Ivy
 (defun bjm-swiper-recenter (&rest args)
   "recenter display after swiper"
@@ -70,32 +69,19 @@
   ("C-s" . 'swiper))
 
 
-;; Binding keys with Hydra
-(use-package ivy-hydra
-  :ensure t)
-
-
 ;; Disable Ctrl-Z (freeze)
 (global-unset-key (kbd "C-z"))
-
-
-;; Kill all buffer
-(defun kill-all-buffers ()
-  "kill all buffers"
-  (interactive)
-  (mapc 'kill-buffer (buffer-list)))
-
-
-(defun kill-other-buffers ()
-  "Kill other buffers"
-  (interactive)
-  (mapc 'kill-buffer
-        (delq (current-buffer)
-              (remove-if-not 'buffer-file-name (buffer-list)))))
 
 
 ;; String manipulation
 (use-package s
   :ensure t)
+
+
+;; Useful extension for Emacs (Crux)
+;; https://github.com/bbatsov/crux
+(use-package crux
+  :ensure t)
+
 
 (provide 'init-helper)
