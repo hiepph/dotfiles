@@ -7,7 +7,7 @@
 ;; i.e. C-x t(ext editing) e(xpand region)
 ;;
 ;; - Be descriptive (Magit inspired)
-;; i.e. Windmove
+;; i.e. Windmove: C-x m(ove) ...
 ;;   window    | split
 ;;   --------- | -----
 ;;   h: ←      | v: vertical
