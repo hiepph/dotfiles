@@ -82,7 +82,7 @@ Files manipulation
   ("D" crux-delete-file-and-buffer "Delete file and buffer")
   ("R" crux-rename-file-and-buffer "Rename file and buffer")
 
-  ("r" crux-recentf-find-file)
+  ;; ("r" crux-recentf-find-file)
 
   ("q" nil "quit" :column nil)
   )

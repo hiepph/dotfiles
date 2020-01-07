@@ -68,6 +68,16 @@
             (setq eyebrowse-new-workspace t)))
 
 
+;; Recent files
+(use-package recentf
+  :config
+  (setq recentf-save-file (concat user-emacs-directory ".recentf"))
+  (recentf-mode 1)
+  (setq recentf-max-menu-items 100)
+  :bind
+  ("C-x C-r" . 'recentf-open-files)
+  )
+
 
 ;; Projectile
 (use-package projectile
