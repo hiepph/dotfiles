@@ -4,7 +4,7 @@
 ;;
 ;; Principle
 ;; - Be simple and mnemonic (The first principle is borrowed from @cmpitg.  Thanks!)
-;; i.e. C-x t(ext editing) e(xpand region)
+;; i.e. C-x e(ext _e_diting) e(xpand region)
 ;;
 ;; - Be descriptive (Magit inspired)
 ;; i.e. Text editing: C-x t(ext editing) ...
@@ -37,7 +37,7 @@
   :ensure t
   :config
   :bind
-  ("C-x t" . 'hydra-text/body)
+  ("C-x e" . 'hydra-text/body)
   ("C-x c" . 'hydra-multiple-cursors/body)
 
   ("C-c f" . 'hydra-files/body)
@@ -50,7 +50,7 @@ Text editing
 ------------
 "
   ("j" crux-top-join-line "join lines" :column "Text")
-  ("k" kill-whole-line "kill whole line")
+  ("k" crux-kill-whole-line "kill whole line")
 
   ("e" er/expand-region "expand-region" :column "Pair")
   ("d" sp-splice-sexp "delete surround")
@@ -81,8 +81,6 @@ Files manipulation
 "
   ("D" crux-delete-file-and-buffer "Delete file and buffer")
   ("R" crux-rename-file-and-buffer "Rename file and buffer")
-
-  ;; ("r" crux-recentf-find-file)
 
   ("q" nil "quit" :column nil)
   )
