@@ -63,6 +63,8 @@
   :init
   (setq org-log-done 'time)
   (add-hook 'org-mode-hook 'turn-on-font-lock)
+  ;; show image in org babel
+  (add-hook 'org-babel-after-execute-hook 'org-display-inline-images 'append)
 
   ;; Turn off auto-fold
   (setq org-startup-folded nil)
@@ -74,9 +76,11 @@
 
   (org-babel-do-load-languages
    'org-babel-load-languages
-   '((shell      . t)
+   '(
+     (shell      . t)
      (emacs-lisp . t)
-     (python     . t)))
+     (python     . t)
+     ))
   )
 
 

@@ -3,13 +3,15 @@
 
 (setq mc/cmds-to-run-for-all
       '(
-        hydra-multiple-cursors/mc/mark-next-like-this
-        hydra-multiple-cursors/mc/mark-previous-like-this
-        hydra-text/body
         hydra-text/crux-kill-whole-line
         ))
 
 (setq mc/cmds-to-run-once
       '(
+        hydra-multiple-cursors/mc/insert-numbers-and-exit
+        hydra-text/body
+        hydra-multiple-cursors/body
         hydra-multiple-cursors/mc/mark-all-like-this
+        hydra-multiple-cursors/mc/mark-next-like-this
+        hydra-multiple-cursors/mc/mark-previous-like-this
         ))
