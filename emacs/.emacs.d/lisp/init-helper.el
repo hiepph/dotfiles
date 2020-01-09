@@ -83,5 +83,10 @@
 (use-package crux
   :ensure t)
 
+;; Buffers
+(defun close-all-buffers ()
+  (interactive)
+  (mapc 'kill-buffer (buffer-list)))
+
 
 (provide 'init-helper)
