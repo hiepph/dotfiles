@@ -84,7 +84,7 @@
   :ensure t)
 
 ;; Buffers
-(defun close-all-buffers ()
+(defun kill-all-buffers ()
   (interactive)
   (mapc 'kill-buffer (buffer-list)))
 

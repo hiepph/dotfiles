@@ -4,14 +4,7 @@
 ;;
 ;; Principle
 ;; - Be simple and mnemonic (The first principle is borrowed from @cmpitg.  Thanks!)
-;; i.e. C-x e(ext _e_diting) e(xpand region)
-;;
-;; - Be descriptive (Magit inspired)
-;; i.e. Text editing: C-x t(ext editing) ...
-;;   Text          | Pair
-;;   ---------     | -----
-;;   j: join lines | e: expand region
-;;                 | d: delete surround
+;; - Be descriptive as Magit (Show a window with hints)
 
 (require 'init-elpa)
 
@@ -20,6 +13,7 @@
 
 
 ;; Simplify keybindings for some frequent tasks
+;; Buffer
 (global-set-key (kbd "<f2>") #'save-buffer)
 (global-set-key (kbd "<f3>") #'helm-find-files)
 (global-set-key (kbd "<f4>") #'save-buffers-kill-terminal)
@@ -29,7 +23,10 @@
 (global-set-key (kbd "s-k") #'windmove-up)
 (global-set-key (kbd "s-l") #'windmove-right)
 
+;; Text Editing
 (global-set-key (kbd "C-S-y") 'yank-and-indent)
+(global-set-key (kbd "C-^") 'crux-top-join-line)
+(global-set-key (kdb "C-k") 'crux-smart-kill-line)
 
 
 ;;; Hydra
@@ -37,21 +34,19 @@
   :ensure t
   :config
   :bind
-  ("C-x e" . 'hydra-text/body)
+  ("C-x p" . 'hydra-pair/body)
   ("C-x c" . 'hydra-multiple-cursors/body)
 
   ("C-c f" . 'hydra-files/body)
   )
 
 
-(defhydra hydra-text (:color red :idle 1)
+(defhydra hydra-pair (:color red :idle 1)
   "
-Text editing
+Pair editing
 ------------
 "
-  ("j" crux-top-join-line "join lines" :column "Text")
-  ("k" crux-kill-whole-line "kill whole line")
-  ("e" er/expand-region "expand-region" :column "Pair")
+  ("e" er/expand-region "expand-region")
   ("d" sp-splice-sexp "delete surround")
   ("r" sp-rewrap-sexp "rewrap")
   ("f" sp-forward-sexp "forward to closed wrapping")
