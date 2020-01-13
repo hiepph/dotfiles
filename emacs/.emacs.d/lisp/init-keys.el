@@ -26,7 +26,7 @@
 ;; Text Editing
 (global-set-key (kbd "C-S-y") 'yank-and-indent)
 (global-set-key (kbd "C-^") 'crux-top-join-line)
-(global-set-key (kdb "C-k") 'crux-smart-kill-line)
+(global-set-key (kbd "C-k") 'crux-smart-kill-line)
 
 
 ;;; Hydra
@@ -34,7 +34,7 @@
   :ensure t
   :config
   :bind
-  ("C-x p" . 'hydra-pair/body)
+  ("C-x e" . 'hydra-pair/body)
   ("C-x c" . 'hydra-multiple-cursors/body)
 
   ("C-c f" . 'hydra-files/body)
@@ -43,14 +43,17 @@
 
 (defhydra hydra-pair (:color red :idle 1)
   "
-Pair editing
+Text editing
 ------------
 "
-  ("e" er/expand-region "expand-region")
+  ("u" crux-upcase-region "upcase" :column "Text")
+  ("c" crux-capitalize-region "capitalize")
+  ("d" crux-downcase-region "downcase")
+  ("e" er/expand-region "expand region" :column "Pair")
   ("d" sp-splice-sexp "delete surround")
   ("r" sp-rewrap-sexp "rewrap")
-  ("f" sp-forward-sexp "forward to closed wrapping")
-  ("b" sp-backward-sexp "backward to open wrapping")
+  ("f" sp-forward-sexp "forward to matching paren")
+  ("b" sp-backward-sexp "backward to matching paren")
   ("q" nil "quit" :column nil)
   )
 

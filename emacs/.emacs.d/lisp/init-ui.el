@@ -16,7 +16,8 @@
 ;; Look & Appearance
 (let ((looks '(dracula-theme
                 atom-one-dark-theme
-                doom-themes)))
+                doom-themes
+                poet-theme)))
   (dolist (look looks) (unless (package-installed-p look)
                          (package-install theme))))
 
