@@ -163,8 +163,7 @@
   ;; pip install pylint
   :ensure t
   :config
-  ;; off by default
-  (global-flycheck-mode)
+  (global-flycheck-mode) ;; on by default
   (setq-default flycheck-emacs-lisp-load-path 'inherit)
   (setq flycheck-flake8-maximum-line-length 120)
   (set-face-attribute 'flycheck-error nil :underline '(:color "#d32e00"))
@@ -200,7 +199,7 @@
     :error-list-face 'flycheck-error-list-error)
 
   ;; check only when save file or change the major mode
-  (setq flycheck-check-syntax-automatically '(save mode-enable))
+  ;; (setq flycheck-check-syntax-automatically '(save mode-enable))
 
   :bind ("<f12>" . 'flycheck-mode))
 

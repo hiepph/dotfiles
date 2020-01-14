@@ -80,14 +80,21 @@
      (shell      . t)
      (emacs-lisp . t)
      (python     . t)
+     (ruby       . t)
      ))
+  )
+
+(use-package org-bullets
+  :ensure t
+  :config
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
   )
 
 
 ;; custom
 (add-to-list 'auto-mode-alist '("\\.cu\\'" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.zsh\\'" . sh-mode))
-
+2
 
 (provide 'init-language)
 ;;; init-language.el ends here

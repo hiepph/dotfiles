@@ -27,6 +27,7 @@
 (global-set-key (kbd "C-S-y") 'yank-and-indent)
 (global-set-key (kbd "C-^") 'crux-top-join-line)
 (global-set-key (kbd "C-k") 'crux-smart-kill-line)
+(global-set-key (kbd "C-=") 'er/expand-region)
 
 
 ;;; Hydra
@@ -49,6 +50,7 @@ Text editing
   ("u" crux-upcase-region "upcase" :column "Text")
   ("c" crux-capitalize-region "capitalize")
   ("d" crux-downcase-region "downcase")
+  ("j" crux-top-join-line "join")
   ("e" er/expand-region "expand region" :column "Pair")
   ("d" sp-splice-sexp "delete surround")
   ("r" sp-rewrap-sexp "rewrap")
