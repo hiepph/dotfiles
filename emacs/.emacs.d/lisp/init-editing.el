@@ -199,7 +199,7 @@
     :error-list-face 'flycheck-error-list-error)
 
   ;; check only when save file or change the major mode
-  ;; (setq flycheck-check-syntax-automatically '(save mode-enable))
+  (setq flycheck-check-syntax-automatically '(save mode-enable))
 
   :bind ("<f12>" . 'flycheck-mode))
 

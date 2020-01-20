@@ -28,8 +28,8 @@
   ;; Auto resize to fit the number of candidates
   (helm-autoresize-mode t)
 
-  (define-key helm-find-files-map (kbd "C-h") 'helm-find-files-up-one-level)
-  (define-key helm-find-files-map (kbd "C-l") 'helm-execute-persistent-action)
+  (define-key helm-find-files-map (kbd "C-u") 'helm-find-files-up-one-level)
+  ;; (define-key helm-find-files-map (kbd "C-l") 'helm-execute-persistent-action)
   :bind
   ;; Replace default Emacs utilities with Helm
   ("M-x" . 'helm-M-x)

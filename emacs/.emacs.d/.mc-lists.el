@@ -4,6 +4,10 @@
 (setq mc/cmds-to-run-for-all
       '(
         comint-delchar-or-maybe-eof
+        haskell-indentation-common-electric-command
+        hydra-pair/body
+        hydra-pair/sp-rewrap-sexp
+        hydra-pair/sp-splice-sexp
         hydra-text/crux-kill-whole-line
         ))
 
