@@ -232,4 +232,21 @@
   (global-set-key (kbd "C-<mouse-1>") 'mc/add-cursor-on-click))
 
 
+;; ACME inspiration
+;; Ref:
+;; - https://github.com/cmpitg/wand: execute command based on text pattern
+(use-package wand
+  :ensure t
+  :bind
+  ([mouse-2] . 'wand:execute)
+  :config
+  (setq wand:*rules*
+        (list
+         ;; execute command by literal text by default
+         (wand:create-rule :match ""
+                           :capture :after
+                           :action #'shell-command)
+         ))
+  )
+
 (provide 'init-editing)
