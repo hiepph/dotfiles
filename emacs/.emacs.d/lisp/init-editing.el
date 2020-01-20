@@ -1,4 +1,5 @@
 (require 'init-elpa)
+(require 'init-func)
 
 ;; Basic
 ;; replace highlight text with typing action
@@ -232,9 +233,7 @@
   (global-set-key (kbd "C-<mouse-1>") 'mc/add-cursor-on-click))
 
 
-;; ACME inspiration
-;; Ref:
-;; - https://github.com/cmpitg/wand: execute command based on text pattern
+;; ACME
 (use-package wand
   :ensure t
   :bind
@@ -242,11 +241,18 @@
   :config
   (setq wand:*rules*
         (list
-         ;; execute command by literal text by default
-         (wand:create-rule :match ""
+         (wand:create-rule :match (rx bol (0+ " ") "$")
                            :capture :after
-                           :action #'shell-command)
+                           :action #'~acmec)
+         (wand:create-rule :match (rx bol (0+ " ") "<")
+                           :capture :after
+                           :action #'~acme<)
+         ;; (wand:create-rule :match (rx bol (0+ " ") "|")
+         ;;                   :capture :after
+         ;;                   :action #'~acme|
+         ;;                   )
          ))
+
   )
 
 (provide 'init-editing)

@@ -17,6 +17,7 @@
 (global-set-key (kbd "<f2>") #'save-buffer)
 (global-set-key (kbd "<f3>") #'helm-find-files)
 (global-set-key (kbd "<f4>") #'save-buffers-kill-terminal)
+(global-set-key (kbd "<f5>") #'eval-buffer)
 
 (global-set-key (kbd "s-h") #'windmove-left)
 (global-set-key (kbd "s-j") #'windmove-down)

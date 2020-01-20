@@ -88,11 +88,4 @@
   (setq-default neo-show-hidden-files t))
 
 
-;; indent guide
-(use-package indent-guide
-  :ensure t
-  :defer t
-  :config (indent-guide-global-mode))
-
-
 (provide 'init-ui)

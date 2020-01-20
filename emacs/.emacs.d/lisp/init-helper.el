@@ -93,23 +93,5 @@
 (setq initial-scratch-message "")
 (setq initial-major-mode 'org-mode)
 
-;; Create a new Org scratch buffer
-(defun new-org-buffer ()
-  (interactive)
-  (let ((n 0)
-        bufname buffer)
-    (catch 'done
-      (while t
-        (setq bufname (concat "*org-temp*"
-                              (if (= n 0) "" (int-to-string n))
-                              "*"))
-        (setq n (1+ n))
-        (when (not (get-buffer bufname))
-          (setq buffer (get-buffer-create bufname))
-          (with-current-buffer buffer
-            (org-mode))
-          ;; When called non-interactively, the `t` targets the other window (if it exists).
-          (throw 'done (display-buffer buffer t))) ))))
-
 
 (provide 'init-helper)
