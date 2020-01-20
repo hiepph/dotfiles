@@ -19,7 +19,7 @@
                 doom-themes
                 poet-theme)))
   (dolist (look looks) (unless (package-installed-p look)
-                         (package-install theme))))
+                         (package-install look))))
 
 
 ;; Powerline
