@@ -129,11 +129,6 @@
     (let ((company-dabbrev-downcase t))
       (call-interactively fn)))
   (advice-add 'company-complete-selection :around #'jcs--company-complete-selection--advice-around)
-
-  ;; Use C-RET to complete instead of RET
-  (define-key company-active-map (kbd "<return>") nil)
-  (define-key company-active-map (kbd "RET") nil)
-  (define-key company-active-map (kbd "C-<return>") #'company-complete-selection)
   )
 
 (use-package pos-tip
