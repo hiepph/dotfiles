@@ -71,14 +71,6 @@
   (call-interactively 'indent-region))
 
 
-(use-package indent-guide
-  :ensure t
-  :config
-  (indent-guide-global-mode)
-  (set-face-background 'indent-guide-face "dimgray")
-  (setq indent-guide-delay 0.1))
-
-
 ;; Highlights matching parenthesis
 (show-paren-mode 1)
 
@@ -130,13 +122,19 @@
   (setq company-tooltip-align-annotations t)  ; Align annotation to the right side.
   (setq company-eclim-auto-save nil)          ; Stop eclim auto save.
   (setq company-dabbrev-downcase nil)         ; No downcase when completion.
-  :config
+
   ;; Enable downcase only when completing the completion.
   (defun jcs--company-complete-selection--advice-around (fn)
     "Advice execute around `company-complete-selection' command."
     (let ((company-dabbrev-downcase t))
       (call-interactively fn)))
-  (advice-add 'company-complete-selection :around #'jcs--company-complete-selection--advice-around))
+  (advice-add 'company-complete-selection :around #'jcs--company-complete-selection--advice-around)
+
+  ;; Use C-RET to complete instead of RET
+  (define-key company-active-map (kbd "<return>") nil)
+  (define-key company-active-map (kbd "RET") nil)
+  (define-key company-active-map (kbd "C-<return>") #'company-complete-selection)
+  )
 
 (use-package pos-tip
   :ensure t)
