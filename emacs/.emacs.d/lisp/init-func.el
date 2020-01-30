@@ -1,16 +1,18 @@
 (require 'init-elpa)
 
+
 ;; ACME
 ;; REF: http://man.cat-v.org/plan_9/1/acme
 ;;
 (defun ~acmec (&optional command)
   (interactive)
-  (let (($buf (get-buffer-create "*+Errors*")))
+  (let (($buf (generate-new-buffer "*+Errors*")))
     (with-current-buffer $buf
       (goto-char (point-max))
       (insert (shell-command-to-string command)))
     (display-buffer $buf))
   )
+
 
 (defun ~acme< (&optional command)
   (interactive)
