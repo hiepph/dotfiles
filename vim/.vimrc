@@ -1,6 +1,4 @@
-"""""""""""""""""""""""""""""""""""
-" Basic
-""""""""""""""""""""""""""""""""""""
+"""""""""""" Basic
 " Unicode
 set encoding=utf-8
 
@@ -38,7 +36,6 @@ function! TabToggle()
     set expandtab
   endif
 endfunction
-nmap <F9> mz:execute TabToggle()<CR>'z
 
 " Indent helpers
 filetype plugin indent on
@@ -63,10 +60,6 @@ set smartcase
 " For regular expressions turn magic on
 set magic
 
-" Shortcuts
-" Paste mode
-:map <F4> :set relativenumber! paste! <bar> GitGutterToggle <bar> IndentLinesToggle<CR>
-
 " Custom file type config
 "
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2 expandtab
@@ -77,12 +70,10 @@ au Filetype lisp let b:AutoPairs={'(':')', '[':']', '{':'}','"':'"'}
 au Filetype rust let b:AutoPairs={'(':')', '[':']', '{':'}','"':'"', '`':'`'}
 
 
-""""""""""""""""""""""""""""""
-""" Plugins (vim-plug)
-""""""""""""""""""""""""""""""
+""""""""""" Plugins (vim-plug)
 call plug#begin('~/.vim/plugged')
 
-"""""" Pair
+" Pair
 Plug 'https://github.com/jiangmiao/auto-pairs'
 Plug 'https://github.com/tpope/vim-surround'
 Plug 'https://github.com/terryma/vim-expand-region'
@@ -95,19 +86,15 @@ au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
-"""""""" White space
+" White space
 Plug 'https://github.com/ntpeters/vim-better-whitespace'
 autocmd BufEnter * EnableStripWhitespaceOnSave
 let g:strip_whitespace_confirm=0
 
-"""""""""""" Git support
-Plug 'https://github.com/tpope/vim-fugitive'
-Plug 'https://github.com/airblade/vim-gitgutter'
-
 """""""" Comment
 Plug 'https://github.com/tpope/vim-commentary'
 
-"""""""""" Search
+" Search
 " Incseach
 Plug 'https://github.com/haya14busa/incsearch.vim'
 map /  <Plug>(incsearch-forward)
@@ -123,108 +110,10 @@ map #  <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
 
-" FZF
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-" This is the default extra key bindings
-let g:fzf_action = {
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-x': 'split',
-  \ 'ctrl-v': 'vsplit' }
-
-" An action can be a reference to a function that processes selected lines
-function! s:build_quickfix_list(lines)
-  call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
-  copen
-  cc
-endfunction
-
-let g:fzf_action = {
-  \ 'ctrl-q': function('s:build_quickfix_list'),
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-x': 'split',
-  \ 'ctrl-v': 'vsplit' }
-
-" Default fzf layout
-" - down / up / left / right
-let g:fzf_layout = { 'down': '~40%' }
-
-" You can set up fzf window using a Vim command (Neovim or latest Vim 8 required)
-" let g:fzf_layout = { 'window': 'enew' }
-" let g:fzf_layout = { 'window': '-tabnew' }
-" let g:fzf_layout = { 'window': '10split enew' }
-
-" Customize fzf colors to match your color scheme
-let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
-
-" Enable per-command history.
-" CTRL-N and CTRL-P will be automatically bound to next-history and
-" previous-history instead of down and up. If you don't like the change,
-" explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
-let g:fzf_history_dir = '~/.local/share/fzf-history'
-
-" Mapping selecting mappings
-nmap <leader><tab> <plug>(fzf-maps-n)
-xmap <leader><tab> <plug>(fzf-maps-x)
-omap <leader><tab> <plug>(fzf-maps-o)
-
-" Insert mode completion
-imap <c-x><c-k> <plug>(fzf-complete-word)
-imap <c-x><c-f> <plug>(fzf-complete-path)
-imap <c-x><c-j> <plug>(fzf-complete-file-ag)
-imap <c-x><c-l> <plug>(fzf-complete-line)
-
-" Advanced customization using autoload functions
-inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
-
-" Replace the default dictionary completion with fzf-based fuzzy completion
-inoremap <expr> <c-x><c-k> fzf#complete('cat /usr/share/dict/words')
-
-function! s:make_sentence(lines)
-  return substitute(join(a:lines), '^.', '\=toupper(submatch(0))', '').'.'
-endfunction
-
-inoremap <expr> <c-x><c-s> fzf#complete({
-  \ 'source':  'cat /usr/share/dict/words',
-  \ 'reducer': function('<sid>make_sentence'),
-  \ 'options': '--multi --reverse --margin 15%,0',
-  \ 'left':    20})
-
-" rg power
-command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
-
-" Fake CTRL-P
-map <C-P> :Files<CR>
-map <C-L> :Buffers<CR>
-
-
-" Search all files (like `grep`)
-Plug 'brooth/far.vim'
-
-"""""""""" Config support
-Plug 'tpope/vim-sleuth'
-
-"""""""""""" UI
-Plug 'mhinz/vim-startify'
-
 " show indent line
-Plug 'Yggdroot/indentLine'
+" Plug 'Yggdroot/indentLine'
 
 " Lightline
-" Needs font-awesome
 Plug 'https://github.com/itchyny/lightline.vim'
 set laststatus=2
 let g:lightline = {
@@ -322,45 +211,14 @@ let g:vim_markdown_toml_frontmatter = 1  " for TOML format
 let g:vim_markdown_json_frontmatter = 1  " for JSON format
 
 
-"""""""""""" Theme
+""""""" Theme
 Plug 'https://github.com/flazz/vim-colorschemes'
 Plug 'https://github.com/rafi/awesome-vim-colorschemes'
-Plug 'dylanaraps/wal.vim'
 Plug 'Rigellute/rigel'
-
-"""""""""""""" Completion
-function! BuildYCM(info)
-  " info is a dictionary with 3 fields
-  " - name:   name of the plugin
-  " - status: 'installed', 'updated', or 'unchanged'
-  " - force:  set on PlugInstall! or PlugUpdate!
-  if a:info.status == 'installed' || a:info.force
-    !python install.py --clang-completer
-  endif
-endfunction
-
-Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
-let g:ycm_python_binary_path = 'python'
-let g:ycm_auto_trigger = 1
-let g:ycm_autoclose_preview_window_after_completion=1
-map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
-
-
-"""""""""""""" Syntax checking
-" $ pip install flake8 pylint
-Plug 'w0rp/ale'
-let g:ale_sign_error = '✘'
-let g:ale_sign_warning = '•'
-highlight ALEErrorSign ctermbg=NONE ctermfg=red
-highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
-
-nmap <silent> <C-j> :ALENext<cr>
-nmap <silent> <C-k> :ALEPrevious<cr>
 
 call plug#end()
 
-""""""""" LAST """"""""""""""""""
-" Custom config for each machine
+""""""" Custom
 " $ touch ~/.custom.vim
 "
 try
