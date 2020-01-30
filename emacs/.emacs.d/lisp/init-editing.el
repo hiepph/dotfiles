@@ -109,8 +109,9 @@
 ;; Auto complete
 (use-package company
   :ensure t
+  :hook
+  (prog-mode . company-mode)
   :config
-  (add-hook 'after-init-hook 'global-company-mode)
   ;; case sensitive completion
   (setq company-dabbrev-downcase nil)
 
@@ -156,8 +157,9 @@
   ;; Install back-end checker
   ;; pip install pylint
   :ensure t
+  :hook
+  (prog-mode . flycheck-mode)
   :config
-  (global-flycheck-mode) ;; on by default
   (setq-default flycheck-emacs-lisp-load-path 'inherit)
   (setq flycheck-flake8-maximum-line-length 120)
   (set-face-attribute 'flycheck-error nil :underline '(:color "#d32e00"))
@@ -193,9 +195,7 @@
     :error-list-face 'flycheck-error-list-error)
 
   ;; check only when save file or change the major mode
-  (setq flycheck-check-syntax-automatically '(save mode-enable))
-
-  :bind ("<f12>" . 'flycheck-mode))
+  (setq flycheck-check-syntax-automatically '(save mode-enable)))
 
 
 ;; Undo tree
@@ -231,6 +231,7 @@
   :ensure t
   :bind
   ([mouse-2] . 'wand:execute)
+  ("C-<return>" . 'wand:execute)
   :config
   (setq wand:*rules*
         (list
@@ -240,12 +241,10 @@
          (wand:create-rule :match (rx bol (0+ " ") "<")
                            :capture :after
                            :action #'~acme<)
-         ;; (wand:create-rule :match (rx bol (0+ " ") "|")
-         ;;                   :capture :after
-         ;;                   :action #'~acme|
-         ;;                   )
-         ))
+         (wand:create-rule :match (rx bol (0+ " ") "http")
+                           :capture :whole
+                           :action #'browse-url-firefox)
+         )))
 
-  )
 
 (provide 'init-editing)
