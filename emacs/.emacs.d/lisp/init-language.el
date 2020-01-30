@@ -1,16 +1,14 @@
+;;; init-language.el --- Programming languages and modes
+
+;;; Commentary:
+;;;
 (require 'init-elpa)
 
-(let ((languages '(go-mode
-                   yaml-mode
-                   rust-mode
-                   js2-mode)))
-  (dolist (lang languages) (unless (package-installed-p lang)
-                             (package-install lang))))
+;;; Code:
 
 ;; Python
-;; Ignoring electric indentation
 (defun electric-indent-ignore-python (char)
-  "Ignore electric indentation for python-mode"
+  "Ignore electric indentation for python-mode."
   (if (equal major-mode 'python-mode)
       'no-indent
     nil))
@@ -34,22 +32,9 @@
             (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)))
 
 
-;; Lisp
-(use-package slime
-  :ensure t
-  :config (setq inferior-lisp-program "sbcl"))
-
-
+;; Elixir
 (use-package elixir-mode
   :ensure t)
-
-
-;; Scala
-(use-package scala-mode
-  :ensure t
-  :interpreter
-  ("scala" . scala-mode))
-
 
 
 ;; Javascript & Web-related
@@ -67,23 +52,49 @@
           (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))))
 
 
-;; clojure
-(use-package clojure-mode
+;; Haskell
+(use-package haskell-mode
   :ensure t)
 
 
 ;; Org-mode
 (use-package org
   :ensure t
-  :init (progn
-          (setq org-log-done 'time)
+  :init
+  (setq org-log-done 'time)
+  (add-hook 'org-mode-hook 'turn-on-font-lock)
+  ;; show image in org babel
+  (add-hook 'org-babel-after-execute-hook 'org-display-inline-images 'append)
 
-          ;; Turn off auto-fold
-          (setq org-startup-folded nil)))
-(add-hook 'org-mode-hook 'turn-on-font-lock)
+  ;; Turn off auto-fold
+  (setq org-startup-folded nil)
+
+  :config
+  (setq org-confirm-babel-evaluate nil
+        org-src-fontify-natively t
+        org-src-tab-acts-natively t)
+
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '(
+     (shell      . t)
+     (emacs-lisp . t)
+     (python     . t)
+     (ruby       . t)
+     ))
+  )
+
+(use-package org-bullets
+  :ensure t
+  :config
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+  )
+
 
 ;; custom
 (add-to-list 'auto-mode-alist '("\\.cu\\'" . c++-mode))
-
+(add-to-list 'auto-mode-alist '("\\.zsh\\'" . sh-mode))
+2
 
 (provide 'init-language)
+;;; init-language.el ends here

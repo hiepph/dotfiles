@@ -19,5 +19,9 @@
 (use-package bind-key
   :ensure t
   :defer t)
+;; (use-package use-package-chords
+;;   :ensure t
+;;   :config (key-chord-mode 1))
+
 
 (provide 'init-elpa)

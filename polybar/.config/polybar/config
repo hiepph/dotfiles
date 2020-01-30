@@ -1,24 +1,16 @@
 [colors]
-background = ${xrdb:color0}
-background-alt = ${xrdb:color8}
-foreground = ${xrdb:color15}
-foreground-alt = ${xrdb:color15}
-black = ${xrdb:color0}
-dark-grey = ${xrdb:color8}
-dark-red = ${xrdb:color1}
-red = ${xrdb:color9}
-dark-green = ${xrdb:color2}
-green = ${xrdb:color10}
-dark-yellow = ${xrdb:color3}
-yellow = ${xrdb:color11}
-dark-blue = ${xrdb:color4}
-blue = ${xrdb:color12}
-dark-magenta = ${xrdb:color5}
-magenta = ${xrdb:color13}
-dark-cyan = ${xrdb:color6}
-cyan = ${xrdb:color14}
-light-grey = ${xrdb:color7}
-white = ${xrdb:color15}
+background = #2E3440
+buffer = #3B4252
+foreground = #D8DEE9
+nord6 = #ECEFF4
+nord7 = #8FBCBB
+nord8 = #88C0D0
+nord9 = #81A1C1
+urgent = #BF616A
+warning = #D08770
+notify = #EBCB8B
+success = #A3BE8C
+function = #B48EAD
 
 [bar/i3wmthemer_bar]
 monitor = ${env:MONITOR:}
@@ -108,7 +100,7 @@ label = RAM %gb_used%/%gb_free%
 ; Only applies if <bar-used> is used
 bar-used-indicator =
 bar-used-width = 50
-bar-used-foreground-0 = ${colors.green}
+bar-used-foreground-0 = ${colors.nord8}
 bar-used-fill = ▐
 bar-used-empty = ▐
 bar-used-empty-foreground = #444444
@@ -190,7 +182,7 @@ ramp-signal-foreground = #c5c8c6
 type = internal/network
 interface = enp2s0
 interval = 3.0
-format-background = ${colors.blue}
+format-background = ${colors.nord6}
 
 format-connected-padding = 2
 format-connected-foreground = #c5c8c6
@@ -213,7 +205,7 @@ time-alt = %H:%M:%S
 
 format-prefix = 
 format-foreground = #c5c8c6
-format-background = ${colors.red}
+format-background = ${colors.nord9}
 format-padding = 2
 
 label = %date% %time%
@@ -311,25 +303,25 @@ wrapping-scroll=false
 pin-workspaces = true
 
 label-mode-padding = 2
-label-mode-foreground = ${colors.black}
-label-mode-background = ${colors.blue}
+label-mode-foreground = ${colors.nord7}
+label-mode-background = ${colors.nord6}
 
 label-focused = %index%
-label-focused-background = ${colors.yellow}
+label-focused-background = ${colors.warning}
 label-focused-foreground = ${colors.background}
 label-focused-padding = 2
 
 label-unfocused = %index%
 label-unfocused-padding = 2
-label-unfocused-background = ${colors.blue}
+label-unfocused-background = ${colors.nord6}
 label-unfocused-foreground = ${colors.background}
 
 label-urgent = %index%
 label-urgent-padding = 2
-label-urgent-background = ${colors.magenta}
+label-urgent-background = ${colors.urgent}
 label-urgent-foreground = ${colors.background}
 
 label-visible = %index%
 label-visible-padding = 2
 label-visible-foreground = ${colors.background}
-label-visible-background = ${colors.blue}
+label-visible-background = ${colors.nord6}

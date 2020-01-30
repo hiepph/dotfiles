@@ -1,4 +1,5 @@
 (require 'init-elpa)
+(require 'init-func)
 
 ;; Basic
 ;; replace highlight text with typing action
@@ -13,29 +14,18 @@
 ;; Tab as 4 spaces
 (setq tab-width 4)
 
+
 ;; Autopair
-(use-package autopair
+(use-package smartparens
   :ensure t
-  :diminish autopair-mode
-
   :init
-  ;; auto-wrap word into pair
-  (setq autopair-autowrap t)
-
-  :config
-  (autopair-global-mode)
-  ;; Triple quote in python
-  (add-hook 'python-mode-hook
-            #'(lambda ()
-                (setq autopair-handle-action-fns
-                      (list #'autopair-default-handle-action
-                            #'autopair-python-triple-quote-action)))))
+  (require 'smartparens-config)
+  (smartparens-global-mode t))
 
 
 ;; Expand region
 (use-package expand-region
-  :ensure t
-  :bind ("C-=" . 'er/expand-region))
+  :ensure t)
 
 
 ;; Trailing white-space
@@ -80,16 +70,6 @@
   (yank)
   (call-interactively 'indent-region))
 
-(global-set-key (kbd "C-S-y") 'yank-and-indent)
-
-
-(use-package indent-guide
-  :ensure t
-  :config
-  (indent-guide-global-mode)
-  (set-face-background 'indent-guide-face "dimgray")
-  (setq indent-guide-delay 0.1))
-
 
 ;; Highlights matching parenthesis
 (show-paren-mode 1)
@@ -105,17 +85,6 @@
 ;; Highlight current line
 (global-hl-line-mode 1)
 
-
-;; Search with Ivy
-(use-package swiper-helm
-  :ensure t
-  :diminish
-  (ivy-mode counsel-mode)
-  :init
-  (setq ivy-use-virtual-buffers t)
-  (setq enable-recursive-minibuffers t)
-  :bind
-  ("C-s" . 'swiper))
 
 ;; Enter automatically indent code
 (define-key global-map (kbd "RET") 'newline-and-indent)
@@ -136,21 +105,32 @@
   (comment-or-uncomment-region (line-beginning-position) (line-end-position)))
 (global-set-key (kbd "C-;") 'toggle-comment-on-line)
 
-;; Join line and next line
-(defun top-join-line ()
-  "Join the current line with the line beneath it."
-  (interactive)
-  (delete-indentation 1))
-(global-set-key (kbd "C-^") 'top-join-line)
-
 
 ;; Auto complete
 (use-package company
   :ensure t
+  :hook
+  (prog-mode . company-mode)
   :config
-  (add-hook 'after-init-hook 'global-company-mode)
   ;; case sensitive completion
-  (setq company-dabbrev-downcase nil))
+  (setq company-dabbrev-downcase nil)
+
+  ;; dabbrev completion (https://www.gnu.org/software/emacs/manual/html_node/emacs/Dynamic-Abbrevs.html)
+  (add-to-list 'company-backends '(company-capf company-dabbrev))
+
+  ;; fuzzy matching
+  (setq company-require-match nil)  ; Don't require match, so you can still move your cursor as expected.
+  (setq company-tooltip-align-annotations t)  ; Align annotation to the right side.
+  (setq company-eclim-auto-save nil)          ; Stop eclim auto save.
+  (setq company-dabbrev-downcase nil)         ; No downcase when completion.
+
+  ;; Enable downcase only when completing the completion.
+  (defun jcs--company-complete-selection--advice-around (fn)
+    "Advice execute around `company-complete-selection' command."
+    (let ((company-dabbrev-downcase t))
+      (call-interactively fn)))
+  (advice-add 'company-complete-selection :around #'jcs--company-complete-selection--advice-around)
+  )
 
 (use-package pos-tip
   :ensure t)
@@ -168,9 +148,8 @@
   ;; Zero-delay
   (setq company-idle-delay 0)
 
-  :bind (
-         ("C-\\" . 'company-complete)))
-
+  :bind
+  ("C-\\" . 'company-complete))
 
 
 ;; Flycheck
@@ -178,9 +157,9 @@
   ;; Install back-end checker
   ;; pip install pylint
   :ensure t
+  :hook
+  (prog-mode . flycheck-mode)
   :config
-  ;; Off by default
-  (global-flycheck-mode)
   (setq-default flycheck-emacs-lisp-load-path 'inherit)
   (setq flycheck-flake8-maximum-line-length 120)
   (set-face-attribute 'flycheck-error nil :underline '(:color "#d32e00"))
@@ -188,7 +167,6 @@
   (set-face-attribute 'flycheck-info nil :underline '(:color "ForestGreen"))
 
   ;; theme
-
   (define-fringe-bitmap 'flycheck-fringe-bitmap-ball
     (vector #b00000000
             #b00000000
@@ -216,7 +194,8 @@
     :fringe-face 'flycheck-fringe-error
     :error-list-face 'flycheck-error-list-error)
 
-  :bind ("<f12>" . 'flycheck-mode))
+  ;; check only when save file or change the major mode
+  (setq flycheck-check-syntax-automatically '(save mode-enable)))
 
 
 ;; Undo tree
@@ -224,11 +203,11 @@
   :ensure t
   :config
   (global-undo-tree-mode 1)
-  :bind (
-         ;; Undo
-         ("C-/" . 'undo)
-         ;; Redo
-         ("C-S-/" . 'undo-tree-redo)))
+  :bind
+  ;; Undo
+  ("C-/" . 'undo)
+  ;; Redo
+  ("C-S-/" . 'undo-tree-redo))
 
 
 ;; Go to matching parenthesis
@@ -237,21 +216,35 @@
   (cond ((looking-at "\\s\(") (forward-list 1) (backward-char 1))
         ((looking-at "\\s\)") (forward-char 1) (backward-list 1))
         (t (self-insert-command (or arg 1)))))
-(global-set-key (kbd "C-%") 'goto-match-paren)
 
 
 ;; Multiple cursors
 (use-package multiple-cursors
   :ensure t
-  :bind
-  ("C-S-c C-S-c" . 'mc/edit-lines)
-  ("C-S-f" . 'mc/mark-next-like-this)
-  ("C-S-b" . 'mc/mark-previous-like-this)
-  ("C-S-d" . 'mc/mark-all-like-this)
-
   :config
   (global-unset-key (kbd "C-<down-mouse-1>"))
   (global-set-key (kbd "C-<mouse-1>") 'mc/add-cursor-on-click))
+
+
+;; ACME
+(use-package wand
+  :ensure t
+  :bind
+  ([mouse-2] . 'wand:execute)
+  ("C-<return>" . 'wand:execute)
+  :config
+  (setq wand:*rules*
+        (list
+         (wand:create-rule :match (rx bol (0+ " ") "$")
+                           :capture :after
+                           :action #'~acmec)
+         (wand:create-rule :match (rx bol (0+ " ") "<")
+                           :capture :after
+                           :action #'~acme<)
+         (wand:create-rule :match (rx bol (0+ " ") "http")
+                           :capture :whole
+                           :action #'browse-url-firefox)
+         )))
 
 
 (provide 'init-editing)

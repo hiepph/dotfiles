@@ -15,9 +15,7 @@
   ("C-x g" . 'magit-status)
   ;; shortcuts help
   ("C-x M-g" . 'magit-dispatch-popup)
-  ("<f4>" . 'magit-dispatch-popup)
   ("C-c m d" . 'magit-diff-buffer-file)
-  ("C-c m f" . 'magit-file-popup)
   :init
   ;; When 'C-c C-c' is pressed in the magit commit message buffer,
   ;; delete the magit-diff buffer related to the current repo.
@@ -50,11 +48,50 @@
 (global-set-key (kbd "C-0") (lambda () (interactive) (text-scale-increase 0)))
 
 
-;; Remote
-; (setq tramp-default-method "sshx")
+;; Search with Ivy
+(defun bjm-swiper-recenter (&rest args)
+  "recenter display after swiper"
+  (recenter))
+
+(use-package swiper
+  :ensure t
+  :diminish
+  (ivy-mode counsel-mode)
+  :init
+  (setq ivy-use-virtual-buffers t)
+  (setq enable-recursive-minibuffers t)
+  :config
+  (setq ivy-display-style 'fancy)
+  (advice-add 'swiper :after #'bjm-swiper-recenter)
+  ;; M-c to toggle sensitive search
+  (define-key ivy-minibuffer-map (kbd "M-c") 'ivy-toggle-case-fold)
+  :bind
+  ("C-s" . 'swiper))
+
 
 ;; Disable Ctrl-Z (freeze)
 (global-unset-key (kbd "C-z"))
+
+
+;; String manipulation
+(use-package s
+  :ensure t)
+
+
+;; Useful extension for Emacs (Crux)
+;; https://github.com/bbatsov/crux
+(use-package crux
+  :ensure t)
+
+;; Buffers
+(defun kill-all-buffers ()
+  (interactive)
+  (mapc 'kill-buffer (buffer-list)))
+
+
+;; Make *scratch* buffer default to org
+(setq initial-scratch-message "")
+(setq initial-major-mode 'org-mode)
 
 
 (provide 'init-helper)
