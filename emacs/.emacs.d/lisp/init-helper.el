@@ -94,4 +94,11 @@
 (setq initial-major-mode 'org-mode)
 
 
+;; Google
+(use-package google-this
+  :ensure t
+  :config
+  (google-this-mode 1))
+
+
 (provide 'init-helper)
