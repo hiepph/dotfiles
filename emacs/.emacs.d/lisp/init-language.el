@@ -1,10 +1,7 @@
 ;;; init-language.el --- Programming languages and modes
 
-;;; Commentary:
-;;;
 (require 'init-elpa)
 
-;;; Code:
 
 ;; Python
 (defun electric-indent-ignore-python (char)
@@ -91,10 +88,13 @@
   )
 
 
-;; custom
+;;
+;; Custom
+;;
 (add-to-list 'auto-mode-alist '("\\.cu\\'" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.zsh\\'" . sh-mode))
-2
+(add-to-list 'auto-mode-alist '("\\.elm\\'" . haskell-mode))
+
+
 
 (provide 'init-language)
-;;; init-language.el ends here
