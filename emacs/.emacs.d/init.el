@@ -17,7 +17,7 @@
 (require 'init-miscellaneous)
 (require 'init-ui)
 (require 'init-language)
-;; (require 'init-editing)
+(require 'init-edit)
 ;; (require 'init-navigation)
 ;; (require 'init-helper)
 
