@@ -1,5 +1,7 @@
 (require 'init-elpa)
 
+;; Disable Ctrl-Z (freeze)
+(global-unset-key (kbd "C-z"))
 
 ;; Changes all yes/no questions to y/n type
 (fset 'yes-or-no-p 'y-or-n-p)

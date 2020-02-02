@@ -75,8 +75,15 @@
   (setq whitespace-style '(face lines-tail trailing))
 )
 
-
-
+;;
+;; Commenter
+;; ref: https://github.com/linktohack/evil-commentary
+;;
+(use-package evil-commentary
+  :ensure t
+  :init
+  (evil-commentary-mode)
+  )
 
 
 ;; ;; Fast comment toggle

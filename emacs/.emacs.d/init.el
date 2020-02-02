@@ -18,9 +18,7 @@
 (require 'init-ui)
 (require 'init-language)
 (require 'init-edit)
-;; (require 'init-navigation)
-;; (require 'init-helper)
-
+(require 'init-helper)
 (require 'init-keys)
 (require 'init-custom nil 'no-error)
 
