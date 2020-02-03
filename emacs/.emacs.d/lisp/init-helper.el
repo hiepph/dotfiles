@@ -19,22 +19,47 @@
   (which-key-mode))
 
 ;;
-;; Search
-;; ref: https://github.com/abo-abo/swiper
+;; Helm
 ;;
-;; (use-package swiper
-;;   :ensure t
-;;   :init
-;;   (setq ivy-use-virtual-buffers t)
-;;   (setq enable-recursive-minibuffers t)
-;;   :config
-;;   (setq ivy-display-style 'fancy)
+(use-package helm
+  :ensure t
+  :init
+  (helm-mode 1)
+  :config
+  ;; Always stay as separated below window
+  (setq helm-always-two-windows t)
+  (setq helm-split-window-in-side-p t)
+  (setq helm-split-window-default-side 'below)
 
-;;   (defun bjm-swiper-recenter (&rest args)
-;;     "recenter display after swiper"
-;;     (recenter))
-;;   (advice-add 'swiper :after #'bjm-swiper-recenter)
-;;   )
+  ;; Fuzzy match
+  (setq helm-M-x-fuzzy-match t)
+  (setq helm-buffers-fuzzy-matching t
+        helm-recentf-fuzzy-match t)
+
+  ;; Auto resize to fit the number of candidates
+  (helm-autoresize-mode t)
+  )
+
+
+;;
+;; Virtual desktop
+;;
+(use-package eyebrowse
+  :ensure t
+  :init
+  (eyebrowse-mode t)
+  (setq eyebrowse-new-workspace t)
+  )
+
+
+;;
+;; Project management
+;;
+(use-package projectile
+  :ensure t
+  :init
+  (projectile-mode +1)
+  )
 
 
 (provide 'init-helper)

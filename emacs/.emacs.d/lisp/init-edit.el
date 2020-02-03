@@ -86,6 +86,15 @@
   )
 
 
+;;
+;; Undo/Redo tree
+;;
+(use-package undo-tree
+  :ensure t
+  :init
+  (global-undo-tree-mode))
+
+
 ;; ;; Fast comment toggle
 ;; (defun toggle-comment-on-line ()
 ;;   "Comment or uncomment current line."
