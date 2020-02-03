@@ -16,6 +16,9 @@
   (evil-mode 1)
 
   :config
+  ;; Global
+  (global-set-key (kbd "<M-f4>") 'save-buffers-kill-terminal)
+
   ;; Helm
   (global-set-key (kbd "M-x") 'helm-M-x)
   (global-set-key (kbd "<f2>") 'helm-find-files)
@@ -49,11 +52,11 @@
 ;;
 ;; Evil magit
 ;;
-;; (use-package evil-magit
-;;   :ensure t
-;;   :config
-;;   (add-hook 'with-editor-mode-hook 'evil-insert-state)
-;;   )
+(use-package evil-magit
+  :ensure t
+  :config
+  (add-hook 'with-editor-mode-hook 'evil-insert-state)
+  )
 
 
 (provide 'init-keys)
