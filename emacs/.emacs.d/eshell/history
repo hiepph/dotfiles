@@ -1,0 +1,9 @@
+ls
+l
+ls 
+runhaskell
+cd ..
+ls
+cabal run
+head -n 1 links.txt > cabal run
+ls

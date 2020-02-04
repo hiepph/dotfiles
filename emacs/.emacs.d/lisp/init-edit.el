@@ -25,11 +25,6 @@
 (global-hl-line-mode 1)
 
 
-;; Enter automatically indent code
-(define-key global-map (kbd "RET") 'newline-and-indent)
-
-
-
 
 ;;
 ;; Pairs
@@ -57,6 +52,13 @@
   :ensure t
   :config
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
+
+;; Surround
+;; ref: https://github.com/emacs-evil/evil-surround
+(use-package evil-surround
+  :ensure t
+  :config
+  (global-evil-surround-mode 1))
 
 
 
