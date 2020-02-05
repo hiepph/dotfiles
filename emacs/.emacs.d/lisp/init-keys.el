@@ -43,6 +43,11 @@
   (evil-define-key 'normal haskell-mode-map
     "o" 'haskell-evil-open-below
     "O" 'haskell-evil-open-above)
+
+  ;; expand region
+  ;; ref: https://github.com/terryma/vim-expand-region
+  (evil-define-key 'normal 'global
+    "+" 'er/expand-region)
 )
 
 ;;
