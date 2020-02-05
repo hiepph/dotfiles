@@ -59,8 +59,12 @@
   (haskell-indentation-newline-and-indent)
   (evil-previous-line)
   (haskell-indentation-indent-line)
+  (evil-append-line nil))
+
+(defun haskell-evil-open-below ()
+  (interactive)
   (evil-append-line nil)
-  )
+  (haskell-indentation-newline-and-indent))
 
 
 ;; Org-mode

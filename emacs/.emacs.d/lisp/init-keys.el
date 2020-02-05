@@ -5,6 +5,7 @@
 ;;
 
 (require 'init-elpa)
+(require 'init-language)
 
 ;;
 ;; Evil keybinding
@@ -37,6 +38,11 @@
   (define-key eyebrowse-mode-map (kbd "M-2") 'eyebrowse-switch-to-window-config-2)
   (define-key eyebrowse-mode-map (kbd "M-3") 'eyebrowse-switch-to-window-config-3)
   (define-key eyebrowse-mode-map (kbd "M-4") 'eyebrowse-switch-to-window-config-4)
+
+  ;; Haskell
+  (evil-define-key 'normal haskell-mode-map
+    "o" 'haskell-evil-open-below
+    "O" 'haskell-evil-open-above)
 )
 
 ;;
