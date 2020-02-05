@@ -104,13 +104,16 @@
   :init
   (global-undo-tree-mode))
 
+;;
+;; Multiple cursors
+;;
+(use-package multiple-cursors
+  :ensure t
+  :config
+  ;; able to use mouse to select
+  (global-unset-key (kbd "C-<down-mouse-1>"))
+  (global-set-key (kbd "C-<mouse-1>") 'mc/add-cursor-on-click))
 
-;; ;; Fast comment toggle
-;; (defun toggle-comment-on-line ()
-;;   "Comment or uncomment current line."
-;;   (interactive)
-;;   (comment-or-uncomment-region (line-beginning-position) (line-end-position)))
-;; (global-set-key (kbd "C-;") 'toggle-comment-on-line)
 
 
 ;; ;; Auto complete
@@ -203,35 +206,6 @@
 
 ;;   ;; check only when save file or change the major mode
 ;;   (setq flycheck-check-syntax-automatically '(save mode-enable)))
-
-
-;; ;; Undo tree
-;; (use-package undo-tree
-;;   :ensure t
-;;   :config
-;;   (global-undo-tree-mode 1)
-;;   :bind
-;;   ;; Undo
-;;   ("C-/" . 'undo)
-;;   ;; Redo
-;;   ("C-S-/" . 'undo-tree-redo))
-
-
-;; ;; Go to matching parenthesis
-;; (defun goto-match-paren (arg)
-;;   (interactive "p")
-;;   (cond ((looking-at "\\s\(") (forward-list 1) (backward-char 1))
-;;         ((looking-at "\\s\)") (forward-char 1) (backward-list 1))
-;;         (t (self-insert-command (or arg 1)))))
-
-
-;; ;; Multiple cursors
-;; (use-package multiple-cursors
-;;   :ensure t
-;;   :config
-;;   (global-unset-key (kbd "C-<down-mouse-1>"))
-;;   (global-set-key (kbd "C-<mouse-1>") 'mc/add-cursor-on-click))
-
 
 ;; ;; ACME
 ;; (use-package wand

@@ -6,6 +6,7 @@
 
 (require 'init-elpa)
 (require 'init-language)
+(require 'init-edit)
 
 ;;
 ;; Evil keybinding
@@ -17,14 +18,12 @@
   (evil-mode 1)
 
   :config
-  ;; Global
-  (global-set-key (kbd "<M-f4>") 'save-buffers-kill-terminal)
-
   ;; Helm
-  (global-set-key (kbd "M-x") 'helm-M-x)
   (global-set-key (kbd "<f2>") 'helm-find-files)
   (global-set-key (kbd "<f3>") 'helm-mini)
+  (global-set-key (kbd "M-x") 'helm-M-x)
   (global-set-key (kbd "M-s") 'helm-do-grep-ag)
+  (global-set-key (kbd "M-k") 'helm-show-kill-ring)
 
   ;; Projectile
   (define-key projectile-mode-map (kbd "M-p") 'projectile-command-map)
