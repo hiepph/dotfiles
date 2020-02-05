@@ -25,6 +25,14 @@
 (global-hl-line-mode 1)
 
 
+;;
+;; Automatic indentation offset detection
+;;
+(use-package dtrt-indent
+  :ensure t
+  :init
+  (dtrt-indent-mode)
+  )
 
 ;;
 ;; Pairs

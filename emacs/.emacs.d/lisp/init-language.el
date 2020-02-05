@@ -53,6 +53,15 @@
 (use-package haskell-mode
   :ensure t)
 
+(defun haskell-evil-open-above ()
+  (interactive)
+  (evil-digit-argument-or-evil-beginning-of-line)
+  (haskell-indentation-newline-and-indent)
+  (evil-previous-line)
+  (haskell-indentation-indent-line)
+  (evil-append-line nil)
+  )
+
 
 ;; Org-mode
 (use-package org

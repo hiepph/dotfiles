@@ -30,6 +30,7 @@
 
   ;; Magit
   (global-set-key (kbd "M-g") 'magit-status)
+  (global-set-key (kbd "M-G") 'magit-dispatch)
 
   ;; eyebrowse
   (define-key eyebrowse-mode-map (kbd "M-1") 'eyebrowse-switch-to-window-config-1)

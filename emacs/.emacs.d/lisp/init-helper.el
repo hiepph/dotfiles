@@ -38,6 +38,10 @@
 
   ;; Auto resize to fit the number of candidates
   (helm-autoresize-mode t)
+
+  ;; Set Helm to use `ripgrep`
+  (setq helm-grep-ag-command "rg --color=always --colors 'match:fg:black' --colors 'match:bg:yellow' --smart-case --no-heading --line-number %s %s %s")
+  (setq helm-grep-ag-pipe-cmd-switches '("--colors 'match:fg:black'" "--colors 'match:bg:yellow'"))
   )
 
 
