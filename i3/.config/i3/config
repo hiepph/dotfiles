@@ -36,6 +36,9 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec urxvt
 
+# lock screen
+bindsym $mod+Escape exec xtrlock
+
 # kill focused window
 bindsym $mod+Shift+q kill
 
