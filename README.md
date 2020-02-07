@@ -10,5 +10,5 @@ Simply integrate config with `stow <package>`.
 
 ## Installation
 
-+ Bootstrap everything: `python bootstrap.py all`
++ Bootstrap everything: `python bootstrap.py`
 + Bootstrap some modules: `python bootstrap.py git vim emacs`

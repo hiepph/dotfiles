@@ -18,9 +18,13 @@
   (evil-mode 1)
 
   :config
+
+  ;;
   ;; Navigation
+  ;;
   (global-set-key (kbd "<f3>") 'helm-find-files)
   (global-set-key (kbd "<f8>") 'helm-mini)
+  (global-set-key (kbd "<f9>") 'dired-jump)
   (global-set-key (kbd "M-x") 'helm-M-x)
   (global-set-key (kbd "M-s") 'helm-do-grep-ag)
 
@@ -31,19 +35,28 @@
   (define-key eyebrowse-mode-map (kbd "M-3") 'eyebrowse-switch-to-window-config-3)
   (define-key eyebrowse-mode-map (kbd "M-4") 'eyebrowse-switch-to-window-config-4)
 
+  ;; dired
+  (evil-define-key 'normal 'dired-mode-map
+    "gr" 'revert-buffer)
+
+  ;;
   ;; Edit
+  ;;
   (global-set-key (kbd "<f2>") 'write-file)
   (global-set-key (kbd "M-k") 'helm-show-kill-ring)
 
-  ;; Magit
-  (global-set-key (kbd "M-g") 'magit-status)
-  (global-set-key (kbd "M-G") 'magit-dispatch)
 
-  ;; Languages
   ;; Haskell
   (evil-define-key 'normal haskell-mode-map
     "o" 'haskell-evil-open-below
     "O" 'haskell-evil-open-above)
+
+
+  ;;
+  ;; Magit
+  ;;
+  (global-set-key (kbd "M-g") 'magit-status)
+  (global-set-key (kbd "M-G") 'magit-dispatch)
 )
 
 ;;
