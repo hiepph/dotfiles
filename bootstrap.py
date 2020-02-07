@@ -42,9 +42,27 @@ def bootstrap_nvidia():
     """)
 
 
+def bootstrap_vim():
+    execute(f"""
+    {_pacman} vim
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    touch ~/.custom.vim
+    vim -c "PlugInstall" -c "qa"
+    """)
+
+
+def bootstrap_tmux():
+    execute(f"""
+    {_pacman} tmux
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    """)
+
+
 M = {'git': bootstrap_git,
      'nvidia': bootstrap_nvidia,
-     'aur': bootstrap_aur
+     'aur': bootstrap_aur,
+     'vim': bootstrap_vim,
+     'tmux': bootstrap_mux,
     }
 
 

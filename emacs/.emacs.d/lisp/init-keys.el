@@ -18,35 +18,32 @@
   (evil-mode 1)
 
   :config
-  ;; Helm
-  (global-set-key (kbd "<f2>") 'helm-find-files)
-  (global-set-key (kbd "<f3>") 'helm-mini)
+  ;; Navigation
+  (global-set-key (kbd "<f3>") 'helm-find-files)
+  (global-set-key (kbd "<f8>") 'helm-mini)
   (global-set-key (kbd "M-x") 'helm-M-x)
   (global-set-key (kbd "M-s") 'helm-do-grep-ag)
-  (global-set-key (kbd "M-k") 'helm-show-kill-ring)
 
-  ;; Projectile
   (define-key projectile-mode-map (kbd "M-p") 'projectile-command-map)
 
-  ;; Magit
-  (global-set-key (kbd "M-g") 'magit-status)
-  (global-set-key (kbd "M-G") 'magit-dispatch)
-
-  ;; eyebrowse
   (define-key eyebrowse-mode-map (kbd "M-1") 'eyebrowse-switch-to-window-config-1)
   (define-key eyebrowse-mode-map (kbd "M-2") 'eyebrowse-switch-to-window-config-2)
   (define-key eyebrowse-mode-map (kbd "M-3") 'eyebrowse-switch-to-window-config-3)
   (define-key eyebrowse-mode-map (kbd "M-4") 'eyebrowse-switch-to-window-config-4)
 
+  ;; Edit
+  (global-set-key (kbd "<f2>") 'write-file)
+  (global-set-key (kbd "M-k") 'helm-show-kill-ring)
+
+  ;; Magit
+  (global-set-key (kbd "M-g") 'magit-status)
+  (global-set-key (kbd "M-G") 'magit-dispatch)
+
+  ;; Languages
   ;; Haskell
   (evil-define-key 'normal haskell-mode-map
     "o" 'haskell-evil-open-below
     "O" 'haskell-evil-open-above)
-
-  ;; expand region
-  ;; ref: https://github.com/terryma/vim-expand-region
-  (evil-define-key 'normal 'global
-    "+" 'er/expand-region)
 )
 
 ;;
