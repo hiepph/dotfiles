@@ -12,22 +12,39 @@ def execute(cmd):
         map(subprocess.run, _cmd))
 
 
+_pacman = return "sudo pacman -S --needed --noconfirm"
+
+
+def bootstrap_aur():
+    """Use yay for AUR package manager
+    ref: https://github.com/Jguer/yay
+    """
+    execute(f"""
+    {_pacman} binutils make gcc
+    git clone https://aur.archlinux.org/yay.git
+    cd yay
+    makepkg -si
+    """)
+
+
 def bootstrap_git():
-    # Git
-    execute("""
+    execute(f"""
+    {_pacman} git
     git config --global user.email "hiepph.2406@gmail.com"
     git config --global user.name "Hiep Pham"
     git config --global core.editor "vim"
     """)
 
-# Nvidia
+
 def bootstrap_nvidia():
     execute("""
-    sudo pacman -S nvidia
+    sudo pacman -S --needed nvidia
     """)
+
 
 M = {'git': bootstrap_git,
      'nvidia': bootstrap_nvidia,
+     'aur': bootstrap_aur
     }
 
 
