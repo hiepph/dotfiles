@@ -19,6 +19,7 @@
 (require 'init-language)
 (require 'init-edit)
 (require 'init-helper)
+(require 'init-literate)
 (require 'init-keys)
 (require 'init-custom nil 'no-error)
 

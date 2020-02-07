@@ -1,5 +1,4 @@
 (require 'init-elpa)
-;; (require 'init-func)
 
 
 ;;
@@ -210,26 +209,6 @@
 
 ;;   ;; check only when save file or change the major mode
 ;;   (setq flycheck-check-syntax-automatically '(save mode-enable)))
-
-;; ;; ACME
-;; (use-package wand
-;;   :ensure t
-;;   :bind
-;;   ([mouse-2] . 'wand:execute)
-;;   ("C-<return>" . 'wand:execute)
-;;   :config
-;;   (setq wand:*rules*
-;;         (list
-;;          (wand:create-rule :match (rx bol (0+ " ") "$")
-;;                            :capture :after
-;;                            :action #'~acmec)
-;;          (wand:create-rule :match (rx bol (0+ " ") "<")
-;;                            :capture :after
-;;                            :action #'~acme<)
-;;          (wand:create-rule :match (rx bol (0+ " ") "http")
-;;                            :capture :whole
-;;                            :action #'browse-url-firefox)
-;;          )))
 
 
 (provide 'init-edit)
