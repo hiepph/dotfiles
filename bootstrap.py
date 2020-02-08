@@ -12,7 +12,7 @@ def execute(cmd):
         map(subprocess.run, _cmd))
 
 
-_pacman = return "sudo pacman -S --needed --noconfirm"
+_pacman = "sudo pacman -S --needed --noconfirm"
 
 
 def bootstrap_aur():
@@ -62,7 +62,7 @@ M = {'git': bootstrap_git,
      'nvidia': bootstrap_nvidia,
      'aur': bootstrap_aur,
      'vim': bootstrap_vim,
-     'tmux': bootstrap_mux,
+     'tmux': bootstrap_tmux,
     }
 
 

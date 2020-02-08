@@ -100,6 +100,9 @@
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
   )
 
+(use-package ob-async
+  :ensure t)
+
 
 ;;
 ;; Custom
