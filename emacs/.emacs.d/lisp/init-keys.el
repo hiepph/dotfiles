@@ -32,6 +32,7 @@
 (use-package evil-escape
   :ensure t
   :after evil
+  :diminish
   :init
   (evil-escape-mode))
 
@@ -62,6 +63,7 @@
   (global-set-key (kbd "<f3>") 'helm-find-files)
   (global-set-key (kbd "<f8>") 'helm-mini)
   (global-set-key (kbd "<f9>") 'dired-jump)
+  (global-set-key (kbd "<f12>") 'helm-M-x)
 
   ;; dired
   (evil-define-key 'normal 'dired-mode-map
@@ -74,7 +76,6 @@
    :prefix "SPC"
 
    ;; Navigation
-   "x" 'helm-M-x
    "s" 'helm-do-grep-ag
 
    ;; Projectile
@@ -89,13 +90,6 @@
    ;;
    ;; show kill ring
    "k" 'helm-show-kill-ring
-
-
-   ;; eyebrowse
-   "1" 'eyebrowse-switch-to-window-config-1
-   "2" 'eyebrowse-switch-to-window-config-2
-   "3" 'eyebrowse-switch-to-window-config-3
-   "4" 'eyebrowse-switch-to-window-config-4
    ))
 
 

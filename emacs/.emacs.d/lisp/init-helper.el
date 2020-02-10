@@ -48,12 +48,12 @@
 ;;
 ;; Virtual desktop
 ;;
-(use-package eyebrowse
-  :ensure t
-  :init
-  (eyebrowse-mode t)
-  (setq eyebrowse-new-workspace t)
-  )
+;; (use-package eyebrowse
+;;   :ensure t
+;;   :init
+;;   (eyebrowse-mode t)
+;;   (setq eyebrowse-new-workspace t)
+;;   )
 
 
 ;;

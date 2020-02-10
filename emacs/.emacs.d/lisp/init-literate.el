@@ -9,7 +9,6 @@
   :ensure t
   :bind
   ([mouse-2] . 'wand:execute)
-  ("M-<return>" . 'wand:execute)
   :config
   (setq wand:*rules*
         (list
