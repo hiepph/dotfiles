@@ -7,7 +7,7 @@
 ;;
 (use-package wand
   :ensure t
-  :bind
+  :config
   (setq wand:*rules*
         (list
          (wand:create-rule :match (rx bol (0+ " ") "$")
