@@ -59,7 +59,7 @@ def bootstrap_tmux():
 
 
 def bootstrap_fcitx():
-    execute("""
+    execute(f"""
     {_pacman} fcitx fcitx-unikey fcitx-im
     """)
 
