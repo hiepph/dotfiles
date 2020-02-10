@@ -18,45 +18,10 @@
   (evil-mode 1)
 
   :config
-
-  ;;
-  ;; Navigation
-  ;;
-  (global-set-key (kbd "<f3>") 'helm-find-files)
-  (global-set-key (kbd "<f8>") 'helm-mini)
-  (global-set-key (kbd "<f9>") 'dired-jump)
-  (global-set-key (kbd "M-x") 'helm-M-x)
-  (global-set-key (kbd "M-s") 'helm-do-grep-ag)
-
-  (define-key projectile-mode-map (kbd "M-p") 'projectile-command-map)
-
-  (define-key eyebrowse-mode-map (kbd "M-1") 'eyebrowse-switch-to-window-config-1)
-  (define-key eyebrowse-mode-map (kbd "M-2") 'eyebrowse-switch-to-window-config-2)
-  (define-key eyebrowse-mode-map (kbd "M-3") 'eyebrowse-switch-to-window-config-3)
-  (define-key eyebrowse-mode-map (kbd "M-4") 'eyebrowse-switch-to-window-config-4)
-
-  ;; dired
-  (evil-define-key 'normal 'dired-mode-map
-    "gr" 'revert-buffer)
-
-  ;;
-  ;; Edit
-  ;;
-  (global-set-key (kbd "<f2>") 'write-file)
-  (global-set-key (kbd "M-k") 'helm-show-kill-ring)
-
-
   ;; Haskell
   (evil-define-key 'normal haskell-mode-map
     "o" 'haskell-evil-open-below
     "O" 'haskell-evil-open-above)
-
-
-  ;;
-  ;; Magit
-  ;;
-  (global-set-key (kbd "M-g") 'magit-status)
-  (global-set-key (kbd "M-G") 'magit-dispatch)
 )
 
 ;;
@@ -67,6 +32,7 @@
 (use-package evil-escape
   :ensure t
   :after evil
+  :diminish
   :init
   (evil-escape-mode))
 
@@ -78,6 +44,54 @@
   :config
   (add-hook 'with-editor-mode-hook 'evil-insert-state)
   )
+
+
+
+;;
+;; General (leader keys)
+;; ref: https://github.com/noctuid/general.el/
+;;
+(use-package general
+  :ensure t
+  :config
+  (general-evil-setup)
+
+  ;;
+  ;; Frequent tasks
+  ;;
+  (global-set-key (kbd "<f2>") 'write-file)
+  (global-set-key (kbd "<f3>") 'helm-find-files)
+  (global-set-key (kbd "<f6>") 'wand:execute)
+  (global-set-key (kbd "<f8>") 'helm-mini)
+  (global-set-key (kbd "<f9>") 'dired-jump)
+  (global-set-key (kbd "<f12>") 'helm-M-x)
+
+  ;; dired
+  (evil-define-key 'normal 'dired-mode-map
+    "gr" 'revert-buffer)
+
+  ;;
+  ;; SPC keys leader
+  ;;
+  (general-nmap
+   :prefix "SPC"
+
+   ;; Navigation
+   "s" 'helm-do-grep-ag
+
+   ;; Projectile
+   "p" 'projectile-command-map
+
+   ;; Magit
+   "g" 'magit-status
+   "G" 'magit-dispatch
+
+   ;;
+   ;; Edit
+   ;;
+   ;; show kill ring
+   "k" 'helm-show-kill-ring
+   ))
 
 
 (provide 'init-keys)

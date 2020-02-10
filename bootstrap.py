@@ -58,11 +58,26 @@ def bootstrap_tmux():
     """)
 
 
+def bootstrap_fcitx():
+    execute(f"""
+    {_pacman} fcitx fcitx-unikey fcitx-im
+    """)
+
+
+def bootstrap_font():
+    execute(f"""
+    {_pacman} powerline powerline-fonts
+    sudo localedef -f UTF-8 -i en_US en_US.UTF-8
+    """)
+
+
 M = {'git': bootstrap_git,
      'nvidia': bootstrap_nvidia,
      'aur': bootstrap_aur,
      'vim': bootstrap_vim,
      'tmux': bootstrap_tmux,
+     'fcitx': bootstrap_fcitx,
+     'font': bootstrap_font,
     }
 
 
