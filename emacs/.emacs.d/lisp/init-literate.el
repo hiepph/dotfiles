@@ -8,8 +8,6 @@
 (use-package wand
   :ensure t
   :bind
-  ([mouse-2] . 'wand:execute)
-  :config
   (setq wand:*rules*
         (list
          (wand:create-rule :match (rx bol (0+ " ") "$")

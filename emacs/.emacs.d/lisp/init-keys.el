@@ -61,6 +61,7 @@
   ;;
   (global-set-key (kbd "<f2>") 'write-file)
   (global-set-key (kbd "<f3>") 'helm-find-files)
+  (global-set-key (kbd "<f6>") 'wand:execute)
   (global-set-key (kbd "<f8>") 'helm-mini)
   (global-set-key (kbd "<f9>") 'dired-jump)
   (global-set-key (kbd "<f12>") 'helm-M-x)
