@@ -61,14 +61,15 @@
   ;;
   (global-set-key (kbd "<f2>") 'write-file)
   (global-set-key (kbd "<f3>") 'helm-find-files)
-  (global-set-key (kbd "<f6>") 'wand:execute)
   (global-set-key (kbd "<f8>") 'helm-mini)
-  (global-set-key (kbd "<f9>") 'dired-jump)
-  (global-set-key (kbd "<f12>") 'helm-M-x)
 
-  ;; dired
-  (evil-define-key 'normal 'dired-mode-map
-    "gr" 'revert-buffer)
+  (global-set-key (kbd "M-x") 'helm-M-x)
+  (global-set-key (kbd "M-<return>") 'wand:execute)
+
+  (global-set-key (kbd "M-1") 'eyebrowse-switch-to-window-config-1)
+  (global-set-key (kbd "M-2") 'eyebrowse-switch-to-window-config-2)
+  (global-set-key (kbd "M-3") 'eyebrowse-switch-to-window-config-3)
+  (global-set-key (kbd "M-4") 'eyebrowse-switch-to-window-config-4)
 
   ;;
   ;; SPC keys leader
@@ -76,8 +77,17 @@
   (general-nmap
    :prefix "SPC"
 
+   ;; Command
+   "x" 'helm-M-x
+
+   ;;
    ;; Navigation
-   "s" 'helm-do-grep-ag
+   ;;
+   ;; search
+   "/" 'helm-do-grep-ag
+
+   ;; dired
+   "d" 'dired-jump
 
    ;; Projectile
    "p" 'projectile-command-map
