@@ -61,10 +61,9 @@
   ;;
   (global-set-key (kbd "<f2>") 'write-file)
   (global-set-key (kbd "<f3>") 'helm-find-files)
-  (global-set-key (kbd "<f6>") 'wand:execute)
   (global-set-key (kbd "<f8>") 'helm-mini)
-  (global-set-key (kbd "<f9>") 'dired-jump)
-  (global-set-key (kbd "<f12>") 'helm-M-x)
+
+  (global-set-key (kbd "M-<return>") 'wand:execute)
 
   ;; dired
   (evil-define-key 'normal 'dired-mode-map
@@ -76,21 +75,38 @@
   (general-nmap
    :prefix "SPC"
 
-   ;; Navigation
-   "s" 'helm-do-grep-ag
-
-   ;; Projectile
-   "p" 'projectile-command-map
+   ;; Commands
+   "x" 'helm-M-x
 
    ;; Magit
    "g" 'magit-status
    "G" 'magit-dispatch
 
    ;;
+   ;; Navigation
+   ;;
+   ;; search
+   "/" 'helm-do-grep-ag
+
+   ;; eyebrowse
+   "1" 'eyebrowse-switch-to-window-config-1
+   "2" 'eyebrowse-switch-to-window-config-2
+   "3" 'eyebrowse-switch-to-window-config-3
+   "4" 'eyebrowse-switch-to-window-config-4
+
+   ;; Projectile
+   "p" 'projectile-command-map
+
+   ;; Dired mode
+   "d" 'dired-jump
+
+   ;;
    ;; Edit
    ;;
    ;; show kill ring
    "k" 'helm-show-kill-ring
+
+   $ ls
    ))
 
 
