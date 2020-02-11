@@ -61,7 +61,9 @@
   ;;
   (global-set-key (kbd "<f2>") 'write-file)
   (global-set-key (kbd "<f3>") 'helm-find-files)
+  (global-set-key (kbd "<f5>") 'eval-buffer)
   (global-set-key (kbd "<f8>") 'helm-mini)
+  (global-set-key (kbd "<f9>") 'recompile)
 
   (global-set-key (kbd "M-x") 'helm-M-x)
   (global-set-key (kbd "M-<return>") 'wand:execute)
@@ -70,6 +72,12 @@
   (global-set-key (kbd "M-2") 'eyebrowse-switch-to-window-config-2)
   (global-set-key (kbd "M-3") 'eyebrowse-switch-to-window-config-3)
   (global-set-key (kbd "M-4") 'eyebrowse-switch-to-window-config-4)
+
+  (global-set-key (kbd "M-h") 'windmove-left)
+  (global-set-key (kbd "M-l") 'windmove-right)
+  (global-set-key (kbd "M-k") 'windmove-up)
+  (global-set-key (kbd "M-j") 'windmove-down)
+
 
   ;;
   ;; SPC keys leader

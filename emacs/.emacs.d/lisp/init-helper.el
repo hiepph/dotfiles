@@ -50,10 +50,19 @@
 ;;
 (use-package eyebrowse
   :ensure t
+  :diminish
   :init
   (eyebrowse-mode t)
   (setq eyebrowse-new-workspace t)
   )
+
+
+;;
+;; Windmove
+;;
+(use-package windmove
+  :diminish
+  :ensure t)
 
 
 ;;
