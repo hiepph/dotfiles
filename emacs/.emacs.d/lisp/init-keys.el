@@ -105,8 +105,6 @@
    ;;
    ;; show kill ring
    "k" 'helm-show-kill-ring
-
-   $ ls
    ))
 
 
