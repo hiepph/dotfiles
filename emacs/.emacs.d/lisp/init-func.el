@@ -38,4 +38,12 @@
 ;;                              0)))
 
 
+;;
+;; Buffers
+;;
+(defun kill-all-buffers ()
+  (interactive)
+  (mapc 'kill-buffer (buffer-list)))
+
+
 (provide 'init-func)
