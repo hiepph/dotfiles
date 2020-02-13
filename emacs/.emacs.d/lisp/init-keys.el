@@ -22,6 +22,10 @@
   (evil-define-key 'normal haskell-mode-map
     "o" 'haskell-evil-open-below
     "O" 'haskell-evil-open-above)
+
+  ;; dired
+  (evil-define-key 'normal 'dired-mode-map
+    "gr" 'revert-buffer)
 )
 
 ;;
