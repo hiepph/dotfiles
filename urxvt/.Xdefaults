@@ -1,0 +1,59 @@
+! Config your own personal preferences in .Xresources
+! ref: https://wiki.archlinux.org/index.php/Rxvt-unicode
+! Some examples:
+! font
+! URxvt.font:	xft:Hack
+#include ".Xresources"
+
+
+!
+! Apperance
+!
+URxvt.letterSpace: 0
+URxvt.lineSpace: 0
+URxvt.geometry: 92x24
+URxvt.internalBorder: 24
+URxvt.saveline: 2048
+URxvt.urgentOnBell: true
+URxvt.depth: 24
+URxvt.iso14755: false
+
+!
+! Extensions
+! TBD: tabbed
+!
+URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select,matcher
+
+
+!
+! scroll
+!
+URxvt.scrollBar: false
+URxvt.scrollBar_right: false
+
+! do not scroll with output
+URxvt*scrollTtyOutput: false
+
+! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+URxvt*scrollWithBuffer: true
+
+! scroll back to the bottom on keypress
+URxvt*scrollTtyKeypress: true
+
+!
+! cursor
+!
+URxvt.cursorBlink: true
+URxvt.cursorUnderline: false
+
+
+!
+! Navigation (TBD)
+!
+
+!
+! Links
+!
+URxvt.underlineURLs: true
+URxvt.url-launcher: firefox
+URxvt.matcher.button: 1
