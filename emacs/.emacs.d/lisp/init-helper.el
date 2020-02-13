@@ -18,31 +18,24 @@
   :init
   (which-key-mode))
 
+
 ;;
-;; Helm
+;; Counsel & Ivy & Swiper
+;; ref:
+;; https://sam217pa.github.io/2016/09/13/from-helm-to-ivy/
+;; https://github.com/abo-abo/swiper
 ;;
-(use-package helm
+(use-package counsel
   :ensure t
+  :diminish
   :init
-  (helm-mode 1)
+  (ivy-mode 1)
   :config
-  ;; Always stay as separated below window
-  (setq helm-always-two-windows t)
-  (setq helm-split-window-in-side-p t)
-  (setq helm-split-window-default-side 'below)
-
-  ;; Fuzzy match
-  (setq helm-M-x-fuzzy-match t)
-  (setq helm-buffers-fuzzy-matching t
-        helm-recentf-fuzzy-match t)
-
-  ;; Auto resize to fit the number of candidates
-  (helm-autoresize-mode t)
-
-  ;; Set Helm to use `ripgrep`
-  (setq helm-grep-ag-command "rg --color=always --colors 'match:fg:black' --colors 'match:bg:yellow' --smart-case --no-heading --line-number %s %s %s")
-  (setq helm-grep-ag-pipe-cmd-switches '("--colors 'match:fg:black'" "--colors 'match:bg:yellow'"))
+  (setq ivy-use-virtual-buffers t)
+  (setq enable-recursive-minibuffers t)
   )
+
+
 
 
 ;;
