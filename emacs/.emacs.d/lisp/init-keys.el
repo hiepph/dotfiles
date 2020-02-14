@@ -26,6 +26,11 @@
   ;; dired
   (evil-define-key 'normal 'dired-mode-map
     "gr" 'revert-buffer)
+
+  (with-eval-after-load 'evil-maps
+    ;; swiper
+    (define-key evil-motion-state-map (kbd "/") 'swiper)
+    )
 )
 
 ;;
@@ -64,12 +69,12 @@
   ;; Frequent tasks
   ;;
   (global-set-key (kbd "<f2>") 'write-file)
-  (global-set-key (kbd "<f3>") 'helm-find-files)
+  (global-set-key (kbd "<f3>") 'counsel-find-files)
   (global-set-key (kbd "<f5>") 'eval-buffer)
-  (global-set-key (kbd "<f8>") 'helm-mini)
+  (global-set-key (kbd "<f8>") 'ivy-switch-buffer)
   (global-set-key (kbd "<f9>") 'recompile)
 
-  (global-set-key (kbd "M-x") 'helm-M-x)
+  (global-set-key (kbd "M-x") 'counsel-M-x)
   (global-set-key (kbd "M-<return>") 'wand:execute)
 
   (global-set-key (kbd "M-1") 'eyebrowse-switch-to-window-config-1)
@@ -90,7 +95,7 @@
    :prefix "SPC"
 
    ;; Commands
-   "x" 'helm-M-x
+   "x" 'counsel-M-x
 
    ;; Magit
    "g" 'magit-status
@@ -100,7 +105,7 @@
    ;; Navigation
    ;;
    ;; search
-   "/" 'helm-do-grep-ag
+   "/" 'counsel-rg
 
    ;; dired
    "d" 'dired-jump
@@ -114,8 +119,6 @@
    ;;
    ;; Edit
    ;;
-   ;; show kill ring
-   "k" 'helm-show-kill-ring
    ))
 
 
