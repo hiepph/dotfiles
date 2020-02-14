@@ -69,7 +69,7 @@
   ;; Frequent tasks
   ;;
   (global-set-key (kbd "<f2>") 'write-file)
-  (global-set-key (kbd "<f3>") 'counsel-find-files)
+  (global-set-key (kbd "<f3>") 'counsel-find-file)
   (global-set-key (kbd "<f5>") 'eval-buffer)
   (global-set-key (kbd "<f8>") 'ivy-switch-buffer)
   (global-set-key (kbd "<f9>") 'recompile)
