@@ -62,7 +62,8 @@ e.g. If the current buffer is hello.py, then it'll call python hello.py
     (setq $prog (cdr (assoc $suffix $suffix-map)))
     (setq $command (concat $prog " \"" $fname "\""))
     (message $command)
-    (~acmec $command)
+    ;; (~acmec $command)
+    (compile $command)
     ))
 
 
