@@ -47,24 +47,22 @@
   (mapc 'kill-buffer (buffer-list)))
 
 
-(defun ~compile ()
-  "Compile the current file. A replacement for compile with automatic filetype recognition.
+(defun ~compile-current-file ()
+  "(re)compile the current file. A replacement for compile with automatic filetype recognition.
 e.g. If the current buffer is hello.py, then it'll call python hello.py
 "
   (interactive)
-  (let (($suffix-map '(("py" . "python")
-                       ("go" . "go run")))
-        $fname
-        $suffix
-        $prog)
-    (setq $fname (buffer-file-name))
-    (setq $suffix (file-name-extension $fname))
-    (setq $prog (cdr (assoc $suffix $suffix-map)))
-    (setq $command (concat $prog " \"" $fname "\""))
-    (message $command)
-    ;; (~acmec $command)
-    (compile $command)
-    ))
+  (defvar *compilation-command-map* '(("py" . "python")
+                                      ("go" . "go run"))
+    "An alist that maps file extensions to theri corresponding compilation/run command")
+
+  (let* ((fname (buffer-file-name))
+         (suffix (file-name-extension fname))
+         (prog (cdr (assoc suffix *compilation-command-map*)))
+         (command (format "%s %s" prog (shell-quote-argument fname))))
+    (if (null prog)
+        (error "Compile command not found. Please check '*compilation-command-map*'")
+      (compile command))))
 
 
 (provide 'init-func)
