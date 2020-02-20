@@ -52,6 +52,8 @@
 e.g. If the current buffer is hello.py, then it'll call python hello.py
 "
   (interactive)
+  (save-buffer)
+
   (defvar *compilation-command-map* '(("py" . "python")
                                       ("go" . "go run"))
     "An alist that maps file extensions to theri corresponding compilation/run command")

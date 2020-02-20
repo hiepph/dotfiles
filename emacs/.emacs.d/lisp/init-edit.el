@@ -46,11 +46,10 @@
 
 
 ;; Autopair
-(use-package smartparens
+(use-package autopair
   :ensure t
   :init
-  (require 'smartparens-config)
-  (smartparens-global-mode t))
+  (autopair-global-mode))
 
 
 ;; Expand region
