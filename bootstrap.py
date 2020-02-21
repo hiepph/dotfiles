@@ -71,12 +71,29 @@ def bootstrap_font():
     """)
 
 
+def bootstrap_docker():
+    execute(f"""
+    {_pacman} docker
+    sudo passwd -a $(whoami) docker
+    """)
+
+
 def bootstrap_ibus():
     execute(f"""
     {_pacman} ibus ibus-unikey
-    sudo cp ibus/main.py /usr/share/ibus/setup/main.py
-    sudo cp ibus/ibus-setup /usr/bin
     """)
+
+    # replace default python with /usr/bin/python3 in script file
+    f = '/usr/bin/ibus-setup'
+    lines = open(f).readlines()
+
+    tbr = 'exec /usr/bin/python3 /usr/share/ibus/setup/main.py $@'
+    _lines = list(
+        map(lambda l: tbr if '/usr/share/ibus/setup/main.py' in l else l, lines)
+        )
+    new_content = ''.join(_lines)
+
+    open(f, 'w').write(new_content)
 
 
 M = {'git': bootstrap_git,
@@ -86,6 +103,8 @@ M = {'git': bootstrap_git,
      'tmux': bootstrap_tmux,
      'fcitx': bootstrap_fcitx,
      'font': bootstrap_font,
+     'ibus': bootstrap_ibus,
+     'docker': bootstrap_docker,
     }
 
 
