@@ -27,6 +27,12 @@ def bootstrap_aur():
     """)
 
 
+def bootstrap_locale():
+    execute(f"""
+    sudo localedef -f UTF-8 -i en_US en_US.UTF-8
+    """)
+
+
 def bootstrap_git():
     execute(f"""
     {_pacman} git
@@ -56,6 +62,7 @@ def bootstrap_tmux():
     {_pacman} tmux
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
     """)
+    bootstrap_locale()
 
 
 def bootstrap_fcitx():
@@ -63,12 +70,11 @@ def bootstrap_fcitx():
     {_pacman} fcitx fcitx-unikey fcitx-im
     """)
 
-
 def bootstrap_font():
     execute(f"""
     {_pacman} powerline powerline-fonts
-    sudo localedef -f UTF-8 -i en_US en_US.UTF-8
     """)
+    bootstrap_locale()
 
 
 def bootstrap_docker():
@@ -101,7 +107,7 @@ M = {'git': bootstrap_git,
      'aur': bootstrap_aur,
      'vim': bootstrap_vim,
      'tmux': bootstrap_tmux,
-     'fcitx': bootstrap_fcitx,
+     # 'fcitx': bootstrap_fcitx,
      'font': bootstrap_font,
      'ibus': bootstrap_ibus,
      'docker': bootstrap_docker,
@@ -125,11 +131,6 @@ if __name__ == '__main__':
 
         to_be_installed = args.module
 
-    print('> Modules to be installed:', *to_be_installed)
-    print('> Continue? [y/n]', end=' ')
-    if input() == 'y':
-        list(
-            map(info_and_exec, to_be_installed)
-        )
-    else:
-        sys.exit(0)
+    list(
+        map(info_and_exec, to_be_installed)
+    )
