@@ -117,8 +117,9 @@
    "d" 'dired-jump
 
    ;;
-   ;; Edit
+   ;; Program
    ;;
+   "t" '~test-current-file
    ))
 
 

@@ -67,4 +67,26 @@ e.g. If the current buffer is hello.py, then it'll call python hello.py
       (compile command))))
 
 
+(defun ~test-current-file ()
+  "Test current file using 'compile'. Automatic filetype recogntion.
+e.g. If the current buffer is hello.py, then it'll call pytest hello.py
+"
+  (interactive)
+  (save-buffer)
+
+  (defvar *test-command-map* '(("py" . "pytest")
+                               )
+    "An alist that maps file extensions to theri corresponding compilation/run command")
+
+  (let* ((fname (buffer-file-name))
+         (suffix (file-name-extension fname))
+         (prog (cdr (assoc suffix *test-command-map*)))
+         (command (format "%s %s" prog (shell-quote-argument fname))))
+    (if (null prog)
+        (error "Test command not found. Please check '*test-command-map*'")
+      (compile command))))
+
+
+
+
 (provide 'init-func)
