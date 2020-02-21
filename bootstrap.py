@@ -71,6 +71,14 @@ def bootstrap_font():
     """)
 
 
+def bootstrap_ibus():
+    execute(f"""
+    {_pacman} ibus ibus-unikey
+    sudo cp ibus/main.py /usr/share/ibus/setup/main.py
+    sudo cp ibus/ibus-setup /usr/bin
+    """)
+
+
 M = {'git': bootstrap_git,
      'nvidia': bootstrap_nvidia,
      'aur': bootstrap_aur,
