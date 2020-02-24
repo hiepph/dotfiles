@@ -120,9 +120,6 @@
 
    ;; Projectile
    "p" 'projectile-command-map
-
-   ;; Dired mode
-   "d" 'dired-jump
    ))
 
 
