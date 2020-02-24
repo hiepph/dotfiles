@@ -68,11 +68,13 @@
   ;;
   ;; Frequent tasks
   ;;
+  (global-set-key (kbd "<f1>") 'shell)
   (global-set-key (kbd "<f2>") 'write-file)
   (global-set-key (kbd "<f3>") 'counsel-find-file)
   (global-set-key (kbd "<f5>") 'eval-buffer)
   (global-set-key (kbd "<f8>") 'ivy-switch-buffer)
   (global-set-key (kbd "<f9>") '~compile-current-file)
+  (global-set-key (kbd "<f12>") '~test-current-file)
 
   (global-set-key (kbd "M-x") 'counsel-M-x)
   (global-set-key (kbd "M-<return>") 'wand:execute)
@@ -115,11 +117,6 @@
 
    ;; Dired mode
    "d" 'dired-jump
-
-   ;;
-   ;; Program
-   ;;
-   "t" '~test-current-file
    ))
 
 

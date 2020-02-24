@@ -10,9 +10,12 @@
   :config
   (setq wand:*rules*
         (list
+         (wand:create-rule :match (rx bol (0+ " ") "!")
+                           :capture :after
+                           :action #'~acme!)
          (wand:create-rule :match (rx bol (0+ " ") "$")
                            :capture :after
-                           :action #'~acmec)
+                           :action #'~acme$)
          (wand:create-rule :match (rx bol (0+ " ") "<")
                            :capture :after
                            :action #'~acme<)
