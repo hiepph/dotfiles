@@ -26,7 +26,7 @@ sample:
 sample:
 $ ls
 "
-  (interactive "M$: ")
+  (interactive "MCommand: ")
   (setq term "urxvt -e $SHELL -c")
   (setq toggle-floating "i3-msg floating enable > /dev/null")
   (call-process-shell-command (format "%s '%s; %s; $SHELL -i'" term command toggle-floating)
@@ -42,20 +42,20 @@ $ ls
   )
 
 
-;; (defun ~acme| (&optional command)
-;;   (interactive "MCommand: ")
-;;   (let ((inhibit-message t))
-;;     (shell-command-on-region (region-beginning)
-;;                              (region-end)
-;;                              command
-;;                              ;; output
-;;                              (current-buffer)
-;;                              ;; replace?
-;;                              t
-;;                              ;; name of error buffer (nil = current-buffer)
-;;                              nil
-;;                              ;; show error buffer
-;;                              0)))
+(defun ~acme| (&optional command)
+  (interactive "MText: ")
+  (let ((inhibit-message t))
+    (shell-command-on-region (region-beginning)
+                             (region-end)
+                             command
+                             ;; output
+                             (current-buffer)
+                             ;; replace?
+                             t
+                             ;; name of error buffer (nil = current-buffer)
+                             nil
+                             ;; show error buffer
+                             0)))
 
 
 ;;

@@ -34,6 +34,10 @@
 (setq auto-save-default nil)
 
 
+;; use bash as default shell
+(setq-default explicit-shell-file-name "/bin/bash")
+
+
 ;; Benchmark
 ;; (use-package benchmark-init
 ;;   :ensure t

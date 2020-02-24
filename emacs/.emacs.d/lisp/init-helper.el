@@ -22,8 +22,10 @@
 ;;
 ;; Counsel & Ivy & Swiper
 ;; ref:
-;; https://sam217pa.github.io/2016/09/13/from-helm-to-ivy/
+;; https://sam217pa.github.io/2016/093/from-helm-to-ivy/
 ;; https://github.com/abo-abo/swiper
+;;
+;; docs: https://oremacs.com/swiper/
 ;;
 (use-package counsel
   :ensure t
