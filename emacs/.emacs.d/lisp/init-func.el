@@ -15,7 +15,7 @@ sample:
   (let (($buf (generate-new-buffer "*+Errors*")))
     (with-current-buffer $buf
       (goto-char (point-max))
-      (insert (shell-command-to-string command)))
+      (insert (s-trim-right (shell-command-to-string command))))
     (display-buffer $buf))
   )
 
@@ -38,7 +38,7 @@ $ ls
   (interactive "M<: ")
   (delete-region (region-beginning)
                  (region-end))
-  (insert (shell-command-to-string command))
+  (insert (s-trim-right (shell-command-to-string command)))
   )
 
 

@@ -63,8 +63,6 @@
 (use-package general
   :ensure t
   :config
-  (general-evil-setup)
-
   ;;
   ;; Frequent tasks
   ;;
@@ -76,6 +74,10 @@
   (global-set-key (kbd "<f9>") '~compile-current-file)
   (global-set-key (kbd "<f12>") '~test-current-file)
 
+
+  ;;
+  ;; Alt combination
+  ;;
   (global-set-key (kbd "M-x") 'counsel-M-x)
   (global-set-key (kbd "M-<return>") 'wand:execute)
 
@@ -89,10 +91,14 @@
   (global-set-key (kbd "M-k") 'windmove-up)
   (global-set-key (kbd "M-j") 'windmove-down)
 
+  (global-set-key (kbd "M-|") '~acme|)
+  (global-set-key (kbd "M-$") '~acme$)
+
 
   ;;
   ;; SPC keys leader
   ;;
+  (general-evil-setup)
   (general-nmap
    :prefix "SPC"
 
@@ -117,12 +123,6 @@
 
    ;; Dired mode
    "d" 'dired-jump
-
-   ;;
-   ;; Program
-   ;;
-   "$" '~acme$
-   ;; "|" '~acme|
    ))
 
 
