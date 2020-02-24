@@ -11,7 +11,7 @@
 sample:
 ! ls
 "
-  (interactive)
+  (interactive "M!: ")
   (let (($buf (generate-new-buffer "*+Errors*")))
     (with-current-buffer $buf
       (goto-char (point-max))
@@ -26,16 +26,16 @@ sample:
 sample:
 $ ls
 "
-  (interactive "MCommand: ")
+  (interactive "M$: ")
   (setq term "urxvt -e $SHELL -c")
   (setq toggle-floating "i3-msg floating enable > /dev/null")
-  (call-process-shell-command (format "%s '%s; %s; $SHELL -i'" term command toggle-floating)
+  (call-process-shell-command (format "%s '%s; %s; $SHELL -i'" term toggle-floating command)
                  nil)
   )
 
 
 (defun ~acme< (&optional command)
-  (interactive)
+  (interactive "M<: ")
   (delete-region (region-beginning)
                  (region-end))
   (insert (shell-command-to-string command))
@@ -43,7 +43,7 @@ $ ls
 
 
 (defun ~acme| (&optional command)
-  (interactive "MText: ")
+  (interactive "M|: ")
   (let ((inhibit-message t))
     (shell-command-on-region (region-beginning)
                              (region-end)

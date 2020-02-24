@@ -117,6 +117,12 @@
 
    ;; Dired mode
    "d" 'dired-jump
+
+   ;;
+   ;; Program
+   ;;
+   "$" '~acme$
+   ;; "|" '~acme|
    ))
 
 
