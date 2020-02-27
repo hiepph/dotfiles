@@ -109,12 +109,12 @@
 ;;
 ;; Multiple cursors
 ;;
-(use-package multiple-cursors
-  :ensure t
-  :config
-  ;; able to use mouse to select
-  (global-unset-key (kbd "C-<down-mouse-1>"))
-  (global-set-key (kbd "C-<mouse-1>") 'mc/add-cursor-on-click))
+;; (use-package multiple-cursors
+;;   :ensure t
+;;   :config
+;;   ;; able to use mouse to select
+;;   (global-unset-key (kbd "C-<down-mouse-1>"))
+;;   (global-set-key (kbd "C-<mouse-1>") 'mc/add-cursor-on-click))
 
 
 

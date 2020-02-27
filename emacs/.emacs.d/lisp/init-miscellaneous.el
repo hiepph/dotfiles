@@ -40,6 +40,9 @@
 ;; open *shell* in current buffer
 (push (cons "\\*shell\\*" display-buffer--same-window-action) display-buffer-alist)
 
+;; auto revert dired-mode
+(add-hook 'dired-mode-hook 'auto-revert-mode)
+
 
 ;; Benchmark
 ;; (use-package benchmark-init
