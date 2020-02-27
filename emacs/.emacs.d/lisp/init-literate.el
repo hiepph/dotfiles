@@ -12,7 +12,7 @@
         (list
          (wand:create-rule :match (rx bol (0+ " ") "!")
                            :capture :after
-                           :action #'~acme!)
+                           :action #'async-shell-command)
          (wand:create-rule :match (rx bol (0+ " ") "$")
                            :capture :after
                            :action #'~acme$)

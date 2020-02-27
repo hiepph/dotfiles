@@ -92,7 +92,7 @@
   (global-set-key (kbd "M-k") 'windmove-up)
   (global-set-key (kbd "M-j") 'windmove-down)
 
-  (global-set-key (kbd "M-!") '~acme!)
+  (global-set-key (kbd "M-!") 'async-shell-command)
   (global-set-key (kbd "M-|") '~acme|)
   (global-set-key (kbd "M-$") '~acme$)
 
@@ -106,6 +106,7 @@
 
    ;; Commands
    "x" 'counsel-M-x
+   "k" 'kill-buffer
 
    ;; Magit
    "g" 'magit-status

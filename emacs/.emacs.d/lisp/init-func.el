@@ -5,19 +5,20 @@
 ;; ACME
 ;; REF: http://man.cat-v.org/plan_9/1/acme
 ;;
-(defun ~acme! (&optional command)
-  "Execute command and output to *+Errors** buffer
 
-sample:
-! ls
-"
-  (interactive "M!: ")
-  (let (($buf (generate-new-buffer "*+Errors*")))
-    (with-current-buffer $buf
-      (goto-char (point-max))
-      (insert (s-trim-right (shell-command-to-string command))))
-    (display-buffer $buf))
-  )
+;; (defun ~acme! (&optional command)
+;;   "Execute command and output to *+Errors** buffer
+
+;; sample:
+;; ! ls
+;; "
+;;   (interactive "M!: ")
+;;   (let (($buf (generate-new-buffer "*+Errors*")))
+;;     (with-current-buffer $buf
+;;       (goto-char (point-max))
+;;       (insert (s-trim-right (shell-command-to-string command))))
+;;     (display-buffer $buf))
+;;   )
 
 
 (defun ~acme$ (&optional command)
@@ -28,9 +29,8 @@ $ ls
 "
   (interactive "M$: ")
   (setq open-term "urxvt -e $SHELL -c")
-  ;; (setq toggle-floating "i3-msg floating enable > /dev/null")
-  ;; (call-process-shell-command (format "%s '%s; %s; $SHELL -i'" open-term toggle-floating command)
-  (call-process-shell-command (format "%s '%s; $SHELL -i'" open-term command)
+  (setq toggle-floating "i3-msg floating enable > /dev/null")
+  (call-process-shell-command (format "%s '%s; %s; $SHELL -i'" open-term toggle-floating command)
                  nil)
   )
 
@@ -62,12 +62,6 @@ $ ls
 ;;
 ;; Buffers
 ;;
-;; (defun ~shell-in-current-buffer ()
-;;   "Open shell in current buffer"
-;;   (interactive)
-;;   (pop-to-buffer-same-window (shell-get-buffer-create)))
-
-
 (defun ~kill-all-buffers ()
   (interactive)
   (mapc 'kill-buffer (buffer-list)))
