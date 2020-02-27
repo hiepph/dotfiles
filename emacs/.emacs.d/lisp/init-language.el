@@ -67,6 +67,11 @@
   (haskell-indentation-newline-and-indent))
 
 
+;; Yaml
+(use-package yaml-mode
+  :ensure t)
+
+
 ;; Org-mode
 (use-package org
   :ensure t

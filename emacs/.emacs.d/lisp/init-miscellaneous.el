@@ -37,6 +37,9 @@
 ;; use bash as default shell
 (setq-default explicit-shell-file-name "/bin/bash")
 
+;; open *shell* in current buffer
+(push (cons "\\*shell\\*" display-buffer--same-window-action) display-buffer-alist)
+
 
 ;; Benchmark
 ;; (use-package benchmark-init

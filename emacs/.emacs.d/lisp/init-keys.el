@@ -70,7 +70,8 @@
   (global-set-key (kbd "<f2>") 'write-file)
   (global-set-key (kbd "<f3>") 'counsel-find-file)
   (global-set-key (kbd "<f5>") 'eval-buffer)
-  (global-set-key (kbd "<f8>") 'ivy-switch-buffer)
+  (global-set-key (kbd "<f8>") 'counsel-switch-buffer)
+  (global-set-key (kbd "S-<f8>") 'counsel-switch-buffer-other-window)
   (global-set-key (kbd "<f9>") '~compile-current-file)
   (global-set-key (kbd "<f12>") '~test-current-file)
 
@@ -91,6 +92,7 @@
   (global-set-key (kbd "M-k") 'windmove-up)
   (global-set-key (kbd "M-j") 'windmove-down)
 
+  (global-set-key (kbd "M-!") '~acme!)
   (global-set-key (kbd "M-|") '~acme|)
   (global-set-key (kbd "M-$") '~acme$)
 

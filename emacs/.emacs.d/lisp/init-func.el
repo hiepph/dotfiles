@@ -27,9 +27,10 @@ sample:
 $ ls
 "
   (interactive "M$: ")
-  (setq term "urxvt -e $SHELL -c")
-  (setq toggle-floating "i3-msg floating enable > /dev/null")
-  (call-process-shell-command (format "%s '%s; %s; $SHELL -i'" term toggle-floating command)
+  (setq open-term "urxvt -e $SHELL -c")
+  ;; (setq toggle-floating "i3-msg floating enable > /dev/null")
+  ;; (call-process-shell-command (format "%s '%s; %s; $SHELL -i'" open-term toggle-floating command)
+  (call-process-shell-command (format "%s '%s; $SHELL -i'" open-term command)
                  nil)
   )
 
@@ -61,11 +62,21 @@ $ ls
 ;;
 ;; Buffers
 ;;
+;; (defun ~shell-in-current-buffer ()
+;;   "Open shell in current buffer"
+;;   (interactive)
+;;   (pop-to-buffer-same-window (shell-get-buffer-create)))
+
+
 (defun ~kill-all-buffers ()
   (interactive)
   (mapc 'kill-buffer (buffer-list)))
 
 
+
+;;
+;; Programming
+;;
 (defun ~run-current-file (command-map)
   (interactive)
   (save-buffer)
@@ -97,12 +108,11 @@ e.g. If the current buffer is hello.py, then it'll call pytest hello.py
 "
   (interactive)
   (defvar *test-command-map* '(("py" . "pytest")
+                               ("go" . "go test")
                                ))
 
   (~run-current-file *test-command-map*)
   )
-
-
 
 
 (provide 'init-func)
