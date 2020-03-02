@@ -6,19 +6,21 @@
 ;; REF: http://man.cat-v.org/plan_9/1/acme
 ;;
 
-;; (defun ~acme! (&optional command)
-;;   "Execute command and output to *+Errors** buffer
+(defun ~acme! (&optional command)
+  "Execute command using (async) shell command
 
-;; sample:
-;; ! ls
-;; "
-;;   (interactive "M!: ")
-;;   (let (($buf (generate-new-buffer "*+Errors*")))
-;;     (with-current-buffer $buf
-;;       (goto-char (point-max))
-;;       (insert (s-trim-right (shell-command-to-string command))))
-;;     (display-buffer $buf))
-;;   )
+sample:
+! ls
+"
+  (interactive "M!: ")
+  (let* ((buf (get-buffer-create "*+Errors*"))
+        (trimmed-command (s-trim command))
+        (cmd (format "%s &" trimmed-command)))
+    (with-current-buffer buf
+      (goto-char (point-max))
+      (insert (format "! %s\n%s\n" trimmed-command (shell-command-to-string cmd))))
+    (display-buffer buf)))
+
 
 
 (defun ~acme$ (&optional command)
@@ -65,6 +67,15 @@ $ ls
 (defun ~kill-all-buffers ()
   (interactive)
   (mapc 'kill-buffer (buffer-list)))
+
+
+(defun ~open-shell ()
+  "Open shell in current buffer, and follows current directory.
+If *shell* buffers is already in another buffer, kill it and starts new."
+  (interactive)
+  (kill-buffer "*shell*")
+  (shell)
+  )
 
 
 

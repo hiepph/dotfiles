@@ -66,7 +66,7 @@
   ;;
   ;; Frequent tasks
   ;;
-  (global-set-key (kbd "<f1>") 'shell)
+  (global-set-key (kbd "<f1>") '~open-shell)
   (global-set-key (kbd "<f2>") 'write-file)
   (global-set-key (kbd "<f3>") 'counsel-find-file)
   (global-set-key (kbd "<f5>") 'eval-buffer)
@@ -92,7 +92,7 @@
   (global-set-key (kbd "M-k") 'windmove-up)
   (global-set-key (kbd "M-j") 'windmove-down)
 
-  (global-set-key (kbd "M-!") 'async-shell-command)
+  (global-set-key (kbd "M-!") '~acme!)
   (global-set-key (kbd "M-|") '~acme|)
   (global-set-key (kbd "M-$") '~acme$)
 
