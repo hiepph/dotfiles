@@ -5,7 +5,7 @@
 ;; ACME
 ;; REF: http://man.cat-v.org/plan_9/1/acme
 ;;
-
+(defvar record-separator "%")
 (defun ~acme! (&optional command)
   "Execute command using (async) shell command
 
@@ -18,7 +18,7 @@ sample:
         (cmd (format "%s &" trimmed-command)))
     (with-current-buffer buf
       (goto-char (point-max))
-      (insert (format "! %s\n%s\n" trimmed-command (shell-command-to-string cmd))))
+      (insert (format "! %s\n%s%s\n" trimmed-command (shell-command-to-string cmd) record-separator)))
     (switch-to-buffer-other-window buf)
     (goto-char (point-max))
     ))
@@ -121,7 +121,7 @@ e.g. If the current buffer is hello.py, then it'll call pytest
 
   (let* ((fname (buffer-file-name))
          (suffix (file-name-extension fname))
-         (prog (cdr (assoc suffix command-map)))
+         (prog (cdr (assoc suffix *test-command-map*)))
          (command prog))
     (if (null prog)
         (error "Compile command not found. Please check '*<?>-command-map*'")
