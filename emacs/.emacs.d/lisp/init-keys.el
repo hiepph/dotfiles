@@ -124,6 +124,10 @@
 
    ;; Projectile
    "p" 'projectile-command-map
+
+   ;; Programming
+   "c" 'compile
+   "C" 'recompile
    ))
 
 

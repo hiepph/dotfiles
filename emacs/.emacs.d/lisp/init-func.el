@@ -66,9 +66,11 @@ $ ls
 ;;
 ;; Buffers
 ;;
-(defun ~kill-all-buffers ()
+(defun ~factory-reset ()
+  "Wipe out all buffers and retain only one window (fresh start)"
   (interactive)
-  (mapc 'kill-buffer (buffer-list)))
+  (mapc 'kill-buffer (buffer-list))
+  (delete-other-windows))
 
 
 ;;
