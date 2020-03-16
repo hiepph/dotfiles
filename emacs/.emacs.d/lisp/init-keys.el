@@ -66,7 +66,7 @@
   ;;
   ;; Frequent tasks
   ;;
-  (global-set-key (kbd "<f1>") '~open-shell)
+  (global-set-key (kbd "<f1>") 'shell)
   (global-set-key (kbd "<f2>") 'write-file)
   (global-set-key (kbd "<f3>") 'counsel-find-file)
   (global-set-key (kbd "<f5>") 'eval-buffer)
@@ -74,6 +74,7 @@
   (global-set-key (kbd "S-<f8>") 'counsel-switch-buffer-other-window)
   (global-set-key (kbd "<f9>") '~compile-current-file)
   (global-set-key (kbd "<f12>") '~test-current-file)
+  (global-set-key (kbd "S-<f12>") '~test-all-files)
 
 
   ;;
@@ -87,10 +88,10 @@
   (global-set-key (kbd "M-3") 'eyebrowse-switch-to-window-config-3)
   (global-set-key (kbd "M-4") 'eyebrowse-switch-to-window-config-4)
 
-  (global-set-key (kbd "M-h") 'windmove-left)
-  (global-set-key (kbd "M-l") 'windmove-right)
-  (global-set-key (kbd "M-k") 'windmove-up)
-  (global-set-key (kbd "M-j") 'windmove-down)
+  ;; (global-set-key (kbd "M-h") 'windmove-left)
+  ;; (global-set-key (kbd "M-l") 'windmove-right)
+  ;; (global-set-key (kbd "M-k") 'windmove-up)
+  ;; (global-set-key (kbd "M-j") 'windmove-down)
 
   (global-set-key (kbd "M-!") '~acme!)
   (global-set-key (kbd "M-|") '~acme|)

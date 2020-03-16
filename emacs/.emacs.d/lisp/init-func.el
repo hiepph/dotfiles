@@ -19,7 +19,9 @@ sample:
     (with-current-buffer buf
       (goto-char (point-max))
       (insert (format "! %s\n%s\n" trimmed-command (shell-command-to-string cmd))))
-    (display-buffer buf)))
+    (switch-to-buffer-other-window buf)
+    (goto-char (point-max))
+    ))
 
 
 
@@ -69,16 +71,6 @@ $ ls
   (mapc 'kill-buffer (buffer-list)))
 
 
-(defun ~open-shell ()
-  "Open shell in current buffer, and follows current directory.
-If *shell* buffers is already in another buffer, kill it and starts new."
-  (interactive)
-  (kill-buffer "*shell*")
-  (shell)
-  )
-
-
-
 ;;
 ;; Programming
 ;;
@@ -107,17 +99,34 @@ e.g. If the current buffer is hello.py, then it'll call python hello.py
   )
 
 
+(defvar *test-command-map* '(("py" . "pytest")
+                            ("go" . "go test")
+                            ))
+
 (defun ~test-current-file ()
   "Test current file using 'compile'. Automatic filetype recogntion.
 e.g. If the current buffer is hello.py, then it'll call pytest hello.py
 "
   (interactive)
-  (defvar *test-command-map* '(("py" . "pytest")
-                               ("go" . "go test")
-                               ))
-
   (~run-current-file *test-command-map*)
   )
+
+
+(defun ~test-all-files ()
+  "Test all files in same directory using 'compile'. Automatic filetype recogntion.
+e.g. If the current buffer is hello.py, then it'll call pytest
+"
+  (interactive)
+  (save-buffer)
+
+  (let* ((fname (buffer-file-name))
+         (suffix (file-name-extension fname))
+         (prog (cdr (assoc suffix command-map)))
+         (command prog))
+    (if (null prog)
+        (error "Compile command not found. Please check '*<?>-command-map*'")
+      (compile command))))
+
 
 
 (provide 'init-func)
