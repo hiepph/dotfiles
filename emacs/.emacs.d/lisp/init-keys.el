@@ -17,6 +17,9 @@
   :init
   (evil-mode 1)
 
+  ;; enable cgn
+  (evil-select-search-module 'evil-search-module 'evil-search)
+
   :config
   ;; Haskell
   (evil-define-key 'normal haskell-mode-map
@@ -29,7 +32,7 @@
 
   (with-eval-after-load 'evil-maps
     ;; swiper
-    (define-key evil-motion-state-map (kbd "/") 'swiper)
+    (define-key evil-motion-state-map (kbd "\\") 'swiper)
     )
 )
 

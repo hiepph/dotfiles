@@ -71,6 +71,12 @@
   (global-evil-surround-mode 1))
 
 
+;; Search for selected region
+(use-package evil-visualstar
+  :ensure t
+  :init
+  (global-evil-visualstar-mode))
+
 
 
 ;;
