@@ -1,5 +1,5 @@
 "
-" BASIC
+" BASIC:
 "
 
 " Unicode
@@ -68,7 +68,7 @@ au Filetype rust let b:AutoPairs={'(':')', '[':']', '{':'}','"':'"', '`':'`'}
 
 
 "
-" FINDING FILES
+" FINDING FILES:
 "
 "
 " Search down into subfolders
@@ -93,8 +93,14 @@ let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 
 
 
+
 "
-" PLUGINS
+" STATUS LINE:
+"
+set laststatus=2
+
+"
+" PLUGINS:
 "
 call plug#begin('~/.vim/plugged')
 
@@ -122,7 +128,7 @@ Plug 'https://github.com/tpope/vim-commentary'
 
 
 "
-" LANGUAGES
+" LANGUAGES:
 "
 Plug 'sheerun/vim-polyglot'
 
