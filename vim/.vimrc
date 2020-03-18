@@ -1,6 +1,7 @@
 "
-" Basic
+" BASIC
 "
+
 " Unicode
 set encoding=utf-8
 
@@ -9,7 +10,6 @@ set number
 
 " highlight current line
 set cursorline
-" hi CursorLine term=bold cterm=bold guibg=Grey40
 
 " turn off annoying beep
 set noerrorbells visualbell t_vb=
@@ -23,6 +23,7 @@ let my_tab=4
 execute "set shiftwidth=".my_tab
 execute "set softtabstop=".my_tab
 set expandtab
+
 " allow toggling between local and default mode
 function! TabToggle()
   if &expandtab
@@ -48,9 +49,6 @@ set noswapfile
 " Set to auto read when a file is changed from the outside
 set autoread
 
-" Turn on wildmenu
-set wildmenu
-
 " Searching
 set incsearch
 set hlsearch
@@ -67,13 +65,36 @@ autocmd Filetype lisp setlocal ts=2 sts=2 sw=2 expandtab
 au Filetype lisp let b:AutoPairs={'(':')', '[':']', '{':'}','"':'"'}
 au Filetype rust let b:AutoPairs={'(':')', '[':']', '{':'}','"':'"', '`':'`'}
 
-" Map 'fd' to escape
-imap fd <Esc>
+
+
+"
+" FINDING FILES
+"
+"
+" Search down into subfolders
+" provides tab-completion for all file-related tasks
+set path+=**
+
+" Display all matching files when tab complete
+set wildmenu
 
 
 
 "
-" Plugins
+" FILE BROWSING:
+"
+" Tweaks for browsing
+let g:netrw_banner=0        " disable annoying banner
+let g:netrw_browse_split=4  " open in prior window
+let g:netrw_altv=1          " open splits to the right
+let g:netrw_liststyle=3     " tree view
+let g:netrw_list_hide=netrw_gitignore#Hide()
+let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
+
+
+
+"
+" PLUGINS
 "
 call plug#begin('~/.vim/plugged')
 
@@ -97,44 +118,19 @@ let g:strip_whitespace_confirm=0
 " Comment
 Plug 'https://github.com/tpope/vim-commentary'
 
-" Incseach
-Plug 'https://github.com/haya14busa/incsearch.vim'
-map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
-
-let g:incsearch#auto_nohlsearch = 1
-map n  <Plug>(incsearch-nohl-n)
-map N  <Plug>(incsearch-nohl-N)
-map *  <Plug>(incsearch-nohl-*)
-map #  <Plug>(incsearch-nohl-#)
-map g* <Plug>(incsearch-nohl-g*)
-map g# <Plug>(incsearch-nohl-g#)
 
 
-" Languages
+
+"
+" LANGUAGES
+"
 Plug 'sheerun/vim-polyglot'
 
-" disable header folding
-let g:vim_markdown_folding_disabled = 1
 
-" do not use conceal feature, the implementation is not so good
-let g:vim_markdown_conceal = 0
-let g:vim_markdown_conceal_code_blocks = 0
-
-" support front matter of various format
-let g:vim_markdown_frontmatter = 1  " for YAML format
-let g:vim_markdown_toml_frontmatter = 1  " for TOML format
-let g:vim_markdown_json_frontmatter = 1  " for JSON format
 
 
 "
-" Status line
-"
-
-
-"
-" Theme
+" THEME
 "
 Plug 'https://github.com/flazz/vim-colorschemes'
 Plug 'https://github.com/rafi/awesome-vim-colorschemes'
@@ -144,7 +140,7 @@ call plug#end()
 
 
 "
-" Custom
+" CUSTOM
 "
 try
     source ~/.custom.vim
