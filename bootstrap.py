@@ -72,7 +72,7 @@ def bootstrap_fcitx():
 
 def bootstrap_font():
     execute(f"""
-    {_pacman} powerline powerline-fonts
+    {_pacman} powerline powerline-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts
     """)
     bootstrap_locale()
 

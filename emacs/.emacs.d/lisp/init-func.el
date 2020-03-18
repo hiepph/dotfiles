@@ -19,7 +19,10 @@ sample:
     (with-current-buffer buf
       (goto-char (point-max))
       (insert (format "! %s\n%s%s\n" trimmed-command (shell-command-to-string cmd) record-separator)))
+
+    ;; switch to *+Errors+* buffer
     (switch-to-buffer-other-window buf)
+    (goto-address-mode t)
     (goto-char (point-max))
     ))
 
