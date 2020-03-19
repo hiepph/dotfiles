@@ -1,20 +1,16 @@
 ;; init.el --- Control all config iles
 
-;;
-;; @hiepph's Emacs
-;;
 
-(package-initialize)
+;; Startup-hack
+;; Avoid garbage collector at startup
+;; Enable gchm-mode later in core-packages
+(setq gc-cons-threshold most-positive-fixnum)
 
-
-;;
-;; Miscellaneous
-;;
 ;; custom config location
 (setq custom-file (concat user-emacs-directory "custom.el"))
 
-;; theme (TBR)
-(load-theme 'doom-solarized-light t)
+;; No need for scratch buffer at startup
+(setq initial-major-mode 'fundamental-mode)
 
 
 ;;
@@ -33,7 +29,6 @@
       (goto-char (point-max))
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
-
 
 
 ;;

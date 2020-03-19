@@ -12,3 +12,11 @@ Simply integrate config with `stow <package>`.
 
 + Bootstrap everything: `python bootstrap.py`
 + Bootstrap some modules: `python bootstrap.py git vim emacs`
+
+
+## Emacs
+
++ Config structure and performance optimization are referred from [doom-emacs](https://github.com/hlissner/doom-emacs/).
+A nice explanation of how doom-emacs can achieve state-of-the-art startup time is on the reddit discussion: [How is Doom Emacs so damn fast](https://www.reddit.com/r/emacs/comments/f3ed3r/how_is_doom_emacs_so_damn_fast)
+
++ Key bindings and literate functionalites are referred from [emacs-cmpitg](https://github.com/cmpitg/emacs-cmpitg)
