@@ -1,12 +1,8 @@
-(require 'init-elpa)
-
-
 ;;
 ;; Magit
 ;; ref: https://magit.vc/
 ;;
-(use-package magit
-  :ensure t)
+(use-package magit)
 
 
 ;;
@@ -14,7 +10,6 @@
 ;; ref: https://github.com/justbur/emacs-which-key
 ;;
 (use-package which-key
-  :ensure t
   :init
   (which-key-mode))
 
@@ -28,14 +23,12 @@
 ;; docs: https://oremacs.com/swiper/
 ;;
 (use-package counsel
-  :ensure t
   :diminish
   :init
   (ivy-mode 1)
   :config
   (setq ivy-use-virtual-buffers t)
-  (setq enable-recursive-minibuffers t)
-  )
+  (setq enable-recursive-minibuffers t))
 
 
 
@@ -43,7 +36,6 @@
 ;; Virtual desktop
 ;;
 (use-package eyebrowse
-  :ensure t
   :diminish
   :init
   (eyebrowse-mode t)
@@ -52,21 +44,12 @@
 
 
 ;;
-;; Windmove
-;;
-(use-package windmove
-  :diminish
-  :ensure t)
-
-
-;;
 ;; Project management
 ;;
 (use-package projectile
-  :ensure t
   :init
-  (projectile-mode +1)
-  )
+  (projectile-mode +1))
 
 
-(provide 'init-helper)
+
+(provide 'core-projects)

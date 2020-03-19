@@ -1,11 +1,6 @@
-(require 'init-elpa)
-
-
-
 ;;
 ;; Basic
 ;;
-
 ;; Disable the splash screen (to enable it agin, replace the t with 0)
 (setq inhibit-splash-screen t)
 
@@ -29,13 +24,10 @@
 (setq column-number-mode t)
 
 
-
-
 ;;
 ;; Themes
 ;;
-(use-package doom-themes
-  :ensure t)
+(use-package doom-themes)
+(load-theme 'doom-solarized-light t)
 
-
-(provide 'init-ui)
+(provide 'core-ui)

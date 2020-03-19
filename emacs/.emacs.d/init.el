@@ -1,26 +1,40 @@
 ;; init.el --- Control all config iles
 
+
+;; Startup-hack
+;; Avoid garbage collector at startup
+;; Enable gchm-mode later in core-packages
+(setq gc-cons-threshold most-positive-fixnum)
+
+;; custom config location
+(setq custom-file (concat user-emacs-directory "custom.el"))
+
+;; No need for scratch buffer at startup
+(setq initial-major-mode 'fundamental-mode)
+
+
 ;;
-;; @hiepph's Emacs
+;; Use 'straight' for package managers
+;; ref: https://github.com/raxod502/straight.el
 ;;
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      (bootstrap-version 5))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
 
-(package-initialize)
 
-
-;; Set custom variables file
-(setq custom-file (concat user-emacs-directory "/custom.el"))
-
-;; Custom scripts
-(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
-
-(require 'init-elpa)
-(require 'init-miscellaneous)
-(require 'init-ui)
-(require 'init-language)
-(require 'init-edit)
-(require 'init-helper)
-(require 'init-literate)
-(require 'init-keys)
-(require 'init-custom nil 'no-error)
+;;
+;; Core scripts
+;;
+(add-to-list 'load-path (expand-file-name "core" user-emacs-directory))
+(require 'core)
 
 (provide 'init)

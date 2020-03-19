@@ -12,3 +12,4 @@ session.*
 custom.el
 network-security*
 *.cache
+straight/
