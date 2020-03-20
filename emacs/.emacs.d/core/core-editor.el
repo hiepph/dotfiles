@@ -297,6 +297,22 @@ $ ls
   (delete-other-windows))
 
 
+(defun ~refresh-buffer ()
+  "Refresh buffer to its bare initial condition"
+  ;; clear search highlight
+  (interactive)
+  (evil-ex-nohighlight)
+  )
+
+(defun ~eval-buffer ()
+  "eval-buffer but with message"
+  (interactive)
+  (eval-buffer)
+  (message "> Eval buffer succeeded")
+  )
+
+
+
 ;;
 ;; Windmove
 ;;
