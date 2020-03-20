@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+acme -f /mnt/font/DejaVuSansMono/13a/font
