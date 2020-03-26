@@ -290,26 +290,11 @@ $ ls
 ;;
 ;; Buffers
 ;;
-(defun ~factory-reset ()
-  "Wipe out all buffers and retain only one window (fresh start)"
-  (interactive)
-  (mapc 'kill-buffer (buffer-list))
-  (delete-other-windows))
-
-
-(defun ~refresh-buffer ()
-  "Refresh buffer to its bare initial condition"
-  ;; clear search highlight
-  (interactive)
-  (evil-ex-nohighlight)
-  )
-
 (defun ~eval-buffer ()
   "eval-buffer but with message"
   (interactive)
   (eval-buffer)
-  (message "> Eval buffer succeeded")
-  )
+  (message "> Eval buffer succeeded"))
 
 
 

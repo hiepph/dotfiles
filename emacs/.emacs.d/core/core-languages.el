@@ -1,3 +1,7 @@
+;; Lisp
+(use-package slime)
+(setq inferior-lisp-program (executable-find "sbcl"))
+
 ;; Python
 (defun electric-indent-ignore-python (char)
   "Ignore electric indentation for python-mode."
@@ -38,37 +42,37 @@
 
 
 ;; Org-mode
-;; (use-package org
-;;   :init
-;;   (setq org-log-done 'time)
-;;   (add-hook 'org-mode-hook 'turn-on-font-lock)
-;;   ;; show image in org babel
-;;   (add-hook 'org-babel-after-execute-hook 'org-display-inline-images 'append)
+(use-package org
+  :init
+  (setq org-log-done 'time)
+  (add-hook 'org-mode-hook 'turn-on-font-lock)
+  ;; show image in org babel
+  (add-hook 'org-babel-after-execute-hook 'org-display-inline-images 'append)
 
-;;   ;; Turn off auto-fold
-;;   (setq org-startup-folded nil)
+  ;; Turn off auto-fold
+  (setq org-startup-folded nil)
 
-;;   :config
-;;   (setq org-confirm-babel-evaluate nil
-;;         org-src-fontify-natively t
-;;         org-src-tab-acts-natively t)
+  :config
+  (setq org-confirm-babel-evaluate nil
+        org-src-fontify-natively t
+        org-src-tab-acts-natively t)
 
-;;   (org-babel-do-load-languages
-;;    'org-babel-load-languages
-;;    '(
-;;      (shell      . t)
-;;      (emacs-lisp . t)
-;;      (python     . t)
-;;      (ruby       . t)
-;;      ))
-;;   )
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '(
+     (shell      . t)
+     (emacs-lisp . t)
+     (python     . t)
+     (ruby       . t)
+     ))
+  )
 
-;; (use-package org-bullets
-;;   :config
-;;   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
-;;   )
+(use-package org-bullets
+  :config
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+  )
 
-;; (use-package ob-async)
+(use-package ob-async)
 
 
 ;;

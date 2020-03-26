@@ -55,10 +55,10 @@
   ;; Frequent tasks
   ;;
   (global-set-key (kbd "<f1>") 'shell)
-  (global-set-key (kbd "<f2>") 'write-file)
+  (global-set-key (kbd "<f2>") 'save-buffer)
+  (global-set-key (kbd "S-<f2>") 'write-file)
   (global-set-key (kbd "<f3>") 'counsel-find-file)
-  (global-set-key (kbd "<f5>") '~refresh-buffer)
-  (global-set-key (kbd "<f6>") '~eval-buffer)
+  (global-set-key (kbd "<f5>") '~eval-buffer)
   (global-set-key (kbd "<f8>") 'counsel-switch-buffer)
   (global-set-key (kbd "S-<f8>") 'counsel-switch-buffer-other-window)
   (global-set-key (kbd "<f9>") '~compile-current-file)
@@ -112,7 +112,9 @@
    ;; Programming
    "c" 'compile
    "C" 'recompile
-   ))
+   )
+)
+
 
 
 (provide 'core-keybindings)
