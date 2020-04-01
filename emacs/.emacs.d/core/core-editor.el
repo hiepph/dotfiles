@@ -33,7 +33,7 @@
 (setq auto-save-default nil)
 
 ;; use bash as default shell
-(setq-default explicit-shell-file-name "/bin/bash")
+;; (setq-default explicit-shell-file-name "/bin/bash")
 
 ;; open *shell* in current buffer
 (push (cons "\\*shell\\*" display-buffer--same-window-action) display-buffer-alist)
