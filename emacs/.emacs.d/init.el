@@ -1,4 +1,4 @@
-;; init.el --- Control all config iles
+;; init.el --- Control all config files
 
 
 ;; Startup-hack

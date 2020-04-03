@@ -154,29 +154,29 @@
       (compile command))))
 
 
+(defvar *compilation-command-map* '(("py" . "python")
+                                    ("go" . "go run")
+                                    ("rb" . "ruby")
+                                    ("rb" . "ruby")
+                                    ("hs" . "runhaskell")
+                                    ("sh" . "bash")
+                                    ))
 (defun ~compile-current-file ()
   "(re)compile the current file. A replacement for compile with automatic filetype recognition.
 e.g. If the current buffer is hello.py, then it'll call python hello.py
 "
   (interactive)
-  (defvar *compilation-command-map* '(("py" . "python")
-                                      ("go" . "go run")
-                                      ("hs" . "runhaskell")))
-  (~run-current-file *compilation-command-map*)
-  )
+  (~run-current-file *compilation-command-map*))
 
 
 (defvar *test-command-map* '(("py" . "pytest")
-                            ("go" . "go test")
-                            ))
-
+                            ("go" . "go test")))
 (defun ~test-current-file ()
   "Test current file using 'compile'. Automatic filetype recogntion.
 e.g. If the current buffer is hello.py, then it'll call pytest hello.py
 "
   (interactive)
-  (~run-current-file *test-command-map*)
-  )
+  (~run-current-file *test-command-map*))
 
 
 (defun ~test-all-files ()
@@ -220,8 +220,7 @@ sample:
     ;; switch to *+Errors+* buffer
     (switch-to-buffer-other-window buf)
     (goto-address-mode t)
-    (goto-char (point-max))
-    ))
+    (goto-char (point-max))))
 
 
 
@@ -299,11 +298,11 @@ $ ls
 
 
 ;;
-;; Windmove
+;; Multiple cursors
 ;;
-;; (use-package windmove
-;;   :diminish)
-
+(use-package evil-mc
+  :init
+  (global-evil-mc-mode))
 
 
 (provide 'core-editor)
