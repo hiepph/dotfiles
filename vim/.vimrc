@@ -67,6 +67,7 @@ au Filetype rust let b:AutoPairs={'(':')', '[':']', '{':'}','"':'"', '`':'`'}
 
 
 
+
 "
 " FINDING FILES:
 "
@@ -125,12 +126,11 @@ let g:strip_whitespace_confirm=0
 Plug 'https://github.com/tpope/vim-commentary'
 
 
-
-
 "
 " LANGUAGES:
 "
-Plug 'sheerun/vim-polyglot'
+
+
 
 
 
