@@ -1,6 +1,9 @@
 ;; Lisp
 (use-package slime)
 (setq inferior-lisp-program (executable-find "sbcl"))
+(load (expand-file-name "~/quicklisp/slime-helper.el"))
+(setq inferior-lisp-program "sbcl")
+
 
 ;; Python
 (defun electric-indent-ignore-python (char)
@@ -13,11 +16,10 @@
 
 ;; Go
 (use-package go-mode
-  :config (progn
-            ;; format before saving
-            (add-hook 'before-save-hook 'gofmt-before-save)
-            ;; import before saving
-            (setq gofmt-command "goimports")))
+  :config
+  ;; format and import before saving
+  (setq gofmt-command "goimports") ; requires "goimports"
+  (add-hook 'before-save-hook 'gofmt-before-save))
 
 
 ;; Haskell

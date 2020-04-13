@@ -102,6 +102,12 @@ def bootstrap_ibus():
     open(f, 'w').write(new_content)
 
 
+def bootstrap_go():
+    execute(f"""
+    go get golang.org/x/tools/cmd/goimports
+    """)
+
+
 M = {'git': bootstrap_git,
      'nvidia': bootstrap_nvidia,
      'aur': bootstrap_aur,
@@ -111,6 +117,7 @@ M = {'git': bootstrap_git,
      'font': bootstrap_font,
      'ibus': bootstrap_ibus,
      'docker': bootstrap_docker,
+     'go': bootstrap_go,
     }
 
 
