@@ -96,7 +96,7 @@
   (add-hook 'emacs-lisp-mode-hook #'evil-cleverparens-mode))
 
 ;; Expand region
-;; (use-package expand-region)
+(use-package expand-region)
 
 ;; Rainbow parentheses
 (use-package rainbow-delimiters

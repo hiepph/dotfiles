@@ -7,7 +7,7 @@
   (evil-mode 1)
 
   ;; enable cgn
-  (evil-select-search-module 'evil-search-module 'evil-search)
+  ;; (evil-select-search-module 'evil-search-module 'evil-search)
 
   :config
   ;; Haskell
@@ -15,14 +15,13 @@
     "o" 'haskell-evil-open-below
     "O" 'haskell-evil-open-above)
 
-  ;; dired
-  ;; (evil-define-key 'normal 'dired-mode-map
-  ;;   "gr" 'revert-buffer)
-
   (with-eval-after-load 'evil-maps
     ;; swiper
     (define-key evil-motion-state-map (kbd "\\") 'swiper))
-)
+
+  ;; expand-region
+  (define-key evil-visual-state-map (kbd "+") 'er/expand-region)
+  (define-key evil-visual-state-map (kbd "_") 'er/contract-region))
 
 
 ;;
