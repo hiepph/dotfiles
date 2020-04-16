@@ -91,15 +91,11 @@
 
    ;; Commands
    "x" 'counsel-M-x
-   "k" 'kill-buffer
 
    ;; Magit
    "g" 'magit-status
    "G" 'magit-dispatch
 
-   ;;
-   ;; Navigation
-   ;;
    ;; search
    "/" 'counsel-rg
 
@@ -107,13 +103,26 @@
    "d" 'dired-jump
 
    ;; Projectile
-   "p" 'projectile-command-map
+   "p" 'projectile-command-map)
 
-   ;; Programming
-   "c" 'compile
-   "C" 'recompile
-   )
-)
+  (general-nmap
+   :prefix "SPC b"
+
+   "k" 'kill-buffer
+   "b" 'counsel-switch-buffer
+   "B" 'counsel-switch-buffer-other-window)
+
+  (general-nmap
+    :prefix "SPC c"
+
+    "f" 'counsel-find-file
+    "s" 'save-buffer
+    "e" '~eval-buffer
+
+    "t" '~test-current-file
+    "T" '~test-all-files
+    "c" '~compile-current-file)
+  )
 
 
 

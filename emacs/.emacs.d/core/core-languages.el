@@ -5,6 +5,10 @@
 (setq inferior-lisp-program "sbcl")
 
 
+;; Clojure
+(use-package cider)
+
+
 ;; Python
 (defun electric-indent-ignore-python (char)
   "Ignore electric indentation for python-mode."
