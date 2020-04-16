@@ -108,6 +108,17 @@ def bootstrap_go():
     """)
 
 
+def bootstrap_zsh():
+    execute(f"""
+    git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+    setopt EXTENDED_GLOB
+    for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
+      ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+    done
+    """)
+
+
+
 M = {'git': bootstrap_git,
      'nvidia': bootstrap_nvidia,
      'aur': bootstrap_aur,
@@ -118,6 +129,7 @@ M = {'git': bootstrap_git,
      'ibus': bootstrap_ibus,
      'docker': bootstrap_docker,
      'go': bootstrap_go,
+     'zsh': bootstrap_zsh,
     }
 
 
