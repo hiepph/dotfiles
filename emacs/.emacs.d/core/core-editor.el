@@ -77,15 +77,23 @@
 ;;
 ;; Highlights matching parenthesis
 (show-paren-mode 1)
+;; highlight brackets
+;; (setq show-paren-style 'parenthesis)
+;; highlight entire expression
+;; (setq show-paren-style 'expression)
+;; highlight brackets if visible, else entire expression
+(setq show-paren-style 'mixed)
 
+;; autopair
+(electric-pair-mode)
 
-;; Autopair
-(use-package autopair
-  :init
-  (autopair-global-mode))
+;; pair edit, but evil
+;; ref: https://github.com/luxbock/evil-cleverparens
+;; (use-package paredit)
+(use-package evil-cleverparens)
 
 ;; Expand region
-(use-package expand-region)
+;; (use-package expand-region)
 
 ;; Rainbow parentheses
 (use-package rainbow-delimiters
@@ -299,6 +307,7 @@ $ ls
 
 ;;
 ;; Multiple cursors
+;; ref: https://github.com/gabesoft/evil-mc
 ;;
 (use-package evil-mc
   :init

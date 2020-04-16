@@ -16,8 +16,8 @@
     "O" 'haskell-evil-open-above)
 
   ;; dired
-  (evil-define-key 'normal 'dired-mode-map
-    "gr" 'revert-buffer)
+  ;; (evil-define-key 'normal 'dired-mode-map
+  ;;   "gr" 'revert-buffer)
 
   (with-eval-after-load 'evil-maps
     ;; swiper
@@ -107,22 +107,18 @@
 
   (general-nmap
    :prefix "SPC b"
-
+   "f" 'counsel-find-file
+   "e" '~eval-buffer
+   "s" 'save-buffer
    "k" 'kill-buffer
    "b" 'counsel-switch-buffer
    "B" 'counsel-switch-buffer-other-window)
 
   (general-nmap
     :prefix "SPC c"
-
-    "f" 'counsel-find-file
-    "s" 'save-buffer
-    "e" '~eval-buffer
-
     "t" '~test-current-file
     "T" '~test-all-files
-    "c" '~compile-current-file)
-  )
+    "c" '~compile-current-file))
 
 
 
