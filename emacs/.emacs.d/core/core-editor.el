@@ -87,10 +87,13 @@
 ;; autopair
 (electric-pair-mode)
 
-;; pair edit, but evil
+;;
+;; evil paredit, supports barfing and slurping
 ;; ref: https://github.com/luxbock/evil-cleverparens
-;; (use-package paredit)
-(use-package evil-cleverparens)
+;;
+(use-package evil-cleverparens
+  :config
+  (add-hook 'emacs-lisp-mode-hook #'evil-cleverparens-mode))
 
 ;; Expand region
 ;; (use-package expand-region)
@@ -201,6 +204,13 @@ e.g. If the current buffer is hello.py, then it'll call pytest
     (if (null prog)
         (error "Compile command not found. Please check '*<?>-command-map*'")
       (compile command))))
+
+
+;; (defun ~kill-compilation-buffer ()
+;;   "Kill the *compliation* buffer"
+;;   (let ((compilation-buf "*compilation*"))
+;;     (if (get-buffer compilation-buf)
+;;         (kill-buffer compilation-buf))))
 
 
 ;;

@@ -106,19 +106,29 @@
    "p" 'projectile-command-map)
 
   (general-nmap
-   :prefix "SPC b"
-   "f" 'counsel-find-file
-   "e" '~eval-buffer
-   "s" 'save-buffer
-   "k" 'kill-buffer
-   "b" 'counsel-switch-buffer
-   "B" 'counsel-switch-buffer-other-window)
+    :prefix "SPC b"
+    "0" 'delete-window
+    "1" 'delete-other-windows
+    "h" 'split-window-horizontally
+    "v" 'split-window-vertically
+
+    "f" 'counsel-find-fil
+
+    "e" '~eval-buffer
+    "s" 'save-buffer
+    "k" 'kill-buffer
+
+    "b" 'counsel-switch-buffer
+    "B" 'counsel-switch-buffer-other-window)
 
   (general-nmap
     :prefix "SPC c"
+    "c" 'compile
+    "C" 'recompile
+    "k" 'kill-compilation
     "t" '~test-current-file
     "T" '~test-all-files
-    "c" '~compile-current-file))
+    "." '~compile-current-file))
 
 
 
