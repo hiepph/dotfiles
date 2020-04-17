@@ -51,15 +51,4 @@
   (projectile-mode +1))
 
 
-;;
-;; Ranger
-;; ref: https://github.com/ralesi/ranger.el
-;;
-(use-package ranger
-  :config
-  ;; use ranger in replace of dired
-  (ranger-override-dired-mode t))
-
-
-
 (provide 'core-projects)
