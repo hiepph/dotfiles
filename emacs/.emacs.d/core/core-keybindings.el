@@ -99,7 +99,9 @@
    "/" 'counsel-rg
 
    ;; dired
-   "d" 'dired-jump
+   ;; "d" 'dired-jump
+   "d" 'deer
+   "D" 'ranger
 
    ;; Projectile
    "p" 'projectile-command-map)
@@ -115,7 +117,8 @@
 
     "e" '~eval-buffer
     "s" 'save-buffer
-    "k" 'kill-buffer
+    "k" '~kill-current-buffer
+    "K" '~kill-buffer
 
     "b" 'counsel-switch-buffer
     "B" 'counsel-switch-buffer-other-window)

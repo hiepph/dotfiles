@@ -314,6 +314,11 @@ $ ls
   (message "> Eval buffer succeeded"))
 
 
+(defun ~kill-current-buffer ()
+  (interactive)
+  (kill-buffer (current-buffer)))
+
+
 
 ;;
 ;; Multiple cursors
