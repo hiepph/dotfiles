@@ -4,24 +4,7 @@
 ;;
 (use-package evil
   :init
-  (evil-mode 1)
-
-  ;; enable cgn
-  ;; (evil-select-search-module 'evil-search-module 'evil-search)
-
-  :config
-  ;; Haskell
-  (evil-define-key 'normal haskell-mode-map
-    "o" 'haskell-evil-open-below
-    "O" 'haskell-evil-open-above)
-
-  (with-eval-after-load 'evil-maps
-    ;; swiper
-    (define-key evil-motion-state-map (kbd "\\") 'swiper))
-
-  ;; expand-region
-  (define-key evil-visual-state-map (kbd "+") 'er/expand-region)
-  (define-key evil-visual-state-map (kbd "_") 'er/contract-region))
+  (evil-mode 1))
 
 
 ;;
@@ -41,8 +24,7 @@
 ;;
 (use-package evil-magit
   :config
-  (add-hook 'with-editor-mode-hook 'evil-insert-state)
-  )
+  (add-hook 'with-editor-mode-hook 'evil-insert-state))
 
 ;;
 ;; General (leader keys)
@@ -81,31 +63,27 @@
   (global-set-key (kbd "M-$") '~acme$)
 
 
-  ;;
-  ;; SPC keys leader
-  ;;
   (general-evil-setup)
   (general-nmap
-   :prefix "SPC"
+    :prefix "SPC"
 
-   ;; Commands
-   "x" 'counsel-M-x
+    ;; Commands
+    "x" 'counsel-M-x
 
-   ;; Magit
-   "g" 'magit-status
-   "G" 'magit-dispatch
+    ;; Magit
+    "g" 'magit-status
+    "G" 'magit-dispatch
 
-   ;; search
-   "/" 'counsel-rg
+    ;; search
+    "/" 'counsel-rg
 
-   ;; dired
-   ;; "d" 'dired-jump
-   "d" 'deer
-   "D" 'ranger
+    ;; dired
+    "d" 'dired-jump
 
-   ;; Projectile
-   "p" 'projectile-command-map)
+    ;; Projectile
+    "p" 'projectile-command-map)
 
+  ;; buffers
   (general-nmap
     :prefix "SPC b"
     "0" 'delete-window
@@ -123,6 +101,7 @@
     "b" 'counsel-switch-buffer
     "B" 'counsel-switch-buffer-other-window)
 
+  ;; compile
   (general-nmap
     :prefix "SPC c"
     "c" 'compile
@@ -130,7 +109,33 @@
     "k" 'kill-compilation
     "t" '~test-current-file
     "T" '~test-all-files
-    "." '~compile-current-file))
+    "." '~compile-current-file)
+
+  ;; dired
+  (general-define-key
+    :states 'normal
+    :keymaps 'dired-mode-map
+    "TAB" 'dired-subtree-toggle)
+
+  ;; Haskell
+  (general-define-key
+   :states 'normal
+   :keymaps 'haskell-mode-map
+    "o" 'haskell-evil-open-below
+    "O" 'haskell-evil-open-above)
+
+  ;; ivy
+  (general-define-key
+   :states 'normal
+   :keymaps 'evil-motion-state-map
+   "\\" 'swiper)
+
+  ;; expand-region
+  (general-define-key
+   :states 'visual
+   "+" 'er/expand-region
+   "-" 'er/contract-region))
+
 
 
 

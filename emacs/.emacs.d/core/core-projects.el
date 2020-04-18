@@ -1,4 +1,16 @@
 ;;
+;; dired
+;; ref: https://github.com/Fuco1/dired-hacks
+;;
+(use-package dired-filter)
+(use-package dired-open)
+(use-package dired-subtree)
+(add-hook 'dired-mode-hook
+          (lambda ()
+            (dired-filter-mode 1)))
+
+
+;;
 ;; Magit
 ;; ref: https://magit.vc/
 ;;
@@ -47,6 +59,7 @@
 ;; Project management
 ;;
 (use-package projectile
+  :defer t
   :init
   (projectile-mode +1))
 
