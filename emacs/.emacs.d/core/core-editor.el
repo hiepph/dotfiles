@@ -318,6 +318,10 @@ $ ls
   (interactive)
   (kill-buffer (current-buffer)))
 
+(defun ~sudo-edit-file ()
+  "Edit file with root permission"
+  (interactive)
+  (find-alternate-file (concat "/sudo:root@localhost:" (buffer-file-name))))
 
 
 ;;

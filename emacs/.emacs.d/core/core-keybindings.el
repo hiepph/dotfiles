@@ -39,6 +39,7 @@
   (global-set-key (kbd "<f2>") 'save-buffer)
   (global-set-key (kbd "S-<f2>") 'write-file)
   (global-set-key (kbd "<f3>") 'counsel-find-file)
+  ;; (global-set-key (kbd "<S-f3>") '~sudo-find-file)
   (global-set-key (kbd "<f5>") '~eval-buffer)
   (global-set-key (kbd "<f8>") 'counsel-switch-buffer)
   (global-set-key (kbd "S-<f8>") 'counsel-switch-buffer-other-window)

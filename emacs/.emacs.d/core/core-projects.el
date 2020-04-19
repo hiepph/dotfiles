@@ -2,12 +2,13 @@
 ;; dired
 ;; ref: https://github.com/Fuco1/dired-hacks
 ;;
-(use-package dired-filter)
+;; (use-package dired-filter)
 (use-package dired-open)
 (use-package dired-subtree)
-(add-hook 'dired-mode-hook
-          (lambda ()
-            (dired-filter-mode 1)))
+;; (add-hook 'dired-mode-hook
+;;           (lambda ()
+;;             (dired-filter-mode 1)))
+
 
 
 ;;
@@ -41,7 +42,6 @@
   :config
   (setq ivy-use-virtual-buffers t)
   (setq enable-recursive-minibuffers t))
-
 
 
 ;;
