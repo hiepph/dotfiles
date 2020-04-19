@@ -128,7 +128,6 @@
   ;; ivy
   (general-define-key
    :states 'normal
-   :keymaps 'evil-motion-state-map
    "\\" 'swiper)
 
   ;; expand-region
