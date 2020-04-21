@@ -1,3 +1,7 @@
+;; Principles:
+;; 1. Mnemonic: c(ompile), b(uffers)
+;; 2. Only high frequency tasks are bind to F keys
+
 ;;
 ;; Evil keybinding
 ;; ref: https://github.com/emacs-evil/evil
@@ -35,18 +39,11 @@
   ;;
   ;; Frequent tasks
   ;;
-  (global-set-key (kbd "<f1>") 'shell)
   (global-set-key (kbd "<f2>") 'save-buffer)
-  (global-set-key (kbd "S-<f2>") 'write-file)
   (global-set-key (kbd "<f3>") 'counsel-find-file)
-  ;; (global-set-key (kbd "<S-f3>") '~sudo-find-file)
-  (global-set-key (kbd "<f5>") '~eval-buffer)
   (global-set-key (kbd "<f8>") 'counsel-switch-buffer)
   (global-set-key (kbd "S-<f8>") 'counsel-switch-buffer-other-window)
   (global-set-key (kbd "<f9>") '~compile-current-file)
-  (global-set-key (kbd "<f12>") '~test-current-file)
-  (global-set-key (kbd "S-<f12>") '~test-all-files)
-
 
   ;;
   ;; Alt combination
@@ -84,33 +81,37 @@
     ;; Projectile
     "p" 'projectile-command-map)
 
+
   ;; buffers
   (general-nmap
     :prefix "SPC b"
-    "0" 'delete-window
-    "1" 'delete-other-windows
-    "h" 'split-window-horizontally
-    "v" 'split-window-vertically
-
-    "f" 'counsel-find-fil
+    "f" 'counsel-find-file
 
     "e" '~eval-buffer
+
     "s" 'save-buffer
+    "w" 'write-buffer
+
     "k" '~kill-current-buffer
     "K" '~kill-buffer
 
     "b" 'counsel-switch-buffer
-    "B" 'counsel-switch-buffer-other-window)
+    "B" 'counsel-switch-buffer-other-window
+
+    "m" 'magit-diff-buffer-file)
 
   ;; compile
   (general-nmap
     :prefix "SPC c"
     "c" 'compile
     "C" 'recompile
+
+    "." '~compile-current-file
+
     "k" 'kill-compilation
+
     "t" '~test-current-file
-    "T" '~test-all-files
-    "." '~compile-current-file)
+    "T" '~test-all-files)
 
   ;; dired
   (general-define-key
@@ -124,6 +125,19 @@
    :keymaps 'haskell-mode-map
     "o" 'haskell-evil-open-below
     "O" 'haskell-evil-open-above)
+
+  ;; Clojure
+  (general-define-key
+   :states 'normal
+   :keymaps 'cider-mode-map
+   [f6] 'cider-load-buffer-and-switch-to-repl-buffer)
+
+  ;; Emacs Lisp
+  (general-define-key
+   :states 'normal
+   :keymaps 'emacs-lisp-mode-map
+
+   [f5] '~eval-buffer)
 
   ;; ivy
   (general-define-key

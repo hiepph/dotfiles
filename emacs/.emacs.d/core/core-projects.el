@@ -5,6 +5,10 @@
 ;; (use-package dired-filter)
 (use-package dired-open)
 (use-package dired-subtree)
+
+;; readable information
+(setq dired-listing-switches "-alh")
+
 ;; (add-hook 'dired-mode-hook
 ;;           (lambda ()
 ;;             (dired-filter-mode 1)))
