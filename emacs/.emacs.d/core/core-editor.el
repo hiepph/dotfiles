@@ -1,7 +1,6 @@
 ;;
 ;; Basic
 ;;
-
 ;; Changes all yes/no questions to y/n type
 (fset 'yes-or-no-p 'y-or-n-p)
 
@@ -68,8 +67,7 @@
 ;;
 (use-package dtrt-indent
   :init
-  (dtrt-indent-mode)
-  )
+  (dtrt-indent-mode))
 
 
 ;;
@@ -127,8 +125,7 @@
   (setq whitespace-line-column 100)
   ;; `lines-tail` highlight part of lines that goes beyond ‘whitespace-line-column’ (default: 80)
   ;; `trailing` highlight trailing white-spaces
-  (setq whitespace-style '(face lines-tail trailing))
-)
+  (setq whitespace-style '(face lines-tail trailing)))
 
 
 ;;
@@ -137,8 +134,7 @@
 ;;
 (use-package evil-commentary
   :init
-  (evil-commentary-mode)
-  )
+  (evil-commentary-mode))
 
 
 ;;
@@ -151,7 +147,7 @@
 
 
 ;;
-;; Build and test
+;; Compile
 ;;
 (defun ~run-current-file (command-map)
   (interactive)
@@ -166,30 +162,29 @@
       (compile command))))
 
 
-(defvar *compilation-command-map* '(("py" . "python")
-                                    ("go" . "go run")
-                                    ("rb" . "ruby")
-                                    ("rb" . "ruby")
-                                    ("hs" . "runhaskell")
-                                    ("sh" . "bash")
-                                    ))
+(defvar *compile-command-map* '(("py" . "python")
+                                ("go" . "go run")
+                                ("rb" . "ruby")
+                                ("hs" . "runhaskell")
+                                ("sh" . "bash")))
+
 (defun ~compile-current-file ()
   "(re)compile the current file. A replacement for compile with automatic filetype recognition.
 e.g. If the current buffer is hello.py, then it'll call python hello.py
 "
   (interactive)
-  (~run-current-file *compilation-command-map*))
+  (~run-current-file *compile-command-map*))
 
 
 (defvar *test-command-map* '(("py" . "pytest")
                             ("go" . "go test")))
+
 (defun ~test-current-file ()
   "Test current file using 'compile'. Automatic filetype recogntion.
 e.g. If the current buffer is hello.py, then it'll call pytest hello.py
 "
   (interactive)
   (~run-current-file *test-command-map*))
-
 
 (defun ~test-all-files ()
   "Test all files in same directory using 'compile'. Automatic filetype recogntion.
@@ -205,13 +200,6 @@ e.g. If the current buffer is hello.py, then it'll call pytest
     (if (null prog)
         (error "Compile command not found. Please check '*<?>-command-map*'")
       (compile command))))
-
-
-;; (defun ~kill-compilation-buffer ()
-;;   "Kill the *compliation* buffer"
-;;   (let ((compilation-buf "*compilation*"))
-;;     (if (get-buffer compilation-buf)
-;;         (kill-buffer compilation-buf))))
 
 
 ;;
@@ -231,15 +219,14 @@ sample:
   (interactive "M!: ")
   (let* ((buf (get-buffer-create "*+Errors*"))
         (trimmed-command (s-trim command))
-        (cmd (format "%s &" trimmed-command)))
-    (with-current-buffer buf
-      (goto-char (point-max))
-      (insert (format "! %s\n%s%s\n" trimmed-command (shell-command-to-string cmd) record-separator)))
+        (cmd (format "%s" trimmed-command)))
+    ;; (with-current-buffer buf
+      ;; (goto-char (point-max))
+      ;; (insert (format "! %s\n%s%s\n" trimmed-command (shell-command-to-string cmd) record-separator))
+    (async-shell-command cmd buf))
 
     ;; switch to *+Errors+* buffer
-    (switch-to-buffer-other-window buf)
-    (goto-address-mode t)
-    (goto-char (point-max))))
+    (switch-to-buffer-other-window buf))
 
 
 
@@ -253,16 +240,14 @@ $ ls
   (setq open-term "urxvt -e $SHELL -c")
   (setq toggle-floating "i3-msg floating enable > /dev/null")
   (call-process-shell-command (format "%s '%s; %s; $SHELL -i'" open-term toggle-floating command)
-                 nil)
-  )
+                 nil))
 
 
 (defun ~acme< (&optional command)
   (interactive "M<: ")
   (delete-region (region-beginning)
                  (region-end))
-  (insert (s-trim-right (shell-command-to-string command)))
-  )
+  (insert (s-trim-right (shell-command-to-string command))))
 
 
 (defun ~acme| (&optional command)
@@ -318,6 +303,7 @@ $ ls
 (defun ~kill-current-buffer ()
   (interactive)
   (kill-buffer (current-buffer)))
+
 
 (defun ~sudo-edit-file ()
   "Edit file with root permission"
