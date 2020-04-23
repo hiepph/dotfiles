@@ -130,7 +130,18 @@
   (general-define-key
    :states 'normal
    :keymaps 'cider-mode-map
-   [f6] 'cider-load-buffer-and-switch-to-repl-buffer)
+   (general-nmap
+     :prefix "SPC r"
+     "l" 'cider-load-buffer))
+
+  ;; Scheme
+  (general-define-key
+   :states 'normal
+   :keymaps 'scheme-mode-map
+
+   (general-nmap
+     :prefix "SPC r"
+     "s" 'scheme-send-definition))
 
   ;; Emacs Lisp
   (general-define-key
