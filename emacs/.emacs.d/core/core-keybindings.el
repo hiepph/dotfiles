@@ -130,23 +130,19 @@
   (general-define-key
    :states 'normal
    :keymaps 'cider-mode-map
-   (general-nmap
-     :prefix "SPC r"
-     "l" 'cider-load-buffer))
+   :prefix "SPC r"
+   "l" 'cider-load-buffer)
 
   ;; Scheme
   (general-define-key
    :states 'normal
    :keymaps 'scheme-mode-map
+   :prefix "SPC r"
+   "d" 'scheme-send-definition
+   "D" 'scheme-send-definition-and-go
 
-   (general-nmap
-     :prefix "SPC r"
-     "d" 'scheme-send-definition
-     "D" 'scheme-send-definition-and-go
-
-     "r" 'scheme-send-region
-     "R" 'scheme-send-region-and-go
-     ))
+   "r" 'scheme-send-region
+   "R" 'scheme-send-region-and-go)
 
   ;; Emacs Lisp
   (general-define-key
