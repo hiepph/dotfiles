@@ -1,8 +1,8 @@
 ;; Lisp
-(use-package slime)
-(setq inferior-lisp-program (executable-find "sbcl"))
-(load (expand-file-name "~/quicklisp/slime-helper.el"))
-(setq inferior-lisp-program "sbcl")
+;; (use-package slime)
+;; (setq inferior-lisp-program (executable-find "sbcl"))
+;; (load (expand-file-name "~/quicklisp/slime-helper.el"))
+;; (setq inferior-lisp-program "sbcl")
 
 
 ;; Clojure

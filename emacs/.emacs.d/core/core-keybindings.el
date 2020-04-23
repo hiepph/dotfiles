@@ -141,7 +141,12 @@
 
    (general-nmap
      :prefix "SPC r"
-     "s" 'scheme-send-definition))
+     "d" 'scheme-send-definition
+     "D" 'scheme-send-definition-and-go
+
+     "r" 'scheme-send-region
+     "R" 'scheme-send-region-and-go
+     ))
 
   ;; Emacs Lisp
   (general-define-key

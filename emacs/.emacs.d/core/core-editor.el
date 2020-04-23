@@ -91,8 +91,11 @@
 ;;
 (use-package evil-cleverparens
   :config
-  (add-hook 'emacs-lisp-mode-hook #'evil-cleverparens-mode)
-  (add-hook 'clojure-mode-hook #'evil-cleverparens-mode))
+  :hook
+  'emacs-lisp-mode-hook
+  'clojure-mode-hook
+  'cider-mode-hook
+  'scheme-mode-hook)
 
 ;; Expand region
 (use-package expand-region)
