@@ -28,6 +28,6 @@
 ;; Themes
 ;;
 (use-package doom-themes)
-(load-theme 'doom-solarized-light t)
+;; (load-theme 'doom-solarized-light t)
 
 (provide 'core-ui)
