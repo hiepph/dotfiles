@@ -27,7 +27,8 @@
 ;;
 ;; Themes
 ;;
-(use-package doom-themes)
-(load-theme 'doom-solarized-light t)
+;; (use-package doom-themes)
+(use-package plan9-theme)
+(load-theme 'plan9 t)
 
 (provide 'core-ui)
