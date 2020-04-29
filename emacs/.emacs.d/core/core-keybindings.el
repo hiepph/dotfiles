@@ -131,7 +131,8 @@
    :states 'normal
    :keymaps 'cider-mode-map
    :prefix "SPC r"
-   "l" 'cider-load-buffer)
+   "l" 'cider-load-buffer
+   "L" 'cider-load-buffer-and-switch-to-repl-buffer)
 
   ;; Scheme
   (general-define-key
