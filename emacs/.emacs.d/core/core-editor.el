@@ -213,19 +213,16 @@ e.g. If the current buffer is hello.py, then it'll call pytest
 
 (defvar record-separator "%")
 
-(defun ~acme! (&optional command)
+(defun ~acme& (&optional command)
   "Execute command using (async) shell command
 
 sample:
 ! ls
 "
-  (interactive "M!: ")
+  (interactive "M&: ")
   (let* ((buf (get-buffer-create "*+Errors*"))
         (trimmed-command (s-trim command))
         (cmd (format "%s" trimmed-command)))
-    ;; (with-current-buffer buf
-      ;; (goto-char (point-max))
-      ;; (insert (format "! %s\n%s%s\n" trimmed-command (shell-command-to-string cmd) record-separator))
     (async-shell-command cmd buf))
 
     ;; switch to *+Errors+* buffer
@@ -240,7 +237,7 @@ sample:
 $ ls
 "
   (interactive "M$: ")
-  (setq open-term "urxvt -e $SHELL -c")
+  (setq open-term "termite -e $SHELL -c")
   (setq toggle-floating "i3-msg floating enable > /dev/null")
   (call-process-shell-command (format "%s '%s; %s; $SHELL -i'" open-term toggle-floating command)
                  nil))
