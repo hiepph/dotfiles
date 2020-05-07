@@ -130,6 +130,7 @@ M = {'git': bootstrap_git,
      'docker': bootstrap_docker,
      'go': bootstrap_go,
      'zsh': bootstrap_zsh,
+     'locale': bootstrap_locale,
     }
 
 
