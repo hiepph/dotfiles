@@ -56,7 +56,7 @@
   (global-set-key (kbd "M-3") 'eyebrowse-switch-to-window-config-3)
   (global-set-key (kbd "M-4") 'eyebrowse-switch-to-window-config-4)
 
-  (global-set-key (kbd "M-!") '~acme!)
+  (global-set-key (kbd "M-&") '~acme&)
   (global-set-key (kbd "M-|") '~acme|)
   (global-set-key (kbd "M-$") '~acme$)
 
