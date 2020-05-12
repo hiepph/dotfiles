@@ -157,10 +157,7 @@
    :states 'normal
    :keymaps 'paredit-mode-map
 
-   ">" 'paredit-forward-slurp-sexp)
-   "<" 'paredit-forward-barf-sexp)
-
-
-
+   ">" 'paredit-forward-slurp-sexp
+   "<" 'paredit-forward-barf-sexp))
 
 (provide 'core-keybindings)
