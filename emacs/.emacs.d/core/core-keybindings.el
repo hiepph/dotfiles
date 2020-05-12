@@ -134,17 +134,6 @@
    "l" 'cider-load-buffer
    "L" 'cider-load-buffer-and-switch-to-repl-buffer)
 
-  ;; Scheme
-  (general-define-key
-   :states 'normal
-   :keymaps 'scheme-mode-map
-   :prefix "SPC r"
-   "d" 'scheme-send-definition
-   "D" 'scheme-send-definition-and-go
-
-   "r" 'scheme-send-region
-   "R" 'scheme-send-region-and-go)
-
   ;; Emacs Lisp
   (general-define-key
    :states 'normal
@@ -161,7 +150,15 @@
   (general-define-key
    :states 'visual
    "+" 'er/expand-region
-   "-" 'er/contract-region))
+   "-" 'er/contract-region)
+
+  ;; paredit
+  (general-define-key
+   :states 'normal
+   :keymaps 'paredit-mode-map
+
+   ">" 'paredit-forward-slurp-sexp)
+   "<" 'paredit-forward-barf-sexp)
 
 
 

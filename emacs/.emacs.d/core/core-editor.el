@@ -89,13 +89,14 @@
 ;; evil paredit, supports barfing and slurping
 ;; ref: https://github.com/luxbock/evil-cleverparens
 ;;
-(use-package evil-cleverparens
+(use-package paredit
   :config
   :hook
   ((emacs-lisp-mode
     clojure-mode
     cider-mode
-    scheme-mode) . evil-cleverparens-mode))
+    scheme-mode) . paredit-mode))
+
 
 ;; Expand region
 (use-package expand-region)
