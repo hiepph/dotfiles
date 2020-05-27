@@ -9,9 +9,11 @@
 ;; custom config location
 (setq custom-file (concat user-emacs-directory "custom.el"))
 
-;; No need for scratch buffer at startup
+;; No need for lisp scratch buffer at startup
 (setq initial-major-mode 'fundamental-mode)
 
+;; save mini-buffer history
+(savehist-mode 1)
 
 ;;
 ;; Use 'straight' for package managers
