@@ -7,6 +7,9 @@
 ;; Disable startup message
 (setq inhibit-startup-message t)
 
+;; *scratch* message
+(setq initial-scratch-message "")
+
 ;; Disable Menu/toolbar/scroll
 (menu-bar-mode -1)
 (when (fboundp 'tool-bar-mode)

@@ -40,10 +40,14 @@
   ;; Frequent tasks
   ;;
   (global-set-key (kbd "<f2>") 'save-buffer)
+  (global-set-key (kbd "S-<f2>") 'write-buffer)
   (global-set-key (kbd "<f3>") 'counsel-find-file)
   (global-set-key (kbd "<f8>") 'counsel-switch-buffer)
   (global-set-key (kbd "S-<f8>") 'counsel-switch-buffer-other-window)
   (global-set-key (kbd "<f9>") '~compile-current-file)
+  (global-set-key (kbd "S-<f9>") 'recompile)
+  (global-set-key (kbd "<f12>") '~test-current-file)
+  (global-set-key (kbd "S-<f12>") '~test-all-files)
 
   ;;
   ;; Alt combination
@@ -158,6 +162,14 @@
    :keymaps 'paredit-mode-map
 
    ">" 'paredit-forward-slurp-sexp
-   "<" 'paredit-forward-barf-sexp))
+   "<" 'paredit-forward-barf-sexp)
+
+  ;; org
+  (general-define-key
+   :states 'normal
+   :keymaps 'org-mode-map
+   :prefix "SPC"
+
+   "," 'org-insert-structure-template))
 
 (provide 'core-keybindings)
