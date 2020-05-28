@@ -58,6 +58,11 @@
   ;; Turn off auto-fold
   (setq org-startup-folded nil)
 
+  ;; Show syntax highlighting per language native mode in *.org
+  (setq org-src-fontify-natively t)
+  ;; For languages with significant whitespace like Python:
+  (setq org-src-preserve-indentation t)
+
   :config
   (setq org-confirm-babel-evaluate nil
         org-src-fontify-natively t
@@ -65,18 +70,16 @@
 
   (org-babel-do-load-languages
    'org-babel-load-languages
-   '(
-     (shell      . t)
+   '((shell      . t)
      (emacs-lisp . t)
      (python     . t)
-     (ruby       . t)
-     ))
-  )
+     (ruby       . t))
+   ))
 
+(require 'org-tempo)
 (use-package org-bullets
   :config
-  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
-  )
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
 (use-package ob-async)
 
