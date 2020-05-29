@@ -9,7 +9,7 @@ set encoding=utf-8
 set number
 
 " highlight current line
-set cursorline
+" set cursorline
 
 " turn off annoying beep
 set noerrorbells visualbell t_vb=
@@ -139,7 +139,6 @@ Plug 'https://github.com/tpope/vim-commentary'
 " THEME
 "
 Plug 'https://github.com/flazz/vim-colorschemes'
-Plug 'https://github.com/rafi/awesome-vim-colorschemes'
 
 call plug#end()
 
