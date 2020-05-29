@@ -153,7 +153,7 @@
   ;; expand-region
   (general-define-key
    :states 'visual
-   "+" 'er/expand-region
+   "=" 'er/expand-region
    "-" 'er/contract-region)
 
   ;; paredit
@@ -163,6 +163,13 @@
 
    ">" 'paredit-forward-slurp-sexp
    "<" 'paredit-forward-barf-sexp)
+
+  ;; <C-a> <C-x>
+  (general-define-key
+   :states 'normal
+   ;; "10 +" to increase 10
+   "+" 'evil-numbers/inc-at-pt
+   "-" 'evil-numbers/dec-at-pt)
 
   ;; org
   (general-define-key

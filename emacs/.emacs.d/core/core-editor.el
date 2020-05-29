@@ -86,8 +86,7 @@
 (electric-pair-mode)
 
 ;;
-;; evil paredit, supports barfing and slurping
-;; ref: https://github.com/luxbock/evil-cleverparens
+;; paredit, supports barfing and slurping
 ;;
 (use-package paredit
   :config
@@ -118,6 +117,10 @@
   (global-evil-visualstar-mode))
 
 
+;; evil numbers
+;; enable <C-a> <C-x> behaviors
+(use-package evil-numbers)
+
 ;;
 ;; Whitespace
 ;;
@@ -130,7 +133,7 @@
   ;; `lines-tail` highlight part of lines that goes beyond ‘whitespace-line-column’ (default: 80)
   ;; `trailing` highlight trailing white-spaces
   (setq whitespace-style '(face lines-tail trailing)))
-
+(add-hook 'text-mode-hook 'auto-fill-mode)
 
 ;;
 ;; Commenter
