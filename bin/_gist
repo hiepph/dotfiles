@@ -1,0 +1,23 @@
+#!/usr/bin/env ruby
+require 'net/http'
+require 'json'
+
+q = ARGV[0]
+
+def get (url)
+  uri = URI(url)
+  return Net::HTTP.get(uri)
+end
+
+# TODO: authen
+gists = JSON.parse(get('https://api.github.com/gists'))
+
+
+gists.filter { |g| g['description'].downcase.include? q }.each do |item|
+  # puts "\"#{item['description']}\" #{item['git_pull_url']}"
+  puts item['description']
+  item['files'].each do |f, v|
+    puts f
+    puts get(v['raw_url'])
+  end
+end
