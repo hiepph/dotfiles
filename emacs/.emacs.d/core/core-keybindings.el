@@ -153,7 +153,7 @@
   ;; expand-region
   (general-define-key
    :states 'visual
-   "=" 'er/expand-region
+   "+" 'er/expand-region
    "-" 'er/contract-region)
 
   ;; paredit

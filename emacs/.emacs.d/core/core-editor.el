@@ -165,7 +165,8 @@
          (prog (cdr (assoc suffix command-map)))
          (command (format "%s %s" prog (shell-quote-argument fname))))
     (if (null prog)
-        (error "Compile command not found. Please check '*<?>-command-map*'")
+        ;; run as executed file
+        (compile fname)
       (compile command))))
 
 
