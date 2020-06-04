@@ -1,4 +1,5 @@
-# Bootstrap the whole newly installed Arch system
+# Bootstrap the whole newly installed system
+# supports: Arch
 import argparse
 import subprocess
 import sys
@@ -12,7 +13,7 @@ def execute(cmd):
         map(subprocess.run, _cmd))
 
 
-_pacman = "sudo pacman -S --needed --noconfirm"
+_pacman = "pacman -S --needed --noconfirm"
 
 
 def bootstrap_aur():
@@ -29,7 +30,7 @@ def bootstrap_aur():
 
 def bootstrap_locale():
     execute(f"""
-    sudo localedef -f UTF-8 -i en_US en_US.UTF-8
+    localedef -f UTF-8 -i en_US en_US.UTF-8
     """)
 
 
@@ -44,7 +45,7 @@ def bootstrap_git():
 
 def bootstrap_nvidia():
     execute("""
-    sudo pacman -S --needed nvidia
+    pacman -S --needed nvidia
     """)
 
 
@@ -80,7 +81,7 @@ def bootstrap_font():
 def bootstrap_docker():
     execute(f"""
     {_pacman} docker
-    sudo passwd -a $(whoami) docker
+    passwd -a $(whoami) docker
     """)
 
 
@@ -118,19 +119,27 @@ def bootstrap_zsh():
     """)
 
 
+def bootstrap_conda():
+    execute(f"""
+    cd ~/Downloads
+    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+    bash Miniconda3-latest-Linux-x86_64.sh -s
+    """)
+
+
 
 M = {'git': bootstrap_git,
      'nvidia': bootstrap_nvidia,
      'aur': bootstrap_aur,
      'vim': bootstrap_vim,
      'tmux': bootstrap_tmux,
-     # 'fcitx': bootstrap_fcitx,
      'font': bootstrap_font,
      'ibus': bootstrap_ibus,
      'docker': bootstrap_docker,
      'go': bootstrap_go,
      'zsh': bootstrap_zsh,
      'locale': bootstrap_locale,
+     'conda': bootstrap_conda,
     }
 
 
@@ -140,17 +149,10 @@ def info_and_exec(f):
 
 
 if __name__ == '__main__':
-    if len(sys.argv) == 1:
-        # no additional arguments
-        to_be_installed = M.keys()
-    else:
-        parser = argparse.ArgumentParser()
-        parser.add_argument('module', nargs='+',
-                            help='module to install (default: all)')
-        args = parser.parse_args()
+    parser = argparse.ArgumentParser()
+    parser.add_argument('module', nargs='+',
+                        help='module to install (default: all)')
+    args = parser.parse_args()
 
-        to_be_installed = args.module
-
-    list(
-        map(info_and_exec, to_be_installed)
-    )
+    to_be_installed = args.module
+    list(map(info_and_exec, to_be_installed))

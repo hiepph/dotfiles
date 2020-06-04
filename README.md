@@ -10,8 +10,8 @@ Simply integrate config with `stow <package>`.
 
 ## Installation
 
-+ Bootstrap everything: `python bootstrap.py`
-+ Bootstrap some modules: `python bootstrap.py git vim emacs`
++ Bootstrap everything: `sudo python bootstrap.py`
++ Bootstrap some modules: `sudo python bootstrap.py git vim`
 
 
 ## Emacs
