@@ -63,7 +63,7 @@
   (global-set-key (kbd "M-&") '~acme&)
   (global-set-key (kbd "M-|") '~acme|)
   (global-set-key (kbd "M-$") '~acme$)
-
+  (global-set-key (kbd "M-<") '~acme<)
 
   (general-evil-setup)
   (general-nmap
@@ -164,13 +164,6 @@
    ">" 'paredit-forward-slurp-sexp
    "<" 'paredit-forward-barf-sexp)
 
-  ;; <C-a> <C-x>
-  (general-define-key
-   :states 'normal
-   ;; "10 +" to increase 10
-   "+" 'evil-numbers/inc-at-pt
-   "-" 'evil-numbers/dec-at-pt)
-
   ;; org
   (general-define-key
    :states 'normal
@@ -178,6 +171,14 @@
    :prefix "SPC"
 
    "'" 'org-edit-special
-   "RET" 'org-ctrl-c-ctrl-c))
+   "RET" 'org-ctrl-c-ctrl-c)
+
+  ;; some tricks borrowed from Practical Vim
+  ;; (visual) <C-a> <C-x> -> + -
+  (general-define-key
+   :states 'normal
+   ;; "10 +" to increase 10
+   "+" 'evil-numbers/inc-at-pt
+   "-" 'evil-numbers/dec-at-pt))
 
 (provide 'core-keybindings)
