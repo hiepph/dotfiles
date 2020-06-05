@@ -156,7 +156,9 @@
 ;;
 ;; Compile
 ;;
-(defun ~run-current-file (command-map)
+(defun ~run-current-file (f command-map)
+  "Run command map with function f
+f can be: compile, ~acme$, ~acme&, ~acme!"
   (interactive)
   (save-buffer)
 
@@ -166,9 +168,8 @@
          (command (format "%s %s" prog (shell-quote-argument fname))))
     (if (null prog)
         ;; run as executed file
-        (compile fname)
-      (compile command))))
-
+        (funcall f fname)
+      (funcall f command))))
 
 (defvar *compile-command-map* '(("py" . "python")
                                 ("go" . "go run")
@@ -181,7 +182,14 @@
 e.g. If the current buffer is hello.py, then it'll call python hello.py
 "
   (interactive)
-  (~run-current-file *compile-command-map*))
+  (~run-current-file 'compile *compile-command-map*))
+
+
+(defun ~&-current-file ()
+  "~acme& current file
+"
+  (interactive)
+  (~run-current-file '~acme& *compile-command-map*))
 
 
 (defvar *test-command-map* '(("py" . "pytest")
@@ -192,7 +200,7 @@ e.g. If the current buffer is hello.py, then it'll call python hello.py
 e.g. If the current buffer is hello.py, then it'll call pytest hello.py
 "
   (interactive)
-  (~run-current-file *test-command-map*))
+  (~run-current-file 'compile *test-command-map*))
 
 (defun ~test-all-files ()
   "Test all files in same directory using 'compile'. Automatic filetype recogntion.

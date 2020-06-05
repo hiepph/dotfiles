@@ -45,7 +45,7 @@
   (global-set-key (kbd "<f8>") 'counsel-switch-buffer)
   (global-set-key (kbd "S-<f8>") 'counsel-switch-buffer-other-window)
   (global-set-key (kbd "<f9>") '~compile-current-file)
-  (global-set-key (kbd "S-<f9>") 'recompile)
+  (global-set-key (kbd "S-<f9>") '~&-current-file)
   (global-set-key (kbd "<f12>") '~test-current-file)
   (global-set-key (kbd "S-<f12>") '~test-all-files)
 
@@ -89,18 +89,11 @@
   ;; buffers
   (general-nmap
     :prefix "SPC b"
-    "f" 'counsel-find-file
-
-    "e" '~eval-buffer
-
-    "s" 'save-buffer
-    "w" 'write-buffer
+    "h" 'split-window-right
+    "v" 'split-window-below
 
     "k" '~kill-current-buffer
     "K" '~kill-buffer
-
-    "b" 'counsel-switch-buffer
-    "B" 'counsel-switch-buffer-other-window
 
     "m" 'magit-diff-buffer-file)
 
@@ -108,14 +101,7 @@
   (general-nmap
     :prefix "SPC c"
     "c" 'compile
-    "C" 'recompile
-
-    "." '~compile-current-file
-
-    "k" 'kill-compilation
-
-    "t" '~test-current-file
-    "T" '~test-all-files)
+    "C" 'recompile)
 
   ;; dired
   (general-define-key
