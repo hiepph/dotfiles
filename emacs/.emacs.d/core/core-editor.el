@@ -233,6 +233,9 @@ sample:
 ! ls
 "
   (interactive "M&: ")
+  ;; kill +Errors buffer first
+  (kill-buffer (get-buffer "*+Errors*"))
+
   (let* ((buf (get-buffer-create "*+Errors*"))
         (trimmed-command (s-trim command))
         (cmd (format "%s" trimmed-command)))
