@@ -17,6 +17,15 @@
     nil))
 (add-hook 'electric-indent-functions 'electric-indent-ignore-python)
 
+(defun ~format-python ()
+  "Format python code followed PEP8"
+  (interactive)
+
+  (when (eq major-mode 'python-mode)
+    (let ((fname (buffer-file-name)))
+      (shell-command (format "autopep8 --in-place --aggressive --aggressive %s" fname) t))))
+(add-hook 'after-save-hook '~format-python)
+
 
 ;; Go
 (use-package go-mode
@@ -45,7 +54,6 @@
 
 ;; Yaml
 (use-package yaml-mode)
-
 
 ;; Org-mode
 (use-package org
