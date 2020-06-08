@@ -62,10 +62,10 @@
 ;;
 ;; Project management
 ;;
-(use-package projectile
-  :defer t
-  :init
-  (projectile-mode +1))
+;; (use-package projectile
+;;   :defer t
+;;   :init
+;;   (projectile-mode +1))
 
 
 (provide 'core-projects)
