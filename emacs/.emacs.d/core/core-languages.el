@@ -23,7 +23,7 @@
 
   (when (eq major-mode 'python-mode)
     (let ((fname (buffer-file-name)))
-      (shell-command (format "autopep8 --in-place --aggressive --aggressive %s" fname) t))))
+      (shell-command (format "autopep8 --in-place --aggressive --aggressive %s" fname) nil))))
 (add-hook 'after-save-hook '~format-python)
 
 
