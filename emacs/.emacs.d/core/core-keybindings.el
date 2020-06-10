@@ -101,7 +101,8 @@
   (general-nmap
     :prefix "SPC c"
     "c" 'compile
-    "C" 'recompile)
+    "C" 'recompile
+    "k" 'kill-compilation)
 
   ;; dired
   (general-define-key
