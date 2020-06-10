@@ -31,8 +31,10 @@
                                                "backups"))))
 (setq auto-save-default nil)
 
-;; use bash as default shell
-;; (setq-default explicit-shell-file-name "/bin/bash")
+;; Tramp
+(setq-default explicit-shell-file-name "/bin/bash")
+(add-to-list 'tramp-remote-path 'tramp-own-remote-path)
+
 
 ;; open *shell* in current buffer
 (push (cons "\\*shell\\*" display-buffer--same-window-action) display-buffer-alist)
@@ -162,7 +164,7 @@ f can be: compile, ~acme$, ~acme&, ~acme!"
   (interactive)
   (save-buffer)
 
-  (let* ((fname (buffer-file-name))
+  (let* ((fname (buffer-name))
          (suffix (file-name-extension fname))
          (prog (cdr (assoc suffix command-map)))
          (command (format "%s %s" prog (shell-quote-argument fname))))
@@ -209,7 +211,7 @@ e.g. If the current buffer is hello.py, then it'll call pytest
   (interactive)
   (save-buffer)
 
-  (let* ((fname (buffer-file-name))
+  (let* ((fname (buffer-name))
          (suffix (file-name-extension fname))
          (prog (cdr (assoc suffix *test-command-map*)))
          (command prog))

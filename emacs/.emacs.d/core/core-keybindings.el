@@ -46,8 +46,8 @@
   (global-set-key (kbd "S-<f8>") 'counsel-switch-buffer-other-window)
   (global-set-key (kbd "<f9>") '~compile-current-file)
   (global-set-key (kbd "S-<f9>") '~&-current-file)
-  (global-set-key (kbd "<f12>") '~test-current-file)
-  (global-set-key (kbd "S-<f12>") '~test-all-files)
+  (global-set-key (kbd "<f10>") '~test-current-file)
+  (global-set-key (kbd "S-<f10>") '~test-all-files)
 
   ;;
   ;; Alt combination
