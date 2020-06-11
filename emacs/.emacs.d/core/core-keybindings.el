@@ -157,6 +157,7 @@
    :keymaps 'org-mode-map
    :prefix "SPC"
 
+   "," 'org-insert-structure-template
    "'" 'org-edit-special
    "RET" 'org-ctrl-c-ctrl-c)
 

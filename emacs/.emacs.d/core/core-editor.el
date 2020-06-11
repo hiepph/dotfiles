@@ -323,15 +323,20 @@ $ ls
   (kill-buffer (current-buffer)))
 
 
-(defun ~sudo-edit-file ()
-  "Edit file with root permission"
-  (interactive)
-  (find-alternate-file (concat "/sudo:root@localhost:" (buffer-file-name))))
+;; (defun ~sudo-edit-file ()
+;;   "Edit file with root permission"
+;;   (interactive)
+;;   (find-alternate-file (concat "/sudo:root@localhost:" (buffer-file-name))))
 
 
 ;;
 ;; Multiple cursors
 ;; ref: https://github.com/gabesoft/evil-mc
+;; keybinding: https://github.com/gabesoft/evil-mc/blob/master/evil-mc.el
+;;
+;; * Note:
+;; evil-mc and visual selection mode can play nicely together
+;; Suppose I selected some text in visual mode, then g-r-I to active multiple cursors
 ;;
 (use-package evil-mc
   :init
