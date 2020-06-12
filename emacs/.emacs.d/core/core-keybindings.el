@@ -80,7 +80,7 @@
     "/" 'counsel-rg
 
     ;; dired
-    "d" 'dired-jump
+    "d" 'dired-jump-other-window
 
     ;; Projectile
     "p" 'projectile-command-map)
