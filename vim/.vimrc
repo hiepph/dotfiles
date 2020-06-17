@@ -65,7 +65,8 @@ autocmd Filetype lisp setlocal ts=2 sts=2 sw=2 expandtab
 au Filetype lisp let b:AutoPairs={'(':')', '[':']', '{':'}','"':'"'}
 au Filetype rust let b:AutoPairs={'(':')', '[':']', '{':'}','"':'"', '`':'`'}
 
-
+" Increase history
+set history=200
 
 
 "
@@ -101,7 +102,6 @@ let g:netrw_localrmdir='rm -r'
 " STATUS LINE:
 "
 set laststatus=2
-set statusline=%=%m\ %c\ %P\ %f
 
 "
 " PLUGINS:
