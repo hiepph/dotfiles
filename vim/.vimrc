@@ -80,9 +80,11 @@ set path+=**
 " Display all matching files when tab complete
 set wildmenu
 
+" Expand %% to %:h
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
 
-"
+
 " FILE BROWSING:
 "
 " Tweaks for browsing
