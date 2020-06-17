@@ -235,15 +235,17 @@ sample:
 ! ls
 "
   (interactive "M&: ")
-  ;; kill +Errors buffer first
-  (kill-buffer (get-buffer "*+Errors*"))
+  (let ((out-buffer "*+Errors*"))
+    ;; kill +Errors buffer first
+    (when (get-buffer out-buffer)
+      (kill-buffer (get-buffer out-buffer)))
 
-  (let* ((buf (get-buffer-create "*+Errors*"))
-        (trimmed-command (s-trim command))
-        (cmd (format "%s" trimmed-command)))
-    (async-shell-command cmd buf))
+    (let* ((buf (get-buffer-create out-buffer))
+           (trimmed-command (s-trim command))
+           (cmd (format "%s" trimmed-command)))
+      (async-shell-command cmd buf)))
 
-    ;; switch to *+Errors+* buffer
+    ;; switch to *+Errors+* buffe r
     (switch-to-buffer-other-window buf))
 
 

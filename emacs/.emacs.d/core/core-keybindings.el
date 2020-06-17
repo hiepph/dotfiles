@@ -30,6 +30,15 @@
   :config
   (add-hook 'with-editor-mode-hook 'evil-insert-state))
 
+
+;;
+;; Evil collection
+;;
+(use-package evil-collection
+  :config
+  (setq evil-want-keybinding nil)
+  (with-eval-after-load 'dired (evil-collection-dired-setup)))
+
 ;;
 ;; General (leader keys)
 ;; ref: https://github.com/noctuid/general.el/
@@ -163,10 +172,11 @@
 
   ;; some tricks borrowed from Practical Vim
   ;; (visual) <C-a> <C-x> -> + -
-  (general-define-key
-   :states 'normal
-   ;; "10 +" to increase 10
-   "+" 'evil-numbers/inc-at-pt
-   "-" 'evil-numbers/dec-at-pt))
+  ;; (general-define-key
+  ;;  :states 'normal
+  ;;  ;; "10 +" to increase 10
+  ;;  "+" 'evil-numbers/inc-at-pt
+  ;;  "-" 'evil-numbers/dec-at-pt)
+  )
 
 (provide 'core-keybindings)
