@@ -98,8 +98,6 @@
   ;; buffers
   (general-nmap
     :prefix "SPC b"
-    "h" 'split-window-right
-    "v" 'split-window-below
 
     "k" '~kill-current-buffer
     "K" '~kill-buffer

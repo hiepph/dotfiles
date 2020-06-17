@@ -62,10 +62,14 @@
 ;;
 ;; Project management
 ;;
-;; (use-package projectile
-;;   :defer t
-;;   :init
-;;   (projectile-mode +1))
-
+(use-package projectile
+  :config
+  (projectile-mode +1)
+  ;; ivy interface
+  (setq projectile-completion-system 'ivy)
+  ;; sort files by recently opened
+  (setq projectile-sort-order 'recentf)
+  ;; open top-level directory instead of a specific files
+  (setq projectile-switch-project-action #'projectile-dired))
 
 (provide 'core-projects)
