@@ -9,11 +9,6 @@
 ;; readable information
 (setq dired-listing-switches "-alh")
 
-;; (add-hook 'dired-mode-hook
-;;           (lambda ()
-;;             (dired-filter-mode 1)))
-
-
 
 ;;
 ;; Magit

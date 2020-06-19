@@ -184,14 +184,14 @@ f can be: compile, ~acme$, ~acme&, ~acme!"
 e.g. If the current buffer is hello.py, then it'll call python hello.py
 "
   (interactive)
+  (save-buffer)
   (~run-current-file 'compile *compile-command-map*))
 
-
-(defun ~&-current-file ()
-  "~acme& current file
-"
+(defun ~recompile ()
+  "custom recompile "
   (interactive)
-  (~run-current-file '~acme& *compile-command-map*))
+  (save-buffer)
+  (recompile))
 
 
 (defvar *test-command-map* '(("py" . "pytest")
