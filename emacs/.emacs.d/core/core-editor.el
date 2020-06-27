@@ -107,6 +107,41 @@
   :config
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
+;;
+;; Evil keybinding
+;; ref: https://github.com/emacs-evil/evil
+;;
+(use-package evil
+  :init
+  (setq evil-want-integration t)
+  (setq evil-want-keybinding nil)
+  :config
+  (evil-mode 1))
+
+;;
+;; Evil escape
+;; quickly escape to normal state using 'fd'
+;; ref: https://github.com/syl20bnr/evil-escape
+;;
+(use-package evil-escape
+  :after evil
+  :diminish
+  :init
+  (evil-escape-mode))
+
+(use-package evil-magit
+  :after evil
+  :diminish)
+
+
+;;
+;; Evil collection
+;;
+(use-package evil-collection
+  :after evil
+  :config
+  (evil-collection-init))
+
 ;; Surround
 ;; ref: https://github.com/emacs-evil/evil-surround
 (use-package evil-surround

@@ -3,43 +3,6 @@
 ;; 2. Only high frequency tasks are bind to F keys
 
 ;;
-;; Evil keybinding
-;; ref: https://github.com/emacs-evil/evil
-;;
-(use-package evil
-  :init
-  (evil-mode 1))
-
-
-;;
-;; Evil escape
-;; quickly escape to normal state using 'fd'
-;; ref: https://github.com/syl20bnr/evil-escape
-;;
-(use-package evil-escape
-  :after evil
-  :diminish
-  :init
-  (evil-escape-mode))
-
-
-;;
-;; Evil magit
-;;
-(use-package evil-magit
-  :config
-  (add-hook 'with-editor-mode-hook 'evil-insert-state))
-
-
-;;
-;; Evil collection
-;;
-(use-package evil-collection
-  :config
-  (setq evil-want-keybinding nil)
-  (with-eval-after-load 'dired (evil-collection-dired-setup)))
-
-;;
 ;; General (leader keys)
 ;; ref: https://github.com/noctuid/general.el/
 ;;
