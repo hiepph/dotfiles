@@ -64,7 +64,8 @@
   ;; sort files by recently opened
   (setq projectile-sort-order 'recentf)
   ;; open top-level directory instead of a specific files
-  (setq projectile-switch-project-action #'projectile-dired))
+  ;; (setq projectile-switch-project-action #'projectile-dired)
+  )
 
 ;; support search
 (use-package projectile-ripgrep)
