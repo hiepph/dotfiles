@@ -140,7 +140,7 @@
 (use-package evil-collection
   :after evil
   :config
-  (evil-collection-init))
+  (with-eval-after-load 'dired (evil-collection-dired-setup)))
 
 ;; Surround
 ;; ref: https://github.com/emacs-evil/evil-surround
@@ -225,7 +225,7 @@ e.g. If the current buffer is hello.py, then it'll call python hello.py
   (recompile))
 
 
-(defvar *test-command-map* '(("py" . "pytest -s")
+(defvar *test-command-map* '(("py" . "pytest")
                             ("go" . "go test")))
 
 (defun ~test-current-file ()

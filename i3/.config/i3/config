@@ -45,8 +45,8 @@ bindsym $mod+Shift+q kill
 
 # program launcher
 # bindsym $mod+d exec dmenu_run -fn 'Hack'
-bindsym $mod+d exec rofi -combi-modi drun,run -show combi -show-icons
-bindsym $mod+Tab exec rofi -show window -show-icons
+bindsym $mod+d exec "rofi -combi-modi drun,run -show combi -show-icons"
+bindsym $mod+Tab exec "rofi -show window -show-icons"
 
 # change focus
 bindsym $mod+$left focus left
