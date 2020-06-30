@@ -6,9 +6,8 @@ import sys
 
 
 def execute(cmd):
-    _cmd = list(
-        map(lambda l: l.strip().split(' '), filter(lambda c: len(c.strip()) > 0, cmd.split('\n'))),
-    )
+    _cmd = list(map(lambda l: l.strip().split(' '), filter(
+        lambda c: len(c.strip()) > 0, cmd.split('\n'))), )
     list(
         map(subprocess.run, _cmd))
 
@@ -71,6 +70,7 @@ def bootstrap_fcitx():
     {_pacman} fcitx fcitx-unikey fcitx-im
     """)
 
+
 def bootstrap_font():
     execute(f"""
     {_pacman} powerline powerline-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts
@@ -97,7 +97,7 @@ def bootstrap_ibus():
     tbr = 'exec /usr/bin/python3 /usr/share/ibus/setup/main.py $@'
     _lines = list(
         map(lambda l: tbr if '/usr/share/ibus/setup/main.py' in l else l, lines)
-        )
+    )
     new_content = ''.join(_lines)
 
     open(f, 'w').write(new_content)
@@ -127,6 +127,15 @@ def bootstrap_conda():
     """)
 
 
+def bootstrap_ux():
+    """Dunst: notification daemon
+    Rofi: window switcher and dmenu replacement
+    """
+    bootstrap_locale()
+    execute(f"""
+    {pacman} dunst rofi
+    """)
+
 
 M = {'git': bootstrap_git,
      'nvidia': bootstrap_nvidia,
@@ -140,7 +149,8 @@ M = {'git': bootstrap_git,
      'zsh': bootstrap_zsh,
      'locale': bootstrap_locale,
      'conda': bootstrap_conda,
-    }
+     'ux': bootstrap_ux,
+     }
 
 
 def info_and_exec(f):

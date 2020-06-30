@@ -43,8 +43,9 @@ bindsym $mod+Escape exec $prog/_lock
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run -fn 'Hack'
+# program launcher
+# bindsym $mod+d exec dmenu_run -fn 'Hack'
+bindsym $mod+d exec rofi -show combi
 
 # change focus
 bindsym $mod+$left focus left
