@@ -50,8 +50,7 @@
   :diminish
   :init
   (eyebrowse-mode t)
-  (setq eyebrowse-new-workspace t)
-  )
+  (setq eyebrowse-new-workspace t))
 
 
 ;;
@@ -66,5 +65,8 @@
   (setq projectile-sort-order 'recentf)
   ;; open top-level directory instead of a specific files
   (setq projectile-switch-project-action #'projectile-dired))
+
+;; support search
+(use-package projectile-ripgrep)
 
 (provide 'core-projects)

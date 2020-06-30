@@ -2,6 +2,9 @@
 ;; 1. Mnemonic: c(ompile), b(uffers)
 ;; 2. Only high frequency tasks are bind to F keys
 
+;; References
+;; 1. Spacemacs: https://develop.spacemacs.org/doc/DOCUMENTATION.html
+
 ;;
 ;; General (leader keys)
 ;; ref: https://github.com/noctuid/general.el/
@@ -49,11 +52,14 @@
     "g" 'magit-status
     "G" 'magit-dispatch
 
-    ;; search
+    ;; quick search
     "/" 'counsel-rg
 
     ;; dired
     "d" 'dired-jump
+
+    ;; kill-ring
+    "y" 'counsel-yank-pop
 
     ;; Projectile
     "p" 'projectile-command-map)
@@ -120,25 +126,6 @@
    :keymaps 'paredit-mode-map
 
    ">" 'paredit-forward-slurp-sexp
-   "<" 'paredit-forward-barf-sexp)
-
-  ;; org
-  (general-define-key
-   :states 'normal
-   :keymaps 'org-mode-map
-   :prefix "SPC"
-
-   "," 'org-insert-structure-template
-   "'" 'org-edit-special
-   "RET" 'org-ctrl-c-ctrl-c)
-
-  ;; some tricks borrowed from Practical Vim
-  ;; (visual) <C-a> <C-x> -> + -
-  ;; (general-define-key
-  ;;  :states 'normal
-  ;;  ;; "10 +" to increase 10
-  ;;  "+" 'evil-numbers/inc-at-pt
-  ;;  "-" 'evil-numbers/dec-at-pt)
-  )
+   "<" 'paredit-forward-barf-sexp))
 
 (provide 'core-keybindings)

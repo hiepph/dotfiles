@@ -154,10 +154,6 @@
   (global-evil-visualstar-mode))
 
 
-;; evil numbers
-;; enable <C-a> <C-x> behaviors
-(use-package evil-numbers)
-
 ;;
 ;; Whitespace
 ;;
@@ -229,7 +225,7 @@ e.g. If the current buffer is hello.py, then it'll call python hello.py
   (recompile))
 
 
-(defvar *test-command-map* '(("py" . "pytest")
+(defvar *test-command-map* '(("py" . "pytest -s")
                             ("go" . "go test")))
 
 (defun ~test-current-file ()
@@ -278,10 +274,13 @@ sample:
     (let* ((buf (get-buffer-create out-buffer))
            (trimmed-command (s-trim command))
            (cmd (format "%s" trimmed-command)))
-      (async-shell-command cmd buf)))
+      (async-shell-command cmd buf)
 
-    ;; switch to *+Errors+* buffe r
-    (switch-to-buffer-other-window buf))
+      ;; switch to *+Errors+* buffer
+      (switch-to-buffer-other-window buf)
+
+      ;; normal state by default
+      (evil-normal-state))))
 
 
 
