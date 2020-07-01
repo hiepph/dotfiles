@@ -37,6 +37,9 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec $prog/_term
 
+# drop a terminal (tdrop required)
+bindsym $mod+t exec "tdrop -ma alacritty"
+
 # lock screen
 bindsym $mod+Escape exec $prog/_lock
 
