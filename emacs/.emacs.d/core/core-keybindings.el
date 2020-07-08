@@ -15,7 +15,7 @@
   ;; Frequent tasks
   ;;
   (global-set-key (kbd "<f2>") 'save-buffer)
-  (global-set-key (kbd "S-<f2>") 'write-buffer)
+  (global-set-key (kbd "S-<f2>") 'write-file)
   (global-set-key (kbd "<f3>") 'counsel-find-file)
   (global-set-key (kbd "S-<f3>") 'find-file-other-window)
   (global-set-key (kbd "<f8>") 'counsel-switch-buffer)

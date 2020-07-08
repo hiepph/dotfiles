@@ -5,6 +5,10 @@
 ;; (setq inferior-lisp-program "sbcl")
 
 
+
+;; markdown
+(use-package markdown-mode)
+
 ;; Clojure
 (use-package cider)
 

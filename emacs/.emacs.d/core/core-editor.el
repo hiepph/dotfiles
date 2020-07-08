@@ -225,7 +225,7 @@ e.g. If the current buffer is hello.py, then it'll call python hello.py
   (recompile))
 
 
-(defvar *test-command-map* '(("py" . "pytest")
+(defvar *test-command-map* '(("py" . "pytest -s")
                             ("go" . "go test")))
 
 (defun ~test-current-file ()
@@ -328,20 +328,9 @@ $ ls
 ;;   :config
 ;;   (setq wand:*rules*
 ;;         (list
-;;          (wand:create-rule :match (rx bol (0+ " ") "!")
+;;          (wand:create-rule :match (rx bol (0+ " ") "&")
 ;;                            :capture :after
-;;                            :action #'~acme!)
-;;          (wand:create-rule :match (rx bol (0+ " ") "$")
-;;                            :capture :after
-;;                            :action #'~acme$)
-;;          (wand:create-rule :match (rx bol (0+ " ") "<")
-;;                            :capture :after
-;;                            :action #'~acme<)
-;;          (wand:create-rule :match (rx bol (0+ " ") "http")
-;;                            :capture :whole
-;;                            :action #'browse-url-firefox)
-;;          )))
-
+;;                            :action #'~acme&))))
 
 
 ;;
