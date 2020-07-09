@@ -133,7 +133,7 @@ def bootstrap_ux():
     """
     bootstrap_locale()
     execute(f"""
-    {pacman} dunst rofi
+    {pacman} dunst rofi alttab-git
     """)
 
 

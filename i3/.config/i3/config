@@ -47,9 +47,8 @@ bindsym $mod+Escape exec $prog/_lock
 bindsym $mod+Shift+q kill
 
 # program launcher
-# bindsym $mod+d exec dmenu_run -fn 'Hack'
 bindsym $mod+d exec "rofi -combi-modi drun,run -show combi -show-icons"
-bindsym $mod+Tab exec "rofi -show window -show-icons"
+bindsym $mod+b exec "rofi -show window -show-icons"
 
 # change focus
 bindsym $mod+$left focus left
@@ -146,7 +145,7 @@ bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # switch back and forth
-# bindsym $mod+Tab workspace back_and_forth
+bindsym $mod+Tab workspace back_and_forth
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
