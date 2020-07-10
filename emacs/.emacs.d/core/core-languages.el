@@ -9,6 +9,9 @@
 ;; markdown
 (use-package markdown-mode)
 
+;; ugly code font problem
+;; (set-face-attribute 'markdown-code-face nil :font "Hack")
+
 ;; Clojure
 (use-package cider)
 
