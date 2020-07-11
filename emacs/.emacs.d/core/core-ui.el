@@ -31,8 +31,8 @@
 ;; Themes
 ;;
 ;; (use-package doom-themes)
-(use-package plan9-theme)
-(load-theme 'plan9 t)
+;; (use-package plan9-theme)
+;; (use-package gruvbox-theme)
 
 ;; Use system font by default
 (setq font-use-system-font t)
