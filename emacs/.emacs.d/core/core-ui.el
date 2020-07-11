@@ -34,4 +34,13 @@
 (use-package plan9-theme)
 (load-theme 'plan9 t)
 
+;; Use system font by default
+(setq font-use-system-font t)
+
+;; customize current font
+;; (set-frame-font "Hack" nil t)
+;; (add-to-list 'default-frame-alist
+;;              '(font . "Hack"))
+
+
 (provide 'core-ui)
