@@ -348,12 +348,6 @@ $ ls
   (kill-buffer (current-buffer)))
 
 
-;; (defun ~sudo-edit-file ()
-;;   "Edit file with root permission"
-;;   (interactive)
-;;   (find-alternate-file (concat "/sudo:root@localhost:" (buffer-file-name))))
-
-
 ;;
 ;; Multiple cursors
 ;; ref: https://github.com/gabesoft/evil-mc
@@ -367,5 +361,15 @@ $ ls
   :init
   (global-evil-mc-mode))
 
+
+;;
+;; Display mark position in fringe
+;;
+(use-package evil-fringe-mark
+  :init
+  (global-evil-fringe-mark-mode)
+  ;; show special marks
+  ;; (setq-default evil-fringe-mark-show-special t)
+  )
 
 (provide 'core-editor)
