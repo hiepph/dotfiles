@@ -1,2 +1,0 @@
-#!/bin/bash
-wget https://www.gitignore.io/api/$1 -O .gitignore
