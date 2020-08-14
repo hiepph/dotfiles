@@ -17,6 +17,10 @@
 (when (fboundp 'scroll-bar-mode)
   (scroll-bar-mode -1))
 
+
+;; Disable annoying beep
+(setq ring-bell-function 'ignore)
+
 ;; Line numbers
 (global-linum-mode t)
 
