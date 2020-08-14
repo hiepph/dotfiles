@@ -130,7 +130,8 @@ let g:strip_whitespace_confirm=0
 " Comment
 Plug 'https://github.com/tpope/vim-commentary'
 
-
+" Mark
+Plug 'https://github.com/kshenoy/vim-signature'
 
 "
 " THEME
