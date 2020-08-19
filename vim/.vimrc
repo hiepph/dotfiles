@@ -108,6 +108,13 @@ set laststatus=2
 "
 " PLUGINS:
 "
+
+" Install vim-plug
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 call plug#begin('~/.vim/plugged')
 
 " Pair
@@ -139,10 +146,3 @@ Plug 'https://github.com/kshenoy/vim-signature'
 Plug 'https://github.com/flazz/vim-colorschemes'
 
 call plug#end()
-
-
-
-"
-" CUSTOM
-"
-source ~/.custom.vim

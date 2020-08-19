@@ -48,14 +48,6 @@ def bootstrap_nvidia():
     """)
 
 
-def bootstrap_vim():
-    execute(f"""
-    curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    touch $HOME/.custom.vim
-    vim -c "PlugInstall" -c "qa"
-    """)
-
-
 def bootstrap_tmux():
     execute(f"""
     git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
@@ -76,9 +68,9 @@ def bootstrap_font():
 
 
 def bootstrap_ibus():
-    #execute(f"""
-    #{_pacman} ibus ibus-unikey
-    #""")
+    # execute(f"""
+    # {_pacman} ibus ibus-unikey
+    # """)
 
     # replace default python with /usr/bin/python3 in script file
     f = '/usr/bin/ibus-setup'
@@ -120,7 +112,6 @@ def bootstrap_ux():
 M = {'git': bootstrap_git,
      'nvidia': bootstrap_nvidia,
      'aur': bootstrap_aur,
-     'vim': bootstrap_vim,
      'tmux': bootstrap_tmux,
      'font': bootstrap_font,
      'ibus': bootstrap_ibus,
