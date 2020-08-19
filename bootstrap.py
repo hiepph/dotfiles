@@ -1,18 +1,20 @@
 # Bootstrap the whole newly installed system
 # supports: Arch
+import os
 import argparse
 import subprocess
 import sys
 
 
 def execute(cmd):
-    _cmd = list(map(lambda l: l.strip().split(' '), filter(
+    cmds = list(map(lambda l: l.strip().split(' '), filter(
         lambda c: len(c.strip()) > 0, cmd.split('\n'))), )
-    list(
-        map(subprocess.run, _cmd))
+    for c in cmds:
+        os.system(' '.join(c))
 
 
-_pacman = "pacman -S --needed --noconfirm"
+# package manager
+pm = "pacman -S --needed --noconfirm"
 
 
 def bootstrap_aur():
@@ -20,7 +22,7 @@ def bootstrap_aur():
     ref: https://github.com/Jguer/yay
     """
     execute(f"""
-    {_pacman} binutils make gcc
+    {pm} binutils make gcc
     git clone https://aur.archlinux.org/yay.git
     cd yay
     makepkg -si
@@ -35,7 +37,7 @@ def bootstrap_locale():
 
 def bootstrap_git():
     execute(f"""
-    {_pacman} git
+    {pm} git
     git config --global user.email "hiepph.2406@gmail.com"
     git config --global user.name "Hiep Pham"
     git config --global core.editor "vim"
@@ -56,20 +58,20 @@ def bootstrap_tmux():
 
 def bootstrap_fcitx():
     execute(f"""
-    {_pacman} fcitx fcitx-unikey fcitx-im
+    {pm} fcitx fcitx-unikey fcitx-im
     """)
 
 
 def bootstrap_font():
     execute(f"""
-    {_pacman} powerline powerline-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts
+    {pm} powerline powerline-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts
     """)
     bootstrap_locale()
 
 
 def bootstrap_ibus():
     # execute(f"""
-    # {_pacman} ibus ibus-unikey
+    # {pm} ibus ibus-unikey
     # """)
 
     # replace default python with /usr/bin/python3 in script file
