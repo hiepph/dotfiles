@@ -50,19 +50,16 @@ def bootstrap_nvidia():
 
 def bootstrap_vim():
     execute(f"""
-    {_pacman} vim
-    curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    touch ~/.custom.vim
+    curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    touch $HOME/.custom.vim
     vim -c "PlugInstall" -c "qa"
     """)
 
 
 def bootstrap_tmux():
     execute(f"""
-    {_pacman} tmux
-    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
     """)
-    bootstrap_locale()
 
 
 def bootstrap_fcitx():
@@ -78,17 +75,10 @@ def bootstrap_font():
     bootstrap_locale()
 
 
-def bootstrap_docker():
-    execute(f"""
-    {_pacman} docker
-    passwd -a $(whoami) docker
-    """)
-
-
 def bootstrap_ibus():
-    execute(f"""
-    {_pacman} ibus ibus-unikey
-    """)
+    #execute(f"""
+    #{_pacman} ibus ibus-unikey
+    #""")
 
     # replace default python with /usr/bin/python3 in script file
     f = '/usr/bin/ibus-setup'
@@ -106,16 +96,6 @@ def bootstrap_ibus():
 def bootstrap_go():
     execute(f"""
     go get golang.org/x/tools/cmd/goimports
-    """)
-
-
-def bootstrap_zsh():
-    execute(f"""
-    git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
-    setopt EXTENDED_GLOB
-    for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
-      ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
-    done
     """)
 
 
@@ -144,9 +124,7 @@ M = {'git': bootstrap_git,
      'tmux': bootstrap_tmux,
      'font': bootstrap_font,
      'ibus': bootstrap_ibus,
-     'docker': bootstrap_docker,
      'go': bootstrap_go,
-     'zsh': bootstrap_zsh,
      'locale': bootstrap_locale,
      'conda': bootstrap_conda,
      'ux': bootstrap_ux,
