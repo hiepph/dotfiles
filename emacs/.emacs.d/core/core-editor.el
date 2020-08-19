@@ -196,7 +196,7 @@ f can be: compile, ~acme$, ~acme&, ~acme!"
   (interactive)
   (save-buffer)
 
-  (let* ((fname (buffer-name))
+  (let* ((fname (s-chop-suffix (car (s-match "<.*>" (buffer-name))) (buffer-name)))
          (suffix (file-name-extension fname))
          (prog (cdr (assoc suffix command-map)))
          (command (format "%s %s" prog (shell-quote-argument fname))))
