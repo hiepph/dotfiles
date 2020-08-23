@@ -31,16 +31,6 @@
   (global-set-key (kbd "M-x") 'counsel-M-x)
   (global-set-key (kbd "M-<return>") 'wand:execute)
 
-  (global-set-key (kbd "M-1") 'eyebrowse-switch-to-window-config-1)
-  (global-set-key (kbd "M-2") 'eyebrowse-switch-to-window-config-2)
-  (global-set-key (kbd "M-3") 'eyebrowse-switch-to-window-config-3)
-  (global-set-key (kbd "M-4") 'eyebrowse-switch-to-window-config-4)
-  (global-set-key (kbd "M-5") 'eyebrowse-switch-to-window-config-5)
-  (global-set-key (kbd "M-6") 'eyebrowse-switch-to-window-config-6)
-  (global-set-key (kbd "M-7") 'eyebrowse-switch-to-window-config-7)
-  (global-set-key (kbd "M-8") 'eyebrowse-switch-to-window-config-8)
-  (global-set-key (kbd "M-9") 'eyebrowse-switch-to-window-config-9)
-
   (global-set-key (kbd "M-&") 'async-shell-command)
   (global-set-key (kbd "M-|") '~acme|)
   (global-set-key (kbd "M-$") '~acme$)
@@ -67,7 +57,10 @@
     "y" 'counsel-yank-pop
 
     ;; Projectile
-    "p" 'projectile-command-map)
+    "p" 'projectile-command-map
+
+    ;; Perspective
+    "w" 'persp-key-map)
 
 
   ;; buffers
@@ -96,7 +89,7 @@
   (general-define-key
    :states 'normal
    :keymaps 'haskell-mode-map
-   "o" 'haskell-evil-open-below
+
    "O" 'haskell-evil-open-above)
 
   ;; Clojure
