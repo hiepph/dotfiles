@@ -63,7 +63,9 @@
     "w" 'persp-key-map)
 
 
+  ;;
   ;; buffers
+  ;;
   (general-nmap
     :prefix "SPC b"
 
@@ -72,33 +74,55 @@
 
     "m" 'magit-diff-buffer-file)
 
+  ;;
   ;; compile
+  ;;
   (general-nmap
     :prefix "SPC c"
     "c" 'compile
-    "C" '~recompile
+    "r" '~recompile
     "k" 'kill-compilation)
 
+  ;;
   ;; dired
+  ;;
   (general-define-key
    :states 'normal
    :keymaps 'dired-mode-map
    "TAB" 'dired-subtree-toggle)
 
+  ;;
+  ;; (t)oggle mode
+  ;;
+  (general-define-key
+   :states 'normal
+   :prefix "SPC t"
+
+   "e" 'flycheck-mode)
+
+  ;;
+  ;; (e)rror handling
+  ;;
+  (general-define-key
+   :states 'normal
+   :prefix "SPC e"
+
+   "l" 'flycheck-list-errors
+   "c" 'flycheck-clear
+   "b" 'flycheck-buffer
+   "n" 'flycheck-next-error
+   "p" 'flycheck-previous-error
+   "y" 'flycheck-copy-errors-as-kill)
+
+  ;;
+  ;; Languages
+  ;;
   ;; Haskell
   (general-define-key
    :states 'normal
    :keymaps 'haskell-mode-map
 
    "O" 'haskell-evil-open-above)
-
-  ;; Clojure
-  (general-define-key
-   :states 'normal
-   :keymaps 'cider-mode-map
-   :prefix "SPC r"
-   "l" 'cider-load-buffer
-   "L" 'cider-load-buffer-and-switch-to-repl-buffer)
 
   ;; Emacs Lisp
   (general-define-key
@@ -107,6 +131,9 @@
 
    [f5] '~eval-buffer)
 
+  ;;
+  ;; Editor
+  ;;
   ;; ivy
   (general-define-key
    :states 'normal

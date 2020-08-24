@@ -373,4 +373,11 @@ $ ls
   ;; (setq-default evil-fringe-mark-show-special t)
   )
 
+
+;;
+;; Flycheck
+;;
+(use-package flycheck
+  :init (global-flycheck-mode))
+
 (provide 'core-editor)

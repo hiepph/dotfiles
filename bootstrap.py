@@ -87,9 +87,13 @@ def bootstrap_ibus():
     open(f, 'w').write(new_content)
 
 
-def bootstrap_go():
+def bootstrap_emacs():
     execute(f"""
+    # go
     go get golang.org/x/tools/cmd/goimports
+
+    # flycheck
+    pip install pylint
     """)
 
 
@@ -117,7 +121,7 @@ M = {'git': bootstrap_git,
      'tmux': bootstrap_tmux,
      'font': bootstrap_font,
      'ibus': bootstrap_ibus,
-     'go': bootstrap_go,
+     'emacs': bootstrap_emacs,
      'locale': bootstrap_locale,
      'conda': bootstrap_conda,
      'ux': bootstrap_ux,
