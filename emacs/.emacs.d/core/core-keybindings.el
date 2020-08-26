@@ -14,6 +14,7 @@
   ;;
   ;; Frequent tasks
   ;;
+
   (global-set-key (kbd "<f2>") 'save-buffer)
   (global-set-key (kbd "S-<f2>") 'write-file)
   (global-set-key (kbd "<f3>") 'counsel-find-file)
@@ -35,6 +36,12 @@
   (global-set-key (kbd "M-|") '~acme|)
   (global-set-key (kbd "M-$") '~acme$)
   (global-set-key (kbd "M-<") '~acme<)
+
+  ;; Eyebrowse
+  (global-set-key (kbd "M-1") 'eyebrowse-switch-to-window-config-1)
+  (global-set-key (kbd "M-2") 'eyebrowse-switch-to-window-config-2)
+  (global-set-key (kbd "M-3") 'eyebrowse-switch-to-window-config-3)
+  (global-set-key (kbd "M-4") 'eyebrowse-switch-to-window-config-4)
 
   (general-evil-setup)
   (general-nmap
