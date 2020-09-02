@@ -140,6 +140,10 @@ Plug 'https://github.com/tpope/vim-commentary'
 " Mark
 Plug 'https://github.com/kshenoy/vim-signature'
 
+" Snipe
+Plug 'https://github.com/justinmk/vim-sneak'
+let g:sneak#label = 1
+
 "
 " THEME
 "
