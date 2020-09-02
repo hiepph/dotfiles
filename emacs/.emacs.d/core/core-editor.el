@@ -154,6 +154,14 @@
   :init
   (global-evil-visualstar-mode))
 
+;;
+;; Evil-snipe
+;;
+(use-package evil-snipe
+  :config
+  (evil-snipe-mode +1)
+  (setq evil-snipe-scope 'buffer))
+
 
 ;;
 ;; Whitespace
