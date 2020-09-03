@@ -5,6 +5,9 @@
 ;; (setq inferior-lisp-program "sbcl")
 
 
+;; Emacs Lisp
+
+
 
 ;; markdown
 (use-package markdown-mode)
@@ -17,22 +20,12 @@
 
 
 ;; Python
-;; (defun electric-indent-ignore-python (char)
-;;   "Ignore electric indentation for python-mode."
-;;   (if (equal major-mode 'python-mode)
-;;       'no-indent
-;;     nil))
-;; (add-hook 'electric-indent-functions 'electric-indent-ignore-python)
-
 (defun ~format-python ()
   "Format python code followed PEP8"
   (interactive)
-
   (when (eq major-mode 'python-mode)
     (let ((fname (buffer-file-name)))
       (shell-command (format "autopep8 --in-place --aggressive --aggressive %s" fname) nil))))
-;; (add-hook 'after-save-hook '~format-python)
-
 
 ;; Go
 (use-package go-mode
@@ -105,6 +98,21 @@
 (add-to-list 'auto-mode-alist '("\\.cu\\'" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.zsh\\'" . sh-mode))
 (add-to-list 'auto-mode-alist '("\\.elm\\'" . haskell-mode))
+
+
+;;
+;; Auto format mode
+;;
+(defun ~auto-format ()
+  "Activate auto format using predefined formatter"
+  (interactive)
+  (add-hook 'after-save-hook '~format-python))
+
+(defun ~manual-format ()
+  "Disable above functionalities"
+  (interactive)
+  (remove-hook 'after-save-hook '~format-python))
+
 
 
 (provide 'core-languages)

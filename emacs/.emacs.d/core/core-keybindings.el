@@ -82,7 +82,16 @@
     :keymaps 'override
     "!" 'counsel-switch-to-shell-buffer
     "k" '~kill-current-buffer
-    "m" 'magit-diff-buffer-file)
+    "d" 'magit-diff-buffer-file)
+
+
+  ;;
+  ;; format
+  ;;
+  (general-nmap
+    :prefix "SPC f"
+    "a" '~auto-format
+    "m" '~manual-format)
 
   ;;
   ;; compile
