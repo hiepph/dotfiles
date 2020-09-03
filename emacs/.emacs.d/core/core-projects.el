@@ -40,7 +40,8 @@
   (ivy-mode 1)
   :config
   (setq ivy-use-virtual-buffers t)
-  (setq enable-recursive-minibuffers t))
+  (setq enable-recursive-minibuffers t)
+  (setq ivy-initial-inputs-alist nil))
 
 
 ;;
