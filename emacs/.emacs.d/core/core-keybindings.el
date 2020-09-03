@@ -37,6 +37,14 @@
   (global-set-key (kbd "M-$") '~acme$)
   (global-set-key (kbd "M-<") '~acme<)
 
+
+  ;; Window movement
+  ;; In replace for evil C-w + <> which I found time consuming
+  (global-set-key (kbd "M-h") 'windmove-left)
+  (global-set-key (kbd "M-l") 'windmove-right)
+  (global-set-key (kbd "M-j") 'windmove-down)
+  (global-set-key (kbd "M-k") 'windmove-up)
+
   ;; Eyebrowse
   (global-set-key (kbd "M-1") 'eyebrowse-switch-to-window-config-1)
   (global-set-key (kbd "M-2") 'eyebrowse-switch-to-window-config-2)
@@ -115,6 +123,7 @@
    :prefix "SPC e"
 
    "l" 'flycheck-list-errors
+   "!" 'flycheck-display-error-at-point
    "c" 'flycheck-clear
    "b" 'flycheck-buffer
    "n" 'flycheck-next-error

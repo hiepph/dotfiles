@@ -13,3 +13,6 @@ custom.el
 network-security*
 *.cache
 straight/
+core-custom.el
+history
+persp-confs
