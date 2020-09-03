@@ -16,6 +16,7 @@
   ;;
   (global-set-key (kbd "<f2>") 'save-buffer)
   (global-set-key (kbd "<f3>") 'counsel-find-file)
+  (global-set-key (kbd "<f4>") 'evil-quit)
   (global-set-key (kbd "<f8>") 'counsel-switch-buffer)
   (global-set-key (kbd "<f9>") '~compile-current-file)
   (global-set-key (kbd "<f12>") '~test-current-file)
@@ -39,6 +40,7 @@
   (global-set-key (kbd "M-l") 'windmove-right)
   (global-set-key (kbd "M-j") 'windmove-down)
   (global-set-key (kbd "M-k") 'windmove-up)
+  (global-set-key (kbd "M-o") 'delete-other-windows)
 
   (general-evil-setup)
   (general-nmap
