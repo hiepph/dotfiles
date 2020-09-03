@@ -17,12 +17,12 @@
 
 
 ;; Python
-(defun electric-indent-ignore-python (char)
-  "Ignore electric indentation for python-mode."
-  (if (equal major-mode 'python-mode)
-      'no-indent
-    nil))
-(add-hook 'electric-indent-functions 'electric-indent-ignore-python)
+;; (defun electric-indent-ignore-python (char)
+;;   "Ignore electric indentation for python-mode."
+;;   (if (equal major-mode 'python-mode)
+;;       'no-indent
+;;     nil))
+;; (add-hook 'electric-indent-functions 'electric-indent-ignore-python)
 
 (defun ~format-python ()
   "Format python code followed PEP8"
@@ -31,7 +31,7 @@
   (when (eq major-mode 'python-mode)
     (let ((fname (buffer-file-name)))
       (shell-command (format "autopep8 --in-place --aggressive --aggressive %s" fname) nil))))
-(add-hook 'after-save-hook '~format-python)
+;; (add-hook 'after-save-hook '~format-python)
 
 
 ;; Go

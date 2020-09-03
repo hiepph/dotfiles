@@ -107,6 +107,7 @@
 
    "e" 'flycheck-mode)
 
+
   ;;
   ;; (e)rror handling
   ;;
@@ -114,6 +115,7 @@
    :states 'normal
    :prefix "SPC e"
 
+   "s" 'flycheck-verify-setup
    "l" 'flycheck-list-errors
    "c" 'flycheck-clear
    "b" 'flycheck-buffer
