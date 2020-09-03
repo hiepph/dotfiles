@@ -234,7 +234,7 @@ e.g. If the current buffer is hello.py, then it'll call python hello.py
   (recompile))
 
 
-(defvar *test-command-map* '(("py" . "pytest -s")
+(defvar *test-command-map* '(("py" . "pytest -s -v")
                             ("go" . "go test")))
 
 (defun ~test-current-file ()
