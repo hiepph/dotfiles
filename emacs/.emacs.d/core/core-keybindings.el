@@ -32,6 +32,7 @@
   (global-set-key (kbd "M-$") '~acme$)
   (global-set-key (kbd "M-<") '~acme<)
 
+
   ;; Window movement
   ;; In replace for evil C-w + <> which I found time consuming
   (global-set-key (kbd "M-h") 'windmove-left)
@@ -42,6 +43,7 @@
   (general-evil-setup)
   (general-nmap
     :prefix "SPC"
+    :keymaps 'override
 
     ;; Commands
     "x" 'counsel-M-x
@@ -75,9 +77,8 @@
   ;;
   (general-nmap
     :prefix "SPC b"
-
+    :keymaps 'override
     "!" 'counsel-switch-to-shell-buffer
-
     "k" '~kill-current-buffer
     "m" 'magit-diff-buffer-file)
 
