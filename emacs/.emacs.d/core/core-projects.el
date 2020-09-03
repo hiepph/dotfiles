@@ -44,14 +44,8 @@
 
 
 ;;
-;; Virtual desktop
+;; Desktops management
 ;;
-(use-package eyebrowse
-  :diminish
-  :init
-  (eyebrowse-mode t)
-  (setq eyebrowse-new-workspace t))
-
 (use-package persp-mode
   :config
   (persp-mode 1))

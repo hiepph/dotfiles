@@ -388,5 +388,4 @@ $ ls
 (use-package flycheck
   :init (global-flycheck-mode))
 
-
 (provide 'core-editor)

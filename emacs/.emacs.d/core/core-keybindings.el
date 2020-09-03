@@ -14,15 +14,10 @@
   ;;
   ;; Frequent tasks
   ;;
-
   (global-set-key (kbd "<f2>") 'save-buffer)
-  (global-set-key (kbd "S-<f2>") 'write-file)
   (global-set-key (kbd "<f3>") 'counsel-find-file)
-  (global-set-key (kbd "S-<f3>") 'find-file-other-window)
   (global-set-key (kbd "<f8>") 'counsel-switch-buffer)
-  (global-set-key (kbd "S-<f8>") 'counsel-switch-buffer-other-window)
   (global-set-key (kbd "<f9>") '~compile-current-file)
-  (global-set-key (kbd "S-<f9>") '~recompile)
   (global-set-key (kbd "<f12>") '~test-current-file)
   (global-set-key (kbd "S-<f12>") '~test-all-files)
 
@@ -37,19 +32,12 @@
   (global-set-key (kbd "M-$") '~acme$)
   (global-set-key (kbd "M-<") '~acme<)
 
-
   ;; Window movement
   ;; In replace for evil C-w + <> which I found time consuming
   (global-set-key (kbd "M-h") 'windmove-left)
   (global-set-key (kbd "M-l") 'windmove-right)
   (global-set-key (kbd "M-j") 'windmove-down)
   (global-set-key (kbd "M-k") 'windmove-up)
-
-  ;; Eyebrowse
-  (global-set-key (kbd "M-1") 'eyebrowse-switch-to-window-config-1)
-  (global-set-key (kbd "M-2") 'eyebrowse-switch-to-window-config-2)
-  (global-set-key (kbd "M-3") 'eyebrowse-switch-to-window-config-3)
-  (global-set-key (kbd "M-4") 'eyebrowse-switch-to-window-config-4)
 
   (general-evil-setup)
   (general-nmap
@@ -65,11 +53,15 @@
     ;; quick search
     "/" 'counsel-rg
 
+    ;; registers
+    "r" 'counsel-evil-registers
+    "R" 'counsel-yank-pop
+
+    ;; marks
+    "m" 'counsel-evil-marks
+
     ;; dired
     "d" 'dired-jump
-
-    ;; kill-ring
-    "y" 'counsel-yank-pop
 
     ;; Projectile
     "p" 'projectile-command-map
@@ -84,9 +76,9 @@
   (general-nmap
     :prefix "SPC b"
 
-    "k" '~kill-current-buffer
-    "K" '~kill-buffer
+    "!" 'counsel-switch-to-shell-buffer
 
+    "k" '~kill-current-buffer
     "m" 'magit-diff-buffer-file)
 
   ;;
