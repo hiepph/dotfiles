@@ -9,10 +9,10 @@
 ;; Menus
 ;;
 (use-package hydra)
-(defhydra hydra-main (:exit t)
+(defhydra hydra-main (:columns 4 :exit t)
   "Main"
   ;; Commands
-  ("x" counsel-M-x "M-x" :column "General")
+  ("x" counsel-M-x "M-x")
 
   ;; buffers
   ("b" hydra-buffers/body "buffers")
@@ -21,21 +21,20 @@
   ("d" dired-jump "dired")
 
   ;; Magit
-  ("g" magit-status "git status" :column "Git")
-  ("G" magit-dispatch "git hint")
+  ("g" magit-status "magit")
 
   ;; Projectile
-  ("p" hydra-projectile/body "projectile" :column "Projects")
+  ("p" hydra-projectile/body "projectile")
 
   ;; Perspective
   ("w" hydra-persp/body "workspaces")
 
   ;; compile
-  ("c" hydra-compile/body "compile" :column "Editor")
+  ("c" hydra-compile/body "compile")
   ("e" hydra-error/body "flycheck")
 
   ;; quick search
-  ("/" counsel-rg "ripgrep" :column "Search")
+  ("/" counsel-rg "ripgrep")
 
   ;; registers
   ("r" counsel-evil-registers "registers")
@@ -127,8 +126,11 @@
   (global-set-key (kbd "M-l") 'windmove-right)
   (global-set-key (kbd "M-j") 'windmove-down)
   (global-set-key (kbd "M-k") 'windmove-up)
-  (global-set-key (kbd "M-w") 'evil-quit)
-  (global-set-key (kbd "M-o") 'delete-other-windows)
+  (general-nmap
+    :keymaps 'override
+    :state 'normal
+    "M-q" 'evil-quit
+    "M-o" 'delete-other-windows)
 
   (general-evil-setup)
   (general-nmap
