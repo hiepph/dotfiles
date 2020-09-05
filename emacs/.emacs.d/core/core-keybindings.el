@@ -6,6 +6,94 @@
 ;; 1. Spacemacs: https://develop.spacemacs.org/doc/DOCUMENTATION.html
 
 ;;
+;; Menus
+;;
+(use-package hydra)
+(defhydra hydra-main (:exit t)
+  "Main"
+  ;; Commands
+  ("x" counsel-M-x "M-x" :column "General")
+
+  ;; buffers
+  ("b" hydra-buffers/body "buffers")
+
+  ;; dired
+  ("d" dired-jump "dired")
+
+  ;; Magit
+  ("g" magit-status "git status" :column "Git")
+  ("G" magit-dispatch "git hint")
+
+  ;; Projectile
+  ("p" hydra-projectile/body "projectile" :column "Projects")
+
+  ;; Perspective
+  ("w" hydra-persp/body "workspaces")
+
+  ;; compile
+  ("c" hydra-compile/body "compile" :column "Editor")
+  ("e" hydra-error/body "flycheck")
+
+  ;; quick search
+  ("/" counsel-rg "ripgrep" :column "Search")
+
+  ;; registers
+  ("r" counsel-evil-registers "registers")
+  ("k" counsel-yank-pop "kill rings")
+
+  ;; marks
+  ("m" counsel-evil-marks "marks"))
+
+(defhydra hydra-projectile (:columns 4 :exit t)
+  "Projectile"
+  ("f"   projectile-find-file                "Find File")
+  ("r"   projectile-recentf                  "Recent Files")
+  ("z"   projectile-cache-current-file       "Cache Current File")
+  ("x"   projectile-remove-known-project     "Remove Known Project")
+
+  ("d"   projectile-find-dir                 "Find Directory")
+  ("b"   projectile-switch-to-buffer         "Switch to Buffer")
+  ("c"   projectile-invalidate-cache         "Clear Cache")
+  ("X"   projectile-cleanup-known-projects   "Cleanup Known Projects")
+
+  ("o"   projectile-multi-occur              "Multi Occur")
+  ("s"   projectile-switch-project           "Switch Project")
+  ("k"   projectile-kill-buffers             "Kill Buffers")
+  ("q"   nil "Cancel" :color blue))
+
+(defhydra hydra-persp (:columns 4 :exit t)
+  "Perspective"
+  ("n" persp-next "Next")
+  ("p" persp-prev "Prev")
+  ("s" persp-switch "Switch")
+  ("q" nil "Quit"))
+
+(defhydra hydra-buffers (:columns 4 :exit t)
+  "Buffers"
+  ("!" counsel-switch-to-shell-buffer "shell")
+  ("k" ~kill-current-buffer "kill current buffer")
+  ("d" magit-diff-buffer-file "diff current buffer"))
+
+(defhydra hydra-compile (:columns 4 :exit t)
+  "Compile"
+  ("c" compile "compile")
+  ("r" ~recompile "recompile")
+  ("k" kill-compilation "kill"))
+
+(defhydra hydra-error (:columns 4 :exit t)
+  "Error handling "
+  ("l" flycheck-list-errors "list")
+  ("n" flycheck-next-error "next")
+  ("p" flycheck-previous-error "previous")
+
+  ("!" flycheck-display-error-at-point "display")
+  ("y" flycheck-copy-errors-as-kill "copy")
+
+  ("s" flycheck-verify-setup "verify")
+  ("t" flycheck-mode "toggle"))
+
+
+;;
 ;; General (leader keys)
 ;; ref: https://github.com/noctuid/general.el/
 ;;
@@ -16,7 +104,6 @@
   ;;
   (global-set-key (kbd "<f2>") 'save-buffer)
   (global-set-key (kbd "<f3>") 'counsel-find-file)
-  (global-set-key (kbd "<f4>") 'evil-quit)
   (global-set-key (kbd "<f8>") 'counsel-switch-buffer)
   (global-set-key (kbd "<f9>") '~compile-current-file)
   (global-set-key (kbd "<f12>") '~test-current-file)
@@ -40,101 +127,23 @@
   (global-set-key (kbd "M-l") 'windmove-right)
   (global-set-key (kbd "M-j") 'windmove-down)
   (global-set-key (kbd "M-k") 'windmove-up)
+  (global-set-key (kbd "M-w") 'evil-quit)
   (global-set-key (kbd "M-o") 'delete-other-windows)
 
   (general-evil-setup)
   (general-nmap
-    :prefix "SPC"
     :keymaps 'override
+    :state 'normal
 
-    ;; Commands
-    "x" 'counsel-M-x
-
-    ;; Magit
-    "g" 'magit-status
-    "G" 'magit-dispatch
-
-    ;; quick search
-    "/" 'counsel-rg
-
-    ;; registers
-    "r" 'counsel-evil-registers
-    "R" 'counsel-yank-pop
-
-    ;; marks
-    "m" 'counsel-evil-marks
-
-    ;; dired
-    "d" 'dired-jump
-
-    ;; Projectile
-    "p" 'projectile-command-map
-
-    ;; Perspective
-    "w" 'persp-key-map)
-
-
-  ;;
-  ;; buffers
-  ;;
-  (general-nmap
-    :prefix "SPC b"
-    :keymaps 'override
-    "!" 'counsel-switch-to-shell-buffer
-    "k" '~kill-current-buffer
-    "d" 'magit-diff-buffer-file)
-
-
-  ;;
-  ;; format
-  ;;
-  (general-nmap
-    :prefix "SPC f"
-    "a" '~auto-format
-    "m" '~manual-format)
-
-  ;;
-  ;; compile
-  ;;
-  (general-nmap
-    :prefix "SPC c"
-    "c" 'compile
-    "r" '~recompile
-    "k" 'kill-compilation)
+    "SPC" 'hydra-main/body)
 
   ;;
   ;; dired
   ;;
-  (general-define-key
-   :states 'normal
-   :keymaps 'dired-mode-map
-   "TAB" 'dired-subtree-toggle)
-
-  ;;
-  ;; (t)oggle mode
-  ;;
-  (general-define-key
-   :states 'normal
-   :prefix "SPC t"
-
-   "e" 'flycheck-mode)
-
-
-  ;;
-  ;; (e)rror handling
-  ;;
-  (general-define-key
-   :states 'normal
-   :prefix "SPC e"
-
-   "s" 'flycheck-verify-setup
-   "l" 'flycheck-list-errors
-   "!" 'flycheck-display-error-at-point
-   "c" 'flycheck-clear
-   "b" 'flycheck-buffer
-   "n" 'flycheck-next-error
-   "p" 'flycheck-previous-error
-   "y" 'flycheck-copy-errors-as-kill)
+  (defhydra hydra-compile (:exit t)
+    :states 'normal
+    :keymaps 'dired-mode-map
+    "TAB" 'dired-subtree-toggle)
 
   ;;
   ;; Languages
@@ -159,11 +168,13 @@
   ;; ivy
   (general-define-key
    :states 'normal
+   :keymaps 'override
    "\\" 'swiper)
 
   ;; expand-region
   (general-define-key
    :states 'visual
+   :keymaps 'override
    "+" 'er/expand-region
    "-" 'er/contract-region)
 
@@ -174,5 +185,6 @@
 
    ">" 'paredit-forward-slurp-sexp
    "<" 'paredit-forward-barf-sexp))
+
 
 (provide 'core-keybindings)
