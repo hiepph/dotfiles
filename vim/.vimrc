@@ -52,7 +52,8 @@ set autoread
 " Searching
 set incsearch
 set hlsearch
-set smartcase
+" set smartcase
+set ignorecase
 
 " For regular expressions turn magic on
 set magic
