@@ -98,12 +98,15 @@
 ;;
 (use-package general
   :config
+  (general-evil-setup)
+
   ;;
   ;; Frequent tasks
   ;;
   (global-set-key (kbd "<f2>") 'save-buffer)
   (global-set-key (kbd "<f3>") 'counsel-find-file)
-  (global-set-key (kbd "<f8>") 'counsel-switch-buffer)
+  (global-set-key (kbd "<S-f3>") 'projectile-find-file)
+  (global-set-key (kbd "<f8>") 'persp-switch-to-buffer)
   (global-set-key (kbd "<f9>") '~compile-current-file)
   (global-set-key (kbd "<f12>") '~test-current-file)
   (global-set-key (kbd "S-<f12>") '~test-all-files)
@@ -126,13 +129,16 @@
   (global-set-key (kbd "M-l") 'windmove-right)
   (global-set-key (kbd "M-j") 'windmove-down)
   (global-set-key (kbd "M-k") 'windmove-up)
+
   (general-nmap
     :keymaps 'override
     :state 'normal
     "M-q" 'evil-quit
     "M-o" 'delete-other-windows)
 
-  (general-evil-setup)
+  ;;
+  ;; Main
+  ;;
   (general-nmap
     :keymaps 'override
     :state 'normal
@@ -142,8 +148,7 @@
   ;;
   ;; dired
   ;;
-  (defhydra hydra-compile (:exit t)
-    :states 'normal
+  (general-define-key
     :keymaps 'dired-mode-map
     "TAB" 'dired-subtree-toggle)
 
@@ -182,7 +187,7 @@
 
   ;; paredit
   (general-define-key
-   :states 'normal
+   :state 'normal
    :keymaps 'paredit-mode-map
 
    ">" 'paredit-forward-slurp-sexp
