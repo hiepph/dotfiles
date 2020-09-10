@@ -70,5 +70,4 @@
 (use-package projectile-ripgrep)
 
 
-
 (provide 'core-projects)
