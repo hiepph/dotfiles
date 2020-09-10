@@ -70,6 +70,7 @@
 (defhydra hydra-buffers (:columns 4 :exit t)
   "Buffers"
   ("!" counsel-switch-to-shell-buffer "shell")
+  ("b" counsel-switch-buffer "shell")
   ("k" ~kill-current-buffer "kill current buffer")
   ("d" magit-diff-buffer-file "diff current buffer"))
 
