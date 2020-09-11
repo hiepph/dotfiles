@@ -40,7 +40,7 @@
 (push (cons "\\*shell\\*" display-buffer--same-window-action) display-buffer-alist)
 
 ;; auto revert dired-mode
-(add-hook 'dired-mode-hook 'auto-revert-mode)
+;; (add-hook 'dired-mode-hook 'auto-revert-mode)
 
 ;; replace highlight text with typing action
 (delete-selection-mode 1)

@@ -45,19 +45,17 @@
 
 (defhydra hydra-projectile (:columns 4 :exit t)
   "Projectile"
-  ("f"   projectile-find-file                "Find File")
-  ("r"   projectile-recentf                  "Recent Files")
-  ("z"   projectile-cache-current-file       "Cache Current File")
-  ("x"   projectile-remove-known-project     "Remove Known Project")
-
-  ("d"   projectile-find-dir                 "Find Directory")
-  ("b"   projectile-switch-to-buffer         "Switch to Buffer")
-  ("c"   projectile-invalidate-cache         "Clear Cache")
-  ("X"   projectile-cleanup-known-projects   "Cleanup Known Projects")
-
-  ("o"   projectile-multi-occur              "Multi Occur")
-  ("s"   projectile-switch-project           "Switch Project")
-  ("k"   projectile-kill-buffers             "Kill Buffers")
+  ("p"   projectile-switch-project "Switch Project")
+  ("f"   projectile-find-file "Find File")
+  ("r"   projectile-recentf  "Recent Files")
+  ("/"   projectile-ripgrep "Ripgrep")
+  ("d"   projectile-find-dir "Find Directory")
+  ("b"   projectile-switch-to-buffer "Switch to Buffer")
+  ("k"   projectile-kill-buffers "Kill Buffers")
+  ("R"   projectile-regenerate-tags "Regenerate tags")
+  ("c"   projectile-compile-project "Compile in root")
+  ("!"   projectile-run-shell-command-in-root "Shell cmd in root")
+  ("&"   projectile-run-async-shell-command-in-root "Async cmd in root")
   ("q"   nil "Cancel" :color blue))
 
 (defhydra hydra-persp (:columns 4 :exit t)
@@ -151,6 +149,8 @@
   ;;
   (general-define-key
     :keymaps 'dired-mode-map
+
+    [f5] 'revert-buffer
     "TAB" 'dired-subtree-toggle)
 
   ;;

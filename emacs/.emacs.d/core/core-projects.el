@@ -70,5 +70,12 @@
 (use-package projectile-ripgrep)
 
 
+;;
+;; Tabs
+;;
+(use-package evil-tabs
+  :config
+  (global-evil-tabs-mode t))
+
 
 (provide 'core-projects)
