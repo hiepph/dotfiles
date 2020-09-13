@@ -1,3 +1,6 @@
+;; Principles:
+;; 1. Keep as lean as possible. No fancy bitmap icons or images, just text.
+
 ;;
 ;; Basic
 ;;

@@ -49,7 +49,10 @@
 ;;
 (use-package persp-mode
   :config
-  (persp-mode 1))
+  (setq tags-add-tables nil)
+  (persp-mode 1)
+  (setq persp-auto-resume-time -1
+        persp-auto-save-opt 0))
 
 
 ;;

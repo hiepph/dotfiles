@@ -1,6 +1,7 @@
 ;; Principles:
 ;; 1. Mnemonic: c(ompile), b(uffers)
 ;; 2. Only high frequency tasks are bind to F keys
+;; 3. Brain is for idea, not for storage. Keep yourself a reference!
 
 ;; References
 ;; 1. Spacemacs: https://develop.spacemacs.org/doc/DOCUMENTATION.html
