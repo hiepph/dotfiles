@@ -54,6 +54,8 @@ set incsearch
 set hlsearch
 " set smartcase
 set ignorecase
+" C-l to clear highlight
+nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 
 " For regular expressions turn magic on
 set magic

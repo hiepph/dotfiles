@@ -49,7 +49,9 @@
 ;;
 (use-package persp-mode
   :config
-  (persp-mode 1))
+  (setq tags-add-tables nil)
+  (persp-mode 1)
+  (setq persp-auto-save-opt 0))
 
 
 ;;
@@ -68,14 +70,6 @@
 
 ;; support search
 (use-package projectile-ripgrep)
-
-
-;;
-;; Tabs
-;;
-(use-package evil-tabs
-  :config
-  (global-evil-tabs-mode t))
 
 
 (provide 'core-projects)
