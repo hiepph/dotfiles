@@ -43,7 +43,10 @@
   ("k" #'counsel-yank-pop "kill rings")
 
   ;; marks
-  ("m" #'counsel-evil-marks "marks"))
+  ("m" counsel-evil-marks "marks")
+
+  ;; format
+  ("f" #'format-mode "format-mode"))
 
 (defhydra hydra-projectile (:columns 4 :exit t)
   "Projectile"

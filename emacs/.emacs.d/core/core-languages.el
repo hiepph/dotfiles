@@ -107,16 +107,17 @@
 ;;
 ;; Auto format mode
 ;;
-(defun ~auto-format ()
-  "Activate auto format using predefined formatter"
-  (interactive)
-  (add-hook 'after-save-hook '~format-python))
-
-(defun ~manual-format ()
-  "Disable above functionalities"
-  (interactive)
-  (remove-hook 'after-save-hook '~format-python))
-
+(define-minor-mode format-mode
+  "Auto format code using predefined formatter"
+  :lighter "format"
+  :global t)
+;; enable: add hook auto-format
+;; disable: remove hook auto-format
+(add-hook 'format-mode-hook
+          (lambda ()
+            (if format-mode
+                (add-hook 'after-save-hook '~format-python)
+              (remove-hook 'after-save-hook '~format-python))))
 
 
 (provide 'core-languages)
