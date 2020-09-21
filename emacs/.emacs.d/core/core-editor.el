@@ -91,6 +91,7 @@
 ;; paredit, supports barfing and slurping
 ;;
 (use-package paredit
+  :diminish
   :config
   :hook
   ((emacs-lisp-mode

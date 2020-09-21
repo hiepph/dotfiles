@@ -10,90 +10,92 @@
 ;; Menus
 ;;
 (use-package hydra)
+
 (defhydra hydra-main (:columns 4 :exit t)
   "Main"
   ;; Commands
-  ("x" counsel-M-x "M-x")
+  ("x" #'counsel-M-x "M-x")
 
   ;; buffers
-  ("b" hydra-buffers/body "buffers")
+  ("b" #'hydra-buffers/body "buffers")
+
+  ;; workspaces
+  ("w" #'hydra-workspace/body "workspaces")
 
   ;; dired
-  ("d" dired-jump "dired")
+  ("d" #'dired-jump "dired")
 
   ;; Magit
-  ("g" magit-status "magit")
+  ("g" #'magit-status "magit")
 
   ;; Projectile
-  ("p" hydra-projectile/body "projectile")
-
-  ;; Perspective
-  ("w" hydra-persp/body "workspaces")
+  ("p" #'hydra-projectile/body "projectile")
 
   ;; compile
-  ("c" hydra-compile/body "compile")
-  ("e" hydra-error/body "flycheck")
+  ("c" #'hydra-compile/body "compile")
+  ("e" #'hydra-error/body "flycheck")
 
   ;; quick search
-  ("/" counsel-rg "ripgrep")
+  ("/" #'counsel-rg "ripgrep")
 
   ;; registers
-  ("r" counsel-evil-registers "registers")
-  ("k" counsel-yank-pop "kill rings")
+  ("r" #'counsel-evil-registers "registers")
+  ("k" #'counsel-yank-pop "kill rings")
 
   ;; marks
-  ("m" counsel-evil-marks "marks"))
+  ("m" #'counsel-evil-marks "marks"))
 
 (defhydra hydra-projectile (:columns 4 :exit t)
   "Projectile"
-  ("p"   projectile-switch-project "Switch Project")
-  ("f"   projectile-find-file "Find File")
-  ("r"   projectile-recentf  "Recent Files")
-  ("/"   projectile-ripgrep "Ripgrep")
-  ("d"   projectile-find-dir "Find Directory")
-  ("b"   projectile-switch-to-buffer "Switch to Buffer")
-  ("k"   projectile-kill-buffers "Kill Buffers")
-  ("R"   projectile-regenerate-tags "Regenerate tags")
-  ("c"   projectile-compile-project "Compile in root")
-  ("!"   projectile-run-shell-command-in-root "Shell cmd in root")
-  ("&"   projectile-run-async-shell-command-in-root "Async cmd in root")
+  ("p"   #'projectile-switch-project "Switch Project")
+  ("f"   #'projectile-find-file "Find File")
+  ("r"   #'projectile-recentf  "Recent Files")
+  ("/"   #'projectile-ripgrep "Ripgrep")
+  ("d"   #'projectile-find-dir "Find Directory")
+  ("b"   #'projectile-switch-to-buffer "Switch to Buffer")
+  ("k"   #'projectile-kill-buffers "Kill Buffers")
+  ("R"   #'projectile-regenerate-tags "Regenerate tags")
+  ("c"   #'projectile-compile-project "Compile in root")
+  ("!"   #'projectile-run-shell-command-in-root "Shell cmd in root")
+  ("&"   #'projectile-run-async-shell-command-in-root "Async cmd in root")
   ("q"   nil "Cancel" :color blue))
-
-(defhydra hydra-persp (:columns 4 :exit t)
-  "Perspective"
-  ("n" persp-next "Next")
-  ("p" persp-prev "Prev")
-  ("s" persp-switch "Switch")
-  ("q" nil "Quit"))
 
 (defhydra hydra-buffers (:columns 4 :exit t)
   "Buffers"
-  ("!" counsel-switch-to-shell-buffer "shell")
-  ("b" counsel-switch-buffer "shell")
-  ("k" ~kill-current-buffer "kill current buffer")
-  ("d" magit-diff-buffer-file "diff current buffer"))
+  ("b" #'counsel-switch-buffer "buffer/rerecentf")
+  ("k" #'~kill-current-buffer "kill")
+  ("d" #'magit-diff-buffer-file "git diff"))
 
 (defhydra hydra-compile (:columns 4 :exit t)
   "Compile"
-  ("c" compile "compile")
-  ("r" ~recompile "recompile")
-  ("k" kill-compilation "kill"))
+  ("c" #'compile "compile")
+  ("r" #'~recompile "recompile")
+  ("k" #'kill-compilation "kill"))
 
 (defhydra hydra-error (:columns 4 :exit t)
   "Error handling "
-  ("l" flycheck-list-errors "list")
-  ("n" flycheck-next-error "next")
-  ("p" flycheck-previous-error "previous")
+  ("l" #'flycheck-list-errors "list")
+  ("n" #'flycheck-next-error "next")
+  ("p" #'flycheck-previous-error "previous")
 
-  ("!" flycheck-display-error-at-point "display")
-  ("y" flycheck-copy-errors-as-kill "copy")
+  ("!" #'flycheck-display-error-at-point "display")
+  ("y" #'flycheck-copy-errors-as-kill "copy")
 
-  ("s" flycheck-verify-setup "verify")
-  ("t" flycheck-mode "toggle"))
+  ("s" #'flycheck-verify-setup "verify")
+  ("t" #'flycheck-mode "toggle"))
+
+(defhydra hydra-workspace (:columns 4 :exit t)
+  "Workspaces"
+  ("c" #'eyebrowse-create-window-config "create")
+  ("n" #'eyebrowse-next-window-config "next")
+  ("p" #'eyebrowse-previous-window-config "previous")
+  ("x" #'eyebrowse-close-window-config "close")
+  ("'" #'eyebrowse-last-window-config "last")
+  ("," #'eyebrowse-rename-window-config "rename"))
 
 
 ;;
-;; General (leader keys)
+;; general (leader keys)
 ;; ref: https://github.com/noctuid/general.el/
 ;;
 (use-package general
@@ -106,7 +108,7 @@
   (global-set-key (kbd "<f2>") 'save-buffer)
   (global-set-key (kbd "<f3>") 'counsel-find-file)
   (global-set-key (kbd "<S-f3>") 'projectile-find-file)
-  (global-set-key (kbd "<f8>") 'persp-switch-to-buffer)
+  (global-set-key (kbd "<f8>") 'counsel-buffer-or-recentf)
   (global-set-key (kbd "<f9>") '~compile-current-file)
   (global-set-key (kbd "<f12>") '~test-current-file)
   (global-set-key (kbd "S-<f12>") '~test-all-files)
@@ -116,25 +118,17 @@
   ;;
   (global-set-key (kbd "M-x") 'counsel-M-x)
   (global-set-key (kbd "M-<return>") 'wand:execute)
-
   (global-set-key (kbd "M-&") 'async-shell-command)
   (global-set-key (kbd "M-|") '~acme|)
   (global-set-key (kbd "M-$") '~acme$)
   (global-set-key (kbd "M-<") '~acme<)
 
+  (global-set-key (kbd "M-1") 'eyebrowse-switch-to-window-config-1)
+  (global-set-key (kbd "M-2") 'eyebrowse-switch-to-window-config-2)
+  (global-set-key (kbd "M-3") 'eyebrowse-switch-to-window-config-3)
+  (global-set-key (kbd "M-4") 'eyebrowse-switch-to-window-config-4)
 
-  ;; Window movement
-  ;; In replace for evil C-w + <> which I found time consuming
-  (global-set-key (kbd "M-h") 'windmove-left)
-  (global-set-key (kbd "M-l") 'windmove-right)
-  (global-set-key (kbd "M-j") 'windmove-down)
-  (global-set-key (kbd "M-k") 'windmove-up)
 
-  (general-nmap
-    :keymaps 'override
-    :state 'normal
-    "M-q" 'evil-quit
-    "M-o" 'delete-other-windows)
 
   ;;
   ;; Main

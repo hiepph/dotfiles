@@ -47,11 +47,11 @@
 ;;
 ;; Desktops management
 ;;
-(use-package persp-mode
-  :config
-  (setq tags-add-tables nil)
-  (persp-mode 1)
-  (setq persp-auto-save-opt 0))
+(use-package eyebrowse
+  :diminish
+  :init
+  (eyebrowse-mode t)
+  (setq eyebrowse-new-workspace t))
 
 
 ;;
