@@ -43,10 +43,10 @@
   ("k" #'counsel-yank-pop "kill rings")
 
   ;; marks
-  ("m" counsel-evil-marks "marks")
+  ("m" #'counsel-evil-marks "marks")
 
   ;; format
-  ("f" #'format-mode "format-mode"))
+  ("t" #'hydra-toggle/body "toggle"))
 
 (defhydra hydra-projectile (:columns 4 :exit t)
   "Projectile"
@@ -96,6 +96,10 @@
   ("'" #'eyebrowse-last-window-config "last")
   ("," #'eyebrowse-rename-window-config "rename"))
 
+(defhydra hydra-toggle (:columns 4 :exit t)
+  ("f" #'format-mode "format") ;; off by default
+  ("c" #'company-mode "company") ;; on by default
+  )
 
 ;;
 ;; general (leader keys)
@@ -171,6 +175,14 @@
   ;;
   ;; Editor
   ;;
+  ;; company
+  (general-define-key
+   :keymaps 'company-active-map
+   "C-n" 'company-select-next-or-abort
+   "C-p" 'company-select-previous-or-abort
+   ;; "C-/" 'company-complete
+   )
+
   ;; ivy
   (general-define-key
    :states 'normal

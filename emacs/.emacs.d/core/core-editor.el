@@ -390,4 +390,12 @@ $ ls
   :init (global-flycheck-mode))
 
 
+;;
+;; Company
+;;
+(use-package company
+  :config
+  (global-company-mode))
+
+
 (provide 'core-editor)
