@@ -1,0 +1,43 @@
+#!/usr/bin/env ruby
+require 'net/http'
+require 'json'
+require 'optparse'
+
+# ref: https://getpocket.com/developer/docs/v3/retrieve
+URL = "https://getpocket.com/v3/get?consumer_key=#{ENV['POCKET_CONSUMER_KEY']}&access_token=#{ENV['POCKET_ACCESS_TOKEN']}"
+
+def get (url)
+  uri = URI(url)
+  return Net::HTTP.get(uri)
+end
+
+
+def build_url (url, params)
+  build_params = params.map { |k, v| "#{k}=#{v}" }
+  return ([url] | build_params).join("&")
+end
+
+
+options = {}
+opt_parse = OptionParser.new do |opts|
+  opts.banner = "Usage: _pocket [options]"
+
+  opts.on("-q QUERY", "--query QUERY", "Query (required)") do |q|
+    options[:search] = q
+  end
+
+  opts.on("-t TAG", "--tag TAG", "Tag") do |t|
+    options[:tag] = t
+  end
+end
+opt_parse.parse!
+
+if options[:search].nil?
+  abort(opt_parse.help)
+end
+
+res = JSON.parse(get(build_url(URL, options)))
+res['list'].each do |_id, item|
+  p item['given_title']
+  puts item['given_url']
+end
