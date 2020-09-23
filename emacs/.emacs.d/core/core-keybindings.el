@@ -179,9 +179,11 @@
   (general-define-key
    :keymaps 'company-active-map
    "C-n" 'company-select-next-or-abort
-   "C-p" 'company-select-previous-or-abort
-   ;; "C-/" 'company-complete
-   )
+   "C-p" 'company-select-previous-or-abort)
+
+  (general-define-key
+   :keymaps 'company-mode-map
+   "C-/" 'company-complete)
 
   ;; ivy
   (general-define-key
