@@ -357,6 +357,10 @@ $ ls
   (interactive)
   (kill-buffer (current-buffer)))
 
+(defun ~kill-all-buffers ()
+  (interactive)
+  (mapc 'kill-buffer (buffer-list)))
+
 
 ;;
 ;; Multiple cursors

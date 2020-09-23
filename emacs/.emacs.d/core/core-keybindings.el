@@ -66,7 +66,8 @@
 (defhydra hydra-buffers (:columns 4 :exit t)
   "Buffers"
   ("b" #'counsel-switch-buffer "buffer/rerecentf")
-  ("k" #'~kill-current-buffer "kill")
+  ("k" #'~kill-current-buffer "kill current")
+  ("K" #'~kill-all-buffers "kill all")
   ("d" #'magit-diff-buffer-file "git diff"))
 
 (defhydra hydra-compile (:columns 4 :exit t)
