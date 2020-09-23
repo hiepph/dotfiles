@@ -186,6 +186,13 @@
    :keymaps 'company-mode-map
    "C-/" 'company-complete)
 
+  ;; tags
+  (general-define-key
+   :states 'normal
+   :keymaps 'xref--xref-buffer-mode-map
+   "q" 'quit-window
+   "RET" 'xref-goto-xref)
+
   ;; ivy
   (general-define-key
    :states 'normal
