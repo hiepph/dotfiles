@@ -1,17 +1,22 @@
 # dotfiles
 
-## Overview
-
 ![gif](https://thumbs.gfycat.com/AlarmingCoordinatedEarwig-max-1mb.gif)
 
-`dotfiles` is managed with [GNU Stow](https://www.gnu.org/software/stow/manual/stow.html).
-Simply integrate config with `stow <package>`.
 
+## Bootstrap
 
-## Installation
+All bootstrap setup scripts and configurations are managed by Ansible.
 
-+ Bootstrap everything: `python bootstrap.py`
-+ Bootstrap some modules: `python bootstrap.py git vim`
+```
+ansible-playbook bootstrap.yml -t <app>
+```
+
+For some applications (e.g. Emacs, Tmux, Vim), their configurations need to be symlinked to HOME.
+This task is done by [GNU Stow](https://www.gnu.org/software/stow/manual/stow.html).
+
+```
+stow <app>
+```
 
 
 ## Emacs
