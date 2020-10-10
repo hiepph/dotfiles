@@ -5,7 +5,7 @@
 
 ## Bootstrap
 
-[bootstrap.yml][./bootstrap.yml]
+[bootstrap.yml](./bootstrap.yml)
 
 All bootstrap setup scripts and configurations are managed by Ansible.
 
@@ -23,7 +23,7 @@ stow <app>
 
 ## Scripts
 
-[scripts][./scripts]
+[scripts](./scripts)
 
 Collection of my shortcut and useful scirpts.
 
