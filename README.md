@@ -5,6 +5,8 @@
 
 ## Bootstrap
 
+[bootstrap.yml][./bootstrap.yml]
+
 All bootstrap setup scripts and configurations are managed by Ansible.
 
 ```
@@ -17,6 +19,13 @@ This task is done by [GNU Stow](https://www.gnu.org/software/stow/manual/stow.ht
 ```
 stow <app>
 ```
+
+
+## Scripts
+
+[scripts][./scripts]
+
+Collection of my shortcut and useful scirpts.
 
 
 ## Emacs
