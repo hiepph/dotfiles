@@ -29,6 +29,8 @@
   tags: emacs
   tasks:
     - name: setup go
-      shell: go get -v golang.org/x/tools/cmd/goimports
+      shell: |
+        go get -v golang.org/x/tools/cmd/goimports
+        cp bootstrap/.ctags ~
     - name: setup python
       shell: pip install pylint
