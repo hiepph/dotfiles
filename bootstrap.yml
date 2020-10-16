@@ -23,3 +23,12 @@
         git config --global user.email "hiepph.2406@gmail.com"
         git config --global user.name "Hiep Pham"
         git config --global core.editor "vim"
+
+- name: Emacs
+  hosts: localhost
+  tags: emacs
+  tasks:
+    - name: setup go
+      shell: go get -v golang.org/x/tools/cmd/goimports
+    - name: setup python
+      shell: pip install pylint
