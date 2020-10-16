@@ -65,6 +65,7 @@
 
 (defhydra hydra-buffers (:columns 4 :exit t)
   "Buffers"
+  ("f" #'counsel-find-file "find")
   ("b" #'counsel-switch-buffer "buffer/rerecentf")
   ("k" #'~kill-current-buffer "kill current")
   ("K" #'~kill-all-buffers "kill all")
@@ -73,7 +74,10 @@
 (defhydra hydra-compile (:columns 4 :exit t)
   "Compile"
   ("c" #'compile "compile")
+  ("C" #'~compile-current-file "compile current")
   ("r" #'~recompile "recompile")
+  ("t" #'~test-all-files "test all")
+  ("T" #'~test-current-file "test current")
   ("k" #'kill-compilation "kill"))
 
 (defhydra hydra-error (:columns 4 :exit t)
