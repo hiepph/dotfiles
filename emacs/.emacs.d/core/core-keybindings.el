@@ -104,6 +104,7 @@
 (defhydra hydra-toggle (:columns 4 :exit t)
   ("f" #'format-mode "format") ;; off by default
   ("c" #'company-mode "company") ;; on by default
+  ("s" #'company-mode "flyspell") ;; on by default in text-mode
   )
 
 ;;

@@ -395,6 +395,18 @@ $ ls
 
 
 ;;
+;; Flyspell
+;;
+
+;; enable for text mode
+(dolist (hook '(text-mode-hook))
+    (add-hook hook (lambda () (flyspell-mode 1))))
+;; disable for log edit and change log
+(dolist (hook '(change-log-mode-hook log-edit-mode-hook))
+    (add-hook hook (lambda () (flyspell-mode -1))))
+
+
+;;
 ;; Company
 ;;
 (use-package company

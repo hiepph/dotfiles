@@ -25,7 +25,7 @@ stow <app>
 
 [scripts](./scripts)
 
-Collection of my shortcut and useful scirpts.
+Collection of my shortcut and useful scripts.
 
 
 ## Emacs
