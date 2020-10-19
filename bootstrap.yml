@@ -34,3 +34,11 @@
         cp bootstrap/.ctags ~
     - name: setup python
       shell: pip install pylint
+
+- name: Locales
+  hosts: localhost
+  tags: locale
+  become: yes
+  tasks:
+    - name: US localization
+      shell: localedef -f UTF-8 -i en_US en_US.UTF-8
