@@ -6,6 +6,12 @@
 ;; References
 ;; 1. Spacemacs: https://develop.spacemacs.org/doc/DOCUMENTATION.html
 
+
+;; Make evil normal state the initial state always
+(setq evil-emacs-state-modes nil)
+(setq evil-insert-state-modes nil)
+(setq evil-motion-state-modes nil)
+
 ;;
 ;; Menus
 ;;
