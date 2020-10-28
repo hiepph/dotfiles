@@ -309,10 +309,10 @@ sample:
 $ ls
 "
   (interactive "M$: ")
-  (setq open-term "termite -e $SHELL -c")
-  (setq toggle-floating "i3-msg floating enable > /dev/null")
-  (call-process-shell-command (format "%s '%s; %s; $SHELL -i'" open-term toggle-floating command)
-                 nil))
+  (let ((open-term "alacritty -e $SHELL -c"))
+    (call-process-shell-command
+     (format "%s '%s; $SHELL -i'" open-term command)
+     nil)))
 
 
 (defun ~acme< (&optional command)
