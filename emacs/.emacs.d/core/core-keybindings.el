@@ -79,7 +79,7 @@
 
 (defhydra hydra-compile (:columns 4 :exit t)
   "Compile"
-  ("c" #'compile "compile")
+  ("c" #'counsel-compile "compile")
   ("C" #'~compile-current-file "compile current")
   ("r" #'~recompile "recompile")
   ("t" #'~test-all-files "test all")

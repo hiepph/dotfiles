@@ -199,21 +199,22 @@
 ;;
 ;; Compile
 ;;
-;; (defun ~compile ())
+(defun ~compile-find-command (command-map)
+  (let* ((fname (s-chop-suffix (car (s-match "<.*>" (buffer-name))) (buffer-name)))
+         (suffix (file-name-extension fname))
+         (prog (cdr (assoc suffix command-map))))
+    (if (null prog)
+        (error "Extension is not yet registered")
+      (format "%s %s" prog (shell-quote-argument fname)))))
+
 (defun ~run-current-file (f command-map)
   "Run command map with function f
 f can be: compile, ~acme$, ~acme&, ~acme!"
   (interactive)
   (save-buffer)
 
-  (let* ((fname (s-chop-suffix (car (s-match "<.*>" (buffer-name))) (buffer-name)))
-         (suffix (file-name-extension fname))
-         (prog (cdr (assoc suffix command-map)))
-         (command (format "%s %s" prog (shell-quote-argument fname))))
-    (if (null prog)
-        ;; run as executed file
-        (funcall f fname)
-      (funcall f command))))
+  (let (command (~compile-find-command command-map))
+    (funcall f command)))
 
 (defvar *compile-command-map* '(("py" . "python")
                                 ("go" . "go run")
@@ -227,14 +228,13 @@ e.g. If the current buffer is hello.py, then it'll call python hello.py
 "
   (interactive)
   (save-buffer)
-  (~run-current-file 'compile *compile-command-map*))
+  (~run-current-file 'counsel-compile *compile-command-map*))
 
 (defun ~recompile ()
   "custom recompile "
   (interactive)
   (save-buffer)
   (recompile))
-
 
 (defvar *test-command-map* '(("py" . "pytest -s -v")
                             ("go" . "go test")))
@@ -244,7 +244,7 @@ e.g. If the current buffer is hello.py, then it'll call python hello.py
 e.g. If the current buffer is hello.py, then it'll call pytest hello.py
 "
   (interactive)
-  (~run-current-file 'compile *test-command-map*))
+  (~run-current-file 'counsel-compile *test-command-map*))
 
 (defun ~test-all-files ()
   "Test all files in same directory using 'compile'. Automatic filetype recogntion.
@@ -259,7 +259,7 @@ e.g. If the current buffer is hello.py, then it'll call pytest
          (command prog))
     (if (null prog)
         (error "Compile command not found. Please check '*<?>-command-map*'")
-      (compile command))))
+      (counsel-compile command))))
 
 
 ;;
