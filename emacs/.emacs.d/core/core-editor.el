@@ -228,7 +228,14 @@ e.g. If the current buffer is hello.py, then it'll call python hello.py
 "
   (interactive)
   (save-buffer)
-  (~run-current-file 'counsel-compile *compile-command-map*))
+  (~run-current-file 'compile *compile-command-map*))
+
+(defun ~compile ()
+  "compile but figuring out the command automatically"
+  (interactive)
+  (save-buffer)
+  (setq compile-command (~compile-find-command *compile-command-map*))
+  (call-interactively 'compile))
 
 (defun ~recompile ()
   "custom recompile "
@@ -244,7 +251,7 @@ e.g. If the current buffer is hello.py, then it'll call python hello.py
 e.g. If the current buffer is hello.py, then it'll call pytest hello.py
 "
   (interactive)
-  (~run-current-file 'counsel-compile *test-command-map*))
+  (~run-current-file 'compile *test-command-map*))
 
 (defun ~test-all-files ()
   "Test all files in same directory using 'compile'. Automatic filetype recogntion.
@@ -259,7 +266,7 @@ e.g. If the current buffer is hello.py, then it'll call pytest
          (command prog))
     (if (null prog)
         (error "Compile command not found. Please check '*<?>-command-map*'")
-      (counsel-compile command))))
+      (compile command))))
 
 
 ;;
