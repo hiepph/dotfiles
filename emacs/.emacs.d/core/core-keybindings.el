@@ -215,15 +215,7 @@
    :states 'visual
    :keymaps 'override
    "+" 'er/expand-region
-   "-" 'er/contract-region)
-
-  ;; paredit
-  (general-define-key
-   :state 'normal
-   :keymaps 'paredit-mode-map
-
-   ">" 'paredit-forward-slurp-sexp
-   "<" 'paredit-forward-barf-sexp))
+   "-" 'er/contract-region))
 
 
 (provide 'core-keybindings)

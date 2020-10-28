@@ -199,6 +199,7 @@
 ;;
 ;; Compile
 ;;
+;; (defun ~compile ())
 (defun ~run-current-file (f command-map)
   "Run command map with function f
 f can be: compile, ~acme$, ~acme&, ~acme!"
@@ -293,7 +294,7 @@ sample:
       (evil-normal-state))))
 
 
-
+;; TODO
 (defun ~acme$ (&optional command)
   "spawn a terminal and execute command
 
@@ -334,13 +335,16 @@ $ ls
 ;; Execute text by pattern
 ;; ref: https://github.com/cmpitg/wand
 ;;
-;; (use-package wand
-;;   :config
-;;   (setq wand:*rules*
-;;         (list
-;;          (wand:create-rule :match (rx bol (0+ " ") "&")
-;;                            :capture :after
-;;                            :action #'~acme&))))
+(use-package wand
+  :config
+  (setq wand:*rules*
+        (list
+         (wand:create-rule :match (rx bol (0+ " ") "&")
+                           :capture :after
+                           :action #'~acme&)
+         (wand:create-rule :match "https?://"
+                              :capture :whole
+                              :action #'browse-url-firefox))))
 
 
 ;;
