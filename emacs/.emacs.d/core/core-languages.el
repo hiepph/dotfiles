@@ -7,8 +7,6 @@
 
 ;; Emacs Lisp
 
-
-
 ;; markdown
 (use-package markdown-mode)
 
@@ -26,10 +24,6 @@
   (when (eq major-mode 'python-mode)
     (let ((fname (buffer-file-name)))
       (shell-command (format "autopep8 --in-place --aggressive --aggressive %s" fname) nil))))
-
-
-;; Nim
-(use-package nim-mode)
 
 ;; Go
 (use-package go-mode

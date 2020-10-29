@@ -33,6 +33,12 @@
 ;; Show column
 (setq column-number-mode t)
 
+;;
+;; Mode line
+;;
+(use-package telephone-line
+  :init
+  (telephone-line-mode 1))
 
 ;;
 ;; Themes
