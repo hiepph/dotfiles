@@ -23,7 +23,7 @@
   ("w" #'hydra-workspace/body "workspaces")
 
   ;; dired
-  ("d" #'dired-jump "dired")
+  ("d" #'dired-jump-other-window "dired")
 
   ;; Magit
   ("g" #'magit-status "magit")
@@ -51,22 +51,30 @@
 (defhydra hydra-projectile (:columns 4 :exit t)
   "Projectile"
   ("p" #'projectile-switch-project "switch")
+
   ("f" #'projectile-find-file "find file")
+
   ("/" #'projectile-ripgrep  "ripgrep")
+
   ("d" #'projectile-find-dir "find directory")
+  ("D" #'projectile-dired-other-window "dired")
+
   ("b" #'projectile-switch-to-buffer "buffer")
   ("k" #'projectile-kill-buffers "kill buffers")
+
   ("R" #'projectile-regenerate-tags "regenerate tags")
   ("j" #'projectile-find-tag "find tags")
+
   ("c" #'projectile-compile-project "compile (root)")
   ("!" #'projectile-run-shell-command-in-root "shell cmd (root)")
   ("&" #'projectile-run-async-shell-command-in-root "async cmd (root)")
+
   ("q" nil "Cancel" :color blue))
 
 (defhydra hydra-buffers (:columns 4 :exit t)
   "Buffers"
   ("f" #'counsel-find-file "find")
-  ("b" #'counsel-switch-buffer "buffer/rerecentf")
+  ("b" #'counsel-switch-buffer "list")
   ("k" #'~kill-current-buffer "kill current")
   ("K" #'~kill-all-buffers "kill all")
   ("d" #'magit-diff-buffer-file "git diff"))
@@ -122,11 +130,13 @@
   ;;
   (global-set-key (kbd "<f2>") 'save-buffer)
   (global-set-key (kbd "<f3>") 'counsel-find-file)
-  (global-set-key (kbd "<S-f3>") 'projectile-find-file)
+  (global-set-key (kbd "S-<f3>") 'find-file-other-window)
   (global-set-key (kbd "<f8>") 'counsel-buffer-or-recentf)
   (global-set-key (kbd "<f9>") '~compile-current-file)
   (global-set-key (kbd "<f12>") '~test-current-file)
   (global-set-key (kbd "S-<f12>") '~test-all-files)
+
+  (global-set-key (kbd "<ESC>") 'evil-normal-state)
 
   ;;
   ;; Alt combination
