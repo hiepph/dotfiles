@@ -277,35 +277,11 @@ e.g. If the current buffer is hello.py, then it'll call pytest
 
 (defvar record-separator "%")
 
-(defun ~acme& (&optional command)
-  "Execute command using (async) shell command
-
-sample:
-! ls
-"
-  (interactive "M&: ")
-  (let ((out-buffer "*+Errors*"))
-    ;; kill +Errors buffer first
-    (when (get-buffer out-buffer)
-      (kill-buffer (get-buffer out-buffer)))
-
-    (let* ((buf (get-buffer-create out-buffer))
-           (trimmed-command (s-trim command))
-           (cmd (format "%s" trimmed-command)))
-      (async-shell-command cmd buf)
-
-      ;; switch to *+Errors+* buffer
-      (switch-to-buffer-other-window buf)
-
-      ;; normal state by default
-      (evil-normal-state))))
-
-
 ;; TODO
 (defun ~acme$ (&optional command)
   "spawn a terminal and execute command
 
-sample:
+eg:
 $ ls
 "
   (interactive "M$: ")
@@ -316,6 +292,11 @@ $ ls
 
 
 (defun ~acme< (&optional command)
+  "Execute command and pipe stdout to editor
+
+eg:
+< ls
+"
   (interactive "M<: ")
   (delete-region (region-beginning)
                  (region-end))
@@ -323,6 +304,7 @@ $ ls
 
 
 (defun ~acme| (&optional command)
+  "Pipe input into command line and output stdout to editor"
   (interactive "M|: ")
   (let ((inhibit-message t))
     (shell-command-on-region (region-beginning)
@@ -341,6 +323,7 @@ $ ls
 ;;
 ;; Execute text by pattern
 ;; ref: https://github.com/cmpitg/wand
+;; < ls
 ;;
 (use-package wand
   :config
@@ -348,7 +331,13 @@ $ ls
         (list
          (wand:create-rule :match (rx bol (0+ " ") "&")
                            :capture :after
-                           :action #'~acme&)
+                           :action #'async-shell-command)
+         (wand:create-rule :match (rx bol (0+ " ") "$")
+                           :capture :after
+                           :action #'~acme$)
+         (wand:create-rule :match (rx bol (0+ " ") "<")
+                           :capture :after
+                           :action #'~acme<)
          (wand:create-rule :match "https?://"
                               :capture :whole
                               :action #'browse-url-firefox))))
