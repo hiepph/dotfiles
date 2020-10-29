@@ -33,7 +33,7 @@
         go get -v golang.org/x/tools/cmd/goimports
         cp bootstrap/.ctags ~
     - name: setup python
-      shell: pip install pylint
+      shell: pip install pylint autopep8
 
 - name: Locales
   hosts: localhost
