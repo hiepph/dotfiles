@@ -136,7 +136,7 @@
   (global-set-key (kbd "<f12>") '~test-current-file)
   (global-set-key (kbd "S-<f12>") '~test-all-files)
 
-  (global-set-key (kbd "<ESC>") 'evil-normal-state)
+  (global-set-key (kbd "<escape>") 'evil-normal-state)
 
   ;;
   ;; Alt combination
