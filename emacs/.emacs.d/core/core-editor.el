@@ -195,17 +195,12 @@
   (global-undo-tree-mode))
 
 
-
 ;;
 ;; Compile
 ;;
-(defun ~compile-find-command (command-map)
-  (let* ((fname (s-chop-suffix (car (s-match "<.*>" (buffer-name))) (buffer-name)))
-         (suffix (file-name-extension fname))
-         (prog (cdr (assoc suffix command-map))))
-    (if (null prog)
-        (error "Extension is not yet registered")
-      (format "%s %s" prog (shell-quote-argument fname)))))
+
+;; show stack trace on error
+(setq debug-on-error t)
 
 (defun ~run-current-file (f command-map)
   "Run command map with function f
@@ -213,8 +208,13 @@ f can be: compile, ~acme$, ~acme&, ~acme!"
   (interactive)
   (save-buffer)
 
-  (let (command (~compile-find-command command-map))
-    (funcall f command)))
+  (let* ((fname (s-chop-suffix (car (s-match "<.*>" (buffer-name))) (buffer-name)))
+         (suffix (file-name-extension fname))
+         (prog (cdr (assoc suffix command-map)))
+         (command (~compile-find-command command-map)))
+    (if (null prog)
+        (error "Extension is not yet registered")
+      (funcall f (format "%s %s" prog (shell-quote-argument fname))))))
 
 (defvar *compile-command-map* '(("py" . "python")
                                 ("go" . "go run")
@@ -230,12 +230,8 @@ e.g. If the current buffer is hello.py, then it'll call python hello.py
   (save-buffer)
   (~run-current-file 'compile *compile-command-map*))
 
-(defun ~compile ()
-  "compile but figuring out the command automatically"
-  (interactive)
-  (save-buffer)
-  (setq compile-command (~compile-find-command *compile-command-map*))
-  (call-interactively 'compile))
+;; default compile command to empty
+(setq compile-command "")
 
 (defun ~recompile ()
   "custom recompile "
