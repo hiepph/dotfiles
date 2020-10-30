@@ -81,7 +81,7 @@
 
 (defhydra hydra-compile (:columns 4 :exit t)
   "Compile"
-  ("c" #'~compile "compile")
+  ("c" #'compile "compile")
   ("l" #'counsel-compile "list")
   ("C" #'~compile-current-file "compile current")
   ("r" #'~recompile "recompile")
@@ -105,9 +105,9 @@
   "Workspaces"
   ("c" #'eyebrowse-create-window-config "create")
   ("n" #'eyebrowse-next-window-config "next")
-  ("p" #'eyebrowse-previous-window-config "previous")
+  ("p" #'eyebrowse-prev-window-config "previous")
   ("x" #'eyebrowse-close-window-config "close")
-  ("." #'eyebrowse-switch-to-window-config "last")
+  ("." #'eyebrowse-switch-to-window-config "switch")
   ("'" #'eyebrowse-last-window-config "last")
   ("," #'eyebrowse-rename-window-config "rename"))
 
@@ -157,7 +157,6 @@
   (global-set-key (kbd "M-7") 'eyebrowse-switch-to-window-config-7)
   (global-set-key (kbd "M-8") 'eyebrowse-switch-to-window-config-8)
   (global-set-key (kbd "M-9") 'eyebrowse-switch-to-window-config-9)
-
 
 
   ;;
