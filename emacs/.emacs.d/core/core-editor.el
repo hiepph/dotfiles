@@ -200,7 +200,7 @@
 ;;
 
 ;; show stack trace on error
-(setq debug-on-error t)
+;; (setq debug-on-error t)
 
 (defun ~run-current-file (f command-map)
   "Run command map with function f
