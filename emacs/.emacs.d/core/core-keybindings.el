@@ -157,6 +157,7 @@
   (global-set-key (kbd "M-7") 'eyebrowse-switch-to-window-config-7)
   (global-set-key (kbd "M-8") 'eyebrowse-switch-to-window-config-8)
   (global-set-key (kbd "M-9") 'eyebrowse-switch-to-window-config-9)
+  (global-set-key (kbd "M-'") 'eyebrowse-last-window-config)
 
 
   ;;

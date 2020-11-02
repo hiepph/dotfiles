@@ -210,8 +210,7 @@ f can be: compile, ~acme$, ~acme&, ~acme!"
 
   (let* ((fname (s-chop-suffix (car (s-match "<.*>" (buffer-name))) (buffer-name)))
          (suffix (file-name-extension fname))
-         (prog (cdr (assoc suffix command-map)))
-         (command (~compile-find-command command-map)))
+         (prog (cdr (assoc suffix command-map))))
     (if (null prog)
         (error "Extension is not yet registered")
       (funcall f (format "%s %s" prog (shell-quote-argument fname))))))
