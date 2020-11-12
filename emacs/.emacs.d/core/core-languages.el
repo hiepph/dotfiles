@@ -18,12 +18,16 @@
 
 
 ;; Python
+;;
+;; using autopep8 for auto-formatting python
+;; refer: https://github.com/hhatto/autopep8
+;;
 (defun ~format-python ()
   "Format python code followed PEP8"
   (interactive)
   (when (eq major-mode 'python-mode)
     (let ((fname (buffer-file-name)))
-      (shell-command (format "autopep8 --in-place --aggressive --aggressive %s" fname) nil))))
+      (shell-command (format "autopep8 --in-place --aggressive %s" fname) nil))))
 
 ;; Go
 (use-package go-mode
