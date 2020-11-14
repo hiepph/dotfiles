@@ -108,6 +108,7 @@
   :config
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
+
 ;;
 ;; Evil keybinding
 ;; ref: https://github.com/emacs-evil/evil
@@ -118,8 +119,10 @@
   (setq evil-want-keybinding nil)
   (setq evil-want-C-u-scroll t)
   (setq evil-want-fine-undo t)
+
   :config
   (evil-mode 1))
+
 
 ;;
 ;; Evil escape
@@ -186,14 +189,6 @@
 (use-package evil-commentary
   :init
   (evil-commentary-mode))
-
-
-;;
-;; Undo/Redo tree
-;;
-(use-package undo-tree
-  :init
-  (global-undo-tree-mode))
 
 
 ;;
@@ -318,25 +313,26 @@ eg:
 
 ;;
 ;; Execute text by pattern
+;; WARNING: wand-helper:maybe-uncomment-string
 ;; ref: https://github.com/cmpitg/wand
 ;; < ls
 ;;
-(use-package wand
-  :config
-  (setq wand:*rules*
-        (list
-         (wand:create-rule :match (rx bol (0+ " ") "&")
-                           :capture :after
-                           :action #'async-shell-command)
-         (wand:create-rule :match (rx bol (0+ " ") "$")
-                           :capture :after
-                           :action #'~acme$)
-         (wand:create-rule :match (rx bol (0+ " ") "<")
-                           :capture :after
-                           :action #'~acme<)
-         (wand:create-rule :match "https?://"
-                              :capture :whole
-                              :action #'browse-url-firefox))))
+;; (use-package wand
+;;   :config
+;;   (setq wand:*rules*
+;;         (list
+;;          (wand:create-rule :match (rx bol (0+ " ") "&")
+;;                            :capture :after
+;;                            :action #'async-shell-command)
+;;          (wand:create-rule :match (rx bol (0+ " ") "$")
+;;                            :capture :after
+;;                            :action #'~acme$)
+;;          (wand:create-rule :match (rx bol (0+ " ") "<")
+;;                            :capture :after
+;;                            :action #'~acme<)
+;;          (wand:create-rule :match "https?://"
+;;                               :capture :whole
+;;                               :action #'browse-url-firefox))))
 
 
 ;;
