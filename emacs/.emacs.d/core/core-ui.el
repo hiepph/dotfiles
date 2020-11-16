@@ -40,6 +40,13 @@
   :init
   (telephone-line-mode 1))
 
+
+;;
+;; Indent line
+;; ref: https://github.com/zk-phi/indent-guide
+;;
+(use-package indent-guide)
+
 ;;
 ;; Themes
 ;;

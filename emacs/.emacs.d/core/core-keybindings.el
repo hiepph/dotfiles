@@ -115,7 +115,7 @@
   ("f" #'format-mode "format") ;; off by default
   ("c" #'company-mode "company") ;; on by default
   ("s" #'flyspell-mode "flyspell") ;; on by default in text-mode
-  )
+  ("i" #'indent-guide-mode "indent"))
 
 ;;
 ;; general (leader keys)
