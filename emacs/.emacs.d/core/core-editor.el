@@ -1,6 +1,7 @@
 ;;
 ;; Basic
 ;;
+
 ;; Changes all yes/no questions to y/n type
 (fset 'yes-or-no-p 'y-or-n-p)
 
@@ -25,22 +26,13 @@
 (global-auto-revert-mode t)
 
 ;; Emacs can automatically create backup files. This tells Emacs to
-;; put all backups in ~/.emacs.d/backups. More info:
-;; http://www.gnu.org/software/emacs/manual/html_node/elisp/Backup-Files.html
+;; put all backups in ~/.emacs.d/backups.
 (setq backup-directory-alist `(("." . ,(concat user-emacs-directory
                                                "backups"))))
 (setq auto-save-default nil)
 
-;; Tramp
-(setq-default explicit-shell-file-name "/bin/bash")
-(add-to-list 'tramp-remote-path 'tramp-own-remote-path)
-
-
 ;; open *shell* in current buffer
 (push (cons "\\*shell\\*" display-buffer--same-window-action) display-buffer-alist)
-
-;; auto revert dired-mode
-;; (add-hook 'dired-mode-hook 'auto-revert-mode)
 
 ;; replace highlight text with typing action
 (delete-selection-mode 1)
@@ -62,6 +54,24 @@
 
 ;; Enter automatically indent code
 (define-key global-map (kbd "RET") 'newline-and-indent)
+
+
+;;
+;; Tramp
+;;
+(setq-default explicit-shell-file-name "/bin/bash")
+(add-to-list 'tramp-remote-path 'tramp-own-remote-path)
+
+
+;;
+;; Make sure Emacs uses $PATH to execute command in shell
+;; (e.g. MacOS)
+;; ref: https://github.com/purcell/exec-path-from-shell
+;;
+(use-package exec-path-from-shell
+  :config
+  (when (memq window-system '(mac ns x))
+    (exec-path-from-shell-initialize)))
 
 
 ;;
