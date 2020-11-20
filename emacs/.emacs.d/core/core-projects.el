@@ -9,6 +9,9 @@
 ;; readable information
 (setq dired-listing-switches "-alh")
 
+;; auto revert dired-mode
+;; (add-hook 'dired-mode-hook 'auto-revert-mode)
+
 
 ;;
 ;; Magit
