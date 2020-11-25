@@ -400,8 +400,8 @@ eg:
 ;; Flyspell
 ;;
 
-;; enable for text mode
-(dolist (hook '(text-mode-hook))
+;; enable for some mode
+(dolist (hook '(markdown-mode-hook git-commit-mode))
     (add-hook hook (lambda () (flyspell-mode 1))))
 ;; disable for log edit and change log
 (dolist (hook '(change-log-mode-hook log-edit-mode-hook))
