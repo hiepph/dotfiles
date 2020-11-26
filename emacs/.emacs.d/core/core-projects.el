@@ -75,4 +75,13 @@
 (use-package projectile-ripgrep)
 
 
+;;
+;; Jump to definition, even without CTAGS
+;; ref: https://github.com/jacktasia/dumb-jump
+;;
+(use-package dumb-jump
+  :config
+  (add-hook 'xref-backend-functions #'dumb-jump-xref-activate))
+
+
 (provide 'core-projects)
