@@ -35,9 +35,6 @@
   ("c" #'hydra-compile/body "compile")
   ("e" #'hydra-error/body "flycheck")
 
-  ;; quick search
-  ("/" #'ripgrep-regexp "ripgrep")
-
   ;; registers
   ;; ("r" #'counsel-evil-registers "registers")
   ;; ("k" #'counsel-yank-pop "kill rings")
@@ -76,8 +73,8 @@
 
 (defhydra hydra-buffers (:columns 4 :exit t)
   "Buffers"
-  ;; ("f" #'counsel-find-file "find")
-  ;; ("b" #'counsel-switch-buffer "list")
+  ("f" #'find-file "find")
+  ("b" #'ido-switch-buffer "list")
   ("k" #'~kill-current-buffer "kill current")
   ("K" #'~kill-all-buffers "kill all")
   ("d" #'magit-diff-buffer-file "git diff"))
