@@ -33,7 +33,7 @@ end
 opt_parse.parse!
 
 if options[:search].nil?
-  abort(opt_parse.help)
+  options[:search] = ARGV.join(" ")
 end
 
 res = JSON.parse(get(build_url(URL, options)))
