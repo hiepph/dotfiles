@@ -107,6 +107,7 @@
   ((emacs-lisp-mode
     clojure-mode
     cider-mode
+    cider-repl-mode
     scheme-mode) . paredit-mode))
 
 
