@@ -46,6 +46,13 @@
   (setq enable-recursive-minibuffers t)
   (setq ivy-initial-inputs-alist nil))
 
+(use-package prescient)
+(use-package ivy-prescient
+  :init
+  (ivy-prescient-mode))
+(use-package company-prescient
+  :init
+  (company-prescient-mode))
 
 ;;
 ;; Desktops management
