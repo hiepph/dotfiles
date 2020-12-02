@@ -75,6 +75,7 @@
   "Buffers"
   ("f" #'find-file "find")
   ("b" #'ido-switch-buffer "list")
+  ("r" #'~list-recent-files "recent")
   ("k" #'~kill-current-buffer "kill current")
   ("K" #'~kill-all-buffers "kill all")
   ("d" #'magit-diff-buffer-file "git diff"))

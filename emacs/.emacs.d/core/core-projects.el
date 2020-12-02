@@ -52,9 +52,9 @@
   :init
   (company-prescient-mode +1))
 
-;; (use-package selectrum-prescient
-;;   :init
-;;   (selectrum-prescient-mode +1))
+(use-package selectrum-prescient
+  :init
+  (selectrum-prescient-mode +1))
 
 ;;
 ;; Desktops management
@@ -65,6 +65,19 @@
   (eyebrowse-mode t)
   (setq eyebrowse-new-workspace t))
 
+
+;;
+;; Recent files
+;;
+(use-package recentf
+  :config
+  (recentf-mode 1))
+
+;; select recent files
+(defun ~list-recent-files ()
+  (interactive)
+  (let ((files (mapcar 'abbreviate-file-name recentf-list)))
+    (find-file (completing-read "Recent files: " files nil t))))
 
 ;;
 ;; Project management
