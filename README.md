@@ -27,16 +27,23 @@ stow <app>
 ```
 
 
-## Scripts
-
-[scripts](./scripts)
-
-Collection of my shortcut and useful scripts.
-
-
 ## Emacs
 
 + Config structure and performance optimization are referred from [doom-emacs](https://github.com/hlissner/doom-emacs/).
 A nice explanation of how doom-emacs can achieve state-of-the-art startup time is on the reddit discussion: [How is Doom Emacs so damn fast](https://www.reddit.com/r/emacs/comments/f3ed3r/how_is_doom_emacs_so_damn_fast)
 
 + Key bindings and literate functionalites are referred from [emacs-cmpitg](https://github.com/cmpitg/emacs-cmpitg)
+
+
+## Scripts
+
+[scripts](./scripts)
+
+Collection of my shortcut and useful scripts.
+
++ `_pocket`: query articles in [Pocket](https://app.getpocket.com/)
+  - usage: `_pocket <query>` or `_pocket -q <query> -t <tag>`
+
++ `_docker_remove_dangling`: remove all dangling (`<none>`) containers
+
++ `_docker_stop_all`: stop all running containers
