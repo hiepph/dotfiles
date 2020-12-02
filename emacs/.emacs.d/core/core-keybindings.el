@@ -42,6 +42,9 @@
   ;; ;; marks
   ;; ("m" #'counsel-evil-marks "marks")
 
+  ;; search
+  ("/" #'hydra-ctrlf/body "search")
+
   ;; dumb-jump
   ("j" #'hydra-dumb-jump/body)
 
@@ -117,7 +120,7 @@
   ("s" #'flyspell-mode "flyspell") ;; on by default in text-mode
   ("i" #'indent-guide-mode "indent"))
 
-(defhydra hydra-dumb-jump (:color blue :columns 3)
+(defhydra hydra-dumb-jump (:color blue :columns 4)
     "dumb jump"
     ("j" dumb-jump-go "go")
     ("o" dumb-jump-go-other-window "other window")
@@ -126,6 +129,14 @@
     ("i" dumb-jump-go-prompt "prompt")
     ("l" dumb-jump-quick-look "quick look")
     ("b" dumb-jump-back "back"))
+
+(defhydra hydra-ctrlf (:color blue :columns 4)
+  "Ctrlf search"
+  ("s" #'ctrlf-forward-fuzzy "forward")
+  ("r" #'ctrlf-backward-fuzzy "backward")
+  ("S" #'ctrlf-forward-regexp "forward (regexp)")
+  ("R" #'ctrlf-backward-regexp "backward (regexp)")
+  ("_" #'ctrlf-forward-symbol "symbol"))
 
 ;;
 ;; general (leader keys)
@@ -174,7 +185,7 @@
   ;;
   (general-nmap
     :keymaps 'override
-    :state 'normal
+    :state '(normal emacs)
 
     "SPC" 'hydra-main/body)
 
@@ -235,7 +246,18 @@
    :states 'visual
    :keymaps 'override
    "+" 'er/expand-region
-   "-" 'er/contract-region))
+   "-" 'er/contract-region)
+
+  ;; ctrlf
+  (general-define-key
+   :states 'normal
+   :keymaps 'override
+   "/" 'ctrlf-forward-fuzzy
+   "\\" 'ctrlf-forward-regexp)
+
+  (setq ctrlf-minibuffer-bindings
+        '(("C-n" . ctrlf-next-match)
+          ("C-p" . ctrlf-previous-match))))
 
 
 (provide 'core-keybindings)

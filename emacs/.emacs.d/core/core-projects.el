@@ -38,6 +38,14 @@
   :init
   (selectrum-mode +1))
 
+
+;;
+;; Like swiper, selectrum engine
+;; ref: https://github.com/raxod502/ctrlf
+;;
+(use-package ctrlf)
+
+
 ;;
 ;; Prescient
 ;; ref: https://github.com/raxod502/prescient.el
@@ -55,6 +63,7 @@
 (use-package selectrum-prescient
   :init
   (selectrum-prescient-mode +1))
+
 
 ;;
 ;; Desktops management
@@ -85,7 +94,6 @@
 (use-package projectile
   :config
   (projectile-mode +1)
-  ;; ivy interface
   (setq projectile-completion-system 'default)
 
   ;; sort files by recently opened
