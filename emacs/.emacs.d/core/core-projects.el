@@ -30,29 +30,31 @@
 
 
 ;;
-;; Counsel & Ivy & Swiper
-;; ref:
-;; https://sam217pa.github.io/2016/093/from-helm-to-ivy/
-;; https://github.com/abo-abo/swiper
+;; Selectrum
+;; ref: https://github.com/raxod502/selectrum
+;; incremental narrowing search
 ;;
-;; docs: https://oremacs.com/swiper/
-;;
-(use-package counsel
-  :diminish
+(use-package selectrum
   :init
-  (ivy-mode 1)
-  :config
-  (setq ivy-use-virtual-buffers t)
-  (setq enable-recursive-minibuffers t)
-  (setq ivy-initial-inputs-alist nil))
+  (selectrum-mode +1))
 
-(use-package prescient)
-(use-package ivy-prescient
-  :init
-  (ivy-prescient-mode))
+;;
+;; Prescient
+;; ref: https://github.com/raxod502/prescient.el
+;; save command history on disk,
+;; so the sorting gets more intelligent over time
+;;
+(use-package prescient
+  :config
+  (prescient-persist-mode +1))
+
 (use-package company-prescient
   :init
-  (company-prescient-mode))
+  (company-prescient-mode +1))
+
+;; (use-package selectrum-prescient
+;;   :init
+;;   (selectrum-prescient-mode +1))
 
 ;;
 ;; Desktops management
@@ -71,16 +73,14 @@
   :config
   (projectile-mode +1)
   ;; ivy interface
-  (setq projectile-completion-system 'ivy)
+  (setq projectile-completion-system 'default)
+
   ;; sort files by recently opened
   (setq projectile-sort-order 'recentf)
+
   ;; open top-level directory instead of a specific files
   ;; (setq projectile-switch-project-action #'projectile-dired)
   )
-
-;; support search
-(use-package projectile-ripgrep)
-
 
 ;;
 ;; Jump to definition, even without CTAGS

@@ -14,7 +14,7 @@
 (defhydra hydra-main (:columns 4 :exit t)
   "Main"
   ;; Commands
-  ("x" #'counsel-M-x "M-x")
+  ("x" #'execute-extended-command "M-x")
 
   ;; buffers
   ("b" #'hydra-buffers/body "buffers")
@@ -36,14 +36,14 @@
   ("e" #'hydra-error/body "flycheck")
 
   ;; quick search
-  ("/" #'counsel-rg "ripgrep")
+  ("/" #'ripgrep-regexp "ripgrep")
 
   ;; registers
-  ("r" #'counsel-evil-registers "registers")
-  ("k" #'counsel-yank-pop "kill rings")
+  ;; ("r" #'counsel-evil-registers "registers")
+  ;; ("k" #'counsel-yank-pop "kill rings")
 
-  ;; marks
-  ("m" #'counsel-evil-marks "marks")
+  ;; ;; marks
+  ;; ("m" #'counsel-evil-marks "marks")
 
   ;; dumb-jump
   ("j" #'hydra-dumb-jump/body)
@@ -57,7 +57,7 @@
 
   ("f" #'projectile-find-file "find file")
 
-  ("/" #'projectile-ripgrep  "ripgrep")
+  ("/" #'projectile-grep  "grep")
 
   ("d" #'projectile-find-dir "find directory")
   ("D" #'projectile-dired-other-window "dired")
@@ -76,8 +76,8 @@
 
 (defhydra hydra-buffers (:columns 4 :exit t)
   "Buffers"
-  ("f" #'counsel-find-file "find")
-  ("b" #'counsel-switch-buffer "list")
+  ;; ("f" #'counsel-find-file "find")
+  ;; ("b" #'counsel-switch-buffer "list")
   ("k" #'~kill-current-buffer "kill current")
   ("K" #'~kill-all-buffers "kill all")
   ("d" #'magit-diff-buffer-file "git diff"))
@@ -85,7 +85,6 @@
 (defhydra hydra-compile (:columns 4 :exit t)
   "Compile"
   ("c" #'compile "compile")
-  ("l" #'counsel-compile "list")
   ("C" #'~compile-current-file "compile current")
   ("r" #'~recompile "recompile")
   ("t" #'~test-all-files "test all")
@@ -142,9 +141,9 @@
   ;; Frequent tasks
   ;;
   (global-set-key (kbd "<f2>") 'save-buffer)
-  (global-set-key (kbd "<f3>") 'counsel-find-file)
+  (global-set-key (kbd "<f3>") 'find-file)
   (global-set-key (kbd "S-<f3>") 'find-file-other-window)
-  (global-set-key (kbd "<f8>") 'counsel-buffer-or-recentf)
+  (global-set-key (kbd "<f8>") 'ido-switch-buffer)
   (global-set-key (kbd "<f9>") '~compile-current-file)
   (global-set-key (kbd "<f12>") '~test-current-file)
   (global-set-key (kbd "S-<f12>") '~test-all-files)
@@ -154,7 +153,6 @@
   ;;
   ;; Alt combination
   ;;
-  (global-set-key (kbd "M-x") 'counsel-M-x)
   (global-set-key (kbd "M-<return>") 'wand:execute)
   (global-set-key (kbd "M-&") 'async-shell-command)
   (global-set-key (kbd "M-|") '~acme|)
