@@ -105,6 +105,7 @@
   :config
   :hook
   ((emacs-lisp-mode
+    ielm-mode
     clojure-mode
     cider-mode
     cider-repl-mode

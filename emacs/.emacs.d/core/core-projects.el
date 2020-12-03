@@ -66,6 +66,28 @@
 
 
 ;;
+;; Search helper
+;;
+(defun ~ripgrep (q)
+  "Search using ripgrep
+
+Default, search for current directory.
+TODO:
++ Read at point
++ projectile
++ regex: -e
+"
+  (interactive "Mrg: ")
+  (unless (executable-find "rg")
+    (user-error "'rg' not found"))
+  (let* ((res (shell-command-to-string (format "rg --line-number -S %s" q)))
+         (candidate (s-split ":" (completing-read "rg: " (s-split "\n" res))))
+         (file-name (car candidate))
+         (jump-point (string-to-number (cadr candidate))))
+    (find-file (expand-file-name file-name default-directory))
+    (goto-line jump-point)))
+
+;;
 ;; Desktops management
 ;;
 (use-package eyebrowse
