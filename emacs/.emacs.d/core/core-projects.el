@@ -73,8 +73,9 @@
 
 Default, search for current directory.
 TODO:
-+ Read at point
++ Highlight
 + projectile
++ Read at point
 + regex: -e
 "
   (interactive "Mrg: ")

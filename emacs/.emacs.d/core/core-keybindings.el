@@ -45,8 +45,11 @@
   ;; search
   ("/" #'hydra-ctrlf/body "search")
 
+  ;; ripgrep
+  ("s" #'~ripgrep "ripgrep")
+
   ;; dumb-jump
-  ("j" #'hydra-dumb-jump/body)
+  ("j" #'hydra-dumb-jump/body "jump")
 
   ;; format
   ("t" #'hydra-toggle/body "toggle"))
