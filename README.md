@@ -53,3 +53,6 @@ Collection of my shortcut and useful scripts.
 + `_docker_remove_dangling`: remove all dangling (`<none>`) containers
 
 + `_docker_stop_all`: stop all running containers
+
++ `_gitgnore`: download `.gitignore` file
+  - usage: `_gitignore python`

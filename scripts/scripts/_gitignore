@@ -1,0 +1,11 @@
+#!/usr/bin/env bb
+(require '[babashka.curl :as curl])
+
+(if (empty? *command-line-args*) (println "Usage: _gitignore <lang>"))
+(let [lang (str/capitalize (first *command-line-args*))]
+  (spit ".gitgnore"
+        (:body
+         (curl/get
+          (format
+           "https://raw.githubusercontent.com/github/gitignore/master/%s.gitignore"
+           lang)))))
