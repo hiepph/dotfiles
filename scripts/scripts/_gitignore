@@ -3,7 +3,7 @@
 
 (if (empty? *command-line-args*) (println "Usage: _gitignore <lang>"))
 (let [lang (str/capitalize (first *command-line-args*))]
-  (spit ".gitgnore"
+  (spit ".gitignore"
         (:body
          (curl/get
           (format
