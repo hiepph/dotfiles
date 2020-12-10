@@ -43,10 +43,10 @@
   ;; ("m" #'counsel-evil-marks "marks")
 
   ;; search
-  ("/" #'hydra-ctrlf/body "search")
+  ("s" #'hydra-ctrlf/body "search")
 
   ;; ripgrep
-  ("s" #'~ripgrep "ripgrep")
+  ("/" #'~ripgrep "ripgrep")
 
   ;; dumb-jump
   ("j" #'hydra-dumb-jump/body "jump")
@@ -255,8 +255,8 @@
   (general-define-key
    :states 'normal
    :keymaps 'override
-   "/" 'ctrlf-forward-fuzzy
-   "\\" 'ctrlf-forward-regexp)
+   "\\" 'ctrlf-forward-fuzzy
+   "|" 'ctrlf-forward-regexp)
 
   (setq ctrlf-minibuffer-bindings
         '(("C-n" . ctrlf-next-match)
