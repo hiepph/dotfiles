@@ -252,11 +252,14 @@
    "-" 'er/contract-region)
 
   ;; ctrlf
+  ;; TODO: n, N after searching
   (general-define-key
    :states 'normal
    :keymaps 'override
-   "\\" 'ctrlf-forward-fuzzy
-   "|" 'ctrlf-forward-regexp)
+   "/" 'ctrlf-forward-fuzzy
+   "?" 'ctrlf-backward-fuzzy
+   "\\" 'ctrlf-forward-regexp
+   "|" 'ctrlf-backward-regexp)
 
   (setq ctrlf-minibuffer-bindings
         '(("C-n" . ctrlf-next-match)
