@@ -67,26 +67,39 @@
 
 ;;
 ;; Search helper
+;; TODO:
+;; + Instant search when typing -> selectrum-swiper
+;; + Highlight (propertize?, selectrum-swiper)
+;; + Read at point
+;; + regex: -e
 ;;
-(defun ~ripgrep (q)
-  "Search using ripgrep
+(defun ~ripgrep-search (q dir projectile?)
+  "Search using ripgrep and provide results through Selectrum"
+    (unless (executable-find "rg")
+        (user-error "'rg' not found"))
+    (let* ((res (mapcar
+                 (lambda (line) (car (last (s-split dir line))))
+                 (s-split
+                  "\n"
+                  (shell-command-to-string
+                   (format "rg -i --line-number --hidden -S -g '!.git' %s %s"
+                           q dir)))))
+           (candidate (s-split ":" (completing-read ">: " res)))
+           (file-name (car candidate))
+           (jump-point (string-to-number (cadr candidate))))
+      (find-file (expand-file-name file-name dir))
+      (goto-line jump-point)))
 
-Default, search for current directory.
-TODO:
-+ Highlight
-+ projectile
-+ Read at point
-+ regex: -e
-"
+(defun ~ripgrep (q)
+  "Search current directory"
   (interactive "Mrg: ")
-  (unless (executable-find "rg")
-    (user-error "'rg' not found"))
-  (let* ((res (shell-command-to-string (format "rg --line-number -S %s" q)))
-         (candidate (s-split ":" (completing-read "rg: " (s-split "\n" res))))
-         (file-name (car candidate))
-         (jump-point (string-to-number (cadr candidate))))
-    (find-file (expand-file-name file-name default-directory))
-    (goto-line jump-point)))
+  (~ripgrep-search q default-directory nil))
+
+(defun ~projectile-ripgrep (q)
+  "Search in project root"
+  (interactive "Mprg: ")
+  (~ripgrep-search q (projectile-project-root) t))
+
 
 ;;
 ;; Desktops management
