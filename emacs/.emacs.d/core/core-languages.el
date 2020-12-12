@@ -15,6 +15,10 @@
 
 ;; Clojure
 (use-package cider)
+(defun ~format-clojure ()
+  (interactive)
+  (when (eq major-mode 'clojure-mode)
+    (cider-format-buffer)))
 
 
 ;; Python
@@ -28,6 +32,7 @@
   (when (eq major-mode 'python-mode)
     (let ((fname (buffer-file-name)))
       (shell-command (format "autopep8 --in-place --aggressive %s" fname) nil))))
+
 
 ;; Go
 (use-package go-mode
@@ -114,8 +119,12 @@
 (add-hook 'format-mode-hook
           (lambda ()
             (if format-mode
-                (add-hook 'after-save-hook '~format-python)
-              (remove-hook 'after-save-hook '~format-python))))
+                (progn
+                 (add-hook 'after-save-hook '~format-python)
+                 (add-hook 'after-save-hook '~format-clojure))
+              (progn
+               (remove-hook 'after-save-hook '~format-python)
+               (remove-hook 'after-save-hook '~format-clojure)))))
 
 
 (provide 'core-languages)
