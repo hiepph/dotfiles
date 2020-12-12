@@ -60,7 +60,7 @@
 
   ("f" #'projectile-find-file "find file")
 
-  ("/" #'projectile-grep  "grep")
+  ("/" #'~projectile-ripgrep  "ripgrep")
 
   ("d" #'projectile-find-dir "find directory")
   ("D" #'projectile-dired-other-window "dired")

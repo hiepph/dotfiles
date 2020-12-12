@@ -67,11 +67,6 @@
 
 ;;
 ;; Search helper
-;; TODO:
-;; + Instant search when typing -> selectrum-swiper
-;; + Highlight (propertize?, selectrum-swiper)
-;; + Read at point
-;; + regex: -e
 ;;
 (defun ~ripgrep-search (q dir projectile?)
   "Search using ripgrep and provide results through Selectrum"
@@ -84,7 +79,9 @@
                   (shell-command-to-string
                    (format "rg -i --line-number --hidden -S -g '!.git' %s %s"
                            q dir)))))
-           (candidate (s-split ":" (completing-read ">: " res)))
+           (candidate (s-split ":" (completing-read
+                                    (format "[%s]: " q)
+                                    res)))
            (file-name (car candidate))
            (jump-point (string-to-number (cadr candidate))))
       (find-file (expand-file-name file-name dir))
@@ -92,12 +89,15 @@
 
 (defun ~ripgrep (q)
   "Search current directory"
-  (interactive "Mrg: ")
+  (interactive
+   (list (read-string "rg: " (thing-at-point 'symbol))))
   (~ripgrep-search q default-directory nil))
 
 (defun ~projectile-ripgrep (q)
   "Search in project root"
-  (interactive "Mprg: ")
+  (interactive
+   (list (read-string (format "%s-rg: " (projectile-project-name))
+                      (thing-at-point 'symbol))))
   (~ripgrep-search q (projectile-project-root) t))
 
 
