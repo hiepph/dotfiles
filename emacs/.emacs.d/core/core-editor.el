@@ -115,11 +115,11 @@
 ;; Expand region
 (use-package expand-region)
 
+
 ;; Rainbow parentheses
 (use-package rainbow-delimiters
   :config
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
-
 
 ;;
 ;; Evil keybinding
@@ -417,5 +417,11 @@ eg:
   :config
   (global-company-mode))
 
+
+;;
+;; Undo/Redo
+;; ref: https://gitlab.com/ideasman42/emacs-undo-fu
+;;
+(use-package undo-fu)
 
 (provide 'core-editor)

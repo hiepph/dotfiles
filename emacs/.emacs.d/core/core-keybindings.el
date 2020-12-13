@@ -263,7 +263,14 @@
 
   (setq ctrlf-minibuffer-bindings
         '(("C-n" . ctrlf-next-match)
-          ("C-p" . ctrlf-previous-match))))
+          ("C-p" . ctrlf-previous-match)))
+
+  ;; Undo/Redo
+  (general-define-key
+   :states 'normal
+   "u" 'undo-fu-only-undo
+   "C-r" 'undo-fu-only-redo)
+  )
 
 
 (provide 'core-keybindings)
