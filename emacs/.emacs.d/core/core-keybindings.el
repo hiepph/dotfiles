@@ -255,7 +255,6 @@
   ;; TODO: n, N after searching
   (general-define-key
    :states 'normal
-   :keymaps 'override
    "/" 'ctrlf-forward-fuzzy
    "?" 'ctrlf-backward-fuzzy
    "\\" 'ctrlf-forward-regexp
