@@ -120,11 +120,11 @@
           (lambda ()
             (if format-mode
                 (progn
-                 (add-hook 'after-save-hook '~format-python)
-                 (add-hook 'after-save-hook '~format-clojure))
+                  ;; (add-hook 'after-save-hook '~format-clojure)
+                  (add-hook 'after-save-hook '~format-python))
               (progn
-               (remove-hook 'after-save-hook '~format-python)
-               (remove-hook 'after-save-hook '~format-clojure)))))
+                ;; (remove-hook 'after-save-hook '~format-clojure)
+                (remove-hook 'after-save-hook '~format-python)))))
 
 
 (provide 'core-languages)

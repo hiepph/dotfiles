@@ -87,19 +87,23 @@
       (find-file (expand-file-name file-name dir))
       (goto-line jump-point)))
 
+;; TODO: at-point -> visual
+;; (defun ~ripgrep-at-point (q)
+;;   "Search current directory"
+;;   (interactive
+;;    (list (read-string "rg: " (thing-at-point 'symbol))))
+;;   (~ripgrep-search q default-directory nil))
+
 (defun ~ripgrep (q)
   "Search current directory"
-  (interactive
-   (list (read-string "rg: " (thing-at-point 'symbol))))
+  (interactive "Mrg: ")
   (~ripgrep-search q default-directory nil))
 
 (defun ~projectile-ripgrep (q)
   "Search in project root"
   (interactive
-   (list (read-string (format "%s-rg: " (projectile-project-name))
-                      (thing-at-point 'symbol))))
+   (list (read-string (format "%s-rg: " (projectile-project-name)))))
   (~ripgrep-search q (projectile-project-root) t))
-
 
 ;;
 ;; Desktops management

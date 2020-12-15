@@ -26,7 +26,8 @@
   ("d" #'dired-jump-other-window "dired")
 
   ;; Magit
-  ("g" #'magit-status "magit")
+  ("g" #'magit-status "git status")
+  ("G" #'hydra-magit/body "magit")
 
   ;; Projectile
   ("p" #'hydra-projectile/body "projectile")
@@ -83,8 +84,7 @@
   ("b" #'ido-switch-buffer "list")
   ("r" #'~list-recent-files "recent")
   ("k" #'~kill-current-buffer "kill current")
-  ("K" #'~kill-all-buffers "kill all")
-  ("d" #'magit-diff-buffer-file "git diff"))
+  ("K" #'~kill-all-buffers "kill all"))
 
 (defhydra hydra-compile (:columns 4 :exit t)
   "Compile"
@@ -125,13 +125,13 @@
 
 (defhydra hydra-dumb-jump (:color blue :columns 4)
     "dumb jump"
-    ("j" dumb-jump-go "go")
-    ("o" dumb-jump-go-other-window "other window")
-    ("e" dumb-jump-go-prefer-external "go external")
-    ("x" dumb-jump-go-prefer-external-other-window "go external other window")
-    ("i" dumb-jump-go-prompt "prompt")
-    ("l" dumb-jump-quick-look "quick look")
-    ("b" dumb-jump-back "back"))
+    ("j" #'dumb-jump-go "go")
+    ("o" #'dumb-jump-go-other-window "other window")
+    ("e" #'dumb-jump-go-prefer-external "go external")
+    ("x" #'dumb-jump-go-prefer-external-other-window "go external other window")
+    ("i" #'dumb-jump-go-prompt "prompt")
+    ("l" #'dumb-jump-quick-look "quick look")
+    ("b" #'dumb-jump-back "back"))
 
 (defhydra hydra-ctrlf (:color blue :columns 4)
   "Ctrlf search"
@@ -140,6 +140,12 @@
   ("S" #'ctrlf-forward-regexp "forward (regexp)")
   ("R" #'ctrlf-backward-regexp "backward (regexp)")
   ("_" #'ctrlf-forward-symbol "symbol"))
+
+(defhydra hydra-magit (:columns 4 :exit t)
+  "Buffers"
+  ("g" #'magit-dispatch "menu")
+  ("f" #'magit-file-dispatch "file")
+  ("d" #'magit-diff-buffer-file "git diff"))
 
 ;;
 ;; general (leader keys)
