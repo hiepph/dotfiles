@@ -2,9 +2,11 @@
 ;; dired
 ;; ref: https://github.com/Fuco1/dired-hacks
 ;;
-;; (use-package dired-filter)
+(use-package dired-filter)
 (use-package dired-open)
 (use-package dired-subtree)
+(use-package dired-ranger)
+(use-package dired-list)
 
 ;; readable information
 (setq dired-listing-switches "-alh")

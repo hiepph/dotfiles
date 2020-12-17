@@ -224,6 +224,18 @@
 
    [f5] '~eval-buffer)
 
+
+  ;;
+  ;; Dired
+  ;;
+  (general-define-key
+   :states 'normal
+   :keymaps 'dired-mode-map
+
+   "yy" 'dired-ranger-copy
+   "pp" 'dired-ranger-paste
+   "pP" 'dired-ranger-move)
+
   ;;
   ;; Editor
   ;;
