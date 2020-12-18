@@ -6,7 +6,7 @@
 (use-package dired-open)
 (use-package dired-subtree)
 (use-package dired-ranger)
-(use-package dired-list)
+;; (use-package dired-list)
 
 ;; readable information
 (setq dired-listing-switches "-alh")
