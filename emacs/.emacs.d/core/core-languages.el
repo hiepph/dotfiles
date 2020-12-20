@@ -5,7 +5,9 @@
 ;; (setq inferior-lisp-program "sbcl")
 
 
-;; Emacs Lisp
+;; Racket
+(use-package racket-mode)
+
 
 ;; markdown
 (use-package markdown-mode)
