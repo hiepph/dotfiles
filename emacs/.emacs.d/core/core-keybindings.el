@@ -23,7 +23,7 @@
   ("w" #'hydra-workspace/body "workspaces")
 
   ;; dired
-  ("d" #'dired-jump-other-window "dired")
+  ("d" #'dired-jump "dired")
 
   ;; Magit
   ("g" #'magit-status "git status")
