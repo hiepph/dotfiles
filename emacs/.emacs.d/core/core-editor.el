@@ -55,6 +55,9 @@
 ;; Enter automatically indent code
 (define-key global-map (kbd "RET") 'newline-and-indent)
 
+;; Enable recursive minibuffer
+(setq enable-recursive-minibuffers t)
+
 
 ;;
 ;; Tramp
