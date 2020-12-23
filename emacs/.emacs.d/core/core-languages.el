@@ -15,14 +15,6 @@
 ;; ugly code font problem
 ;; (set-face-attribute 'markdown-code-face nil :font "Hack")
 
-;; Clojure
-(use-package cider)
-(defun ~format-clojure ()
-  (interactive)
-  (when (eq major-mode 'clojure-mode)
-    (cider-format-buffer)))
-
-
 ;; Python
 ;;
 ;; using autopep8 for auto-formatting python
@@ -116,17 +108,14 @@
   "Auto format code using predefined formatter"
   :lighter "format"
   :global t)
+
 ;; enable: add hook auto-format
 ;; disable: remove hook auto-format
 (add-hook 'format-mode-hook
           (lambda ()
             (if format-mode
-                (progn
-                  ;; (add-hook 'after-save-hook '~format-clojure)
-                  (add-hook 'after-save-hook '~format-python))
-              (progn
-                ;; (remove-hook 'after-save-hook '~format-clojure)
-                (remove-hook 'after-save-hook '~format-python)))))
+                (add-hook 'after-save-hook '~format-python)
+              (remove-hook 'after-save-hook '~format-python))))
 
 
 (provide 'core-languages)
