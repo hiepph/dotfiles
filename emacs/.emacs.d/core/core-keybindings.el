@@ -287,6 +287,11 @@
    :states 'normal
    "u" 'undo-fu-only-undo
    "C-r" 'undo-fu-only-redo)
+
+  ;; dumb-jump
+  (general-define-key
+   :states 'normal
+   "C-]" 'dumb-jump-go)
   )
 
 
