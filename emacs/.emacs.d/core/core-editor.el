@@ -427,4 +427,28 @@ eg:
 ;;
 (use-package undo-fu)
 
+
+;;
+;; consult
+;; ref: https://github.com/minad/consult
+;;
+(use-package consult
+  :init
+  (fset 'multi-occur #'consult-multi-occur)
+  :config
+  (consult-preview-mode))
+
+(use-package consult-flycheck)
+
+;;
+;; Marginaalia
+;;
+(use-package marginalia
+  :init
+  (marginalia-mode)
+  (advice-add
+   #'marginalia-cycle :after
+   (lambda () (when (bound-and-true-p selectrum-mode) (selectrum-exhibit)))))
+
+
 (provide 'core-editor)

@@ -37,11 +37,10 @@
   ("e" #'hydra-error/body "flycheck")
 
   ;; registers
-  ;; ("r" #'counsel-evil-registers "registers")
-  ;; ("k" #'counsel-yank-pop "kill rings")
+  ("r" #'consult-register "registers")
 
-  ;; ;; marks
-  ;; ("m" #'counsel-evil-marks "marks")
+  ;; kill-ring
+  ("y" #'consult-yank "kill ring")
 
   ;; search
   ("s" #'hydra-ctrlf/body "search")
@@ -81,7 +80,8 @@
 (defhydra hydra-buffers (:columns 4 :exit t)
   "Buffers"
   ("f" #'find-file "find")
-  ("b" #'ido-switch-buffer "list")
+  ("b" #'consult-buffer "buffers")
+  ("B" #'consult-buffer-other-window "buffers (other)")
   ("r" #'~list-recent-files "recent")
   ("k" #'~kill-current-buffer "kill current")
   ("K" #'~kill-all-buffers "kill all"))
@@ -97,6 +97,8 @@
 
 (defhydra hydra-error (:columns 4 :exit t)
   "Error handling "
+  ("c" #'consult-flycheck "consult")
+
   ("l" #'flycheck-list-errors "list")
   ("n" #'flycheck-next-error "next")
   ("p" #'flycheck-previous-error "previous")
@@ -135,6 +137,9 @@
 
 (defhydra hydra-ctrlf (:color blue :columns 4)
   "Ctrlf search"
+  ("l" #'consult-line "line")
+  ("L" #'consult-outlinte "outline")
+
   ("s" #'ctrlf-forward-fuzzy "forward")
   ("r" #'ctrlf-backward-fuzzy "backward")
   ("S" #'ctrlf-forward-regexp "forward (regexp)")
@@ -142,10 +147,11 @@
   ("_" #'ctrlf-forward-symbol "symbol"))
 
 (defhydra hydra-magit (:columns 4 :exit t)
-  "Buffers"
+  "Magit"
   ("g" #'magit-dispatch "menu")
   ("f" #'magit-file-dispatch "file")
   ("d" #'magit-diff-buffer-file "git diff"))
+
 
 ;;
 ;; general (leader keys)
