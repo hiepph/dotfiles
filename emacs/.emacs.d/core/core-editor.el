@@ -112,6 +112,7 @@
     clojure-mode
     cider-mode
     cider-repl-mode
+    racket-mode
     scheme-mode) . paredit-mode))
 
 
