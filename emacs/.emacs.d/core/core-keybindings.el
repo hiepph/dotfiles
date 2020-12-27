@@ -123,7 +123,8 @@
   ("f" #'format-mode "format") ;; off by default
   ("c" #'company-mode "company") ;; on by default
   ("s" #'flyspell-mode "flyspell") ;; on by default in text-mode
-  ("i" #'indent-guide-mode "indent"))
+  ("i" #'indent-guide-mode "indent")
+  ("p" #'paredit-mode "paredit"))
 
 (defhydra hydra-dumb-jump (:color blue :columns 4)
     "dumb jump"
@@ -193,6 +194,12 @@
   (global-set-key (kbd "M-8") 'eyebrowse-switch-to-window-config-8)
   (global-set-key (kbd "M-9") 'eyebrowse-switch-to-window-config-9)
   (global-set-key (kbd "M-'") 'eyebrowse-last-window-config)
+
+
+  (global-set-key (kbd "M-h") 'windmove-left)
+  (global-set-key (kbd "M-l") 'windmove-right)
+  (global-set-key (kbd "M-j") 'windmove-down)
+  (global-set-key (kbd "M-k") 'windmove-up)
 
 
   ;;

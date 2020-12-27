@@ -5,10 +5,6 @@
 ;; (setq inferior-lisp-program "sbcl")
 
 
-;; Scheme
-(use-package geiser)
-
-
 ;; Racket
 (use-package racket-mode)
 
