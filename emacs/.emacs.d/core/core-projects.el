@@ -12,7 +12,7 @@
 (setq dired-listing-switches "-alh")
 
 ;; auto revert dired-mode
-(add-hook 'dired-mode-hook 'auto-revert-mode)
+;; (add-hook 'dired-mode-hook 'auto-revert-mode)
 
 
 ;;
@@ -66,6 +66,8 @@
   :init
   (selectrum-prescient-mode +1))
 
+(use-package consult-selectrum
+  :demand t)
 
 ;;
 ;; Search helper
