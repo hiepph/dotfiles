@@ -5,6 +5,10 @@
 ;; (setq inferior-lisp-program "sbcl")
 
 
+
+;; Clojure
+(use-package cider)
+
 ;; Racket
 (use-package racket-mode)
 
