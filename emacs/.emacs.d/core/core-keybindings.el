@@ -124,7 +124,8 @@
   ("c" #'company-mode "company") ;; on by default
   ("s" #'flyspell-mode "flyspell") ;; on by default in text-mode
   ("i" #'indent-guide-mode "indent")
-  ("p" #'paredit-mode "paredit"))
+  ("p" #'paredit-mode "paredit")
+  ("e" #'flycheck-mod "flycheck"))
 
 (defhydra hydra-dumb-jump (:color blue :columns 4)
     "dumb jump"
