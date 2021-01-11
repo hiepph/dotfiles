@@ -149,9 +149,10 @@
 
 (defhydra hydra-magit (:columns 4 :exit t)
   "Magit"
-  ("g" #'magit-dispatch "menu")
+  ("?" #'magit-dispatch "menu")
   ("f" #'magit-file-dispatch "file")
-  ("d" #'magit-diff-buffer-file "git diff"))
+  ("d" #'magit-diff-buffer-file "diff")
+  ("c" #'magit-file-checkout "checkout"))
 
 
 ;;
