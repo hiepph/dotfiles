@@ -27,7 +27,7 @@
 
   ;; Magit
   ("g" #'magit-status "git status")
-  ("G" #'magit-dispatch "magit")
+  ("G" #'hydra-magit/body "magit")
 
   ;; Projectile
   ("p" #'hydra-projectile/body "projectile")
@@ -146,6 +146,11 @@
   ("S" #'ctrlf-forward-regexp "forward (regexp)")
   ("R" #'ctrlf-backward-regexp "backward (regexp)")
   ("_" #'ctrlf-forward-symbol "symbol"))
+
+(defhydra hydra-magit (:color blue :columns 4)
+  "Magit"
+  ("?" #'magit-dispatch "help")
+  ("d" #'magit-diff-buffer-file "diff"))
 
 
 ;;
