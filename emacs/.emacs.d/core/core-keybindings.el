@@ -268,12 +268,6 @@
    "q" 'quit-window
    "RET" 'xref-goto-xref)
 
-  ;; ivy
-  (general-define-key
-   :states 'normal
-   :keymaps 'override
-   "\\" 'swiper)
-
   ;; expand-region
   (general-define-key
    :states 'visual
@@ -285,10 +279,8 @@
   ;; TODO: n, N after searching
   (general-define-key
    :states 'normal
-   "/" 'ctrlf-forward-fuzzy
-   "?" 'ctrlf-backward-fuzzy
-   "\\" 'ctrlf-forward-regexp
-   "|" 'ctrlf-backward-regexp)
+   "\\" 'ctrlf-forward-fuzzy
+   "|" 'ctrlf-backward-fuzzy)
 
   (setq ctrlf-minibuffer-bindings
         '(("C-n" . ctrlf-next-match)
