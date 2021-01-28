@@ -18,8 +18,8 @@ font xft:Input Mono 10
 
 # Multimedia control
 # requires: amixer playerctl
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer sset 'Master' 5%+ unmute
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer sset 'Master' 5%- unmute
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer sset 'Master' 3%+ unmute
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer sset 'Master' 3%- unmute
 bindsym XF86AudioMute exec --no-startup-id amixer sset 'Master' toggle
 
 bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
