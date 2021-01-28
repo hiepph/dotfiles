@@ -57,3 +57,18 @@
 
     - name: Install some cool replacement packages
       shell: yay -S ripgrep fd bat
+
+- name: ibus
+  hosts: localhost
+  tags: ibus
+  become: yes
+  tasks:
+    - name: install ibus
+      pacman:
+        name: ibus,ibus-unikey
+        state: present
+    - name: make sure to use appropriate python to open ibus
+      lineinfile:
+        dest: /usr/bin/ibus-setup
+        regexp: "/usr/share/ibus/setup/main.py"
+        line: exec /usr/bin/python3 /usr/share/ibus/setup/main.py $@
