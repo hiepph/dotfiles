@@ -1,0 +1,23 @@
+#!/usr/bin/env bb
+(require '[babashka.process :refer [process $ check]])
+(require '[clojure.tools.cli :refer [parse-opts]])
+
+(def cli-options
+  [["-L" "--limit INT" "Maximum number of gist to fetch"
+    :default 100
+    :parse-fn #(Integer/parseInt %)]])
+
+(def args (parse-opts *command-line-args* cli-options))
+
+(if (empty? (:arguments args)) (println "Usage: _gist <query>"))
+
+(let [query (first (:arguments args))]
+  (let [output (-> (process (conj '[gh gist list -L] (->> args :options :limit)))
+                   :out slurp str/split-lines)]
+    (doseq [res (filter #(str/includes? (str/lower-case %) query) output)]
+      (let [components (str/split res #"\t")
+            link (str "https://gist.github.com/hiepph/" (first components))
+            description (second components)]
+        (println (format "'%s': %s"
+                         description
+                         link))))))

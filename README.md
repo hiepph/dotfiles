@@ -56,3 +56,6 @@ Collection of my shortcut and useful scripts.
 
 + `_gitignore`: download `.gitignore` file
   - usage: `_gitignore python`
+
++ `_g`: a simpler wrapper for [gh gist](https://cli.github.com/manual/gh_gist):
+  - usage: `_g <query>` or `_g <query> -L 1000`
