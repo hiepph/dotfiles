@@ -31,7 +31,6 @@
     - name: setup go
       shell: |
         go get -v golang.org/x/tools/cmd/goimports
-        cp bootstrap/.ctags ~
     - name: setup python
       shell: pip install pylint autopep8
 
@@ -42,3 +41,34 @@
   tasks:
     - name: US localization
       shell: localedef -f UTF-8 -i en_US en_US.UTF-8
+
+
+- name: Utilities
+  hosts: localhost
+  tags: utils
+  become: yes
+  tasks:
+    - name: Install yay
+      shell: |
+        pacman -S --needed --noconfirm binutils make gcc
+        git clone https://aur.archlinux.org/yay.git
+        cd yay
+        makepkg -si
+
+    - name: Install some cool replacement packages
+      shell: yay -S ripgrep fd bat
+
+- name: ibus
+  hosts: localhost
+  tags: ibus
+  become: yes
+  tasks:
+    - name: install ibus
+      pacman:
+        name: ibus,ibus-unikey
+        state: present
+    - name: make sure to use appropriate python to open ibus
+      lineinfile:
+        dest: /usr/bin/ibus-setup
+        regexp: "/usr/share/ibus/setup/main.py"
+        line: exec /usr/bin/python3 /usr/share/ibus/setup/main.py $@
