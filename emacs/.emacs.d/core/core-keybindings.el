@@ -150,6 +150,7 @@
 (defhydra hydra-magit (:color blue :columns 4)
   "Magit"
   ("?" #'magit-dispatch "help")
+  ("l" #'magit-log-buffer-file "log history")
   ("d" #'magit-diff-buffer-file "diff"))
 
 
