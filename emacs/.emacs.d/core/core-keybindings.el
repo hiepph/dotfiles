@@ -27,7 +27,7 @@
 
   ;; Magit
   ("g" #'magit-status "git status")
-  ("G" #'magit-dispatch "magit")
+  ("G" #'hydra-magit/body "magit")
 
   ;; Projectile
   ("p" #'hydra-projectile/body "projectile")
@@ -124,8 +124,7 @@
   ("c" #'company-mode "company") ;; on by default
   ("s" #'flyspell-mode "flyspell") ;; on by default in text-mode
   ("i" #'indent-guide-mode "indent")
-  ("p" #'paredit-mode "paredit")
-  ("e" #'flycheck-mod "flycheck"))
+  ("p" #'paredit-mode "paredit"))
 
 (defhydra hydra-dumb-jump (:color blue :columns 4)
     "dumb jump"
@@ -153,6 +152,7 @@
   ("?" #'magit-dispatch "help")
   ("l" #'magit-log-buffer-file "log history")
   ("d" #'magit-diff-buffer-file "diff"))
+
 
 ;;
 ;; general (leader keys)
@@ -269,12 +269,6 @@
    "q" 'quit-window
    "RET" 'xref-goto-xref)
 
-  ;; ivy
-  (general-define-key
-   :states 'normal
-   :keymaps 'override
-   "\\" 'swiper)
-
   ;; expand-region
   (general-define-key
    :states 'visual
@@ -286,10 +280,8 @@
   ;; TODO: n, N after searching
   (general-define-key
    :states 'normal
-   "/" 'ctrlf-forward-fuzzy
-   "?" 'ctrlf-backward-fuzzy
-   "\\" 'ctrlf-forward-regexp
-   "|" 'ctrlf-backward-regexp)
+   "\\" 'ctrlf-forward-fuzzy
+   "|" 'ctrlf-backward-fuzzy)
 
   (setq ctrlf-minibuffer-bindings
         '(("C-n" . ctrlf-next-match)
