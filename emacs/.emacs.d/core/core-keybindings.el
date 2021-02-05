@@ -148,6 +148,11 @@
   ("R" #'ctrlf-backward-regexp "backward (regexp)")
   ("_" #'ctrlf-forward-symbol "symbol"))
 
+(defhydra hydra-magit (:color blue :columns 4)
+  "Magit"
+  ("?" #'magit-dispatch "help")
+  ("l" #'magit-log-buffer-file "log history")
+  ("d" #'magit-diff-buffer-file "diff"))
 
 ;;
 ;; general (leader keys)
