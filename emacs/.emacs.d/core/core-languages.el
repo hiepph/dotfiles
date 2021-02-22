@@ -100,6 +100,7 @@
 ;;
 ;; Custom
 ;;
+(add-to-list 'auto-mode-alist '("\\.scheme\\'" . racket-mode))
 (add-to-list 'auto-mode-alist '("\\.cu\\'" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.zsh\\'" . sh-mode))
 (add-to-list 'auto-mode-alist '("\\.elm\\'" . haskell-mode))
