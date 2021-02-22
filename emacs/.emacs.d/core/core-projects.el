@@ -81,7 +81,7 @@
                  (s-split
                   "\n"
                   (shell-command-to-string
-                   (format "rg -i --line-number --hidden -S -g '!.git' %s %s"
+                   (format "rg -i --line-number --hidden -S -g '!.git' '%s' %s"
                            q dir)))))
            (candidate (s-split ":" (completing-read
                                     (format "[%s]: " q)
