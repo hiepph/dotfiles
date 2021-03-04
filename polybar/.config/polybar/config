@@ -11,7 +11,7 @@ scroll-down = "#i3.next"
 
 modules-right = wired-network date
 modules-left = i3
-font-0 = "Input Mono Narrow:size=11"
+font-0 = "Consolas for Powerline:size=10"
 
 
 ; Position of the system tray window
