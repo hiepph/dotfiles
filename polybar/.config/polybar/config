@@ -3,8 +3,8 @@
 include-file = $HOME/.config/polybar/colors
 
 [bar/mybar]
-modules-right = pulseaudio wired-network date
-modules-left = i3
+modules-right = cpu memory pulseaudio wired-network date
+modules-left = menu-apps i3
 
 monitor = ${env:MONITOR:}
 separator = " | "
@@ -12,10 +12,12 @@ separator = " | "
 scroll-up = "#i3.prev"
 scroll-down = "#i3.next"
 
-font-0 = "Consolas for Powerline:size=11"
+font-0 = "Input Mono Narrow:size=11"
 
 background = ${colors.background}
 foreground = ${colors.foreground}
+
+height = 2.5%
 
 ; Position of the system tray window
 ; If empty or undefined, tray support will be disabled
@@ -33,7 +35,7 @@ tray-position = right
 tray-detached = false
 
 ; Tray icon max size
-tray-maxsize = 16
+; tray-maxsize = 16
 
 ; DEPRECATED! Since 3.3.0 the tray always uses pseudo-transparency
 ; Enable pseudo transparency
@@ -45,7 +47,7 @@ tray-transparent = false
 ; ARGB color (e.g. #f00, #ff992a, #ddff1023)
 ; By default the tray container will use the bar
 ; background color.
-tray-background = ${colors.notify}
+; tray-background =
 
 ; Tray offset defined as pixel value (e.g. 35) or percentage (e.g. 50%)
 ; tray-offset-x = 0
@@ -57,6 +59,9 @@ tray-padding = 5
 ; Scale factor for tray clients
 tray-scale = 1.0
 
+
+
+
 [module/wired-network]
 type = internal/network
 interface = enp2s0
@@ -64,10 +69,14 @@ interface = enp2s0
 label-connected = %local_ip%
 label-connected-foreground = ${colors.success}
 
+
+
 [module/date]
 type = internal/date
 date = %H:%M %b %d
 format-foreground = ${colors.nord8}
+
+
 
 [module/i3]
 type = internal/i3
@@ -146,6 +155,8 @@ label-urgent-foreground = #000000
 label-urgent-background = #bd2c40
 label-urgent-padding = ${self.padding}
 
+
+
 [module/pulseaudio]
 type = internal/pulseaudio
 
@@ -160,3 +171,153 @@ use-ui-max = true
 ; Interval for volume increase/decrease (in percent points)
 ; Default: 5
 interval = 5
+
+; Available tags:
+;   <label-volume> (default)
+;   <ramp-volume>
+;   <bar-volume>
+format-volume = VOL <label-volume>
+
+
+
+[module/memory]
+type = internal/memory
+
+; Seconds to sleep between updates
+; Default: 1
+interval = 3
+; Available tags:
+;   <label> (default)
+;   <bar-used>
+;   <bar-free>
+;   <ramp-used>
+;   <ramp-free>
+;   <bar-swap-used>
+;   <bar-swap-free>
+;   <ramp-swap-used>
+;   <ramp-swap-free>
+format = <label> <bar-used>
+
+; Available tokens:
+;   %percentage_used% (default)
+;   %percentage_free%
+;   %gb_used%
+;   %gb_free%
+;   %gb_total%
+;   %mb_used%
+;   %mb_free%
+;   %mb_total%
+;   %percentage_swap_used%
+;   %percentage_swap_free%
+;   %mb_swap_total%
+;   %mb_swap_free%
+;   %mb_swap_used%
+;   %gb_swap_total%
+;   %gb_swap_free%
+;   %gb_swap_used%
+
+label = %gb_used%/%gb_total%
+
+; Only applies if <bar-used> is used
+bar-used-indicator =
+bar-used-width = 50
+bar-used-foreground-0 = #55aa55
+bar-used-foreground-1 = #557755
+bar-used-foreground-2 = #f5a70a
+bar-used-foreground-3 = #ff5555
+bar-used-fill = ▐
+bar-used-empty = ▐
+bar-used-empty-foreground = #444444
+
+; Only applies if <ramp-used> is used
+ramp-used-0 = ▁
+ramp-used-1 = ▂
+ramp-used-2 = ▃
+ramp-used-3 = ▄
+ramp-used-4 = ▅
+ramp-used-5 = ▆
+ramp-used-6 = ▇
+ramp-used-7 = █
+
+; Only applies if <ramp-free> is used
+ramp-free-0 = ▁
+ramp-free-1 = ▂
+ramp-free-2 = ▃
+ramp-free-3 = ▄
+ramp-free-4 = ▅
+ramp-free-5 = ▆
+ramp-free-6 = ▇
+ramp-free-7 = █
+
+
+
+[module/cpu]
+type = internal/cpu
+
+; Seconds to sleep between updates
+; Default: 1
+interval = 0.5
+
+; Available tags:
+;   <label> (default)
+;   <bar-load>
+;   <ramp-load>
+;   <ramp-coreload>
+format = <label> <ramp-coreload>
+
+; Available tokens:
+;   %percentage% (default) - total cpu load averaged over all cores
+;   %percentage-sum% - Cumulative load on all cores
+;   %percentage-cores% - load percentage for each core
+;   %percentage-core[1-9]% - load percentage for specific core
+label = CPU %percentage%%
+
+; Spacing between individual per-core ramps
+ramp-coreload-spacing = 1
+ramp-coreload-0 = ▁
+ramp-coreload-1 = ▂
+ramp-coreload-2 = ▃
+ramp-coreload-3 = ▄
+ramp-coreload-4 = ▅
+ramp-coreload-5 = ▆
+ramp-coreload-6 = ▇
+ramp-coreload-7 = █
+
+
+
+[module/menu-apps]
+type = custom/menu
+
+; If true, <label-toggle> will be to the left of the menu items (default).
+; If false, it will be on the right of all the items.
+expand-right = true
+
+; "menu-LEVEL-N" has the same properties as "label-NAME" with
+; the additional "exec" property
+;
+; Commands will be executed using "/bin/sh -c $COMMAND"
+
+menu-0-0 = Firefox
+menu-0-0-exec = firefox
+menu-0-1 = Emacs
+menu-0-1-exec = emacs
+menu-0-2 = File Manager
+menu-0-2-exec = nemo
+menu-0-3 = Terminal
+menu-0-3-exec = alacritty
+
+; Available tags:
+;   <label-toggle> (default) - gets replaced with <label-(open|close)>
+;   <menu> (default)
+; If expand-right is true, the default will be "<label-toggle><menu>" and the
+; other way around otherwise.
+; Note that if you use <label-toggle> you must also include
+; the definition for <label-open>
+; format = <label-toggle><menu>
+
+label-open = Apps
+label-close = x
+
+; Optional item separator
+; Default: none
+label-separator = |
