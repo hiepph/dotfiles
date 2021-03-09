@@ -419,7 +419,9 @@ eg:
 ;;
 (use-package company
   :config
-  (global-company-mode))
+  (global-company-mode)
+  ;; complete word with original cases
+  (setq company-dabbrev-downcase nil))
 
 
 ;;
