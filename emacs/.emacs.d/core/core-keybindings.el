@@ -40,7 +40,7 @@
   ("r" #'consult-register "registers")
 
   ;; kill-ring
-  ("y" #'consult-yank "kill ring")
+  ("k" #'consult-yank "kill ring")
 
   ;; search
   ("s" #'hydra-ctrlf/body "search")
