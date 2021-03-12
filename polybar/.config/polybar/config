@@ -4,7 +4,7 @@ include-file = $HOME/.config/polybar/colors
 
 [bar/mybar]
 modules-right = spotify spotify-prev spotify-play-pause spotify-next cpu memory pulseaudio wired-network date
-modules-left = menu-apps i3
+modules-left = i3
 separator = "  "
 
 monitor = ${env:MONITOR:}
