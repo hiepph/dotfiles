@@ -41,10 +41,10 @@
   ("r" #'consult-register "registers")
 
   ;; kill-ring
-  ("k" #'consult-yank "kill ring")
+  ("y" #'consult-yank-pop "yank-pop")
 
   ;; ripgrep
-  ("/" #'~ripgrep "ripgrep")
+  ("/" #'consult-ripgrep "ripgrep")
 
   ;; dumb-jump
   ("j" #'hydra-dumb-jump/body "jump")
