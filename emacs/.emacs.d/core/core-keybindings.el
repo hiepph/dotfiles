@@ -93,7 +93,9 @@
   ("r" #'~recompile "recompile")
   ("t" #'~test-all-files "test all")
   ("T" #'~test-current-file "test current")
-  ("k" #'kill-compilation "kill"))
+  ("k" #'kill-compilation "kill")
+  ("!" #'shell-command "async")
+  ("&" #'async-shell-command "async"))
 
 (defhydra hydra-error (:columns 4 :exit t)
   "Error handling "

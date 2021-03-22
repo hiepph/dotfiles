@@ -162,7 +162,8 @@
 (use-package evil-collection
   :after evil
   :config
-  (with-eval-after-load 'dired (evil-collection-dired-setup)))
+  (evil-collection-init 'dired)
+  (evil-collection-init 'compile))
 
 ;; Surround
 ;; ref: https://github.com/emacs-evil/evil-surround
@@ -438,8 +439,9 @@ eg:
 (use-package consult
   :init
   (fset 'multi-occur #'consult-multi-occur)
-  :config
-  (consult-preview-mode))
+  ;; :config
+  ;; (consult-preview-mode)
+  )
 
 (use-package consult-flycheck)
 

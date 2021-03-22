@@ -68,8 +68,8 @@
   :init
   (selectrum-prescient-mode +1))
 
-(use-package consult-selectrum
-  :demand t)
+;; (use-package consult-selectrum
+;;   :demand t)
 
 ;;
 ;; Search helper
