@@ -124,14 +124,14 @@
   ("p" #'paredit-mode "paredit"))
 
 (defhydra hydra-dumb-jump (:color blue :columns 4)
-    "dumb jump"
-    ("j" #'dumb-jump-go "go")
-    ("o" #'dumb-jump-go-other-window "other window")
-    ("e" #'dumb-jump-go-prefer-external "go external")
-    ("x" #'dumb-jump-go-prefer-external-other-window "go external other window")
-    ("i" #'dumb-jump-go-prompt "prompt")
-    ("l" #'dumb-jump-quick-look "quick look")
-    ("b" #'dumb-jump-back "back"))
+  "dumb jump"
+  ("j" #'dumb-jump-go "go")
+  ("o" #'dumb-jump-go-other-window "other window")
+  ("e" #'dumb-jump-go-prefer-external "go external")
+  ("x" #'dumb-jump-go-prefer-external-other-window "go external other window")
+  ("i" #'dumb-jump-go-prompt "prompt")
+  ("l" #'dumb-jump-quick-look "quick look")
+  ("b" #'dumb-jump-back "back"))
 
 (defhydra hydra-magit (:color blue :columns 4)
   "Magit"

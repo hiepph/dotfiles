@@ -71,7 +71,7 @@
 (use-package evil-owl
   :config
   (setq evil-owl-display-method 'posframe
-        evil-owl-extra-posframe-args '(:width 500 :height 20)
+        evil-owl-extra-posframe-args '(:width 500 :height 50)
         ;; evil-owl-max-string-length 500
         )
   (evil-owl-mode))
