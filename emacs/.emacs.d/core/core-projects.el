@@ -61,6 +61,30 @@
 ;; (use-package consult-selectrum
 ;;   :demand t)
 
+
+
+;;
+;; Registers
+;;
+(use-package posframe)
+;; TODO: posframe in bottom
+(use-package evil-owl
+  :config
+  (setq evil-owl-display-method 'posframe
+        evil-owl-extra-posframe-args '(:width 500 :height 20)
+        ;; evil-owl-max-string-length 500
+        )
+  (evil-owl-mode))
+
+;; (defun ~insert-register (reg)
+;;   (insert (evil-get-register reg t)))
+
+;;
+;; Consult various cases
+;;
+
+;;
+
 ;;
 ;; Search helper
 ;;
@@ -100,6 +124,7 @@
   (interactive
    (list (read-string (format "[%s]-rg: " (projectile-project-name)))))
   (~ripgrep-search q (projectile-project-root) t))
+
 
 ;;
 ;; Desktops management
