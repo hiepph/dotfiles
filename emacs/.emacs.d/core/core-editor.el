@@ -214,6 +214,9 @@
 
 ;; show stack trace on error
 ;; (setq debug-on-error t)
+(defun ~compile (command)
+  (interactive "M~compile: ")
+  (compile (s-replace "%" (evil-get-register ?% t) command)))
 
 (defun ~run-current-file (f command-map)
   "Run command map with function f
@@ -252,7 +255,7 @@ e.g. If the current buffer is hello.py, then it'll call python hello.py
   (recompile))
 
 (defvar *test-command-map* '(("py" . "pytest -s -v")
-                            ("go" . "go test")))
+                             ("go" . "go test")))
 
 (defun ~test-current-file ()
   "Test current file using 'compile'. Automatic filetype recogntion.

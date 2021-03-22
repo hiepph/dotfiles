@@ -40,16 +40,6 @@
   :init
   (selectrum-mode +1))
 
-
-;;
-;; Like swiper, selectrum engine
-;; ref: https://github.com/raxod502/ctrlf
-;;
-(use-package ctrlf
-  :config
-  (ctrlf-mode +1))
-
-
 ;;
 ;; Prescient
 ;; ref: https://github.com/raxod502/prescient.el
@@ -108,7 +98,7 @@
 (defun ~projectile-ripgrep (q)
   "Search in project root"
   (interactive
-   (list (read-string (format "%s-rg: " (projectile-project-name)))))
+   (list (read-string (format "[%s]-rg: " (projectile-project-name)))))
   (~ripgrep-search q (projectile-project-root) t))
 
 ;;

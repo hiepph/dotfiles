@@ -2,6 +2,7 @@
 ;; 1. Mnemonic: c(ompile), b(uffers)
 ;; 2. Only high frequency tasks are bind to F keys
 ;; 3. Brain is for idea, not for storage. Keep yourself a reference!
+;; 4. Reduce complex key sequences to a function
 
 ;; References
 ;; 1. Spacemacs: https://develop.spacemacs.org/doc/DOCUMENTATION.html
@@ -41,9 +42,6 @@
 
   ;; kill-ring
   ("k" #'consult-yank "kill ring")
-
-  ;; search
-  ("s" #'hydra-ctrlf/body "search")
 
   ;; ripgrep
   ("/" #'~ripgrep "ripgrep")
@@ -88,14 +86,14 @@
 
 (defhydra hydra-compile (:columns 4 :exit t)
   "Compile"
-  ("c" #'compile "compile")
+  ("c" #'~compile "compile")
   ("C" #'~compile-current-file "compile current")
   ("r" #'~recompile "recompile")
   ("t" #'~test-all-files "test all")
   ("T" #'~test-current-file "test current")
   ("k" #'kill-compilation "kill")
-  ("!" #'shell-command "async")
-  ("&" #'async-shell-command "async"))
+  ("!" #'shell-command "cmd")
+  ("&" #'async-shell-command "async cmd"))
 
 (defhydra hydra-error (:columns 4 :exit t)
   "Error handling "
@@ -137,17 +135,6 @@
     ("i" #'dumb-jump-go-prompt "prompt")
     ("l" #'dumb-jump-quick-look "quick look")
     ("b" #'dumb-jump-back "back"))
-
-(defhydra hydra-ctrlf (:color blue :columns 4)
-  "Ctrlf search"
-  ("l" #'consult-line "line")
-  ("L" #'consult-outlinte "outline")
-
-  ("s" #'ctrlf-forward-fuzzy "forward")
-  ("r" #'ctrlf-backward-fuzzy "backward")
-  ("S" #'ctrlf-forward-regexp "forward (regexp)")
-  ("R" #'ctrlf-backward-regexp "backward (regexp)")
-  ("_" #'ctrlf-forward-symbol "symbol"))
 
 (defhydra hydra-magit (:color blue :columns 4)
   "Magit"
@@ -277,17 +264,6 @@
    :keymaps 'override
    "+" 'er/expand-region
    "-" 'er/contract-region)
-
-  ;; ctrlf
-  ;; TODO: n, N after searching
-  (general-define-key
-   :states 'normal
-   "\\" 'ctrlf-forward-fuzzy
-   "|" 'ctrlf-backward-fuzzy)
-
-  (setq ctrlf-minibuffer-bindings
-        '(("C-n" . ctrlf-next-match)
-          ("C-p" . ctrlf-previous-match)))
 
   ;; Undo/Redo
   (general-define-key
