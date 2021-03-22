@@ -45,7 +45,9 @@
 ;; Like swiper, selectrum engine
 ;; ref: https://github.com/raxod502/ctrlf
 ;;
-(use-package ctrlf)
+(use-package ctrlf
+  :config
+  (ctrlf-mode +1))
 
 
 ;;
