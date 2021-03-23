@@ -40,6 +40,7 @@
   :init
   (selectrum-mode +1))
 
+
 ;;
 ;; Prescient
 ;; ref: https://github.com/raxod502/prescient.el
@@ -66,24 +67,36 @@
 ;;
 ;; Registers
 ;;
-(use-package posframe)
-;; TODO: posframe in bottom
-(use-package evil-owl
-  :config
-  (setq evil-owl-display-method 'posframe
-        evil-owl-extra-posframe-args '(:width 500 :height 50)
-        ;; evil-owl-max-string-length 500
-        )
-  (evil-owl-mode))
+
+;; some special registers:
+;; % current file path
+;; : recently executed command
+;; / last search pattern
+;; + clipboard
+;;
+;; some special marks:
+;; % matching parentheses
+;; (/)   prev/next sentence
+;; {/}   prev/next paragrapc
+;; H/M/L top/middle/bottom
+;; gf    filename under cursor
+;; </>   prev/next visual selection
+;;
+(defun ~consult-registers ()
+  (interactive)
+  (let* ((chars (seq-filter
+                 (lambda (item) (not (null (cadr item))))
+                 (mapcar (lambda (reg)
+                           (let ((v (evil-get-register reg t)))
+                             (list (format "%c: %s" reg v) v)))
+                         (cl-loop for c from ?a to ?z collect c))))
+         (candidate (completing-read "Registers: " chars)))
+    (insert (cadr (assoc candidate chars)))))
 
 ;; (defun ~insert-register (reg)
 ;;   (insert (evil-get-register reg t)))
 
-;;
-;; Consult various cases
-;;
 
-;;
 
 ;;
 ;; Search helper
@@ -126,6 +139,7 @@
   (~ripgrep-search q (projectile-project-root) t))
 
 
+
 ;;
 ;; Desktops management
 ;;
@@ -149,6 +163,8 @@
   (let ((files (mapcar 'abbreviate-file-name recentf-list)))
     (find-file (completing-read "Recent files: " files nil t))))
 
+
+
 ;;
 ;; Project management
 ;;
@@ -163,6 +179,8 @@
   ;; open top-level directory instead of a specific files
   ;; (setq projectile-switch-project-action #'projectile-dired)
   )
+
+
 
 ;;
 ;; Jump to definition, even without CTAGS

@@ -38,7 +38,10 @@
   ("e" #'hydra-error/body "flycheck")
 
   ;; consult
-  ("?" #'hydra-consult/body "consult")
+  ("r" #'consult-registers "registers")
+
+  ;; kill-ring
+  ("y" #'consult-yank-pop "yank pop")
 
   ;; ripgrep
   ("/" #'consult-ripgrep "ripgrep")
@@ -138,12 +141,6 @@
   ("?" #'magit-dispatch "help")
   ("l" #'magit-log-buffer-file "log history")
   ("d" #'magit-diff-buffer-file "diff"))
-
-(defhydra hydra-consult (:color blue :columns 4)
-  "Consult"
-  ("r" #'consult-register "registers") ;; TODO: add special registers
-  ("y" #'consult-yank-pop "yank-pop"))
-
 
 ;;
 ;; general (leader keys)
