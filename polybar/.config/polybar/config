@@ -136,7 +136,7 @@ use-ui-max = true
 
 ; Interval for volume increase/decrease (in percent points)
 ; Default: 5
-interval = 5
+interval = 3
 
 ; Available tags:
 ;   <label-volume> (default)
