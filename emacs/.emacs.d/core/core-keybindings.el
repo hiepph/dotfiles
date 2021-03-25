@@ -38,7 +38,7 @@
   ("e" #'hydra-error/body "flycheck")
 
   ;; consult
-  ("r" #'consult-registers "registers")
+  ("r" #'consult-register "registers")
 
   ;; kill-ring
   ("y" #'consult-yank-pop "yank pop")
