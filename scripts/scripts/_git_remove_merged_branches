@@ -1,0 +1,1 @@
+git branch -D $(git branch --merged  | egrep -v "(^\*|master)")
