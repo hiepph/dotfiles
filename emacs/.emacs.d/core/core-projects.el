@@ -73,6 +73,34 @@
 ;; : recently executed command
 ;; / last search pattern
 ;; + clipboard
+(defun ~consult--register-candidates (register-list)
+  (seq-filter
+   (lambda (item) (not (null (cadr item))))
+   (mapcar
+    (lambda (reg)
+      (let ((v (evil-get-register reg t)))
+        (list
+         (cond ((eq reg ?%) (format "%c (filepath) -- %s" reg v))
+               ((eq reg ?:) (format "%c (command) -- %s" reg v))
+               ((eq reg ?/) (format "%c (search) -- %s" reg v))
+               ((eq reg ?+) (format "%c (clipboard) -- %s" reg v))
+               (t (format "%c -- %s" reg v)))
+         v)))
+    register-list)))
+
+(defun ~consult-register ()
+  "View the list of evil registers with corresponding text.
+Number registers are not needed because it is easier to refer from the `yank-pop`."
+  (interactive)
+  (let* ((selectrum-should-sort nil)
+         (chars (~consult--register-candidates (cl-loop for c from ?a to ?z collect c)))
+         (special (~consult--register-candidates '(?% ?: ?/ ?+)))
+         (candidate (completing-read "Registers: " (append chars special))))
+    (insert (cadr (assoc candidate chars)))))
+
+
+;;
+;; Marks
 ;;
 ;; some special marks:
 ;; % matching parentheses
@@ -82,20 +110,6 @@
 ;; gf    filename under cursor
 ;; </>   prev/next visual selection
 ;;
-(defun ~consult-registers ()
-  (interactive)
-  (let* ((chars (seq-filter
-                 (lambda (item) (not (null (cadr item))))
-                 (mapcar (lambda (reg)
-                           (let ((v (evil-get-register reg t)))
-                             (list (format "%c: %s" reg v) v)))
-                         (cl-loop for c from ?a to ?z collect c))))
-         (candidate (completing-read "Registers: " chars)))
-    (insert (cadr (assoc candidate chars)))))
-
-;; (defun ~insert-register (reg)
-;;   (insert (evil-get-register reg t)))
-
 
 
 ;;
@@ -119,13 +133,6 @@
            (jump-point (string-to-number (cadr candidate))))
       (find-file (expand-file-name file-name dir))
       (goto-line jump-point)))
-
-;; TODO: at-point -> visual
-;; (defun ~ripgrep-at-point (q)
-;;   "Search current directory"
-;;   (interactive
-;;    (list (read-string "rg: " (thing-at-point 'symbol))))
-;;   (~ripgrep-search q default-directory nil))
 
 (defun ~ripgrep (q)
   "Search current directory"
