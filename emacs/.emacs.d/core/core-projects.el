@@ -95,8 +95,10 @@ Number registers are not needed because it is easier to refer from the `yank-pop
   (let* ((selectrum-should-sort nil)
          (chars (~consult--register-candidates (cl-loop for c from ?a to ?z collect c)))
          (special (~consult--register-candidates '(?% ?: ?/ ?+)))
-         (candidate (completing-read "Registers: " (append chars special))))
-    (insert (cadr (assoc candidate chars)))))
+         (all-candidate (append chars special))
+         (candidate (completing-read "Registers: " all-candidate)))
+    (insert (cadr (assoc candidate all-candidate)))))
+
 
 
 ;;
@@ -105,11 +107,42 @@ Number registers are not needed because it is easier to refer from the `yank-pop
 ;; some special marks:
 ;; % matching parentheses
 ;; (/)   prev/next sentence
-;; {/}   prev/next paragrapc
+;; {/}   prev/next paragraph
 ;; H/M/L top/middle/bottom
 ;; gf    filename under cursor
 ;; </>   prev/next visual selection
 ;;
+(defun ~consult--mark-candidates (register-list)
+  (seq-filter
+   (lambda (item) (not (null (cadr item))))
+   (mapcar
+    (lambda (mark)
+      (let ((pos (evil-get-marker mark t)))
+        (if pos
+            (let ((buffer (marker-buffer pos)))
+              (with-current-buffer buffer
+                (save-excursion
+                  (goto-char pos)
+                  (let ((line-content (thing-at-point 'line)))
+                    (list (format "%c (%s:%d:%d) -- %s"
+                                  mark
+                                  (buffer-name buffer)
+                                  (line-number-at-pos)
+                                  (current-column)
+                                  line-content) pos))))))))
+    register-list)))
+
+(defun ~consult-mark ()
+  (interactive)
+  (let* ((selectrum-should-sort nil)
+         (lower-chars (~consult--mark-candidates
+                         (cl-loop for c from ?a to ?z collect c)))
+         (upper-chars (~consult--mark-candidates
+                         (cl-loop for c from ?A to ?Z collect c)))
+         (all-candidate (append lower-chars upper-chars))
+         (candidate (completing-read "Marks: " all-candidate)))
+    (goto-char (cadr (assoc candidate all-candidate)))))
+
 
 
 ;;
