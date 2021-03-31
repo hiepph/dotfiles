@@ -39,6 +39,7 @@
 
   ;; consult
   ("r" #'~consult-register "registers")
+  ("m" #'~consult-mark "marks")
 
   ;; kill-ring
   ("y" #'consult-yank-pop "yank pop")
@@ -89,9 +90,14 @@
   ("c" #'~compile "compile")
   ("C" #'~compile-current-file "compile current")
   ("r" #'~recompile "recompile")
+
+  ("e" #'consult-compile-error "error")
+
   ("t" #'~test-all-files "test all")
   ("T" #'~test-current-file "test current")
+
   ("k" #'kill-compilation "kill")
+
   ("!" #'shell-command "cmd")
   ("&" #'async-shell-command "async cmd"))
 
@@ -124,7 +130,8 @@
   ("c" #'company-mode "company") ;; on by default
   ("s" #'flyspell-mode "flyspell") ;; on by default in text-mode
   ("i" #'indent-guide-mode "indent")
-  ("p" #'paredit-mode "paredit"))
+  ("p" #'paredit-mode "paredit") ;; on by default in some predefined extensions
+  )
 
 (defhydra hydra-dumb-jump (:color blue :columns 4)
   "dumb jump"

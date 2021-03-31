@@ -103,9 +103,15 @@ Number registers are not needed because it is easier to refer from the `yank-pop
 
 ;;
 ;; Marks
+;; ref:
+;;   https://vim.fandom.com/wiki/Using_marks
 ;;
 ;; some special marks:
-;; % matching parentheses
+;;
+;; .     last change occurs
+;; '     last line
+;; `     last position
+;; %     matching parentheses
 ;; (/)   prev/next sentence
 ;; {/}   prev/next paragraph
 ;; H/M/L top/middle/bottom
