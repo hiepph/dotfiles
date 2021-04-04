@@ -137,8 +137,6 @@
   "dumb jump"
   ("j" #'dumb-jump-go "go")
   ("o" #'dumb-jump-go-other-window "other window")
-  ("e" #'dumb-jump-go-prefer-external "go external")
-  ("x" #'dumb-jump-go-prefer-external-other-window "go external other window")
   ("i" #'dumb-jump-go-prompt "prompt")
   ("l" #'dumb-jump-quick-look "quick look")
   ("b" #'dumb-jump-back "back"))
@@ -280,8 +278,8 @@
   ;; dumb-jump
   (general-define-key
    :states 'normal
-   "C-]" 'dumb-jump-go)
-  )
+   "C-]" 'dumb-jump-go
+   "C-}" 'dumb-jump-back))
 
 
 (provide 'core-keybindings)
