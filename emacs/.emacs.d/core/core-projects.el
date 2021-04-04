@@ -152,6 +152,17 @@ Number registers are not needed because it is easier to refer from the `yank-pop
 
 
 ;;
+;; Scroll
+;;
+;; z -
+;; t: scroll to top
+;; z: scroll to middle
+;; b: scroll to bottom
+;;
+
+
+
+;;
 ;; Search helper
 ;;
 (defun ~ripgrep-search (q dir projectile?)
