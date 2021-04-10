@@ -20,11 +20,19 @@
       package:
         name: tmux
         state: present
+    - name: Install stow
+      package:
+        name: stow
+        state: present
 
 - name: Git
   hosts: all
   tags: git
   tasks:
+    - name: Install git
+      package:
+        name: git
+        state: present
     - name: Setup Name and Email and Editor
       shell: |
         git config --global user.email "hiepph.2406@gmail.com"
