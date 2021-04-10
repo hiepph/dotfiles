@@ -1,4 +1,4 @@
-Zsh: - name
+- name: zsh
   hosts: localhost
   tags: zsh
   tasks:
