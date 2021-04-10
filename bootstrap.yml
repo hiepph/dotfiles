@@ -1,21 +1,28 @@
-- name: zsh
-  hosts: localhost
-  tags: zsh
+- name: shell
+  hosts: all
+  tags:
+    - zsh
   tasks:
     - name: Install Zim
       shell: curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
-
-- name: Fzf
-  hosts: localhost
-  tags: fzf
-  tasks:
     - name: Install fzf
       shell: |
         git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
         ~/.fzf/install
 
+- name: Utilities
+  hosts: all
+  become: yes
+  tags:
+    - utils
+  tasks:
+    - name: Install tmux
+      package:
+        name: tmux
+        state: present
+
 - name: Git
-  hosts: localhost
+  hosts: all
   tags: git
   tasks:
     - name: Setup Name and Email and Editor
@@ -25,7 +32,7 @@
         git config --global core.editor "vim"
 
 - name: Emacs
-  hosts: localhost
+  hosts: all
   tags: emacs
   tasks:
     - name: setup go
@@ -35,7 +42,7 @@
       shell: pip install pylint autopep8
 
 - name: Locales
-  hosts: localhost
+  hosts: all
   tags: locale
   become: yes
   tasks:
@@ -43,9 +50,9 @@
       shell: localedef -f UTF-8 -i en_US en_US.UTF-8
 
 
-- name: Utilities
-  hosts: localhost
-  tags: utils
+- name: Package manager
+  hosts: all
+  tags: pm
   become: yes
   tasks:
     - name: Install yay
@@ -59,7 +66,7 @@
       shell: yay -S ripgrep fd bat
 
 - name: ibus
-  hosts: localhost
+  hosts: all
   tags: ibus
   become: yes
   tasks:
@@ -74,8 +81,8 @@
         line: exec /usr/bin/python3 /usr/share/ibus/setup/main.py $@
 
 
-- name: Install some necessary fonts
-  hosts: localhost
+- name: Fonts
+  hosts: all
   tags: fonts
   become: yes
   tasks:
