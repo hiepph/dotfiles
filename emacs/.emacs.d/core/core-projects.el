@@ -109,6 +109,7 @@ Number registers are not needed because it is easier to refer from the `yank-pop
 ;; some special marks:
 ;;
 ;; .     last change occurs
+;; ^     last insert
 ;; '     last line
 ;; `     last position
 ;; %     matching parentheses
