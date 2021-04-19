@@ -9,6 +9,15 @@
 
 All bootstrap setup scripts and configurations are managed by Ansible.
 
+Edit `/etc/ansible/hosts`:
+
+```
+[local]
+localhost
+```
+
+Then run the playbook:
+
 ```
 ansible-playbook -l localhost bootstrap.yml -t <tag>
 ```
