@@ -10,13 +10,7 @@
 All bootstrap setup scripts and configurations are managed by Ansible.
 
 ```
-ansible-playbook bootstrap.yml -t <app>
-```
-
-For some setups root priviledge is required:
-
-```
-ansible-playbook bootstrap.yml -K -t <app>
+ansible-playbook -l localhost bootstrap.yml -t <tag>
 ```
 
 For some applications (e.g. Emacs, Tmux, Vim), their configurations need to be symlinked to HOME.
@@ -34,12 +28,6 @@ A nice explanation of how doom-emacs can achieve state-of-the-art startup time i
 
 + Key bindings and literate functionalites are referred from [emacs-cmpitg](https://github.com/cmpitg/emacs-cmpitg)
 
-+ Daemon management (refer [scripts](#scripts)):
-
-  + Start daemon: `_emacs start`
-  + Stop daemon: `_emacs stop`
-  + Create a new frame for editing: `_emacs`
-  + Restart: `_emacs restart`
 
 ## Scripts
 
