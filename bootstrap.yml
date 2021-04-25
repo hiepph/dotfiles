@@ -1,52 +1,98 @@
-- name: shell
-  hosts: all
-  tags:
-    - zsh
-  tasks:
-    - name: Install Zim
-      shell: curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
-    - name: Install fzf
-      shell: |
-        git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-        ~/.fzf/install
-
 - name: Utilities
   hosts: all
+  gather_facts: yes
   become: yes
   tags:
     - utils
+  vars:
+    src_dir: "{{ lookup('env', 'HOME') }}/src"
+  pre_tasks:
+    - name: create src directory
+      file:
+        path: "{{ src_dir }}"
+        state: directory
+    - name: update cache
+      package:
+        update_cache: yes
   tasks:
-    - name: Install tmux
+    - name: install necessary packages
       package:
-        name: tmux
+        name: tmux,stow,binutils,make,gcc
         state: present
-    - name: Install stow
+    - name: some cool default replacement
       package:
-        name: stow
+        name: ripgrep,fd,bat
         state: present
+    - name: clone Yay (AUR Helper)
+      become: no
+      git:
+        repo: https://aur.archlinux.org/yay.git
+        dest: "{{ src_dir }}/yay"
+        version: master
+    - name: install yay
+      command:
+        chdir: "{{ src_dir }}/yay"
+        cmd: makepkg -si
+      when: ansible_facts['os_family'] == "Archlinux"
+
+- name: Fonts
+  hosts: all
+  tags: fonts
+  become: yes
+  tasks:
+    - name: install fonts
+      pacman:
+        name: ttf-dejavu,ttf-unifont,ttf-liberation,noto-fonts
+        state: present
+
+- name: shell
+  hosts: all
+  tags:
+    - shell
+  tasks:
+    - name: install zsh
+      become: yes
+      package:
+        name: zsh
+        state: present
+    - name: install Zim
+      command: curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
+    - name: clone fzf
+      git:
+        repo: https://github.com/junegunn/fzf.git
+        depth: 1
+        dest: "{{ lookup('env', 'HOME') }}/.fzf"
+    - name: install fzf
+      command:
+        cmd: "{{ lookup('env', 'HOME') }}/.fzf/install"
 
 - name: Git
   hosts: all
   tags: git
+  become: yes
   tasks:
-    - name: Install git
+    - name: install git
       package:
         name: git
         state: present
-    - name: Setup Name and Email and Editor
-      shell: |
-        git config --global user.email "hiepph.2406@gmail.com"
-        git config --global user.name "Hiep Pham"
-        git config --global core.editor "vim"
+    - name: setup Name, Email and Editor
+      shell:
+        cmd: |
+          git config --global user.email "hiepph.2406@gmail.com"
+          git config --global user.name "Hiep Pham"
+          git config --global core.editor "vim"
 
 - name: Emacs
   hosts: all
   tags: emacs
   tasks:
+    - name: Install emacs
+      package:
+        name: emacs
+        state: present
     - name: setup go
-      shell: |
-        go get -v golang.org/x/tools/cmd/goimports
-    - name: setup python
+      shell: go get -v golang.org/x/tools/cmd/goimports
+    - name: setup python (conda)
       shell: pip install pylint autopep8
 
 - name: Locales
@@ -56,22 +102,6 @@
   tasks:
     - name: US localization
       shell: localedef -f UTF-8 -i en_US en_US.UTF-8
-
-
-- name: Package manager
-  hosts: all
-  tags: pm
-  become: yes
-  tasks:
-    - name: Install yay
-      shell: |
-        pacman -S --needed --noconfirm binutils make gcc
-        git clone https://aur.archlinux.org/yay.git
-        cd yay
-        makepkg -si
-
-    - name: Install some cool replacement packages
-      shell: yay -S ripgrep fd bat
 
 - name: ibus
   hosts: all
@@ -85,16 +115,5 @@
     - name: make sure to use appropriate python to open ibus
       lineinfile:
         dest: /usr/bin/ibus-setup
-        regexp: "/usr/share/ibus/setup/main.py"
+        regexp: /usr/share/ibus/setup/main.py
         line: exec /usr/bin/python3 /usr/share/ibus/setup/main.py $@
-
-
-- name: Fonts
-  hosts: all
-  tags: fonts
-  become: yes
-  tasks:
-    - name: install fonts
-      pacman:
-        name: ttf-dejavu,ttf-unifont,ttf-liberation,noto-fonts
-        state: present
