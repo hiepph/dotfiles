@@ -278,8 +278,8 @@
   ;; dumb-jump
   (general-define-key
    :states 'normal
-   "C-]" 'dumb-jump-go
-   "C-}" 'dumb-jump-back))
+   ;; (?) 'dumb-jump-back
+   "C-]" 'dumb-jump-go))
 
 
 (provide 'core-keybindings)
