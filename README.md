@@ -13,7 +13,7 @@ Edit `/etc/ansible/hosts`:
 
 ```
 [local]
-localhost
+localhost    ansible_connection=local
 ```
 
 Then run the playbook:

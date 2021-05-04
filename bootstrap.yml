@@ -29,6 +29,7 @@
         repo: https://aur.archlinux.org/yay.git
         dest: "{{ src_dir }}/yay"
         version: master
+      when: ansible_facts['os_family'] == "Archlinux"
     - name: install yay
       command:
         chdir: "{{ src_dir }}/yay"
@@ -47,16 +48,16 @@
 
 - name: shell
   hosts: all
-  tags:
-    - shell
+  tags: shell
   tasks:
     - name: install zsh
       become: yes
       package:
         name: zsh
         state: present
-    - name: install Zim
-      command: curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
+    - name: change default shell
+      command:
+        cmd: chsh -s /bin/zsh
     - name: clone fzf
       git:
         repo: https://github.com/junegunn/fzf.git
@@ -65,6 +66,8 @@
     - name: install fzf
       command:
         cmd: "{{ lookup('env', 'HOME') }}/.fzf/install"
+    # - name: install Zim
+    #   command: curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
 
 - name: Git
   hosts: all
@@ -76,11 +79,11 @@
         name: git
         state: present
     - name: setup Name, Email and Editor
-      shell:
-        cmd: |
-          git config --global user.email "hiepph.2406@gmail.com"
-          git config --global user.name "Hiep Pham"
-          git config --global core.editor "vim"
+      command: "{{ item }}"
+      with_items:
+        - git config --global user.email "hiepph@tuta.io"
+        - git config --global user.name "Hiep Pham"
+        - git config --global core.editor "vim"
 
 - name: Emacs
   hosts: all
@@ -109,7 +112,7 @@
   become: yes
   tasks:
     - name: install ibus
-      pacman:
+      package:
         name: ibus,ibus-unikey
         state: present
     - name: make sure to use appropriate python to open ibus
@@ -117,3 +120,29 @@
         dest: /usr/bin/ibus-setup
         regexp: /usr/share/ibus/setup/main.py
         line: exec /usr/bin/python3 /usr/share/ibus/setup/main.py $@
+
+- name: SSH
+  hosts: all
+  gather_facts: no
+  become: yes
+  tags: ssh
+  handlers:
+    - name: restart ssh
+      service: name=sshd state=restarted
+
+  tasks:
+    - name: enable sshd
+      service: name=sshd state=started enabled=yes
+    - name: update ssh configuration to be more secure
+      lineinfile:
+        dest: /etc/ssh/sshd_config
+        regexp: "{{ item.regexp }}"
+        line: "{{ item.line }}"
+        state: present
+        validate: 'sshd -t -f %s'
+      with_items:
+        - regexp: "^PermitRootLogin"
+          line: "PermitRootLogin no"
+        - regexp: "^Port"
+          line: "Port 2406"
+      notify: restart ssh
