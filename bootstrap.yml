@@ -128,3 +128,7 @@
         mode: 0755
     - name: install miniconda
       shell: "/tmp/miniconda.sh -b -p {{ miniconda_home }} creates={{ miniconda_home }}"
+    - name: initialize the shell
+      shell: "conda init $SHELL"
+    - name: remove env prompt in command line
+      shell: conda config --set env_prompt ""
