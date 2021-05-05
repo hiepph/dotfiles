@@ -62,7 +62,7 @@
         state: present
     - name: setup go
       shell: go get -v golang.org/x/tools/cmd/goimports
-    - name: setup python (conda)
+    - name: setup python
       shell: pip install pylint autopep8
 
 - name: Locales
@@ -113,3 +113,18 @@
         - regexp: "^Port"
           line: "Port 2406"
       notify: restart ssh
+
+- name: Python
+  hosts: all
+  gather_facts: no
+  tags: python
+  vars:
+    - miniconda_home: "{{ lookup('env', 'HOME') }}/miniconda"
+  tasks:
+    - name: get miniconda installer
+      get_url:
+        url: https://repo.anaconda.com/miniconda/Miniconda3-py39_4.9.2-Linux-x86_64.sh
+        dest: /tmp/miniconda.sh
+        mode: 0755
+    - name: install miniconda
+      shell: "/tmp/miniconda.sh -b -p {{ miniconda_home }} creates={{ miniconda_home }}"
