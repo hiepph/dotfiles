@@ -55,11 +55,18 @@
 - name: Emacs
   hosts: all
   tags: emacs
+  become: yes
   tasks:
     - name: Install emacs
       package:
         name: emacs
         state: present
+        update_cache: true
+    - name: install go
+      package:
+        name: golang
+        state: present
+        update_cache: true
     - name: setup go
       shell: go get -v golang.org/x/tools/cmd/goimports
     - name: setup python
