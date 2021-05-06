@@ -26,6 +26,10 @@
         chdir: "{{ src_dir }}/yay"
         cmd: makepkg -si
       when: ansible_facts['os_family'] == "Archlinux"
+    - name: some cool default replacement
+      package:
+        name: ripgrep,fd,bat
+        state: present
 
 - name: Fonts
   hosts: all
