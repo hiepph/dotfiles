@@ -6,16 +6,14 @@
   tasks:
     - name: install necessary packages
       package:
-        name: tmux,stow,binutils,make,gcc
-        state: present
-    - name: some cool default replacement
-      package:
-        name: ripgrep,fd,bat
+        name: tmux,stow,vim
         state: present
 
 - name: shell
   hosts: all
   tags: shell
+  vars:
+    - home_dir: "{{ lookup('env', 'HOME') }}"
   tasks:
     - name: install zsh
       become: yes
@@ -29,12 +27,19 @@
       git:
         repo: https://github.com/junegunn/fzf.git
         depth: 1
-        dest: "{{ lookup('env', 'HOME') }}/.fzf"
+        dest: "{{ home_dir }}/.fzf"
     - name: install fzf
       command:
-        cmd: "{{ lookup('env', 'HOME') }}/.fzf/install"
+        cmd: "{{ home_dir }}/.fzf/install"
     # - name: install Zim
     #   command: curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
+    - name: necessary export
+      lineinfile:
+        dest: "{{ home_dir }}/.zshrc"
+        regexp: {{ item.regexp }}
+        line: {{ item.line }}
+      with_items:
+        - { regexp: "^export EDITOR=", line: "export EDITOR=vim" }
 
 - name: Git
   hosts: all
