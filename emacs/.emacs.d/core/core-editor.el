@@ -155,6 +155,22 @@
 
 
 ;;
+;; Disable mouse
+;; Reduce the annoying event of accidentally touching mouse that activates visual selection mode
+;; ref: https://github.com/purcell/disable-mouse
+;;
+(use-package disable-mouse
+  :after evil
+  :init
+  (global-disable-mouse-mode)
+  :config
+  (mapc #'disable-mouse-in-keymap
+        (list evil-motion-state-map
+              evil-normal-state-map
+              evil-visual-state-map
+              evil-insert-state-map)))
+
+;;
 ;; Evil collection
 ;;
 (use-package evil-collection
