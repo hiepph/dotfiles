@@ -63,6 +63,6 @@ Collection of my shortcut and useful scripts.
 Below is an awesome list of themes (arts) done in style. Mostly are eye-care themes.
 If the author does care about your eye health, his/her art is worth trying.
 
-+ [Nord](https://www.nordtheme.com/).
-+ [Solarized](https://ethanschoonover.com/solarized/).
-+ [Plan9/Acme](https://github.com/john2x/plan9-theme.el).
++ [Nord](https://www.nordtheme.com/)
++ [Solarized](https://ethanschoonover.com/solarized/)
++ [Plan9/Acme](https://github.com/john2x/plan9-theme.el)
