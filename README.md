@@ -61,32 +61,8 @@ Collection of my shortcut and useful scripts.
 ## Themes
 
 Below is an awesome list of themes (arts) done in style. Mostly are eye-care themes.
-Maybe I'm just in awe of their landing pages and scientific research.
-But if the author does care about your eye health, his/her art is worth trying.
+If the author does care about your eye health, his/her art is worth trying.
 
-+ [Nord](https://www.nordtheme.com/). Scandinavian, northern, Aurora
-  Borealis inspiration.
-
-+ [Solarized](https://ethanschoonover.com/solarized/). Taoist, yin-yang vibe.
-
-+ [Plan9/Acme](https://github.com/john2x/plan9-theme.el). I read
-somewhere (d'oh, I'm trying to find the source) that the original ACME
-editor theme (classic yellow-tint background) was designed so you can stare at it all day without tiring your eyes.
-
-
-\* On Dark vs Light
-
-For a time I was on the dark side, and hated anything related to light themes.
-Time changes. Now I realized there is no clear winner, but choose the
-right theme for your workspace. Generally:
-
-+ Dark mode: visual enhancement, suitable for dark environment, night
-life. My terminal and monitoring theme is always dark.
-
-+ Light mode: suitable for reading and coding, light environment. I
-  found it extremely hard to focus on the text with dark background
-  and white text. It feels unnatural (from a perspective of a book lover).
-
-+ Reduce the habit of switching too frequently between dark and light
-  themes (e.g. dark mode and light documentation). Your eyes have to
-  re-calibrate too much thus quickly cause eye strain.
++ [Nord](https://www.nordtheme.com/).
++ [Solarized](https://ethanschoonover.com/solarized/).
++ [Plan9/Acme](https://github.com/john2x/plan9-theme.el).
