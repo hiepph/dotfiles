@@ -47,8 +47,6 @@ Collection of my shortcut and useful scripts.
 + `_pocket`: query articles in [Pocket](https://app.getpocket.com/)
   - usage: `_pocket <query>` or `_pocket -q <query> -t <tag>`
 
-+ `_docker_remove_dangling`: remove all dangling (`<none>`) containers
-
 + `_docker_stop_all`: stop all running containers
 
 + `_gitignore`: download `.gitignore` file
@@ -60,8 +58,7 @@ Collection of my shortcut and useful scripts.
 
 ## Themes
 
-Below is an awesome list of themes (arts) done in style. Mostly are eye-care themes.
-If the author does care about your eye health, his/her art is worth trying.
+Below is an awesome list of themes done in style. All are eye-care themes.
 
 + [Nord](https://www.nordtheme.com/)
 + [Solarized](https://ethanschoonover.com/solarized/)
