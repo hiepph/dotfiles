@@ -41,7 +41,7 @@
 (setq-default indent-tabs-mode nil)
 
 ;; View tabs as 4 spaces
-(setq default-tab-width 4)
+;; (setq default-tab-width 4)
 ;; (setq tab-width 4)
 
 ;; Auto-indentation
@@ -80,7 +80,7 @@
 ;;
 (use-package dtrt-indent
   :init
-  (dtrt-indent-mode))
+  (dtrt-indent-global-mode))
 
 
 ;;
