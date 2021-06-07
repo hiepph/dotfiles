@@ -31,6 +31,17 @@
     (let ((fname (buffer-file-name)))
       (shell-command (format "autopep8 --in-place --aggressive %s" fname) nil))))
 
+;; C
+;;
+;; autoformat C code using `indent`
+;; refer: https://www.gnu.org/software/indent/manual/indent.html
+;;
+(defun ~format-c ()
+  "Format C code followed GNU style."
+  (interactive)
+  (when (eq major-mode 'c-mode)
+    (let ((fname (buffer-file-name)))
+      (shell-command (format "indent -di4 -i2 -nut -lp -bad -bap -bbb -bacc %s" fname) nil))))
 
 ;; Go
 (use-package go-mode
@@ -119,7 +130,9 @@
 (add-hook 'format-mode-hook
           (lambda ()
             (if format-mode
-                (add-hook 'after-save-hook '~format-python)
+                (progn
+                  (add-hook 'after-save-hook '~format-python)
+                  (add-hook 'after-save-hook '~format-c))
               (remove-hook 'after-save-hook '~format-python))))
 
 
