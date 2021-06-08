@@ -136,7 +136,9 @@
                 (progn
                   (add-hook 'after-save-hook '~format-python)
                   (add-hook 'after-save-hook '~format-c))
-              (remove-hook 'after-save-hook '~format-python))))
+              (progn
+                (remove-hook 'after-save-hook '~format-python)
+                (remove-hook 'after-save-hook '~format-c)))))
 
 
 (provide 'core-languages)
