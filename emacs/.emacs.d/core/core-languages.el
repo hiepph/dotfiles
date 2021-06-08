@@ -33,7 +33,7 @@
 
 ;; C
 ;;
-;; autoformat C code using `indent`
+;; autoformat C code using GNU's `indent`
 ;; refer: https://www.gnu.org/software/indent/manual/indent.html
 ;;
 (defun ~format-c ()
@@ -41,7 +41,10 @@
   (interactive)
   (when (eq major-mode 'c-mode)
     (let ((fname (buffer-file-name)))
-      (shell-command (format "indent -di4 -i2 -nut -lp -bad -bap -bbb -bacc %s" fname) nil))))
+      ;; some modification
+      ;; -bad: leave a blank line after definitions
+      ;; -br: if (...) {
+      (shell-command (format "indent -bad -br %s" fname) nil))))
 
 ;; Go
 (use-package go-mode
