@@ -128,6 +128,7 @@
 (defhydra hydra-toggle (:columns 4 :exit t)
   ("f" #'format-mode "format") ;; off by default
   ("c" #'company-mode "company") ;; on by default
+  ("e" #'flycheck-mode "flycheck") ;; on by default
   ("s" #'flyspell-mode "flyspell") ;; on by default in text-mode
   ("i" #'indent-guide-mode "indent")
   ("p" #'paredit-mode "paredit") ;; on by default in some predefined extensions
