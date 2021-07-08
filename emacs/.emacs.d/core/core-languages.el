@@ -44,7 +44,8 @@
       ;; some modification
       ;; -bad: leave a blank line after definitions
       ;; -br: if (...) {
-      (shell-command (format "indent -bad -br -npcs %s" fname) nil))))
+      ;; -ce: } else {
+      (shell-command (format "indent -bad -br -npcs -ce %s" fname) nil))))
 
 ;; Go
 (use-package go-mode
