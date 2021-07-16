@@ -40,10 +40,6 @@
 ;; Disable tabs mode
 (setq-default indent-tabs-mode nil)
 
-;; View tabs as 4 spaces
-;; (setq default-tab-width 4)
-;; (setq tab-width 4)
-
 ;; Auto-indentation
 (electric-indent-mode 1)
 
