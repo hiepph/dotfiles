@@ -71,6 +71,10 @@
   (evil-append-line nil)
   (haskell-indentation-newline-and-indent))
 
+;; Nix
+(use-package nix-mode
+  :mode "\\.nix\\'")
+
 
 ;; Yaml
 (use-package yaml-mode)
