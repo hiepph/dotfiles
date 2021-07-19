@@ -3,7 +3,7 @@
 ![gif](https://thumbs.gfycat.com/AlarmingCoordinatedEarwig-max-1mb.gif)
 
 
-## Bootstrap
+## Bootstrap with Ansible
 
 [bootstrap.yml](./bootstrap.yml)
 
@@ -28,6 +28,11 @@ This task is done by [GNU Stow](https://www.gnu.org/software/stow/manual/stow.ht
 ```
 stow <app>
 ```
+
+
+## Bootstrap with Nix
+
+*TBD*
 
 
 ## Emacs
