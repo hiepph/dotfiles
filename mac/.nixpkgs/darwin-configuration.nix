@@ -4,16 +4,33 @@
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages =
-    [ pkgs.vim
+    [ # tools
+      pkgs.git
+      pkgs.htop
+      pkgs.nmap
+      pkgs.stow
+      pkgs.tmux
 
+      # text editor
+      pkgs.vim
+      pkgs.emacs
+
+      # languages
       pkgs.python38
       pkgs.go
+      # pkgs.babashka
 
+      # utils
       pkgs.jq
       pkgs.ripgrep
       pkgs.fzf
 
+      # devops
       pkgs.ansible
+      pkgs.rclone
+
+      # build
+      pkgs.cmake
     ];
 
   # Use a custom configuration.nix location.
