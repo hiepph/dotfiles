@@ -3,11 +3,43 @@
 ![gif](https://thumbs.gfycat.com/AlarmingCoordinatedEarwig-max-1mb.gif)
 
 
+## Stow
+
+For some applications (e.g. Emacs, Tmux, Vim), their configurations need to be symlinked to HOME.
+This task is done by [GNU Stow](https://www.gnu.org/software/stow/manual/stow.html).
+
+```
+stow <app>
+```
+
+
+## Bootstrap with Nix
+
+My system is built with the help of [Nix](https://nixos.org/) for a functional and
+reproducible configuration.
+
+### Linux
+
++ Installation: refer [Linux](https://nix.dev/) guide
+
+
+### Mac
+
++ Installation: refer [Mac](https://wickedchicken.github.io/post/macos-nix-setup/) guide.
+
++ Symlink `mac` to get specific configuration for `darwin` (`.nixpkgs/darwin-configuration.nix`):
+
+```
+stow mac
+```
+
+
 ## Bootstrap with Ansible
 
 [bootstrap.yml](./bootstrap.yml)
 
-All bootstrap setup scripts and configurations are managed by Ansible.
+After the system is configured with Nix, all additional setup scripts
+are managed by Ansible.
 
 Edit `/etc/ansible/hosts`:
 
@@ -21,18 +53,6 @@ Then run the playbook:
 ```
 ansible-playbook -l localhost bootstrap.yml -t <tag>
 ```
-
-For some applications (e.g. Emacs, Tmux, Vim), their configurations need to be symlinked to HOME.
-This task is done by [GNU Stow](https://www.gnu.org/software/stow/manual/stow.html).
-
-```
-stow <app>
-```
-
-
-## Bootstrap with Nix
-
-*TBD*
 
 
 ## Emacs
