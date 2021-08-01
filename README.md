@@ -42,7 +42,7 @@ darwin-rebuild switch
 
 ## Bootstrap with Ansible
 
-[bootstrap.yml](./bootstrap.yml)
+`bootstrap/*.yml`
 
 After the system is configured with Nix, all additional setup scripts
 are managed by Ansible.
@@ -57,7 +57,7 @@ localhost    ansible_connection=local
 Then run the playbook:
 
 ```
-ansible-playbook -l localhost bootstrap.yml -t <tag>
+ansible-playbook -l localhost bootstrap/<sth>.yml -t <tag>
 ```
 
 

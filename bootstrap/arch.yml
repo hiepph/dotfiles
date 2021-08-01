@@ -41,7 +41,6 @@
             source "$(fzf-share)/completion.zsh"
           fi
 
-
 - name: Git
   hosts: all
   tags: git
@@ -69,28 +68,69 @@
         state: present
         update_cache: true
 
-- name: Locales
+- name: Utilities
   hosts: all
-  tags: locale
+  gather_facts: yes
   become: yes
-  tasks:
-    - name: US localization
-      shell: localedef -f UTF-8 -i en_US en_US.UTF-8
-
-- name: ibus
-  hosts: all
-  tags: ibus
-  become: yes
-  tasks:
-    - name: install ibus
+  tags: utils
+  vars:
+    src_dir: "{{ lookup('env', 'HOME') }}/src"
+  pre_tasks:
+    - name: create src directory
+      file:
+        path: "{{ src_dir }}"
+        state: directory
+    - name: update cache
       package:
-        name: ibus,ibus-unikey
+        update_cache: yes
+  tasks:
+    - name: clone Yay (AUR Helper)
+      become: no
+      git:
+        repo: https://aur.archlinux.org/yay.git
+        dest: "{{ src_dir }}/yay"
+        version: master
+      when: ansible_facts['os_family'] == "Archlinux"
+    - name: install yay
+      command:
+        chdir: "{{ src_dir }}/yay"
+        cmd: makepkg -si
+      when: ansible_facts['os_family'] == "Archlinux"
+    - name: some cool default replacement
+      package:
+        name: ripgrep,fd,bat
         state: present
-    - name: make sure to use appropriate python to open ibus
-      lineinfile:
-        dest: /usr/bin/ibus-setup
-        regexp: /usr/share/ibus/setup/main.py
-        line: exec /usr/bin/python3 /usr/share/ibus/setup/main.py $@
+
+- name: Fonts
+  hosts: all
+  tags: fonts
+  become: yes
+  tasks:
+    - name: install fonts
+      pacman:
+        name: ttf-dejavu,ttf-unifont,ttf-liberation,noto-fonts
+        state: present
+
+- name: Python
+  hosts: all
+  gather_facts: no
+  tags: python
+  vars:
+    - miniconda_home: "{{ lookup('env', 'HOME') }}/miniconda"
+  tasks:
+    - name: get miniconda installer
+      get_url:
+        url: https://repo.anaconda.com/miniconda/Miniconda3-py39_4.9.2-Linux-x86_64.sh
+        dest: /tmp/miniconda.sh
+        mode: 0755
+    - name: install miniconda
+      shell: "/tmp/miniconda.sh -b -p {{ miniconda_home }} creates={{ miniconda_home }}"
+    - name: initialize the shell
+      shell: "conda init $SHELL"
+    - name: install some necessary packages
+      pip:
+        name: pylint,autopep8
+        state: present
 
 - name: SSH
   hosts: all
@@ -118,21 +158,25 @@
           line: "Port 2406"
       notify: restart ssh
 
-- name: Python
+- name: ibus
   hosts: all
-  gather_facts: no
-  tags: python
-  vars:
-    - miniconda_home: "{{ lookup('env', 'HOME') }}/miniconda"
+  tags: ibus
+  become: yes
   tasks:
-    - name: get miniconda installer
-      get_url:
-        url: https://repo.anaconda.com/miniconda/Miniconda3-py39_4.9.2-Linux-x86_64.sh
-        dest: /tmp/miniconda.sh
-        mode: 0755
-    - name: install miniconda
-      shell: "/tmp/miniconda.sh -b -p {{ miniconda_home }} creates={{ miniconda_home }}"
-    - name: initialize the shell
-      shell: "conda init $SHELL"
-    - name: remove env prompt in command line
-      shell: conda config --set env_prompt ""
+    - name: install ibus
+      package:
+        name: ibus,ibus-unikey
+        state: present
+    - name: make sure to use appropriate python to open ibus
+      lineinfile:
+        dest: /usr/bin/ibus-setup
+        regexp: /usr/share/ibus/setup/main.py
+        line: exec /usr/bin/python3 /usr/share/ibus/setup/main.py $@
+
+- name: Locales
+  hosts: all
+  tags: locale
+  become: yes
+  tasks:
+    - name: US localization
+      shell: localedef -f UTF-8 -i en_US en_US.UTF-8
