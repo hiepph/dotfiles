@@ -1,6 +1,12 @@
 { config, pkgs, ... }:
 
-{
+let
+  my-python-packages = python-packages: with python-packages; [
+    pylint
+    autopep8
+  ];
+  python-with-my-packages = pkgs.python38.withPackages my-python-packages;
+in {
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages =
@@ -16,7 +22,7 @@
       pkgs.emacs
 
       # languages
-      pkgs.python38
+      python-with-my-packages
       pkgs.go
       # pkgs.babashka
 
