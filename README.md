@@ -33,6 +33,12 @@ reproducible configuration.
 stow mac
 ```
 
++ Rebuid configuration and switch:
+
+```
+darwin-rebuild switch
+```
+
 
 ## Bootstrap with Ansible
 
