@@ -1,10 +1,10 @@
-- name: Generate SSH key
-  hosts: all
-  tags: ssh
-  gather_facts: false
-  tasks:
-    - name: Generate SSH key
-      command: ssh-keygen -q -t rsa -b 4096 -C "" -N ""
+# - name: Generate SSH key
+#   hosts: all
+#   tags: ssh
+#   gather_facts: false
+#   tasks:
+#     - name: Generate SSH key
+#       command: ssh-keygen -q -t rsa -b 4096 -C "" -N ""
 
 - name: Git
   hosts: all
