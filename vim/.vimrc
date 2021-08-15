@@ -147,9 +147,15 @@ Plug 'https://github.com/kshenoy/vim-signature'
 Plug 'https://github.com/justinmk/vim-sneak'
 let g:sneak#label = 1
 
+" Languages
+Plug 'LnL7/vim-nix'
+
 "
 " THEME
 "
 Plug 'https://github.com/flazz/vim-colorschemes'
+set background=dark
 
 call plug#end()
+
+silent! so .custom.vim
