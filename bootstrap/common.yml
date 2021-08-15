@@ -1,0 +1,18 @@
+- name: Generate SSH key
+  hosts: all
+  tags: ssh
+  gather_facts: false
+  tasks:
+    - name: Generate SSH key
+      command: ssh-keygen -q -t rsa -b 4096 -C "" -N ""
+
+- name: Git
+  hosts: all
+  tags: git
+  tasks:
+    - name: setup Name, Email and Editor
+      command: "{{ item }}"
+      with_items:
+        - git config --global user.email "hiepph@tuta.io"
+        - git config --global user.name "Hiep Pham"
+        - git config --global core.editor "vim"

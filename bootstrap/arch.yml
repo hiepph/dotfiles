@@ -41,22 +41,6 @@
             source "$(fzf-share)/completion.zsh"
           fi
 
-- name: Git
-  hosts: all
-  tags: git
-  become: yes
-  tasks:
-    - name: install git
-      package:
-        name: git
-        state: present
-    - name: setup Name, Email and Editor
-      command: "{{ item }}"
-      with_items:
-        - git config --global user.email "hiepph@tuta.io"
-        - git config --global user.name "Hiep Pham"
-        - git config --global core.editor "vim"
-
 - name: Emacs
   hosts: all
   tags: emacs
@@ -140,7 +124,6 @@
   handlers:
     - name: restart ssh
       service: name=sshd state=restarted
-
   tasks:
     - name: enable sshd
       service: name=sshd state=started enabled=yes
