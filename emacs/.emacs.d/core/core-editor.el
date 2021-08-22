@@ -1,7 +1,6 @@
 ;;
 ;; Basic
 ;;
-
 ;; Changes all yes/no questions to y/n type
 (fset 'yes-or-no-p 'y-or-n-p)
 
@@ -56,7 +55,7 @@
 ;;
 ;; Tramp
 ;;
-(setq-default explicit-shell-file-name "/bin/bash")
+;; (setq-default explicit-shell-file-name "/bin/bash")
 (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
 
 
