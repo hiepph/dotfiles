@@ -20,7 +20,6 @@
 (when (fboundp 'scroll-bar-mode)
   (scroll-bar-mode -1))
 
-
 ;; Disable annoying beep
 (setq ring-bell-function 'ignore)
 
@@ -34,28 +33,32 @@
 (setq column-number-mode t)
 
 ;;
-;; Mode line
-;;
-(use-package telephone-line
-  :init
-  (telephone-line-mode 1))
-
-
-;;
 ;; Indent line
 ;; ref: https://github.com/zk-phi/indent-guide
 ;;
 (use-package indent-guide)
+
+
+;; Use system font by default
+(setq font-use-system-font t)
+
+
+;; Some custom packages for theming
+;; These are not enabled by default for the light-weight setup
 
 ;;
 ;; Themes
 ;;
 ;; (use-package doom-themes)
 ;; (use-package plan9-theme)
-;; (use-package gruvbox-theme)
 
-;; Use system font by default
-(setq font-use-system-font t)
+;;
+;; Mode line
+;;
+;; (use-package telephone-line
+;;   :init
+;;   (telephone-line-mode 1))
+
 
 ;; customize current font
 ;; (set-frame-font "Hack" nil t)

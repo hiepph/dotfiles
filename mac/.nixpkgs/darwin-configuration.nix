@@ -33,6 +33,7 @@ in {
 
       # devops
       pkgs.ansible
+      pkgs.sshpass
       pkgs.rclone
 
       # build
