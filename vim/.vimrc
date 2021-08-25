@@ -158,4 +158,4 @@ set background=dark
 
 call plug#end()
 
-silent! so .custom.vim
+silent! so ~/.custom.vim
