@@ -6,8 +6,12 @@
   };
 
   home.packages = [
-    pkgs.vim
+    # tools
+    pkgs.git
     pkgs.htop
+    pkgs.tmux
+
+    # utils
     pkgs.jq
   ];
 
@@ -20,6 +24,6 @@
     };
   };
 
-  home.file.".vimrc".source = ./.vimrc;
-  home.file.".tmux.conf".source = ./.tmux.conf;
+  # home.file.".vimrc".source = ./.vimrc;
+  # home.file.".tmux.conf".source = ./.tmux.conf;
 }

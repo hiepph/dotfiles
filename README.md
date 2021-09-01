@@ -12,7 +12,6 @@ reproducible configuration.
 
 **TBD**
 
-
 \* References:
 
 * [Hugo Reeves](https://hugoreeves.com/posts/2019/nix-home/)
