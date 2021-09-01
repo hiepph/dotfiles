@@ -14,8 +14,8 @@ in {
       pkgs.git
       pkgs.htop
       pkgs.nmap
-      pkgs.stow
       pkgs.tmux
+      pkgs.wget
 
       # text editor
       pkgs.vim
