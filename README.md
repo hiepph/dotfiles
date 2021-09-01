@@ -3,62 +3,28 @@
 ![gif](https://thumbs.gfycat.com/AlarmingCoordinatedEarwig-max-1mb.gif)
 
 
-## Stow
-
-For some applications (e.g. Emacs, Tmux, Vim), their configurations need to be symlinked to HOME.
-This task is done by [GNU Stow](https://www.gnu.org/software/stow/manual/stow.html).
-
-```
-stow <app>
-```
-
-
 ## Bootstrap with Nix
 
 My system is built with the help of [Nix](https://nixos.org/) for a functional and
 reproducible configuration.
 
-### Linux
+### Home manager
 
-+ Installation: refer [Linux](https://nix.dev/) guide
+**TBD**
 
++ symlink `nix-home`.
 
-### Mac
+`general.nix`: system-wide configuration. Default for every machines
+and platforms. Only `home.nix` needs to be modified to import things.
 
-+ Installation: refer [Mac](https://wickedchicken.github.io/post/macos-nix-setup/) guide.
+`roles/nix/index.nix`, `roles/mac/index.nix`
 
-+ Symlink `mac` to get specific configuration for `darwin` (`.nixpkgs/darwin-configuration.nix`):
-
-```
-stow mac
-```
-
-+ Rebuid configuration and switch:
-
-```
-darwin-rebuild switch
-```
+`home-manager switch`
 
 
-## Bootstrap with Ansible
+\* References:
 
-`bootstrap/*.yml`
-
-After the system is configured with Nix, all additional setup scripts
-are managed by Ansible.
-
-Edit `/etc/ansible/hosts`:
-
-```
-[local]
-localhost    ansible_connection=local
-```
-
-Then run the playbook:
-
-```
-ansible-playbook -l localhost bootstrap/<sth>.yml -t <tag>
-```
+* [Hugo Reeves](https://hugoreeves.com/posts/2019/nix-home/)
 
 
 ## Emacs
@@ -70,8 +36,6 @@ A nice explanation of how doom-emacs can achieve state-of-the-art startup time i
 
 
 ## Vim
-
-+ Normally `stow vim`
 
 + Create custom file for each machine: `~/.custom.vim`. For example:
 
