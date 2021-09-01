@@ -12,15 +12,6 @@ reproducible configuration.
 
 **TBD**
 
-+ symlink `nix-home`.
-
-`general.nix`: system-wide configuration. Default for every machines
-and platforms. Only `home.nix` needs to be modified to import things.
-
-`roles/nix/index.nix`, `roles/mac/index.nix`
-
-`home-manager switch`
-
 
 \* References:
 
