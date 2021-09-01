@@ -1,43 +1,17 @@
 { config, pkgs, ... }:
 
-let
-  my-python-packages = python-packages: with python-packages; [
-    pylint
-    autopep8
-  ];
-  python-with-my-packages = pkgs.python38.withPackages my-python-packages;
-in {
+{
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages =
     [ # tools
-      pkgs.git
-      pkgs.htop
-      pkgs.nmap
-      pkgs.tmux
       pkgs.wget
 
       # text editor
       pkgs.vim
-      pkgs.emacs
 
       # languages
-      python-with-my-packages
-      pkgs.go
-      # pkgs.babashka
-
-      # utils
-      pkgs.jq
-      pkgs.ripgrep
-      pkgs.fzf
-
-      # devops
-      pkgs.ansible
-      pkgs.sshpass
-      pkgs.rclone
-
-      # build
-      pkgs.cmake
+      pkgs.python38
     ];
 
   # Use a custom configuration.nix location.
