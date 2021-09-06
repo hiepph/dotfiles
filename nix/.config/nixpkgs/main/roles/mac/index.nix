@@ -29,5 +29,8 @@ in {
 
     # build
     pkgs.cmake
+
+    # trivia
+    pkgs.stow
   ];
 }
