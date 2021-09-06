@@ -8,9 +8,52 @@
 My system is built with the help of [Nix](https://nixos.org/) for a functional and
 reproducible configuration.
 
+### Installation
+
+1. [Linux](https://nix.dev/)
+
+*TBD*
+
+2. [Mac](https://wickedchicken.github.io/post/macos-nix-setup/).
+
+Symlink for system configuration:
+
+```
+nix-shell -p stow --command "stow mac"
+```
+
 ### Home manager
 
-**TBD**
++ Setup:
+
+```
+./nix-setup
+```
+
++ Edit `.config/nixpkgs/home.nix` for each local machine, for example:
+
+```
+{
+  ...
+  imports = [
+    ./main/general.nix
+    ./main/roles/mac/index.nix
+  ];
+
+  ...
+}
+```
+
+where, `general.nix`: cross-platform configurations.
+
+*TBD*: roles, users, etc.
+
++ Make change and switch environment:
+
+```
+home-manager switch
+```
+
 
 \* References:
 
