@@ -2,6 +2,16 @@
 
 ![gif](https://thumbs.gfycat.com/AlarmingCoordinatedEarwig-max-1mb.gif)
 
+## Stow
+
+Mainly I structure my configurations follow their paths starting from
+$HOME. To activate the configuration, symlink the corresponding folder
+to $HOME. This task is done by [GNU Stow](https://www.gnu.org/software/stow/manual/stow.html)
+
+```
+stow <conf>
+```
+
 
 ## Bootstrap with Nix
 
