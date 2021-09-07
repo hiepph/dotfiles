@@ -13,6 +13,7 @@
 
     # utils
     pkgs.jq
+    pkgs.stow
   ];
 
   programs.git = {
