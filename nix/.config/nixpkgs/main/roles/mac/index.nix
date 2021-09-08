@@ -1,36 +1,35 @@
 { config, lib, pkgs, ... }:
 
+with pkgs;
 let
   my-python-packages = python-packages: with python-packages; [
     pylint
     autopep8
   ];
-  python-with-my-packages = pkgs.python38.withPackages my-python-packages;
+  python-with-my-packages = python38.withPackages my-python-packages;
 in {
   home.packages = [
     # tools
-    pkgs.nmap
+    nmap
 
     # text editor
-    pkgs.emacs
+    emacs
 
     # languages
     python-with-my-packages
-    pkgs.go
+    go
 
     # utils
-    pkgs.ripgrep
-    pkgs.fzf
+    ripgrep
+    fzf
+    # (callPackage ./pkgs/ls-colors {})
 
     # devops
-    pkgs.ansible
-    pkgs.sshpass
-    pkgs.rclone
+    ansible
+    sshpass
+    rclone
 
     # build
-    pkgs.cmake
-
-    # trivia
-    pkgs.stow
+    cmake
   ];
 }
