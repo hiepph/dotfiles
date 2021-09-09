@@ -11,10 +11,22 @@ let
 in {
   programs.zsh = {
     enable = true;
+
     prezto = {
       enable = true;
       prompt.theme = "giddie";
     };
+
+    shellAliases = {
+      "octave" = "docker run -it --rm gnuoctave/octave:6.3.0 octave";
+    };
+
+    initExtra = ''
+if [ -n "$\{commands[fzf-share]}" ]; then
+  source "$(fzf-share)/key-bindings.zsh"
+  source "$(fzf-share)/completion.zsh"
+fi
+'';
   };
 
   home.packages = [
