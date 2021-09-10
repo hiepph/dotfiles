@@ -1,6 +1,6 @@
 # dotfiles
 
-![gif](https://thumbs.gfycat.com/AlarmingCoordinatedEarwig-max-1mb.gif)
+![gif](https://www.megghy.com/gif_animate/cartoni_animati/snoopy/70.gif)
 
 ## Stow
 
