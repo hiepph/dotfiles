@@ -1,3 +1,4 @@
+# refer: https://daiderd.com/nix-darwin/manual/index.html
 { config, pkgs, ... }:
 
 {
@@ -24,7 +25,14 @@
 
   # Create /etc/bashrc that loads the nix-darwin environment.
   programs.zsh.enable = true;  # default shell on catalina
-  # programs.fish.enable = true;
+
+  # Cronjob for garbage collector
+  nix.gc = {
+    user = "hiepph";
+    automatic = true;
+    interval = { Hour = 12; Minute = 0; };
+    options = "--delete-older-than 10d";
+  };
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
