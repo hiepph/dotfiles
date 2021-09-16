@@ -18,7 +18,6 @@ in {
     };
 
     shellAliases = {
-      "octave" = "docker run -it --rm gnuoctave/octave:6.3.0 octave";
     };
 
     initExtra = ''
@@ -37,9 +36,9 @@ eval "$(direnv hook zsh)"
     # nix essential
     direnv # https://direnv.net/
 
-    direnv
     # tools
     nmap
+    babashka # interpreter for Clojure scripting
 
     # text editor
     emacs
@@ -57,8 +56,5 @@ eval "$(direnv hook zsh)"
     ansible
     sshpass
     rclone
-
-    # build
-    # cmake
   ];
 }
