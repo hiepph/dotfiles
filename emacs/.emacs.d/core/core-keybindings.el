@@ -130,7 +130,7 @@
   ("e" #'flycheck-mode "flycheck") ;; on by default
   ("s" #'flyspell-mode "flyspell") ;; on by default in text-mode
   ("p" #'paredit-mode "paredit") ;; on by default in some predefined extensions
-  ("d" #'direnv-mode) ;; on by default
+  ("d" #'direnv-mode "direnv") ;; on by default
 
   ("f" #'format-mode "format") ;; off by default
   ("i" #'indent-guide-mode "indent") ;; off by default
