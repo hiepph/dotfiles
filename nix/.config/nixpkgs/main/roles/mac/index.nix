@@ -16,10 +16,6 @@ in {
   };
 
   home.packages = [
-    # tools
-    nmap
-    babashka # interpreter for Clojure scripting
-
     # text editor
     emacs
 
@@ -29,5 +25,8 @@ in {
 
     # utils
     # (callPackage ./pkgs/ls-colors {})
+    nmap
+    babashka # interpreter for Clojure scripting
+    bat
   ];
 }
