@@ -48,6 +48,11 @@ eval "$(direnv hook zsh)"
 '';
   };
 
+  programs.autojump = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
   programs.git = {
     enable = true;
     userName = "hiepph";
