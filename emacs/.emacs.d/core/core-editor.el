@@ -457,8 +457,9 @@ eg:
 
 (use-package consult-flycheck)
 
+
 ;;
-;; Marginaalia
+;; Marginalia
 ;;
 (use-package marginalia
   :init
@@ -466,6 +467,15 @@ eg:
   (advice-add
    #'marginalia-cycle :after
    (lambda () (when (bound-and-true-p selectrum-mode) (selectrum-exhibit)))))
+
+
+;;
+;; Direnv integration:
+;; ref: https://github.com/wbolster/emacs-direnv
+;;
+(use-package direnv
+  :config
+  (direnv-mode))
 
 
 (provide 'core-editor)
