@@ -6,16 +6,47 @@
     EDITOR = "vim";
   };
 
-  home.packages = [
+  home.packages = with pkgs; [
+    # nix essential
+    direnv # https://direnv.net/
+
     # tools
-    pkgs.git
-    pkgs.htop
-    pkgs.tmux
+    git
+    htop
+    tmux
 
     # utils
-    pkgs.jq
-    pkgs.stow
+    jq
+    ripgrep
+    stow
+    fzf
+
+    # devops
+    ansible
+    sshpass
+    rclone
   ];
+
+  programs.zsh = {
+    enable = true;
+
+    prezto = {
+      enable = true;
+      prompt.theme = "giddie";
+    };
+
+    initExtra = ''
+# fzf binding keys
+if [ -n "$\{commands[fzf-share]}" ]; then
+  source "$(fzf-share)/key-bindings.zsh"
+  source "$(fzf-share)/completion.zsh"
+fi
+
+
+# enable direnv
+eval "$(direnv hook zsh)"
+'';
+  };
 
   programs.git = {
     enable = true;

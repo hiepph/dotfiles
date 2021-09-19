@@ -10,32 +10,12 @@ let
 in {
   # refer: https://nixos.wiki/wiki/Zsh
   programs.zsh = {
-    enable = true;
-
-    prezto = {
-      enable = true;
-      prompt.theme = "giddie";
-    };
-
     shellAliases = {
+      "octave" = "/Applications/Octave-6.2.0.app/Contents/Resources/usr/Cellar/octave-octave-app@6.2.0/6.2.0/bin/octave";
     };
-
-    initExtra = ''
-# fzf binding keys
-if [ -n "$\{commands[fzf-share]}" ]; then
-  source "$(fzf-share)/key-bindings.zsh"
-  source "$(fzf-share)/completion.zsh"
-fi
-
-# enable direnv
-eval "$(direnv hook zsh)"
-'';
   };
 
   home.packages = [
-    # nix essential
-    direnv # https://direnv.net/
-
     # tools
     nmap
     babashka # interpreter for Clojure scripting
@@ -48,13 +28,6 @@ eval "$(direnv hook zsh)"
     go
 
     # utils
-    ripgrep
-    fzf
     # (callPackage ./pkgs/ls-colors {})
-
-    # devops
-    ansible
-    sshpass
-    rclone
   ];
 }
