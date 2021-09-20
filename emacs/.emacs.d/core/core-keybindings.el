@@ -126,14 +126,16 @@
   ("," #'eyebrowse-rename-window-config "rename"))
 
 (defhydra hydra-toggle (:columns 4 :exit t)
-  ("c" #'company-mode "company") ;; on by default
-  ("e" #'flycheck-mode "flycheck") ;; on by default
+  ;; on by default
+  ("c" #'company-mode "company")
+  ("e" #'flycheck-mode "flycheck")
   ("s" #'flyspell-mode "flyspell") ;; on by default in text-mode
   ("p" #'paredit-mode "paredit") ;; on by default in some predefined extensions
-  ("d" #'direnv-mode "direnv") ;; on by default
 
-  ("f" #'format-mode "format") ;; off by default
-  ("i" #'indent-guide-mode "indent") ;; off by default
+  ;; off by default
+  ("d" #'direnv-mode "direnv")
+  ("f" #'format-mode "format")
+  ("i" #'indent-guide-mode "indent")
   )
 
 (defhydra hydra-dumb-jump (:color blue :columns 4)

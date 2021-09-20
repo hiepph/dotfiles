@@ -473,9 +473,7 @@ eg:
 ;; Direnv integration:
 ;; ref: https://github.com/wbolster/emacs-direnv
 ;;
-(use-package direnv
-  :config
-  (direnv-mode))
+(use-package direnv)
 
 
 (provide 'core-editor)
