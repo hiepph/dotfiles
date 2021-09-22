@@ -31,7 +31,7 @@
     user = "hiepph";
     automatic = true;
     interval = { Hour = 12; Minute = 0; };
-    options = "--delete-older-than 30d";
+    # options = "--delete-older-than 30d";
   };
 
   # Used for backwards compatibility, please read the changelog before changing.
