@@ -30,11 +30,6 @@
   programs.zsh = {
     enable = true;
 
-    prezto = {
-      enable = true;
-      prompt.theme = "giddie";
-    };
-
     initExtra = ''
 # fzf binding keys
 if [ -n "$\{commands[fzf-share]}" ]; then
