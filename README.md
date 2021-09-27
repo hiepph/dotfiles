@@ -20,11 +20,15 @@ reproducible configuration.
 
 ### Installation
 
-1. [Linux](https://nix.dev/)
+[nix.dev](https://nix.dev/)
+
+1. Linux
 
 *TBD*
 
-2. [Mac](https://wickedchicken.github.io/post/macos-nix-setup/).
+2. Mac
+
+*TBD*
 
 Symlink for system configuration:
 
@@ -34,11 +38,6 @@ nix-shell -p stow --command "stow mac"
 
 ### Home manager
 
-+ Setup:
-
-```
-./nix-setup
-```
 
 + Edit `.config/nixpkgs/home.nix` for each local machine, for example:
 

@@ -12,7 +12,7 @@ in {
   programs.zsh = {
     prezto = {
       enable = true;
-      prompt.theme = "giddie";
+      prompt.theme = "pure";
     };
 
     shellAliases = {
@@ -21,6 +21,7 @@ in {
 
     sessionVariables = {
       "PATH" = "$HOME/scripts:$PATH";
+      "JANET_PATH" = "$HOME/janet";
     };
   };
 
@@ -31,11 +32,9 @@ in {
 
     # languages
     python-with-my-packages
-    janet
-    go
+    # janet
 
     # utils
-    # (callPackage ./pkgs/ls-colors {})
     nmap
     babashka # interpreter for Clojure scripting
     bat

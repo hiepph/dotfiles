@@ -22,7 +22,7 @@
     fzf
 
     # devops
-    ansible
+    python38Packages.ansible
     sshpass
     rclone
   ];
@@ -56,7 +56,4 @@ eval "$(direnv hook zsh)"
       core.editor = "vim";
     };
   };
-
-  # home.file.".vimrc".source = ./.vimrc;
-  # home.file.".tmux.conf".source = ./.tmux.conf;
 }
