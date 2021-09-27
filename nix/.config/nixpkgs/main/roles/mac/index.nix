@@ -10,6 +10,11 @@ let
 in {
   # refer: https://nixos.wiki/wiki/Zsh
   programs.zsh = {
+    prezto = {
+      enable = true;
+      prompt.theme = "giddie";
+    };
+
     shellAliases = {
       "octave" = "/Applications/Octave-6.2.0.app/Contents/Resources/usr/Cellar/octave-octave-app@6.2.0/6.2.0/bin/octave";
     };
@@ -26,6 +31,7 @@ in {
 
     # languages
     python-with-my-packages
+    janet
     go
 
     # utils

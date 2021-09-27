@@ -109,15 +109,12 @@ colorscheme alduin
 Collection of my shortcut and useful scripts.
 
 + `_pocket`: query articles in [Pocket](https://app.getpocket.com/)
-  - usage: `_pocket <query>` or `_pocket -q <query> -t <tag>`
 
-+ `_docker_stop_all`: stop all running containers
+  * usage: `_pocket <query>` or `_pocket -q <query> -t <tag>`
 
 + `_gitignore`: download `.gitignore` file
-  - usage: `_gitignore python`
 
-+ `_g`: a simpler wrapper for [gh gist](https://cli.github.com/manual/gh_gist):
-  - usage: `_g <query>` or `_g <query> -L 1000`
+  * usage: `_gitignore python`
 
 
 ## Themes
