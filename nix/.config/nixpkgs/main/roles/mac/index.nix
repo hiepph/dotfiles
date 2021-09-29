@@ -21,7 +21,6 @@ in {
 
     sessionVariables = {
       "PATH" = "$HOME/scripts:$PATH";
-      "JANET_PATH" = "$HOME/janet";
     };
   };
 
@@ -32,7 +31,6 @@ in {
 
     # languages
     python-with-my-packages
-    # janet
 
     # utils
     nmap
