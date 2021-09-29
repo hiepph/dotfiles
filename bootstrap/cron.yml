@@ -5,5 +5,5 @@
     - name: prune docker
       cron:
         name: "Docker system prune"
-        special_time: "daily"
+        special_time: "weekly"
         job: /usr/local/bin/docker system prune -f
