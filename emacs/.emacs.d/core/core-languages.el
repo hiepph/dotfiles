@@ -12,9 +12,6 @@
 ;; Racket
 (use-package racket-mode)
 
-;; Janet
-(use-package janet-mode)
-
 ;; markdown
 (use-package markdown-mode)
 
