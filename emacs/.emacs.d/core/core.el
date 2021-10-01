@@ -6,7 +6,7 @@
 ;; Editor
 (require 'core-editor)
 ;; Projects management and support
-(require 'core-projects)
+(require 'core-helper)
 
 ;; Themes, looks, etc.
 (require 'core-ui)

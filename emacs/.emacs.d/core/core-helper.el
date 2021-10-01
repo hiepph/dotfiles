@@ -249,4 +249,4 @@ Number registers are not needed because it is easier to refer from the `yank-pop
   (add-hook 'xref-backend-functions #'dumb-jump-xref-activate))
 
 
-(provide 'core-projects)
+(provide 'core-helper)
