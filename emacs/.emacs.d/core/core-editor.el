@@ -113,10 +113,11 @@
 (use-package expand-region)
 
 
-;; Rainbow parentheses
-(use-package rainbow-delimiters
-  :config
-  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
+;; parentheses view helper
+;;
+(use-package paren-face
+  :init
+  (paren-face-mode))
 
 ;;
 ;; Evil keybinding
@@ -205,7 +206,7 @@
   (setq whitespace-line-column 100)
   ;; `lines-tail` highlight part of lines that goes beyond ‘whitespace-line-column’ (default: 80)
   ;; `trailing` highlight trailing white-spaces
-  (setq whitespace-style '(face lines-tail trailing)))
+  (setq whitespace-style '(face trailing)))
 (add-hook 'text-mode-hook 'auto-fill-mode)
 
 ;;
