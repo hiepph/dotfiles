@@ -42,6 +42,13 @@
 ;; Use system font by default
 (setq font-use-system-font t)
 
+;;
+;; Mode line
+;;
+(use-package mood-line
+  :init
+  (mood-line-mode 1))
+
 
 ;; Some custom packages for theming
 ;; These are not enabled by default for the light-weight setup
@@ -49,21 +56,21 @@
 ;;
 ;; Themes
 ;;
-;; (use-package doom-themes)
+
 ;; (use-package plan9-theme)
+;; (load-theme 'plan9 t)
+
 
 ;;
-;; Mode line
-;;
-(use-package telephone-line
-  :init
-  (telephone-line-mode 1))
-
-
 ;; customize current font
-;; (set-frame-font "Hack" nil t)
+;;
+
+;; (set-face-attribute 'default nil :height 145)
+
+;; (set-frame-font "Input Mono 12" nil t)
 ;; (add-to-list 'default-frame-alist
-;;              '(font . "Hack"))
+;;              '(font . "Input Mono 12"))
+
 
 
 (provide 'core-ui)
