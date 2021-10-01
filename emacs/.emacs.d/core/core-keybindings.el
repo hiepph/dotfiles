@@ -45,7 +45,7 @@
   ("y" #'consult-yank-pop "yank pop")
 
   ;; ripgrep
-  ("/" #'consult-ripgrep "ripgrep")
+  ("/" #'~ripgrep "ripgrep")
 
   ;; dumb-jump
   ("j" #'hydra-dumb-jump/body "jump")
