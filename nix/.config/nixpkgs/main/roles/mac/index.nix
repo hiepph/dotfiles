@@ -1,13 +1,7 @@
 { config, lib, pkgs, ... }:
 
 with pkgs;
-let
-  my-python-packages = python-packages: with python-packages; [
-    pylint
-    autopep8
-  ];
-  python-with-my-packages = python38.withPackages my-python-packages;
-in {
+{
   # refer: https://nixos.wiki/wiki/Zsh
   programs.zsh = {
     prezto = {
@@ -21,6 +15,7 @@ in {
 
     sessionVariables = {
       "PATH" = "$HOME/scripts:$PATH";
+      "BABASHKA_PRELOADS" = "(require '[babashka.curl :as curl]) (require '[cheshire.core :as json])";
     };
   };
 
@@ -28,9 +23,9 @@ in {
     # text editor
     emacs
     ispell
+    indent
 
     # languages
-    python-with-my-packages
 
     # utils
     nmap

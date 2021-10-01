@@ -1,7 +1,16 @@
 # ref: https://rycee.gitlab.io/home-manager/options.html
 { config, lib, pkgs, ... }:
 
-{
+let
+  my-python-packages = python-packages: with python-packages; [
+    pylint
+    autopep8
+
+    ansible
+    speedtest-cli
+  ];
+  python-with-my-packages = pkgs.python38.withPackages my-python-packages;
+in {
   home.sessionVariables = {
     EDITOR = "vim";
   };
@@ -9,6 +18,9 @@
   home.packages = with pkgs; [
     # nix essential
     direnv # https://direnv.net/
+
+    # languages
+    python-with-my-packages
 
     # tools
     git
@@ -22,7 +34,6 @@
     fzf
 
     # devops
-    python38Packages.ansible
     sshpass
     rclone
   ];
