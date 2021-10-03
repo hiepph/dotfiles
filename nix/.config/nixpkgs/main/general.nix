@@ -26,6 +26,8 @@ in {
     git
     htop
     tmux
+    gnupg
+    pass
 
     # utils
     jq
