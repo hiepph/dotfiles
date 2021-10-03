@@ -1,43 +1,112 @@
-#!/usr/bin/env ruby
-require 'net/http'
-require 'json'
-require 'optparse'
+#!/usr/bin/env bb
 
-# ref: https://getpocket.com/developer/docs/v3/retrieve
-URL = "https://getpocket.com/v3/get?consumer_key=#{ENV['POCKET_CONSUMER_KEY']}&access_token=#{ENV['POCKET_ACCESS_TOKEN']}"
+;;
+;; Command line helper to query Pocket inventory
+;;
+;; Login: In order to use the app, first you have to login via browser authentication (Oauth 2)
+;; $ _pocket --login
+;;
+;; * ref: https://getpocket.com/developer/docs/authentication
+;;
+;; Example:
+;;
+;;
+;; Ref:
+;; + Manage pocket consumer keys: https://getpocket.com/developer/apps/
+;; + API: https://getpocket.com/developer/docs/v3/retrieve
+;;
 
-def get (url)
-  uri = URI(url)
-  return Net::HTTP.get(uri)
-end
+(require '[babashka.curl :as curl])
+(require '[clojure.java.io :as io])
+(require '[cheshire.core :as json])
+(require '[clojure.tools.cli :refer [parse-opts]])
+
+(defn check-pocket-consumer-key []
+  (let [consumer-key (System/getenv "POCKET_CONSUMER_KEY")]
+    (if consumer-key
+      consumer-key
+      (do
+        (println "You have to setup POCKET_CONSUMER_KEY first")
+        (System/exit 1)))))
+
+(defn check-access-token []
+  (let [access-token-file "env/POCKET_ACCESS_TOKEN"]
+    (if (.exists (io/file access-token-file))
+      (slurp access-token-file)
+      (do
+        (println "You have to login first: '_pocket --login'")
+        (System/exit 1)))))
+
+(defn get-authen-code [consumer-key]
+  (let [url (format "https://getpocket.com/v3/oauth/request?consumer_key=%s&redirect_uri=https://example.com"
+                    consumer-key)]
+    (-> url
+        (curl/post {:headers {"X-accept" "application/json"}})
+        :body
+        (json/parse-string true)
+        :code)))
+
+(defn get-and-save-authen-token [consumer-key authen-code]
+  (let [url (format "https://getpocket.com/v3/oauth/authorize?consumer_key=%s&code=%s"
+                    consumer-key
+                    authen-code)]
+    (let [access-token (-> url
+                           (curl/post {:headers {"X-accept" "application/json"}})
+                           :body
+                           (json/parse-string true)
+                           :access_token)]
+      (println access-token))))
 
 
-def build_url (url, params)
-  build_params = params.map { |k, v| "#{k}=#{v}" }
-  return ([url] | build_params).join("&")
-end
+(defn login [consumer-key]
+  (let [authen-code (get-authen-code consumer-key)
+        authen-link (format
+                     "https://getpocket.com/auth/authorize?request_token=%s&redirect_uri=https://example.com"
+                     authen-code)]
+    (do
+      (println "Please authenticate the app through the following link:\n")
+      (println authen-link)
+      (println "\nAnd then call `_pocket --setup` to save the authenticated token and you're ready to go.")
+      (get-and-save-authen-token consumer-key authen-code))))
 
 
-options = {}
-opt_parse = OptionParser.new do |opts|
-  opts.banner = "Usage: _pocket [options]"
 
-  opts.on("-q QUERY", "--query QUERY", "Query (required)") do |q|
-    options[:search] = q
-  end
+;; main
+(def cli-options
+  [[nil "--login" "Login to pocket"]
+   ["-t" "--tag TAG" "Tag name"
+    :default ""]
+   ["-q" "--query QUERY" "Search query"
+    :default ""]
+   ["-h" "--help"]])
 
-  opts.on("-t TAG", "--tag TAG", "Tag") do |t|
-    options[:tag] = t
-  end
-end
-opt_parse.parse!
+(def args
+  (->> cli-options
+      (parse-opts *command-line-args*)
+      :options))
 
-if options[:search].nil?
-  options[:search] = ARGV.join(" ")
-end
+(def consumer-key (check-pocket-consumer-key))
 
-res = JSON.parse(get(build_url(URL, options)))
-res['list'].each do |_id, item|
-  p item['given_title']
-  puts item['given_url']
-end
+(cond
+  (:login args) (login consumer-key)
+  :else (do
+          (def access-token (check-access-token))))
+
+;; (def result
+;;   (let [url (format "https://getpocket.com/v3/get?consumer_key=%s&access_token=%s&contentType=article&sort=newest&detailType=simple&tag=%s&search=%s"
+;;                     consumer-key
+;;                     access-token
+;;                     (:tag args)
+;;                     (:query args))]
+;;     (-> url
+;;         curl/get
+;;         :body
+;;         (json/parse-string true))))
+
+
+;; (println "ID\tTITLE\tLINK")
+;; (doseq [item (vals (:list result))]
+;;   (println (format "%s\t%s\t%s\n"
+;;                    (:item_id item)
+;;                    (:given_title item)
+;;                    (:given_url item))))
