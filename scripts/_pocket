@@ -42,6 +42,8 @@
 (defonce app (atom nil))
 (def app-promise (promise))
 
+(def token-dir (format "%s/.env" (System/getenv "HOME")))
+(def access-token-file (format "%s/POCKET_ACCESS_TOKEN" token-dir))
 
 (defn check-pocket-consumer-key []
   (let [consumer-key (System/getenv "POCKET_CONSUMER_KEY")]
@@ -52,12 +54,11 @@
         (System/exit 1)))))
 
 (defn check-access-token []
-  (let [access-token-file "env/POCKET_ACCESS_TOKEN"]
-    (if (.exists (io/file access-token-file))
-      (slurp access-token-file)
-      (do
-        (println "You have to login first: '_pocket --login'")
-        (System/exit 1)))))
+  (if (.exists (io/file access-token-file))
+    (slurp access-token-file)
+    (do
+      (println "You have to login first: '_pocket --login'")
+      (System/exit 1))))
 
 (defn get-request-token [consumer-key]
   (let [url (format "https://getpocket.com/v3/oauth/request?consumer_key=%s&redirect_uri=%s"
@@ -69,7 +70,7 @@
         (json/parse-string true)
         :code)))
 
-(defn get-authen-token [consumer-key authen-code]
+(defn get-access-token [consumer-key authen-code]
   (let [url (format "https://getpocket.com/v3/oauth/authorize?consumer_key=%s&code=%s"
                     consumer-key
                     authen-code)]
@@ -79,19 +80,22 @@
         (json/parse-string true)
         :access_token)))
 
-(defn save-authen-token []
-  "")
+(defn save-access-token [access-token]
+  (do
+    (when-not (.exists (io/file token-dir))
+      (.mkdir (io/file token-dir)))
+    (spit access-token-file access-token)))
 
 (defn token-handler [{:keys [:uri]}]
   (when (str/starts-with? uri "/")
     (let [[_ consumer-key request-token] (str/split uri #"/")
-          authen-token (get-authen-token consumer-key request-token)]
-      (save-authen-token authen-token)))
+          access-token (get-access-token consumer-key request-token)]
+      (save-access-token access-token)))
 
   (when-not (nil? app)
     (@app :timeout 100)
     (reset! app nil)
-    (deliver app-promise "Done!")))
+    (deliver app-promise "Done")))
 
 (defn login [consumer-key]
   (let [request-token (get-request-token consumer-key)
@@ -108,6 +112,25 @@
       (reset! app (server/run-server token-handler {:port (:port args)}))
       (println @app-promise))))
 
+(defn retrieve [consumer-key access-token]
+  (def result
+    (let [url (format "https://getpocket.com/v3/get?consumer_key=%s&access_token=%s&contentType=article&sort=newest&detailType=simple&tag=%s&search=%s"
+               consumer-key
+               access-token
+               (:tag args)
+               (:query args))]
+      (-> url
+          curl/get
+          :body
+          (json/parse-string true))))
+
+  (do
+    (println "ID\tTITLE\tLINK")
+    (doseq [item (vals (:list result))]
+      (println (format "%s\t%s\t%s\n"
+                       (:item_id item)
+                       (:given_title item)
+                       (:given_url item))))))
 
 
 ;; main
@@ -116,23 +139,5 @@
 (cond
   (:login args) (login consumer-key)
   :else (do
-          (def access-token (check-access-token))))
-
-;; (def result
-;;   (let [url (format "https://getpocket.com/v3/get?consumer_key=%s&access_token=%s&contentType=article&sort=newest&detailType=simple&tag=%s&search=%s"
-;;                     consumer-key
-;;                     access-token
-;;                     (:tag args)
-;;                     (:query args))]
-;;     (-> url
-;;         curl/get
-;;         :body
-;;         (json/parse-string true))))
-
-
-;; (println "ID\tTITLE\tLINK")
-;; (doseq [item (vals (:list result))]
-;;   (println (format "%s\t%s\t%s\n"
-;;                    (:item_id item)
-;;                    (:given_title item)
-;;                    (:given_url item))))
+          (def access-token (check-access-token))
+          (retrieve consumer-key access-token)))
