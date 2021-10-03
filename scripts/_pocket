@@ -10,6 +10,7 @@
 (require '[babashka.curl :as curl]
          '[clojure.java.io :as io]
          '[cheshire.core :as json]
+         '[clojure.java.shell :refer [sh]]
          '[org.httpkit.server :as server]
          '[clojure.tools.cli :refer [parse-opts]])
 
@@ -57,14 +58,14 @@ EXAMPLES
 (def token-dir (format "%s/.env" (System/getenv "HOME")))
 (def access-token-file (format "%s/POCKET_ACCESS_TOKEN" token-dir))
 
-;; TODO: call `pass` instead
 (defn check-pocket-consumer-key []
-  (let [consumer-key (System/getenv "POCKET_CONSUMER_KEY")]
-    (if consumer-key
-      consumer-key
-      (do
-        (println "You have to setup POCKET_CONSUMER_KEY first")
-        (System/exit 1)))))
+  (if-let [consumer-key (-> (sh "pass" "show" "env/POCKET_CONSUMER_KEY")
+                            :out
+                            str/trim-newline)]
+    consumer-key
+    (do
+      (println "You have to setup POCKET_CONSUMER_KEY first")
+      (System/exit 1))))
 
 (defn check-access-token []
   (if (.exists (io/file access-token-file))
