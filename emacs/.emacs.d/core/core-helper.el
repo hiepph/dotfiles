@@ -238,8 +238,6 @@ Number registers are not needed because it is easier to refer from the `yank-pop
   ;; (setq projectile-switch-project-action #'projectile-dired)
   )
 
-
-
 ;;
 ;; Jump to definition, even without CTAGS
 ;; ref: https://github.com/jacktasia/dumb-jump
