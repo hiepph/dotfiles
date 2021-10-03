@@ -16,10 +16,32 @@
 ;; + API: https://getpocket.com/developer/docs/v3/retrieve
 ;;
 
-(require '[babashka.curl :as curl])
-(require '[clojure.java.io :as io])
-(require '[cheshire.core :as json])
-(require '[clojure.tools.cli :refer [parse-opts]])
+(require '[babashka.curl :as curl]
+         '[clojure.java.io :as io]
+         '[cheshire.core :as json]
+         '[org.httpkit.server :as server]
+         '[clojure.tools.cli :refer [parse-opts]])
+
+(def cli-options
+  [[nil "--login" "Login to pocket"]
+   ["-t" "--tag TAG" "Tag name"
+    :default ""]
+   ["-q" "--query QUERY" "Search query"
+    :default ""]
+   ["-p" "--port" "Port to run _pocket server (default: 10003)"
+    :default 10003
+    :parse-fn #(Integer/parseInt %)]
+   ["-h" "--help"]])
+
+(def args
+  (->> cli-options
+      (parse-opts *command-line-args*)
+      :options))
+
+(def redirect-uri (str "http://localhost:" (:port args)))
+(defonce app (atom nil))
+(def app-promise (promise))
+
 
 (defn check-pocket-consumer-key []
   (let [consumer-key (System/getenv "POCKET_CONSUMER_KEY")]
@@ -37,54 +59,58 @@
         (println "You have to login first: '_pocket --login'")
         (System/exit 1)))))
 
-(defn get-authen-code [consumer-key]
-  (let [url (format "https://getpocket.com/v3/oauth/request?consumer_key=%s&redirect_uri=https://example.com"
-                    consumer-key)]
+(defn get-request-token [consumer-key]
+  (let [url (format "https://getpocket.com/v3/oauth/request?consumer_key=%s&redirect_uri=%s"
+                    consumer-key
+                    redirect-uri)]
     (-> url
         (curl/post {:headers {"X-accept" "application/json"}})
         :body
         (json/parse-string true)
         :code)))
 
-(defn get-and-save-authen-token [consumer-key authen-code]
+(defn get-authen-token [consumer-key authen-code]
   (let [url (format "https://getpocket.com/v3/oauth/authorize?consumer_key=%s&code=%s"
                     consumer-key
                     authen-code)]
-    (let [access-token (-> url
-                           (curl/post {:headers {"X-accept" "application/json"}})
-                           :body
-                           (json/parse-string true)
-                           :access_token)]
-      (println access-token))))
+    (-> url
+        (curl/post {:headers {"X-accept" "application/json"}})
+        :body
+        (json/parse-string true)
+        :access_token)))
 
+(defn save-authen-token []
+  "")
+
+(defn token-handler [{:keys [:uri]}]
+  (when (str/starts-with? uri "/")
+    (let [[_ consumer-key request-token] (str/split uri #"/")
+          authen-token (get-authen-token consumer-key request-token)]
+      (save-authen-token authen-token)))
+
+  (when-not (nil? app)
+    (@app :timeout 100)
+    (reset! app nil)
+    (deliver app-promise "Done!")))
 
 (defn login [consumer-key]
-  (let [authen-code (get-authen-code consumer-key)
+  (let [request-token (get-request-token consumer-key)
         authen-link (format
-                     "https://getpocket.com/auth/authorize?request_token=%s&redirect_uri=https://example.com"
-                     authen-code)]
+                     "https://getpocket.com/auth/authorize?request_token=%s&redirect_uri=%s/%s/%s"
+                     request-token
+                     redirect-uri
+                     consumer-key
+                     request-token)]
     (do
       (println "Please authenticate the app through the following link:\n")
       (println authen-link)
-      (println "\nAnd then call `_pocket --setup` to save the authenticated token and you're ready to go.")
-      (get-and-save-authen-token consumer-key authen-code))))
+
+      (reset! app (server/run-server token-handler {:port (:port args)}))
+      (println @app-promise))))
 
 
 
 ;; main
-(def cli-options
-  [[nil "--login" "Login to pocket"]
-   ["-t" "--tag TAG" "Tag name"
-    :default ""]
-   ["-q" "--query QUERY" "Search query"
-    :default ""]
-   ["-h" "--help"]])
-
-(def args
-  (->> cli-options
-      (parse-opts *command-line-args*)
-      :options))
-
 (def consumer-key (check-pocket-consumer-key))
 
 (cond
