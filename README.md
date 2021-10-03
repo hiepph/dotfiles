@@ -109,11 +109,7 @@ Collection of my shortcut and useful scripts.
 
 + `_pocket`: query articles in [Pocket](https://app.getpocket.com/)
 
-  * usage: `_pocket <query>` or `_pocket -q <query> -t <tag>`
-
 + `_gitignore`: download `.gitignore` file
-
-  * usage: `_gitignore python`
 
 
 ## Themes
