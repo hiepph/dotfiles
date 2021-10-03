@@ -1,10 +1,14 @@
 #!/usr/bin/env bb
 
 ;;
+;; Notes:
+;; * Requires `pass` and `env/POCKET_CONSUMER_KEY`
+;; * Access token after Oauth 2 is saved in plain text inside `$HOME/.env/POCKET_ACCESS_TOKEN`
+;;
 ;; Ref:
-;; + Authentication: https://getpocket.com/developer/docs/authentication
-;; + Manage pocket consumer keys: https://getpocket.com/developer/apps/
-;; + API: https://getpocket.com/developer/docs/v3/retrieve
+;; * Authentication: https://getpocket.com/developer/docs/authentication
+;; * Manage pocket consumer keys: https://getpocket.com/developer/apps/
+;; * API: https://getpocket.com/developer/docs/v3/retrieve
 ;;
 
 (require '[babashka.curl :as curl]
