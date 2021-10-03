@@ -1,17 +1,8 @@
 #!/usr/bin/env bb
 
 ;;
-;; Command line helper to query Pocket inventory
-;;
-;; Login: In order to use the app, first you have to login via browser authentication (Oauth 2)
-;; $ _pocket --login
-;;
-;; * ref: https://getpocket.com/developer/docs/authentication
-;;
-;; Example:
-;;
-;;
 ;; Ref:
+;; + Authentication: https://getpocket.com/developer/docs/authentication
 ;; + Manage pocket consumer keys: https://getpocket.com/developer/apps/
 ;; + API: https://getpocket.com/developer/docs/v3/retrieve
 ;;
@@ -23,28 +14,50 @@
          '[clojure.tools.cli :refer [parse-opts]])
 
 (def cli-options
-  [[nil "--login" "Login to pocket"]
-   ["-t" "--tag TAG" "Tag name"
+  [["-t" "--tag TAG" "Tag name"
     :default ""]
    ["-q" "--query QUERY" "Search query"
     :default ""]
    ["-p" "--port" "Port to run _pocket server (default: 10003)"
     :default 10003
-    :parse-fn #(Integer/parseInt %)]
-   ["-h" "--help"]])
+    :parse-fn #(Integer/parseInt %)]])
 
-(def args
-  (->> cli-options
-      (parse-opts *command-line-args*)
-      :options))
+(defn help []
+  (println
+   "USAGE: _pocket list [-q <query>] [-t <tag>]
 
-(def redirect-uri (str "http://localhost:" (:port args)))
+Command line helper to query Pocket inventory
+
+SETUP
+In order to use the app, first you have to login via browser authentication (Oauth 2)
+  $ _pocket login
+
+EXAMPLES
+  get all untagged items:
+    $ _pocket list -t _untagged_
+
+  search all by a query
+    $ _pocket list -q clojure
+
+  search with query and filter by tag:
+    $ _pocket list -q clojure -t clojure"))
+
+(let [{:keys [:arguments :options]}
+      (->> cli-options (parse-opts *command-line-args*))]
+  (when-not (= (count arguments) 1)
+    (help)
+    (System/exit 1))
+  (def subcommand (first arguments))
+  (def opts options))
+
+(def redirect-uri (str "http://localhost:" (:port opts)))
 (defonce app (atom nil))
 (def app-promise (promise))
 
 (def token-dir (format "%s/.env" (System/getenv "HOME")))
 (def access-token-file (format "%s/POCKET_ACCESS_TOKEN" token-dir))
 
+;; TODO: call `pass` instead
 (defn check-pocket-consumer-key []
   (let [consumer-key (System/getenv "POCKET_CONSUMER_KEY")]
     (if consumer-key
@@ -98,27 +111,30 @@
     (deliver app-promise "Done")))
 
 (defn login [consumer-key]
-  (let [request-token (get-request-token consumer-key)
-        authen-link (format
-                     "https://getpocket.com/auth/authorize?request_token=%s&redirect_uri=%s/%s/%s"
-                     request-token
-                     redirect-uri
-                     consumer-key
-                     request-token)]
-    (do
-      (println "Please authenticate the app through the following link:\n")
-      (println authen-link)
+  (if-let [access-token (check-access-token)]
+    (println "You've already logged in.")
 
-      (reset! app (server/run-server token-handler {:port (:port args)}))
-      (println @app-promise))))
+    (let [request-token (get-request-token consumer-key)
+          authen-link (format
+                       "https://getpocket.com/auth/authorize?request_token=%s&redirect_uri=%s/%s/%s"
+                       request-token
+                       redirect-uri
+                       consumer-key
+                       request-token)]
+      (do
+        (println "Please authenticate the app through the following link:\n")
+        (println authen-link)
+
+        (reset! app (server/run-server token-handler {:port (:port opts)}))
+        (println @app-promise)))))
 
 (defn retrieve [consumer-key access-token]
   (def result
     (let [url (format "https://getpocket.com/v3/get?consumer_key=%s&access_token=%s&contentType=article&sort=newest&detailType=simple&tag=%s&search=%s"
                consumer-key
                access-token
-               (:tag args)
-               (:query args))]
+               (:tag opts)
+               (:query opts))]
       (-> url
           curl/get
           :body
@@ -127,7 +143,7 @@
   (do
     (println "ID\tTITLE\tLINK")
     (doseq [item (vals (:list result))]
-      (println (format "%s\t%s\t%s\n"
+      (println (format "%s\t%s\t%s"
                        (:item_id item)
                        (:given_title item)
                        (:given_url item))))))
@@ -137,7 +153,8 @@
 (def consumer-key (check-pocket-consumer-key))
 
 (cond
-  (:login args) (login consumer-key)
-  :else (do
-          (def access-token (check-access-token))
-          (retrieve consumer-key access-token)))
+  (= subcommand "login") (login consumer-key)
+  (= subcommand "list")  (do
+                           (def access-token (check-access-token))
+                           (retrieve consumer-key access-token))
+  :else (help))
