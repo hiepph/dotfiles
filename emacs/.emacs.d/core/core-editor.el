@@ -135,23 +135,24 @@
 ;;
 (use-package evil-escape
   :after evil
-  :diminish
   :config
   (evil-escape-mode))
 
-(use-package evil-magit
-  :after evil
-  :diminish)
-
-
 ;;
 ;; Evil collection
+;; Some pre-keybindings for common Emacs modes
 ;;
 (use-package evil-collection
   :after evil
   :config
   (evil-collection-init 'dired)
   (evil-collection-init 'compile))
+
+(use-package evil-magit
+  :after evil
+  :config
+  (evil-magit-init))
+
 
 ;;
 ;; Surround
@@ -168,6 +169,7 @@
   :config
   (global-evil-visualstar-mode))
 
+
 ;;
 ;; Evil-snipe
 ;;
@@ -175,6 +177,15 @@
   :config
   (evil-snipe-mode +1)
   (setq evil-snipe-scope 'buffer))
+
+
+;;
+;; Evil fringe mark - show markers (e.g. `m m')
+;; ref: https://github.com/Andrew-William-Smith/evil-fringe-mark
+;;
+(use-package evil-fringe-mark
+  :config
+  (global-evil-fringe-mark-mode 1))
 
 
 ;;
@@ -191,12 +202,13 @@
   (setq whitespace-line-column 120)
   (setq whitespace-style '(face trailing tab)))
 
+
 ;;
 ;; Column indicator
 ;;
 (use-package fill-column-indicator
   :config
-  (setq fci-rule-column 120))
+  (setq fci-rule-column 80))
 
 
 ;;
