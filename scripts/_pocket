@@ -32,7 +32,7 @@
 
 (defn help []
   (println
-   "USAGE: _pocket list [-q <query>] [-t <tag>]
+   "USAGE: _pocket [command] [-q <query>] [-t <tag>] [ARGS]
 
 Command line helper to query Pocket inventory
 
@@ -41,14 +41,17 @@ In order to use the app, first you have to login via browser authentication (Oau
   $ _pocket login
 
 EXAMPLES
-  get all untagged items:
+  Get all untagged items:
     $ _pocket list -t _untagged_
 
-  search all by a query
+  Search all by a query
     $ _pocket list -q clojure
 
-  search with query and filter by tag:
-    $ _pocket list -q clojure -t clojure"))
+  Search with query and filter by tag:
+    $ _pocket list -q clojure -t clojure
+
+  Delete item(s):
+    $ _pocket delete id1 id2"))
 
 
 (let [{:keys [:arguments :options]}
@@ -156,8 +159,10 @@ EXAMPLES
                        (:given_url item))))))
 
 (defn delete [consumer-key access-token ids]
+  (when (< (count ids) 1)
+    (help)
+    (System/exit 1))
   (let [actions (->> ids
-                     ;; TODO: [{...} {...}] -> json encoded string to parse into HTML query
                      (map #(assoc {"action" "delete"} "item_id" %))
                      json/generate-string
                      java.net.URLEncoder/encode)
