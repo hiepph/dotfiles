@@ -1,2 +1,0 @@
-# reload the current shell without reopening
-exec $SHELL
