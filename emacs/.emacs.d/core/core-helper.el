@@ -18,13 +18,6 @@
 
 
 ;;
-;; Magit
-;; ref: https://magit.vc/
-;;
-(use-package magit)
-
-
-;;
 ;; Key hints
 ;; ref: https://github.com/justbur/emacs-which-key
 ;;
