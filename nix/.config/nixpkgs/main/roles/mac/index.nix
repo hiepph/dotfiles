@@ -15,7 +15,6 @@ with pkgs;
 
     sessionVariables = {
       "PATH" = "$HOME/scripts:$PATH";
-      "BABASHKA_PRELOADS" = "(require '[babashka.curl :as curl]) (require '[cheshire.core :as json])";
     };
   };
 
