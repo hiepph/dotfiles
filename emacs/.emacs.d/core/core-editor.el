@@ -12,6 +12,7 @@
 (set-default-coding-systems 'utf-8)
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
+
 ;; backwards compatibility as default-buffer-file-coding-system
 ;; is deprecated in 23.2.
 (if (boundp 'buffer-file-coding-system)
@@ -74,7 +75,7 @@
 ;; Automatic indentation offset detection
 ;;
 (use-package dtrt-indent
-  :init
+  :config
   (dtrt-indent-global-mode))
 
 
@@ -83,10 +84,7 @@
 ;;
 ;; Highlights matching parenthesis
 (show-paren-mode 1)
-;; highlight brackets
-;; (setq show-paren-style 'parenthesis)
-;; highlight entire expression
-;; (setq show-paren-style 'expression)
+
 ;; highlight brackets if visible, else entire expression
 (setq show-paren-style 'mixed)
 
@@ -109,15 +107,11 @@
     scheme-mode) . paredit-mode))
 
 
+;;
 ;; Expand region
+;;
 (use-package expand-region)
 
-
-;; parentheses view helper
-;;
-(use-package paren-face
-  :init
-  (paren-face-mode))
 
 ;;
 ;; Evil keybinding
@@ -142,29 +136,13 @@
 (use-package evil-escape
   :after evil
   :diminish
-  :init
+  :config
   (evil-escape-mode))
 
 (use-package evil-magit
   :after evil
   :diminish)
 
-
-;;
-;; Disable mouse
-;; Reduce the annoying event of accidentally touching mouse that activates visual selection mode
-;; ref: https://github.com/purcell/disable-mouse
-;;
-;; (use-package disable-mouse
-;;   :after evil
-;;   :init
-;;   (global-disable-mouse-mode)
-;;   :config
-;;   (mapc #'disable-mouse-in-keymap
-;;         (list evil-motion-state-map
-;;               evil-normal-state-map
-;;               evil-visual-state-map
-;;               evil-insert-state-map)))
 
 ;;
 ;; Evil collection
@@ -175,15 +153,19 @@
   (evil-collection-init 'dired)
   (evil-collection-init 'compile))
 
+;;
 ;; Surround
 ;; ref: https://github.com/emacs-evil/evil-surround
+;;
 (use-package evil-surround
-  :init
+  :config
   (global-evil-surround-mode 1))
 
-;; Search for selected region
+;;
+;; Search for selected region (especially word)
+;;
 (use-package evil-visualstar
-  :init
+  :config
   (global-evil-visualstar-mode))
 
 ;;
@@ -197,191 +179,33 @@
 
 ;;
 ;; Whitespace
+;; ref: https://www.emacswiki.org/emacs/WhiteSpace
 ;;
 (use-package whitespace
   :config
   (global-whitespace-mode t)
   (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-  (setq whitespace-line-column 100)
-  ;; `lines-tail` highlight part of lines that goes beyond ‘whitespace-line-column’ (default: 80)
-  ;; `trailing` highlight trailing white-spaces
-  (setq whitespace-style '(face trailing)))
-(add-hook 'text-mode-hook 'auto-fill-mode)
+  ;; `lines-tail` highlight part of lines that goes beyond ‘whitespace-line-column’
+  ;; `trailing` highlight trailing white spaces
+  (setq whitespace-line-column 120)
+  (setq whitespace-style '(face trailing tab)))
+
+;;
+;; Column indicator
+;;
+(use-package fill-column-indicator
+  :config
+  (setq fci-rule-column 120))
+
 
 ;;
 ;; Commenter
 ;; ref: https://github.com/linktohack/evil-commentary
 ;;
 (use-package evil-commentary
-  :init
+  :config
   (evil-commentary-mode))
-
-
-;;
-;; Compile
-;;
-
-;; show stack trace on error
-;; (setq debug-on-error t)
-(defun ~compile (command)
-  (interactive "M~compile: ")
-  (compile (s-replace "%" (evil-get-register ?% t) command)))
-
-(defun ~run-current-file (f command-map)
-  "Run command map with function f
-f can be: compile, ~acme$, ~acme&, ~acme!"
-  (interactive)
-  (save-buffer)
-
-  (let* ((fname (s-chop-suffix (car (s-match "<.*>" (buffer-name))) (buffer-name)))
-         (suffix (file-name-extension fname))
-         (prog (cdr (assoc suffix command-map))))
-    (if (null prog)
-        (error "Extension is not yet registered")
-      (funcall f (format "%s %s" prog (shell-quote-argument fname))))))
-
-(defvar *compile-command-map* '(("py" . "python")
-                                ("go" . "go run")
-                                ("rb" . "ruby")
-                                ("hs" . "runhaskell")
-                                ("sh" . "bash")))
-
-(defun ~compile-current-file ()
-  "(re)compile the current file. A replacement for compile with automatic filetype recognition.
-e.g. If the current buffer is hello.py, then it'll call python hello.py
-"
-  (interactive)
-  (save-buffer)
-  (~run-current-file 'compile *compile-command-map*))
-
-;; default compile command to empty
-(setq compile-command "")
-
-(defun ~recompile ()
-  "custom recompile "
-  (interactive)
-  (save-buffer)
-  (recompile))
-
-(defvar *test-command-map* '(("py" . "pytest -s -v")
-                             ("go" . "go test")))
-
-(defun ~test-current-file ()
-  "Test current file using 'compile'. Automatic filetype recogntion.
-e.g. If the current buffer is hello.py, then it'll call pytest hello.py
-"
-  (interactive)
-  (~run-current-file 'compile *test-command-map*))
-
-(defun ~test-all-files ()
-  "Test all files in same directory using 'compile'. Automatic filetype recogntion.
-e.g. If the current buffer is hello.py, then it'll call pytest
-"
-  (interactive)
-  (save-buffer)
-
-  (let* ((fname (buffer-name))
-         (suffix (file-name-extension fname))
-         (prog (cdr (assoc suffix *test-command-map*)))
-         (command prog))
-    (if (null prog)
-        (error "Compile command not found. Please check '*<?>-command-map*'")
-      (compile command))))
-
-
-;;
-;; ACME
-;; REF: http://man.cat-v.org/plan_9/1/acme
-;;
-(use-package s)
-
-(defvar record-separator "%")
-
-;; TODO
-(defun ~acme$ (&optional command)
-  "spawn a terminal and execute command
-
-eg:
-$ ls
-"
-  (interactive "M$: ")
-  (let ((open-term "alacritty -e $SHELL -c"))
-    (call-process-shell-command
-     (format "%s '%s; $SHELL -i'" open-term command)
-     nil)))
-
-
-(defun ~acme< (&optional command)
-  "Execute command and pipe stdout to editor
-
-eg:
-< ls
-"
-  (interactive "M<: ")
-  (delete-region (region-beginning)
-                 (region-end))
-  (insert (s-trim-right (shell-command-to-string command))))
-
-
-(defun ~acme| (&optional command)
-  "Pipe input into command line and output stdout to editor"
-  (interactive "M|: ")
-  (let ((inhibit-message t))
-    (shell-command-on-region (region-beginning)
-                             (region-end)
-                             command
-                             ;; output
-                             (current-buffer)
-                             ;; replace?
-                             t
-                             ;; name of error buffer (nil = current-buffer)
-                             nil
-                             ;; show error buffer
-                             0)))
-
-
-;;
-;; Execute text by pattern
-;; WARNING: wand-helper:maybe-uncomment-string
-;; ref: https://github.com/cmpitg/wand
-;; < ls
-;;
-;; (use-package wand
-;;   :config
-;;   (setq wand:*rules*
-;;         (list
-;;          (wand:create-rule :match (rx bol (0+ " ") "&")
-;;                            :capture :after
-;;                            :action #'async-shell-command)
-;;          (wand:create-rule :match (rx bol (0+ " ") "$")
-;;                            :capture :after
-;;                            :action #'~acme$)
-;;          (wand:create-rule :match (rx bol (0+ " ") "<")
-;;                            :capture :after
-;;                            :action #'~acme<)
-;;          (wand:create-rule :match "https?://"
-;;                               :capture :whole
-;;                               :action #'browse-url-firefox))))
-
-
-;;
-;; Buffers
-;;
-(defun ~eval-buffer ()
-  "eval-buffer but with message"
-  (interactive)
-  (eval-buffer)
-  (message "> Eval buffer succeeded"))
-
-
-(defun ~kill-current-buffer ()
-  (interactive)
-  (kill-buffer (current-buffer)))
-
-(defun ~kill-all-buffers ()
-  (interactive)
-  (mapc 'kill-buffer (buffer-list)))
 
 
 ;;
@@ -394,32 +218,21 @@ eg:
 ;; Suppose I selected some text in visual mode, then g-r-I to active multiple cursors
 ;;
 (use-package evil-mc
-  :init
+  :config
   (global-evil-mc-mode))
-
-
-;;
-;; Display mark position in fringe
-;;
-(use-package evil-fringe-mark
-  :init
-  (global-evil-fringe-mark-mode)
-  ;; show special marks
-  ;; (setq-default evil-fringe-mark-show-special t)
-  )
 
 
 ;;
 ;; Flycheck
 ;;
 (use-package flycheck
-  :init (global-flycheck-mode))
+  :config
+  (global-flycheck-mode))
 
 
 ;;
 ;; Flyspell
 ;;
-
 ;; enable for some mode
 (dolist (hook '(markdown-mode-hook git-commit-mode))
     (add-hook hook (lambda () (flyspell-mode 1))))
@@ -450,8 +263,9 @@ eg:
 ;; ref: https://github.com/minad/consult
 ;;
 (use-package consult
-  :init
+  :config
   (fset 'multi-occur #'consult-multi-occur)
+
   ;; :config
   ;; (consult-preview-mode)
   )
@@ -463,7 +277,7 @@ eg:
 ;; Marginalia
 ;;
 (use-package marginalia
-  :init
+  :config
   (marginalia-mode)
   (advice-add
    #'marginalia-cycle :after

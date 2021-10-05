@@ -1,3 +1,5 @@
+(use-package s)
+
 ;;
 ;; dired
 ;; ref: https://github.com/Fuco1/dired-hacks
@@ -222,7 +224,6 @@ Number registers are not needed because it is easier to refer from the `yank-pop
     (find-file (completing-read "Recent files: " files nil t))))
 
 
-
 ;;
 ;; Project management
 ;;
@@ -245,6 +246,143 @@ Number registers are not needed because it is easier to refer from the `yank-pop
 (use-package dumb-jump
   :config
   (add-hook 'xref-backend-functions #'dumb-jump-xref-activate))
+
+
+;;
+;; Compile
+;;
+;; show stack trace on error
+;; (setq debug-on-error t)
+
+(defun ~compile (command)
+  (interactive "M~compile: ")
+  (compile (s-replace "%" (evil-get-register ?% t) command)))
+
+(defun ~run-current-file (f command-map)
+  "Run command map with function f
+f can be: compile, ~acme$, ~acme&, ~acme!"
+  (interactive)
+  (save-buffer)
+
+  (let* ((fname (s-chop-suffix (car (s-match "<.*>" (buffer-name))) (buffer-name)))
+         (suffix (file-name-extension fname))
+         (prog (cdr (assoc suffix command-map))))
+    (if (null prog)
+        (error "Extension is not yet registered")
+      (funcall f (format "%s %s" prog (shell-quote-argument fname))))))
+
+(defvar *compile-command-map* '(("py" . "python")
+                                ("go" . "go run")
+                                ("rb" . "ruby")
+                                ("hs" . "runhaskell")
+                                ("sh" . "bash")))
+
+(defun ~compile-current-file ()
+  "(re)compile the current file. A replacement for compile with automatic filetype recognition.
+e.g. If the current buffer is hello.py, then it'll call python hello.py
+"
+  (interactive)
+  (save-buffer)
+  (~run-current-file 'compile *compile-command-map*))
+
+;; default compile command to empty
+(setq compile-command "")
+
+(defun ~recompile ()
+  "custom recompile "
+  (interactive)
+  (save-buffer)
+  (recompile))
+
+(defvar *test-command-map* '(("py" . "pytest -s -v")
+                             ("go" . "go test")))
+
+(defun ~test-current-file ()
+  "Test current file using 'compile'. Automatic filetype recogntion.
+e.g. If the current buffer is hello.py, then it'll call pytest hello.py
+"
+  (interactive)
+  (~run-current-file 'compile *test-command-map*))
+
+(defun ~test-all-files ()
+  "Test all files in same directory using 'compile'. Automatic filetype recogntion.
+e.g. If the current buffer is hello.py, then it'll call pytest
+"
+  (interactive)
+  (save-buffer)
+
+  (let* ((fname (buffer-name))
+         (suffix (file-name-extension fname))
+         (prog (cdr (assoc suffix *test-command-map*)))
+         (command prog))
+    (if (null prog)
+        (error "Compile command not found. Please check '*<?>-command-map*'")
+      (compile command))))
+
+
+;;
+;; ACME
+;; REF: http://man.cat-v.org/plan_9/1/acme
+;;
+(defun ~acme$ (&optional command)
+  "spawn a terminal and execute command
+
+eg:
+$ ls
+"
+  (interactive "M$: ")
+  (let ((open-term "alacritty -e $SHELL -c"))
+    (call-process-shell-command
+     (format "%s '%s; $SHELL -i'" open-term command)
+     nil)))
+
+
+(defun ~acme< (&optional command)
+  "Execute command and pipe stdout to editor
+
+eg:
+< ls
+"
+  (interactive "M<: ")
+  (delete-region (region-beginning)
+                 (region-end))
+  (insert (s-trim-right (shell-command-to-string command))))
+
+
+(defun ~acme| (&optional command)
+  "Pipe input into command line and output stdout to editor"
+  (interactive "M|: ")
+  (let ((inhibit-message t))
+    (shell-command-on-region (region-beginning)
+                             (region-end)
+                             command
+                             ;; output
+                             (current-buffer)
+                             ;; replace?
+                             t
+                             ;; name of error buffer (nil = current-buffer)
+                             nil
+                             ;; show error buffer
+                             0)))
+
+
+;;
+;; Buffers
+;;
+(defun ~eval-buffer ()
+  "eval-buffer but with message"
+  (interactive)
+  (eval-buffer)
+  (message "> Eval buffer succeeded"))
+
+
+(defun ~kill-current-buffer ()
+  (interactive)
+  (kill-buffer (current-buffer)))
+
+(defun ~kill-all-buffers ()
+  (interactive)
+  (mapc 'kill-buffer (buffer-list)))
 
 
 (provide 'core-helper)
