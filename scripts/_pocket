@@ -1,4 +1,5 @@
 #!/usr/bin/env bb
+; -*-Clojure-*-
 
 ;;
 ;; Notes:
@@ -8,7 +9,9 @@
 ;; Ref:
 ;; * Authentication: https://getpocket.com/developer/docs/authentication
 ;; * Manage pocket consumer keys: https://getpocket.com/developer/apps/
-;; * API: https://getpocket.com/developer/docs/v3/retrieve
+;; * API:
+;;   + https://getpocket.com/developer/docs/v3/retrieve
+;;   + https://getpocket.com/developer/docs/v3/modify
 ;;
 
 (require '[babashka.curl :as curl]
@@ -47,12 +50,14 @@ EXAMPLES
   search with query and filter by tag:
     $ _pocket list -q clojure -t clojure"))
 
+
 (let [{:keys [:arguments :options]}
       (->> cli-options (parse-opts *command-line-args*))]
-  (when-not (= (count arguments) 1)
+  (when (< (count arguments) 1)
     (help)
     (System/exit 1))
   (def subcommand (first arguments))
+  (def subargs (rest arguments))
   (def opts options))
 
 (def redirect-uri (str "http://localhost:" (:port opts)))
@@ -116,22 +121,19 @@ EXAMPLES
     (deliver app-promise "Done")))
 
 (defn login [consumer-key]
-  (if-let [access-token (check-access-token)]
-    (println "You've already logged in.")
+  (let [request-token (get-request-token consumer-key)
+        authen-link (format
+                     "https://getpocket.com/auth/authorize?request_token=%s&redirect_uri=%s/%s/%s"
+                     request-token
+                     redirect-uri
+                     consumer-key
+                     request-token)]
+    (do
+      (println "Please authenticate the app through the following link:\n")
+      (println authen-link)
 
-    (let [request-token (get-request-token consumer-key)
-          authen-link (format
-                       "https://getpocket.com/auth/authorize?request_token=%s&redirect_uri=%s/%s/%s"
-                       request-token
-                       redirect-uri
-                       consumer-key
-                       request-token)]
-      (do
-        (println "Please authenticate the app through the following link:\n")
-        (println authen-link)
-
-        (reset! app (server/run-server token-handler {:port (:port opts)}))
-        (println @app-promise)))))
+      (reset! app (server/run-server token-handler {:port (:port opts)}))
+      (println @app-promise))))
 
 (defn retrieve [consumer-key access-token]
   (def result
@@ -153,6 +155,20 @@ EXAMPLES
                        (:given_title item)
                        (:given_url item))))))
 
+(defn delete [consumer-key access-token ids]
+  (let [actions (->> ids
+                     ;; TODO: [{...} {...}] -> json encoded string to parse into HTML query
+                     (map #(assoc {"action" "delete"} "item_id" %))
+                     json/generate-string
+                     java.net.URLEncoder/encode)
+        url (format "https://getpocket.com/v3/send?consumer_key=%s&access_token=%s&actions=%s"
+                    consumer-key
+                    access-token
+                    actions)]
+    (-> url
+        curl/post
+        :body
+        (json/parse-string true))))
 
 ;; main
 (def consumer-key (check-pocket-consumer-key))
@@ -162,4 +178,7 @@ EXAMPLES
   (= subcommand "list")  (do
                            (def access-token (check-access-token))
                            (retrieve consumer-key access-token))
+  (= subcommand "delete")  (do
+                             (def access-token (check-access-token))
+                             (delete consumer-key access-token subargs))
   :else (help))
