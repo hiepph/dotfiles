@@ -1,11 +1,26 @@
 #!/usr/bin/env bb
+; -*-Clojure-*-
+
 (require '[babashka.curl :as curl])
 
-(if (empty? *command-line-args*) (println "Usage: _gitignore <lang>"))
+(defn help []
+  (println
+   "USAGE: _gitignore <language>
+
+Download .gitignore
+source: https://github.com/github/gitignore
+
+EXAMPLES
+  $ _gitignore python"))
+
+(when-not (= (count *command-line-args*) 1)
+  (help)
+  (System/exit 0))
+
 (let [lang (str/capitalize (first *command-line-args*))]
-  (spit ".gitignore"
-        (:body
-         (curl/get
-          (format
-           "https://raw.githubusercontent.com/github/gitignore/master/%s.gitignore"
-           lang)))))
+  (do (print
+       (:body
+        (curl/get
+         (format
+          "https://raw.githubusercontent.com/github/gitignore/master/%s.gitignore"
+          lang))))))
