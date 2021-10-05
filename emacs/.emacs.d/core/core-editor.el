@@ -152,7 +152,8 @@
 ;; Notes:
 ;;   + this is included inside evil-collection, but somehow it doesn't work,
 ;;     needs further investigation
-(use-package evil-magit)
+(use-package evil-magit
+  :after (evil magit))
 
 ;; Surround
 ;; ref: https://github.com/emacs-evil/evil-surround
@@ -211,7 +212,7 @@
 ;; Column indicator
 ;;
 (use-package fill-column-indicator
-  :config
+  :init
   (setq fci-rule-column 100))
 
 

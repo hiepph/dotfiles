@@ -136,7 +136,7 @@
   ("d" #'direnv-mode "direnv")
   ("f" #'format-mode "format")
   ("i" #'indent-guide-mode "indent")
-  )
+  ("C" #'fci-mode "column"))
 
 (defhydra hydra-dumb-jump (:color blue :columns 4)
   "dumb jump"
