@@ -140,7 +140,7 @@ EXAMPLES
 
 (defn retrieve [consumer-key access-token]
   (def result
-    (let [url (format "https://getpocket.com/v3/get?consumer_key=%s&access_token=%s&contentType=article&sort=newest&detailType=simple&tag=%s&search=%s"
+    (let [url (format "https://getpocket.com/v3/get?consumer_key=%s&access_token=%s&sort=newest&detailType=simple&tag=%s&search=%s"
                consumer-key
                access-token
                (:tag opts)
