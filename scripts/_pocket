@@ -170,10 +170,14 @@ EXAMPLES
                     consumer-key
                     access-token
                     actions)]
-    (-> url
-        curl/post
-        :body
-        (json/parse-string true))))
+    (def status (-> url
+                    curl/post
+                    :body
+                    (json/parse-string true)
+                    :status))
+    (if (= status 1)
+      (println "Done")
+      (println "Error"))))
 
 ;; main
 (def consumer-key (check-pocket-consumer-key))
