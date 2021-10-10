@@ -2,6 +2,7 @@
 
 ![gif](https://www.megghy.com/gif_animate/cartoni_animati/snoopy/70.gif)
 
+
 ## Stow
 
 Mainly I structure my configurations follow their paths starting from
@@ -20,24 +21,42 @@ reproducible configuration.
 
 ### Installation
 
-[nix.dev](https://nix.dev/)
+1. Mac
 
-1. Linux
++ Install `Nix`: https://nix.dev/tutorials/install-nix#macos
 
-*TBD*
++ Install `nix-darwin`: refer [here](https://daiderd.com/nix-darwin/)
 
-2. Mac
+```
+nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz -A installer
+./result/bin/darwin-installer
+```
 
-*TBD*
-
-Symlink for system configuration:
+* Symlink for system configuration:
 
 ```
 nix-shell -p stow --command "stow mac"
 ```
 
+* Build and switch the whole system:
+
+```
+darwin-rebuild switch
+```
+
+2. NixOS
+
+*TBD*
+
+3. Linux
+
+*TBD*
+
+
 ### Home manager
 
+`nixos-rebuild` or `darwin-rebuild` is used for the whole system.
+Home manager is specific for each user.
 
 + Edit `.config/nixpkgs/home.nix` for each local machine, for example:
 
@@ -55,7 +74,6 @@ nix-shell -p stow --command "stow mac"
 
 where, `general.nix`: cross-platform configurations.
 
-*TBD*: roles, users, etc.
 
 + Make change and switch environment:
 
