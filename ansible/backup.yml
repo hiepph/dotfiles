@@ -1,0 +1,14 @@
+- name: Backup Mac
+  hosts: all
+  tags: mac
+  tasks:
+    - name: backup .config
+      cron:
+        name: "Backup {{ item }}"
+        user: hiepph
+        job: /bin/zsh -c "rclone sync ~/{{ item }} --skip-links minio:/mac/{{ item }}"
+        special_time: "hourly"
+      loop:
+        - .config
+        - .ssh
+        - Notes
