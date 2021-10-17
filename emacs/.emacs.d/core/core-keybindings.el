@@ -129,6 +129,7 @@
   ;; on by default
   ("c" #'company-mode "company")
   ("e" #'flycheck-mode "flycheck")
+  ("E" #'global-flycheck-mode "(global) flycheck")
   ("s" #'flyspell-mode "flyspell") ;; on by default in text-mode
   ("p" #'paredit-mode "paredit") ;; on by default in some predefined extensions
 
@@ -136,7 +137,7 @@
   ("d" #'direnv-mode "direnv")
   ("f" #'format-mode "format")
   ("i" #'indent-guide-mode "indent")
-  ("C" #'fci-mode "column"))
+  ("|" #'fci-mode "column"))
 
 (defhydra hydra-dumb-jump (:color blue :columns 4)
   "dumb jump"
