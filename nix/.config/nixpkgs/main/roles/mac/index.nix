@@ -15,6 +15,8 @@ with pkgs;
     };
 
     sessionVariables = {
+      "EDITOR" = "vim";
+      "VISUAL" = "vim";
       "PATH" = "$HOME/scripts:$PATH";
     };
   };
