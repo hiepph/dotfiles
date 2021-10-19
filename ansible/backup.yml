@@ -2,19 +2,16 @@
   hosts: all
   tags: mac
   tasks:
-    - name: Backup home files
+    - name: Backup Mac /Users/hiepph
       cron:
         name: "Backup Home"
         special_time: "daily"
         user: hiepph
-        job: /bin/zsh -c "BORG_PASSPHRASE=$(pass show borg/MacBackup) borg create /Volumes/MacBackup/MacHome::$(date +%Y-%m-%d) ~/Code ~/.config ~/.ssh ~/Courses ~/Projects --exclude '.git/' -v --stats"
+        job: /bin/zsh -c "BORG_PASSPHRASE=$(pass show borg/MacBackup) borg create /Volumes/MacBackup/MacHome::$(date +%Y-%m-%d) ~/Code ~/.config ~/.ssh ~/Courses ~/Projects ~/Vault --exclude '.git/' -v --stats"
 
-    # - name: Backup /etc
-    #   cron:
-    #     name: "Backup /etc/{{ item }}"
-    #     user: hiepph
-    #     job: /bin/zsh -c "rclone sync /etc/{{ item }} minio:/mac/etc/"
-    #     special_time: "daily"
-    #   loop:
-    #     - ansible
-    #     - fstab
+    - name: Backup Mac /etc
+      cron:
+        name: "Backup etc"
+        user: hiepph
+        job: /bin/zsh -c "BORG_PASSPHRASE=$(pass show borg/MacBackup) borg create /Volumes/MacBackup/MacEtc::$(date +%Y-%m-%d) /etc/ansible /etc/fstab -v --stats"
+        special_time: "daily"
