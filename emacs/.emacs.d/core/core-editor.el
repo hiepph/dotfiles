@@ -213,7 +213,7 @@
 ;;
 (use-package fill-column-indicator
   :init
-  (setq fci-rule-column 100))
+  (setq fci-rule-column 80))
 
 
 ;;
