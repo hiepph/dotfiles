@@ -31,7 +31,7 @@
       StartCalendarInterval = [
        { Hour = 12; }
       ];
-      Program = "/Users/hiepph/scripts/_backup";
+      Program = "/Users/hiepph/scripts/_backup_mac";
     };
   };
 
