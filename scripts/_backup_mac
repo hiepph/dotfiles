@@ -18,5 +18,5 @@ if [ -d "$BACKUP_DIR" ]; then
             ~/Projects \
             ~/Vault
 else
-    echo "$BACKUP_DIR doesn't exist. Skip back up."
+    echo "$BACKUP_DIR doesn't exist. Skip back up." 1>&2
 fi
