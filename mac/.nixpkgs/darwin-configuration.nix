@@ -29,7 +29,7 @@
       StandardOutPath = "/tmp/launchd/local.hiepph.backup/log.out";
       StandardErrorPath = "/tmp/launchd/local.hiepph.backup/log.err";
       StartCalendarInterval = [
-       { Hour = 12; }
+       { Hour = 17; }
       ];
       Program = "/Users/hiepph/scripts/_backup_mac";
     };
@@ -48,12 +48,12 @@
   programs.zsh.enable = true;  # default shell on catalina
 
   # Cronjob for garbage collector
-  nix.gc = {
-    user = "hiepph";
-    automatic = true;
-    interval = { Hour = 12; Minute = 0; };
-    options = "--delete-older-than 30d";
-  };
+  # nix.gc = {
+  #   user = "hiepph";
+  #   automatic = true;
+  #   interval = { Hour = 12; Minute = 0; };
+  #   options = "--delete-older-than 30d";
+  # };
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
