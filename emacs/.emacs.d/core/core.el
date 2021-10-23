@@ -2,6 +2,18 @@
 ;; Basic
 ;;
 
+;; Changes all yes/no questions to y/n type
+(fset 'yes-or-no-p 'y-or-n-p)
+
+;; No need for ~ files when editing
+(setq create-lockfiles nil)
+
+;; UTF-8
+(prefer-coding-system 'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+
 ;; Emacs can automatically create backup files. This tells Emacs to
 ;; put all backups in ~/.emacs.d/backups.
 (setq backup-directory-alist `(("." . ,(concat user-emacs-directory
