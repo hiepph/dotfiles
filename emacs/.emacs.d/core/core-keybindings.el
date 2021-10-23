@@ -1,11 +1,10 @@
-;; Principles:
-;; 1. Mnemonic: c(ompile), b(uffers)
-;; 2. Only high frequency tasks are bind to F keys
-;; 3. Brain is for idea, not for storage. Keep yourself a reference!
-;; 4. Reduce complex key sequences to a function
-
-;; References
-;; 1. Spacemacs: https://develop.spacemacs.org/doc/DOCUMENTATION.html
+;;
+;; Key hints
+;; ref: https://github.com/justbur/emacs-which-key
+;;
+(use-package which-key
+  :init
+  (which-key-mode))
 
 ;;
 ;; Menus
@@ -88,13 +87,9 @@
 (defhydra hydra-compile (:columns 4 :exit t)
   "Compile"
   ("c" #'~compile "compile")
-  ("C" #'~compile-current-file "compile current")
   ("r" #'~recompile "recompile")
 
   ("e" #'consult-compile-error "error")
-
-  ("t" #'~test-all-files "test all")
-  ("T" #'~test-current-file "test current")
 
   ("k" #'kill-compilation "kill")
 
@@ -131,7 +126,6 @@
   ("e" #'flycheck-mode "flycheck")
   ("E" #'global-flycheck-mode "(global) flycheck")
   ("s" #'flyspell-mode "flyspell") ;; on by default in text-mode
-  ("p" #'paredit-mode "paredit") ;; on by default in some predefined extensions
 
   ;; off by default
   ("d" #'direnv-mode "direnv")
@@ -167,10 +161,6 @@
   (global-set-key (kbd "<f2>") 'save-buffer)
   (global-set-key (kbd "<f3>") 'find-file)
   (global-set-key (kbd "S-<f3>") 'find-file-other-window)
-  (global-set-key (kbd "<f8>") 'ido-switch-buffer)
-  (global-set-key (kbd "<f9>") '~compile-current-file)
-  (global-set-key (kbd "<f12>") '~test-current-file)
-  (global-set-key (kbd "S-<f12>") '~test-all-files)
 
   (global-set-key (kbd "<escape>") 'evil-normal-state)
 
@@ -208,30 +198,12 @@
   ;;
   ;; Main
   ;;
+
   (general-nmap
     :keymaps 'override
     :state '(normal emacs)
 
     "SPC" 'hydra-main/body)
-
-  ;;
-  ;; dired
-  ;;
-  (general-define-key
-    :keymaps 'dired-mode-map
-
-    [f5] 'revert-buffer
-    "TAB" 'dired-subtree-toggle)
-
-  ;;
-  ;; Languages
-  ;;
-  ;; Haskell
-  (general-define-key
-   :states 'normal
-   :keymaps 'haskell-mode-map
-
-   "O" 'haskell-evil-open-above)
 
   ;; Emacs Lisp
   (general-define-key
@@ -239,18 +211,6 @@
    :keymaps 'emacs-lisp-mode-map
 
    [f5] '~eval-buffer)
-
-
-  ;;
-  ;; Dired
-  ;;
-  (general-define-key
-   :states 'normal
-   :keymaps 'dired-mode-map
-
-   "yy" 'dired-ranger-copy
-   "pp" 'dired-ranger-paste
-   "pP" 'dired-ranger-move)
 
   ;;
   ;; Editor

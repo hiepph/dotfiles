@@ -1,9 +1,3 @@
-;; Principles:
-;; 1. Keep as lean as possible. No fancy bitmap icons or images, just text.
-
-;;
-;; Basic
-;;
 ;; Disable the splash screen (to enable it agin, replace the t with 0)
 (setq inhibit-splash-screen t)
 
@@ -48,29 +42,6 @@
 (use-package mood-line
   :init
   (mood-line-mode 1))
-
-
-;; Some custom packages for theming
-;; These are not enabled by default for the light-weight setup
-
-;;
-;; Themes
-;;
-
-;; (use-package plan9-theme)
-;; (load-theme 'plan9 t)
-
-
-;;
-;; customize current font
-;;
-
-;; (set-face-attribute 'default nil :height 145)
-
-;; (set-frame-font "Input Mono 12" nil t)
-;; (add-to-list 'default-frame-alist
-;;              '(font . "Input Mono 12"))
-
 
 
 (provide 'core-ui)

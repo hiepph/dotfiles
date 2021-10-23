@@ -37,3 +37,4 @@
 (require 'core)
 
 (provide 'init)
+(put 'dired-find-alternate-file 'disabled nil)
