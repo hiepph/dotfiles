@@ -28,6 +28,7 @@ with pkgs;
     indent
 
     # languages
+    leiningen
 
     # utils
     nmap
