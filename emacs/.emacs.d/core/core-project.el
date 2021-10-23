@@ -68,12 +68,7 @@
 
 ;;
 ;; dired
-;; ref: https://github.com/Fuco1/dired-hacks
 ;;
-(use-package dired-filter)
-(use-package dired-open)
-(use-package dired-subtree)
-(use-package dired-narrow)
 
 ;; enable `dired-find-alternate-file' immediately without asking
 (put 'dired-find-alternate-file 'disabled nil)
@@ -84,5 +79,16 @@
 ;; auto hide dot files
 (add-hook 'dired-mode-hook 'dired-filter-by-dot-files)
 
+;; make Dired guess the default target for commands like copy/move
+(setq dired-dwim-target t)
+
+;;
+;; Collection of useful pluins
+;; ref: https://github.com/Fuco1/dired-hacks
+;;
+(use-package dired-filter)
+(use-package dired-open)
+(use-package dired-subtree)
+(use-package dired-narrow)
 
 (provide 'core-project)
