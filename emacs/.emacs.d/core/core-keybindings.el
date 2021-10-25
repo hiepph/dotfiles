@@ -87,7 +87,7 @@
 (defhydra hydra-compile (:columns 4 :exit t)
   "Compile"
   ("c" #'~compile "compile")
-  ("r" #'~recompile "recompile")
+  ("r" #'recompile "recompile")
 
   ("e" #'consult-compile-error "error")
 
@@ -160,18 +160,13 @@
   ;;
   (global-set-key (kbd "<f2>") 'save-buffer)
   (global-set-key (kbd "<f3>") 'find-file)
-  (global-set-key (kbd "S-<f3>") 'find-file-other-window)
 
   (global-set-key (kbd "<escape>") 'evil-normal-state)
 
   ;;
   ;; Alt combination
   ;;
-  (global-set-key (kbd "M-<return>") 'wand:execute)
   (global-set-key (kbd "M-&") 'async-shell-command)
-  (global-set-key (kbd "M-|") '~acme|)
-  (global-set-key (kbd "M-$") '~acme$)
-  (global-set-key (kbd "M-<") '~acme<)
 
   (global-set-key (kbd "M-1") 'eyebrowse-switch-to-window-config-1)
   (global-set-key (kbd "M-2") 'eyebrowse-switch-to-window-config-2)
@@ -198,7 +193,6 @@
   ;;
   ;; Main
   ;;
-
   (general-nmap
     :keymaps 'override
     :state '(normal emacs)
@@ -215,6 +209,7 @@
   ;;
   ;; Editor
   ;;
+
   ;; company
   (general-define-key
    :keymaps 'company-active-map
