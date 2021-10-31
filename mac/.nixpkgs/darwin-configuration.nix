@@ -29,7 +29,7 @@
       StandardOutPath = "/tmp/launchd/local.hiepph.backup/log.out";
       StandardErrorPath = "/tmp/launchd/local.hiepph.backup/log.err";
       StartCalendarInterval = [
-       { Hour = 17; }
+       { Hour = 22; }
       ];
       Program = "/Users/hiepph/scripts/_backup_mac";
     };
