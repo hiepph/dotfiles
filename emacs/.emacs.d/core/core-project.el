@@ -25,6 +25,9 @@
 ;; Enable recursive minibuffer
 (setq enable-recursive-minibuffers t)
 
+;; auto truncate buffers at 1024 lines
+(add-hook 'comint-output-filter-functions #'comint-truncate-buffer)
+
 
 ;;
 ;; Recent files
