@@ -11,7 +11,7 @@ with pkgs;
 
     shellAliases = {
       "octave" = "/Applications/Octave-6.2.0.app/Contents/Resources/usr/Cellar/octave-octave-app@6.2.0/6.2.0/bin/octave";
-      "julia" = "docker run --rm -it julia:1.7.0";
+      "LTspice" = "/Applications/LTspice.app/Contents/MacOS/LTspice";
     };
 
     sessionVariables = {
@@ -29,6 +29,7 @@ with pkgs;
 
     # languages
     leiningen
+    (callPackage ./julia {})
 
     # utils
     nmap
