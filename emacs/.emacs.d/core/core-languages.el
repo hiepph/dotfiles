@@ -5,7 +5,6 @@
 ;; (setq inferior-lisp-program "sbcl")
 
 
-
 ;; Clojure
 (use-package cider)
 
@@ -15,8 +14,9 @@
 ;; markdown
 (use-package markdown-mode)
 
-;; ugly code font problem
-;; (set-face-attribute 'markdown-code-face nil :font "Hack")
+;; julia
+(use-package julia-mode)
+
 
 ;; Python
 ;;
