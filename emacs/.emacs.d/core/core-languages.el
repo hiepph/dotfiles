@@ -78,11 +78,22 @@
 ;; Yaml
 (use-package yaml-mode)
 
+;;
 ;; Org-mode
+;;
 (use-package org
   :init
   (setq org-log-done 'time)
-  (add-hook 'org-mode-hook 'turn-on-font-lock)
+
+  ;; hide emphasis (WYSIWYG)
+  (setq org-hide-emphasis-markers t)
+
+  ;; show items in list with circular bullet
+  (font-lock-add-keywords
+   'org-mode
+   '(("^ +\\([-+*]\\) "
+      (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
+
   ;; show image in org babel
   (add-hook 'org-babel-after-execute-hook 'org-display-inline-images 'append)
 
@@ -91,6 +102,7 @@
 
   ;; Show syntax highlighting per language native mode in *.org
   (setq org-src-fontify-natively t)
+
   ;; For languages with significant whitespace like Python:
   (setq org-src-preserve-indentation t)
 
@@ -107,12 +119,21 @@
      (ruby       . t))
    ))
 
-(require 'org-tempo)
-(use-package org-bullets
-  :config
-  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
+(require 'org-tempo)
 (use-package ob-async)
+
+;; Beautify heading lists
+;; ref: https://github.com/sabof/org-bullets
+(use-package org-bullets
+  :hook
+  (org-mode . org-bullets-mode))
+
+;; Make editing list in insert mode easier
+;; ref: https://github.com/calvinwyoung/org-autolist
+;; (use-package org-autolist
+;;   :hook
+;;   (org-mode . org-autolist-mode))
 
 
 ;;
