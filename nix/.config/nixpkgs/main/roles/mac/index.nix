@@ -35,6 +35,7 @@ with pkgs;
     nmap
     babashka # interpreter for Clojure scripting
     bat
+    pandoc
 
     # backup
     borgbackup
