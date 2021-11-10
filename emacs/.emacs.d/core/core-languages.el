@@ -131,9 +131,9 @@
 
 ;; Make editing list in insert mode easier
 ;; ref: https://github.com/calvinwyoung/org-autolist
-;; (use-package org-autolist
-;;   :hook
-;;   (org-mode . org-autolist-mode))
+(use-package org-autolist
+  :hook
+  (org-mode . org-autolist-mode))
 
 
 ;;
