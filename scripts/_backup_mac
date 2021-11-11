@@ -3,7 +3,7 @@
 # Note: borg create --stats output to stderr
 
 BACKUP_DIR=/Volumes/MacBackup/MacHome
-BACKUP_ID=$(date +%Y-%m-%d)
+BACKUP_ID=$(date +%Y-%m-%d.%s)
 
 echo "\n***\nBackup $BACKUP_ID\n" 1>&2
 
