@@ -23,6 +23,10 @@
 ;; replace highlight text with typing action
 (delete-selection-mode 1)
 
+;; Set default directory when open
+(setq default-directory "~/")
+
+
 ;;
 ;; Packages
 ;;
