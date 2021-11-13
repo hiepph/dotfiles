@@ -124,15 +124,19 @@
 (defhydra hydra-toggle (:columns 4 :exit t)
   ;; on by default
   ("c" #'company-mode "company")
+  ("C" #'global-company-mode "company (global)")
   ("e" #'flycheck-mode "flycheck")
-  ("E" #'global-flycheck-mode "(global) flycheck")
+  ("E" #'global-flycheck-mode "flycheck (global)")
+
   ("s" #'flyspell-mode "flyspell") ;; on by default in text-mode
 
   ;; off by default
   ("d" #'direnv-mode "direnv")
-  ("f" #'format-mode "format")
+  ("F" #'format-mode "format (global)")
   ("i" #'indent-guide-mode "indent")
-  ("|" #'fci-mode "column"))
+  ("I" #'indent-guide-global-mode "indent (global)")
+  ("|" #'fci-mode "column")
+  ("\\" #'fci-global-mode "column (global)"))
 
 (defhydra hydra-dumb-jump (:color blue :columns 4)
   "dumb jump"

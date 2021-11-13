@@ -23,8 +23,11 @@
 ;; Enable transient mark mode
 (transient-mark-mode 1)
 
+;;
 ;; Show column
+;;
 (setq column-number-mode t)
+(define-globalized-minor-mode fci-global-mode fci-mode (lambda () (fci-mode 1)))
 
 ;;
 ;; Indent line
@@ -32,9 +35,15 @@
 ;;
 (use-package indent-guide)
 
-
 ;; Use system font by default
 (setq font-use-system-font t)
+
+;; Transparent title bar (e.g. for MacOS)
+(add-to-list
+  'default-frame-alist'(ns-transparent-titlebar . t))
+
+(add-to-list
+  'default-frame-alist'(ns-appearance . light))
 
 ;;
 ;; Mode line
@@ -43,5 +52,9 @@
   :init
   (mood-line-mode 1))
 
+;; Enable variable pitch mode will help rendering mixed fonts
+(add-hook 'text-mode-hook
+          (lambda ()
+            (variable-pitch-mode 1)))
 
 (provide 'core-ui)
