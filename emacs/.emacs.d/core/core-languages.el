@@ -18,8 +18,10 @@
 (use-package julia-mode)
 
 
+;;
 ;; Python
 ;;
+
 ;; using autopep8 for auto-formatting python
 ;; refer: https://github.com/hhatto/autopep8
 ;;
@@ -30,8 +32,10 @@
     (let ((fname (buffer-file-name)))
       (shell-command (format "autopep8 --in-place --aggressive %s" fname) nil))))
 
+:;
 ;; C
 ;;
+
 ;; autoformat C code using GNU's `indent`
 ;; refer: https://www.gnu.org/software/indent/manual/indent.html
 ;;
@@ -119,7 +123,6 @@
      (ruby       . t))
    ))
 
-
 (require 'org-tempo)
 (use-package ob-async)
 
@@ -134,7 +137,6 @@
 (use-package org-autolist
   :hook
   (org-mode . org-autolist-mode))
-
 
 ;;
 ;; Custom
