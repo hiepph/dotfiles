@@ -10,7 +10,6 @@ with pkgs;
     };
 
     shellAliases = {
-      "octave" = "/Applications/Octave-6.2.0.app/Contents/Resources/usr/Cellar/octave-octave-app@6.2.0/6.2.0/bin/octave";
       "LTspice" = "/Applications/LTspice.app/Contents/MacOS/LTspice";
     };
 
@@ -30,6 +29,8 @@ with pkgs;
     # languages
     leiningen
     (callPackage ./julia {})
+    go
+    goimports
 
     # utils
     nmap
