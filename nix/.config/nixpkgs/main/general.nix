@@ -31,7 +31,6 @@ in {
 
     # utils
     jq
-    ripgrep
     stow
     fzf
 
