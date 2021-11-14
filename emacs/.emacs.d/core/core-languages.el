@@ -110,6 +110,12 @@
   ;; For languages with significant whitespace like Python:
   (setq org-src-preserve-indentation t)
 
+  ;; Turn on image by default
+  (setq org-startup-with-inline-images t)
+
+  ;; Don't display full width of the image
+  (setq org-image-actual-width nil)
+
   :config
   (setq org-confirm-babel-evaluate nil
         org-src-fontify-natively t
