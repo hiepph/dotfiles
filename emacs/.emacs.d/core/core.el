@@ -26,6 +26,9 @@
 ;; Set default directory when open
 (setq default-directory "~/")
 
+;; Set *scratch* mode default to fundamental
+(setq initial-major-mode 'fundamental-mode)
+
 
 ;;
 ;; Packages
