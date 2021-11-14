@@ -135,8 +135,8 @@
   ("F" #'format-mode "format (global)")
   ("i" #'indent-guide-mode "indent")
   ("I" #'indent-guide-global-mode "indent (global)")
-  ("|" #'fci-mode "column")
-  ("\\" #'fci-global-mode "column (global)"))
+  ("\\" #'fci-mode "column")
+  ("|" #'fci-global-mode "column (global)"))
 
 (defhydra hydra-dumb-jump (:color blue :columns 4)
   "dumb jump"
