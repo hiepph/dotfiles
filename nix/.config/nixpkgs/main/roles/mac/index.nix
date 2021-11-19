@@ -33,6 +33,7 @@ with pkgs;
     goimports
 
     # utils
+    (callPackage ./ripgrep {})
     nmap
     babashka # interpreter for Clojure scripting
     bat
