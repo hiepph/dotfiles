@@ -126,10 +126,23 @@
    '((shell      . t)
      (emacs-lisp . t)
      (python     . t)
-     (ruby       . t))
-   ))
+     (ruby       . t)))
 
+  :hook
+  ;; remove '<' autopair
+  (org-mode . (lambda ()
+                (setq-local electric-pair-inhibit-predicate
+                            `(lambda (c)
+                               (if (char-equal c ?<)
+                                   t
+                                 (,electric-pair-inhibit-predicate c)))))))
+
+;;
+;; Expand snippets defined in ~org-structure-template-alist~
+;; e.g. <s TAB expands to ~#+begin_src~
+;;
 (require 'org-tempo)
+
 (use-package ob-async)
 
 ;; Beautify heading lists
