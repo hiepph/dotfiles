@@ -43,14 +43,14 @@
   ;; kill-ring
   ("y" #'consult-yank-pop "yank pop")
 
-  ;; ripgrep
   ("/" #'~ripgrep "ripgrep")
 
   ;; dumb-jump
   ("j" #'hydra-dumb-jump/body "jump")
 
-  ;; format
-  ("t" #'hydra-toggle/body "toggle"))
+  ("t" #'hydra-toggle/body "toggle")
+
+  ("o" #'hydra-org/body "org"))
 
 (defhydra hydra-projectile (:columns 4 :exit t)
   "Projectile"
@@ -152,6 +152,12 @@
   ("l" #'magit-log-buffer-file "log history")
   ("d" #'magit-diff-buffer-file "diff"))
 
+(defhydra hydra-org (:color blue :columns 4)
+  "Org"
+  ("," #'org-insert-structure-template "template")
+  ("c" #'org-ctrl-c-ctrl-c "execute")
+  ("'" #'org-edit-special "edit"))
+
 ;;
 ;; general (leader keys)
 ;; ref: https://github.com/noctuid/general.el/
@@ -201,21 +207,19 @@
   (general-nmap
     :keymaps 'override
     :state '(normal emacs)
-
     "SPC" 'hydra-main/body)
 
+  ;;
   ;; Emacs Lisp
+  ;;
   (general-define-key
    :states 'normal
    :keymaps 'emacs-lisp-mode-map
-
    [f5] '~eval-buffer)
 
   ;;
-  ;; Editor
-  ;;
-
   ;; company
+  ;;
   (general-define-key
    :keymaps 'company-active-map
    "C-n" 'company-select-next-or-abort
@@ -225,27 +229,35 @@
    :keymaps 'company-mode-map
    "C-/" 'company-complete)
 
+  ;;
   ;; tags
+  ;;
   (general-define-key
    :states 'normal
    :keymaps 'xref--xref-buffer-mode-map
    "q" 'quit-window
    "RET" 'xref-goto-xref)
 
+  ;;
   ;; expand-region
+  ;;
   (general-define-key
    :states 'visual
    :keymaps 'override
    "+" 'er/expand-region
    "-" 'er/contract-region)
 
+  ;;
   ;; Undo/Redo
+  ;;
   (general-define-key
    :states 'normal
    "u" 'undo-fu-only-undo
    "C-r" 'undo-fu-only-redo)
 
+  ;;
   ;; dumb-jump
+  ;;
   (general-define-key
    :states 'normal
    ;; (?) 'dumb-jump-back
