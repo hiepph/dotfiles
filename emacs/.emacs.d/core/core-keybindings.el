@@ -249,7 +249,7 @@
    "-" 'er/contract-region
    "f" 'er/mark-defun
    "s" 'er/mark-symbol
-   "l" 'er/mark-url
+   "u" 'er/mark-url
    "c" 'er/mark-comment)
 
   ;;
