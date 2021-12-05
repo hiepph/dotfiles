@@ -154,6 +154,7 @@
 
 (defhydra hydra-org (:color blue :columns 4)
   "Org"
+  ("l" #'org-insert-link "link")
   ("," #'org-insert-structure-template "template")
   ("c" #'org-ctrl-c-ctrl-c "execute")
   ("'" #'org-edit-special "edit"))
@@ -245,7 +246,11 @@
    :states 'visual
    :keymaps 'override
    "+" 'er/expand-region
-   "-" 'er/contract-region)
+   "-" 'er/contract-region
+   "f" 'er/mark-defun
+   "s" 'er/mark-symbol
+   "l" 'er/mark-url
+   "c" 'er/mark-comment)
 
   ;;
   ;; Undo/Redo

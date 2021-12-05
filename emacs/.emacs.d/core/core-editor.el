@@ -58,6 +58,7 @@
 
 ;;
 ;; Expand region
+;; ref: https://github.com/magnars/expand-region.el
 ;;
 (use-package expand-region)
 
