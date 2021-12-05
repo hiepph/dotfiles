@@ -48,9 +48,7 @@
   ;; dumb-jump
   ("j" #'hydra-dumb-jump/body "jump")
 
-  ("t" #'hydra-toggle/body "toggle")
-
-  ("o" #'hydra-org/body "org"))
+  ("t" #'hydra-toggle/body "toggle"))
 
 (defhydra hydra-projectile (:columns 4 :exit t)
   "Projectile"
@@ -159,6 +157,15 @@
   ("c" #'org-ctrl-c-ctrl-c "execute")
   ("'" #'org-edit-special "edit"))
 
+(defhydra hydra-cider (:color blue :columns 4)
+  "Cider"
+  ("x" #'cider-jack-in "jack in")
+  ("d" #'cider-docview-clojuredocs "docs")
+  ("c" #'cider-eval-defun-at-point "eval at point")
+  ("C" #'cider-eval-defun-up-to-point "eval up to point")
+  ("t" #'cider-toggle-trace-var "trace var")
+  ("i" #'cider-inspect "inspect"))
+
 ;;
 ;; general (leader keys)
 ;; ref: https://github.com/noctuid/general.el/
@@ -209,6 +216,22 @@
     :keymaps 'override
     :state '(normal emacs)
     "SPC" 'hydra-main/body)
+
+  ;;
+  ;; Org mode
+  ;;
+  (general-nmap
+   :keymaps 'org-mode-map
+   :states 'normal
+   "," 'hydra-org/body)
+
+  ;;
+  ;; Cider (Clojure)
+  ;;
+  (general-nmap
+    :keyamps 'cider-mode-map
+    :states 'normal
+    "," 'hydra-cider/body)
 
   ;;
   ;; Emacs Lisp
