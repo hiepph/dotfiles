@@ -27,7 +27,7 @@ with pkgs;
     indent
 
     # languages
-    leiningen
+    boot # clojure build tool
     (callPackage ./julia {})
     go
     goimports

@@ -6,7 +6,13 @@
 
 
 ;; Clojure
-(use-package cider)
+(use-package cider
+  :config
+  ;; disable warning when jacking-in outside a project
+  (setq cider-allow-jack-in-without-project t)
+
+  ;; Make cider use ~boot~ by default
+  (setq cider-jack-in-default 'boot))
 
 ;; Racket
 (use-package racket-mode)
