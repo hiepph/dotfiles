@@ -41,7 +41,7 @@
   ("m" #'~consult-mark "marks")
 
   ;; kill-ring
-  ("y" #'consult-yank-pop "yank pop")
+  ("y" #'consult-yank-pop "yank")
 
   ("/" #'~ripgrep "ripgrep")
 
@@ -160,11 +160,14 @@
 (defhydra hydra-cider (:color blue :columns 4)
   "Cider"
   ("x" #'cider-jack-in "jack in")
-  ("d" #'cider-docview-clojuredocs "docs")
+  ("d" #'cider-clojuredocs "docs")
   ("c" #'cider-eval-defun-at-point "eval at point")
   ("C" #'cider-eval-defun-up-to-point "eval up to point")
+  ("f" #'cider-eval-file "eval file")
   ("t" #'cider-toggle-trace-var "trace var")
-  ("i" #'cider-inspect "inspect"))
+  ("i" #'cider-inspect-defun-at-point "inspect")
+  ("p" #'cider-pprint-eval-defun-at-point "print")
+  ("P" #'cider-pprint-eval-defun-to-comment "print to comment"))
 
 ;;
 ;; general (leader keys)
