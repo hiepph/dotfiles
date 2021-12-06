@@ -159,7 +159,7 @@
 
 (defhydra hydra-cider (:color blue :columns 4)
   "Cider"
-  ("x" #'cider-jack-in "jack in")
+  ("j" #'cider-jack-in "jack in")
   ("d" #'cider-clojuredocs "docs")
   ("c" #'cider-eval-defun-at-point "eval at point")
   ("C" #'cider-eval-defun-up-to-point "eval up to point")
@@ -167,7 +167,8 @@
   ("t" #'cider-toggle-trace-var "trace var")
   ("i" #'cider-inspect-defun-at-point "inspect")
   ("p" #'cider-pprint-eval-defun-at-point "print")
-  ("P" #'cider-pprint-eval-defun-to-comment "print to comment"))
+  ("P" #'cider-pprint-eval-defun-to-comment "print to comment")
+  ("q" #'cider-quit "quit"))
 
 ;;
 ;; general (leader keys)
