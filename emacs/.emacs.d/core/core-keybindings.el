@@ -11,7 +11,7 @@
 ;;
 (use-package hydra)
 
-(defhydra hydra-main (:columns 4 :exit t)
+(defhydra hydra-main (:columns 7 :exit t)
   "Main"
   ;; Commands
   ("x" #'execute-extended-command "M-x")
@@ -50,7 +50,7 @@
 
   ("t" #'hydra-toggle/body "toggle"))
 
-(defhydra hydra-projectile (:columns 4 :exit t)
+(defhydra hydra-projectile (:columns 7 :exit t)
   "Projectile"
   ("p" #'projectile-switch-project "switch")
 
@@ -74,7 +74,7 @@
 
   ("q" nil "Cancel" :color blue))
 
-(defhydra hydra-buffers (:columns 4 :exit t)
+(defhydra hydra-buffers (:columns 7 :exit t)
   "Buffers"
   ("f" #'find-file "find")
   ("b" #'consult-buffer "buffers")
@@ -83,7 +83,7 @@
   ("k" #'~kill-current-buffer "kill current")
   ("K" #'~kill-all-buffers "kill all"))
 
-(defhydra hydra-compile (:columns 4 :exit t)
+(defhydra hydra-compile (:columns 7 :exit t)
   "Compile"
   ("c" #'~compile "compile")
   ("r" #'recompile "recompile")
@@ -95,7 +95,7 @@
   ("!" #'shell-command "cmd")
   ("&" #'async-shell-command "async cmd"))
 
-(defhydra hydra-error (:columns 4 :exit t)
+(defhydra hydra-error (:columns 7 :exit t)
   "Error handling "
   ("c" #'consult-flycheck "consult")
 
@@ -109,7 +109,7 @@
   ("s" #'flycheck-verify-setup "verify")
   ("t" #'flycheck-mode "toggle"))
 
-(defhydra hydra-workspace (:columns 4 :exit t)
+(defhydra hydra-workspace (:columns 7 :exit t)
   "Workspaces"
   ("c" #'eyebrowse-create-window-config "create")
   ("n" #'eyebrowse-next-window-config "next")
@@ -119,7 +119,7 @@
   ("'" #'eyebrowse-last-window-config "last")
   ("," #'eyebrowse-rename-window-config "rename"))
 
-(defhydra hydra-toggle (:columns 4 :exit t)
+(defhydra hydra-toggle (:columns 7 :exit t)
   ;; on by default
   ("c" #'company-mode "company")
   ("C" #'global-company-mode "company (global)")
@@ -136,7 +136,7 @@
   ("\\" #'fci-mode "column")
   ("|" #'fci-global-mode "column (global)"))
 
-(defhydra hydra-dumb-jump (:color blue :columns 4)
+(defhydra hydra-dumb-jump (:color blue :columns 7)
   "dumb jump"
   ("j" #'dumb-jump-go "go")
   ("o" #'dumb-jump-go-other-window "other window")
@@ -144,20 +144,27 @@
   ("l" #'dumb-jump-quick-look "quick look")
   ("b" #'dumb-jump-back "back"))
 
-(defhydra hydra-magit (:color blue :columns 4)
+(defhydra hydra-magit (:color blue :columns 7)
   "Magit"
   ("?" #'magit-dispatch "help")
   ("l" #'magit-log-buffer-file "log history")
   ("d" #'magit-diff-buffer-file "diff"))
 
-(defhydra hydra-org (:color blue :columns 4)
+(defhydra hydra-org (:color blue :columns 7)
   "Org"
+  ("h" #'org-insert-heading "heading")
   ("l" #'org-insert-link "link")
   ("," #'org-insert-structure-template "template")
   ("c" #'org-ctrl-c-ctrl-c "execute")
-  ("'" #'org-edit-special "edit"))
+  ("'" #'org-edit-special "edit")
 
-(defhydra hydra-cider (:color blue :columns 4)
+  ("t" #'hydra-org-toggle/body "toggle"))
+
+(defhydra hydra-org-toggle (:color blue :columns 4)
+  ("h" #'org-toggle-heading "heading")
+  ("l" #'org-toggle-item "list"))
+
+(defhydra hydra-cider (:color blue :columns 7)
   "Cider"
   ("j" #'cider-jack-in "jack in")
   ("d" #'cider-clojuredocs "docs")
@@ -167,7 +174,9 @@
   ("x" #'cider-interrupt "interrupt")
   ("f" #'cider-eval-file "eval file")
   ("t" #'cider-toggle-trace-var "trace var")
-  ("i" #'cider-inspect-defun-at-point "inspect")
+  ("i i" #'cider-inspect-defun-at-point "inspect")
+  ("i n" #'cider-inspector-next-page "inspect next page")
+  ("i p" #'cider-inspector-prev-page "inspect prev page")
   ("p" #'cider-pprint-eval-defun-at-point "print")
   ("P" #'cider-pprint-eval-defun-to-comment "print to comment")
   ("q" #'cider-quit "quit"))
@@ -178,7 +187,13 @@
 ;;
 (use-package general
   :config
+  ;;
+  ;; Evil
+  ;;
   (general-evil-setup)
+
+  ;; escape to normal-state even when in ~emacs-state~
+  (define-key evil-emacs-state-map [escape] 'evil-normal-state)
 
   ;;
   ;; Frequent tasks
@@ -235,7 +250,7 @@
   ;; Cider (Clojure)
   ;;
   (general-nmap
-    :keyamps 'cider-mode-map
+    :keymaps 'cider-mode-map
     :states 'normal
     "," 'hydra-cider/body)
 
