@@ -7,26 +7,35 @@ import os
 parser = argparse.ArgumentParser(description="""Rename file(s) easily.
 Select by RegEx captured group and output with string format.
 
-EXAMPLES
+EXAMPLES:
 Add leading zeros:
-$ _rename --source '(\\d+)' --dest '%02d' 1.txt
+$ _rename --regex '(\\d+)' --format '%02d' 1.txt
 #=> 01.txt
 
+Dry run without affecting your files:
+$ _rename --regex '(\\d+)' --format '%02d' 1.txt --dry-run
+
 Add leading zeros in batch:
-$ ls *.txt | _rename --source '(\\d+)' --dest '%02d'
+$ ls *.txt | _rename -e '(\\d+)' -f '%02d'
+
 
 Change extensions: #TODO
 """,
                                  formatter_class=argparse.RawTextHelpFormatter)
-parser.add_argument("-s",
-                    "--source",
+parser.add_argument("-e",
+                    "--regex",
                     required=True,
                     help="Regex used for extracting group from source filename")
 
-parser.add_argument("-d",
-                    "--dest",
+parser.add_argument("-f",
+                    "--format",
                     required=True,
                     help="Formatting string used for renamed group in filename")
+
+parser.add_argument("-d",
+                    "--dry-run",
+                    action='store_true',
+                    help="""See how command affects your file without executing it""")
 
 
 parser.add_argument("filename",
@@ -49,18 +58,24 @@ def format(m, style) -> str:
     return style % captured
 
 
-def convert(filename):
+def convert(filename, dry_run=False):
     """Do the conversion for one file.
     """
     if not os.path.isfile(filename):
         sys.stderr.write("ERROR: {} not found.".format(filename))
         sys.exit(1)
-    new_filename = re.sub(args.source, lambda m: format(m, args.dest), filename)
-    os.rename(filename, new_filename)
+    new_filename = re.sub(args.regex, lambda m: format(m, args.format), filename)
+    if dry_run:
+        print("{} -> {}".format(filename, new_filename))
+    else:
+        os.rename(filename, new_filename)
 
+
+if args.dry_run:
+    print("DRY RUN:")
 
 if args.filename:
-    convert(args.filename)
+    convert(args.filename, args.dry_run)
 else:
     for filename in sys.stdin:
-        convert(filename.strip())
+        convert(filename.strip(), args.dry_run)
