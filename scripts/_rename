@@ -1,0 +1,66 @@
+#!/usr/bin/env python
+import sys
+import argparse
+import re
+import os
+
+parser = argparse.ArgumentParser(description="""Rename file(s) easily.
+Select by RegEx captured group and output with string format.
+
+EXAMPLES
+Add leading zeros:
+$ _rename --source '(\\d+)' --dest '%02d' 1.txt
+#=> 01.txt
+
+Add leading zeros in batch:
+$ ls *.txt | _rename --source '(\\d+)' --dest '%02d'
+
+Change extensions: #TODO
+""",
+                                 formatter_class=argparse.RawTextHelpFormatter)
+parser.add_argument("-s",
+                    "--source",
+                    required=True,
+                    help="Regex used for extracting from source filename")
+
+parser.add_argument("-d",
+                    "--dest",
+                    required=True,
+                    help="Formatting string used for renamed filename")
+
+
+parser.add_argument("filename",
+                    nargs='?',
+                    type=str,
+                    help="File name")
+
+args = parser.parse_args()
+
+
+def format(m, style) -> str:
+    """Format captured group provided a format string.
+    It naively figures out the captured group's type to do conversion.
+    """
+    captured = m.group(0)
+    if style[-1] == 'd':
+        captured = int(captured)
+    elif style[-1] == 'f':
+        captured = float(captured)
+    return style % captured
+
+
+def convert(filename):
+    """Do the conversion for one file.
+    """
+    if not os.path.isfile(filename):
+        sys.stderr.write("ERROR: {} not found.".format(filename))
+        sys.exit(1)
+    new_filename = re.sub(args.source, lambda m: format(m, args.dest), filename)
+    os.rename(filename, new_filename)
+
+
+if args.filename:
+    convert(args.filename)
+else:
+    for filename in sys.stdin:
+        convert(filename.strip())
