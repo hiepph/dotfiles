@@ -11,7 +11,7 @@
 ;;
 (use-package hydra)
 
-(defhydra hydra-main (:columns 7 :exit t)
+(defhydra hydra-main (:columns 4 :exit t)
   "Main"
   ;; Commands
   ("x" #'execute-extended-command "M-x")
@@ -50,7 +50,7 @@
 
   ("t" #'hydra-toggle/body "toggle"))
 
-(defhydra hydra-projectile (:columns 7 :exit t)
+(defhydra hydra-projectile (:columns 4 :exit t)
   "Projectile"
   ("p" #'projectile-switch-project "switch")
 
@@ -74,7 +74,7 @@
 
   ("q" nil "Cancel" :color blue))
 
-(defhydra hydra-buffers (:columns 7 :exit t)
+(defhydra hydra-buffers (:columns 4 :exit t)
   "Buffers"
   ("f" #'find-file "find")
   ("b" #'consult-buffer "buffers")
@@ -83,7 +83,7 @@
   ("k" #'~kill-current-buffer "kill current")
   ("K" #'~kill-all-buffers "kill all"))
 
-(defhydra hydra-compile (:columns 7 :exit t)
+(defhydra hydra-compile (:columns 4 :exit t)
   "Compile"
   ("c" #'~compile "compile")
   ("r" #'recompile "recompile")
@@ -95,7 +95,7 @@
   ("!" #'shell-command "cmd")
   ("&" #'async-shell-command "async cmd"))
 
-(defhydra hydra-error (:columns 7 :exit t)
+(defhydra hydra-error (:columns 4 :exit t)
   "Error handling "
   ("c" #'consult-flycheck "consult")
 
@@ -109,7 +109,7 @@
   ("s" #'flycheck-verify-setup "verify")
   ("t" #'flycheck-mode "toggle"))
 
-(defhydra hydra-workspace (:columns 7 :exit t)
+(defhydra hydra-workspace (:columns 4 :exit t)
   "Workspaces"
   ("c" #'eyebrowse-create-window-config "create")
   ("n" #'eyebrowse-next-window-config "next")
@@ -119,7 +119,7 @@
   ("'" #'eyebrowse-last-window-config "last")
   ("," #'eyebrowse-rename-window-config "rename"))
 
-(defhydra hydra-toggle (:columns 7 :exit t)
+(defhydra hydra-toggle (:columns 4 :exit t)
   ;; on by default
   ("c" #'company-mode "company")
   ("C" #'global-company-mode "company (global)")
@@ -136,7 +136,7 @@
   ("\\" #'fci-mode "column")
   ("|" #'fci-global-mode "column (global)"))
 
-(defhydra hydra-dumb-jump (:color blue :columns 7)
+(defhydra hydra-dumb-jump (:color blue :columns 4)
   "dumb jump"
   ("j" #'dumb-jump-go "go")
   ("o" #'dumb-jump-go-other-window "other window")
@@ -144,13 +144,13 @@
   ("l" #'dumb-jump-quick-look "quick look")
   ("b" #'dumb-jump-back "back"))
 
-(defhydra hydra-magit (:color blue :columns 7)
+(defhydra hydra-magit (:color blue :columns 4)
   "Magit"
   ("?" #'magit-dispatch "help")
   ("l" #'magit-log-buffer-file "log history")
   ("d" #'magit-diff-buffer-file "diff"))
 
-(defhydra hydra-org (:color blue :columns 7)
+(defhydra hydra-org (:color blue :columns 4)
   "Org"
   ("h" #'org-insert-heading "heading")
   ("l" #'org-insert-link "link")
@@ -164,7 +164,7 @@
   ("h" #'org-toggle-heading "heading")
   ("l" #'org-toggle-item "list"))
 
-(defhydra hydra-cider (:color blue :columns 7)
+(defhydra hydra-cider (:color blue :columns 4)
   "Cider"
   ("j" #'cider-jack-in "jack in")
   ("d" #'cider-clojuredocs "docs")
@@ -250,7 +250,7 @@
   ;; Cider (Clojure)
   ;;
   (general-nmap
-    :keymaps 'cider-mode-map
+    :keymaps '(clojure-mode-map cider-repl-mode-map)
     :states 'normal
     "," 'hydra-cider/body)
 
