@@ -21,12 +21,12 @@ Change extensions: #TODO
 parser.add_argument("-s",
                     "--source",
                     required=True,
-                    help="Regex used for extracting from source filename")
+                    help="Regex used for extracting group from source filename")
 
 parser.add_argument("-d",
                     "--dest",
                     required=True,
-                    help="Formatting string used for renamed filename")
+                    help="Formatting string used for renamed group in filename")
 
 
 parser.add_argument("filename",
