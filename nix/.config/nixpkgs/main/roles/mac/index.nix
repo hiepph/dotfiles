@@ -28,14 +28,16 @@ with pkgs;
 
     # languages
     boot # clojure build tool
+    babashka # interpreter for Clojure scripting
     (callPackage ./julia {})
     go
     goimports
+    delv # go debugger
+    lua
 
     # utils
     (callPackage ./ripgrep {})
     nmap
-    babashka # interpreter for Clojure scripting
     bat
     pandoc
 
