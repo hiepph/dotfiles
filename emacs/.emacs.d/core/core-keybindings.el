@@ -153,6 +153,7 @@
 (defhydra hydra-org (:color blue :columns 4)
   "Org"
   ("h" #'org-insert-heading "heading")
+  ("H" #'org-insert-subheading "sub heading")
   ("l" #'org-insert-link "link")
   ("," #'org-insert-structure-template "template")
   ("c" #'org-ctrl-c-ctrl-c "execute")
