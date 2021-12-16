@@ -82,15 +82,4 @@
   (global-evil-mc-mode))
 
 
-;;
-;; Additional support for org-mode
-;; ref: https://github.com/Somelauw/evil-org-mode
-;;
-(use-package evil-org
-  :after org
-  :config
-  (evil-org-set-key-theme '(textobjects insert navigation additional shift todo heading))
-  (add-hook 'org-mode-hook 'evil-org-mode))
-
-
 (provide 'core-evil)

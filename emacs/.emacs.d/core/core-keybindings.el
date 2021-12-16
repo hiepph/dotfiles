@@ -240,11 +240,26 @@
 
   ;;
   ;; Org mode
+  ;; ref:
+  ;;  + evil-org-mode: https://github.com/Somelauw/evil-org-mode/blob/master/doc/keythemes.org
+  ;;  + reference card: https://orgmode.org/worg/orgcard.html
+  ;;
+  ;; Work out-of-the-box:
+  ;; +) ]]: next same-level element
+  ;; +) [[: previous same-level element
   ;;
   (general-nmap
    :keymaps 'org-mode-map
    :states 'normal
-   "," 'hydra-org/body)
+   "," 'hydra-org/body
+   "> >" 'org-metaright
+   "< <" 'org-metaleft
+   "g u" 'outline-up-heading)
+
+  (general-nmap
+    :states 'insert
+    "RET" 'org-newline-and-indent
+    "M-RET" 'org-meta-return)
 
   ;;
   ;; Cider (Clojure)
