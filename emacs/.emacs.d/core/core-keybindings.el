@@ -199,8 +199,10 @@
   ;;
   ;; Frequent tasks
   ;;
+  (global-set-key (kbd "<f1>") 'persp-switch)
   (global-set-key (kbd "<f2>") 'save-buffer)
   (global-set-key (kbd "<f3>") 'find-file)
+  (global-set-key (kbd "<f4>") 'ido-switch-buffer)
 
   ;;
   ;; Alt combination
@@ -308,6 +310,15 @@
    :states 'normal
    "u" 'undo-fu-only-undo
    "C-r" 'undo-fu-only-redo)
+
+  ;;
+  ;; Tabs (Centaur)
+  ;;
+  (general-define-key
+   :states 'normal
+   :keymaps 'centaur-tabs-mode-map
+   "g t" 'centaur-tabs-forward
+   "g T" 'centaur-tabs-backward)
 
   ;;
   ;; dumb-jump
