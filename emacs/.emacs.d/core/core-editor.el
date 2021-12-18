@@ -96,30 +96,21 @@
 ;;
 ;; Flycheck
 ;;
-(use-package flycheck
-  :config
-  (global-flycheck-mode))
+(use-package flycheck)
 
 
 ;;
 ;; Flyspell
 ;;
-
-;; enable for some mode
-(dolist (hook '(markdown-mode-hook git-commit-mode))
-    (add-hook hook (lambda () (flyspell-mode 1))))
-
 ;; disable for log edit and change log
 (dolist (hook '(change-log-mode-hook log-edit-mode-hook))
     (add-hook hook (lambda () (flyspell-mode -1))))
-
 
 ;;
 ;; Company
 ;;
 (use-package company
   :config
-  (global-company-mode)
   ;; complete word with original cases
   (setq company-dabbrev-downcase nil))
 

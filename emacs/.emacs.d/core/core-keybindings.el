@@ -123,15 +123,12 @@
   ("," #'persp-rename "rename"))
 
 (defhydra hydra-toggle (:columns 4 :exit t)
-  ;; on by default
+  "All off by default"
   ("c" #'company-mode "company")
   ("C" #'global-company-mode "company (global)")
   ("e" #'flycheck-mode "flycheck")
   ("E" #'global-flycheck-mode "flycheck (global)")
-
-  ("s" #'flyspell-mode "flyspell") ;; on by default in text-mode
-
-  ;; off by default
+  ("s" #'flyspell-mode "flyspell")
   ("d" #'direnv-mode "direnv")
   ("F" #'format-mode "format (global)")
   ("i" #'indent-guide-mode "indent")
