@@ -110,11 +110,12 @@
 
 (defhydra hydra-workspace (:columns 4 :exit t)
   "Workspaces"
-  ("w" #'persp-switch "switch")
+  ("w" #'persp-switch "workspace")
   ("n" #'persp-next "next")
   ("p" #'persp-prev "previous")
   ("x" #'persp-kill "close")
-  ("`" #'persp-switch-by-number "switch")
+  ("`" #'persp-switch-by-number "switch by number")
+  ("'" #'persp-switch-last "switch to last")
   ("b a" #'persp-add-buffer "buffer add")
   ("b s" #'persp-set-buffer "buffer set")
   ("s" #'persp-state-save "state save")
@@ -207,6 +208,8 @@
   ;;
   ;; Alt combination
   ;;
+
+  ;; M-: eval-expression
   (global-set-key (kbd "M-&") 'async-shell-command)
 
   (global-set-key (kbd "M-h") 'windmove-left)
