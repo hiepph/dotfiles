@@ -112,14 +112,14 @@
   "Workspaces"
   ("w" #'persp-switch "switch")
   ("n" #'persp-next "next")
-  ("p" #'presp-prev "previous")
+  ("p" #'persp-prev "previous")
   ("x" #'persp-kill "close")
   ("`" #'persp-switch-by-number "switch")
   ("b a" #'persp-add-buffer "buffer add")
   ("b s" #'persp-set-buffer "buffer set")
   ("s" #'persp-state-save "state save")
   ("l" #'persp-state-load "state save")
-  ("," #'presp-rename "rename"))
+  ("," #'persp-rename "rename"))
 
 (defhydra hydra-toggle (:columns 4 :exit t)
   ;; on by default
