@@ -77,8 +77,7 @@
 (defhydra hydra-buffers (:columns 4 :exit t)
   "Buffers"
   ("f" #'find-file "find")
-  ("b" #'consult-buffer "buffers")
-  ("B" #'consult-buffer-other-window "buffers (other)")
+  ("b" #'ido-switch-buffer "buffers")
   ("r" #'~list-recent-files "recent")
   ("k" #'~kill-current-buffer "kill current")
   ("K" #'~kill-all-buffers "kill all"))
@@ -111,13 +110,16 @@
 
 (defhydra hydra-workspace (:columns 4 :exit t)
   "Workspaces"
-  ("c" #'eyebrowse-create-window-config "create")
-  ("n" #'eyebrowse-next-window-config "next")
-  ("p" #'eyebrowse-prev-window-config "previous")
-  ("x" #'eyebrowse-close-window-config "close")
-  ("." #'eyebrowse-switch-to-window-config "switch")
-  ("'" #'eyebrowse-last-window-config "last")
-  ("," #'eyebrowse-rename-window-config "rename"))
+  ("w" #'persp-switch "switch")
+  ("n" #'persp-next "next")
+  ("p" #'presp-prev "previous")
+  ("x" #'persp-kill "close")
+  ("`" #'persp-switch-by-number "switch")
+  ("b a" #'persp-add-buffer "buffer add")
+  ("b s" #'persp-set-buffer "buffer set")
+  ("s" #'persp-state-save "state save")
+  ("l" #'persp-state-load "state save")
+  ("," #'presp-rename "rename"))
 
 (defhydra hydra-toggle (:columns 4 :exit t)
   ;; on by default
@@ -194,7 +196,7 @@
   (general-evil-setup)
 
   ;; escape to normal-state even when in ~emacs-state~
-  (define-key evil-emacs-state-map [escape] 'evil-normal-state)
+  (global-set-key (kbd "<escape>") 'evil-normal-state)
 
   ;;
   ;; Frequent tasks
@@ -202,23 +204,10 @@
   (global-set-key (kbd "<f2>") 'save-buffer)
   (global-set-key (kbd "<f3>") 'find-file)
 
-  (global-set-key (kbd "<escape>") 'evil-normal-state)
-
   ;;
   ;; Alt combination
   ;;
   (global-set-key (kbd "M-&") 'async-shell-command)
-
-  (global-set-key (kbd "M-1") 'eyebrowse-switch-to-window-config-1)
-  (global-set-key (kbd "M-2") 'eyebrowse-switch-to-window-config-2)
-  (global-set-key (kbd "M-3") 'eyebrowse-switch-to-window-config-3)
-  (global-set-key (kbd "M-4") 'eyebrowse-switch-to-window-config-4)
-  (global-set-key (kbd "M-5") 'eyebrowse-switch-to-window-config-5)
-  (global-set-key (kbd "M-6") 'eyebrowse-switch-to-window-config-6)
-  (global-set-key (kbd "M-7") 'eyebrowse-switch-to-window-config-7)
-  (global-set-key (kbd "M-8") 'eyebrowse-switch-to-window-config-8)
-  (global-set-key (kbd "M-9") 'eyebrowse-switch-to-window-config-9)
-  (global-set-key (kbd "M-'") 'eyebrowse-last-window-config)
 
   (global-set-key (kbd "M-h") 'windmove-left)
   (global-set-key (kbd "M-l") 'windmove-right)

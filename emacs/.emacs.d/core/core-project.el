@@ -44,13 +44,17 @@
 
 
 ;;
-;; Desktops management
+;; Workspace management
 ;;
-(use-package eyebrowse
-  :diminish
-  :init
-  (eyebrowse-mode t)
-  (setq eyebrowse-new-workspace t))
+;; Ref: https://github.com/nex3/perspective-el
+;;
+;; History:
+;; + eyebrowse: supports window layouts but not buffer lists,
+;;   still easy to get lost if I have a lot of buffers opening.
+;;
+(use-package perspective
+  :config
+  (persp-mode 1))
 
 
 ;;
