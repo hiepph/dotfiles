@@ -46,6 +46,9 @@
 ;;
 ;; Workspace management
 ;;
+;; Why?
+;; + Reduce cognitive load of buffer managements
+;;
 ;; Ref: https://github.com/nex3/perspective-el
 ;;
 ;; History:
@@ -55,6 +58,19 @@
 (use-package perspective
   :config
   (persp-mode 1))
+
+;;
+;; Tabbar
+;;
+;; Why?
+;; + Easy keep track of current thought flow (current editing files)
+;;
+;; Ref: https://github.com/ema2159/centaur-tabs
+;;
+(use-package centaur-tabs
+  :demand
+  :config
+  (centaur-tabs-mode t))
 
 
 ;;
