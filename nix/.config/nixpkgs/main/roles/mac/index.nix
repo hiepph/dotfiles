@@ -32,7 +32,7 @@ with pkgs;
     (callPackage ./julia {})
     go
     goimports
-    delv # go debugger
+    delve # go debugger
     lua
 
     # utils
