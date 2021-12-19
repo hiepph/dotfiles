@@ -77,7 +77,7 @@
 (defhydra hydra-buffers (:columns 4 :exit t)
   "Buffers"
   ("f" #'find-file "find")
-  ("b" #'ido-switch-buffer "buffers")
+  ("b" #'persp-switch-to-buffer* "buffers")
   ("r" #'~list-recent-files "recent")
   ("k" #'~kill-current-buffer "kill current")
   ("K" #'~kill-all-buffers "kill all"))
@@ -202,7 +202,7 @@
   (global-set-key (kbd "<f1>") 'persp-switch)
   (global-set-key (kbd "<f2>") 'save-buffer)
   (global-set-key (kbd "<f3>") 'find-file)
-  (global-set-key (kbd "<f4>") 'ido-switch-buffer)
+  (global-set-key (kbd "<f4>") 'persp-switch-to-buffer*)
 
   ;;
   ;; Alt combination
