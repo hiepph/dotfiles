@@ -60,29 +60,6 @@
   (persp-mode 1))
 
 ;;
-;; Tabbar
-;;
-;; Why?
-;; + Easy keep track of current thought flow (current editing files)
-;;
-;; Ref: https://github.com/ema2159/centaur-tabs
-;;
-(use-package centaur-tabs
-  :demand
-  :config
-  (centaur-tabs-mode t)
-
-  ;; cycle only through visible groups
-  (setq centaur-tabs-cycle-scope 'tabs)
-
-  ;; automatic reordering
-  (centaur-tabs-enable-buffer-reordering)
-
-  ;; projectile group
-  (centaur-tabs-group-by-projectile-project))
-
-
-;;
 ;; Project management
 ;;
 (use-package projectile
