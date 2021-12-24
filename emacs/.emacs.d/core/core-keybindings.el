@@ -38,7 +38,7 @@
 
   ;; consult
   ("r" #'~consult-register "registers")
-  ("m" #'~consult-mark "marks")
+  ("`" #'~consult-mark "`")
 
   ;; kill-ring
   ("y" #'consult-yank-pop "yank")
@@ -48,7 +48,7 @@
   ;; dumb-jump
   ("j" #'hydra-dumb-jump/body "jump")
 
-  ("t" #'hydra-toggle/body "toggle"))
+  ("m" #'hydra-mode/body "toggle"))
 
 (defhydra hydra-projectile (:columns 4 :exit t)
   "Projectile"
@@ -78,6 +78,7 @@
   "Buffers"
   ("f" #'find-file "find")
   ("b" #'persp-switch-to-buffer* "buffers")
+  ("s" #'save-buffer "save")
   ("r" #'~list-recent-files "recent")
   ("k" #'~kill-current-buffer "kill current")
   ("K" #'~kill-all-buffers "kill all"))
@@ -122,7 +123,7 @@
   ("l" #'persp-state-load "state save")
   ("," #'persp-rename "rename"))
 
-(defhydra hydra-toggle (:columns 4 :exit t)
+(defhydra hydra-mode (:columns 4 :exit t)
   "All off by default"
   ("c" #'company-mode "company")
   ("C" #'global-company-mode "company (global)")
@@ -157,9 +158,7 @@
   ("l" #'org-insert-link "link")
   ("," #'org-insert-structure-template "template")
   ("c" #'org-ctrl-c-ctrl-c "execute")
-  ("'" #'org-edit-special "edit")
-
-  ("t" #'hydra-org-toggle/body "toggle"))
+  ("'" #'org-edit-special "edit"))
 
 (defhydra hydra-org-toggle (:color blue :columns 4)
   ("h" #'org-toggle-heading "heading")
@@ -250,6 +249,7 @@
 
   (general-nmap
     :states 'insert
+    :keymaps 'org-mode-map
     "RET" 'org-newline-and-indent
     "M-RET" 'org-meta-return)
 
