@@ -139,9 +139,10 @@
 
 
 ;;
-;; Compile
+;; Custom Compile that supports special symbols
 ;;
-
+;; +) %: current filename
+;;
 (defun ~compile (command)
   (interactive "M~compile: ")
   (compile (s-replace "%" (evil-get-register ?% t) command)))
