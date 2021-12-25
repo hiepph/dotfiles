@@ -14,7 +14,8 @@
 
 
 ;;
-;; Marginalia
+;; Marginalia adds annotations in the minibuffer
+;; ref: https://github.com/minad/marginalia
 ;;
 (use-package marginalia
   :config
@@ -56,16 +57,22 @@
 ;;   :demand t)
 
 
+;;
+;; Embark
+;; + generates candidates to insert into the buffer
+;;
+;; (use-package embark)
+
 
 ;;
 ;; Registers
 ;;
-
 ;; some special registers:
 ;; % current file path
 ;; : recently executed command
 ;; / last search pattern
 ;; + clipboard
+;;
 (defun ~consult--register-candidates (register-list)
   (seq-filter
    (lambda (item) (not (null (cadr item))))
