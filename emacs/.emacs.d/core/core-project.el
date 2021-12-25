@@ -34,7 +34,9 @@
 ;;
 (use-package recentf
   :config
-  (recentf-mode 1))
+  (recentf-mode 1)
+  (setq recentf-max-menu-items 25)
+  (setq recentf-max-saved-items 25))
 
 ;; select recent files
 (defun ~list-recent-files ()
