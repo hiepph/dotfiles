@@ -147,12 +147,12 @@ Number registers are not needed because it is easier to refer from the `yank-pop
 
 
 ;;
-;; Search
+;; Interactive Search with the help of ripgrep
 ;;
 (defun ~ripgrep-search (q dir projectile?)
   "Search using ripgrep and provide results through Selectrum"
     (unless (executable-find "rg")
-        (user-error "'rg' not found"))
+        (user-error "'rg' not found."))
     (let* ((res (mapcar
                  (lambda (line) (car (last (s-split dir line))))
                  (s-split
@@ -160,9 +160,11 @@ Number registers are not needed because it is easier to refer from the `yank-pop
                   (shell-command-to-string
                    (format "rg -i --line-number --hidden -S -g '!.git' '%s' %s"
                            q dir)))))
-           (candidate (s-split ":" (completing-read
-                                    (format "[%s]: " q)
-                                    res)))
+           (candidate (if (= (length res) 1)
+                          (user-error (format "'%s' not found." q))
+                          (s-split ":" (completing-read
+                                        (format "[%s]: " q)
+                                        res))))
            (file-name (car candidate))
            (jump-point (string-to-number (cadr candidate))))
       (find-file (expand-file-name file-name dir))
