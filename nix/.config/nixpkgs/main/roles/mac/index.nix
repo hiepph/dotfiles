@@ -16,7 +16,7 @@ with pkgs;
     sessionVariables = {
       "EDITOR" = "vim";
       "VISUAL" = "vim";
-      "PATH" = "$HOME/scripts:$PATH";
+      "PATH" = "$HOME/scripts:$HOME/go/bin:$PATH";
     };
   };
 
