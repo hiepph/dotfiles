@@ -61,6 +61,10 @@
   :config
   (persp-mode 1))
 
+(defun ~persp-kill-current ()
+  (interactive)
+  (persp-kill (persp-current-name)))
+
 ;;
 ;; Project management
 ;;

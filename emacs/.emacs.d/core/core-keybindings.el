@@ -114,8 +114,8 @@
   ("w" #'persp-switch "workspace")
   ("n" #'persp-next "next")
   ("p" #'persp-prev "previous")
-  ("x" #'persp-kill "close")
-  ("`" #'persp-switch-by-number "switch by number")
+  ("x" #'~persp-kill-current "close (current)")
+  ("X" #'persp-kill "close (choose)")
   ("'" #'persp-switch-last "switch to last")
   ("b a" #'persp-add-buffer "buffer add")
   ("b s" #'persp-set-buffer "buffer set")
@@ -240,7 +240,7 @@
   ;;
   (general-nmap
    :keymaps 'org-mode-map
-   :states 'normal
+   :states '(visual normal)
    "," 'hydra-org/body
    "> >" 'org-metaright
    "< <" 'org-metaleft
@@ -297,7 +297,7 @@
    :keymaps 'override
    "+" 'er/expand-region
    "-" 'er/contract-region
-   "f" 'er/mark-defun
+   "d" 'er/mark-defun
    "s" 'er/mark-symbol
    "u" 'er/mark-url
    "c" 'er/mark-comment)
