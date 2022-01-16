@@ -109,6 +109,11 @@
   ("s" #'flycheck-verify-setup "verify")
   ("t" #'flycheck-mode "toggle"))
 
+;;
+;; Buffer add: query and add buffer to the current workspace
+;; Buffer set: add buffer to the current workspace and remove it from the others
+;; Buffer kill: query and remove buffer from the current workspace
+;;
 (defhydra hydra-workspace (:columns 4 :exit t)
   "Workspaces"
   ("w" #'persp-switch "workspace")
@@ -119,6 +124,7 @@
   ("'" #'persp-switch-last "switch to last")
   ("b a" #'persp-add-buffer "buffer add")
   ("b s" #'persp-set-buffer "buffer set")
+  ("b k" #'persp-remove-buffer "buffer kill")
   ("s" #'persp-state-save "state save")
   ("l" #'persp-state-load "state save")
   ("," #'persp-rename "rename"))
