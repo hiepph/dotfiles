@@ -38,7 +38,7 @@
 
   ;; consult
   ("r" #'~consult-register "registers")
-  ("`" #'~consult-mark "`")
+  ("`" #'~consult-mark "marks")
 
   ;; kill-ring
   ("y" #'consult-yank-pop "yank")
