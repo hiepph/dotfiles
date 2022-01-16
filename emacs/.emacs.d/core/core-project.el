@@ -66,6 +66,11 @@
   (interactive)
   (persp-kill (persp-current-name)))
 
+(defun ~persp-remove-current-buffer ()
+  "Remove the current buffer from the current workspace"
+  (interactive)
+  (persp-remove-buffer (current-buffer)))
+
 ;;
 ;; Project management
 ;;

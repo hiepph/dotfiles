@@ -124,7 +124,7 @@
   ("'" #'persp-switch-last "switch to last")
   ("b a" #'persp-add-buffer "buffer add")
   ("b s" #'persp-set-buffer "buffer set")
-  ("b k" #'persp-remove-buffer "buffer kill")
+  ("b k" #'~persp-remove-current-buffer "buffer kill")
   ("s" #'persp-state-save "state save")
   ("l" #'persp-state-load "state save")
   ("," #'persp-rename "rename"))
