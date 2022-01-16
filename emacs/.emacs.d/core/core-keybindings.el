@@ -74,14 +74,22 @@
 
   ("q" nil "Cancel" :color blue))
 
+;;
+;; Some operations that relates to the workspace:
+;; + add: query and add buffer to the current workspace
+;; + set: add the buffer and remote from the others
+;; + kill current: remove the current buffer
+;; + kill: query and remove
+;;
 (defhydra hydra-buffers (:columns 4 :exit t)
   "Buffers"
   ("f" #'find-file "find")
-  ("b" #'persp-switch-to-buffer* "buffers")
-  ("s" #'save-buffer "save")
+  ("b" #'persp-switch-to-buffer* "list")
   ("r" #'~list-recent-files "recent")
-  ("k" #'~kill-current-buffer "kill current")
-  ("K" #'~kill-all-buffers "kill all"))
+  ("a" #'persp-add-buffer "add")
+  ("s" #'persp-set-buffer "set")
+  ("k" #'~persp-remove-current-buffer "kill current")
+  ("K" #'persp-remove-buffer "kill"))
 
 (defhydra hydra-compile (:columns 4 :exit t)
   "Compile"
@@ -109,22 +117,14 @@
   ("s" #'flycheck-verify-setup "verify")
   ("t" #'flycheck-mode "toggle"))
 
-;;
-;; Buffer add: query and add buffer to the current workspace
-;; Buffer set: add buffer to the current workspace and remove it from the others
-;; Buffer kill: query and remove buffer from the current workspace
-;;
 (defhydra hydra-workspace (:columns 4 :exit t)
   "Workspaces"
   ("w" #'persp-switch "workspace")
   ("n" #'persp-next "next")
   ("p" #'persp-prev "previous")
-  ("x" #'~persp-kill-current "close (current)")
-  ("X" #'persp-kill "close (choose)")
+  ("x" #'~persp-kill-current "close current")
+  ("X" #'persp-kill "close")
   ("'" #'persp-switch-last "switch to last")
-  ("b a" #'persp-add-buffer "buffer add")
-  ("b s" #'persp-set-buffer "buffer set")
-  ("b k" #'~persp-remove-current-buffer "buffer kill")
   ("s" #'persp-state-save "state save")
   ("l" #'persp-state-load "state save")
   ("," #'persp-rename "rename"))
