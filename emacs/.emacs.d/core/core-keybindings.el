@@ -248,8 +248,8 @@
    :keymaps 'org-mode-map
    :states '(visual normal)
    "," 'hydra-org/body
-   "> >" 'org-metaright
-   "< <" 'org-metaleft
+   "> >" 'org-shiftmetaright
+   "< <" 'org-shiftmetaleft
    "g u" 'outline-up-heading)
 
   (general-nmap
