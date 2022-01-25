@@ -94,7 +94,7 @@
 (defhydra hydra-compile (:columns 4 :exit t)
   "Compile"
   ("c" #'~compile "compile")
-  ("r" #'recompile "recompile")
+  ("r" #'~recompile "recompile")
 
   ("e" #'consult-compile-error "error")
 

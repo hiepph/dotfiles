@@ -145,6 +145,17 @@
 ;;
 (defun ~compile (command)
   (interactive "M~compile: ")
+  (save-buffer)
   (compile (s-replace "%" (evil-get-register ?% t) command)))
+
+
+;;
+;; Mod recompile
+;; + Auto save-buffer
+;;
+(defun ~recompile ()
+  (interactive)
+  (save-buffer)
+  (recompile))
 
 (provide 'core-editor)
