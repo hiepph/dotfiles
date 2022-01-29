@@ -85,6 +85,10 @@
   :mode "\\.nix\\'")
 
 
+;; Lua
+(use-package lua-mode)
+
+
 ;; Yaml
 (use-package yaml-mode)
 
