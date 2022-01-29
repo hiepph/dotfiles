@@ -103,6 +103,9 @@
 ;; make Dired guess the default target for commands like copy/move
 (setq dired-dwim-target t)
 
+;; follow symblink
+(setq find-file-visit-truename t)
+
 ;;
 ;; Collection of useful pluins
 ;; ref: https://github.com/Fuco1/dired-hacks
