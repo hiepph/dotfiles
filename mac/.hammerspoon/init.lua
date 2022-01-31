@@ -1,4 +1,6 @@
+--
 -- Window movement
+--
 hs.hotkey.bind({"cmd", "shift"}, "h", function()
       local win = hs.window.focusedWindow()
       local f = win:frame()
@@ -58,7 +60,25 @@ hs.hotkey.bind({"cmd", "shift"}, "c", function()
       win:centerOnScreen(screen)
 end)
 
+-- Move between screens
+hs.hotkey.bind({"cmd", "ctrl"}, "h", function()
+      local win = hs.window.focusedWindow()
+      local f = win:frame()
+
+      win:moveOneScreenWest()
+end)
+
+hs.hotkey.bind({"cmd", "ctrl"}, "l", function()
+      local win = hs.window.focusedWindow()
+      local f = win:frame()
+
+      win:moveOneScreenEast()
+end)
+
+
+--
 -- Window switch
+--
 hs.hotkey.bind({"cmd"}, "h", function()
       local win = hs.window.focusedWindow()
       local screen = win:screen()
@@ -87,7 +107,84 @@ hs.hotkey.bind({"cmd"}, "k", function()
       win:focusWindowNorth()
 end)
 
+--
+-- Window size
+--
+hs.hotkey.bind({"cmd", "shift"}, "return", function()
+      local win = hs.window.focusedWindow()
+      local screen = win:screen()
+
+      win:maximize()
+end)
+
+hs.hotkey.bind({"cmd", "shift"}, "m", function()
+      local win = hs.window.focusedWindow()
+      local screen = win:screen()
+
+      win:minimize()
+end)
+
+hs.hotkey.bind({"cmd", "shift"}, "f", function()
+      local win = hs.window.focusedWindow()
+      local screen = win:screen()
+
+      win:toggleFullScreen()
+end)
+
+-- increase width and height
+function resize(wPercent, hPercent)
+    return function()
+        local win = hs.window.focusedWindow()
+        local f = win:frame()
+
+        wInc = wPercent * f.w
+        hInc = hPercent * f.h
+
+        f.w = f.w + wInc
+        f.x = f.x - wInc / 2
+        f.h = f.h + hInc
+        f.y = f.y - hInc / 2
+        win:setFrame(f)
+    end
+end
+
+hs.hotkey.bind({'cmd', 'shift'}, '.', resize(0.1, 0))
+hs.hotkey.bind({'cmd', 'shift'}, ',', resize(-0.1, 0))
+hs.hotkey.bind({'cmd', 'shift'}, '=', resize(0, 0.1))
+hs.hotkey.bind({'cmd', 'shift'}, '-', resize(0, -0.1))
+
+
+--
+-- Window visibility
+--
+
+-- this equals clicking the red close button
+hs.hotkey.bind({"cmd", "shift"}, "x", function()
+      local win = hs.window.focusedWindow()
+      win:close()
+end)
+
+
+--
+-- Applications
+--
+
+-- kill gracefully (close and kill)
+hs.hotkey.bind({"cmd", "shift"}, "q", function()
+      local win = hs.window.focusedWindow()
+      win:application():kill()
+end)
+
+--
+-- Lock
+--
+hs.hotkey.bind({"cmd", "shift"}, "escape", function()
+        hs.caffeinate.lockScreen()
+end)
+
+--
 -- Menubar items
+--
 caffeine = hs.menubar.new()
 function setCaffeineDisplay(state)
     if state then
@@ -106,7 +203,9 @@ if caffeine then
     setCaffeineDisplay(hs.caffeinate.get("displayIdle"))
 end
 
+--
 -- Hot reload
+--
 hs.hotkey.bind({"cmd", "shift"}, "r", function()
       hs.reload()
 end)
