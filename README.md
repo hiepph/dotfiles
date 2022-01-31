@@ -1,9 +1,4 @@
-# dotfiles
-
-![gif](https://www.megghy.com/gif_animate/cartoni_animati/snoopy/70.gif)
-
-
-## Stow
+# Stow
 
 Mainly I structure my configurations follow their paths starting from
 $HOME. To activate the configuration, symlink the corresponding folder
@@ -13,15 +8,12 @@ to $HOME. This task is done by [GNU Stow](https://www.gnu.org/software/stow/manu
 stow <conf>
 ```
 
+# Mac
 
-## Bootstrap with Nix
+## Nix: functional package manager
 
 My system is built with the help of [Nix](https://nixos.org/) for a functional and
 reproducible configuration.
-
-### Installation
-
-1. Mac
 
 + Install `Nix`: https://nix.dev/tutorials/install-nix#macos
 
@@ -32,28 +24,19 @@ nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz -A installer
 ./result/bin/darwin-installer
 ```
 
-* Symlink for system configuration:
++ Symlink for system configuration:
 
 ```
 nix-shell -p stow --command "stow mac"
 ```
 
-* Build and switch the whole system:
++ Build and switch the whole system:
 
 ```
 darwin-rebuild switch
 ```
 
-2. NixOS
-
-*TBD*
-
-3. Linux
-
-*TBD*
-
-
-### Home manager
+## Nix: home manager
 
 `nixos-rebuild` or `darwin-rebuild` is used for the whole system.
 Home manager is specific for each user.
@@ -81,13 +64,25 @@ where, `general.nix`: cross-platform configurations.
 home-manager switch
 ```
 
+## Hammerppoon: desktop automation
 
-\* References:
+`mac/.hammerspoon`
 
-* [Hugo Reeves](https://hugoreeves.com/posts/2019/nix-home/)
+I missed [i3](https://i3wm.org/) on my Mac. I tried [Rectangle](https://rectangleapp.com/) to bring
+back the feeling of tiling windows but it lacks the power of declarative configuration.
+
+Hammerspoon solves this problem by being a bridge to Mac's API. It uses Lua as scripting language.
 
 
-## Emacs
+## References
+
++ [Hugo Reeves](https://hugoreeves.com/posts/2019/nix-home/)
+
+# Linux
+
+*TBD*
+
+# Emacs
 
 + Config structure and performance optimization are referred from [doom-emacs](https://github.com/hlissner/doom-emacs/).
 A nice explanation of how doom-emacs can achieve state-of-the-art startup time is on the reddit discussion: [How is Doom Emacs so damn fast](https://www.reddit.com/r/emacs/comments/f3ed3r/how_is_doom_emacs_so_damn_fast)
@@ -110,7 +105,7 @@ A nice explanation of how doom-emacs can achieve state-of-the-art startup time i
 (provide 'core-custom)
 ```
 
-## Vim
+# Vim
 
 + Create custom file for each machine: `~/.custom.vim`. For example:
 
@@ -119,7 +114,7 @@ colorscheme alduin
 ```
 
 
-## Scripts
+# Scripts
 
 [scripts](./scripts)
 
@@ -130,7 +125,7 @@ Collection of my shortcut and useful scripts.
 + `_gitignore`: download `.gitignore` file
 
 
-## Themes
+# Themes
 
 Below is an awesome list of themes done in style. All are eye-care themes.
 
