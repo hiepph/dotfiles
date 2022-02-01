@@ -28,15 +28,15 @@
 ;; Python
 ;;
 
-;; using autopep8 for auto-formatting python
-;; refer: https://github.com/hhatto/autopep8
+;; using 'black' for auto-formatting python
+;; ref: https://github.com/psf/black
 ;;
 (defun ~format-python ()
   "Format python code followed PEP8"
   (interactive)
   (when (eq major-mode 'python-mode)
     (let ((fname (buffer-file-name)))
-      (shell-command (format "autopep8 --in-place --aggressive %s" fname) nil))))
+      (shell-command (format "black %s" fname) nil))))
 
 :;
 ;; C

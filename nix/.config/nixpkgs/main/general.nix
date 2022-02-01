@@ -5,7 +5,7 @@ let
   my-python-packages = python-packages: with python-packages; [
     pytest
     pylint
-    autopep8
+    (callPackage ./packages/black {})
 
     ansible
     speedtest-cli
