@@ -136,14 +136,25 @@ function resize(wPercent, hPercent)
     return function()
         local win = hs.window.focusedWindow()
         local f = win:frame()
+        local screen = win:screen()
+        local max = screen:frame()
 
         wInc = wPercent * f.w
         hInc = hPercent * f.h
 
         f.w = f.w + wInc
         f.x = f.x - wInc / 2
+
+        if f.x < max.x then
+            f.x = max.x
+        end
+
         f.h = f.h + hInc
         f.y = f.y - hInc / 2
+        if f.y < max.y then
+            f.y = max.y
+        end
+
         win:setFrame(f)
     end
 end
