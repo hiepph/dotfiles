@@ -158,4 +158,13 @@
   (save-buffer)
   (recompile))
 
+
+;;
+;; Quickly open terminal in current directory based on OS
+;; TODO: Linux (supports only Mac for now)
+;;
+(defun ~open-terminal ()
+  (interactive)
+  (shell-command "open . -a iTerm"))
+
 (provide 'core-editor)
