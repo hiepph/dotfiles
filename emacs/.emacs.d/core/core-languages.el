@@ -27,34 +27,29 @@
 ;;
 ;; Python
 ;;
-
 ;; using 'black' for auto-formatting python
 ;; ref: https://github.com/psf/black
-;;
 (defun ~format-python ()
   "Format python code followed PEP8"
   (interactive)
-  (when (eq major-mode 'python-mode)
-    (let ((fname (buffer-file-name)))
-      (shell-command (format "black %s" fname) nil))))
+  (let ((fname (buffer-file-name)))
+    (shell-command (format "black %s" fname) nil)))
 
 :;
 ;; C
 ;;
-
 ;; autoformat C code using GNU's `indent`
 ;; refer: https://www.gnu.org/software/indent/manual/indent.html
-;;
 (defun ~format-c ()
   "Format C code followed GNU style."
   (interactive)
-  (when (eq major-mode 'c-mode)
-    (let ((fname (buffer-file-name)))
-      ;; some modification
-      ;; -bad: leave a blank line after definitions
-      ;; -br: if (...) {
-      ;; -ce: } else {
-      (shell-command (format "indent -bad -br -npcs -ce %s && rm %s~" fname fname) nil))))
+  (let ((fname (buffer-file-name)))
+    ;; some modification
+    ;; -bad: leave a blank line after definitions
+    ;; -br: if (...) {
+    ;; -ce: } else {
+    (shell-command (format "indent -bad -br -npcs -ce %s && rm %s~" fname fname) nil)))
+
 
 ;; Go
 (use-package go-mode
@@ -147,10 +142,8 @@
                                    t
                                  (,electric-pair-inhibit-predicate c)))))))
 
-;;
 ;; Expand snippets defined in ~org-structure-template-alist~
 ;; e.g. <s TAB expands to ~#+begin_src~
-;;
 (require 'org-tempo)
 
 (use-package ob-async)
@@ -161,8 +154,9 @@
   :hook
   (org-mode . org-bullets-mode))
 
+
 ;;
-;; Custom
+;; Recognize language mode for some extensions
 ;;
 (add-to-list 'auto-mode-alist '("\\.scheme\\'" . racket-mode))
 (add-to-list 'auto-mode-alist '("\\.cu\\'" . c++-mode))
@@ -171,27 +165,53 @@
 
 
 ;;
-;; Auto format mode
+;; format-mode
+;; Automatically format code based on language mode
 ;;
+;; ref:
+;; + https://github.com/lassik/emacs-format-all-the-code
+;;
+(defgroup format nil
+  "Automatically format code based on language mode"
+  :group 'format)
+
+(defcustom format-formatters
+  '((python-mode ~format-python)
+    (c-mode ~format-c))
+  "Default formatters for predefined languages"
+  :type '(repeat (list symbol symbol))
+  :group 'format)
+
+(defun ~format-code ()
+  "Format code based on language mode"
+  (interactive)
+  (let ((format-func (assoc major-mode format-formatters)))
+    (when format-func
+        (progn (funcall-interactively (car (cdr format-func)))
+               (revert-buffer t t)))))
+
 (define-minor-mode format-mode
   "Auto format code using predefined formatter"
   :lighter "format"
-  :global t)
+  :global nil
+  (if format-mode
+      (add-hook 'after-save-hook
+                '~format-code
+                nil 'local)
+    (remove-hook 'after-save-hook
+                 '~format-code
+                 'local)))
 
-;; enable: add hook auto-format
-;; disable: remove hook auto-format
-(add-hook 'format-mode-hook
-          (lambda ()
-            (if format-mode
-                (progn
-                  (add-hook 'after-save-hook '~format-python)
-                  (add-hook 'after-save-hook '~format-c))
-              (progn
-                (remove-hook 'after-save-hook '~format-python)
-                (remove-hook 'after-save-hook '~format-c)))))
+(define-globalized-minor-mode format-global-mode
+  format-mode
+  (lambda ()
+    (format-mode t)))
 
 
+;;
+;; Tabs
 ;; View tabs as 4 spaces
+;;
 (setq default-tab-width 4)
 (setq tab-width 4)
 
