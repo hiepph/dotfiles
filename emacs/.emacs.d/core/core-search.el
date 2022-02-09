@@ -165,13 +165,13 @@ Number registers are not needed because it is easier to refer from the `yank-pop
                  (s-split
                   "\n"
                   (shell-command-to-string
-                   (format "rg -i --line-number --hidden -S -g '!.git' '%s' %s"
+                   (format "rg -i --line-number --hidden -S -g '!.git' -F '%s' %s"
                            q dir)))))
            (candidate (if (= (length res) 1)
                           (user-error (format "'%s' not found." q))
-                          (s-split ":" (completing-read
-                                        (format "[%s]: " q)
-                                        res))))
+                        (s-split ":" (completing-read
+                                      (format "[%s]: " q)
+                                      res))))
            (file-name (car candidate))
            (jump-point (string-to-number (cadr candidate))))
       (find-file (expand-file-name file-name dir))
