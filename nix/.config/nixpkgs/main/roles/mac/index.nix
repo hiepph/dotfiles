@@ -40,6 +40,7 @@ with pkgs;
     nmap
     bat
     pandoc
+    postgresql_13
 
     # backup
     borgbackup
