@@ -4,78 +4,109 @@ import argparse
 import re
 import os
 
-parser = argparse.ArgumentParser(description="""Rename file(s) easily.
-Select by RegEx captured group and output with string format.
+parser = argparse.ArgumentParser(
+    description="""Rename file(s) easily.
 
 EXAMPLES:
+Replace characters:
+$ _rename -e '-' -f '_' a-long-name.txt
+
 Add leading zeros:
-$ _rename --regex '(\\d+)' --format '%02d' 1.txt
+$ _rename -t number -f '%02d' 1.txt
 #=> 01.txt
 
 Dry run without affecting your files:
-$ _rename --regex '(\\d+)' --format '%02d' 1.txt --dry-run
+$ _rename -t number -f '%02d' 1.txt --dry-run
 
 Add leading zeros in batch:
-$ ls *.txt | _rename -e '(\\d+)' -f '%02d'
-
-
-Change extensions: #TODO
+$ ls *.txt | _rename -t number -f '%02d'
 """,
-                                 formatter_class=argparse.RawTextHelpFormatter)
-parser.add_argument("-e",
-                    "--regex",
-                    required=True,
-                    help="Regex used for extracting group from source filename")
-
-parser.add_argument("-f",
-                    "--format",
-                    required=True,
-                    help="Formatting string used for renamed group in filename")
-
-parser.add_argument("-d",
-                    "--dry-run",
-                    action='store_true',
-                    help="""See how command affects your file without executing it""")
+    formatter_class=argparse.RawTextHelpFormatter,
+)
 
 
-parser.add_argument("filename",
-                    nargs='?',
-                    type=str,
-                    help="File name")
+parser.add_argument(
+    "-t",
+    "--type",
+    required=False,
+    help="Automatically figure what to select (higher priority than --regex)",
+)
+
+parser.add_argument(
+    "-e",
+    "--regex",
+    type=str,
+    required=False,
+    help="Filter patterns using RegEx captured group",
+)
+
+parser.add_argument(
+    "-f",
+    "--format",
+    required=True,
+    help="Format string following printf-style Python standard",
+)
+
+parser.add_argument(
+    "-d",
+    "--dry-run",
+    action="store_true",
+    help="""See how command affects your file without executing it""",
+)
+
+parser.add_argument("filename", nargs="?", type=str, help="File name")
 
 args = parser.parse_args()
 
 
-def format(m, style) -> str:
-    """Format captured group provided a format string.
-    It naively figures out the captured group's type to do conversion.
+SUPPORTED_TYPES = ["number"]
+
+
+def panic(msg):
+    sys.stderr.write("ERROR: {}".format(msg))
+    sys.exit(1)
+
+
+def do_format(m, form, type) -> str:
+    """Format captured group following printf-style provided a format string.
+    Naively converse captured group's type based on format pattern.
     """
     captured = m.group(0)
-    if style[-1] == 'd':
+    if form[-1] == "d":
         captured = int(captured)
-    elif style[-1] == 'f':
-        captured = float(captured)
-    return style % captured
+    return form % captured
 
 
-def convert(filename, dry_run=False):
-    """Do the conversion for one file.
-    """
+def convert(filename, form, type=None, regex=None, dry_run=False):
+    """Do the conversion for one file."""
     if not os.path.isfile(filename):
-        sys.stderr.write("ERROR: {} not found.".format(filename))
-        sys.exit(1)
-    new_filename = re.sub(args.regex, lambda m: format(m, args.format), filename)
+        panic("{} not found.".format(filename))
+
+    if type == "number":
+        regex = r"(\d+)"
+
+    new_filename = re.sub(regex, lambda m: do_format(m, form, type), filename)
+
     if dry_run:
         print("{} -> {}".format(filename, new_filename))
     else:
         os.rename(filename, new_filename)
 
 
+type = None
+if args.type:
+    type = args.type.lower()
+    if type not in SUPPORTED_TYPES:
+        panic("{} is not supported".format(type))
+
+if not args.type and not args.regex:
+    panic("At least --type or --regex must be provided.")
+
 if args.dry_run:
     print("DRY RUN:")
 
 if args.filename:
-    convert(args.filename, args.dry_run)
+    convert(args.filename, args.format, type, args.regex, args.dry_run)
 else:
     for filename in sys.stdin:
-        convert(filename.strip(), args.dry_run)
+        convert(filename.strip(), args.format, type, args.regex, args.dry_run)
