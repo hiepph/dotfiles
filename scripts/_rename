@@ -74,7 +74,9 @@ def do_format(m, form, type) -> str:
     captured = m.group(0)
     if form[-1] == "d":
         captured = int(captured)
-    return form % captured
+    if "%" in form:
+        return form % captured
+    return form
 
 
 def convert(filename, form, type=None, regex=None, dry_run=False):
