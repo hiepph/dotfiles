@@ -188,7 +188,7 @@
   (let ((format-func (assoc major-mode format-formatters)))
     (when format-func
         (progn (funcall-interactively (car (cdr format-func)))
-               (revert-buffer t t)))))
+               (revert-buffer t t t)))))
 
 (define-minor-mode format-mode
   "Auto format code using predefined formatter"
