@@ -1,0 +1,22 @@
+#!/bin/zsh
+
+#
+# trim clears all leading, trailing spaces and multiple spaces between words
+#
+# EXAMPLES
+# $ _trim_space "    a    long string"
+# #=> "a long string"
+#
+# $ echo "    another long   string" | _trim_space
+# #=> "another long string"
+#
+
+trim () {
+     sed 's/ *//' | tr -s ' '
+}
+
+if [ -z "$1" ]; then
+   trim
+else
+   echo $1 | trim
+fi
