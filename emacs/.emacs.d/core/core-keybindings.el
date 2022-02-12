@@ -149,8 +149,7 @@
   ("j" #'dumb-jump-go "go")
   ("o" #'dumb-jump-go-other-window "other window")
   ("i" #'dumb-jump-go-prompt "prompt")
-  ("l" #'dumb-jump-quick-look "quick look")
-  ("b" #'dumb-jump-back "back"))
+  ("l" #'dumb-jump-quick-look "quick look"))
 
 (defhydra hydra-magit (:color blue :columns 4)
   "Magit"
@@ -318,20 +317,10 @@
    "C-r" 'undo-fu-only-redo)
 
   ;;
-  ;; Tabs (Centaur)
-  ;;
-  (general-define-key
-   :states 'normal
-   :keymaps 'centaur-tabs-mode-map
-   "g t" 'centaur-tabs-forward
-   "g T" 'centaur-tabs-backward)
-
-  ;;
   ;; dumb-jump
   ;;
   (general-define-key
    :states 'normal
-   ;; (?) 'dumb-jump-back
    "C-]" 'dumb-jump-go))
 
 

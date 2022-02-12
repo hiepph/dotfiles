@@ -135,7 +135,11 @@
 ;;
 (use-package dumb-jump
   :config
-  (add-hook 'xref-backend-functions #'dumb-jump-xref-activate))
+  (setq dumb-jump-prefer-searcher 'rg)
+
+  ;; dump-jump-back is useful but is cognitively overhead
+  ;; mark position before jump to definition so we can go back with C-o
+  (advice-add 'dumb-jump-go :before (lambda (&rest r) (evil-set-jump))))
 
 
 ;;
