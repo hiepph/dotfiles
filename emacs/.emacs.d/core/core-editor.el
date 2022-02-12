@@ -178,10 +178,20 @@
 ;; ACME modifies text with shell-command
 ;;
 
-;; run shell-command and output out result to current position
+;; run shell command and output out result to current position
 (defun ~acme> (command)
   (interactive "M>: ")
   (insert (shell-command-to-string command)))
 
+;; run shell command on region and replace it
+(defun ~acme| (command)
+  (interactive "M|: ")
+  (shell-command-on-region (region-beginning)
+                           (region-end)
+                           command
+                           ;; output
+                           (current-buffer)
+                           ;; replace?
+                           t))
 
 (provide 'core-editor)

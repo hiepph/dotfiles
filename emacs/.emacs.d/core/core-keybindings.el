@@ -327,7 +327,8 @@
   ;;
   ;; ACME
   ;;
-  (global-set-key (kbd "M->") '~acme>))
+  (global-set-key (kbd "M->") '~acme>)
+  (global-set-key (kbd "M-|") '~acme|))
 
 
 (provide 'core-keybindings)
