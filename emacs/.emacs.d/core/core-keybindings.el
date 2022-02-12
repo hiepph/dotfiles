@@ -321,7 +321,13 @@
   ;;
   (general-define-key
    :states 'normal
-   "C-]" 'dumb-jump-go))
+   "C-]" 'dumb-jump-go)
+
+
+  ;;
+  ;; ACME
+  ;;
+  (global-set-key (kbd "M->") '~acme>))
 
 
 (provide 'core-keybindings)

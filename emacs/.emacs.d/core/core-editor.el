@@ -178,5 +178,10 @@
 ;; ACME modifies text with shell-command
 ;;
 
+;; run shell-command and output out result to current position
+(defun ~acme> (command)
+  (interactive "M>: ")
+  (insert (shell-command-to-string command)))
+
 
 (provide 'core-editor)
