@@ -137,6 +137,8 @@
   :config
   (setq dumb-jump-prefer-searcher 'rg)
 
+  (setq dumb-jump-selector 'completing-read)
+
   ;; dump-jump-back is useful but is cognitively overhead
   ;; mark position before jump to definition so we can go back with C-o
   (advice-add 'dumb-jump-go :before (lambda (&rest r) (evil-set-jump))))
@@ -170,5 +172,11 @@
 (defun ~open-terminal ()
   (interactive)
   (shell-command "open . -a iTerm"))
+
+
+;;
+;; ACME modifies text with shell-command
+;;
+
 
 (provide 'core-editor)
