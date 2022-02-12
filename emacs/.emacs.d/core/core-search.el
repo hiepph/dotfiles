@@ -106,19 +106,6 @@ Number registers are not needed because it is easier to refer from the `yank-pop
 ;; ref:
 ;;   https://vim.fandom.com/wiki/Using_marks
 ;;
-;; some special marks:
-;;
-;; .     last change occurs
-;; ^     last insert
-;; '     last line
-;; `     last position
-;; %     matching parentheses
-;; (/)   prev/next sentence
-;; {/}   prev/next paragraph
-;; H/M/L top/middle/bottom
-;; gf    filename under cursor
-;; </>   prev/next visual selection
-;;
 (defun ~consult--mark-candidates (register-list)
   (seq-filter
    (lambda (item) (not (null (cadr item))))
