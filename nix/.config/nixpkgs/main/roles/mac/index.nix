@@ -25,15 +25,15 @@ with pkgs;
     emacs
     ispell
     indent
+    ctags
 
     # languages
     boot # clojure build tool
     babashka # interpreter for Clojure scripting
     (callPackage ./julia {})
-    go
-    goimports
-    delve # go debugger
     lua
+    go
+    ruby
 
     # utils
     (callPackage ./ripgrep {})

@@ -65,7 +65,7 @@
   ("b" #'projectile-switch-to-buffer "buffer")
   ("k" #'projectile-kill-buffers "kill buffers")
 
-  ("R" #'projectile-regenerate-tags "regenerate tags")
+  ("t" #'projectile-regenerate-tags "regenerate tags")
   ("j" #'projectile-find-tag "find tags")
 
   ("c" #'projectile-compile-project "compile (root)")
