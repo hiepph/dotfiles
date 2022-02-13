@@ -318,6 +318,8 @@
 
   ;;
   ;; dumb-jump
+  ;; You can either jump with `evil-goto-definition (gd)`
+  ;; or `dumb-jump-go`
   ;;
   (general-define-key
    :states 'normal
