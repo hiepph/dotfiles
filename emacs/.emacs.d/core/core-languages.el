@@ -216,4 +216,13 @@
 (setq tab-width 4)
 
 
+;;
+;; Yasnippet
+;; ref: https://github.com/joaotavora/yasnippet
+;;
+(use-package yasnippet
+  :config
+  (yas-global-mode 1))
+
+
 (provide 'core-languages)
