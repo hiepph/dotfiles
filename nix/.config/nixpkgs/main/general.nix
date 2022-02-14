@@ -5,10 +5,10 @@ let
   my-python-packages = python-packages: with python-packages; [
     pytest
     pylint
+    yamllint
     (callPackage ./packages/black {})
 
     ansible
-    speedtest-cli
   ];
   python-with-my-packages = pkgs.python38.withPackages my-python-packages;
 in {
