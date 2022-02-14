@@ -40,6 +40,11 @@ with pkgs;
     nmap
     bat
     pandoc
+
+    # virtualization
+    vagrant
+
+    # db
     postgresql_13
 
     # backup
