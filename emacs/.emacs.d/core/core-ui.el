@@ -78,6 +78,9 @@
 (add-hook 'yaml-mode-hook (lambda ()
                            (setq buffer-face-mode-face '(:family "Input Mono"))
                            (buffer-face-mode)))
+(add-hook 'git-commit-mode-hook (lambda ()
+                           (setq buffer-face-mode-face '(:family "Input Mono"))
+                           (buffer-face-mode)))
 
 
 ;;
