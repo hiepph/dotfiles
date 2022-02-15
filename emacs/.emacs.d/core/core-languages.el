@@ -121,6 +121,9 @@
   ;; Don't display full width of the image
   (setq org-image-actual-width nil)
 
+  ;; show special symbols
+  (setq org-pretty-entities t)
+
   :config
   (setq org-confirm-babel-evaluate nil
         org-src-fontify-natively t
