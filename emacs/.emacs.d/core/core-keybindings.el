@@ -164,7 +164,8 @@
   ("l" #'org-insert-link "link")
   ("," #'org-insert-structure-template "template")
   ("c" #'org-ctrl-c-ctrl-c "execute")
-  ("'" #'org-edit-special "edit"))
+  ("'" #'org-edit-special "edit")
+  ("t" #'org-babel-tangle "tangle"))
 
 (defhydra hydra-org-toggle (:color blue :columns 4)
   ("h" #'org-toggle-heading "heading")
@@ -208,6 +209,7 @@
   (global-set-key (kbd "<f2>") 'save-buffer)
   (global-set-key (kbd "<f3>") 'find-file)
   (global-set-key (kbd "<f4>") 'persp-switch-to-buffer*)
+  (global-set-key (kbd "<f10>") 'yas-reload-all)
 
   ;;
   ;; Alt combination
