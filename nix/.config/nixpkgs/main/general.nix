@@ -3,11 +3,17 @@
 
 let
   my-python-packages = python-packages: with python-packages; [
+    # test
     pytest
-    pylint
+
+    # linter
     yamllint
     (callPackage ./packages/black {})
 
+    # visualization
+    matplotlib
+
+    # devops
     ansible
   ];
   python-with-my-packages = pkgs.python38.withPackages my-python-packages;
