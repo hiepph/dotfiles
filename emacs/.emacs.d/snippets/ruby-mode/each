@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: each { |...| ... }
-# key: each
-# --
-each do |${expr}|
-  $0
-end
