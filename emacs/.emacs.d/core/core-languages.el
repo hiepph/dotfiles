@@ -131,10 +131,10 @@
 
   (org-babel-do-load-languages
    'org-babel-load-languages
-   '((shell      . t)
+   '((shell . t)
      (emacs-lisp . t)
-     (python     . t)
-     (ruby       . t)))
+     (python . t)
+     (ruby . t)))
 
   :hook
   ;; remove '<' autopair
@@ -165,6 +165,7 @@
 (add-to-list 'auto-mode-alist '("\\.cu\\'" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.zsh\\'" . sh-mode))
 (add-to-list 'auto-mode-alist '("\\.elm\\'" . haskell-mode))
+(add-to-list 'auto-mode-alist '("\\.Vagrantfile\\'" . ruby-mode))
 
 
 ;;
