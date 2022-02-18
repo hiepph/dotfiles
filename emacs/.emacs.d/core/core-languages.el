@@ -124,6 +124,9 @@
   ;; show special symbols
   (setq org-pretty-entities t)
 
+  ;; auto-indent
+  (setq org-startup-indented t)
+
   :config
   (setq org-confirm-babel-evaluate nil
         org-src-fontify-natively t
