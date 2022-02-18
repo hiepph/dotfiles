@@ -33,6 +33,7 @@ with pkgs;
     (callPackage ./julia {})
     lua
     go
+    (callPackage ./gotools {})
     ruby
 
     # utils
