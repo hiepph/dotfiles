@@ -162,7 +162,6 @@
   ("h" #'org-insert-heading "heading")
   ("H" #'org-insert-subheading "sub heading")
   ("l" #'org-insert-link "link")
-  ("," #'org-insert-structure-template "template")
   ("c" #'org-ctrl-c-ctrl-c "execute")
   ("'" #'org-edit-special "edit")
   ("t" #'org-babel-tangle "tangle"))
@@ -208,7 +207,8 @@
   (global-set-key (kbd "<f1>") 'persp-switch)
   (global-set-key (kbd "<f2>") 'save-buffer)
   (global-set-key (kbd "<f3>") 'find-file)
-  (global-set-key (kbd "<f4>") 'persp-switch-to-buffer*)
+  (global-set-key (kbd "<f5>") 'revert-buffer)
+  (global-set-key (kbd "<f8>") 'persp-switch-to-buffer*)
   (global-set-key (kbd "<f10>") 'yas-reload-all)
 
   ;;
@@ -217,11 +217,6 @@
 
   ;; M-: eval-expression
   (global-set-key (kbd "M-&") 'async-shell-command)
-
-  (global-set-key (kbd "M-h") 'windmove-left)
-  (global-set-key (kbd "M-l") 'windmove-right)
-  (global-set-key (kbd "M-j") 'windmove-down)
-  (global-set-key (kbd "M-k") 'windmove-up)
 
   (global-set-key (kbd "<M-left>") 'windmove-left)
   (global-set-key (kbd "<M-right>") 'windmove-right)
@@ -252,7 +247,9 @@
    "," 'hydra-org/body
    "> >" 'org-shiftmetaright
    "< <" 'org-shiftmetaleft
-   "g u" 'outline-up-heading)
+   "g u" 'outline-up-heading
+   "M-k" 'org-move-subtree-up
+   "M-j" 'org-move-subtree-down)
 
   (general-nmap
     :states 'insert
@@ -274,7 +271,7 @@
   (general-define-key
    :states 'normal
    :keymaps 'emacs-lisp-mode-map
-   [f5] '~eval-buffer)
+   [f9] '~eval-buffer)
 
   ;;
   ;; company
