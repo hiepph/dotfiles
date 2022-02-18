@@ -207,7 +207,7 @@
   (global-set-key (kbd "<f1>") 'persp-switch)
   (global-set-key (kbd "<f2>") 'save-buffer)
   (global-set-key (kbd "<f3>") 'find-file)
-  (global-set-key (kbd "<f5>") 'revert-buffer)
+  (global-set-key (kbd "<f5>") '~revert-buffer)
   (global-set-key (kbd "<f8>") 'persp-switch-to-buffer*)
   (global-set-key (kbd "<f10>") 'yas-reload-all)
 

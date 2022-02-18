@@ -29,6 +29,14 @@
 (add-hook 'comint-output-filter-functions #'comint-truncate-buffer)
 
 
+;; revert buffer but keeping mode
+;; if buffer is not saved, ask for confirmation before reverting
+(defun ~revert-buffer ()
+  (interactive)
+  (if (buffer-modified-p (current-buffer))
+      (revert-buffer t nil t)
+      (revert-buffer t t t)))
+
 ;;
 ;; Recent files
 ;;
