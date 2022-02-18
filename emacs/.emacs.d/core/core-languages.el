@@ -97,12 +97,6 @@
   ;; hide emphasis (WYSIWYG)
   (setq org-hide-emphasis-markers t)
 
-  ;; show items in list with circular bullet
-  (font-lock-add-keywords
-   'org-mode
-   '(("^ +\\([-+*]\\) "
-      (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
-
   ;; show image in org babel
   (add-hook 'org-babel-after-execute-hook 'org-display-inline-images 'append)
 
