@@ -4,10 +4,10 @@
 # trim clears all leading, trailing spaces and multiple spaces between words
 #
 # EXAMPLES
-# $ _trim_space "    a    long string"
+# $ _trim "    a    long string"
 # #=> "a long string"
 #
-# $ echo "    another long   string" | _trim_space
+# $ echo "    another long   string" | _trim
 # #=> "another long string"
 #
 
