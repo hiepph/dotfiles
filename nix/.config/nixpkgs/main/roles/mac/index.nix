@@ -9,10 +9,6 @@ with pkgs;
       prompt.theme = "pure";
     };
 
-    shellAliases = {
-      "LTspice" = "/Applications/LTspice.app/Contents/MacOS/LTspice";
-    };
-
     sessionVariables = {
       "EDITOR" = "vim";
       "VISUAL" = "vim";
