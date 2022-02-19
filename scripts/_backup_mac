@@ -1,22 +1,35 @@
 #!/bin/zsh
-
 # Note: borg create --stats output to stderr
 
 BACKUP_DIR=/Volumes/MacBackup/MacHome
-BACKUP_ID=$(date +%Y-%m-%d.%s)
+BACKUP_ID=$(date +%Y-%m-%d)
 
-echo "\n***\nBackup $BACKUP_ID\n" 1>&2
+TARGET_DIRS=(
+    "$HOME/.config"
+    "$HOME/.ssh"
+    "$HOME/Books"
+    "$HOME/Code"
+    "$HOME/Courses"
+    "$HOME/Projects"
+    "$HOME/Vault"
+)
 
+export BORG_PASSPHRASE=$(pass show borg/MacBackup)
+
+echo ">>> Backup $BACKUP_ID\n" 1>&2
 if [ -d "$BACKUP_DIR" ]; then
-   BORG_PASSPHRASE=$(pass show borg/MacBackup) \
-            borg create --exclude '.git/' -v --stats \
-            $BACKUP_DIR::$BACKUP_ID \
-            ~/Code \
-            ~/.config \
-            ~/.ssh \
-            ~/Courses \
-            ~/Projects \
-            ~/Vault
+   if borg check $BACKUP_DIR::$BACKUP_ID ; then
+      echo ">>> Backup existed. Recreating"
+      borg recreate -v --stats $BACKUP_DIR::$BACKUP_ID $TARGET_DIRS
+   else
+      borg create -v --stats $BACKUP_DIR::$BACKUP_ID $TARGET_DIRS
+   fi
+
+   # prune after each backup
+   echo ">>> Pruning"
+   borg prune -v --list --keep-within=7d --keep-weekly=4 --keep-monthly=-1 $BACKUP_DIR
 else
     echo "$BACKUP_DIR doesn't exist. Skip back up." 1>&2
 fi
+
+unset BORG_PASSPHRASE
