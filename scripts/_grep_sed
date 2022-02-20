@@ -1,0 +1,49 @@
+#!/usr/bin/env bb
+; -*-Clojure-*-
+
+(require '[clojure.java.shell :refer [sh]]
+         '[clojure.tools.cli :refer [parse-opts]])
+
+(def cli-options
+  [["-p" "--pattern PATTERN" "Pattern to be replaced"]
+   ["-r" "--replaced REPLACED" "Replaced text"]
+   ["-d" "--dry-run" "View result without executing anything"]])
+
+(defn help []
+  (println
+   "USAGE: _grep_sed -p <pattern> -r <replaced> [directory]
+
+Recursively find all pattern and replace them.
+Default execute in the current directory.
+
+EXAMPLES
+Replace all 'hiep' to 'hiepph':
+$ _grep_sed -p hieph -r hiepph ."))
+
+(defn sed
+  "Works like sed, provied 'pattern' and 'replaced'."
+  [filepath pattern replaced dry-run]
+  (let [content (slurp filepath)
+        new-content (str/replace content pattern replaced)]
+    (if dry-run
+      (println (format "%s\n%s\n" filepath new-content))
+      (spit filepath new-content))))
+
+;; main
+(let [{:keys [:arguments :options]} (parse-opts *command-line-args* cli-options)]
+  (when (or
+         (> (count arguments) 1)
+         (str/blank? (:pattern options))
+         (str/blank? (:replaced options)))
+    (help)
+    (System/exit 1))
+  (if (= (count arguments) 0)
+    (def directory ".")
+    (def directory (first arguments)))
+  (def opts options))
+
+(let [files (-> (sh "grep" "-rl" (:pattern opts) ".")
+                :out
+                (str/split #"\n"))]
+  (doseq [file files]
+    (sed file (:pattern opts) (:replaced opts) (:dry-run opts))))

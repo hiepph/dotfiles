@@ -120,11 +120,6 @@ colorscheme alduin
 
 Collection of my shortcut and useful scripts.
 
-+ `_pocket`: query articles in [Pocket](https://app.getpocket.com/)
-
-+ `_gitignore`: download `.gitignore` file
-
-
 # Themes
 
 Below is an awesome list of themes done in style. All are eye-care themes.
