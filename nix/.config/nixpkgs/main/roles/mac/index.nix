@@ -23,6 +23,9 @@ with pkgs;
     indent
     ctags
 
+    # build
+    cmake
+
     # languages
     boot # clojure build tool
     babashka # interpreter for Clojure scripting
@@ -31,6 +34,7 @@ with pkgs;
     go
     (callPackage ./gotools {})
     ruby
+    nim
 
     # utils
     (callPackage ./ripgrep {})

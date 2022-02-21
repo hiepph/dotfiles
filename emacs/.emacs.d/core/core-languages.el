@@ -1,11 +1,6 @@
-;; Lisp
-;; (use-package slime)
-;; (setq inferior-lisp-program (executable-find "sbcl"))
-;; (load (expand-file-name "~/quicklisp/slime-helper.el"))
-;; (setq inferior-lisp-program "sbcl")
-
-
+;;
 ;; Clojure
+;;
 (use-package cider
   :config
   ;; disable warning when jacking-in outside a project
@@ -14,13 +9,21 @@
   ;; Make cider use ~boot~ by default
   (setq cider-jack-in-default 'boot))
 
+;;
 ;; Racket
+;;
 (use-package racket-mode)
 
+
+;;
 ;; markdown
+;;
 (use-package markdown-mode)
 
+
+;;
 ;; julia
+;;
 (use-package julia-mode)
 
 
@@ -35,9 +38,17 @@
   (let ((fname (buffer-file-name)))
     (shell-command (format "black %s" fname) nil)))
 
+
+;;
+;; Nim
+;;
+(use-package nim-mode)
+
+
 :;
 ;; C
 ;;
+
 ;; autoformat C code using GNU's `indent`
 ;; refer: https://www.gnu.org/software/indent/manual/indent.html
 (defun ~format-c ()
@@ -75,17 +86,25 @@
   (evil-append-line nil)
   (haskell-indentation-newline-and-indent))
 
+
+;;
 ;; Nix
+;;
 (use-package nix-mode
   :mode "\\.nix\\'")
 
 
+;;
 ;; Lua
+;;
 (use-package lua-mode)
 
 
+;;
 ;; Yaml
+;;
 (use-package yaml-mode)
+
 
 ;;
 ;; Org-mode
