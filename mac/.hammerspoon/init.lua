@@ -223,7 +223,6 @@ end
 hs.urlevent.bind("terminal", function(eventName, params)
                      local command = params['command']
                      local dir = params['dir']
-                     hs.alert.show(dir)
 
                      if dir then
                          cd_command = string.format([[

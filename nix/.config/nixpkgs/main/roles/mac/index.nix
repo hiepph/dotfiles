@@ -30,7 +30,7 @@ with pkgs;
     boot # clojure build tool
     babashka # interpreter for Clojure scripting
     (callPackage ./julia {})
-    lua
+    (callPackage ./lua {})
     go
     (callPackage ./gotools {})
     ruby
