@@ -215,6 +215,49 @@ if caffeine then
 end
 
 --
+-- URLs
+--
+
+-- call iTerm with command
+-- ref: https://iterm2.com/documentation-scripting.html
+hs.urlevent.bind("terminal", function(eventName, params)
+                     local command = params['command']
+                     local dir = params['dir']
+                     hs.alert.show(dir)
+
+                     if dir then
+                         cd_command = string.format([[
+  tell current session of tab -1 of current window
+    write text "cd %s"
+  end tell
+]], dir)
+                     else
+                         cd_command = ""
+                     end
+
+                     if command then
+                         exec_command = string.format([[
+  tell current session of tab -1 of current window
+    write text "%s"
+  end tell
+]], command)
+                     else
+                         exec_command = ""
+                     end
+
+                     hs.osascript.applescript(string.format([[
+tell application "iTerm"
+  create window with default profile
+
+  %s
+
+  %s
+end tell
+]], cd_command, exec_command))
+end)
+
+
+--
 -- Hot reload
 --
 hs.hotkey.bind({"cmd", "shift"}, "r", function()

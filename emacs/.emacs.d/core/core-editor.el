@@ -185,18 +185,16 @@
   (interactive)
   (shell-command "open . -a iTerm"))
 
-
 ;;
 ;; ACME modifies text with shell-command
 ;;
-
-;; run shell command and output out result to current position
 (defun ~acme> (command)
+  "run shell command and output out result to current position"
   (interactive "M>: ")
   (insert (shell-command-to-string command)))
 
-;; run shell command on region and replace it
 (defun ~acme| (command)
+  "run shell command on region and replace it"
   (interactive "M|: ")
   (shell-command-on-region (region-beginning)
                            (region-end)
@@ -205,5 +203,12 @@
                            (current-buffer)
                            ;; replace?
                            t))
+
+(defun ~acme$ (command)
+  "Open terminal and run shell command.
+Supports MacOS (with Hammerspoon) for now."
+  (interactive "M$: ")
+  (shell-command
+   (format "open -g 'hammerspoon://terminal?dir=%s&command=%s'" default-directory command)))
 
 (provide 'core-editor)
