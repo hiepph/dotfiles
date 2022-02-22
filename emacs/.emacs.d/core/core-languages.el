@@ -21,6 +21,8 @@
 (use-package markdown-mode)
 
 
+
+
 ;;
 ;; julia
 ;;
@@ -104,6 +106,12 @@
 ;; Yaml
 ;;
 (use-package yaml-mode)
+
+
+;;
+;; Terraform
+;;
+(use-package terraform-mode)
 
 
 ;;
@@ -231,10 +239,14 @@
 
 ;;
 ;; Tabs
-;; View tabs as 4 spaces
 ;;
+
+;; View tabs as 4 spaces
 (setq default-tab-width 4)
-(setq tab-width 4)
+(setq-default tab-width 4)
+
+;; tab stop position
+(setq tab-stop-list '(4 8 12))
 
 
 ;;

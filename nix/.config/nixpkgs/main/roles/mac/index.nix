@@ -17,14 +17,17 @@ with pkgs;
   };
 
   home.packages = [
-    # text editor
-    emacs
-    ispell
-    indent
-    ctags
+    # backup
+    borgbackup
 
     # build
     cmake
+
+    # db
+    postgresql_13
+
+    # infrastructure
+    terraform
 
     # languages
     boot # clojure build tool
@@ -36,6 +39,12 @@ with pkgs;
     ruby
     nim
 
+    # text editor
+    emacs
+    ispell
+    indent
+    ctags
+
     # utils
     (callPackage ./ripgrep {})
     nmap
@@ -44,11 +53,5 @@ with pkgs;
 
     # virtualization
     vagrant
-
-    # db
-    postgresql_13
-
-    # backup
-    borgbackup
   ];
 }
