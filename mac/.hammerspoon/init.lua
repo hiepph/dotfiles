@@ -245,8 +245,13 @@ hs.urlevent.bind("terminal", function(eventName, params)
                      end
 
                      hs.osascript.applescript(string.format([[
+activate application "iTerm"
+tell application "iTerm" to run
+
 tell application "iTerm"
-  create window with default profile
+  tell current window
+    create tab with default profile
+  end tell
 
   %s
 
