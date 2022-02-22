@@ -150,7 +150,8 @@
    '((shell . t)
      (emacs-lisp . t)
      (python . t)
-     (ruby . t)))
+     (ruby . t)
+     (lua . t)))
 
   :hook
   ;; remove '<' autopair
