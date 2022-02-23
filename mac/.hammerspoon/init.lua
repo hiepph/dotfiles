@@ -147,11 +147,13 @@ function resize(wPercent, hPercent)
     end
 end
 
-hs.hotkey.bind({'cmd', 'shift'}, '.', resize(0.1, 0))
-hs.hotkey.bind({'cmd', 'shift'}, ',', resize(-0.1, 0))
-hs.hotkey.bind({'cmd', 'shift'}, '=', resize(0, 0.1))
-hs.hotkey.bind({'cmd', 'shift'}, '-', resize(0, -0.1))
-
+local window_resize_ratio = 0.15
+hs.hotkey.bind(super_shift, '.', resize(window_resize_ratio, 0))
+hs.hotkey.bind(super_shift, ',', resize(-window_resize_ratio, 0))
+hs.hotkey.bind(super_shift, '=', resize(0, window_resize_ratio))
+hs.hotkey.bind(super_shift, '-', resize(0, -window_resize_ratio))
+hs.hotkey.bind(super_shift, ']', resize(window_resize_ratio, window_resize_ratio))
+hs.hotkey.bind(super_shift, '[', resize(-window_resize_ratio, -window_resize_ratio))
 
 --
 -- Window visibility
