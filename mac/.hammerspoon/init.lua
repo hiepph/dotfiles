@@ -1,7 +1,11 @@
+local super_shift = {"cmd", "shift"}
+local super_ctrl = {"cmd", "ctrl"}
+local super_alt = {"cmd", "alt"}
+
 --
 -- Window movement
 --
-hs.hotkey.bind({"cmd", "shift"}, "h", function()
+hs.hotkey.bind(super_shift, "h", function()
       local win = hs.window.focusedWindow()
       local f = win:frame()
       local screen = win:screen()
@@ -14,7 +18,7 @@ hs.hotkey.bind({"cmd", "shift"}, "h", function()
       win:setFrame(f)
 end)
 
-hs.hotkey.bind({"cmd", "shift"}, "l", function()
+hs.hotkey.bind(super_shift, "l", function()
       local win = hs.window.focusedWindow()
       local f = win:frame()
       local screen = win:screen()
@@ -27,7 +31,7 @@ hs.hotkey.bind({"cmd", "shift"}, "l", function()
       win:setFrame(f)
 end)
 
-hs.hotkey.bind({"cmd", "shift"}, "k", function()
+hs.hotkey.bind(super_shift, "k", function()
       local win = hs.window.focusedWindow()
       local f = win:frame()
       local screen = win:screen()
@@ -40,7 +44,7 @@ hs.hotkey.bind({"cmd", "shift"}, "k", function()
       win:setFrame(f)
 end)
 
-hs.hotkey.bind({"cmd", "shift"}, "j", function()
+hs.hotkey.bind(super_shift, "j", function()
       local win = hs.window.focusedWindow()
       local f = win:frame()
       local screen = win:screen()
@@ -53,28 +57,12 @@ hs.hotkey.bind({"cmd", "shift"}, "j", function()
       win:setFrame(f)
 end)
 
-hs.hotkey.bind({"cmd", "shift"}, "c", function()
+hs.hotkey.bind(super_shift, "c", function()
       local win = hs.window.focusedWindow()
       local screen = win:screen()
 
       win:centerOnScreen(screen)
 end)
-
--- Move between screens
-hs.hotkey.bind({"cmd", "ctrl"}, "h", function()
-      local win = hs.window.focusedWindow()
-      local f = win:frame()
-
-      win:moveOneScreenWest()
-end)
-
-hs.hotkey.bind({"cmd", "ctrl"}, "l", function()
-      local win = hs.window.focusedWindow()
-      local f = win:frame()
-
-      win:moveOneScreenEast()
-end)
-
 
 --
 -- Window switch
@@ -110,21 +98,21 @@ end)
 --
 -- Window size
 --
-hs.hotkey.bind({"cmd", "shift"}, "return", function()
+hs.hotkey.bind(super_shift, "return", function()
       local win = hs.window.focusedWindow()
       local screen = win:screen()
 
       win:maximize()
 end)
 
-hs.hotkey.bind({"cmd", "shift"}, "m", function()
+hs.hotkey.bind(super_shift, "m", function()
       local win = hs.window.focusedWindow()
       local screen = win:screen()
 
       win:minimize()
 end)
 
-hs.hotkey.bind({"cmd", "shift"}, "f", function()
+hs.hotkey.bind(super_shift, "f", function()
       local win = hs.window.focusedWindow()
       local screen = win:screen()
 
@@ -170,18 +158,52 @@ hs.hotkey.bind({'cmd', 'shift'}, '-', resize(0, -0.1))
 --
 
 -- this equals clicking the red close button
-hs.hotkey.bind({"cmd", "shift"}, "x", function()
+hs.hotkey.bind(super_shift, "x", function()
       local win = hs.window.focusedWindow()
       win:close()
 end)
 
 
 --
+-- Screens
+--
+
+-- Move window between screens
+hs.hotkey.bind(super_ctrl, "h", function()
+      local win = hs.window.focusedWindow()
+      local f = win:frame()
+
+      win:moveOneScreenWest()
+end)
+
+hs.hotkey.bind(super_ctrl, "l", function()
+      local win = hs.window.focusedWindow()
+      local f = win:frame()
+
+      win:moveOneScreenEast()
+end)
+
+-- Scale
+-- Larger text (zoom-in effect)
+hs.hotkey.bind(super_ctrl, "=", function()
+                   local screen = hs.screen.primaryScreen()
+                   local cur = screen:currentMode()
+                   screen:setMode(1280, 800, cur.scale, cur.freq, cur.depth)
+end)
+
+-- Smaller text (zoom-out effect)
+hs.hotkey.bind(super_ctrl, "-", function()
+                   local screen = hs.screen.primaryScreen()
+                   local cur = screen:currentMode()
+                   screen:setMode(1440, 900, cur.scale, cur.freq, cur.depth)
+end)
+
+--
 -- Applications
 --
 
 -- kill gracefully (close and kill)
-hs.hotkey.bind({"cmd", "shift"}, "q", function()
+hs.hotkey.bind(super_shift, "q", function()
       local win = hs.window.focusedWindow()
       win:application():kill()
 end)
@@ -189,7 +211,7 @@ end)
 --
 -- Lock
 --
-hs.hotkey.bind({"cmd", "shift"}, "escape", function()
+hs.hotkey.bind(super_shift, "escape", function()
         hs.caffeinate.lockScreen()
 end)
 
@@ -264,7 +286,7 @@ end)
 --
 -- Hot reload
 --
-hs.hotkey.bind({"cmd", "shift"}, "r", function()
+hs.hotkey.bind(super_shift, "r", function()
       hs.reload()
 end)
 hs.alert.show("Config loaded")
