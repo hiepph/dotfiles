@@ -1,3 +1,0 @@
-# copy current SSH key to clipboard
-
-pbcopy < ~/.ssh/id_rsa.pub
