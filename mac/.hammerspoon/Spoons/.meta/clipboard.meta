@@ -1,0 +1,3 @@
+wget https://github.com/Hammerspoon/Spoons/raw/master/Spoons/ClipboardTool.spoon.zip
+unzip ClipboardTool.spoon.zip
+mv ClipboardTool.Spoon out/
