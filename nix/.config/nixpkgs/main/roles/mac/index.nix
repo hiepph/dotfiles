@@ -12,8 +12,11 @@ with pkgs;
     sessionVariables = {
       "EDITOR" = "vim";
       "VISUAL" = "vim";
-      "PATH" = "$HOME/scripts:$HOME/go/bin:$PATH";
+      "PATH" = "$HOME/scripts:$HOME/go/bin:/Library/Tex/texbin:$PATH";
     };
+
+    # shellAliases = {
+    # };
   };
 
   home.packages = [
@@ -28,6 +31,9 @@ with pkgs;
 
     # infrastructure
     terraform
+    awscli2
+    kops
+    kubectx
 
     # languages
     boot # clojure build tool
