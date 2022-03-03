@@ -174,6 +174,7 @@
 ;; e.g. <s TAB expands to ~#+begin_src~
 (require 'org-tempo)
 
+;; Enable async for code block
 (use-package ob-async)
 
 ;; Beautify heading lists
