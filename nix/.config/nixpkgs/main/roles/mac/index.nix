@@ -34,6 +34,7 @@ with pkgs;
     awscli2
     kops
     kubectx
+    minikube
 
     # languages
     boot # clojure build tool
