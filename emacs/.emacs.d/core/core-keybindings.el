@@ -164,7 +164,8 @@
   ("l" #'org-insert-link "link")
   ("c" #'org-ctrl-c-ctrl-c "execute")
   ("'" #'org-edit-special "edit")
-  ("t" #'org-babel-tangle "tangle"))
+  ("t" #'org-babel-tangle "tangle")
+  ("i" #'org-display-inline-images "images"))
 
 (defhydra hydra-org-toggle (:color blue :columns 4)
   ("h" #'org-toggle-heading "heading")

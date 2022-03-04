@@ -178,12 +178,20 @@
 
 
 ;;
-;; Quickly open terminal in current directory based on OS
+;; Quickly open terminal in current directory based on OS.
 ;; TODO: Linux (supports only Mac for now)
 ;;
 (defun ~open-terminal ()
   (interactive)
   (shell-command "open . -a iTerm"))
+
+;;
+;; Quickly open file manager in current directory based on OS.
+;; TODO: Linux (supports only Mac for now)
+;;
+(defun ~open-file-manager ()
+  (interactive)
+  (shell-command "open ."))
 
 ;;
 ;; ACME modifies text with shell-command
