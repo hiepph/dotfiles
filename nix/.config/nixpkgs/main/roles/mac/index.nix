@@ -12,11 +12,12 @@ with pkgs;
     sessionVariables = {
       "EDITOR" = "vim";
       "VISUAL" = "vim";
-      "PATH" = "$HOME/scripts:$HOME/go/bin:/Library/Tex/texbin:$PATH";
+      "PATH" = "$HOME/scripts:$HOME/go/bin:/Library/Tex/texbin:$(gem environment gemdir)/bin:$PATH";
     };
 
-    # shellAliases = {
-    # };
+    shellAliases = {
+      "k" = "kubectl";
+    };
   };
 
   home.packages = [
