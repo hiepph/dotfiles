@@ -1,11 +1,12 @@
 #!/usr/bin/env python
+import glob
 import sys
 import argparse
 import re
 import os
 
-parser = argparse.ArgumentParser(
-    description="""Rename file(s) easily.
+
+HELP_MESSAGE = """Rename file(s) easily.
 
 EXAMPLES:
 Replace characters:
@@ -17,14 +18,18 @@ $ _rename -t number -f '%02d' 1.txt
 #=> 01.txt
 
 Dry run without affecting your files:
-$ _rename -t number -f '%02d' 1.txt --dry-run
+$ _rename -t number -f '%02d' --dry-run 1.txt
 
 Add leading zeros in batch:
-$ ls *.txt | _rename -t number -f '%02d'
+$ _rename -t number -f '%02d' *.txt
 
 Change extensions in batch
-$ ls *.python | _rename -e 'python' -f 'lua'
-""",
+$ _rename -e 'python' -f 'lua' *.python
+"""
+
+
+parser = argparse.ArgumentParser(
+    description=HELP_MESSAGE,
     formatter_class=argparse.RawTextHelpFormatter,
 )
 
@@ -58,7 +63,7 @@ parser.add_argument(
     help="""See how command affects your file without executing it""",
 )
 
-parser.add_argument("filepath", nargs="?", type=str, help="File name")
+parser.add_argument("filepaths", nargs="*", type=str, help="File name")
 
 args = parser.parse_args()
 
@@ -101,20 +106,22 @@ def convert(filepath, form, type=None, regex=None, dry_run=False):
         os.rename(filepath, new_filepath)
 
 
-type = None
-if args.type:
-    type = args.type.lower()
-    if type not in SUPPORTED_TYPES:
-        panic("{} is not supported".format(type))
+if __name__ == "__main__":
+    type = None
+    if args.type:
+        type = args.type.lower()
+        if type not in SUPPORTED_TYPES:
+            panic("{} is not supported".format(type))
 
-if not args.type and not args.regex:
-    panic("At least --type or --regex must be provided.")
+    if not args.type and not args.regex:
+        panic("At least --type or --regex must be provided.")
 
-if args.dry_run:
-    print("DRY RUN:")
+    if not args.filepaths:
+        parser.print_help()
+        sys.exit(1)
 
-if args.filepath:
-    convert(args.filepath, args.format, type, args.regex, args.dry_run)
-else:
-    for filepath in sys.stdin:
-        convert(filepath.strip(), args.format, type, args.regex, args.dry_run)
+    if args.dry_run:
+        print("DRY RUN:")
+
+    for filepath in args.filepaths:
+        convert(filepath, args.format, type, args.regex, args.dry_run)
