@@ -45,7 +45,7 @@ with pkgs;
     go
     (callPackage ./gotools {})
     ruby
-    nim
+    (callPackage ./zig {})
 
     # text editor
     emacs
