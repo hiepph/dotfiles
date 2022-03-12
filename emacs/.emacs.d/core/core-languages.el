@@ -38,7 +38,7 @@
   "Format python code followed PEP8"
   (interactive)
   (let ((fname (buffer-file-name)))
-    (shell-command (format "black %s" fname) nil)))
+    (shell-command (format "black %s --skip-string-normalization" fname) nil)))
 
 
 ;;
