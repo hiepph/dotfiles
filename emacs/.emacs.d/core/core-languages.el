@@ -42,9 +42,9 @@
 
 
 ;;
-;; Nim
+;; Zig
 ;;
-(use-package nim-mode)
+(use-package zig-mode)
 
 
 :;
