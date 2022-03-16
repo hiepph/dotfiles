@@ -165,7 +165,8 @@
   ("c" #'org-ctrl-c-ctrl-c "execute")
   ("'" #'org-edit-special "edit")
   ("t" #'org-babel-tangle "tangle")
-  ("i" #'org-display-inline-images "images"))
+  ("i" #'org-display-inline-images "images")
+  ("x" #'org-latex-preview "latex"))
 
 (defhydra hydra-org-toggle (:color blue :columns 4)
   ("h" #'org-toggle-heading "heading")
@@ -253,7 +254,9 @@
    "< <" 'org-shiftmetaleft
    "g u" 'outline-up-heading
    "M-k" 'org-move-subtree-up
-   "M-j" 'org-move-subtree-down)
+   "M-j" 'org-move-subtree-down
+   "] ]" 'org-next-visible-heading
+   "[ [" 'org-previous-visible-heading)
 
   (general-nmap
     :states 'insert
@@ -328,13 +331,19 @@
    :states 'normal
    "C-]" 'dumb-jump-go)
 
-
   ;;
   ;; ACME
   ;;
   (global-set-key (kbd "M->") '~acme>)
   (global-set-key (kbd "M-|") '~acme|)
-  (global-set-key (kbd "M-$") '~acme$))
+  (global-set-key (kbd "M-$") '~acme$)
+
+  ;;
+  ;; Windows
+  ;;
+  (general-define-key
+   "M-j" 'scroll-other-window
+   "M-k" 'scroll-other-window-down))
 
 
 (provide 'core-keybindings)
