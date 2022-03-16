@@ -10,6 +10,7 @@ pkgs.stdenv.mkDerivation rec {
   installPhase = ''
 mkdir -p $out/bin
 cp $distName/zig $out/bin
+cp -r $distName/lib $out/bin
 '';
   src = pkgs.fetchurl {
     url = "https://ziglang.org/builds/${distName}.tar.xz";
