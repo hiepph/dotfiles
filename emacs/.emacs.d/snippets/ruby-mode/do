@@ -2,6 +2,6 @@
 # name: do { |...| ... }
 # key: do
 # --
-do |${expr}|
+do ${}
   $0
 end
