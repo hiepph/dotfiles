@@ -142,6 +142,9 @@
   ;; Don't display full width of the image
   (setq org-image-actual-width nil)
 
+  ;; Turn on latex view by default
+  (setq org-startup-with-latex-preview t)
+
   ;; show special symbols
   (setq org-pretty-entities t)
 
