@@ -64,7 +64,7 @@ where, `general.nix`: cross-platform configurations.
 home-manager switch
 ```
 
-## Hammerppoon: desktop automation
+## Hammerspoon: desktop automation
 
 `mac/.hammerspoon`
 
@@ -73,7 +73,6 @@ back the feeling of tiling windows but it lacks the power of declarative configu
 
 Hammerspoon solves this problem by being a bridge to Mac's API. It uses Lua as scripting language.
 
-
 ## References
 
 + [Hugo Reeves](https://hugoreeves.com/posts/2019/nix-home/)
@@ -81,6 +80,40 @@ Hammerspoon solves this problem by being a bridge to Mac's API. It uses Lua as s
 # Linux
 
 *TBD*
+
+# Ansible
+
+I use Ansible to setup some post-configurations or run some common tasks.
+
+## Setup
+
+1. Edit `/etc/ansible/hosts`:
+
+```
+[local]
+localhost   ansible_connection=local
+```
+
+2. Now I can run Ansible for my local machine:
+
+```
+ansible-playbook -l local ansible/ruby.yml
+```
+
+## Why Ansible when I already have Nix?
+
+Nix is indeed great for installing binary applications. But it is too complicated in setting up a language's ecosystem, e.g. Ruby gems, Python packages, Go packages. Don't even let me mention rvm or miniconda integration.
+
+I often find myself banging my head to figure out how to properly make things work (e.g. [Rails on Nix](https://actually.fyi/posts/rails-on-nix/)). Nix is trying to be too intelligent to isolate the package but on the other hand make the process ten times painful.
+
+We can all agree making an immutable system is hard. But I don't want to trade that fantasy with an overly complicated design to make that happen. Nix has potential but falls short with its current state.
+
+On the other hand, Ansible requires me to run an additional command and make changes to the system. Simple and intuitive. Everything works as it should be.
+
+So my choice would be:
+
++ Use Nix for binary applications, packages or simple linking problems.
++ Ansible for a custom ecosystem.
 
 # Emacs
 
