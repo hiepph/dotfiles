@@ -1,6 +1,6 @@
 - name: Prune docker
   hosts: all
-  tags: docker
+  tags: prune
   tasks:
     - name: prune docker
       cron:

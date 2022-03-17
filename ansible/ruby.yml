@@ -1,0 +1,6 @@
+- hosts: all
+  name: Setup ruby with some gems
+  tasks:
+    - gem:
+        name: rubocop
+        state: present
