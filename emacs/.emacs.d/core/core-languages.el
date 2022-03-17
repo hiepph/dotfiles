@@ -21,8 +21,6 @@
 (use-package markdown-mode)
 
 
-
-
 ;;
 ;; julia
 ;;
@@ -39,6 +37,15 @@
   (interactive)
   (let ((fname (buffer-file-name)))
     (shell-command (format "black %s --skip-string-normalization" fname) nil)))
+
+;;
+;; Ruby
+;;
+(defun ~format-ruby ()
+  "Format Ruby code followed Ruby style guide"
+  (interactive)
+  (let ((fname (buffer-file-name)))
+    (shell-command (format "rubocop --auto-correct --format emacs --stderr %s" fname) nil)))
 
 
 ;;
@@ -210,7 +217,8 @@
 
 (defcustom format-formatters
   '((python-mode ~format-python)
-    (c-mode ~format-c))
+    (c-mode ~format-c)
+    (ruby-mode ~format-ruby))
   "Default formatters for predefined languages"
   :type '(repeat (list symbol symbol))
   :group 'format)
