@@ -12,7 +12,7 @@ with pkgs;
     sessionVariables = {
       "EDITOR" = "vim";
       "VISUAL" = "vim";
-      "PATH" = "$HOME/scripts:$HOME/go/bin:/Library/Tex/texbin:$(gem environment gemdir)/bin:$PATH";
+      "PATH" = "$HOME/scripts:$HOME/go/bin:/Library/Tex/texbin:$(gem environment gemdir)/bin:$HOME/.local/bin:$PATH";
     };
 
     shellAliases = {
