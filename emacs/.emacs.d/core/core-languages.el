@@ -45,7 +45,7 @@
   "Format Ruby code followed Ruby style guide"
   (interactive)
   (let ((fname (buffer-file-name)))
-    (shell-command (format "rubocop --auto-correct --format emacs --stderr %s" fname) nil)))
+    (shell-command (format "rubocop --auto-correct --format quiet --stderr %s" fname) nil)))
 
 
 ;;
