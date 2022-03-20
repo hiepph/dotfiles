@@ -41,22 +41,18 @@ darwin-rebuild switch
 `nixos-rebuild` or `darwin-rebuild` is used for the whole system.
 Home manager is specific for each user.
 
-+ Edit `.config/nixpkgs/home.nix` for each local machine, for example:
++ Edit `.config/nixpkgs/home.nix`:
 
 ```
 {
   ...
   imports = [
-    ./main/general.nix
-    ./main/roles/mac/index.nix
+    ./main.nix
   ];
 
   ...
 }
 ```
-
-where, `general.nix`: cross-platform configurations.
-
 
 + Make change and switch environment:
 
