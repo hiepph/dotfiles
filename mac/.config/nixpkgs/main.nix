@@ -7,14 +7,14 @@ let
     # test
     pytest
 
-    # linter
+    # linter and formatter
     yamllint
     (callPackage ./packages/black {})
 
     # visualization
     matplotlib
 
-    # devops
+    # tools
     ansible
   ];
   python-with-my-packages = pkgs.python38.withPackages my-python-packages;
@@ -80,6 +80,14 @@ eval "$(direnv hook zsh)"
     # db
     postgresql_13
 
+    # dev
+    git
+    emacs
+    ispell
+    indent
+    ctags
+    httpie
+
     # infrastructure
     terraform
     awscli2
@@ -103,14 +111,7 @@ eval "$(direnv hook zsh)"
     ruby
     (callPackage ./packages/zig {})
 
-    # text editor
-    emacs
-    ispell
-    indent
-    ctags
-
     # shell
-    git
     htop
     tmux
     gnupg
