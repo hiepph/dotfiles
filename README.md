@@ -111,6 +111,22 @@ So my choice would be:
 + Use Nix for binary applications, packages or simple linking problems.
 + Ansible for a custom ecosystem.
 
+## Python
+
+Python versions, packages and environments are managed with **miniconda**.
+
++ Install with `ansible`. It will install `miniconda` and all of essential packages with default environment `base`.
+
+```bash
+ansible-playbook -l local ansible/python.yml
+```
+
++ After you successfully install `miniconda`, if you want to install those essential packages with a custom conda environment:
+
+```
+ansible-playbook -l local ansible/python.yml -e "conda_env=myenv"
+```
+
 # Emacs
 
 + Config structure and performance optimization are referred from [doom-emacs](https://github.com/hlissner/doom-emacs/).

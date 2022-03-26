@@ -1,0 +1,28 @@
+# - hosts: all
+#   name: Install miniconda
+#   tags:
+#     - env
+#   tasks:
+
+- hosts: all
+  name: install essential packages
+  tags:
+    - packages
+  vars:
+    - conda_env: 'base'
+  pre_tasks:
+    - name: get current environment
+      shell: echo $CONDA_DEFAULT_ENV
+      register: current_conda_env
+    - name: check current environment
+      fail:
+        msg: The conda environment must be '{{ conda_env }}'
+      when: current_conda_env.stdout != conda_env
+  tasks:
+    - name: pytest
+      pip:
+        name: pytest
+      changed_when: current_conda_env
+    - name: Python linter \& formatter
+      pip:
+        name: black
