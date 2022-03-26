@@ -39,7 +39,7 @@ eval "$(direnv hook zsh)"
 # conda integration
 eval "$(/Users/hiepph/miniconda3/bin/conda shell.zsh hook)"
 # do not show (base)
-PROMPT=$(echo $PROMPT | sed 's/(base) //')
+export PROMPT=$(echo $PROMPT | sed 's/(base) //')
 '';
   };
 
@@ -77,6 +77,7 @@ PROMPT=$(echo $PROMPT | sed 's/(base) //')
     indent
     ctags
     httpie
+    ansible
 
     # infrastructure
     terraform
