@@ -2,23 +2,7 @@
 { config, lib, pkgs, ... }:
 
 with pkgs;
-let
-  my-python-packages = python-packages: with python-packages; [
-    # test
-    pytest
-
-    # linter and formatter
-    yamllint
-    (callPackage ./packages/black {})
-
-    # visualization
-    matplotlib
-
-    # tools
-    ansible
-  ];
-  python-with-my-packages = pkgs.python38.withPackages my-python-packages;
-in {
+{
   home.sessionVariables = {
     EDITOR = "vim";
   };
@@ -48,8 +32,14 @@ if [ -n "$\{commands[fzf-share]}" ]; then
   source "$(fzf-share)/key-bindings.zsh"
   source "$(fzf-share)/completion.zsh"
 fi
+
 # enable direnv
 eval "$(direnv hook zsh)"
+
+# conda integration
+eval "$(/Users/hiepph/miniconda3/bin/conda shell.zsh hook)"
+# do not show (base)
+PROMPT=$(echo $PROMPT | sed 's/(base) //')
 '';
   };
 
@@ -101,7 +91,6 @@ eval "$(direnv hook zsh)"
     rclone
 
     # languages
-    python-with-my-packages
     boot # clojure build tool
     babashka # interpreter for Clojure scripting
     (callPackage ./packages/julia {})
