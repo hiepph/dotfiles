@@ -252,7 +252,6 @@
    "," 'hydra-org/body
    "> >" 'org-shiftmetaright
    "< <" 'org-shiftmetaleft
-   "g u" 'outline-up-heading
    "M-k" 'org-move-subtree-up
    "M-j" 'org-move-subtree-down
    "] ]" 'org-next-visible-heading
