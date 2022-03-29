@@ -19,10 +19,13 @@
         msg: The conda environment must be '{{ conda_env }}'
       when: current_conda_env.stdout != conda_env
   tasks:
-    - name: pytest
+    - name: testing tool
       pip:
         name: pytest
       changed_when: current_conda_env
     - name: Python linter \& formatter
       pip:
         name: black
+    - name: collaborative cheatsheets for console commands
+      pip:
+        name: tldr
