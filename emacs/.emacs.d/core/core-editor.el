@@ -129,7 +129,9 @@
 ;; Direnv integration:
 ;; ref: https://github.com/wbolster/emacs-direnv
 ;;
-(use-package direnv)
+(use-package direnv
+  :config
+  (direnv-mode 1))
 
 
 ;;
@@ -149,9 +151,11 @@
 
 ;;
 ;; Auto scroll with compilation output.
-;; Let it roll to the first error.
 ;;
-(setq compilation-scroll-output 'first-error)
+(setq compilation-scroll-output t)
+
+;; Let it roll to the first error.
+;; (setq compilation-scroll-output 'first-error)
 
 
 ;;
