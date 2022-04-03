@@ -148,6 +148,13 @@
 
 
 ;;
+;; Auto scroll with compilation output.
+;; Let it roll to the first error.
+;;
+(setq compilation-scroll-output 'first-error)
+
+
+;;
 ;; Custom Compile that supports special symbols
 ;;
 ;; +) %: current filename
