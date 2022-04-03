@@ -66,6 +66,7 @@ export PROMPT=$(echo $PROMPT | sed 's/(base) //')
 
     # build
     cmake
+    hugo # static site generator
 
     # db
     postgresql_13
