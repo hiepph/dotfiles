@@ -29,3 +29,6 @@
     - name: collaborative cheatsheets for console commands
       pip:
         name: tldr
+    - name: Docker compose
+      pip:
+        name: docker-compose
