@@ -67,6 +67,7 @@ export PROMPT=$(echo $PROMPT | sed 's/(base) //')
     # build
     cmake
     hugo # static site generator
+    nasm
 
     # db
     postgresql_13
@@ -115,6 +116,7 @@ export PROMPT=$(echo $PROMPT | sed 's/(base) //')
     fzf
 
     # virtualization
+    qemu
     vagrant
   ];
 }
