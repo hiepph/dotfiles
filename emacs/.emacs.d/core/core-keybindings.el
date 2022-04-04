@@ -214,7 +214,7 @@
   (global-set-key (kbd "<f6>") '~open-terminal)
   (global-set-key (kbd "<f8>") 'persp-switch-to-buffer*)
   (global-set-key (kbd "<f10>") 'yas-reload-all)
-  (global-set-key (kbd "<f12>") '~recompile)
+  (global-set-key (kbd "<f12>") 'recompile)
 
   ;;
   ;; Alt combination
