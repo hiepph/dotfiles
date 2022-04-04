@@ -25,6 +25,9 @@ $ _rename -t number -f '%02d' *.txt
 
 Change extensions in batch
 $ _rename -e 'python' -f 'lua' *.python
+
+Change folder names in batch
+$ _rename -t number -f '%02d' chap*
 """
 
 
@@ -90,7 +93,7 @@ def do_format(m, form, type) -> str:
 
 def convert(filepath, form, type=None, regex=None, dry_run=False):
     """Do the conversion for one file."""
-    if not os.path.isfile(filepath):
+    if not (os.path.isfile(filepath) or os.path.isdir(filepath)):
         panic("{} not found.".format(filepath))
 
     if type == "number":
