@@ -97,7 +97,12 @@
 
 ;;
 ;; dired
+;; Collection of useful pluins: https://github.com/Fuco1/dired-hacks
 ;;
+(use-package dired-open)
+(use-package dired-subtree)
+(use-package dired-narrow)
+(use-package dired-filter)
 
 ;; enable `dired-find-alternate-file' immediately without asking
 (put 'dired-find-alternate-file 'disabled nil)
@@ -111,16 +116,7 @@
 ;; make Dired guess the default target for commands like copy/move
 (setq dired-dwim-target t)
 
-;; follow symblink
+;; follow symlink
 (setq find-file-visit-truename t)
-
-;;
-;; Collection of useful pluins
-;; ref: https://github.com/Fuco1/dired-hacks
-;;
-(use-package dired-filter)
-(use-package dired-open)
-(use-package dired-subtree)
-(use-package dired-narrow)
 
 (provide 'core-project)
