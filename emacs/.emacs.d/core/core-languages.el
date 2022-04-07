@@ -169,7 +169,8 @@
      (emacs-lisp . t)
      (python . t)
      (ruby . t)
-     (lua . t)))
+     (lua . t)
+     (latex . t)))
 
   :hook
   ;; remove '<' autopair

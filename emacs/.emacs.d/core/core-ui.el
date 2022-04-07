@@ -60,6 +60,15 @@
           (lambda ()
             (variable-pitch-mode 1)))
 
+
+;;
+;; Automatic resizing with Golden Ratio
+;; ref: https://github.com/roman/golden-ratio.el
+;;
+(use-package golden-ratio
+  :config
+  (golden-ratio-mode 1))
+
 ;;
 ;; Theme
 ;;
@@ -87,16 +96,20 @@
 ;; ORG appearance
 ;;
 
-;; Variable height for headings and list
 (let* ((variable-tuple
-          (cond ((x-list-fonts "ETBembo") '(:font "ETBembo"))
-                ((x-family-fonts "Input Sans") '(:font "Input Sans"))
-                (nil (warn "Cannot find a suitable font."))))
+        (cond
+         (
+          ;; map font from local to Emacs
+          (x-list-fonts "Input Sans") '(:font "Input Sans")
+          (x-list-fonts "ETBembo") '(:font "ETBembo"))
+         (nil (warn "Cannot find a suitable font."))))
          (base-font-color (face-foreground 'default nil 'default))
          (headline `(:inherit default :weight bold :foreground ,base-font-color)))
 
     (custom-theme-set-faces
      'user
+
+     ;; Variable height for headings and list
      `(org-level-8 ((t (,@headline ,@variable-tuple))))
      `(org-level-7 ((t (,@headline ,@variable-tuple))))
      `(org-level-6 ((t (,@headline ,@variable-tuple))))
@@ -105,29 +118,35 @@
      `(org-level-3 ((t (,@headline ,@variable-tuple :height 1.15))))
      `(org-level-2 ((t (,@headline ,@variable-tuple :height 1.2))))
      `(org-level-1 ((t (,@headline ,@variable-tuple :height 1.25))))
-     `(org-document-title ((t (,@headline ,@variable-tuple :height 1.5 :underline nil))))))
+     `(org-document-title ((t (,@headline ,@variable-tuple :height 1.5 :underline nil))))
 
-;; Fancy font for reading Org
-(custom-theme-set-faces
- 'user
- '(variable-pitch ((t (:family "ETBembo" :height 160 :weight thin))))
- '(fixed-pitch ((t (:family "Input Mono" :height 130 :weight regular))))
- )
+     ;; Set font here
 
-;; At least I need to distinguish between text and code
-(custom-theme-set-faces
- 'user
- '(org-block ((t (:inherit fixed-pitch))))
- '(org-code ((t (:inherit (shadow fixed-pitch)))))
- '(org-document-info ((t (:foreground "dark orange"))))
- '(org-document-info-keyword ((t (:inherit (shadow fixed-pitch)))))
- '(org-indent ((t (:inherit (org-hide fixed-pitch)))))
- '(org-link ((t (:foreground "royal blue" :underline t))))
- '(org-meta-line ((t (:inherit (font-lock-comment-face fixed-pitch)))))
- '(org-property-value ((t (:inherit fixed-pitch))) t)
- '(org-special-keyword ((t (:inherit (font-lock-comment-face fixed-pitch)))))
- '(org-table ((t (:inherit fixed-pitch :foreground "#83a598"))))
- '(org-tag ((t (:inherit (shadow fixed-pitch) :weight bold :height 0.8))))
- '(org-verbatim ((t (:inherit (shadow fixed-pitch))))))
+     ;; Text and symbols
+     `(variable-pitch ((t (:family "ETBembo" :height 160))))
+     ;; Code, example blocks
+     `(fixed-pitch ((t (:family "Input Mono" :height 130 :weight regular))))
+
+
+     ;; At least I need to distinguish between text and code
+     '(org-block ((t (:inherit fixed-pitch))))
+     '(org-code ((t (:inherit (shadow fixed-pitch)))))
+     '(org-document-info ((t (:foreground "dark orange"))))
+     '(org-document-info-keyword ((t (:inherit (shadow fixed-pitch)))))
+     '(org-indent ((t (:inherit (org-hide fixed-pitch)))))
+     '(org-link ((t (:foreground "royal blue" :underline t))))
+     '(org-meta-line ((t (:inherit (font-lock-comment-face fixed-pitch)))))
+     '(org-property-value ((t (:inherit fixed-pitch))) t)
+     '(org-special-keyword ((t (:inherit (font-lock-comment-face fixed-pitch)))))
+     '(org-table ((t (:inherit fixed-pitch :foreground "#83a598"))))
+     '(org-tag ((t (:inherit (shadow fixed-pitch) :weight bold :height 0.8))))
+     '(org-verbatim ((t (:inherit (shadow fixed-pitch)))))))
+
+;; increase sizes of LaTeX fragments
+(plist-put org-format-latex-options :scale 1.5)
+
+(eval-after-load 'org
+  '(setf org-highlight-latex-fragments-and-specials t))
+
 
 (provide 'core-ui)

@@ -142,6 +142,7 @@
   ("i" #'indent-guide-mode "indent")
   ("I" #'indent-guide-global-mode "indent (global)")
   ("\\" #'fci-mode "column")
+  ("G" #'golden-ratio-mode "golden ratio (global)")
   ("|" #'fci-global-mode "column (global)"))
 
 (defhydra hydra-dumb-jump (:color blue :columns 4)
@@ -335,7 +336,7 @@
   ;;
   (global-set-key (kbd "M->") '~acme>)
   (global-set-key (kbd "M-|") '~acme|)
-  (global-set-key (kbd "M-$") '~acme$)
+  (global-set-key (kbd "M-#") '~acme$)
 
   ;;
   ;; Windows
