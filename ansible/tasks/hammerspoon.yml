@@ -1,0 +1,23 @@
+---
+- name: check if app is installed
+  stat:
+    path: "{{ apps_dir }}/Hammerspoon.app"
+  register: app_dir
+
+- name: check if downloaded file existed
+  stat:
+    path: "{{ download_dir }}/Hammerspoon-{{ version }}.zip"
+  register: compressed_file
+
+- get_url:
+    url: "https://github.com/Hammerspoon/hammerspoon/releases/download/{{ version }}/Hammerspoon-{{ version }}.zip"
+    dest: "{{ download_dir }}/Hammerspoon-{{ version }}.zip"
+  when: not compressed_file.stat.exists
+  register: downloaded_file
+
+- unarchive:
+    src: "{{ compressed_file.stat.path }}"
+    dest: "{{ apps_dir }}"
+  when:
+    - not app_dir.stat.exists
+    - compressed_file.stat.exists

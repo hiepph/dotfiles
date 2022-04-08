@@ -1,0 +1,12 @@
+- name: Install apps through Mac DMG
+  hosts: local
+  vars:
+    - home_dir: "{{ lookup('env', 'HOME') }}"
+    - download_dir: "{{ home_dir }}/Downloads"
+    - apps_dir: "/Applications"
+  tasks:
+    - include_tasks:
+        file: tasks/hammerspoon.yml
+        apply:
+          vars:
+            version: "0.9.97"
