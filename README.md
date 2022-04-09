@@ -90,10 +90,10 @@ I use Ansible to setup some post-configurations or run some common tasks.
 localhost   ansible_connection=local
 ```
 
-2. Now I can run Ansible for my local machine:
+2. Now I can run Ansible for my local machine. For example:
 
 ```
-ansible-playbook -l local ansible/ruby.yml
+ansible-playbook -l local ansible/ruby/main.yml
 ```
 
 ## Why Ansible when I already have Nix?
@@ -115,16 +115,20 @@ So my choice would be:
 
 Python versions, packages and environments are managed with **miniconda**.
 
-+ Install with `ansible`. It will install `miniconda` and all of essential packages with default environment `base`.
+Install with `ansible`. It will install `miniconda` and all of essential packages with default environment `base`.
 
 ```bash
-ansible-playbook -l local ansible/python.yml
+cd ansible/python
+
+ansible-playbook -l local main.yml
 ```
 
-+ After you successfully install `miniconda`, if you want to install those essential packages with a custom conda environment:
+*Notes:* After you successfully install `miniconda`, if you want to install those essential packages with a custom conda environment:
 
-```
-ansible-playbook -l local ansible/python.yml -e "conda_env=myenv"
+```bash
+cd ansible/python
+
+ansible-playbook -l local main.yml -e "conda_env=myenv"
 ```
 
 # Emacs
