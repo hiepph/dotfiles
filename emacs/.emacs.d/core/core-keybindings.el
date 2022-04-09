@@ -251,8 +251,10 @@
    :keymaps 'org-mode-map
    :states '(visual normal)
    "," 'hydra-org/body
+   "> ." 'org-metaright
    "> >" 'org-shiftmetaright
    "< <" 'org-shiftmetaleft
+   "< ," 'org-metaleft
    "M-k" 'org-move-subtree-up
    "M-j" 'org-move-subtree-down
    "] ]" 'org-next-visible-heading
