@@ -8,7 +8,7 @@ to $HOME. This task is done by [GNU Stow](https://www.gnu.org/software/stow/manu
 stow <conf>
 ```
 
-Some modules don't follow this strategy (e.g. *scripts*, *backup*) and I have to it manually. Currently I'm researching for a unified solution.
+Some modules don't follow this strategy (e.g. *scripts* [1], *backup* [2]) and I have to it manually. Currently I'm researching for a unified solution.
 
 # Mac
 
@@ -171,14 +171,19 @@ colorscheme alduin
 
 Collection of my shortcut and useful scripts.
 
-To use: `ln -s $PWD/scripts scripts`
-
+[1] To be able to use the scripts: `ln -s $PWD/scripts scripts`
 
 # Backup
 
-3-2-1 strategy.
+I backup my data daily following the [3-2-1 rule](https://missing.csail.mit.edu/2019/backups/). Specifically:
 
-To use: `ln -s $PWD/backup/scripts backup`
++ 3 copies: local SSD, storage HDD, and AWS S3.
++ 2 copies in different mediums: local SSD and storage HDD.
++ 1 offiste: AWS S3.
+
+[2] To be able to use the backup script: `ln -s $PWD/backup/scripts backup`
+
+More instructions is described in `backup` directory.
 
 # Secret manager
 
