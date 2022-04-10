@@ -21,6 +21,15 @@
          '[org.httpkit.server :as server]
          '[clojure.tools.cli :refer [parse-opts]])
 
+
+;;
+;; Parse command line script
+;;
+;; These variables will be global for usage:
+;; + subcommand: e.g. list, delete
+;; + subargs: additional arguments like item IDs
+;; + opts: command line arguments
+;;
 (def cli-options
   [["-t" "--tag TAG" "Tag name"
     :default ""]
@@ -51,8 +60,10 @@ EXAMPLES
     $ _pocket list -q clojure -t clojure
 
   Delete item(s):
-    $ _pocket delete id1 id2"))
+    $ _pocket delete id1 id2
 
+  Delete items with a query:
+    $ _pocket delete -t _untagged_"))
 
 (let [{:keys [:arguments :options]}
       (->> cli-options (parse-opts *command-line-args*))]
@@ -63,6 +74,14 @@ EXAMPLES
   (def subargs (rest arguments))
   (def opts options))
 
+
+;;
+;; Authorize the script to send RESTful requests to Pocket API service.
+;;
+;; First the script check for an existing token in `~/.env`.
+;; If it cannot find one, it will boot a simple HTTP server to redirect request
+;; and save the token key into `~/.env`.
+;;
 (def redirect-uri (str "http://localhost:" (:port opts)))
 (defonce app (atom nil))
 (def app-promise (promise))
@@ -70,6 +89,10 @@ EXAMPLES
 (def token-dir (format "%s/.env" (System/getenv "HOME")))
 (def access-token-file (format "%s/POCKET_ACCESS_TOKEN" token-dir))
 
+
+;;
+;; Helper functions
+;;
 (defn check-pocket-consumer-key []
   (if-let [consumer-key (-> (sh "pass" "show" "env/POCKET_CONSUMER_KEY")
                             :out
@@ -138,9 +161,15 @@ EXAMPLES
       (reset! app (server/run-server token-handler {:port (:port opts)}))
       (println @app-promise))))
 
-(defn retrieve [consumer-key access-token]
-  (def result
-    (let [url (format "https://getpocket.com/v3/get?consumer_key=%s&access_token=%s&sort=newest&detailType=simple&tag=%s&search=%s"
+(defn retrieve
+  "Retrieve JSON results based on the query.
+  Normally, Pocket GET API returns a subset of articles even without a query.
+  But this script will return nothing if you don't submit at least either --tag or --query."
+  [consumer-key access-token]
+  (if (every? empty? [(:tag opts) (:query opts)])
+    []
+    (let [url (format
+               "https://getpocket.com/v3/get?consumer_key=%s&access_token=%s&sort=newest&detailType=simple&tag=%s&search=%s"
                consumer-key
                access-token
                (:tag opts)
@@ -148,21 +177,28 @@ EXAMPLES
       (-> url
           curl/get
           :body
-          (json/parse-string true))))
+          (json/parse-string true)
+          :list
+          vals))))
 
-  (do
-    (println "ID\tTITLE\tLINK")
-    (doseq [item (vals (:list result))]
-      (println (format "%s\t%s\t%s"
-                       (:item_id item)
-                       (:given_title item)
-                       (:given_url item))))))
+(defn list
+  "Presents the information from `retrieve`"
+  [consumer-key access-token]
+  (let [result (retrieve consumer-key access-token)]
+    (do
+      (println "ID\tTITLE\tLINK")
+      (doseq [item result]
+        (println (format "%s\t%s\t%s"
+                         (:item_id item)
+                         (:given_title item)
+                         (:given_url item)))))))
 
-(defn delete [consumer-key access-token ids]
-  (when (< (count ids) 1)
-    (help)
-    (System/exit 1))
-  (let [actions (->> ids
+(defn delete
+  "Delete IDS in `subargs`, and additionally IDs from `retrieve` result."
+  [consumer-key access-token ids]
+
+  (let [ids (concat ids (map :item_id (retrieve consumer-key access-token)))
+        actions (->> ids
                      (map #(assoc {"action" "delete"} "item_id" %))
                      json/generate-string
                      java.net.URLEncoder/encode)
@@ -170,6 +206,9 @@ EXAMPLES
                     consumer-key
                     access-token
                     actions)]
+    (when (< (count ids) 1)
+      (help)
+      (System/exit 1))
     (def status (-> url
                     curl/post
                     :body
@@ -179,14 +218,17 @@ EXAMPLES
       (println "Done")
       (println "Error"))))
 
+
+;;
 ;; main
+;;
 (def consumer-key (check-pocket-consumer-key))
 
 (cond
   (= subcommand "login") (login consumer-key)
   (= subcommand "list")  (do
                            (def access-token (check-access-token))
-                           (retrieve consumer-key access-token))
+                           (list consumer-key access-token))
   (= subcommand "delete")  (do
                              (def access-token (check-access-token))
                              (delete consumer-key access-token subargs))
