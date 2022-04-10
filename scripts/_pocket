@@ -4,7 +4,8 @@
 ;;
 ;; Notes:
 ;; * Requires `pass` and `env/POCKET_CONSUMER_KEY`
-;; * Access token after Oauth 2 is saved in plain text inside `$HOME/.env/POCKET_ACCESS_TOKEN`
+;; * Access token after Oauth 2 is saved in plain text inside
+;; `$HOME/.env/POCKET_ACCESS_TOKEN`
 ;;
 ;; Ref:
 ;; * Authentication: https://getpocket.com/developer/docs/authentication
@@ -13,7 +14,6 @@
 ;;   + https://getpocket.com/developer/docs/v3/retrieve
 ;;   + https://getpocket.com/developer/docs/v3/modify
 ;;
-
 (require '[babashka.curl :as curl]
          '[clojure.java.io :as io]
          '[cheshire.core :as json]
@@ -31,17 +31,15 @@
 ;; + opts: command line arguments
 ;;
 (def cli-options
-  [["-t" "--tag TAG" "Tag name"
-    :default ""]
-   ["-q" "--query QUERY" "Search query"
-    :default ""]
-   ["-p" "--port" "Port to run _pocket server (default: 10003)"
-    :default 10003
+  [["-t" "--tag TAG" "Tag name" :default ""]
+   ["-q" "--query QUERY" "Search query" :default ""]
+   ["-p" "--port" "Port to run _pocket server (default: 10003)" :default 10003
     :parse-fn #(Integer/parseInt %)]])
 
-(defn help []
+(defn help
+  []
   (println
-   "USAGE: _pocket [command] [-q <query>] [-t <tag>] [ARGS]
+    "USAGE: _pocket [command] [-q <query>] [-t <tag>] [ARGS]
 
 Command line helper to query Pocket inventory
 
@@ -65,11 +63,9 @@ EXAMPLES
   Delete items with a query:
     $ _pocket delete -t _untagged_"))
 
-(let [{:keys [:arguments :options]}
-      (->> cli-options (parse-opts *command-line-args*))]
-  (when (< (count arguments) 1)
-    (help)
-    (System/exit 1))
+(let [{:keys [:arguments :options]} (->> cli-options
+                                         (parse-opts *command-line-args*))]
+  (when (< (count arguments) 1) (help) (System/exit 1))
   (def subcommand (first arguments))
   (def subargs (rest arguments))
   (def opts options))
@@ -93,73 +89,79 @@ EXAMPLES
 ;;
 ;; Helper functions
 ;;
-(defn check-pocket-consumer-key []
+(defn check-pocket-consumer-key
+  []
   (if-let [consumer-key (-> (sh "pass" "show" "env/POCKET_CONSUMER_KEY")
                             :out
                             str/trim-newline)]
     consumer-key
-    (do
-      (println "You have to setup POCKET_CONSUMER_KEY first")
-      (System/exit 1))))
+    (do (println "You have to setup POCKET_CONSUMER_KEY first")
+        (System/exit 1))))
 
-(defn check-access-token []
+(defn check-access-token
+  []
   (if (.exists (io/file access-token-file))
     (slurp access-token-file)
-    (do
-      (println "You have to login first: '_pocket --login'")
-      (System/exit 1))))
+    (do (println "You have to login first: '_pocket --login'")
+        (System/exit 1))))
 
-(defn get-request-token [consumer-key]
-  (let [url (format "https://getpocket.com/v3/oauth/request?consumer_key=%s&redirect_uri=%s"
-                    consumer-key
-                    redirect-uri)]
+(defn get-request-token
+  [consumer-key]
+  (let
+    [url
+       (format
+         "https://getpocket.com/v3/oauth/request?consumer_key=%s&redirect_uri=%s"
+         consumer-key
+         redirect-uri)]
     (-> url
         (curl/post {:headers {"X-accept" "application/json"}})
         :body
         (json/parse-string true)
         :code)))
 
-(defn get-access-token [consumer-key authen-code]
-  (let [url (format "https://getpocket.com/v3/oauth/authorize?consumer_key=%s&code=%s"
-                    consumer-key
-                    authen-code)]
+(defn get-access-token
+  [consumer-key authen-code]
+  (let [url (format
+              "https://getpocket.com/v3/oauth/authorize?consumer_key=%s&code=%s"
+              consumer-key
+              authen-code)]
     (-> url
         (curl/post {:headers {"X-accept" "application/json"}})
         :body
         (json/parse-string true)
         :access_token)))
 
-(defn save-access-token [access-token]
-  (do
-    (when-not (.exists (io/file token-dir))
-      (.mkdir (io/file token-dir)))
-    (spit access-token-file access-token)))
+(defn save-access-token
+  [access-token]
+  (do (when-not (.exists (io/file token-dir)) (.mkdir (io/file token-dir)))
+      (spit access-token-file access-token)))
 
-(defn token-handler [{:keys [:uri]}]
+(defn token-handler
+  [{:keys [:uri]}]
   (when (str/starts-with? uri "/")
     (let [[_ consumer-key request-token] (str/split uri #"/")
           access-token (get-access-token consumer-key request-token)]
       (save-access-token access-token)))
-
   (when-not (nil? app)
     (@app :timeout 100)
     (reset! app nil)
     (deliver app-promise "Done")))
 
-(defn login [consumer-key]
-  (let [request-token (get-request-token consumer-key)
-        authen-link (format
-                     "https://getpocket.com/auth/authorize?request_token=%s&redirect_uri=%s/%s/%s"
-                     request-token
-                     redirect-uri
-                     consumer-key
-                     request-token)]
-    (do
-      (println "Please authenticate the app through the following link:\n")
-      (println authen-link)
-
-      (reset! app (server/run-server token-handler {:port (:port opts)}))
-      (println @app-promise))))
+(defn login
+  [consumer-key]
+  (let
+    [request-token (get-request-token consumer-key)
+     authen-link
+       (format
+         "https://getpocket.com/auth/authorize?request_token=%s&redirect_uri=%s/%s/%s"
+         request-token
+         redirect-uri
+         consumer-key
+         request-token)]
+    (do (println "Please authenticate the app through the following link:\n")
+        (println authen-link)
+        (reset! app (server/run-server token-handler {:port (:port opts)}))
+        (println @app-promise))))
 
 (defn retrieve
   "Retrieve JSON results based on the query.
@@ -168,12 +170,16 @@ EXAMPLES
   [consumer-key access-token]
   (if (every? empty? [(:tag opts) (:query opts)])
     []
-    (let [url (format
-               "https://getpocket.com/v3/get?consumer_key=%s&access_token=%s&sort=newest&detailType=simple&tag=%s&search=%s"
-               consumer-key
-               access-token
-               (:tag opts)
-               (:query opts))]
+    (let
+      [url
+         (format
+           (str
+             "https://getpocket.com/v3/get"
+             "?consumer_key=%s&access_token=%s&sort=newest&detailType=simple&tag=%s&search=%s")
+           consumer-key
+           access-token
+           (:tag opts)
+           (:query opts))]
       (-> url
           curl/get
           :body
@@ -185,38 +191,36 @@ EXAMPLES
   "Presents the information from `retrieve`"
   [consumer-key access-token]
   (let [result (retrieve consumer-key access-token)]
-    (do
-      (println "ID\tTITLE\tLINK")
-      (doseq [item result]
-        (println (format "%s\t%s\t%s"
-                         (:item_id item)
-                         (:given_title item)
-                         (:given_url item)))))))
+    (do (println "ID\tTITLE\tLINK")
+        (doseq [item result]
+          (println (format "%s\t%s\t%s"
+                           (:item_id item)
+                           (:given_title item)
+                           (:given_url item)))))))
 
 (defn delete
   "Delete IDS in `subargs`, and additionally IDs from `retrieve` result."
   [consumer-key access-token ids]
-
-  (let [ids (concat ids (map :item_id (retrieve consumer-key access-token)))
-        actions (->> ids
-                     (map #(assoc {"action" "delete"} "item_id" %))
-                     json/generate-string
-                     java.net.URLEncoder/encode)
-        url (format "https://getpocket.com/v3/send?consumer_key=%s&access_token=%s&actions=%s"
-                    consumer-key
-                    access-token
-                    actions)]
-    (when (< (count ids) 1)
-      (help)
-      (System/exit 1))
-    (def status (-> url
-                    curl/post
-                    :body
-                    (json/parse-string true)
-                    :status))
-    (if (= status 1)
-      (println "Done")
-      (println "Error"))))
+  (let
+    [ids (concat ids (map :item_id (retrieve consumer-key access-token)))
+     actions (->> ids
+                  (map #(assoc {"action" "delete"} "item_id" %))
+                  json/generate-string
+                  java.net.URLEncoder/encode)
+     url
+       (format
+         "https://getpocket.com/v3/send?consumer_key=%s&access_token=%s&actions=%s"
+         consumer-key
+         access-token
+         actions)]
+    (when (< (count ids) 1) (help) (System/exit 1))
+    (def status
+      (-> url
+          curl/post
+          :body
+          (json/parse-string true)
+          :status))
+    (if (= status 1) (println "Done") (println "Error"))))
 
 
 ;;
@@ -224,12 +228,9 @@ EXAMPLES
 ;;
 (def consumer-key (check-pocket-consumer-key))
 
-(cond
-  (= subcommand "login") (login consumer-key)
-  (= subcommand "list")  (do
-                           (def access-token (check-access-token))
-                           (list consumer-key access-token))
-  (= subcommand "delete")  (do
-                             (def access-token (check-access-token))
-                             (delete consumer-key access-token subargs))
-  :else (help))
+(cond (= subcommand "login") (login consumer-key)
+      (= subcommand "list") (do (def access-token (check-access-token))
+                                (list consumer-key access-token))
+      (= subcommand "delete") (do (def access-token (check-access-token))
+                                  (delete consumer-key access-token subargs))
+      :else (help))
