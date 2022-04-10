@@ -36,16 +36,16 @@
   vars_files:
     - vars.yml
   tasks:
-    - name: Backup locally every day at 10pm
+    - name: Backup locally every day
       cron:
         name: "Backup local daily"
         minute: "0"
         hour: "22"
         job: "{{ home_dir }}/backup/_backup_local"
-    - name: Backup to S3 every day at 10pm
+    - name: Backup to S3 every day
       cron:
         name: "Backup s3 daily"
-        minute: "0"
+        minute: "30"
         hour: "22"
         job: "{{ home_dir }}/backup/_backup_test"
     # - name: Backup at reboot
