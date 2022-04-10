@@ -19,7 +19,7 @@ with pkgs;
     sessionVariables = {
       "EDITOR" = "vim";
       "VISUAL" = "vim";
-      "PATH" = "$HOME/scripts:$HOME/go/bin:/Library/Tex/texbin:$(gem environment gemdir)/bin:$HOME/.local/bin:$PATH";
+      "PATH" = "$HOME/scripts:$HOME/backup:$HOME/go/bin:/Library/Tex/texbin:$(gem environment gemdir)/bin:$HOME/.local/bin:$PATH";
     };
 
     shellAliases = {
@@ -27,6 +27,10 @@ with pkgs;
     };
 
     initExtra = ''
+# default edit everything with vim
+export VISUAL=vim
+export EDITOR=vim
+
 # fzf binding keys
 if [ -n "$\{commands[fzf-share]}" ]; then
   source "$(fzf-share)/key-bindings.zsh"
