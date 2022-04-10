@@ -1,12 +1,29 @@
 - name: Install apps through Mac DMG
   hosts: local
-  vars:
-    - home_dir: "{{ lookup('env', 'HOME') }}"
-    - download_dir: "{{ home_dir }}/Downloads"
-    - apps_dir: "/Applications"
+  vars_files:
+    - vars.yml
+  tags:
+    - app
   tasks:
     - include_tasks:
         file: tasks/hammerspoon.yml
         apply:
           vars:
             version: "0.9.97"
+
+- name: install fonts
+  hosts: local
+  tags:
+    - font
+  vars_files:
+    - vars.yml
+  tasks:
+    - name: source code pro
+      block:
+        - get_url:
+            url: " https://github.com/adobe-fonts/source-code-pro/releases/download/2.038R-ro%2F1.058R-it%2F1.018R-VAR/TTF-source-code-pro-2.038R-ro-1.058R-it.zip"
+            dest: "{{ download_dir }}/source-code-pro.zip"
+          register: downloaded_file
+        - unarchive:
+            src: "{{ downloaded_file.dest }}"
+            dest: "{{ home_dir }}/Library/Fonts"

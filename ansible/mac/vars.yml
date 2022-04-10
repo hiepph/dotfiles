@@ -1,0 +1,4 @@
+---
+home_dir: "{{ lookup('env', 'HOME') }}"
+download_dir: "{{ home_dir }}/Downloads"
+apps_dir: "/Applications"
