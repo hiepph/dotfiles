@@ -183,6 +183,13 @@ I backup my data daily following the [3-2-1 rule](https://missing.csail.mit.edu/
 
 [2] To be able to use the backup scripts: `ln -s $PWD/backup/scripts backup`
 
+Enable backup daily with Ansible:
+
+```
+cd ansible/mac
+ansible-playbook -l local main.yml -t backup
+```
+
 More instructions are described in `backup` directory.
 
 # Secret manager

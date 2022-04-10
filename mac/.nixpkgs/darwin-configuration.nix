@@ -8,33 +8,9 @@
     [ # nix
       home-manager
 
-      # tools
-      wget
-
       # text editor
       vim
-
-      # languages
-      python38
     ];
-
-  # cron job with launchd
-  launchd.user.agents = {
-
-    # need to grant /bin/zsh "Full Disk Access" in "Privacy and Security"
-    # since Borg needs to access `/Volumes`
-    backup.serviceConfig = {
-      Label = "local.hiepph.backup";
-      RunAtLoad = true;
-      StandardOutPath = "/tmp/launchd/local.hiepph.backup/log.out";
-      StandardErrorPath = "/tmp/launchd/local.hiepph.backup/log.err";
-      StartCalendarInterval = [
-       { Hour = 22; }
-      ];
-      Program = "/Users/hiepph/scripts/_backup_mac";
-    };
-  };
-
 
   # Use a custom configuration.nix location.
   # $ darwin-rebuild switch -I darwin-config=$HOME/.config/nixpkgs/darwin/configuration.nix

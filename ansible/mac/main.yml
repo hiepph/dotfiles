@@ -27,3 +27,29 @@
         - unarchive:
             src: "{{ downloaded_file.dest }}"
             dest: "{{ home_dir }}/Library/Fonts"
+
+
+- name: backup
+  hosts: local
+  tags:
+    - backup
+  vars_files:
+    - vars.yml
+  tasks:
+    - name: Backup locally every day at 10pm
+      cron:
+        name: "Backup local daily"
+        minute: "0"
+        hour: "22"
+        job: "{{ home_dir }}/backup/_backup_local"
+    - name: Backup to S3 every day at 10pm
+      cron:
+        name: "Backup s3 daily"
+        minute: "0"
+        hour: "22"
+        job: "{{ home_dir }}/backup/_backup_test"
+    # - name: Backup at reboot
+    #   cron:
+    #     name: "Backup local at boot"
+    #     special_time: "reboot"
+    #     job: "{{ home_dir }}/backup/_backup_local"

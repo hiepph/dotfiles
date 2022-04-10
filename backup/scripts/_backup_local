@@ -1,4 +1,5 @@
 #!/bin/zsh
+# Backup local files to an local external storage.
 # Note: borg create --stats output to stderr
 
 BACKUP_DIR=/Volumes/MacBackup/MacHome
@@ -12,22 +13,27 @@ TARGET_DIRS=(
     "$HOME/Courses"
     "$HOME/Projects"
     "$HOME/Vault"
+    "$HOME/Documents"
+    "$HOME/Pictures"
 )
+
+echo ">>> Backup $BACKUP_ID\n" 1>&2
 
 export BORG_PASSPHRASE=$(pass show borg/MacBackup)
 
-echo ">>> Backup $BACKUP_ID\n" 1>&2
 if [ -d "$BACKUP_DIR" ]; then
    if borg check $BACKUP_DIR::$BACKUP_ID ; then
-      echo ">>> Backup existed. Recreating"
-      borg recreate -v --stats $BACKUP_DIR::$BACKUP_ID $TARGET_DIRS
-   else
-      borg create -v --stats $BACKUP_DIR::$BACKUP_ID $TARGET_DIRS
+      echo ">>> Backup existed. Deleting old record..."
+      borg delete $BACKUP_DIR::$BACKUP_ID
    fi
 
-   # prune after each backup
-   echo ">>> Pruning"
-   borg prune -v --list --keep-within=7d --keep-weekly=4 --keep-monthly=-1 $BACKUP_DIR
+   borg create -v --stats $BACKUP_DIR::$BACKUP_ID $TARGET_DIRS
+   STATUS=$?
+
+   if [ $STATUS -eq 0 ]; then
+    echo ">>> Pruning..."
+    borg prune -v --list --keep-within=7d --keep-weekly=4 --keep-monthly=-1 $BACKUP_DIR
+   fi
 else
     echo "$BACKUP_DIR doesn't exist. Skip back up." 1>&2
 fi
