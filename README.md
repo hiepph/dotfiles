@@ -8,6 +8,8 @@ to $HOME. This task is done by [GNU Stow](https://www.gnu.org/software/stow/manu
 stow <conf>
 ```
 
+Some modules don't follow this strategy (e.g. *scripts*, *backup*) and I have to it manually. Currently I'm researching for a unified solution.
+
 # Mac
 
 ## Nix: functional package manager
@@ -168,6 +170,27 @@ colorscheme alduin
 [scripts](./scripts)
 
 Collection of my shortcut and useful scripts.
+
+To use: `ln -s $PWD/scripts scripts`
+
+
+# Backup
+
+3-2-1 strategy.
+
+To use: `ln -s $PWD/backup/scripts backup`
+
+# Secret manager
+
+I use [Pass](https://www.passwordstore.org/) to manage my secrets and passwords.
+
++ To add my storage repository: `pass git remote add origin <super-secret-repository>`
+
++ To pull my encrypted content from my secret repostiory: `pass git pull`
+
++ To show a secret: `pass show aws/personal/ACCESS_KEY`
+
++ To update content to the repository: `pass git push`
 
 # Themes
 
