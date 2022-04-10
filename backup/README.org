@@ -1,5 +1,6 @@
 * AWS S3
-+ Create `.envrc` and `direnv allow .`:
+
++ Create =.envrc= and then =direnv allow .=
 
   #+begin_src
 export AWS_ACCESS_KEY_ID=$(pass show aws/personal/ACCESS_KEY)
@@ -22,6 +23,6 @@ BORG_PASSPHRASE=$(pass show borg/MacBackup) borg extract /Volumes/MacBackup/MacH
 
 + Retrieve data (a directory):
 
-  #+begin_src bash
+#+begin_src bash
 BORG_PASSPHRASE=$(pass show borg/MacBackup) borg extract /Volumes/MacBackup/MacHome::<date> Users/hiepph/Books
-  #+end_src
+#+end_src
