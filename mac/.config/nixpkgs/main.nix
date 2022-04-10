@@ -95,6 +95,7 @@ export PROMPT=$(echo $PROMPT | sed 's/(base) //')
 
     # languages
     boot # clojure build tool
+    zprint # clojure formatter
     babashka # interpreter for Clojure scripting
     (callPackage ./packages/julia {})
     (callPackage ./packages/lua {})

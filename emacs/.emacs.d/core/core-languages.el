@@ -9,6 +9,11 @@
   ;; Make cider use ~boot~ by default
   (setq cider-jack-in-default 'boot))
 
+(defun ~format-clojure ()
+  (interactive)
+  (let ((fname (buffer-file-name)))
+    (shell-command (format "zprint -w %s" fname) nil)))
+
 ;;
 ;; Racket
 ;;
@@ -216,10 +221,12 @@
   "Automatically format code based on language mode"
   :group 'format)
 
+;; Define your format code here
 (defcustom format-formatters
   '((python-mode ~format-python)
     (c-mode ~format-c)
-    (ruby-mode ~format-ruby))
+    (ruby-mode ~format-ruby)
+    (clojure-mode ~format-clojure))
   "Default formatters for predefined languages"
   :type '(repeat (list symbol symbol))
   :group 'format)
