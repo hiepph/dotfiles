@@ -2,10 +2,10 @@
 
 + Create =.envrc= and then =direnv allow .=
 
-  #+begin_src
+#+begin_src
 export AWS_ACCESS_KEY_ID=$(pass show aws/personal/ACCESS_KEY)
 export AWS_SECRET_ACCESS_KEY=$(pass show aws/personal/SECRET_KEY)
-  #+end_src
+#+end_src
 
 + Create an S3 bucket:
 

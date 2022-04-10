@@ -2,13 +2,13 @@
 
 Mainly I structure my configurations follow their paths starting from
 $HOME. To activate the configuration, symlink the corresponding folder
-to $HOME. This task is done by [GNU Stow](https://www.gnu.org/software/stow/manual/stow.html)
+to $HOME. This task is done by [GNU Stow](https://www.gnu.org/software/stow/manual/stow.html).
 
 ```
 stow <conf>
 ```
 
-Some modules don't follow this strategy (e.g. *scripts* [1], *backup* [2]) and I have to it manually. Currently I'm researching for a unified solution.
+Some modules don't follow this strategy (e.g. *scripts* [1], *backup* [2]). They have to be symlinked manually. Currently I'm searching for a unified solution.
 
 # Mac
 
@@ -113,7 +113,7 @@ So my choice would be:
 + Use Nix for binary applications, packages or simple linking problems.
 + Ansible for a custom ecosystem.
 
-## Python
+# Python
 
 Python versions, packages and environments are managed with **miniconda**.
 
@@ -179,11 +179,11 @@ I backup my data daily following the [3-2-1 rule](https://missing.csail.mit.edu/
 
 + 3 copies: local SSD, storage HDD, and AWS S3.
 + 2 copies in different mediums: local SSD and storage HDD.
-+ 1 offiste: AWS S3.
++ 1 offsite: AWS S3.
 
-[2] To be able to use the backup script: `ln -s $PWD/backup/scripts backup`
+[2] To be able to use the backup scripts: `ln -s $PWD/backup/scripts backup`
 
-More instructions is described in `backup` directory.
+More instructions are described in `backup` directory.
 
 # Secret manager
 
