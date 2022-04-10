@@ -61,9 +61,9 @@
     - name: Python linter \& formatter
       pip:
         name: black
-    - name: collaborative cheatsheets for console commands
-      pip:
-        name: tldr
     - name: Docker compose
       pip:
         name: docker-compose
+    - name: speed test
+      pip:
+        name: speedtest-cli
