@@ -39,12 +39,12 @@
     - name: Backup locally daily
       cron:
         name: "Backup local daily"
-        minute: "0"
+        minute: "30"
         hour: "22"
         job: "{{ home_dir }}/backup/_backup_local"
     - name: Backup to S3 daily
       cron:
         name: "Backup s3 daily"
-        minute: "0"
+        minute: "30"
         hour: "10"
         job: "{{ home_dir }}/backup/_backup_s3"

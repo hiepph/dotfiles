@@ -120,17 +120,13 @@ Python versions, packages and environments are managed with **miniconda**.
 Install with `ansible`. It will install `miniconda` and all of essential packages with default environment `base`.
 
 ```bash
-cd ansible/python
-
-ansible-playbook -l local main.yml
+ansible-playbook -l local ansible/python/main.yml
 ```
 
 *Notes:* After you successfully install `miniconda`, if you want to install those essential packages with a custom conda environment:
 
 ```bash
-cd ansible/python
-
-ansible-playbook -l local main.yml -e "conda_env=myenv"
+ansible-playbook -l local ansible/python/main.yml -e "conda_env=myenv"
 ```
 
 # Emacs
@@ -183,12 +179,13 @@ I backup my data daily following the [3-2-1 rule](https://missing.csail.mit.edu/
 
 [2] To be able to use the backup scripts: `ln -s $PWD/backup/scripts backup`
 
-Enable backup daily with Ansible:
++ Enable backup daily with Ansible:
 
 ```
-cd ansible/mac
-ansible-playbook -l local main.yml -t backup
+ansible-playbook -l local ansible/mac/main.yml -t backup
 ```
+
++ Sadly, to enable *full disk access* to the external HDD for `cron` in MacOS, we have to activate the permission *manually* in **Security and Privacy**: [ref](https://osxdaily.com/2020/04/27/fix-cron-permissions-macos-full-disk-access/).
 
 More instructions are described in `backup` directory.
 
