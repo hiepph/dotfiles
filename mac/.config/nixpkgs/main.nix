@@ -84,6 +84,7 @@ export PROMPT=$(echo $PROMPT | sed 's/(base) //')
     ctags
     httpie
     ansible
+    watch
 
     # infrastructure
     terraform
