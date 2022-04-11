@@ -2,12 +2,15 @@
 # Backup local external storage to S3.
 
 BACKUP_DIR=/Volumes/MacBackup/MacHome
-S3_BUCKET=s3://hiepph-mac/MacHome
+S3_BUCKET=s3://hiepph-mac
 
 export AWS_ACCESS_KEY_ID=$(pass show aws/personal/ACCESS_KEY)
 export AWS_SECRET_ACCESS_KEY=$(pass show aws/personal/SECRET_KEY)
 
-aws s3 sync ${BACKUP_DIR} ${S3_BUCKET} --delete
+ZIP_FILE=/tmp/macbackup.zip
+zip -r $ZIP_FILE $BACKUP_DIR
+aws s3 cp $ZIP_FILE ${S3_BUCKET}
+rm -f $ZIP_FILE
 
 unset AWS_ACCESS_KEY_ID
 unset AWS_SECRET_ACCESS_KEY
