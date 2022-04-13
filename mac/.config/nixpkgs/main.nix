@@ -109,6 +109,7 @@ export PROMPT=$(echo $PROMPT | sed 's/(base) //')
     (callPackage ./packages/gotools {})
     ruby
     (callPackage ./packages/zig {})
+    graphviz
 
     # shell
     htop
