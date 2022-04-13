@@ -175,7 +175,8 @@
      (python . t)
      (ruby . t)
      (lua . t)
-     (latex . t)))
+     (latex . t)
+     (dot . t)))
 
   :hook
   ;; remove '<' autopair
