@@ -31,4 +31,4 @@ terraform apply
 
 * GCP Cloud Storage
 
-Authorize =gcloud= and config it to the appropriate project.
+Manually authorize and config =gcloud= to link to the backup project's id.
