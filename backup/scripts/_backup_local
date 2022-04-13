@@ -19,7 +19,9 @@ TARGET_DIRS=(
 
 echo ">>> Backup $BACKUP_ID\n" 1>&2
 
-export BORG_PASSPHRASE=$(pass show borg/MacBackup)
+if [ -z "$BORG_PASSPHRASE" ]; then
+    export BORG_PASSPHRASE=$(pass show borg/MacBackup)
+fi
 
 if [ -d "$BACKUP_DIR" ]; then
    if borg check $BACKUP_DIR::$BACKUP_ID ; then
@@ -37,5 +39,3 @@ if [ -d "$BACKUP_DIR" ]; then
 else
     echo "$BACKUP_DIR doesn't exist. Skip back up." 1>&2
 fi
-
-unset BORG_PASSPHRASE

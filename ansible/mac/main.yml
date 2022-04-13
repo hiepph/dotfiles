@@ -36,15 +36,23 @@
   vars_files:
     - vars.yml
   tasks:
+    - name: Pull borg passphrase from pass
+      shell: pass show borg/MacBackup
+      register: borg_passphrase
+    - name: Add borg passpharse to cron
+      cron:
+        env: yes
+        name: BORG_PASSPHRASE
+        job: "{{ borg_passphrase.stdout }}"
     - name: Backup locally daily
       cron:
         name: "Backup local daily"
         minute: "30"
         hour: "22"
         job: "{{ home_dir }}/backup/_backup_local"
-    - name: Backup to S3 daily
-      cron:
-        name: "Backup s3 daily"
-        minute: "30"
-        hour: "10"
-        job: "{{ home_dir }}/backup/_backup_s3"
+    # - name: Backup to GCP daily
+    #   cron:
+    #     name: "Backup gcp daily"
+    #     minute: "30"
+    #     hour: "10"
+    #     job: "{{ home_dir }}/backup/_backup_gcp"
