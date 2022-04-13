@@ -1,7 +1,7 @@
 #!/bin/zsh
 # Backup local external storage to GCP Cloud Storage.
 
-BACKUP_DIR=/Users/hiepph/MacHome
+BACKUP_DIR=/Volumes/MacBackup/MacHome
 GCP_BUCKET=gs://hiepph-mac/MacHome
 
 gsutil rsync -d -r $BACKUP_DIR $GCP_BUCKET
