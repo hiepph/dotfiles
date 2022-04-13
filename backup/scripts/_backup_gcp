@@ -1,0 +1,11 @@
+#!/bin/zsh
+# Backup local external storage to S3.
+
+BACKUP_DIR=/Volumes/MacBackup/MacHome
+GCP_BUCKET=gs://hiepph-mac
+
+ZIP_FILE=/tmp/macbackup.zip
+zip -r $ZIP_FILE $BACKUP_DIR
+gsutil cp $ZIP_FILE $GCP_BUCKET
+
+rm -f $ZIP_FILE

@@ -173,9 +173,9 @@ Collection of my shortcut and useful scripts.
 
 I backup my data daily following the [3-2-1 rule](https://missing.csail.mit.edu/2019/backups/). Specifically:
 
-+ 3 copies: local SSD, storage HDD, and AWS S3.
++ 3 copies: local SSD, storage HDD, and GCP Cloud Storage (or AWS S3).
 + 2 copies in different mediums: local SSD and storage HDD.
-+ 1 offsite: AWS S3.
++ 1 offsite: GCP Cloud Storage or AWS S3.
 
 [2] To be able to use the backup scripts: `ln -s $PWD/backup/scripts backup`
 

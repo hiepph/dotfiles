@@ -1,4 +1,19 @@
+* Borg
++ Retrieve data (entire volume):
+
+#+begin_src bash
+BORG_PASSPHRASE=$(pass show borg/MacBackup) borg extract /Volumes/MacBackup/MacHome::<date>
+#+end_src
+
++ Retrieve data (a directory):
+
+#+begin_src bash
+BORG_PASSPHRASE=$(pass show borg/MacBackup) borg extract /Volumes/MacBackup/MacHome::<date> Users/hiepph/Books
+#+end_src
+
 * AWS S3
+
++ =cd aws=
 
 + Create =.envrc= and then =direnv allow .=
 
@@ -14,15 +29,6 @@ terraform init
 terraform apply
 #+end_src
 
-* Borg
-+ Retrieve data (entire volume):
+* GCP Cloud Storage
 
-#+begin_src bash
-BORG_PASSPHRASE=$(pass show borg/MacBackup) borg extract /Volumes/MacBackup/MacHome::<date>
-#+end_src
-
-+ Retrieve data (a directory):
-
-#+begin_src bash
-BORG_PASSPHRASE=$(pass show borg/MacBackup) borg extract /Volumes/MacBackup/MacHome::<date> Users/hiepph/Books
-#+end_src
+Authorize =gcloud= and config it to the appropriate project.
