@@ -92,6 +92,7 @@ export PROMPT=$(echo $PROMPT | sed 's/(base) //')
     kops
     kubectx
     minikube
+    google-cloud-sdk
 
     # networking
     nmap
