@@ -4,4 +4,4 @@
 BACKUP_DIR=/Volumes/MacBackup/MacHome
 GCP_BUCKET=gs://hiepph-mac/MacHome
 
-gsutil rsync -d -r $BACKUP_DIR $GCP_BUCKET
+gsutil -m rsync -d -r $BACKUP_DIR $GCP_BUCKET
