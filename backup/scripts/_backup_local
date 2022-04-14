@@ -34,7 +34,7 @@ if [ -d "$BACKUP_DIR" ]; then
 
    if [ $STATUS -eq 0 ]; then
     echo ">>> Pruning..."
-    borg prune -v --list --keep-within=7d --keep-weekly=3 --keep-montly=-1 $BACKUP_DIR
+    borg prune -v --list --keep-within=7d --keep-weekly=3 --keep-monthly=-1 $BACKUP_DIR
    fi
 else
     echo "$BACKUP_DIR doesn't exist. Skip back up." 1>&2
