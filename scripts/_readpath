@@ -1,0 +1,7 @@
+#!/usr/bin/env python
+
+# Get absolute path of file.
+# Equivalence of `readlink -f <file>`.
+
+import os, sys
+print(os.path.realpath(sys.argv[1]))
