@@ -44,6 +44,10 @@ eval "$(direnv hook zsh)"
 eval "$(/Users/hiepph/miniconda3/bin/conda shell.zsh hook)"
 # do not show (base)
 export PROMPT=$(echo $PROMPT | sed 's/(base) //')
+
+# enable kubectl (and alias k) completion
+source <(kubectl completion zsh)
+source <(kubectl completion zsh | sed s/kubectl/k/g)
 '';
   };
 
@@ -85,6 +89,7 @@ export PROMPT=$(echo $PROMPT | sed 's/(base) //')
     httpie
     ansible
     watch
+    jo # easy json construction
 
     # infrastructure
     terraform
@@ -98,6 +103,7 @@ export PROMPT=$(echo $PROMPT | sed 's/(base) //')
     nmap
     sshpass
     rclone
+    wget
 
     # languages
     boot # clojure build tool
