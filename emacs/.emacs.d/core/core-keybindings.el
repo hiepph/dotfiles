@@ -20,7 +20,10 @@
   ("b" #'hydra-buffers/body "buffers")
 
   ;; workspaces
-  ("w" #'hydra-workspace/body "workspaces")
+  ("w" #'hydra-workspaces/body "workspaces")
+
+  ;; tabs
+  ("t" #'hydra-tabs/body "tabs")
 
   ;; dired
   ("d" #'dired-jump "dired")
@@ -117,7 +120,7 @@
   ("s" #'flycheck-verify-setup "verify")
   ("t" #'flycheck-mode "toggle"))
 
-(defhydra hydra-workspace (:columns 4 :exit t)
+(defhydra hydra-workspaces (:columns 4 :exit t)
   "Workspaces"
   ("w" #'persp-switch "workspace")
   ("n" #'persp-next "next")
@@ -128,6 +131,11 @@
   ("s" #'persp-state-save "state save")
   ("l" #'persp-state-load "state save")
   ("," #'persp-rename "rename"))
+
+(defhydra hydra-tabs (:columns 4 :exit t)
+  "Tabs"
+  ("b" #'centaur-tabs-select-beg-tab "begin")
+  ("e" #'centaur-tabs-select-end-tab "end"))
 
 (defhydra hydra-mode (:columns 4 :exit t)
   "All off by default"
@@ -143,7 +151,8 @@
   ("I" #'indent-guide-global-mode "indent (global)")
   ("\\" #'fci-mode "column")
   ("G" #'golden-ratio-mode "golden ratio (global)")
-  ("|" #'fci-global-mode "column (global)"))
+  ("|" #'fci-global-mode "column (global)")
+  ("T" #'centaur-tabs-mode "centaur (global)"))
 
 (defhydra hydra-dumb-jump (:color blue :columns 4)
   "dumb jump"
@@ -345,7 +354,15 @@
   ;;
   (general-define-key
    "M-j" 'scroll-other-window
-   "M-k" 'scroll-other-window-down))
+   "M-k" 'scroll-other-window-down)
+
+  ;;
+  ;; Centaur tab
+  ;;
+  (general-define-key
+   :states 'normal
+   "g t" 'centaur-tabs-forward-tab
+   "g T" 'centaur-tabs-backward-tab))
 
 
 (provide 'core-keybindings)
