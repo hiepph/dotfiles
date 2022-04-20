@@ -65,9 +65,16 @@
 ;; Automatic resizing with Golden Ratio
 ;; ref: https://github.com/roman/golden-ratio.el
 ;;
-(use-package golden-ratio
+(use-package golden-ratio)
+
+
+;;
+;; Hide popup window (*Help*, *Compilation*) with a single keystroke (default: Ctrl-G)
+;; ref: https://github.com/emacsorphanage/popwin
+;;
+(use-package popwin
   :config
-  (golden-ratio-mode 1))
+  (popwin-mode 1))
 
 ;;
 ;; Theme

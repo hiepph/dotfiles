@@ -129,9 +129,7 @@
 ;; Direnv integration:
 ;; ref: https://github.com/wbolster/emacs-direnv
 ;;
-(use-package direnv
-  :config
-  (direnv-mode 1))
+(use-package direnv)
 
 
 ;;

@@ -131,7 +131,7 @@
 (use-package centaur-tabs
   :demand
   :config
-  (centaur-tabs-mode t)
+  ;; (centaur-tabs-mode t)
 
   ;; cycle only through visible groups
   (setq centaur-tabs-cycle-scope 'tabs)
