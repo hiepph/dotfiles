@@ -51,11 +51,6 @@ source <(kubectl completion zsh | sed s/kubectl/k/g)
 '';
   };
 
-  programs.autojump = {
-    enable = true;
-    enableZshIntegration = true;
-  };
-
   programs.git = {
     enable = true;
     userName = "hiepph";
