@@ -300,6 +300,49 @@ end
 
 setupClipboardTool()
 
+
+--
+-- Query web
+--
+
+-- Query web with prefixes.
+-- g: google (default)
+-- d: duckduckgo
+-- yt: youtube
+function webQuery()
+    return function()
+        hs.focus()
+        local button, prompt = hs.dialog.textPrompt("Simple web query", "dest: query", "", "OK", "Cancel")
+
+        if button == "Cancel" then
+            return
+        end
+
+        -- works with
+        -- g: simple query
+        -- g: query with ':' inside
+        dest, query = string.match(prompt, "([^:]+):%s*(.*)")
+
+        if dest == nil then
+            url = string.format("https://www.google.com/search?q='%s'", prompt)
+        elseif dest == 'g' then
+            url = string.format("https://www.google.com/search?q='%s'", query)
+        elseif dest == 'd' then
+            url = string.format("https://duckduckgo.com?q='%s'", query)
+        elseif dest == 'yt' then
+            url = string.format("https://www.youtube.com/results?search_query='%s'", query)
+        else
+            hs.alert.show(string.format("'%s' is not yet supported. Fallback to google.", dest))
+            url = string.format("https://www.google.com/search?q='%s'", query)
+        end
+
+        hs.execute(string.format("open %s", url))
+    end
+end
+
+hs.hotkey.bind(SUPER_ALT, "g", webQuery())
+
+
 --
 -- Hot reload
 --
