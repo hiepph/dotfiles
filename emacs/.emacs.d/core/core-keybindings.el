@@ -176,7 +176,8 @@
   ("'" #'org-edit-special "edit")
   ("t" #'org-babel-tangle "tangle")
   ("i" #'org-display-inline-images "images")
-  ("x" #'org-latex-preview "latex"))
+  ("x" #'org-latex-preview "latex")
+  ("d" #'org-babel-remove-result "clear result"))
 
 (defhydra hydra-org-toggle (:color blue :columns 4)
   ("h" #'org-toggle-heading "heading")
@@ -362,7 +363,13 @@
   (general-define-key
    :states 'normal
    "g t" 'centaur-tabs-forward-tab
-   "g T" 'centaur-tabs-backward-tab))
+   "g T" 'centaur-tabs-backward-tab)
+
+  ;;
+  ;; Hippie expand
+  ;;
+  (general-define-key
+   "C--" 'hippie-expand))
 
 
 (provide 'core-keybindings)
