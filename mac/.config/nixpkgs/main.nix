@@ -48,6 +48,9 @@ export PROMPT=$(echo $PROMPT | sed 's/(base) //')
 # enable kubectl (and alias k) completion
 source <(kubectl completion zsh)
 source <(kubectl completion zsh | sed s/kubectl/k/g)
+
+# Integrate with `jump`
+eval "$(jump shell)"
 '';
   };
 
@@ -85,6 +88,7 @@ source <(kubectl completion zsh | sed s/kubectl/k/g)
     ansible
     watch
     jo # easy json construction
+    jump # navigate faster
 
     # infrastructure
     terraform
