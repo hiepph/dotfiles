@@ -202,6 +202,12 @@
 
 
 ;;
+;; DOT-mode for Graphviz
+;;
+(use-package graphviz-dot-mode)
+
+
+;;
 ;; Recognize language mode for some extensions
 ;;
 (add-to-list 'auto-mode-alist '("\\.scheme\\'" . racket-mode))
