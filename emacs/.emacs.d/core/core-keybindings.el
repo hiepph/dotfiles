@@ -268,7 +268,9 @@
    "M-k" 'org-move-subtree-up
    "M-j" 'org-move-subtree-down
    "] ]" 'org-next-visible-heading
-   "[ [" 'org-previous-visible-heading)
+   "[ [" 'org-previous-visible-heading
+   "g B" 'org-previous-block
+   "g b" 'org-next-block)
 
   (general-nmap
     :states 'insert
