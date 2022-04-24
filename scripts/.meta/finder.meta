@@ -1,0 +1,10 @@
+# Open current folder in a new Finder tab from terminal
+# Notes: only works in MacOS
+# credit: https://gist.github.com/haifengkao/072136412953619d51bc8d21e28e61b4
+
+wget https://gist.githubusercontent.com/haifengkao/072136412953619d51bc8d21e28e61b4/raw/d954ebd404aa227a3f9c0cb264cdfb6f8e69f234/open_finder_tab.sh -O _finder
+
+echo "\n\noft" >> _finder
+
+mv _finder out/
+chmod +x out/_finder

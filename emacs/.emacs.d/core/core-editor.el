@@ -200,7 +200,7 @@
 ;;
 (defun ~open-file-manager ()
   (interactive)
-  (shell-command "open ."))
+  (shell-command "_finder ."))
 
 ;;
 ;; ACME modifies text with shell-command
