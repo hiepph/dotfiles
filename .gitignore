@@ -6,3 +6,4 @@ TAGS
 
 # environment
 .envrc
+.DS_Store

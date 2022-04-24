@@ -333,6 +333,8 @@ function webQuery()
             url = string.format("https://www.youtube.com/results?search_query=%s", query)
         elseif dest == 'w' then
             url = string.format("https://en.wikipedia.org/w/index.php?title=Special:Search&search=%s", query)
+        elseif dest == 'grammar' then
+            url = string.format("https://dictionary.cambridge.org/grammar/british-grammar/%s", query)
         else
             hs.alert.show(string.format("'%s' is not yet supported. Fallback to google.", dest))
             url = string.format("https://www.google.com/search?q='%s'", query)
@@ -342,7 +344,7 @@ function webQuery()
     end
 end
 
-hs.hotkey.bind(SUPER_ALT, "q", webQuery())
+hs.hotkey.bind(SUPER_ALT, "g", webQuery())
 
 
 --
