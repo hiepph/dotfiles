@@ -7,52 +7,33 @@ with pkgs;
     EDITOR = "vim";
   };
 
-  # refer: https://nixos.wiki/wiki/Zsh
-  programs.zsh = {
+  # refer: https://github.com/nix-community/home-manager/blob/master/modules/programs/fish.nix
+  programs.fish = {
     enable = true;
 
-    prezto = {
-      enable = true;
-      prompt.theme = "pure";
-    };
-
-    sessionVariables = {
-      "EDITOR" = "vim";
-      "VISUAL" = "vim";
-      "PATH" = "$HOME/scripts:$HOME/backup:$HOME/go/bin:/Library/Tex/texbin:$(gem environment gemdir)/bin:$HOME/.local/bin:$PATH";
-    };
-
-    shellAliases = {
+    shellAbbrs = {
       "k" = "kubectl";
     };
 
-    initExtra = ''
-# default edit everything with vim
-export VISUAL=vim
-export EDITOR=vim
+    shellInit = ''
+# Add some custom binary dirs
+set -x PATH $HOME/scripts $HOME/backup $HOME/go/bin /Library/Tex/texbin (gem environment gemdir)/bin $HOME/.local/bin $PATH
 
-# fzf binding keys
-if [ -n "$\{commands[fzf-share]}" ]; then
-  source "$(fzf-share)/key-bindings.zsh"
-  source "$(fzf-share)/completion.zsh"
-fi
+# default edit everything with vim
+set -x VISUAL vim
+set -x EDITOR vim
 
 # enable direnv
-eval "$(direnv hook zsh)"
+direnv hook fish | source
 
 # conda integration
-eval "$(/Users/hiepph/miniconda3/bin/conda shell.zsh hook)"
-# do not show (base)
-export PROMPT=$(echo $PROMPT | sed 's/(base) //')
-
-# enable kubectl (and alias k) completion
-source <(kubectl completion zsh)
-source <(kubectl completion zsh | sed s/kubectl/k/g)
+eval /Users/hiepph/miniconda3/bin/conda "shell.fish" "hook" $argv | source
 
 # Integrate with `jump`
-eval "$(jump shell)"
+jump shell fish | source
 '';
   };
+
 
   programs.git = {
     enable = true;
