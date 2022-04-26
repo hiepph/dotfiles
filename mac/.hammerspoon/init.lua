@@ -333,8 +333,12 @@ function webQuery()
             url = string.format("https://www.youtube.com/results?search_query=%s", query)
         elseif dest == 'w' then
             url = string.format("https://en.wikipedia.org/w/index.php?title=Special:Search&search=%s", query)
+        elseif dest == 'en' then
+            url = string.format("https://dictionary.cambridge.org/dictionary/english/%s", query)
         elseif dest == 'grammar' then
             url = string.format("https://dictionary.cambridge.org/grammar/british-grammar/%s", query)
+        elseif dest == 'pronounce' then
+            url = string.format("https://youglish.com/pronounce/%s/english/uk", query)
         else
             hs.alert.show(string.format("'%s' is not yet supported. Fallback to google.", dest))
             url = string.format("https://www.google.com/search?q='%s'", query)
