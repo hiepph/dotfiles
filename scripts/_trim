@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env fish
 
 #
 # trim clears all leading, trailing spaces and multiple spaces between words
@@ -11,12 +11,12 @@
 # #=> "another long string"
 #
 
-trim () {
-     sed 's/ *//' | tr -s ' '
-}
+function trim
+    sed 's/ *//' | tr -s ' '
+end
 
-if [ -z "$1" ]; then
-   trim
+if test $argv[1]
+   echo $argv[1] | trim
 else
-   echo $1 | trim
-fi
+    trim
+end
