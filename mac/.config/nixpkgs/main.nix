@@ -7,7 +7,7 @@ with pkgs;
     EDITOR = "vim";
   };
 
-  # refer: https://github.com/nix-community/home-manager/blob/master/modules/programs/fish.nix
+  # ref: https://github.com/nix-community/home-manager/blob/master/modules/programs/fish.nix
   programs.fish = {
     enable = true;
 
@@ -32,8 +32,19 @@ eval /Users/hiepph/miniconda3/bin/conda "shell.fish" "hook" $argv | source
 # Integrate with `jump`
 jump shell fish | source
 '';
-  };
 
+    plugins = [
+      {
+        name = "fish-kubectl-completions";
+        src = pkgs.fetchFromGitHub {
+          owner = "evanlucas";
+          repo = "fish-kubectl-completions";
+          rev = "ced676392575d618d8b80b3895cdc3159be3f628";
+          sha256 = "09qcj82qfs4y4nfwvy90y10xmx6vc9yp33nmyk1mpvx0dx6ri21r";
+        };
+      }
+    ];
+  };
 
   programs.git = {
     enable = true;
