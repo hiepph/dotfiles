@@ -109,6 +109,11 @@
 
 
 ;;
+;; Fish
+;;
+(use-package fish-mode)
+
+;;
 ;; Lua
 ;;
 (use-package lua-mode)
