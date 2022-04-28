@@ -220,6 +220,9 @@ end)
 --
 -- Menubar items
 --
+
+-- prevent sleeping
+--
 caffeine = hs.menubar.new()
 function setCaffeineDisplay(state)
     if state then
@@ -237,6 +240,26 @@ if caffeine then
     caffeine:setClickCallback(caffeineClicked)
     setCaffeineDisplay(hs.caffeinate.get("displayIdle"))
 end
+
+-- show IP address
+--
+ip = hs.menubar.new()
+local function getCurrentIPAddress(interface)
+    cmd = string.format("ipconfig getifaddr %s", interface)
+    output, _, _, _ = hs.execute(cmd)
+    return output:gsub("\n", "")
+end
+
+local function showIp()
+    local ipTitle = string.format("IP: %s", getCurrentIPAddress("en0"))
+    ip:setTitle(ipTitle)
+end
+
+-- periodically refresh the menu bar
+showIp()
+local timer = hs.timer.new(10, showIp)
+timer:start()
+
 
 --
 -- URLs
