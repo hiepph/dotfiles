@@ -1,0 +1,44 @@
+- name: backup
+  hosts: local
+  tags:
+    - backup
+  vars_files:
+    - vars.yml
+  tasks:
+    - name: Pull borg passphrase from pass
+      shell: pass show borg/MacBackup
+      register: borg_passphrase
+    - name: Add borg passpharse to cron
+      cron:
+        env: yes
+        name: BORG_PASSPHRASE
+        job: "{{ borg_passphrase.stdout }}"
+    - name: Backup locally daily
+      cron:
+        name: "Backup local daily"
+        minute: "30"
+        hour: "22"
+        job: "{{ home_dir }}/backup/_backup_local"
+    - name: Backup to GCP daily
+      cron:
+        name: "Backup gcp daily"
+        minute: "30"
+        hour: "10"
+        job: "{{ home_dir }}/backup/_backup_gcp"
+
+- name: install fonts
+  hosts: local
+  tags:
+    - fonts
+  vars_files:
+    - vars.yml
+  tasks:
+    - name: source code pro
+      block:
+        - get_url:
+            url: " https://github.com/adobe-fonts/source-code-pro/releases/download/2.038R-ro%2F1.058R-it%2F1.018R-VAR/TTF-source-code-pro-2.038R-ro-1.058R-it.zip"
+            dest: "{{ download_dir }}/source-code-pro.zip"
+          register: downloaded_file
+        - unarchive:
+            src: "{{ downloaded_file.dest }}"
+            dest: "{{ home_dir }}/Library/Fonts"

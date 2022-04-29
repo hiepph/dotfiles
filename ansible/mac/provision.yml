@@ -13,3 +13,16 @@
       user:
         name: hiepph
         shell: /run/current-system/sw/bin/fish
+
+- name: Install apps through Mac DMG
+  hosts: local
+  vars_files:
+    - vars.yml
+  tags:
+    - apps
+  tasks:
+    - include_tasks:
+        file: tasks/hammerspoon.yml
+        apply:
+          vars:
+            version: "0.9.97"
