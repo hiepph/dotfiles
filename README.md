@@ -93,28 +93,6 @@ Hammerspoon solves this problem by being a bridge to Mac's API. It uses Lua as s
 
 *TBD*
 
-# Shell
-
-My default shell is [fish](https://fishshell.com/).
-
-+ Pros:
-  - I hate Bash arcane syntax.  It's fast to write a small script in Bash but horrible to grow into a larger script. Even [Google Shell style guide](https://google.github.io/styleguide/shellguide.html#when-to-use-shell) recommends not to write a script more than 100 lines long.
-  - Seamless interops with shell commands. It makes writing script interactively on a shell fun. One-liner manner is achievable. With a general purpose language, e.g. Python, I have to wrap shell command with `os.system` or `subprocess`.
-  - References: [Why fish?](https://fishshell.com/docs/current/tutorial.html#why-fish), [Rash lang](https://youtu.be/Acjqx1MPkw4).
-
-+ Cons:
-    - It does not follow POSIX shell standards. So if I want to run a common Bash or Zsh script, better use `bash script.sh`.
-
-## Setup
-
-### Mac
-
-After bootstrapping the system with Nix:
-
-```
-ansible-playbook -l local -K ansible/mac/provision.yml -t shell
-```
-
 # Ansible
 
 I use Ansible to setup some post-configurations or run some common tasks.
@@ -128,11 +106,14 @@ I use Ansible to setup some post-configurations or run some common tasks.
 localhost   ansible_connection=local
 ```
 
-2. Now I can run Ansible for my local machine. For example:
+2. Now I can run Ansible for my local machine.
 
-```
-ansible-playbook -l local ansible/ruby/main.yml
-```
+  + For example, to provision Mac:
+
+  ```
+  ansible-playbook -l local -K ansible/mac/provision.yml
+  ansible-playbook -l local -K ansible/mac/setup.yml
+  ```
 
 ## Why Ansible when I already have Nix?
 
@@ -148,6 +129,18 @@ So my choice would be:
 
 + Use Nix for binary applications, packages or simple linking problems.
 + Ansible for a custom ecosystem.
+
+# Shell
+
+My default shell is [fish](https://fishshell.com/).
+
++ Pros:
+  - I hate Bash arcane syntax.  It's fast to write a small script in Bash but horrible to grow into a larger script. Even [Google Shell style guide](https://google.github.io/styleguide/shellguide.html#when-to-use-shell) recommends not to write a script more than 100 lines long.
+  - Seamless interops with shell commands. It makes writing script interactively on a shell fun. One-liner manner is achievable. With a general purpose language, e.g. Python, I have to wrap shell command with `os.system` or `subprocess`.
+  - References: [Why fish?](https://fishshell.com/docs/current/tutorial.html#why-fish), [Rash lang](https://youtu.be/Acjqx1MPkw4).
+
++ Cons:
+    - It does not follow POSIX shell standards. So if I want to run a common Bash or Zsh script, better use `bash script.sh`.
 
 # Python
 
