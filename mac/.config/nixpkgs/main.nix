@@ -69,6 +69,16 @@ else
 end
 '';
       };
+
+      #
+      # Examples:
+      #
+      # $ gitignore python
+      #
+      gitignore = {
+        description = "Get the content of .gitignore for a language";
+        body = "curl -sL https://www.gitignore.io/api/$argv";
+      };
     };
   };
 
