@@ -108,7 +108,7 @@ localhost   ansible_connection=local
 
 2. Now I can run Ansible for my local machine.
 
-  + For example, to provision Mac:
+  + For example, to do Mac provisioning:
 
   ```
   ansible-playbook -l local -K ansible/mac/provision.yml
