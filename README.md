@@ -38,6 +38,14 @@ nix-shell -p stow --command "stow mac"
 darwin-rebuild switch
 ```
 
+*Notes*: in case of accident (`darwin-rebuild` not found):
+
+```bash
+bash
+source /etc/bashrc
+darwin-rebuild switch
+```
+
 ## Nix: home manager
 
 `nixos-rebuild` or `darwin-rebuild` is used for the whole system.
@@ -75,9 +83,37 @@ Hammerspoon solves this problem by being a bridge to Mac's API. It uses Lua as s
 
 + [Hugo Reeves](https://hugoreeves.com/posts/2019/nix-home/)
 
++ [Alex Pearce](https://alexpearce.me/2021/07/managing-dotfiles-with-nix/)
+
 # Linux
 
 *TBD*
+
+# BSD
+
+*TBD*
+
+# Shell
+
+My default shell is [fish](https://fishshell.com/).
+
++ Pros:
+  - I hate Bash arcane syntax.  It's fast to write a small script in Bash but horrible to grow into a larger script. Even [Google Shell style guide](https://google.github.io/styleguide/shellguide.html#when-to-use-shell) recommends not to write a script more than 100 lines long.
+  - Seamless interops with shell commands. It makes writing script interactively on a shell fun. One-liner manner is achievable. With a general purpose language, e.g. Python, I have to wrap shell command with `os.system` or `subprocess`.
+  - References: [Why fish?](https://fishshell.com/docs/current/tutorial.html#why-fish), [Rash lang](https://youtu.be/Acjqx1MPkw4).
+
++ Cons:
+    - It does not follow POSIX shell standards. So if I want to run a common Bash or Zsh script, better use `bash script.sh`.
+
+## Setup
+
+### Mac
+
+After bootstrapping the system with Nix:
+
+```
+ansible-playbook -l local -K ansible/mac/provision.yml -t shell
+```
 
 # Ansible
 
