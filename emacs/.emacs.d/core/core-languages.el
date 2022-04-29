@@ -141,6 +141,10 @@
   ;; hide emphasis (WYSIWYG)
   (setq org-hide-emphasis-markers t)
 
+  ;; disable sub/superscript when using '^' or '_'
+  ;; equivalence in org file: `#+OPTIONS: ^:nil`
+  (setq org-export-with-sub-superscripts nil)
+
   ;; show image in org babel
   (add-hook 'org-babel-after-execute-hook 'org-display-inline-images 'append)
 
