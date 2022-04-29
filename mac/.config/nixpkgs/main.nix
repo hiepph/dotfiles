@@ -69,6 +69,7 @@ jump shell fish | source
 
     # db
     postgresql_13
+    mysql
 
     # dev
     git
