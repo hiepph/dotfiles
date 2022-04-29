@@ -1,0 +1,15 @@
+- name: Setup Fish shell
+  hosts: local
+  become: yes
+  tags:
+    - shell
+  tasks:
+    - name: Add fish shell to /etc/shells/
+      lineinfile:
+        path: /etc/shells
+        line: /run/current-system/sw/bin/fish
+        state: present
+    - name: change my default shell to fish
+      user:
+        name: hiepph
+        shell: /run/current-system/sw/bin/fish
