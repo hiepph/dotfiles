@@ -22,9 +22,6 @@
   ;; workspaces
   ("w" #'hydra-workspaces/body "workspaces")
 
-  ;; tabs
-  ("t" #'hydra-tabs/body "tabs")
-
   ;; dired
   ("d" #'dired-jump "dired")
 
@@ -34,6 +31,9 @@
 
   ;; Projectile
   ("p" #'hydra-projectile/body "projectile")
+
+  ;; treemacs
+  ("t" #'hydra-treemacs/body "treemacs")
 
   ;; compile
   ("c" #'hydra-compile/body "compile")
@@ -132,13 +132,8 @@
   ("l" #'persp-state-load "state save")
   ("," #'persp-rename "rename"))
 
-(defhydra hydra-tabs (:columns 4 :exit t)
-  "Tabs"
-  ("b" #'centaur-tabs-select-beg-tab "begin")
-  ("e" #'centaur-tabs-select-end-tab "end"))
-
 (defhydra hydra-mode (:columns 4 :exit t)
-  "All off by default"
+  "Toggle mode"
   ("c" #'company-mode "company")
   ("C" #'global-company-mode "company (global)")
   ("e" #'flycheck-mode "flycheck")
@@ -152,7 +147,12 @@
   ("\\" #'fci-mode "column")
   ("G" #'golden-ratio-mode "golden ratio (global)")
   ("|" #'fci-global-mode "column (global)")
-  ("T" #'centaur-tabs-mode "centaur (global)"))
+  ("t" #'treemacs "treemacs"))
+
+(defhydra hydra-treemacs (:columns 4 :exit t)
+  "Treemacs"
+  ("+" #'treemacs-increase-width "increase width")
+  ("-" #'treemacs-decrease-width "decrease width"))
 
 (defhydra hydra-dumb-jump (:color blue :columns 4)
   "dumb jump"
@@ -358,14 +358,6 @@
   (general-define-key
    "M-j" 'scroll-other-window
    "M-k" 'scroll-other-window-down)
-
-  ;;
-  ;; Centaur tab
-  ;;
-  (general-define-key
-   :states 'normal
-   "g t" 'centaur-tabs-forward-tab
-   "g T" 'centaur-tabs-backward-tab)
 
   ;;
   ;; Hippie expand

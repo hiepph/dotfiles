@@ -156,4 +156,39 @@
   '(setf org-highlight-latex-fragments-and-specials t))
 
 
+;;
+;; Sidebar (Treemacs)
+;; ref: https://github.com/Alexander-Miller/treemacs
+;;
+(use-package treemacs
+  :defer t
+
+  :config
+  ;; disable fancy icons
+  (setq treemacs-no-png-images t)
+
+  ;; resize with mouse
+  (setq treemacs-width-is-initially-locked nil)
+
+  ;; initial width
+  (setq treemacs-width 25)
+
+  ;; used for treemacs-increase-width and treemacs-decrease-width
+  (setq treemacs-width-increment 2)
+
+  (treemacs-follow-mode t)
+  (treemacs-filewatch-mode t))
+
+(use-package treemacs-evil
+  :after (treemacs evil))
+
+(use-package treemacs-projectile
+  :after (treemacs projectile))
+
+(use-package treemacs-magit
+  :after (treemacs magit))
+
+(use-package treemacs-perspective
+  :after (treemacs perspective))
+
 (provide 'core-ui)
