@@ -126,6 +126,7 @@ end
     kubectx
     minikube
     google-cloud-sdk
+    (callPackage ./packages/helm {})
 
     # networking
     nmap
