@@ -119,41 +119,4 @@
 ;; follow symlink
 (setq find-file-visit-truename t)
 
-
-;;
-;; Tabbar
-;;
-;; Why?
-;; + Easy keep track of current thought flow (current editing files)
-;;
-;; Ref: https://github.com/ema2159/centaur-tabs
-;;
-(use-package centaur-tabs
-  :demand
-  :config
-  ;; (centaur-tabs-mode t)
-
-  ;; cycle only through visible groups
-  (setq centaur-tabs-cycle-scope 'tabs)
-
-  ;; automatic reordering
-  ;; (centaur-tabs-enable-buffer-reordering)
-
-  ;; projectile group
-  ;; (centaur-tabs-group-by-projectile-project)
-
-  ;; style for the tab
-  (setq centaur-tabs-set-bar 'over)
-
-  ;; show a modified marker
-  (setq centaur-tabs-set-modified-marker t)
-  (setq centaur-tabs-modified-marker "*")
-
-  ;; cycle tabs only in this current group
-  (setq centaur-tabs-cycle-scope 'tabs)
-
-  ;; make tabbar have an uniform appearance
-  (centaur-tabs-headline-match))
-
-
 (provide 'core-project)
