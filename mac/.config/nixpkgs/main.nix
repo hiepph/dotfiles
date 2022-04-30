@@ -92,47 +92,45 @@ end
   };
 
   home.packages = [
-    # nix essential
-    direnv # https://direnv.net/
+    #
+    # dev
+    #
 
-    # backup
-    borgbackup
+    # editor
+    git
+    emacs
+    ispell
+    ctags
 
     # build
     cmake
-    hugo # static site generator
     nasm
 
     # db
     postgresql_13
     mysql
 
-    # dev
-    git
-    emacs
-    ispell
+    # shell
+    direnv # https://direnv.net/
+    stow
     indent
-    ctags
-    httpie
-    ansible
-    watch
-    jo # easy json construction
     jump # navigate faster
+    tmux
+    gnupg
+    (callPackage ./packages/ripgrep {})
+    bat
+    watch
+    (callPackage ./packages/reflex {}) # file watcher
 
-    # infrastructure
-    terraform
-    awscli2
-    kops
-    kubectx
-    minikube
-    google-cloud-sdk
-    (callPackage ./packages/helm {})
+    # helper
+    hugo # static site generator
+    httpie # RESTful client
+    jq
+    yq
+    jo # easy json construction
 
-    # networking
-    nmap
-    sshpass
-    rclone
-    wget
+    # virtual
+    qemu
 
     # languages
     boot # clojure build tool
@@ -146,20 +144,36 @@ end
     (callPackage ./packages/zig {})
     graphviz
 
-    # shell
-    htop
-    tmux
-    gnupg
-    pass
-    (callPackage ./packages/ripgrep {})
-    bat
-    (callPackage ./packages/reflex {})
-    jq
-    stow
-    fzf
+    #
+    # devops
+    #
 
-    # virtualization
-    qemu
+    # backup
+    borgbackup
+
+    # infrastructure
+    ansible
+    terraform
+    awscli2
+    kops
+    kubectx
+    minikube
+    google-cloud-sdk
+    (callPackage ./packages/helm {})
+
+    # secret
+    pass
+
+    # template
     vagrant
+
+    # networking
+    nmap
+    sshpass
+    rclone
+    wget
+
+    # monitoring
+    htop
   ];
 }
