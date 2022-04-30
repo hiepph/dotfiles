@@ -32,8 +32,8 @@
   ;; Projectile
   ("p" #'hydra-projectile/body "projectile")
 
-  ;; treemacs
-  ("t" #'hydra-treemacs/body "treemacs")
+  ;; dired-sidebar
+  ("t" #'hydra-tree/body "dired-sidebar")
 
   ;; compile
   ("c" #'hydra-compile/body "compile")
@@ -76,6 +76,10 @@
   ("&" #'projectile-run-async-shell-command-in-root "async cmd (root)")
 
   ("q" nil "Cancel" :color blue))
+
+(defhydra hydra-tree (:columns 4 :exit t)
+  "Dired sidebar"
+  ())
 
 ;;
 ;; Some operations that relates to the workspace:
@@ -147,12 +151,7 @@
   ("\\" #'fci-mode "column")
   ("G" #'golden-ratio-mode "golden ratio (global)")
   ("|" #'fci-global-mode "column (global)")
-  ("t" #'treemacs "treemacs"))
-
-(defhydra hydra-treemacs (:columns 4 :exit t)
-  "Treemacs"
-  ("+" #'treemacs-increase-width "increase width")
-  ("-" #'treemacs-decrease-width "decrease width"))
+  ("t" #'dired-sidebar-toggle-sidebar "dired sidebar"))
 
 (defhydra hydra-dumb-jump (:color blue :columns 4)
   "dumb jump"

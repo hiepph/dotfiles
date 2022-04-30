@@ -157,38 +157,26 @@
 
 
 ;;
-;; Sidebar (Treemacs)
-;; ref: https://github.com/Alexander-Miller/treemacs
+;; Tree
+;; ref: https://github.com/jojojames/dired-sidebar
 ;;
-(use-package treemacs
-  :defer t
+(use-package dired-sidebar
+  :commands (dired-sidebar-toggle-sidebar)
+  :init
+  (add-hook 'dired-sidebar-mode-hook
+            (lambda ()
+              (unless (file-remote-p default-directory)
+                (auto-revert-mode))))
 
   :config
-  ;; disable fancy icons
-  (setq treemacs-no-png-images t)
+  (push 'toggle-window-split dired-sidebar-toggle-hidden-commands)
+  (push 'rotate-windows dired-sidebar-toggle-hidden-commands)
 
-  ;; resize with mouse
-  (setq treemacs-width-is-initially-locked nil)
+  (setq dired-sidebar-use-term-integration t)
+  (setq dired-sidebar-use-custom-font t)
 
-  ;; initial width
-  (setq treemacs-width 25)
+  ;; change default width
+  (setq dired-sidebar-width 25))
 
-  ;; used for treemacs-increase-width and treemacs-decrease-width
-  (setq treemacs-width-increment 2)
-
-  (treemacs-follow-mode t)
-  (treemacs-filewatch-mode t))
-
-(use-package treemacs-evil
-  :after (treemacs evil))
-
-(use-package treemacs-projectile
-  :after (treemacs projectile))
-
-(use-package treemacs-magit
-  :after (treemacs magit))
-
-(use-package treemacs-perspective
-  :after (treemacs perspective))
 
 (provide 'core-ui)
