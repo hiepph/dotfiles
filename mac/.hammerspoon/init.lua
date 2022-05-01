@@ -2,9 +2,7 @@ local SUPER_SHIFT = {"cmd", "shift"}
 local SUPER_CTRL = {"cmd", "ctrl"}
 local SUPER_ALT = {"cmd", "alt"}
 
---
--- Window movement
---
+-- Window movement.
 hs.hotkey.bind(SUPER_SHIFT, "h", function()
       local win = hs.window.focusedWindow()
       local f = win:frame()
@@ -37,9 +35,7 @@ hs.hotkey.bind(SUPER_SHIFT, "k", function()
       local screen = win:screen()
       local max = screen:frame()
 
-      f.x = max.x
       f.y = max.y
-      f.w = max.w
       f.h = max.h / 2
       win:setFrame(f)
 end)
@@ -50,9 +46,7 @@ hs.hotkey.bind(SUPER_SHIFT, "j", function()
       local screen = win:screen()
       local max = screen:frame()
 
-      f.x = max.x
       f.y = max.y + (max.h / 2)
-      f.w = max.w
       f.h = max.h / 2
       win:setFrame(f)
 end)
