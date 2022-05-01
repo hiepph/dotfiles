@@ -121,6 +121,7 @@ end
     bat
     watch
     (callPackage ./packages/reflex {}) # file watcher
+    fzf
 
     # helper
     hugo # static site generator
