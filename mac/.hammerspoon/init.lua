@@ -1,8 +1,17 @@
+local SUPER = {"cmd"}
 local SUPER_SHIFT = {"cmd", "shift"}
 local SUPER_CTRL = {"cmd", "ctrl"}
 local SUPER_ALT = {"cmd", "alt"}
 
--- Window movement.
+--
+-- Window movement
+--
+-- These movements are inspired from i3. Make the windows 'tiling' by placing
+-- them at the edge of the screens.
+-- Directions are h, j, k, l similar to Vim movements.
+--
+
+-- Push the window to the right.
 hs.hotkey.bind(SUPER_SHIFT, "h", function()
       local win = hs.window.focusedWindow()
       local f = win:frame()
@@ -16,6 +25,7 @@ hs.hotkey.bind(SUPER_SHIFT, "h", function()
       win:setFrame(f)
 end)
 
+-- Push the window to the left.
 hs.hotkey.bind(SUPER_SHIFT, "l", function()
       local win = hs.window.focusedWindow()
       local f = win:frame()
@@ -29,6 +39,7 @@ hs.hotkey.bind(SUPER_SHIFT, "l", function()
       win:setFrame(f)
 end)
 
+-- Tile the window downward, shortening its height by half.
 hs.hotkey.bind(SUPER_SHIFT, "k", function()
       local win = hs.window.focusedWindow()
       local f = win:frame()
@@ -40,6 +51,7 @@ hs.hotkey.bind(SUPER_SHIFT, "k", function()
       win:setFrame(f)
 end)
 
+-- Tile the window upward, shortening its height by half.
 hs.hotkey.bind(SUPER_SHIFT, "j", function()
       local win = hs.window.focusedWindow()
       local f = win:frame()
@@ -51,6 +63,7 @@ hs.hotkey.bind(SUPER_SHIFT, "j", function()
       win:setFrame(f)
 end)
 
+-- Center the window without affecting its dimension.
 hs.hotkey.bind(SUPER_SHIFT, "c", function()
       local win = hs.window.focusedWindow()
       local screen = win:screen()
@@ -61,28 +74,31 @@ end)
 --
 -- Window switch
 --
-hs.hotkey.bind({"cmd"}, "h", function()
+-- Directions are similar to vim.
+--
+
+hs.hotkey.bind(SUPER, "h", function()
       local win = hs.window.focusedWindow()
       local screen = win:screen()
 
       win:focusWindowWest()
 end)
 
-hs.hotkey.bind({"cmd"}, "l", function()
+hs.hotkey.bind(SUPER, "l", function()
       local win = hs.window.focusedWindow()
       local screen = win:screen()
 
       win:focusWindowEast()
 end)
 
-hs.hotkey.bind({"cmd"}, "j", function()
+hs.hotkey.bind(SUPER, "j", function()
       local win = hs.window.focusedWindow()
       local screen = win:screen()
 
       win:focusWindowSouth()
 end)
 
-hs.hotkey.bind({"cmd"}, "k", function()
+hs.hotkey.bind(SUPER, "k", function()
       local win = hs.window.focusedWindow()
       local screen = win:screen()
 
@@ -90,8 +106,10 @@ hs.hotkey.bind({"cmd"}, "k", function()
 end)
 
 --
--- Window size
+-- Resize windows
 --
+
+-- Maximize the size of the window without going fullscreen.
 hs.hotkey.bind(SUPER_SHIFT, "return", function()
       local win = hs.window.focusedWindow()
       local screen = win:screen()
@@ -99,6 +117,7 @@ hs.hotkey.bind(SUPER_SHIFT, "return", function()
       win:maximize()
 end)
 
+-- Minimize the window to the dock.
 hs.hotkey.bind(SUPER_SHIFT, "m", function()
       local win = hs.window.focusedWindow()
       local screen = win:screen()
@@ -106,6 +125,7 @@ hs.hotkey.bind(SUPER_SHIFT, "m", function()
       win:minimize()
 end)
 
+-- Maximize the size of the window by making it go fullscreen.
 hs.hotkey.bind(SUPER_SHIFT, "f", function()
       local win = hs.window.focusedWindow()
       local screen = win:screen()
@@ -113,8 +133,8 @@ hs.hotkey.bind(SUPER_SHIFT, "f", function()
       win:toggleFullScreen()
 end)
 
--- increase width and height
-function resize(wPercent, hPercent)
+-- Increase the width and height of the window.
+local function resize(wPercent, hPercent)
     return function()
         local win = hs.window.focusedWindow()
         local f = win:frame()
@@ -142,29 +162,25 @@ function resize(wPercent, hPercent)
 end
 
 local window_resize_ratio = 0.15
+
+-- Increase/Decrease the width.
 hs.hotkey.bind(SUPER_SHIFT, '.', resize(window_resize_ratio, 0))
 hs.hotkey.bind(SUPER_SHIFT, ',', resize(-window_resize_ratio, 0))
+
+-- Increase/Decrease the height.
 hs.hotkey.bind(SUPER_SHIFT, '=', resize(0, window_resize_ratio))
 hs.hotkey.bind(SUPER_SHIFT, '-', resize(0, -window_resize_ratio))
+
+-- Increase/Decrease both width and height.
 hs.hotkey.bind(SUPER_SHIFT, ']', resize(window_resize_ratio, window_resize_ratio))
 hs.hotkey.bind(SUPER_SHIFT, '[', resize(-window_resize_ratio, -window_resize_ratio))
-
---
--- Window visibility
---
-
--- this equals clicking the red close button
-hs.hotkey.bind(SUPER_SHIFT, "x", function()
-      local win = hs.window.focusedWindow()
-      win:close()
-end)
 
 
 --
 -- Screens
 --
 
--- Move window between screens
+-- Move window to the left monitor.
 hs.hotkey.bind(SUPER_CTRL, "h", function()
       local win = hs.window.focusedWindow()
       local f = win:frame()
@@ -172,6 +188,7 @@ hs.hotkey.bind(SUPER_CTRL, "h", function()
       win:moveOneScreenWest()
 end)
 
+-- Move window to the right monitor.
 hs.hotkey.bind(SUPER_CTRL, "l", function()
       local win = hs.window.focusedWindow()
       local f = win:frame()
@@ -179,44 +196,38 @@ hs.hotkey.bind(SUPER_CTRL, "l", function()
       win:moveOneScreenEast()
 end)
 
--- Scale
--- Larger text (zoom-in effect)
-hs.hotkey.bind(SUPER_CTRL, "=", function()
-                   local screen = hs.screen.primaryScreen()
-                   local cur = screen:currentMode()
-                   screen:setMode(1280, 800, cur.scale, cur.freq, cur.depth)
-end)
-
--- Smaller text (zoom-out effect)
-hs.hotkey.bind(SUPER_CTRL, "-", function()
-                   local screen = hs.screen.primaryScreen()
-                   local cur = screen:currentMode()
-                   screen:setMode(1440, 900, cur.scale, cur.freq, cur.depth)
-end)
-
 --
 -- Applications
 --
 
--- kill gracefully (close and kill)
+-- Equivalent to clicking the red close button.
+hs.hotkey.bind(SUPER_SHIFT, "x", function()
+      local win = hs.window.focusedWindow()
+      win:close()
+end)
+
+
+-- kill gracefully.
 hs.hotkey.bind(SUPER_SHIFT, "q", function()
       local win = hs.window.focusedWindow()
       win:application():kill()
 end)
 
+
 --
 -- Lock
 --
+
 hs.hotkey.bind(SUPER_SHIFT, "escape", function()
         hs.caffeinate.lockScreen()
 end)
 
+
 --
--- Menubar items
+-- Menubar
 --
 
--- show IP address
---
+-- Periodically query and show the current IP address.
 ip = hs.menubar.new()
 local function getCurrentIPAddress(interface)
     cmd = string.format("ipconfig getifaddr %s", interface)
@@ -229,14 +240,30 @@ local function showIp()
     ip:setTitle(ipTitle)
 end
 
--- periodically refresh the menu bar
 showIp()
 local timer = hs.timer.new(10, showIp)
 timer:start()
 
+-- Clipboard management.
+-- ref: https://www.hammerspoon.org/Spoons/ClipboardTool.html
+function setupClipboardTool()
+    tool = hs.loadSpoon("ClipboardTool")
+    tool.show_copied_alert = false
+    tool.paste_on_select = true
+    tool:start()
+    tool:bindHotkeys({
+            toggle_clipboard = {SUPER_ALT, "p"}
+    })
+end
+
+setupClipboardTool()
+
+
 
 --
--- URLs
+-- Provide URL event to interact with Hammerspoon.
+--
+-- Ref: https://www.hammerspoon.org/docs/hs.urlevent.html
 --
 
 -- call iTerm with command
@@ -281,31 +308,20 @@ end tell
 ]], cd_command, exec_command))
 end)
 
---
--- Clipboard management
--- ref: https://www.hammerspoon.org/Spoons/ClipboardTool.html
---
-function setupClipboardTool()
-    tool = hs.loadSpoon("ClipboardTool")
-    tool.show_copied_alert = false
-    tool.paste_on_select = true
-    tool:start()
-    tool:bindHotkeys({
-            toggle_clipboard = {SUPER_ALT, "p"}
-    })
-end
-
-setupClipboardTool()
-
 
 --
--- Query web
+-- Utilities
+--
+-- Simple helper utilities to increse the productivity.
 --
 
 -- Query web with prefixes.
--- g: google (default)
--- d: duckduckgo
--- yt: youtube
+-- Ideas are borrowed from Duckduckgo's Bang operators.
+-- Ref: https://duckduckgo.com/bang
+--
+-- Usage:
+--   'g: The Witcher' (Search 'The Witcher' on Google)
+--   'yt: Breadth of the Wild' (Search 'Breadth of the Wild' on Youtube)
 function webQuery()
     return function()
         hs.focus()
@@ -315,9 +331,8 @@ function webQuery()
             return
         end
 
-        -- works with
-        -- g: simple query
-        -- g: query with ':' inside
+        -- Separate the prefix and the query.
+        -- Also accepts query with the character ':' in it.
         dest, query = string.match(prompt, "([^:]+):%s*(.*)")
 
         if dest == nil then
@@ -349,9 +364,13 @@ hs.hotkey.bind(SUPER_ALT, "g", webQuery())
 
 
 --
--- Hot reload
+-- Reload
 --
+
+-- hot reload Hammerspoon itself.
 hs.hotkey.bind(SUPER_SHIFT, "r", function()
       hs.reload()
 end)
+
+
 hs.alert.show("Config loaded")
