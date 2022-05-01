@@ -172,8 +172,7 @@
   (push 'toggle-window-split dired-sidebar-toggle-hidden-commands)
   (push 'rotate-windows dired-sidebar-toggle-hidden-commands)
 
-  (setq dired-sidebar-use-term-integration t)
-  (setq dired-sidebar-use-custom-font t)
+  (setq dired-sidebar-should-follow-file t)
 
   ;; change default width
   (setq dired-sidebar-width 25))
