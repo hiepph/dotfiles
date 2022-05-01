@@ -74,6 +74,25 @@
 
 
 ;;
+;; diff-hl: highlight git commit changes
+;; ref: https://github.com/dgutov/diff-hl
+;;
+(use-package diff-hl
+  :after (magit)
+  :config
+  (global-diff-hl-mode)
+
+  ;; auto-refresh with magit
+  (add-hook 'magit-pre-refresh-hook 'diff-hl-magit-pre-refresh)
+  (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
+
+  ;; turn on when open dired
+  (add-hook 'dired-mode-hook
+          (lambda ()
+            (diff-hl-dired-mode 1))))
+
+
+;;
 ;; Whitespace
 ;; ref: https://www.emacswiki.org/emacs/WhiteSpace
 ;;

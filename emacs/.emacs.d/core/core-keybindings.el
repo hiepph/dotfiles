@@ -51,7 +51,10 @@
   ;; dumb-jump
   ("j" #'hydra-dumb-jump/body "jump")
 
-  ("m" #'hydra-mode/body "toggle"))
+  ("m" #'hydra-mode/body "toggle")
+
+  ;; reload yasnippet
+  ("s" #'yas-reload-all "yasnippet reload"))
 
 (defhydra hydra-projectile (:columns 4 :exit t)
   "Projectile"
@@ -140,18 +143,26 @@
   "Toggle mode"
   ("c" #'company-mode "company")
   ("C" #'global-company-mode "company (global)")
+
   ("e" #'flycheck-mode "flycheck")
   ("E" #'global-flycheck-mode "flycheck (global)")
+
   ("f" #'format-mode "format")
   ("F" #'format-global-mode "format (global)")
+
   ("s" #'flyspell-mode "flyspell")
-  ("d" #'direnv-mode "direnv")
+
   ("i" #'indent-guide-mode "indent")
   ("I" #'indent-guide-global-mode "indent (global)")
-  ("\\" #'fci-mode "column")
+
   ("G" #'golden-ratio-mode "golden ratio (global)")
+
+  ("\\" #'fci-mode "column")
   ("|" #'fci-global-mode "column (global)")
-  ("t" #'dired-sidebar-toggle-sidebar "dired sidebar"))
+
+  ("t" #'dired-sidebar-toggle-sidebar "dired sidebar")
+
+  ("D" #'global-diff-hl-mode "diffhl (global"))
 
 (defhydra hydra-dumb-jump (:color blue :columns 4)
   "dumb jump"
@@ -216,14 +227,13 @@
   ;;
   ;; Frequent tasks
   ;;
-  (global-set-key (kbd "<f1>") 'persp-switch)
+  (global-set-key (kbd "<f1>") 'dired-sidebar-show-sidebar)
   (global-set-key (kbd "<f2>") 'save-buffer)
   (global-set-key (kbd "<f3>") 'find-file)
   (global-set-key (kbd "<f4>") '~persp-remove-current-buffer)
   (global-set-key (kbd "<f5>") '~revert-buffer)
   (global-set-key (kbd "<f6>") '~open-terminal)
   (global-set-key (kbd "<f8>") 'persp-switch-to-buffer*)
-  (global-set-key (kbd "<f10>") 'yas-reload-all)
   (global-set-key (kbd "<f12>") 'recompile)
 
   ;;
