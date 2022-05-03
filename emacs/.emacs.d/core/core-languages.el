@@ -172,6 +172,13 @@
   ;; auto-indent
   (setq org-startup-indented t)
 
+  ;; preserve indentation when export
+  (setq org-src-preserve-indentation t)
+  (setq TeX-auto-untabify t)
+
+  ;; order list with a. b. c.
+  (setq org-list-allow-alphabetical t)
+
   :config
   (setq org-confirm-babel-evaluate nil
         org-src-fontify-natively t
