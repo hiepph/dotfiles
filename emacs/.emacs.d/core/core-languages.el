@@ -136,6 +136,12 @@
 ;;
 (use-package sql-indent)
 
+
+;;
+;; Docker
+;;
+(use-package dockerfile-mode)
+
 ;;
 ;; Org-mode
 ;;
