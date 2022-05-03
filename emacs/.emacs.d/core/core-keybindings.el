@@ -187,7 +187,11 @@
   ("t" #'org-babel-tangle "tangle")
   ("i" #'org-display-inline-images "images")
   ("x" #'org-latex-preview "latex")
-  ("d" #'org-babel-remove-result "clear result"))
+  ("d" #'org-babel-remove-result "clear result")
+  ("." #'org-metaright "meta right")
+  (">" #'org-shiftmetaright "shift right")
+  ("," #'org-metaleft "meta left")
+  ("<" #'org-shiftmetaleft "shift left"))
 
 (defhydra hydra-org-toggle (:color blue :columns 4)
   ("h" #'org-toggle-heading "heading")
@@ -270,10 +274,6 @@
    :keymaps 'org-mode-map
    :states '(visual normal)
    "," 'hydra-org/body
-   "> ." 'org-metaright
-   "> >" 'org-shiftmetaright
-   "< <" 'org-shiftmetaleft
-   "< ," 'org-metaleft
    "M-k" 'org-move-subtree-up
    "M-j" 'org-move-subtree-down
    "] ]" 'org-next-visible-heading
