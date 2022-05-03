@@ -132,6 +132,11 @@
 
 
 ;;
+;; SQL
+;;
+(use-package sql-indent)
+
+;;
 ;; Org-mode
 ;;
 (use-package org
@@ -154,7 +159,7 @@
   ;; Show syntax highlighting per language native mode in *.org
   (setq org-src-fontify-natively t)
 
-  ;; For languages with significant whitespace like Python:
+  ;; For languages with significant whitespace like Python
   (setq org-src-preserve-indentation t)
 
   ;; Turn on image by default
@@ -173,7 +178,6 @@
   (setq org-startup-indented t)
 
   ;; preserve indentation when export
-  (setq org-src-preserve-indentation t)
   (setq TeX-auto-untabify t)
 
   ;; order list with a. b. c.
