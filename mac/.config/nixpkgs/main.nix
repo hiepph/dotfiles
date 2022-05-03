@@ -153,7 +153,6 @@ end
     borgbackup
 
     # infrastructure
-    ansible
     terraform
     awscli2
     kops

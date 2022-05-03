@@ -54,10 +54,15 @@
         msg: The conda environment must be '{{ conda_env }}'
       when: current_conda_env.stdout != conda_env
   tasks:
+    - name: ansible with batteries included
+      pip:
+        name:
+          - ansible
+          - passlib # encrypt password
+          - pyOpenSSL # interact with OpenSSL
     - name: testing tool
       pip:
         name: pytest
-      changed_when: current_conda_env
     - name: Python linter \& formatter
       pip:
         name: black
