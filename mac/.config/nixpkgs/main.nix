@@ -17,7 +17,7 @@ with pkgs;
 
     shellInit = ''
 # Add some custom binary dirs
-set -x PATH $HOME/scripts $HOME/backup $HOME/go/bin /Library/Tex/texbin (gem environment gemdir)/bin $HOME/.local/bin $PATH
+set -x PATH $HOME/scripts $HOME/backup $HOME/go/bin /Library/Tex/texbin (gem environment gemdir)/bin $HOME/.local/bin $HOME/.nix-profile/bin/ $PATH
 
 # default edit everything with vim
 set -x VISUAL vim
@@ -144,6 +144,7 @@ end
     ruby
     (callPackage ./packages/zig {})
     graphviz
+    jdk11 # Java
 
     #
     # devops
