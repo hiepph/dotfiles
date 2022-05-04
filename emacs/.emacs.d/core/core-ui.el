@@ -9,10 +9,8 @@
 
 ;; Disable Menu/toolbar/scroll
 (menu-bar-mode -1)
-(when (fboundp 'tool-bar-mode)
-  (tool-bar-mode -1))
-(when (fboundp 'scroll-bar-mode)
-  (scroll-bar-mode -1))
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
 
 ;; Disable annoying beep
 (setq ring-bell-function 'ignore)
@@ -176,6 +174,14 @@
 
   ;; change default width
   (setq dired-sidebar-width 25))
+
+;;
+;; Better scroll bar
+;; ref: https://github.com/emacsorphanage/yascroll
+;;
+(use-package yascroll
+  :config
+  (global-yascroll-bar-mode 1))
 
 
 (provide 'core-ui)
