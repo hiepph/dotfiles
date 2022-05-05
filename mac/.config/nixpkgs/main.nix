@@ -13,6 +13,9 @@ with pkgs;
 
     shellAbbrs = {
       "k" = "kubectl";
+      "g" = "git";
+      "l" = "ls";
+      "d" = "docker";
     };
 
     shellInit = ''
