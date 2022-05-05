@@ -32,6 +32,12 @@ direnv hook fish | source
 # conda integration
 eval /Users/hiepph/miniconda3/bin/conda "shell.fish" "hook" $argv | source
 
+# prevent weird behaviour with tmux
+# ref: http://nicksun.fun/linux/2020/10/07/tmux-macos.html
+if test -n "$TMUX"
+   conda deactivate && conda activate base
+end
+
 # Integrate with `jump`
 jump shell fish | source
 '';
