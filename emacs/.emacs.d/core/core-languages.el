@@ -291,18 +291,6 @@
 
 
 ;;
-;; Tabs
-;;
-
-;; View tabs as 4 spaces
-(setq default-tab-width 4)
-(setq-default tab-width 4)
-
-;; tab stop position
-(setq tab-stop-list '(4 8 12))
-
-
-;;
 ;; Yasnippet
 ;; ref: https://github.com/joaotavora/yasnippet
 ;;

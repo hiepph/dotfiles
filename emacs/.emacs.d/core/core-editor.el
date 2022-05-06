@@ -1,17 +1,22 @@
 (require 'ansi-color)
 
 
-;; Disable tabs mode
-(setq-default indent-tabs-mode nil)
-
-;; Auto-indentation
-(electric-indent-mode 1)
-
 ;; Highlight current line
 (global-hl-line-mode 1)
 
-;; Enter automatically indent code
-(define-key global-map (kbd "RET") 'newline-and-indent)
+
+;;
+;; Tabs
+;;
+
+;; Disable tabs mode
+(setq-default indent-tabs-mode nil)
+
+;; View tabs as 4 spaces
+(setq default-tab-width 4)
+
+;; tab stop position
+(setq tab-stop-list '(4 8 12))
 
 
 ;;
@@ -24,6 +29,16 @@
   (when (memq window-system '(mac ns x))
     (exec-path-from-shell-initialize)))
 
+
+;;
+;; Indentation
+;;
+
+;; Auto-indentation
+(electric-indent-mode 1)
+
+;; Enter automatically indent code
+(define-key global-map (kbd "RET") 'newline-and-indent)
 
 ;;
 ;; Automatic indentation offset detection
