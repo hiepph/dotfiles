@@ -181,17 +181,25 @@
   "Org"
   ("h" #'org-insert-heading "heading")
   ("H" #'org-insert-subheading "sub heading")
+
   ("l" #'org-insert-link "link")
+
   ("c" #'org-ctrl-c-ctrl-c "execute")
   ("'" #'org-edit-special "edit")
-  ("t" #'org-babel-tangle "tangle")
+  ("d" #'org-babel-remove-result "clear result")
+
+  ("w" #'org-babel-tangle "tangle")
+
   ("i" #'org-display-inline-images "images")
   ("x" #'org-latex-preview "latex")
-  ("d" #'org-babel-remove-result "clear result")
+
   ("." #'org-metaright "meta right")
   (">" #'org-shiftmetaright "shift right")
   ("," #'org-metaleft "meta left")
-  ("<" #'org-shiftmetaleft "shift left"))
+  ("<" #'org-shiftmetaleft "shift left")
+
+  ("t c" #'org-table-create "table create")
+  ("t a" #'org-table-align "table align"))
 
 (defhydra hydra-org-toggle (:color blue :columns 4)
   ("h" #'org-toggle-heading "heading")
