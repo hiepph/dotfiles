@@ -211,7 +211,9 @@
                             `(lambda (c)
                                (if (char-equal c ?<)
                                    t
-                                 (,electric-pair-inhibit-predicate c)))))))
+                                 (,electric-pair-inhibit-predicate c))))))
+  (org-mode . (lambda ()
+                (setq-local evil-shift-width 2))))
 
 ;; Expand snippets defined in ~org-structure-template-alist~
 ;; e.g. <s TAB expands to ~#+begin_src~
