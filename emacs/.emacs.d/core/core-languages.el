@@ -1,4 +1,22 @@
 ;;
+;; LSP mode
+;; ref: https://github.com/emacs-lsp/lsp-mode
+;;
+(use-package lsp-mode
+  :hook ((java-mode) . lsp-deferred)
+  :commands lsp)
+
+;;
+;; Java
+;; ref: https://github.com/emacs-lsp/lsp-java
+;;
+(use-package dash-functional)
+
+(use-package lsp-java
+  :requires (dash-functional)
+  :after lsp)
+
+;;
 ;; Clojure
 ;;
 (use-package cider
