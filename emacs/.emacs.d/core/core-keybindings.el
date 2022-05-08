@@ -54,7 +54,7 @@
   ("m" #'hydra-mode/body "toggle")
 
   ;; reload yasnippet
-  ("s" #'yas-reload-all "yasnippet reload"))
+  ("s" #'yas-reload-all "yasnippet"))
 
 (defhydra hydra-projectile (:columns 4 :exit t)
   "Projectile"
@@ -79,10 +79,6 @@
   ("&" #'projectile-run-async-shell-command-in-root "async cmd (root)")
 
   ("q" nil "Cancel" :color blue))
-
-(defhydra hydra-tree (:columns 4 :exit t)
-  "Dired sidebar"
-  ())
 
 ;;
 ;; Some operations that relates to the workspace:
