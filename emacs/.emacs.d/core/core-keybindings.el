@@ -197,9 +197,10 @@
   ("t c" #'org-table-create "table create")
   ("t a" #'org-table-align "table align"))
 
-(defhydra hydra-org-toggle (:color blue :columns 4)
-  ("h" #'org-toggle-heading "heading")
-  ("l" #'org-toggle-item "list"))
+(defhydra hydra-java (:color blue :columns 4)
+  "LSP Java"
+  ("i" #'lsp-java-add-import "import")
+  ("I" #'lsp-java-organize-imports "import (organize)"))
 
 (defhydra hydra-cider (:color blue :columns 4)
   "Cider"
@@ -290,6 +291,14 @@
     :keymaps 'org-mode-map
     "RET" 'org-newline-and-indent
     "M-RET" 'org-meta-return)
+
+  ;;
+  ;; Java LSP
+  ;;
+  (general-nmap
+    :keymaps 'java-mode-map
+    :states 'normal
+    "," 'hydra-java/body)
 
   ;;
   ;; Cider (Clojure)

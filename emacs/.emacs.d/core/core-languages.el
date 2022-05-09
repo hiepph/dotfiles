@@ -16,6 +16,11 @@
   :requires (dash-functional)
   :after lsp)
 
+(defun ~format-java ()
+  (interactive)
+  (progn (lsp-format-buffer)
+         (basic-save-buffer)))
+
 ;;
 ;; Clojure
 ;;
@@ -274,12 +279,16 @@
   "Automatically format code based on language mode"
   :group 'format)
 
-;; Define your format code here
+;; Define your format helper here.
+;; Note: Each format helper should have the availability to reformat the buffer
+;; and save the file onto the hard disk. ~format-code will do a hard revert
+;; buffer from disk after formatting.
 (defcustom format-formatters
   '((python-mode ~format-python)
     (c-mode ~format-c)
     (ruby-mode ~format-ruby)
-    (clojure-mode ~format-clojure))
+    (clojure-mode ~format-clojure)
+    (java-mode ~format-java))
   "Default formatters for predefined languages"
   :type '(repeat (list symbol symbol))
   :group 'format)
