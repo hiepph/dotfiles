@@ -1,0 +1,33 @@
+- name: setup essential tools
+  hosts: aws
+  tags:
+    - tools
+    - shell
+  vars_files:
+    - vars.yml
+  pre_tasks:
+    - name: ensure apt cache is updated
+      become: yes
+      apt:
+        update_cache: true
+        cache_valid_time: 600
+  roles:
+    - bashit
+  tasks:
+    - name: install essential tools
+      become: yes
+      apt:
+        name:
+          - git
+          - vim
+          - tmux
+
+    - name: config basic tmux
+      copy:
+        src: ../../tmux/.tmux.conf
+        dest: "{{ ansible_env.HOME }}/.tmux.conf"
+
+    - name: config basic vim
+      copy:
+        src: ../../vim/.vimrc
+        dest: "{{ ansible_env.HOME }}/.vimrc"
