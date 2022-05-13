@@ -160,11 +160,24 @@
 
 
 ;;
-;; Direnv integration:
-;; ref: https://github.com/wbolster/emacs-direnv
+;; Direnv integration.
+;; Operate buffer-locally compared to direnv.el
+;; ref: https://github.com/purcell/envrc
 ;;
-(use-package direnv)
+(use-package inheritenv
+  :straight (inheritenv
+             :type git
+             :host github
+             :repo "purcell/inheritenv"
+             :branch "main"))
 
+(use-package envrc
+  :straight (envrc
+             :type git
+             :host github
+             :repo "purcell/envrc")
+  :init
+  (envrc-global-mode))
 
 ;;
 ;; Jump to definition, even without CTAGS
