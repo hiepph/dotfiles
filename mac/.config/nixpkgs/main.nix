@@ -131,6 +131,7 @@ end
     watch
     (callPackage ./packages/reflex {}) # file watcher
     fzf
+    imagemagick
 
     # helper
     hugo # static site generator
