@@ -1,5 +1,0 @@
-- name: clone bash_it
-  git:
-    repo: "https://github.com/Bash-it/bash-it"
-    depth: 1
-    dest: "{{ ansible_env.HOME }}/.bash_it"
