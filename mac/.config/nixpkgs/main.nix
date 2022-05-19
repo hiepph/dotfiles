@@ -148,6 +148,7 @@ end
     zprint # clojure formatter
     babashka # interpreter for Clojure scripting
     (callPackage ./packages/julia {})
+    R
     (callPackage ./packages/lua {})
     go
     (callPackage ./packages/gotools {})
