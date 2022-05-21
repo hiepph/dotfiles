@@ -126,7 +126,8 @@ end
     jump # navigate faster
     tmux
     gnupg
-    (callPackage ./packages/ripgrep {})
+    (callPackage ./packages/ripgrep {}) # grep alternative
+    fd # find alternative
     bat
     watch
     (callPackage ./packages/reflex {}) # file watcher
