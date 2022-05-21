@@ -225,7 +225,8 @@
      (ruby . t)
      (lua . t)
      (latex . t)
-     (dot . t)))
+     (dot . t)
+     (R . t)))
 
   :hook
   ;; remove '<' autopair
