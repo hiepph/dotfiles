@@ -6,6 +6,8 @@
   :hook ((java-mode) . lsp-deferred)
   :commands lsp)
 
+(use-package groovy-mode)
+
 ;;
 ;; Java
 ;; ref: https://github.com/emacs-lsp/lsp-java
