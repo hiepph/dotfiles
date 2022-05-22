@@ -157,6 +157,7 @@ end
     (callPackage ./packages/zig {})
     graphviz
     jdk11 # Java
+    gradle # java build tool
 
     #
     # devops
