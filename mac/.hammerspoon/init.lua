@@ -315,13 +315,12 @@ end)
 -- Simple helper utilities to increse the productivity.
 --
 
--- Query web with prefixes.
--- Ideas are borrowed from Duckduckgo's Bang operators.
+-- Query web with bang operator.
 -- Ref: https://duckduckgo.com/bang
 --
 -- Usage:
---   'g: The Witcher' (Search 'The Witcher' on Google)
---   'yt: Breadth of the Wild' (Search 'Breadth of the Wild' on Youtube)
+--   '!g The Witcher' (Search 'The Witcher' on Google)
+--   '!yt Breath of the Wild' (Search 'Breath of the Wild' on Youtube)
 function webQuery()
     return function()
         hs.focus()
@@ -331,9 +330,8 @@ function webQuery()
             return
         end
 
-        -- Separate the prefix and the query.
-        -- Also accepts query with the character ':' in it.
-        dest, query = string.match(prompt, "([^:]+):%s*(.*)")
+        -- refer patterns matching: https://www.lua.org/pil/20.2.html
+        dest, query = string.match(prompt, "!(%a+)%s*(.*)")
 
         if dest == nil then
             url = string.format("https://www.google.com/search?q=%s", prompt)
@@ -352,7 +350,7 @@ function webQuery()
         elseif dest == 'pronounce' then
             url = string.format("https://youglish.com/pronounce/%s/english/uk", query)
         else
-            hs.alert.show(string.format("'%s' is not yet supported. Fallback to google.", dest))
+            hs.alert.show(string.format("'!%s' bang not found", dest))
             url = string.format("https://www.google.com/search?q='%s'", query)
         end
 
