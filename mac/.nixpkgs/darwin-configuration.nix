@@ -24,6 +24,18 @@
   programs.zsh.enable = true;  # default shell on catalina
   programs.fish.enable = true;
 
+  # cron job with launchd
+  launchd.daemons = {
+    postfix.serviceConfig = {
+      Label = "hiepph.system.postfix";
+      KeepAlive = true;
+      RunAtLoad = true;
+      Program = "/usr/libexec/postfix/master";
+      QueueDirectories = [ "/var/spool/postfix/maildrop" ];
+      AbandonProcessGroup = true;
+    };
+  };
+
   # Cronjob for garbage collector
   # nix.gc = {
   #   user = "hiepph";
