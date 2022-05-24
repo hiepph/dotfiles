@@ -68,6 +68,8 @@
   (let ((fname (buffer-file-name)))
     (shell-command (format "black %s --skip-string-normalization" fname) nil)))
 
+(use-package jinja2-mode)
+
 ;;
 ;; Ruby
 ;;
@@ -157,12 +159,6 @@
 
 
 ;;
-;; SQL
-;;
-(use-package sql-indent)
-
-
-;;
 ;; Docker
 ;;
 (use-package dockerfile-mode)
@@ -177,9 +173,8 @@
   ;; hide emphasis (WYSIWYG)
   (setq org-hide-emphasis-markers t)
 
-  ;; disable sub/superscript when using '^' or '_'
-  ;; equivalence in org file: `#+OPTIONS: ^:nil`
-  (setq org-export-with-sub-superscripts nil)
+  ;; super-(^)-scripts and sub-(_)-scripts work only if they are inside '{}'
+  (setq org-use-sub-superscripts '{})
 
   ;; show image in org babel
   (add-hook 'org-babel-after-execute-hook 'org-display-inline-images 'append)
