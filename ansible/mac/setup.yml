@@ -13,6 +13,11 @@
         env: yes
         name: BORG_PASSPHRASE
         job: "{{ borg_passphrase.stdout }}"
+    - name: Add target email
+      cron:
+        env: yes
+        name: MAILTO
+        job: "hiepph@tuta.io"
     - name: Backup locally daily
       cron:
         name: "Backup local daily"
@@ -24,7 +29,7 @@
         name: "Backup gcp daily"
         minute: "30"
         hour: "10"
-        job: "{{ home_dir }}/backup/_backup_gcp"
+        job: "{{ home_dir }}/backup/_backup_gcp --quiet"
 
 - name: install fonts
   hosts: local
