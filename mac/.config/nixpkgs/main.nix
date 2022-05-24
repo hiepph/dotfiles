@@ -176,6 +176,7 @@ end
     (callPackage ./packages/helm {})
 
     # secret
+    (callPackage ./packages/bitwarden-cli {})
     pass
 
     # template
