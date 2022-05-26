@@ -133,6 +133,7 @@ end
     (callPackage ./packages/reflex {}) # file watcher
     fzf
     imagemagick
+    pv # cat, with progress
 
     # helper
     hugo # static site generator
