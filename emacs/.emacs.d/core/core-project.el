@@ -66,6 +66,8 @@
 ;;   still easy to get lost if I have a lot of buffers opening.
 ;;
 (use-package perspective
+  :init
+  (setq persp-suppress-no-prefix-key-warning t)
   :config
   (persp-mode 1))
 
