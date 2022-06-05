@@ -85,19 +85,6 @@
 
 
 ;;
-;; Fonts
-;;
-(set-frame-font "Input Mono" nil t)
-(add-to-list 'default-frame-alist '(font . "Input Mono"))
-(add-hook 'yaml-mode-hook (lambda ()
-                           (setq buffer-face-mode-face '(:family "Input Mono"))
-                           (buffer-face-mode)))
-(add-hook 'git-commit-mode-hook (lambda ()
-                           (setq buffer-face-mode-face '(:family "Input Mono"))
-                           (buffer-face-mode)))
-
-
-;;
 ;; ORG appearance
 ;;
 
