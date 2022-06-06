@@ -71,6 +71,43 @@ hs.hotkey.bind(SUPER_SHIFT, "c", function()
       win:centerOnScreen(screen)
 end)
 
+-- Move the window position to the left n pixels
+local window_movement_pixels = 55
+hs.hotkey.bind(SUPER_SHIFT, "left", function()
+      local win = hs.window.focusedWindow()
+      local f = win:frame()
+
+      f.x = f.x - window_movement_pixels
+      win:setFrame(f)
+end)
+
+-- Move the window position to the right n pixels
+hs.hotkey.bind(SUPER_SHIFT, "right", function()
+      local win = hs.window.focusedWindow()
+      local f = win:frame()
+
+      f.x = f.x + window_movement_pixels
+      win:setFrame(f)
+end)
+
+-- Move the window position to the top n pixels
+hs.hotkey.bind(SUPER_SHIFT, "up", function()
+      local win = hs.window.focusedWindow()
+      local f = win:frame()
+
+      f.y = f.y - window_movement_pixels
+      win:setFrame(f)
+end)
+
+-- Move the window position to the bottom n pixels
+hs.hotkey.bind(SUPER_SHIFT, "down", function()
+      local win = hs.window.focusedWindow()
+      local f = win:frame()
+
+      f.y = f.y + window_movement_pixels
+      win:setFrame(f)
+end)
+
 --
 -- Window switch
 --

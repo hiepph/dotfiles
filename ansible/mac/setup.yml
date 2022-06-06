@@ -29,7 +29,7 @@
         name: "Backup gcp daily"
         minute: "30"
         hour: "10"
-        job: "{{ home_dir }}/backup/_backup_gcp --quiet"
+        job: ".nix-profile/bin/fish -c '{{ home_dir }}/backup/_backup_gcp --quiet'"
 
 - name: install fonts
   hosts: local

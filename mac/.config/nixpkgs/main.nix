@@ -134,6 +134,7 @@ end
     fzf
     imagemagick
     pv # cat, with progress
+    ranger # file browser
 
     # helper
     hugo # static site generator
@@ -157,7 +158,6 @@ end
     ruby
     (callPackage ./packages/zig {})
     graphviz
-    jdk11 # Java
     gradle # java build tool
 
     #
@@ -168,7 +168,7 @@ end
     borgbackup
 
     # infrastructure
-    terraform
+    (callPackage ./packages/terraform {})
     awscli2
     kops
     kubectx
