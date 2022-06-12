@@ -45,6 +45,9 @@ bindsym $mod+Return exec "alacritty"
 # lock screen
 bindsym $mod+Escape exec "~/customs/lock.fish"
 
+# clipboard
+bindsym $mod+Shift+p exec "rofi -modi 'clipboard:greenclip print' -show clipboard -run-command '{cmd}'"
+
 # kill focused window
 bindsym $mod+Shift+q kill
 
