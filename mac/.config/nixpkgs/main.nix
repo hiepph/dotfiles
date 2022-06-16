@@ -105,8 +105,10 @@ end
     # dev
     #
 
-    # editor
     git
+    git-secret
+
+    # editor
     emacs
     ispell
     ctags
