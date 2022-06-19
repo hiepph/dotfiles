@@ -87,7 +87,22 @@ Hammerspoon solves this problem by being a bridge to Mac's API. It uses Lua as s
 
 # Linux
 
-*TBD*
+I'm using [OpenSUSE Tumbleweed](https://www.opensuse.org/) for my personal machine.
+
++ Rolling released.
++ [btrfs](https://en.wikipedia.org/wiki/Btrfs): able to make snapshots and rollback easily.
++ [YaST](https://yast.opensuse.org/) is awesome.
+
+The configuration is mostly done via a provisioner helper (not yet public).
+
+I'm distro-hopping once in a while though. Each local machine requires an approximately 20% set of different configuration. For that reason, create a `$HOME/customs` directory and put in these custom configurations:
+
++ If you're using i3:
+  + `i3.fish`
+  + `lock.fish`
+
++ If you're using [#fish](#shell):
+  + `tools.fish`
 
 # BSD
 
