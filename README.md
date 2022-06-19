@@ -90,7 +90,7 @@ Hammerspoon solves this problem by being a bridge to Mac's API. It uses Lua as s
 I'm using [OpenSUSE Tumbleweed](https://www.opensuse.org/) for my personal machine.
 
 + Rolling released.
-+ [btrfs](https://en.wikipedia.org/wiki/Btrfs): able to make snapshots and rollback easily.
++ System recovery and snapshot with [Snapper](https://doc.opensuse.org/documentation/leap/reference/html/book-reference/cha-snapper.html) and [btrfs](https://en.wikipedia.org/wiki/Btrfs)
 + [YaST](https://yast.opensuse.org/) is awesome.
 
 The configuration is mostly done via a provisioner helper (not yet public).
