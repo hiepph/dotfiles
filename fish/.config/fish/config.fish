@@ -8,3 +8,6 @@ end
 # Abbreviations
 abbr -a -g g 'git'
 abbr -a -g k 'kubectl'
+
+# Conda integration
+eval ~/miniconda3/bin/conda "shell.fish" "hook" $argv | source
