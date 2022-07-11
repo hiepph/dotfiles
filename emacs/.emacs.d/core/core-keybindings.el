@@ -236,7 +236,6 @@
   ;;
   ;; Frequent tasks
   ;;
-  (global-set-key (kbd "<f1>") 'dired-sidebar-toggle-sidebar)
   (global-set-key (kbd "<f2>") 'save-buffer)
   (global-set-key (kbd "<f3>") 'find-file)
   (global-set-key (kbd "<f4>") '~persp-remove-current-buffer)
