@@ -3,7 +3,7 @@ if status is-interactive
 end
 
 # Customs for each machine
-. ~/customs/tools.fish
+. ~/customs/fish.fish
 
 # Abbreviations
 abbr -a -g g 'git'
