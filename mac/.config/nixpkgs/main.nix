@@ -160,7 +160,9 @@ end
     ruby
     (callPackage ./packages/zig {})
     graphviz
-    gradle # java build tool
+    # java build tool
+    gradle
+    maven
 
     #
     # devops
