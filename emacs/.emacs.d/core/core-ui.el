@@ -87,16 +87,15 @@
 ;;
 ;; ORG appearance
 ;;
+(let* ((org-text-font  "ETBembo:style=Regular")
+       (org-code-font "Source Code Pro")
 
-(let* ((variable-tuple
+       (variable-tuple
         (cond
-         (
-          ;; map font from local to Emacs
-          (x-list-fonts "Input Sans") '(:font "Input Sans")
-          (x-list-fonts "ETBembo") '(:font "ETBembo"))
+         ((x-list-fonts org-text-font) `(:font ,org-text-font))
          (nil (warn "Cannot find a suitable font."))))
-         (base-font-color (face-foreground 'default nil 'default))
-         (headline `(:inherit default :weight bold :foreground ,base-font-color)))
+       (base-font-color (face-foreground 'default nil 'default))
+       (headline `(:inherit default :weight bold :foreground ,base-font-color)))
 
     (custom-theme-set-faces
      'user
@@ -115,9 +114,9 @@
      ;; Set font here
 
      ;; Text and symbols
-     `(variable-pitch ((t (:family "ETBembo" :height 160))))
+     `(variable-pitch ((t (:family org-text-font :height 150))))
      ;; Code, example blocks
-     `(fixed-pitch ((t (:family "Input Mono" :height 130 :weight regular))))
+     `(fixed-pitch ((t (:family code-text-font :height 130 :weight regular))))
 
 
      ;; At least I need to distinguish between text and code

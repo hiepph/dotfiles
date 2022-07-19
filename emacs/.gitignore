@@ -16,3 +16,9 @@ straight/
 core-custom.el
 history
 persp-confs
+
+# lsp
+.dap-breakpoints
+.lsp-session-*
+var/
+workspace/
