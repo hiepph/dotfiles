@@ -94,7 +94,9 @@
 
   ;; open top-level directory instead of a specific files
   ;; (setq projectile-switch-project-action #'projectile-dired)
-  )
+
+  ;; enable cache
+  (setq projectile-enable-caching t))
 
 
 ;;
