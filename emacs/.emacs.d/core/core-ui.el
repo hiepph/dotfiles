@@ -60,14 +60,6 @@
 
 
 ;;
-;; Hide popup window (*Help*, *Compilation*) with a single keystroke (default: Ctrl-G)
-;; ref: https://github.com/emacsorphanage/popwin
-;;
-(use-package popwin
-  :config
-  (popwin-mode 1))
-
-;;
 ;; Theme
 ;;
 (straight-use-package
