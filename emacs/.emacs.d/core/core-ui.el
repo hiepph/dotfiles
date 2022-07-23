@@ -46,18 +46,11 @@
 (add-to-list
   'default-frame-alist'(ns-appearance . light))
 
-;;
-;; Mode line
-;;
-(use-package mood-line
-  :init
-  (mood-line-mode 1))
 
 ;; Enable variable pitch mode will help rendering mixed fonts
 (add-hook 'text-mode-hook
           (lambda ()
             (variable-pitch-mode 1)))
-
 
 ;;
 ;; Automatic resizing with Golden Ratio

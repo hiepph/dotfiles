@@ -36,28 +36,6 @@
 
 
 ;;
-;; Prescient
-;; ref: https://github.com/raxod502/prescient.el
-;; save command history on disk,
-;; so the sorting gets more intelligent over time
-;;
-(use-package prescient
-  :config
-  (prescient-persist-mode +1))
-
-(use-package company-prescient
-  :init
-  (company-prescient-mode +1))
-
-(use-package selectrum-prescient
-  :init
-  (selectrum-prescient-mode +1))
-
-;; (use-package consult-selectrum
-;;   :demand t)
-
-
-;;
 ;; Embark
 ;; + generates candidates to insert into the buffer
 ;;
