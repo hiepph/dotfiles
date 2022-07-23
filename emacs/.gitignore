@@ -16,6 +16,7 @@ straight/
 core-custom.el
 history
 persp-confs
+eln-cache/
 
 # lsp
 .dap-breakpoints
