@@ -62,11 +62,15 @@
 ;;
 ;; Theme
 ;;
-(straight-use-package
- '(colorless-theme :type git
-                   :repo "https://git.sr.ht/~lthms/colorless-themes.el"
-                   :branch "master"))
-(load-theme 'einkless t)
+
+;; (straight-use-package
+;;  '(colorless-theme :type git
+;;                    :repo "https://git.sr.ht/~lthms/colorless-themes.el"
+;;                    :branch "master"))
+;; (load-theme 'einkless t)
+
+(use-package plan9-theme)
+(load-theme 'plan9 t)
 
 
 ;;
