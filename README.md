@@ -99,10 +99,11 @@ Some distros I'm using for my personal machine:
   + Bleeding edge packages.
   + btrfs is the default filesystem since Fedora 36.
 
-+ [Arch]():
++ [Arch](https://archlinux.org/):
   + Rolling released.
+  + Total control of my system. KISS (Keep It Simple, Stupid).
+  + I learned a lot from Arch's [wiki](https://wiki.archlinux.org/)
   + When I want to have run ricing my desktops.
-  + Total control of my system.
 
 The configuration is mostly done via a provisioner helper (not yet public). Each local machine requires an approximately 20% set of different configuration. For that reason, create a `$HOME/customs` directory and put in custom configurations.
 
