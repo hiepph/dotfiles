@@ -2,9 +2,9 @@
 ;; Key hints
 ;; ref: https://github.com/justbur/emacs-which-key
 ;;
-(use-package which-key
-  :init
-  (which-key-mode))
+;; (use-package which-key
+;;   :init
+;;   (which-key-mode))
 
 ;;
 ;; Menus

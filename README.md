@@ -87,22 +87,25 @@ Hammerspoon solves this problem by being a bridge to Mac's API. It uses Lua as s
 
 # Linux
 
-I'm using [OpenSUSE Tumbleweed](https://www.opensuse.org/) for my personal machine.
+Some distros I'm using for my personal machine:
 
-+ Rolling released.
-+ System recovery and snapshot with [Snapper](https://doc.opensuse.org/documentation/leap/reference/html/book-reference/cha-snapper.html) and [btrfs](https://en.wikipedia.org/wiki/Btrfs)
-+ [YaST](https://yast.opensuse.org/) is awesome.
++ [OpenSUSE Tumbleweed](https://www.opensuse.org/)
+  + Rolling released.
+  + System recovery and snapshot with [Snapper](https://doc.opensuse.org/documentation/leap/reference/html/book-reference/cha-snapper.html) and [btrfs](https://en.wikipedia.org/wiki/Btrfs)
+  + [YaST](https://yast.opensuse.org/) is awesome.
 
-The configuration is mostly done via a provisioner helper (not yet public).
++ [Fedora](https://getfedora.org/)
+  + Supports a wide range of hardware.
+  + Bleeding edge packages.
+  + btrfs is the default filesystem since Fedora 36.
 
-I'm distro-hopping once in a while though. Each local machine requires an approximately 20% set of different configuration. For that reason, create a `$HOME/customs` directory and put in these custom configurations:
++ [Arch](https://archlinux.org/):
+  + Rolling released.
+  + Total control of my system. KISS (Keep It Simple, Stupid).
+  + I learned a lot from Arch's [wiki](https://wiki.archlinux.org/)
+  + When I want to have run ricing my desktops.
 
-+ If you're using i3:
-  + `i3.fish`
-  + `lock.fish`
-
-+ If you're using [#fish](#shell):
-  + `tools.fish`
+The configuration is mostly done via a provisioner helper (not yet public). Each local machine requires an approximately 20% set of different configuration. For that reason, create a `$HOME/customs` directory and put in custom configurations.
 
 # BSD
 

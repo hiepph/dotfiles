@@ -46,18 +46,11 @@
 (add-to-list
   'default-frame-alist'(ns-appearance . light))
 
-;;
-;; Mode line
-;;
-(use-package mood-line
-  :init
-  (mood-line-mode 1))
 
 ;; Enable variable pitch mode will help rendering mixed fonts
 (add-hook 'text-mode-hook
           (lambda ()
             (variable-pitch-mode 1)))
-
 
 ;;
 ;; Automatic resizing with Golden Ratio
@@ -67,21 +60,17 @@
 
 
 ;;
-;; Hide popup window (*Help*, *Compilation*) with a single keystroke (default: Ctrl-G)
-;; ref: https://github.com/emacsorphanage/popwin
-;;
-(use-package popwin
-  :config
-  (popwin-mode 1))
-
-;;
 ;; Theme
 ;;
-(straight-use-package
- '(colorless-theme :type git
-                   :repo "https://git.sr.ht/~lthms/colorless-themes.el"
-                   :branch "master"))
-(load-theme 'einkless t)
+
+;; (straight-use-package
+;;  '(colorless-theme :type git
+;;                    :repo "https://git.sr.ht/~lthms/colorless-themes.el"
+;;                    :branch "master"))
+;; (load-theme 'einkless t)
+
+(use-package plan9-theme)
+(load-theme 'plan9 t)
 
 
 ;;
