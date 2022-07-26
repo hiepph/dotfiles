@@ -109,7 +109,6 @@ end
     git-secret
 
     # editor
-    emacs
     ispell
     ctags
 
