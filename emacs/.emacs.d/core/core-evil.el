@@ -16,6 +16,7 @@
 ;; Pre-keybindings for some common Emacs modes
 ;; ref: https://github.com/emacs-evil/evil-collection
 ;;
+(setq evil-want-keybinding nil)
 (use-package evil-collection
   :after evil
   :init

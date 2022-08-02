@@ -21,14 +21,14 @@
     - name: Backup locally daily
       cron:
         name: "Backup local daily"
-        minute: "30"
-        hour: "22"
+        minute: "00"
+        hour: "11"
         job: "{{ home_dir }}/backup/_backup_local"
     - name: Backup to GCP daily
       cron:
         name: "Backup gcp daily"
         minute: "30"
-        hour: "10"
+        hour: "11"
         job: ".nix-profile/bin/fish -c '{{ home_dir }}/backup/_backup_gcp --quiet'"
 
 - name: install fonts
