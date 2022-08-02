@@ -36,10 +36,18 @@
 
 
 ;;
+;; Prescient - effective searching and filtering.
+;;
+(straight-use-package 'prescient)
+(straight-use-package 'company-prescient)
+(straight-use-package 'selectrum-prescient)
+
+
+;;
 ;; Embark
 ;; + generates candidates to insert into the buffer
 ;;
-;; (use-package embark)
+(use-package embark)
 
 
 ;;
