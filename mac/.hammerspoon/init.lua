@@ -401,7 +401,7 @@ hs.hotkey.bind(SUPER_ALT, "g", webQuery())
 --
 
 -- hot reload Hammerspoon itself.
-hs.hotkey.bind(SUPER_SHIFT, "r", function()
+hs.hotkey.bind(SUPER_ALT, "r", function()
       hs.reload()
 end)
 
