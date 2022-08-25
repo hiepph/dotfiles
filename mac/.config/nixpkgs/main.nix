@@ -17,42 +17,6 @@ with pkgs;
         };
       }
     ];
-
-    functions = {
-      #
-      # Examples:
-      #
-      # $ trim "    a    long string"
-      # => "a long string"
-      #
-      # $ echo "    another long   string" | trim
-      # => "another long string"
-      #
-      trim = {
-        description = "Clear all leading, trailing spaces at the beginning, the end and the middle of the string";
-        body = ''
-function cmd
-    sed 's/ *//' | tr -s ' '
-end
-
-if test $argv[1]
-    echo $argv[1] | cmd
-else
-    read -z | cmd
-end
-'';
-      };
-
-      #
-      # Examples:
-      #
-      # $ gitignore python
-      #
-      gitignore = {
-        description = "Get the content of .gitignore for a language";
-        body = "curl -sL https://www.gitignore.io/api/$argv";
-      };
-    };
   };
 
   home.packages = [
