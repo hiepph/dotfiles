@@ -10,6 +10,8 @@ stow <conf>
 
 Some modules don't follow this strategy (e.g. *scripts* [1], *backup* [2]). They have to be symlinked manually. Currently I'm searching for a unified solution.
 
+The configuration is mostly done via a provisioner helper (not yet public). Each local machine requires an approximately 20% set of different configuration. For that reason, create a `$HOME/customs` directory and put in custom configurations.
+
 # Mac
 
 ## Nix: functional package manager
@@ -105,8 +107,6 @@ Some distros I'm using for my personal machine:
   + I learned a lot from Arch's [wiki](https://wiki.archlinux.org/)
   + When I want to have run ricing my desktops.
 
-The configuration is mostly done via a provisioner helper (not yet public). Each local machine requires an approximately 20% set of different configuration. For that reason, create a `$HOME/customs` directory and put in custom configurations.
-
 # BSD
 
 *TBD*
@@ -150,15 +150,17 @@ So my choice would be:
 
 # Shell
 
-My default shell is [fish](https://fishshell.com/).
++ My default shell is [fish](https://fishshell.com/).
 
-+ Pros:
-  - I hate Bash arcane syntax.  It's fast to write a small script in Bash but horrible to grow into a larger script. Even [Google Shell style guide](https://google.github.io/styleguide/shellguide.html#when-to-use-shell) recommends not to write a script more than 100 lines long.
-  - Seamless interops with shell commands. It makes writing script interactively on a shell fun. One-liner manner is achievable. With a general purpose language, e.g. Python, I have to wrap shell command with `os.system` or `subprocess`.
-  - References: [Why fish?](https://fishshell.com/docs/current/tutorial.html#why-fish), [Rash lang](https://youtu.be/Acjqx1MPkw4).
+  + Pros:
+    - I hate Bash arcane syntax.  It's fast to write a small script in Bash but horrible to grow into a larger script. Even [Google Shell style guide](https://google.github.io/styleguide/shellguide.html#when-to-use-shell) recommends not to write a script more than 100 lines long.
+    - Seamless interops with shell commands. It makes writing script interactively on a shell fun. One-liner manner is achievable. With a general purpose language, e.g. Python, I have to wrap shell command with `os.system` or `subprocess`.
+    - References: [Why fish?](https://fishshell.com/docs/current/tutorial.html#why-fish), [Rash lang](https://youtu.be/Acjqx1MPkw4).
 
-+ Cons:
+  + Cons:
     - It does not follow POSIX shell standards. So if I want to run a common Bash or Zsh script, better use `bash script.sh`.
+
++ Custom: `$HOME/customs/fish.fish`.
 
 # Python
 
