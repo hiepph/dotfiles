@@ -3,44 +3,8 @@
 
 with pkgs;
 {
-  home.sessionVariables = {
-    EDITOR = "vim";
-  };
-
-  # ref: https://github.com/nix-community/home-manager/blob/master/modules/programs/fish.nix
   programs.fish = {
-    enable = true;
-
-    shellAbbrs = {
-      "k" = "kubectl";
-      "g" = "git";
-      "l" = "ls";
-      "d" = "docker";
-    };
-
-    shellInit = ''
-# Add some custom binary dirs
-set -x PATH $HOME/scripts $HOME/backup $HOME/go/bin /Library/Tex/texbin (gem environment gemdir)/bin $HOME/.local/bin $HOME/.nix-profile/bin/ $PATH
-
-# default edit everything with vim
-set -x VISUAL vim
-set -x EDITOR vim
-
-# enable direnv
-direnv hook fish | source
-
-# conda integration
-eval /Users/hiepph/miniconda3/bin/conda "shell.fish" "hook" $argv | source
-
-# prevent weird behaviour with tmux
-# ref: http://nicksun.fun/linux/2020/10/07/tmux-macos.html
-if test -n "$TMUX"
-   conda deactivate && conda activate base
-end
-
-# Integrate with `jump`
-jump shell fish | source
-'';
+    enable = false;
 
     plugins = [
       {
@@ -88,15 +52,6 @@ end
         description = "Get the content of .gitignore for a language";
         body = "curl -sL https://www.gitignore.io/api/$argv";
       };
-    };
-  };
-
-  programs.git = {
-    enable = true;
-    userName = "hiepph";
-    userEmail = "hiepph@tuta.io";
-    extraConfig = {
-      core.editor = "vim";
     };
   };
 
@@ -175,6 +130,7 @@ end
     awscli2
     kops
     kubectx
+    k9s
     minikube
     google-cloud-sdk
     (callPackage ./packages/helm {})
