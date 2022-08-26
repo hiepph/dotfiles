@@ -104,8 +104,8 @@ Some distros I'm using for my personal machine:
 + [Arch](https://archlinux.org/):
   + Rolling released.
   + Total control of my system. KISS (Keep It Simple, Stupid).
-  + I learned a lot from Arch's [wiki](https://wiki.archlinux.org/)
-  + When I want to have run ricing my desktops.
+  + Arch's [wiki](https://wiki.archlinux.org/) is awesome.
+  + Have fun ricing my desktop.
 
 # BSD
 
