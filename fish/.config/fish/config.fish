@@ -13,7 +13,7 @@ abbr -a -g k 'kubectl'
 direnv hook fish | source
 
 # Conda integration
-eval ~/miniconda3/bin/conda "shell.fish" "hook" $argv | source
+status is-interactive && eval ~/miniconda3/bin/conda "shell.fish" "hook" $argv | source
 
 # prevent weird behaviour with tmux
 # ref: http://nicksun.fun/linux/2020/10/07/tmux-macos.html
