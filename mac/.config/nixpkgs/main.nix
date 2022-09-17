@@ -38,6 +38,7 @@ with pkgs;
     imagemagick
     pv # cat, with progress
     ranger # file browser
+    ncdu # disk usage
 
     # helper
     hugo # static site generator
