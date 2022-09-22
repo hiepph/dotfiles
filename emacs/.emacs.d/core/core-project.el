@@ -96,7 +96,8 @@
   ;; (setq projectile-switch-project-action #'projectile-dired)
 
   ;; enable cache
-  (setq projectile-enable-caching t))
+  ;; (setq projectile-enable-caching t)
+  )
 
 
 ;;
