@@ -21,6 +21,10 @@ if test -n "$TMUX"
    conda deactivate && conda activate base
 end
 
+# integrate jump
+# refer: https://github.com/gsamokovarov/jump
+jump shell fish | source
+
 # default edit everything with vim
 set -x VISUAL vim
 set -x EDITOR vim
