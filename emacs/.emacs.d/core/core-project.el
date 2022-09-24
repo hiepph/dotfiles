@@ -115,7 +115,7 @@
 (setq dired-auto-revert-buffer t)
 
 ;; auto hide dot files
-(add-hook 'dired-mode-hook 'dired-filter-by-dot-files)
+;; (add-hook 'dired-mode-hook 'dired-filter-by-dot-files)
 
 ;; make Dired guess the default target for commands like copy/move
 (setq dired-dwim-target t)
