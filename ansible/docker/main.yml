@@ -1,9 +1,0 @@
-- name: Prune docker
-  hosts: all
-  tags: prune
-  tasks:
-    - name: prune docker
-      cron:
-        name: "Docker system prune"
-        special_time: "weekly"
-        job: /usr/local/bin/docker system prune -f

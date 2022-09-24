@@ -1,7 +1,0 @@
-- hosts: all
-  name: Install some necessary gems
-  tasks:
-    - name: Rubocop - formatter and linter
-      gem:
-        name: rubocop
-        state: present

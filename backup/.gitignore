@@ -1,4 +1,0 @@
-# Terraform
-.terraform
-*.tfstate
-*.tfstate.*

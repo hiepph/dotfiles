@@ -111,43 +111,6 @@ Some distros I'm using for my personal machine:
 
 *TBD*
 
-# Ansible
-
-I use Ansible to setup some post-configurations or run some common tasks.
-
-## Setup
-
-1. Edit `/etc/ansible/hosts`:
-
-```
-[local]
-localhost   ansible_connection=local
-```
-
-2. Now I can run Ansible for my local machine.
-
-  + For example, to do Mac provisioning:
-
-  ```
-  ansible-playbook -l local -K ansible/mac/provision.yml
-  ansible-playbook -l local -K ansible/mac/setup.yml
-  ```
-
-## Why Ansible when I already have Nix?
-
-Nix is indeed great for installing binary applications. But it is too complicated in setting up a language's ecosystem, e.g. Ruby gems, Python packages, Go packages. Don't even let me mention rvm or miniconda integration.
-
-I often find myself banging my head to figure out how to properly make things work (e.g. [Rails on Nix](https://actually.fyi/posts/rails-on-nix/)). Nix is trying to be too intelligent to isolate the package but on the other hand make the process ten times painful.
-
-We can all agree making an immutable system is hard. But I don't want to trade that fantasy with an overly complicated design to make that happen. Nix has potential but falls short with its current state.
-
-On the other hand, Ansible requires me to run an additional command and make changes to the system. Simple and intuitive. Everything works as it should be.
-
-So my choice would be:
-
-+ Use Nix for binary applications, packages or simple linking problems.
-+ Ansible for a custom ecosystem.
-
 # Shell
 
 + My default shell is [fish](https://fishshell.com/).
@@ -161,22 +124,6 @@ So my choice would be:
     - It does not follow POSIX shell standards. So if I want to run a common Bash or Zsh script, better use `bash script.sh`.
 
 + Custom: `$HOME/customs/fish.fish`.
-
-# Python
-
-Python versions, packages and environments are managed with **miniconda**.
-
-Install with `ansible`. It will install `miniconda` and all of essential packages with default environment `base`.
-
-```bash
-ansible-playbook -l local ansible/python/main.yml
-```
-
-*Notes:* After you successfully install `miniconda`, if you want to install those essential packages with a custom conda environment:
-
-```bash
-ansible-playbook -l local ansible/python/main.yml -e "conda_env=myenv"
-```
 
 # Emacs
 
@@ -218,25 +165,6 @@ Collection of my shortcut and useful scripts.
 
 [1] To be able to use the scripts: `ln -s $PWD/scripts scripts`
 
-# Backup
-
-I backup my data daily following the [3-2-1 rule](https://missing.csail.mit.edu/2019/backups/). Specifically:
-
-+ 3 copies: local SSD, storage HDD, and GCP Cloud Storage (or AWS S3).
-+ 2 copies in different mediums: local SSD and storage HDD.
-+ 1 offsite: GCP Cloud Storage or AWS S3.
-
-[2] To be able to use the backup scripts: `ln -s $PWD/backup/scripts backup`
-
-+ Enable backup daily with Ansible:
-
-```
-ansible-playbook -l local ansible/mac/main.yml -t backup
-```
-
-+ Sadly, to enable *full disk access* to the external HDD for `cron` in MacOS, we have to activate the permission *manually* in **Security and Privacy**: [ref](https://osxdaily.com/2020/04/27/fix-cron-permissions-macos-full-disk-access/).
-
-More instructions are described in `backup` directory.
 
 # Themes
 

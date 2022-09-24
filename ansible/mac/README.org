@@ -1,5 +1,0 @@
-* Provision
-This includes critical tasks for having a proper and automated system: shell, applications, etc.
-
-* Setup
-This includes optional or post-provision tasks: fonts, back-up, etc.
