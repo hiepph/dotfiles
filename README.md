@@ -238,18 +238,6 @@ ansible-playbook -l local ansible/mac/main.yml -t backup
 
 More instructions are described in `backup` directory.
 
-# Secret manager
-
-I use [Pass](https://www.passwordstore.org/) to manage my secrets and passwords.
-
-+ To add my storage repository: `pass git remote add origin <super-secret-repository>`
-
-+ To pull my encrypted content from my secret repostiory: `pass git pull`
-
-+ To show a secret: `pass show aws/personal/ACCESS_KEY`
-
-+ To update content to the repository: `pass git push`
-
 # Themes
 
 Below is an awesome list of themes done in style. All are eye-care themes.
