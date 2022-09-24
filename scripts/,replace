@@ -11,14 +11,14 @@
 
 (defn help []
   (println
-   "USAGE: _replace -p <pattern> -r <replaced> [directory]
+   "USAGE: ,replace -p <pattern> -r <replaced> [directory]
 
 Recursively find all pattern and replace them.
 Default execute in the current directory.
 
 EXAMPLES
 Replace all 'hiep' to 'hiepph':
-$ _replace -p hieph -r hiepph ."))
+$ ,replace -p hieph -r hiepph ."))
 
 (defn sed
   "Works like sed, provied 'pattern' and 'replaced'."
