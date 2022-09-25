@@ -86,6 +86,11 @@
 (use-package zig-mode)
 
 
+;;
+;; Assembly
+;;
+(use-package nasm-mode)
+
 :;
 ;; C
 ;;
@@ -264,6 +269,7 @@
 (add-to-list 'auto-mode-alist '("\\.zsh\\'" . sh-mode))
 (add-to-list 'auto-mode-alist '("\\.elm\\'" . haskell-mode))
 (add-to-list 'auto-mode-alist '("\\.Vagrantfile\\'" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.asm\\'" . nasm-mode))
 
 
 ;;
