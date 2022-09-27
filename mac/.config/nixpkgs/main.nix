@@ -65,6 +65,7 @@ with pkgs;
     # java build tool
     gradle
     maven
+    nodejs
 
     #
     # devops
