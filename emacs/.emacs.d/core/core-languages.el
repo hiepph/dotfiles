@@ -8,20 +8,6 @@
 
 (use-package groovy-mode)
 
-;;
-;; Java
-;; ref: https://github.com/emacs-lsp/lsp-java
-;;
-(use-package dash-functional)
-
-(use-package lsp-java
-  :requires (dash-functional)
-  :after lsp)
-
-(defun ~format-java ()
-  (interactive)
-  (progn (lsp-format-buffer)
-         (basic-save-buffer)))
 
 ;;
 ;; Clojure
@@ -38,6 +24,16 @@
   (interactive)
   (let ((fname (buffer-file-name)))
     (shell-command (format "zprint -w %s" fname) nil)))
+
+;;
+;; Javascript
+;;
+(use-package js2-mode)
+
+;;
+;; Typescript
+;;
+(use-package typescript-mode)
 
 ;;
 ;; Racket
@@ -291,8 +287,7 @@
   '((python-mode ~format-python)
     (c-mode ~format-c)
     (ruby-mode ~format-ruby)
-    (clojure-mode ~format-clojure)
-    (java-mode ~format-java))
+    (clojure-mode ~format-clojure))
   "Default formatters for predefined languages"
   :type '(repeat (list symbol symbol))
   :group 'format)
