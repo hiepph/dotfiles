@@ -62,10 +62,6 @@ with pkgs;
     ruby
     (callPackage ./packages/zig {})
     graphviz
-    # java build tool
-    gradle
-    maven
-    nodejs
 
     #
     # devops
