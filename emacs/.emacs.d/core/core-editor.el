@@ -37,9 +37,6 @@
 ;; Auto-indentation
 (electric-indent-mode 1)
 
-;; Enter automatically indent code
-(define-key global-map (kbd "RET") 'newline-and-indent)
-
 ;;
 ;; Automatic indentation offset detection
 ;;
