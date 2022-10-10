@@ -195,7 +195,9 @@
   ("<" #'org-shiftmetaleft "shift left")
 
   ("t c" #'org-table-create "table create")
-  ("t a" #'org-table-align "table align"))
+  ("t a" #'org-table-align "table align")
+  ("t r" #'org-table-insert-row "table insert row")
+  ("t |" #'org-table-insert-column "table insert column"))
 
 (defhydra hydra-java (:color blue :columns 4)
   "LSP Java"
