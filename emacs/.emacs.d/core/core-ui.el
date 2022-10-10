@@ -110,10 +110,10 @@
 
      ;; Set font here
 
-     ;; Text and symbols
-     `(variable-pitch ((t (:family org-text-font :height 150))))
-     ;; Code, example blocks
-     `(fixed-pitch ((t (:family code-text-font :height 130 :weight regular))))
+     ;; Text and symbols: slightly bigger for readability
+     `(variable-pitch ((t (:family org-text-font :height 120))))
+     ;; Code, example blocks: regular weight for contrast
+     `(fixed-pitch ((t (:family code-text-font :weight regular))))
 
 
      ;; At least I need to distinguish between text and code
