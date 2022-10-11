@@ -58,6 +58,9 @@
 (add-hook 'yaml-mode-hook
           (lambda ()
             (set-frame-font (face-attribute 'default :font))))
+(add-hook 'git-commit-mode-hook
+          (lambda ()
+            (set-frame-font (face-attribute 'default :font))))
 
 
 ;;
