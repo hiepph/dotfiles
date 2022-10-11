@@ -53,6 +53,14 @@
             (variable-pitch-mode 1)))
 
 ;;
+;; Custom fonts for some specific modes
+;;
+(add-hook 'yaml-mode-hook
+          (lambda ()
+            (set-frame-font (face-attribute 'default :font))))
+
+
+;;
 ;; Automatic resizing with Golden Ratio
 ;; ref: https://github.com/roman/golden-ratio.el
 ;;
@@ -77,7 +85,7 @@
 ;; ORG appearance
 ;;
 (let* ((org-text-font  "ETBembo:style=Regular")
-       (org-code-font "Source Code Pro")
+       (org-code-font (face-attribute 'default :font))
 
        (variable-tuple
         (cond
@@ -102,10 +110,10 @@
 
      ;; Set font here
 
-     ;; Text and symbols
-     `(variable-pitch ((t (:family org-text-font :height 150))))
-     ;; Code, example blocks
-     `(fixed-pitch ((t (:family code-text-font :height 130 :weight regular))))
+     ;; Text and symbols: slightly bigger for readability
+     `(variable-pitch ((t (:family org-text-font :height 120))))
+     ;; Code, example blocks: regular weight for contrast
+     `(fixed-pitch ((t (:family code-text-font :weight regular))))
 
 
      ;; At least I need to distinguish between text and code
