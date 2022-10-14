@@ -92,6 +92,7 @@ with pkgs;
     sshpass
     rclone
     wget
+    telnet
 
     # monitoring
     htop
