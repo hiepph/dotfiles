@@ -11,8 +11,8 @@ local SUPER_ALT = {"cmd", "alt"}
 -- Directions are h, j, k, l similar to Vim movements.
 --
 
--- Push the window to the right.
-hs.hotkey.bind(SUPER_SHIFT, "h", function()
+-- Push the window to the left.
+hs.hotkey.bind(SUPER_SHIFT, "left", function()
       local win = hs.window.focusedWindow()
       local f = win:frame()
       local screen = win:screen()
@@ -25,8 +25,8 @@ hs.hotkey.bind(SUPER_SHIFT, "h", function()
       win:setFrame(f)
 end)
 
--- Push the window to the left.
-hs.hotkey.bind(SUPER_SHIFT, "l", function()
+-- Push the window to the right.
+hs.hotkey.bind(SUPER_SHIFT, "right", function()
       local win = hs.window.focusedWindow()
       local f = win:frame()
       local screen = win:screen()
@@ -40,7 +40,7 @@ hs.hotkey.bind(SUPER_SHIFT, "l", function()
 end)
 
 -- Tile the window downward, shortening its height by half.
-hs.hotkey.bind(SUPER_SHIFT, "k", function()
+hs.hotkey.bind(SUPER_SHIFT, "up", function()
       local win = hs.window.focusedWindow()
       local f = win:frame()
       local screen = win:screen()
@@ -52,7 +52,7 @@ hs.hotkey.bind(SUPER_SHIFT, "k", function()
 end)
 
 -- Tile the window upward, shortening its height by half.
-hs.hotkey.bind(SUPER_SHIFT, "j", function()
+hs.hotkey.bind(SUPER_SHIFT, "down", function()
       local win = hs.window.focusedWindow()
       local f = win:frame()
       local screen = win:screen()
@@ -64,7 +64,7 @@ hs.hotkey.bind(SUPER_SHIFT, "j", function()
 end)
 
 -- Center the window without affecting its dimension.
-hs.hotkey.bind(SUPER_SHIFT, "c", function()
+hs.hotkey.bind(SUPER_ALT, "c", function()
       local win = hs.window.focusedWindow()
       local screen = win:screen()
 
@@ -73,7 +73,7 @@ end)
 
 -- Move the window position to the left n pixels
 local window_movement_pixels = 55
-hs.hotkey.bind(SUPER_SHIFT, "left", function()
+hs.hotkey.bind(SUPER_ALT, "left", function()
       local win = hs.window.focusedWindow()
       local f = win:frame()
 
@@ -82,7 +82,7 @@ hs.hotkey.bind(SUPER_SHIFT, "left", function()
 end)
 
 -- Move the window position to the right n pixels
-hs.hotkey.bind(SUPER_SHIFT, "right", function()
+hs.hotkey.bind(SUPER_ALT, "right", function()
       local win = hs.window.focusedWindow()
       local f = win:frame()
 
@@ -91,7 +91,7 @@ hs.hotkey.bind(SUPER_SHIFT, "right", function()
 end)
 
 -- Move the window position to the top n pixels
-hs.hotkey.bind(SUPER_SHIFT, "up", function()
+hs.hotkey.bind(SUPER_ALT, "up", function()
       local win = hs.window.focusedWindow()
       local f = win:frame()
 
@@ -100,7 +100,7 @@ hs.hotkey.bind(SUPER_SHIFT, "up", function()
 end)
 
 -- Move the window position to the bottom n pixels
-hs.hotkey.bind(SUPER_SHIFT, "down", function()
+hs.hotkey.bind(SUPER_ALT, "down", function()
       local win = hs.window.focusedWindow()
       local f = win:frame()
 
@@ -114,33 +114,33 @@ end)
 -- Directions are similar to vim.
 --
 
-hs.hotkey.bind(SUPER, "h", function()
-      local win = hs.window.focusedWindow()
-      local screen = win:screen()
+-- hs.hotkey.bind(SUPER, "h", function()
+--       local win = hs.window.focusedWindow()
+--       local screen = win:screen()
 
-      win:focusWindowWest()
-end)
+--       win:focusWindowWest()
+-- end)
 
-hs.hotkey.bind(SUPER, "l", function()
-      local win = hs.window.focusedWindow()
-      local screen = win:screen()
+-- hs.hotkey.bind(SUPER, "l", function()
+--       local win = hs.window.focusedWindow()
+--       local screen = win:screen()
 
-      win:focusWindowEast()
-end)
+--       win:focusWindowEast()
+-- end)
 
-hs.hotkey.bind(SUPER, "j", function()
-      local win = hs.window.focusedWindow()
-      local screen = win:screen()
+-- hs.hotkey.bind(SUPER, "j", function()
+--       local win = hs.window.focusedWindow()
+--       local screen = win:screen()
 
-      win:focusWindowSouth()
-end)
+--       win:focusWindowSouth()
+-- end)
 
-hs.hotkey.bind(SUPER, "k", function()
-      local win = hs.window.focusedWindow()
-      local screen = win:screen()
+-- hs.hotkey.bind(SUPER, "k", function()
+--       local win = hs.window.focusedWindow()
+--       local screen = win:screen()
 
-      win:focusWindowNorth()
-end)
+--       win:focusWindowNorth()
+-- end)
 
 --
 -- Resize windows
@@ -255,7 +255,7 @@ end)
 -- Lock
 --
 
-hs.hotkey.bind(SUPER_SHIFT, "escape", function()
+hs.hotkey.bind(SUPER_ALT, "l", function()
         hs.caffeinate.lockScreen()
 end)
 
