@@ -46,6 +46,19 @@
   :config
   (global-evil-surround-mode 1))
 
+
+;;
+;; Sneak (emulate vim-sneak)
+;; ref: https://github.com/hlissner/evil-snipe
+;;
+(use-package evil-snipe
+  :init
+  (setq evil-snipe-scope 'buffer)
+  (setq evil-snipe-repeat-scope 'whole-buffer)
+  :config
+  (evil-snipe-mode 1)
+  (evil-snipe-override-mode 1))
+
 ;;
 ;; Search for selected region (especially word)
 ;;
