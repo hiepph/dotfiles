@@ -1,0 +1,17 @@
+" copy to/paste from clipboard
+set clipboard+=unnamed
+
+""" Plugins  --------------------------------
+set surround
+set multiple-cursors
+set commentary
+set argtextobj
+# set easymotion
+set textobj-entire
+set ReplaceWithRegister
+
+""" Plugin settings -------------------------
+let g:argtextobj_pairs="[:],(:),<:>"
+
+""" Idea specific settings ------------------
+set ideajoin
