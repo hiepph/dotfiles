@@ -1,8 +1,12 @@
+" Leader key
+let mapleader=" "
+
 " copy to/paste from clipboard
 set clipboard+=unnamed
 
 """ Plugins  --------------------------------
 set surround
+" set multiple-cursors
 set multiple-cursors
 set commentary
 set argtextobj
@@ -15,4 +19,11 @@ set ReplaceWithRegister
 let g:argtextobj_pairs="[:],(:),<:>"
 
 """ Idea specific settings ------------------
+" refer: https://github.com/JetBrains/ideavim/blob/master/doc/ideajoin-examples.md
 set ideajoin
+set ideastatusicon=gray
+set idearefactormode=keep
+
+""" Mappings --------------------------------
+map <leader>s <Plug>(easymotion-s)
+map <leader>f <Plug>(easymotion-f)
