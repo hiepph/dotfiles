@@ -10,6 +10,22 @@
 
 
 ;;
+;; Java
+;; ref: https://github.com/emacs-lsp/lsp-java
+;;
+(use-package dash-functional)
+
+(use-package lsp-java
+  :requires (dash-functional)
+  :after lsp)
+
+(defun ~format-java ()
+  (interactive)
+  (progn (lsp-format-buffer)
+         (basic-save-buffer)))
+
+
+;;
 ;; Clojure
 ;;
 (use-package cider
