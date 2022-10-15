@@ -6,7 +6,8 @@ set surround
 set multiple-cursors
 set commentary
 set argtextobj
-# set easymotion
+set easymotion
+set sneak
 set textobj-entire
 set ReplaceWithRegister
 
