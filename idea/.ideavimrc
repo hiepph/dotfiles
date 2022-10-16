@@ -6,11 +6,9 @@ set clipboard+=unnamed
 
 """ Plugins  --------------------------------
 set surround
-" set multiple-cursors
 set multiple-cursors
 set commentary
 set argtextobj
-set easymotion
 set sneak
 set textobj-entire
 set ReplaceWithRegister
@@ -23,7 +21,3 @@ let g:argtextobj_pairs="[:],(:),<:>"
 set ideajoin
 set ideastatusicon=gray
 set idearefactormode=keep
-
-""" Mappings --------------------------------
-map <leader>s <Plug>(easymotion-s)
-map <leader>f <Plug>(easymotion-f)
