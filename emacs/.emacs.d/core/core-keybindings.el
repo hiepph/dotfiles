@@ -186,7 +186,8 @@
 
   ("w" #'org-babel-tangle "tangle")
 
-  ("i" #'org-display-inline-images "images")
+  ("i i" #'org-display-inline-images "image display")
+  ("i a" #'~org-insert-image-attribute "image attribute")
   ("x" #'org-latex-preview "latex")
 
   ("." #'org-metaright "meta right")

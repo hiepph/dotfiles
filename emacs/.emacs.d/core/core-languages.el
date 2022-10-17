@@ -267,6 +267,14 @@
   (org-mode . org-bullets-mode))
 
 
+;; Insert HTML attribute for image
+(defun ~org-insert-image-attribute ()
+  (interactive)
+  (evil-open-above 1)
+  (insert "#+ATTR_HTML: :width 500px")
+  (evil-force-normal-state))
+
+
 ;;
 ;; DOT-mode for Graphviz
 ;;
