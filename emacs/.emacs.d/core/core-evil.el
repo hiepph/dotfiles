@@ -12,6 +12,16 @@
   :config
   (evil-mode 1))
 
+
+;;
+;; Quick key sequence to escape
+;;
+(use-package evil-escape
+  :init
+  (setq-default evil-escape-key-sequence "fd")
+  :config
+  (evil-escape-mode))
+
 ;;
 ;; Pre-keybindings for some common Emacs modes
 ;; ref: https://github.com/emacs-evil/evil-collection
