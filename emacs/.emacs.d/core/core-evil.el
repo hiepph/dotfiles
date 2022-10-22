@@ -60,6 +60,13 @@
   (evil-snipe-override-mode 1))
 
 ;;
+;; Easymotion
+;;
+(use-package evil-easymotion
+  :config
+  (evilem-default-keybindings "\\"))
+
+;;
 ;; Search for selected region (especially word)
 ;;
 (use-package evil-visualstar

@@ -2,9 +2,9 @@
 ;; Key hints
 ;; ref: https://github.com/justbur/emacs-which-key
 ;;
-;; (use-package which-key
-;;   :init
-;;   (which-key-mode))
+(use-package which-key
+  :init
+  (which-key-mode))
 
 ;;
 ;; Menus
@@ -32,9 +32,6 @@
   ;; Projectile
   ("p" #'hydra-projectile/body "projectile")
 
-  ;; dired-sidebar
-  ("t" #'hydra-tree/body "dired-sidebar")
-
   ;; compile
   ("c" #'hydra-compile/body "compile")
   ("e" #'hydra-error/body "flycheck")
@@ -51,10 +48,7 @@
   ;; dumb-jump
   ("j" #'hydra-dumb-jump/body "jump")
 
-  ("m" #'hydra-mode/body "toggle")
-
-  ;; reload yasnippet
-  ("s" #'yas-reload-all "yasnippet"))
+  ("m" #'hydra-mode/body "toggle"))
 
 (defhydra hydra-projectile (:columns 4 :exit t)
   "Projectile"
@@ -151,14 +145,10 @@
   ("i" #'indent-guide-mode "indent")
   ("I" #'indent-guide-global-mode "indent (global)")
 
-  ("G" #'golden-ratio-mode "golden ratio (global)")
-
   ("\\" #'fci-mode "column")
   ("|" #'fci-global-mode "column (global)")
 
-  ("t" #'dired-sidebar-toggle-sidebar "dired sidebar")
-
-  ("D" #'global-diff-hl-mode "diffhl (global"))
+  ("D" #'global-diff-hl-mode "diffhl (global)"))
 
 (defhydra hydra-dumb-jump (:color blue :columns 4)
   "dumb jump"
@@ -250,6 +240,7 @@
   (global-set-key (kbd "<f5>") '~revert-buffer)
   (global-set-key (kbd "<f6>") '~open-terminal)
   (global-set-key (kbd "<f8>") 'persp-switch-to-buffer*)
+  (global-set-key (kbd "<f10>") 'yas-reload-all)
   (global-set-key (kbd "<f12>") 'recompile)
 
   ;;

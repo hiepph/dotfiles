@@ -64,13 +64,6 @@
 
 
 ;;
-;; Automatic resizing with Golden Ratio
-;; ref: https://github.com/roman/golden-ratio.el
-;;
-(use-package golden-ratio)
-
-
-;;
 ;; Theme
 ;;
 
