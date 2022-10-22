@@ -200,6 +200,11 @@
   ("t r" #'org-table-insert-row "table insert row")
   ("t |" #'org-table-insert-column "table insert column"))
 
+(defhydra hydra-tex (:color blue :columns 4)
+  "LaTeX"
+  ("b" #'latex-insert-block "block")
+  ("i" #'latex-insert-item "item"))
+
 (defhydra hydra-java (:color blue :columns 4)
   "LSP Java"
   ("i" #'lsp-java-add-import "import")
@@ -293,6 +298,15 @@
     :keymaps 'org-mode-map
     "RET" 'org-newline-and-indent
     "M-RET" 'org-meta-return)
+
+
+  ;;
+  ;; Tex
+  ;;
+  (general-nmap
+    :keymaps 'tex-mode-map
+    :states 'normal
+    "," 'hydra-tex/body)
 
   ;;
   ;; Java LSP
