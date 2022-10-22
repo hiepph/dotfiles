@@ -229,7 +229,7 @@
   (general-evil-setup)
 
   ;; escape to normal-state even when in ~emacs-state~
-  (global-set-key (kbd "<escape>") 'evil-normal-state)
+  (global-set-key (kbd "<escape>") 'evil-escape)
 
   ;;
   ;; Frequent tasks
