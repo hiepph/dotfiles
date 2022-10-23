@@ -185,6 +185,8 @@
   ("," #'org-metaleft "meta left")
   ("<" #'org-shiftmetaleft "shift left")
 
+  ("p" #'org-toggle-pretty-entities "pretty/plain edit")
+
   ("t c" #'org-table-create "table create")
   ("t a" #'org-table-align "table align")
   ("t r" #'org-table-insert-row "table insert row")
