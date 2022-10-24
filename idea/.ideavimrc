@@ -1,17 +1,18 @@
 " Leader key
-let mapleader=" "
+let mapleader=","
 
 " copy to/paste from clipboard
 set clipboard+=unnamed
 
 """ Plugins  --------------------------------
 set surround
-set multiple-cursors
 set commentary
 set argtextobj
 set sneak
 set textobj-entire
 set ReplaceWithRegister
+set multiple-cursors
+set easymotion
 
 """ Plugin settings -------------------------
 let g:argtextobj_pairs="[:],(:),<:>"
@@ -25,6 +26,9 @@ nmap <C-x> <Plug>SkipOccurrence
 xmap <C-x> <Plug>SkipOccurrence
 nmap <C-p> <Plug>RemoveOccurrence
 xmap <C-p> <Plug>RemoveOccurrence
+
+" Easymotion
+map <Leader> <Plug>(easymotion-prefix)
 
 """ Idea specific settings ------------------
 " refer: https://github.com/JetBrains/ideavim/blob/master/doc/ideajoin-examples.md
