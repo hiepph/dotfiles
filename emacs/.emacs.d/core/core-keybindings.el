@@ -3,7 +3,7 @@
 ;; ref: https://github.com/justbur/emacs-which-key
 ;;
 (use-package which-key
-  :init
+  :config
   (which-key-mode))
 
 ;;
