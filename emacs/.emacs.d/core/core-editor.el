@@ -232,11 +232,13 @@
 
 ;;
 ;; Quickly open terminal in current directory.
-;; (supports only Mac for now)
+;; Open with iTerm on Mac. Otherwise open using ~/bin/,terminal.
 ;;
 (defun ~open-terminal ()
   (interactive)
-  (shell-command "open . -a iTerm"))
+  (if (eq system-type 'darwin)
+      (shell-command "open . -a iTerm")
+    (shell-command ",terminal .")))
 
 ;;
 ;; Quickly open file manager in current directory.
