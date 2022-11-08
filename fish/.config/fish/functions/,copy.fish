@@ -1,3 +1,3 @@
 function ,copy --description "Copy the content to clipboard"
-    xsel --clipboard
+    tr -d '\n' | xsel --clipboard
 end
