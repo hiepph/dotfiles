@@ -39,6 +39,7 @@ with pkgs;
     pv # cat, with progress
     ranger # file browser
     ncdu # disk usage
+    (callPackage ./packages/nushell {})
 
     # helper
     hugo # static site generator
