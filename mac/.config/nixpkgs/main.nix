@@ -78,7 +78,6 @@ with pkgs;
     kubectx
     k9s
     minikube
-    google-cloud-sdk
     (callPackage ./packages/helm {})
 
     # secret
