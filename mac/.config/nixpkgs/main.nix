@@ -40,6 +40,7 @@ with pkgs;
     ranger # file browser
     ncdu # disk usage
     (callPackage ./packages/nushell {})
+    xsel # clipboard
 
     # helper
     hugo # static site generator
