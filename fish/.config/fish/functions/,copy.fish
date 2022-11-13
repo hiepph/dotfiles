@@ -1,3 +1,8 @@
 function ,copy --description "Copy the content to clipboard"
-    tr -d '\n' | xsel --clipboard
+    switch (uname)
+        case Darwin
+            pbcopy
+        case Linux
+            xsel --clipboard
+    end
 end
