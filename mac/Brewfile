@@ -1,14 +1,69 @@
+#
 # shell
-brew "cheat" # https://github.com/cheat/cheat
+#
+brew "fish"
+# https://github.com/cheat/cheat
+brew "cheat"
+brew "stow"
+brew "ripgrep"
+brew "nushell"
+brew "direnv"
+brew "jump"
+brew "tmux"
+brew "fd"
+brew "bat"
+brew "fzf"
+brew "ncdu"
+brew "jq"
+brew "yq"
+brew "jo"
+brew "wget"
+brew "htop"
 
-# cloud
+#
+# editor
+#
+cask "emacs"
+brew "ispell"
+
+#
+# dev
+#
+brew "cmake"
+brew "nasm"
+
+#
+# ops
+#
+brew "pass"
+brew "borgbackup"
+brew "terraform"
+cask "google-cloud-sdk"
+brew "kubectx"
+brew "minikube"
+brew "nmap"
+brew "sshpass"
+brew "rclone"
+brew "telnet"
+
 tap "turbot/tap"
 brew "steampipe"
 
-cask "google-cloud-sdk"
-
-# editor
-cask "emacs"
-
-# virtual
+#
+# os
+#
+brew "qemu"
 cask "vagrant"
+
+#
+# languages
+#
+brew "go@1.18"
+brew "julia"
+brew "graphviz"
+
+
+#
+# image
+#
+brew "imagemagick"
