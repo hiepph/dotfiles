@@ -106,8 +106,6 @@ colorscheme alduin
 
 Collection of my shortcut and useful scripts.
 
-[1] To be able to use the scripts: `ln -s $PWD/scripts scripts`
-
 
 # Themes
 
