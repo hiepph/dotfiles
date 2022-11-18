@@ -42,7 +42,6 @@ cask "google-cloud-sdk"
 brew "kubectx"
 brew "minikube"
 brew "nmap"
-brew "sshpass"
 brew "rclone"
 brew "telnet"
 
@@ -61,9 +60,3 @@ cask "vagrant"
 brew "go@1.18"
 brew "julia"
 brew "graphviz"
-
-
-#
-# image
-#
-brew "imagemagick"
