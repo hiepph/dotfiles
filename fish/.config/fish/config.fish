@@ -10,7 +10,9 @@ abbr -a -g g 'git'
 abbr -a -g k 'kubectl'
 
 # enable direnv
-direnv hook fish | source
+if type -q direnv
+    direnv hook fish | source
+end
 
 # prevent weird behaviour with tmux
 # ref: http://nicksun.fun/linux/2020/10/07/tmux-macos.html
@@ -20,7 +22,9 @@ direnv hook fish | source
 
 # integrate jump
 # refer: https://github.com/gsamokovarov/jump
-jump shell fish | source
+if type -q jump
+    jump shell fish | source
+end
 
 # default edit everything with vim
 set -x VISUAL vim
