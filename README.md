@@ -8,84 +8,7 @@ to $HOME. This task is done by [GNU Stow](https://www.gnu.org/software/stow/manu
 stow <conf>
 ```
 
-Some modules don't follow this strategy (e.g. *scripts* [1], *backup* [2]). They have to be symlinked manually. Currently I'm searching for a unified solution.
-
 The configuration is mostly done via a provisioner helper (not yet public). Each local machine requires an approximately 20% set of different configuration. For that reason, create a `$HOME/customs` directory and put in custom configurations.
-
-# Mac
-
-## Nix: functional package manager
-
-My system is built with the help of [Nix](https://nixos.org/) for a functional and
-reproducible configuration.
-
-+ Install `Nix`: https://nix.dev/tutorials/install-nix#macos
-
-+ Install `nix-darwin`: refer [here](https://daiderd.com/nix-darwin/)
-
-```
-nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz -A installer
-./result/bin/darwin-installer
-```
-
-+ Symlink for system configuration:
-
-```
-nix-shell -p stow --command "stow mac"
-```
-
-+ Build and switch the whole system:
-
-```
-darwin-rebuild switch
-```
-
-*Notes*: in case of accident (`darwin-rebuild` not found):
-
-```bash
-bash
-source /etc/bashrc
-darwin-rebuild switch
-```
-
-## Nix: home manager
-
-`nixos-rebuild` or `darwin-rebuild` is used for the whole system.
-Home manager is specific for each user.
-
-+ Edit `.config/nixpkgs/home.nix`:
-
-```
-{
-  ...
-  imports = [
-    ./main.nix
-  ];
-
-  ...
-}
-```
-
-+ Make change and switch environment:
-
-```
-home-manager switch
-```
-
-## Hammerspoon: desktop automation
-
-`mac/.hammerspoon`
-
-I missed [i3](https://i3wm.org/) on my Mac. I tried [Rectangle](https://rectangleapp.com/) to bring
-back the feeling of tiling windows but it lacks the power of declarative configuration.
-
-Hammerspoon solves this problem by being a bridge to Mac's API. It uses Lua as scripting language.
-
-## References
-
-+ [Hugo Reeves](https://hugoreeves.com/posts/2019/nix-home/)
-
-+ [Alex Pearce](https://alexpearce.me/2021/07/managing-dotfiles-with-nix/)
 
 # Linux
 
@@ -111,6 +34,25 @@ Some distros I'm using for my personal machine:
 
 *TBD*
 
+
+# Mac
+
++ [Homebrew](https://brew.sh/) is my default package manager.
+
+```bash
+brew bundle
+```
+
+## Hammerspoon: desktop automation
+
+`mac/.hammerspoon`
+
+I missed [i3](https://i3wm.org/) on my Mac. I tried [Rectangle](https://rectangleapp.com/) to bring
+back the feeling of tiling windows but it lacks the power of declarative configuration.
+
+Hammerspoon solves this problem by being a bridge to Mac's API. It uses Lua as scripting language.
+
+
 # Shell
 
 + My default shell is [fish](https://fishshell.com/).
@@ -124,6 +66,7 @@ Some distros I'm using for my personal machine:
     - It does not follow POSIX shell standards. So if I want to run a common Bash or Zsh script, better use `bash script.sh`.
 
 + Custom: `$HOME/customs/fish.fish`.
+
 
 # Emacs
 

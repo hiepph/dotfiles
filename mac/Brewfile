@@ -1,0 +1,14 @@
+# shell
+brew "cheat" # https://github.com/cheat/cheat
+
+# cloud
+tap "turbot/tap"
+brew "steampipe"
+
+cask "google-cloud-sdk"
+
+# editor
+cask "emacs"
+
+# virtual
+cask "vagrant"

@@ -40,7 +40,6 @@ with pkgs;
     ranger # file browser
     ncdu # disk usage
     (callPackage ./packages/nushell {})
-    cheat # https://github.com/cheat/cheat
 
     # helper
     hugo # static site generator
@@ -84,9 +83,6 @@ with pkgs;
     # secret
     (callPackage ./packages/bitwarden-cli {})
     pass
-
-    # template
-    vagrant
 
     # networking
     nmap
