@@ -100,13 +100,6 @@ colorscheme alduin
 ```
 
 
-# Scripts
-
-[scripts](./scripts)
-
-Collection of my shortcut and useful scripts.
-
-
 # Themes
 
 Below is an awesome list of themes done in style. All are eye-care themes.
