@@ -190,7 +190,9 @@
   ("t c" #'org-table-create "table create")
   ("t a" #'org-table-align "table align")
   ("t r" #'org-table-insert-row "table insert row")
-  ("t |" #'org-table-insert-column "table insert column"))
+  ("t |" #'org-table-insert-column "table insert column")
+
+  ("b" #'org-toggle-checkbox "checkbox"))
 
 (defhydra hydra-tex (:color blue :columns 4)
   "LaTeX"
