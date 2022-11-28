@@ -264,23 +264,6 @@ end)
 -- Menubar
 --
 
--- Periodically query and show the current IP address.
-ip = hs.menubar.new()
-local function getCurrentIPAddress(interface)
-    cmd = string.format("ipconfig getifaddr %s", interface)
-    output, _, _, _ = hs.execute(cmd)
-    return output:gsub("\n", "")
-end
-
-local function showIp()
-    local ipTitle = string.format("IP: %s", getCurrentIPAddress("en0"))
-    ip:setTitle(ipTitle)
-end
-
-showIp()
-local timer = hs.timer.new(10, showIp)
-timer:start()
-
 -- Clipboard management.
 -- ref: https://www.hammerspoon.org/Spoons/ClipboardTool.html
 function setupClipboardTool()
@@ -380,10 +363,8 @@ function webQuery()
             url = string.format("https://www.youtube.com/results?search_query=%s", query)
         elseif dest == 'w' then
             url = string.format("https://en.wikipedia.org/w/index.php?title=Special:Search&search=%s", query)
-        elseif dest == 'en' then
+        elseif dest == 'cam' then
             url = string.format("https://dictionary.cambridge.org/dictionary/english/%s", query)
-        elseif dest == 'uk' then
-            url = string.format("https://youglish.com/pronounce/%s/english/uk", query)
         else
             hs.alert.show(string.format("'!%s' bang not found", dest))
             url = string.format("https://www.google.com/search?q='%s'", query)
