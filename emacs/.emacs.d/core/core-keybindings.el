@@ -172,12 +172,10 @@
 
   ("c" #'org-ctrl-c-ctrl-c "execute")
   ("'" #'org-edit-special "edit")
-  ("d" #'org-babel-remove-result "clear result")
 
   ("w" #'org-babel-tangle "tangle")
 
-  ("i i" #'org-display-inline-images "image display")
-  ("i a" #'~org-insert-image-attribute "image attribute")
+  ("d" #'org-display-inline-images "image display")
   ("x" #'org-latex-preview "latex")
 
   ("." #'org-metaright "meta right")
@@ -192,7 +190,9 @@
   ("t r" #'org-table-insert-row "table insert row")
   ("t |" #'org-table-insert-column "table insert column")
 
-  ("b" #'org-toggle-checkbox "checkbox"))
+  ("b" #'org-toggle-checkbox "checkbox")
+
+  ("i i" #'~org-insert-image "insert image"))
 
 (defhydra hydra-tex (:color blue :columns 4)
   "LaTeX"
