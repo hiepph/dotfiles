@@ -268,10 +268,10 @@
 
 
 ;; Insert HTML attribute for image
-(defun ~org-insert-image-attribute ()
+(defun ~org-insert-image ()
   (interactive)
   (evil-open-above 1)
-  (insert "#+ATTR_HTML: :width 500px")
+  (insert "#+ATTR_HTML: :width 500px\n[[/path/to/image]]")
   (evil-force-normal-state))
 
 
