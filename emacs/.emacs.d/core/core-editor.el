@@ -140,6 +140,11 @@
 (dolist (hook '(change-log-mode-hook log-edit-mode-hook))
     (add-hook hook (lambda () (flyspell-mode -1))))
 
+(define-globalized-minor-mode ~flyspell-global-mode
+  flyspell-mode
+  (lambda ()
+    (flyspell-mode t)))
+
 ;;
 ;; Company
 ;;

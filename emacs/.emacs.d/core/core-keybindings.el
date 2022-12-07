@@ -141,6 +141,7 @@
   ("F" #'format-global-mode "format (global)")
 
   ("s" #'flyspell-mode "flyspell")
+  ("S" #'~flyspell-global-mode "flyspell (global)")
 
   ("i" #'indent-guide-mode "indent")
   ("I" #'indent-guide-global-mode "indent (global)")
