@@ -18,7 +18,7 @@
 ;;
 (use-package evil-escape
   :init
-  (setq-default evil-escape-key-sequence "fd")
+  (setq-default evil-escape-key-sequence "<escape>")
   :config
   (evil-escape-mode))
 
