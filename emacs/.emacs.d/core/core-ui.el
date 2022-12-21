@@ -79,9 +79,10 @@
 
 ;;
 ;; ORG appearance
+;; Font can be find here: https://github.com/edwardtufte/et-book
 ;;
-(let* ((org-text-font  "ETBembo:style=Regular")
-       (org-code-font (face-attribute 'default :font))
+(let* ((org-text-font "ETBembo")
+       (org-code-font (format "%s" (font-get (face-attribute 'default :font) :family)))
 
        (variable-tuple
         (cond
@@ -107,10 +108,9 @@
      ;; Set font here
 
      ;; Text and symbols: slightly bigger for readability
-     `(variable-pitch ((t (:family org-text-font :height 120))))
+     `(variable-pitch ((t (:family ,org-text-font :height 140))))
      ;; Code, example blocks: regular weight for contrast
-     `(fixed-pitch ((t (:family code-text-font :weight regular))))
-
+     `(fixed-pitch ((t (:family ,org-code-font :weight normal :height 120))))
 
      ;; At least I need to distinguish between text and code
      '(org-block ((t (:inherit fixed-pitch))))
