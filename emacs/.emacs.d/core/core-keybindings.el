@@ -43,6 +43,9 @@
   ;; kill-ring
   ("y" #'consult-yank-pop "yank")
 
+  ;; history from Fish shell
+  ("h" #'~fish-insert "history")
+
   ("/" #'~ripgrep "ripgrep")
 
   ;; dumb-jump

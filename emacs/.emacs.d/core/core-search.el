@@ -170,4 +170,20 @@ Number registers are not needed because it is easier to refer from the `yank-pop
   (~ripgrep-search q (projectile-project-root) t))
 
 
+;;
+;; Search and insert history command from the fish shell
+;;
+(defun ~fish-search (query)
+  "Search Fish shell's history"
+  (let ((history (s-split
+                   "\n"
+                   (shell-command-to-string
+                    (format "history search --contains '%s'" query)))))
+    (completing-read "history: " history)))
+
+(defun ~fish-insert (query)
+  (interactive "Mhistory: ")
+  (insert (~fish-search query)))
+
+
 (provide 'core-search)
