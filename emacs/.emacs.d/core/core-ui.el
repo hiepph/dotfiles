@@ -81,7 +81,7 @@
 ;; ORG appearance
 ;; Font can be find here: https://github.com/edwardtufte/et-book
 ;;
-(let* ((org-text-font "ETBembo")
+(let* ((org-text-font "ETBembo:style=Regular")
        (org-code-font (format "%s" (font-get (face-attribute 'default :font) :family)))
 
        (variable-tuple
@@ -108,7 +108,7 @@
      ;; Set font here
 
      ;; Text and symbols: slightly bigger for readability
-     `(variable-pitch ((t (:family ,org-text-font :height 140))))
+     `(variable-pitch ((t (:family ,org-text-font :height 120 :weight thin))))
      ;; Code, example blocks: regular weight for contrast
      `(fixed-pitch ((t (:family ,org-code-font :weight normal :height 120))))
 
