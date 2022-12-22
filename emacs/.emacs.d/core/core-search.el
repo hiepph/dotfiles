@@ -178,7 +178,9 @@ Number registers are not needed because it is easier to refer from the `yank-pop
   (let ((history (s-split
                    "\n"
                    (shell-command-to-string
-                    (format "history search --contains '%s'" query)))))
+                    (if (string-empty-p query)
+                        "history"
+                      (format "history search --contains '%s'" query))))))
     (completing-read "history: " history)))
 
 (defun ~fish-insert (query)
