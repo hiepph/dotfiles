@@ -57,10 +57,12 @@
 ;;
 (add-hook 'yaml-mode-hook
           (lambda ()
-            (set-frame-font (face-attribute 'default :font))))
+            (setq buffer-face-mode-face (font-get (face-attribute 'default :font) :family))
+            (buffer-face-mode)))
 (add-hook 'git-commit-mode-hook
           (lambda ()
-            (set-frame-font (face-attribute 'default :font))))
+            (setq buffer-face-mode-face (font-get (face-attribute 'default :font) :family))
+            (buffer-face-mode)))
 
 
 ;;
@@ -108,7 +110,7 @@
      ;; Set font here
 
      ;; Text and symbols: slightly bigger for readability
-     `(variable-pitch ((t (:family ,org-text-font :height 120 :weight thin))))
+     `(variable-pitch ((t (:family ,org-text-font :height 135))))
      ;; Code, example blocks: regular weight for contrast
      `(fixed-pitch ((t (:family ,org-code-font :weight normal :height 120))))
 
