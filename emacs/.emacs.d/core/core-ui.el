@@ -134,28 +134,6 @@
 (eval-after-load 'org
   '(setf org-highlight-latex-fragments-and-specials t))
 
-
-;;
-;; Tree
-;; ref: https://github.com/jojojames/dired-sidebar
-;;
-(use-package dired-sidebar
-  :commands (dired-sidebar-toggle-sidebar)
-  :init
-  (add-hook 'dired-sidebar-mode-hook
-            (lambda ()
-              (unless (file-remote-p default-directory)
-                (auto-revert-mode))))
-
-  :config
-  (push 'toggle-window-split dired-sidebar-toggle-hidden-commands)
-  (push 'rotate-windows dired-sidebar-toggle-hidden-commands)
-
-  (setq dired-sidebar-should-follow-file t)
-
-  ;; change default width
-  (setq dired-sidebar-width 25))
-
 ;;
 ;; Better scroll bar
 ;; ref: https://github.com/emacsorphanage/yascroll
