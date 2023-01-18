@@ -141,4 +141,12 @@
   (global-yascroll-bar-mode 1))
 
 
+;;
+;; Modeline
+;;
+(use-package telephone-line
+  :config
+  (telephone-line-mode 1))
+
+
 (provide 'core-ui)
