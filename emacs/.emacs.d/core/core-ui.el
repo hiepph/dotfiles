@@ -57,12 +57,10 @@
 ;;
 (add-hook 'yaml-mode-hook
           (lambda ()
-            (setq buffer-face-mode-face (font-get (face-attribute 'default :font) :family))
-            (buffer-face-mode)))
+            (setq buffer-face-mode-face (font-get (face-attribute 'default :font) :family))))
 (add-hook 'git-commit-mode-hook
           (lambda ()
-            (setq buffer-face-mode-face (font-get (face-attribute 'default :font) :family))
-            (buffer-face-mode)))
+            (setq buffer-face-mode-face (font-get (face-attribute 'default :font) :family))))
 
 
 ;;
