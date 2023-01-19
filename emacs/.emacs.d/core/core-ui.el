@@ -55,14 +55,16 @@
 ;;
 ;; Custom fonts for some specific modes
 ;;
-(add-hook 'yaml-mode-hook
-          (lambda ()
-            (setq buffer-face-mode-face (font-get (face-attribute 'default :font) :family))
-            (buffer-face-mode)))
-(add-hook 'git-commit-mode-hook
-          (lambda ()
-            (setq buffer-face-mode-face (font-get (face-attribute 'default :font) :family))
-            (buffer-face-mode)))
+(if (eq system-type 'darwin)
+    (lambda ()
+      (add-hook 'yaml-mode-hook
+                (lambda ()
+                  (setq buffer-face-mode-face (font-get (face-attribute 'default :font) :family))
+                  (buffer-face-mode)))
+      (add-hook 'git-commit-mode-hook
+                (lambda ()
+                  (setq buffer-face-mode-face (font-get (face-attribute 'default :font) :family))
+                  (buffer-face-mode)))))
 
 
 ;;
