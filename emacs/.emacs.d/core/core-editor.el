@@ -46,6 +46,16 @@
 
 
 ;;
+;; Force indentation aggressively
+;; ref:
+;;
+(use-package aggressive-indent
+  :init
+  ;; (add-to-list 'aggressive-indent-excluded-modes 'html-mode)
+  :config
+  (global-aggressive-indent-mode 1))
+
+;;
 ;; Pairs
 ;;
 ;; Highlights matching parenthesis
