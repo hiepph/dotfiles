@@ -146,8 +146,11 @@
   ("s" #'flyspell-mode "flyspell")
   ("S" #'~flyspell-global-mode "flyspell (global)")
 
-  ("i" #'indent-guide-mode "indent")
-  ("I" #'indent-guide-global-mode "indent (global)")
+  ("g" #'indent-guide-mode "guide indent")
+  ("G" #'indent-guide-global-mode "guide indent (global)")
+
+  ("i" #'aggressive-indent-mode "agressive indent")
+  ("I" #'aggressive-indent-global-mode "agressive indent (global)")
 
   ("\\" #'fci-mode "column")
   ("|" #'fci-global-mode "column (global)")
