@@ -56,7 +56,7 @@
 ;; Custom fonts for some specific modes
 ;;
 (if (eq system-type 'darwin)
-    (lambda ()
+    (progn
       (add-hook 'yaml-mode-hook
                 (lambda ()
                   (setq buffer-face-mode-face (font-get (face-attribute 'default :font) :family))
