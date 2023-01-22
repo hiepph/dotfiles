@@ -199,7 +199,7 @@
 
   ("b" #'org-toggle-checkbox "checkbox")
 
-  ("i i" #'~org-insert-image "insert image"))
+  ("i" #'~org-insert-image "insert image"))
 
 (defhydra hydra-tex (:color blue :columns 4)
   "LaTeX"
