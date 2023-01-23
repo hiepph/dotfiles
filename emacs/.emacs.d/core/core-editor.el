@@ -146,6 +146,10 @@
 ;;
 ;; Flyspell
 ;;
+;; Emacs will automatically choose Aspell over Hunspell over Ispell.
+;;
+(setenv "DICTIONARY" "en_GB")
+
 ;; disable for log edit and change log
 (dolist (hook '(change-log-mode-hook log-edit-mode-hook))
   (add-hook hook (lambda () (flyspell-mode -1))))

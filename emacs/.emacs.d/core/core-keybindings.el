@@ -55,7 +55,7 @@
   ("m" #'hydra-mode/body "mode")
 
   ;; flyspell
-  ("s" #'flyspell-correct-word-before-point "flyspell"))
+  ("s" #'hydra-spell/body "flyspell"))
 
 (defhydra hydra-projectile (:columns 4 :exit t)
   "Projectile"
@@ -232,6 +232,13 @@
   ("P" #'cider-pprint-eval-defun-to-comment "print to comment")
   ("q" #'cider-quit "quit"))
 
+(defhydra hydra-spell (:color blue :columns 4)
+  "Flyspell"
+  ("c" #'flyspell-correct-word-before-point "correct")
+  ("C" #'flyspell-auto-correct-word "(auto) correct")
+  ("b" #'flyspell-buffer "buffer")
+  ("n" #'flyspell-goto-next-error "next"))
+
 ;;
 ;; general (leader keys)
 ;; ref: https://github.com/noctuid/general.el/
@@ -286,15 +293,15 @@
   ;; +) [[: previous same-level element
   ;;
   (general-nmap
-   :keymaps 'org-mode-map
-   :states '(visual normal)
-   "," 'hydra-org/body
-   "M-k" 'org-move-subtree-up
-   "M-j" 'org-move-subtree-down
-   "] ]" 'org-next-visible-heading
-   "[ [" 'org-previous-visible-heading
-   "g B" 'org-previous-block
-   "g b" 'org-next-block)
+    :keymaps 'org-mode-map
+    :states '(visual normal)
+    "," 'hydra-org/body
+    "M-k" 'org-move-subtree-up
+    "M-j" 'org-move-subtree-down
+    "] ]" 'org-next-visible-heading
+    "[ [" 'org-previous-visible-heading
+    "g B" 'org-previous-block
+    "g b" 'org-next-block)
 
   (general-nmap
     :states 'insert
