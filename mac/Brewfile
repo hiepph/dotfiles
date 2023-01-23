@@ -24,7 +24,7 @@ brew "htop"
 # editor
 #
 cask "emacs"
-brew "ispell"
+brew "aspell"
 
 #
 # dev
