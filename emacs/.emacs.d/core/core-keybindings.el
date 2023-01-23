@@ -51,7 +51,11 @@
   ;; dumb-jump
   ("j" #'hydra-dumb-jump/body "jump")
 
-  ("m" #'hydra-mode/body "toggle"))
+  ;; mode
+  ("m" #'hydra-mode/body "mode")
+
+  ;; flyspell
+  ("s" #'flyspell-correct-word-before-point "flyspell"))
 
 (defhydra hydra-projectile (:columns 4 :exit t)
   "Projectile"
