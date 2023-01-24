@@ -159,6 +159,9 @@
   (lambda ()
     (flyspell-mode t)))
 
+;; on automatically for text-mode
+(add-hook 'text-mode-hook 'flyspell-mode)
+
 ;;
 ;; Company
 ;;
