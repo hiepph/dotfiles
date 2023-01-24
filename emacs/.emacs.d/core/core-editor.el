@@ -51,7 +51,7 @@
 ;;
 (use-package aggressive-indent
   :init
-  ;; (add-to-list 'aggressive-indent-excluded-modes 'html-mode)
+  (add-to-list 'aggressive-indent-excluded-modes 'sh-mode)
   :config
   (global-aggressive-indent-mode 1))
 
