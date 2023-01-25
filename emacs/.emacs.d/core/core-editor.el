@@ -50,10 +50,9 @@
 ;; ref:
 ;;
 (use-package aggressive-indent
-  :init
-  (add-to-list 'aggressive-indent-excluded-modes 'sh-mode)
   :config
-  (global-aggressive-indent-mode 1))
+  (global-aggressive-indent-mode 1)
+  (add-to-list 'aggressive-indent-excluded-modes 'sh-mode))
 
 ;;
 ;; Pairs
