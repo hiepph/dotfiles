@@ -411,7 +411,15 @@
   ;; Hippie expand
   ;;
   (general-define-key
-   "C--" 'hippie-expand))
+   "C--" 'hippie-expand)
+
+
+  ;;
+  ;; Popper
+  ;;
+  (general-define-key
+   "C-`" 'popper-toggle-latest
+   "M-`" 'popper-cycle))
 
 
 (provide 'core-keybindings)

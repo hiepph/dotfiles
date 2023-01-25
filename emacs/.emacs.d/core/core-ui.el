@@ -53,6 +53,21 @@
             (variable-pitch-mode 1)))
 
 ;;
+;; Manage popup windows
+;; ref: https://github.com/karthink/popper
+;;
+(use-package popper
+  :init
+  (setq popper-reference-buffers
+        '("\\*Messages\\*"
+          "Output\\*$"
+          "\\*Async Shell Command\\*"
+          help-mode
+          compilation-mode))
+  :config
+  (popper-mode +1))
+
+;;
 ;; Custom fonts for some specific modes
 ;;
 (if (eq system-type 'darwin)
@@ -151,6 +166,7 @@
 (use-package telephone-line
   :config
   (telephone-line-mode 1))
+
 
 
 (provide 'core-ui)
