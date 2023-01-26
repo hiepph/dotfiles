@@ -97,7 +97,7 @@
   ("s" #'persp-set-buffer "set")
   ("k" #'~persp-remove-current-buffer "kill current")
   ("K" #'persp-remove-buffer "kill")
-  ("c" #'evil-ex-nohighlight "no highlight"))
+  ("c" #'evil-ex-nohighlight "clear effect"))
 
 (defhydra hydra-compile (:columns 4 :exit t)
   "Compile"
