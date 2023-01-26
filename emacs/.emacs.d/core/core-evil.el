@@ -9,7 +9,8 @@
   (setq evil-want-C-u-scroll t)
   (setq evil-want-fine-undo t)
   (setq evil-search-module 'evil-search)
-
+  (setq evil-ex-substitute-highlight-all nil)
+  (setq evil-ex-search-persistent-highlight nil)
   :config
   (evil-mode 1))
 
