@@ -60,6 +60,7 @@
   :init
   (setq popper-reference-buffers
         '("\\*Messages\\*"
+          "\\*Warnings\\*"
           "Output\\*$"
           "\\*Async Shell Command\\*"
           "^magit: .*"
