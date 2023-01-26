@@ -8,6 +8,7 @@
   (setq evil-want-keybinding nil)
   (setq evil-want-C-u-scroll t)
   (setq evil-want-fine-undo t)
+  (setq evil-search-module 'evil-search)
 
   :config
   (evil-mode 1))
