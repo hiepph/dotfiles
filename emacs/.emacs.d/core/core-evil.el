@@ -120,6 +120,7 @@
 ;;
 
 (add-hook 'yaml-mode-hook (lambda ()
-                           (setq evil-shift-width 2)))
+                            (setq evil-shift-width 2)))
+
 
 (provide 'core-evil)

@@ -364,7 +364,7 @@
    "RET" 'xref-goto-xref)
 
   ;;
-  ;; expand-region
+  ;; expand-region (used in evil visual mode)
   ;;
   (general-define-key
    :states 'visual
