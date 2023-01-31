@@ -112,12 +112,15 @@
 (defun ~format-c ()
   "Format C code followed GNU style."
   (interactive)
-  (let ((fname (buffer-file-name)))
+  (let ((fname (buffer-file-name))
+        (indent-prog (if (eq system-type 'darwin)
+                         "gindent"
+                       "indent")))
     ;; some modification
     ;; -bad: leave a blank line after definitions
     ;; -br: if (...) {
     ;; -ce: } else {
-    (shell-command (format "indent -bad -br -npcs -ce %s && rm %s~" fname fname) nil)))
+    (shell-command (format "%s -bad -br -npcs -ce %s && rm %s~" indent-prog fname fname) nil)))
 
 
 ;; Go
