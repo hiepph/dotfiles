@@ -25,6 +25,7 @@ brew "htop"
 #
 cask "emacs"
 brew "aspell"
+brew "gnu-indent"
 
 #
 # dev
