@@ -120,7 +120,7 @@
     ;; -bad: leave a blank line after definitions
     ;; -br: if (...) {
     ;; -ce: } else {
-    (shell-command (format "%s -bad -br -npcs -ce %s && rm %s~" indent-prog fname fname) nil)))
+    (shell-command (format "%s -i2 -bad -br -npcs -ce %s && rm %s~" indent-prog fname fname) nil)))
 
 
 ;; Go
