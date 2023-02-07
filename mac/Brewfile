@@ -19,6 +19,7 @@ brew "yq"
 brew "jo"
 brew "wget"
 brew "htop"
+brew "watchman"
 
 #
 # editor
@@ -58,6 +59,6 @@ cask "vagrant"
 #
 # languages
 #
-brew "go@1.18"
+brew "go"
 brew "julia"
 brew "graphviz"
