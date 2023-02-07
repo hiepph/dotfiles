@@ -118,7 +118,7 @@
 ;; (add-hook 'dired-mode-hook 'dired-filter-by-dot-files)
 
 ;; make Dired guess the default target for commands like copy/move
-(setq dired-dwim-target t)
+;; (setq dired-dwim-target t)
 
 ;; follow symlink
 (setq find-file-visit-truename t)
