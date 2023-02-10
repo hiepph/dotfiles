@@ -48,8 +48,6 @@
 
   ("/" #'~ripgrep "ripgrep")
 
-  ("-" #'hydra-cape/body "completion")
-
   ;; dumb-jump
   ("j" #'hydra-dumb-jump/body "jump")
 
@@ -270,6 +268,7 @@
   ;;
   ;; Frequent tasks
   ;;
+  (global-set-key (kbd "<f1>") 'hydra-cape/body)
   (global-set-key (kbd "<f2>") 'save-buffer)
   (global-set-key (kbd "<f3>") 'find-file)
   (global-set-key (kbd "<S-f3>") 'persp-switch-to-buffer*)
