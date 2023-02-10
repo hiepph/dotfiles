@@ -42,10 +42,6 @@
   :config
   (prescient-persist-mode +1))
 
-(use-package company-prescient
-  :config
-  (company-prescient-mode +1))
-
 (use-package selectrum-prescient
   :config
   (selectrum-prescient-mode +1))

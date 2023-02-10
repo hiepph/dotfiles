@@ -138,9 +138,6 @@
 
 (defhydra hydra-mode (:columns 4 :exit t)
   "Toggle mode"
-  ("c" #'company-mode "company")
-  ("C" #'global-company-mode "company (global)")
-
   ("e" #'flycheck-mode "flycheck")
   ("E" #'global-flycheck-mode "flycheck (global)")
 
@@ -356,18 +353,6 @@
     :keymaps '(clojure-mode-map cider-repl-mode-map)
     :states 'normal
     "," 'hydra-cider/body)
-
-  ;;
-  ;; company
-  ;;
-  (general-define-key
-   :keymaps 'company-active-map
-   "C-n" 'company-select-next-or-abort
-   "C-p" 'company-select-previous-or-abort)
-
-  (general-define-key
-   :keymaps 'company-mode-map
-   "C-/" 'company-complete)
 
   ;;
   ;; tags
