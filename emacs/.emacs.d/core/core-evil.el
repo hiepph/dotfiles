@@ -19,7 +19,7 @@
 ;;
 (use-package evil-escape
   :init
-  (setq-default evil-escape-key-sequence "<escape>")
+  (setq-default evil-escape-key-sequence "fd")
   :config
   (evil-escape-mode))
 
@@ -73,9 +73,7 @@
 ;;
 ;; Easymotion
 ;;
-(use-package evil-easymotion
-  :config
-  (evilem-default-keybindings "\\"))
+(use-package evil-easymotion)
 
 ;;
 ;; Search for selected region (especially word)
