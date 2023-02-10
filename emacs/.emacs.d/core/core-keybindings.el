@@ -240,7 +240,19 @@
   ("c" #'flyspell-correct-word-before-point "correct")
   ("C" #'flyspell-auto-correct-word "(auto) correct")
   ("b" #'flyspell-buffer "buffer")
-  ("n" #'flyspell-goto-next-error "next"))
+  ("n" #'evil-next-flyspell-error "next")
+  ("p" #'evil-prev-flyspell-error "previous"))
+
+(defhydra hydra-cape (:color blue :columns 4)
+  "Cape"
+  ("c" #'completion-at-point "completion-at-point")
+  ("t" #'completion-tag "tag")
+  ("w" #'cape-dabbrev "word")
+  ("l" #'cape-line "line")
+  ("h" #'cape-history "history")
+  ("f" #'cape-file "filename")
+  ("k" #'cape-keyword "keyword")
+  ("s" #'cape-ispell "ispell"))
 
 ;;
 ;; general (leader keys)
@@ -253,16 +265,23 @@
   ;;
   (general-evil-setup)
 
+  ;; set default key for evil-easymotion
+  (evilem-default-keybindings "\\")
+
   ;;
   ;; Frequent tasks
   ;;
+  (global-set-key (kbd "<f1>") 'completion-at-point)
+  (global-set-key (kbd "<S-f1>") 'hydra-cape/body)
   (global-set-key (kbd "<f2>") 'save-buffer)
   (global-set-key (kbd "<f3>") 'find-file)
+  (global-set-key (kbd "<S-f3>") 'persp-switch-to-buffer*)
   (global-set-key (kbd "<f4>") '~persp-remove-current-buffer)
   (global-set-key (kbd "<f5>") '~revert-buffer)
-  (global-set-key (kbd "<f6>") '~open-terminal)
-  (global-set-key (kbd "<f8>") 'persp-switch-to-buffer*)
-  (global-set-key (kbd "<f10>") 'yas-reload-all)
+  (general-define-key
+   :states 'normal
+   :keymaps 'emacs-lisp-mode-map
+   [f9] '~eval-buffer)
   (global-set-key (kbd "<f12>") 'recompile)
 
   ;;
@@ -337,14 +356,6 @@
     :keymaps '(clojure-mode-map cider-repl-mode-map)
     :states 'normal
     "," 'hydra-cider/body)
-
-  ;;
-  ;; Emacs Lisp
-  ;;
-  (general-define-key
-   :states 'normal
-   :keymaps 'emacs-lisp-mode-map
-   [f9] '~eval-buffer)
 
   ;;
   ;; company
