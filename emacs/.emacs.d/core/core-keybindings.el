@@ -48,6 +48,8 @@
 
   ("/" #'~ripgrep "ripgrep")
 
+  ("-" #'hydra-cape/body "completion")
+
   ;; dumb-jump
   ("j" #'hydra-dumb-jump/body "jump")
 
@@ -253,7 +255,7 @@
 
 ;;
 ;; general (leader keys)
-;; ref: https://github.com/noctuid/general.el/
+;; ref: https://github.com/noctuid/general.el
 ;;
 (use-package general
   :config
@@ -268,8 +270,6 @@
   ;;
   ;; Frequent tasks
   ;;
-  (global-set-key (kbd "<f1>") 'completion-at-point)
-  (global-set-key (kbd "<S-f1>") 'hydra-cape/body)
   (global-set-key (kbd "<f2>") 'save-buffer)
   (global-set-key (kbd "<f3>") 'find-file)
   (global-set-key (kbd "<S-f3>") 'persp-switch-to-buffer*)
@@ -288,10 +288,17 @@
   ;; M-: eval-expression
   (global-set-key (kbd "M-&") 'async-shell-command)
 
+  ;; windmoves
   (global-set-key (kbd "<M-left>") 'windmove-left)
   (global-set-key (kbd "<M-right>") 'windmove-right)
   (global-set-key (kbd "<M-down>") 'windmove-down)
   (global-set-key (kbd "<M-up>") 'windmove-up)
+
+
+  ;;
+  ;; Ctrl combination
+  ;;
+  (global-set-key (kbd "C-/") 'completion-at-point)
 
   ;;
   ;; Main
