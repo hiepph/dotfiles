@@ -306,7 +306,7 @@
   (general-nmap
     :states 'insert
     :keymaps 'org-mode-map
-    "RET" 'org-newline-and-indent
+    ;; "RET" 'org-newline-and-indent
     "M-RET" 'org-meta-return)
 
 
