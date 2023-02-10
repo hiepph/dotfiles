@@ -203,7 +203,10 @@
 
   ("b" #'org-toggle-checkbox "checkbox")
 
-  ("i" #'~org-insert-image "insert image"))
+  ("i" #'~org-insert-image "insert image")
+
+  ("s" #'flyspell-correct-word-before-point "correct")
+  ("S" #'flyspell-auto-correct-word "(auto) correct"))
 
 (defhydra hydra-tex (:color blue :columns 4)
   "LaTeX"
@@ -300,6 +303,7 @@
     "M-j" 'org-move-subtree-down
     "] ]" 'org-next-visible-heading
     "[ [" 'org-previous-visible-heading
+    ;; easily jump to previous/next source block
     "g B" 'org-previous-block
     "g b" 'org-next-block)
 
@@ -406,13 +410,6 @@
   (general-define-key
    "M-j" 'scroll-other-window
    "M-k" 'scroll-other-window-down)
-
-  ;;
-  ;; Hippie expand
-  ;;
-  (general-define-key
-   "C--" 'hippie-expand)
-
 
   ;;
   ;; Popper
