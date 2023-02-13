@@ -203,7 +203,12 @@
   ("i" #'~org-insert-image "insert image")
 
   ("s" #'flyspell-correct-word-before-point "correct")
-  ("S" #'flyspell-auto-correct-word "(auto) correct"))
+  ("S" #'flyspell-auto-correct-word "(auto) correct")
+
+  ("]" #'org-next-visible-heading "heading (visible - next)")
+  ("[" #'org-previous-visible-heading "heading (visible - previous)")
+  ("}" #'org-forward-heading-same-level "heading (same level - next)")
+  ("{" #'org-backward-heading-same-level "heading (same level - previous)"))
 
 (defhydra hydra-tex (:color blue :columns 4)
   "LaTeX"
@@ -323,8 +328,6 @@
     "," 'hydra-org/body
     "M-k" 'org-move-subtree-up
     "M-j" 'org-move-subtree-down
-    "] ]" 'org-next-visible-heading
-    "[ [" 'org-previous-visible-heading
     ;; easily jump to previous/next source block
     "g B" 'org-previous-block
     "g b" 'org-next-block)
