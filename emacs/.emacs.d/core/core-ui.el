@@ -16,7 +16,7 @@
 (setq ring-bell-function 'ignore)
 
 ;; Line numbers
-(global-linum-mode t)
+(global-display-line-numbers-mode)
 
 ;; Enable transient mark mode
 (transient-mark-mode 1)
