@@ -24,7 +24,8 @@ brew "watchman"
 #
 # editor
 #
-cask "emacs"
+tap "d12frosted/emacs-plus"
+brew "emacs-plus@29"
 brew "aspell"
 brew "gnu-indent"
 
