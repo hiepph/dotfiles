@@ -26,7 +26,7 @@ brew "watchman"
 #
 tap "d12frosted/emacs-plus"
 brew "emacs-plus@29"
-brew "aspell"
+brew "hunspell"
 brew "gnu-indent"
 
 #
