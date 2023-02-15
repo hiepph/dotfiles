@@ -2,11 +2,11 @@
 # shell
 #
 brew "fish"
-# https://github.com/cheat/cheat
-brew "cheat"
 brew "stow"
 brew "ripgrep"
-brew "nushell"
+brew "rga"
+# required by rga
+brew "poppler"
 brew "direnv"
 brew "jump"
 brew "tmux"
