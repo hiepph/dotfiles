@@ -3,7 +3,9 @@ if status is-interactive
 end
 
 # Customs for each machine
-. ~/customs/fish.fish
+if test -f ~/customs/fish.fish
+    . ~/customs/fish.fish
+end
 
 # Abbreviations
 abbr -a -g g 'git'
