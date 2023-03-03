@@ -63,7 +63,6 @@
           "\\*Warnings\\*"
           "Output\\*$"
           "\\*Async Shell Command\\*"
-          "^magit: .*"
           help-mode
           compilation-mode))
   :config
