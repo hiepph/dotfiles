@@ -46,6 +46,10 @@
   :config
   (selectrum-prescient-mode +1))
 
+(use-package company-prescient
+  :config
+  (company-prescient-mode +1))
+
 
 ;;
 ;; Embark

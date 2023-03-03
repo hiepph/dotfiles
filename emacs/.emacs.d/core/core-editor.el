@@ -269,30 +269,12 @@ Supports MacOS (with Hammerspoon) for now."
 
 
 ;;
-;; Completion at point extensions
-;; ref: https://github.com/minad/cape
-;; ref: https://github.com/minad/corfu
+;; Company
 ;;
-(use-package corfu
-  :init
-  (global-corfu-mode))
-
-(use-package cape
-  :init
-  ;; Add `completion-at-point-functions', used by `completion-at-point'.
-  (add-to-list 'completion-at-point-functions #'cape-dabbrev)
-  (add-to-list 'completion-at-point-functions #'cape-file)
-  (add-to-list 'completion-at-point-functions #'cape-history)
-  (add-to-list 'completion-at-point-functions #'cape-keyword)
-  (add-to-list 'completion-at-point-functions #'cape-line)
-  (add-to-list 'completion-at-point-functions #'cape-ispell)
-  ;;(add-to-list 'completion-at-point-functions #'cape-tex)
-  ;;(add-to-list 'completion-at-point-functions #'cape-sgml)
-  ;;(add-to-list 'completion-at-point-functions #'cape-rfc1345)
-  ;;(add-to-list 'completion-at-point-functions #'cape-abbrev)
-  ;;(add-to-list 'completion-at-point-functions #'cape-dict)
-  ;;(add-to-list 'completion-at-point-functions #'cape-symbol)
-  )
+(use-package company
+  :config
+  ;; complete word with original cases
+  (setq companydabbrevdowncase nil))
 
 
 (provide 'core-editor)
