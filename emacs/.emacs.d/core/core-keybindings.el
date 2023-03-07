@@ -156,6 +156,9 @@
   ("\\" #'fci-mode "column")
   ("|" #'fci-global-mode "column (global)")
 
+  ("c" #'company-mode "company")
+  ("C" #'global-company-mode "company (global)")
+
   ("D" #'global-diff-hl-mode "diffhl (global)"))
 
 (defhydra hydra-dumb-jump (:color blue :columns 4)
@@ -299,12 +302,6 @@
   (global-set-key (kbd "<M-down>") 'windmove-down)
   (global-set-key (kbd "<M-up>") 'windmove-up)
 
-
-  ;;
-  ;; Ctrl combination
-  ;;
-  (global-set-key (kbd "C-/") 'completion-at-point)
-
   ;;
   ;; Main
   ;;
@@ -422,7 +419,15 @@
   ;;
   (general-define-key
    "C-`" 'popper-toggle-latest
-   "M-`" 'popper-cycle))
+   "M-`" 'popper-cycle)
+
+  ;;
+  ;; company
+  ;;
+  (general-define-key
+   :keymaps 'company-active-map
+   "C-n" 'company-select-next-or-abort
+   "C-p" 'company-select-previous-or-abort))
 
 
 (provide 'core-keybindings)
