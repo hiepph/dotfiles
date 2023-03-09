@@ -55,7 +55,10 @@
   ("m" #'hydra-mode/body "mode")
 
   ;; flyspell
-  ("s" #'hydra-spell/body "flyspell"))
+  ("s" #'hydra-spell/body "flyspell")
+
+  ;; helpful
+  ("?" #'hydra-helpful/body "helpful"))
 
 (defhydra hydra-projectile (:columns 4 :exit t)
   "Projectile"
@@ -248,16 +251,13 @@
   ("n" #'evil-next-flyspell-error "next")
   ("p" #'evil-prev-flyspell-error "previous"))
 
-(defhydra hydra-cape (:color blue :columns 4)
-  "Cape"
-  ("c" #'completion-at-point "completion-at-point")
-  ("t" #'completion-tag "tag")
-  ("w" #'cape-dabbrev "word")
-  ("l" #'cape-line "line")
-  ("h" #'cape-history "history")
-  ("f" #'cape-file "filename")
-  ("k" #'cape-keyword "keyword")
-  ("s" #'cape-ispell "ispell"))
+(defhydra hydra-helpful (:color blue :columns 4)
+  "Helpful"
+  ("f" #'helpful-callable "callable (function)")
+  ("k" #'helpful-key "key")
+  ("x" #'helpful-command "command")
+  ("v" #'helpful-variable "variable")
+  ("." #'helpful-at-point "at point"))
 
 ;;
 ;; general (leader keys)

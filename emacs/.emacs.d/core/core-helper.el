@@ -123,4 +123,12 @@
 ;; follow symlink
 (setq find-file-visit-truename t)
 
+
+;;
+;; A better *help* buffer
+;; ref: https://github.com/Wilfred/helpful
+;;
+(use-package helpful)
+
+
 (provide 'core-project)

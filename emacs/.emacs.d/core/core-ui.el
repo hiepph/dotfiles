@@ -69,6 +69,7 @@
           "\\*Warnings\\*"
           "Output\\*$"
           "\\*Async Shell Command\\*"
+          "\\*helpful.*"
           help-mode
           compilation-mode))
   :config

@@ -63,7 +63,7 @@
 ;; project management
 ;; buffers
 ;; dired
-(require 'core-project)
+(require 'core-helper)
 
 ;;
 (require 'core-search)
