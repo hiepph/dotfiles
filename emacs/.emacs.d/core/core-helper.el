@@ -131,4 +131,4 @@
 (use-package helpful)
 
 
-(provide 'core-project)
+(provide 'core-helper)
