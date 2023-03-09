@@ -74,8 +74,7 @@
 ;; Keybindings to rule them all
 (require 'core-keybindings)
 
-;; custom config for individual local machine, should not be committed
-;; put `core-custom.el` in `core/' to make effect
-(require 'core-custom nil 'noerror)
+;; custom config for individual machine
+(load "~/customs/emacs.el" nil 'noerror)
 
 (provide 'core)
