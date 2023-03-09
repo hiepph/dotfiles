@@ -48,7 +48,7 @@
 
 
 ;; Enable variable pitch mode will help rendering mixed fonts
-(add-hook 'text-mode-hook
+(add-hook 'org-mode-hook
           (lambda ()
             (variable-pitch-mode 1)))
 
@@ -67,19 +67,6 @@
           compilation-mode))
   :config
   (popper-mode +1))
-
-;;
-;; Custom fonts for some specific modes
-;;
-(progn
-  (add-hook 'yaml-mode-hook
-            (lambda ()
-              (setq buffer-face-mode-face (font-get (face-attribute 'default :font) :family))
-              (buffer-face-mode)))
-  (add-hook 'git-commit-mode-hook
-            (lambda ()
-              (setq buffer-face-mode-face (font-get (face-attribute 'default :font) :family))
-              (buffer-face-mode))))
 
 
 ;;
