@@ -32,19 +32,25 @@
 
 ;;
 ;; Indent line
-;; ref: https://github.com/zk-phi/indent-guide
+;; ref: https://github.com/antonj/Highlight-Indentation-for-Emacs
 ;;
-(use-package indent-guide)
+(use-package highlight-indentation
+  :config
+  (set-face-background 'highlight-indentation-face "#e3e3d3")
+  (set-face-background 'highlight-indentation-current-column-face "#c3b3b3"))
+(add-hook 'yaml-mode-hook 'highlight-indentation-mode)
+(add-hook 'yaml-mode-hook 'highlight-indentation-current-column-mode)
+
 
 ;; Use system font by default
 (setq font-use-system-font t)
 
 ;; Transparent title bar (e.g. for MacOS)
 (add-to-list
-  'default-frame-alist'(ns-transparent-titlebar . t))
+ 'default-frame-alist'(ns-transparent-titlebar . t))
 
 (add-to-list
-  'default-frame-alist'(ns-appearance . light))
+ 'default-frame-alist'(ns-appearance . light))
 
 
 ;; Enable variable pitch mode will help rendering mixed fonts
