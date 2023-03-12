@@ -65,8 +65,6 @@ Hammerspoon solves this problem by being a bridge to Mac's API. It uses Lua as s
   + Cons:
     - It does not follow POSIX shell standards. So if I want to run a common Bash or Zsh script, better use `bash script.sh`.
 
-+ Custom: `$HOME/customs/fish.fish`.
-
 
 # Emacs
 
@@ -75,21 +73,6 @@ A nice explanation of how doom-emacs can achieve state-of-the-art startup time i
 
 + Key bindings and literate functionalites are referred from [emacs-cmpitg](https://github.com/cmpitg/emacs-cmpitg)
 
-+ Create custom file for each machine
-  `~/.emacs.d/core/core-custom.el`, e.g.:
-
-```
-;; theme
-(use-package plan9-theme)
-(load-theme 'plan9 t)
-
-;; font
-(set-frame-font "Input Mono" nil t)
-(add-to-list 'default-frame-alist
-             '(font . "Input Mono"))
-
-(provide 'core-custom)
-```
 
 # Vim
 
