@@ -140,6 +140,7 @@
 ;; Flycheck
 ;;
 (use-package flycheck)
+(add-hook 'yaml-mode-hook 'flycheck-mode)
 
 
 ;;
@@ -274,7 +275,9 @@ Supports MacOS (with Hammerspoon) for now."
 (use-package company
   :config
   ;; complete word with original cases
-  (setq companydabbrevdowncase nil))
+  (setq companydabbrevdowncase nil)
+  :hook
+  ((emacs-lisp-mode) . company-mode))
 
 
 (provide 'core-editor)

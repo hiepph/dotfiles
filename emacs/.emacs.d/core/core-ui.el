@@ -41,6 +41,7 @@
 (add-hook 'yaml-mode-hook 'highlight-indentation-mode)
 (add-hook 'yaml-mode-hook 'highlight-indentation-current-column-mode)
 
+(add-hook 'python-mode-hook 'highlight-indentation-mode)
 
 ;; Use system font by default
 (setq font-use-system-font t)
