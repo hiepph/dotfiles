@@ -40,6 +40,7 @@
   (set-face-background 'highlight-indentation-current-column-face "#c3b3b3"))
 (add-hook 'yaml-mode-hook 'highlight-indentation-mode)
 (add-hook 'yaml-mode-hook 'highlight-indentation-current-column-mode)
+(add-hook 'python-mode-hook 'highlight-indentation-current-column-mode)
 
 
 ;; Use system font by default
