@@ -47,12 +47,10 @@
 
 ;;
 ;; Force indentation aggressively
-;; ref:
 ;;
 (use-package aggressive-indent
-  :config
-  (global-aggressive-indent-mode 1)
-  (add-to-list 'aggressive-indent-excluded-modes 'sh-mode))
+  :hook
+  ((emacs-lisp-mode) . aggressive-indent-mode))
 
 ;;
 ;; Pairs
