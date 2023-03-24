@@ -175,7 +175,8 @@
   ("?" #'magit-dispatch "help")
   ("l" #'magit-log-buffer-file "log history")
   ("d" #'magit-diff-buffer-file "diff")
-  ("b" #'magit-blame "blame"))
+  ("b" #'magit-blame "blame")
+  ("f" #'magit-file-checkout "check out file"))
 
 (defhydra hydra-org (:color blue :columns 4)
   "Org"
