@@ -146,7 +146,12 @@
 ;;
 ;; Emacs will automatically choose Aspell over Hunspell, then over Ispell.
 ;;
-(setenv "DICTIONARY" "en_GB-ise")
+(with-eval-after-load "ispell"
+  (setenv "DICTIONARY" "en_GB-ise")
+  (setq ispell-dictionary "en_GB-ise,en_GB")
+  (ispell-set-spellchecker-params)
+  (ispell-hunspell-add-multi-dic "en_GB-ise,en_GB"))
+
 
 ;; disable for log edit and change log
 (dolist (hook '(change-log-mode-hook log-edit-mode-hook))
