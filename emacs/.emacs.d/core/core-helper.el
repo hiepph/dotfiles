@@ -123,12 +123,40 @@
 ;; follow symlink
 (setq find-file-visit-truename t)
 
-
 ;;
 ;; A better *help* buffer
 ;; ref: https://github.com/Wilfred/helpful
 ;;
 (use-package helpful)
+
+
+
+;;
+;; Flyspell
+;;
+;; Emacs will automatically choose Aspell over Hunspell, then over Ispell.
+;;
+(with-eval-after-load "ispell"
+		      (setq ispell-program-name "hunspell")
+		      (setenv "DICTIONARY" "en_GB-ise,en_GB")
+		      (setq ispell-dictionary "en_GB-ise,en_GB")
+		      (ispell-set-spellchecker-params)
+		      (ispell-hunspell-add-multi-dic "en_GB-ise,en_GB"))
+
+
+;; disable for log edit and change log
+(dolist (hook '(change-log-mode-hook log-edit-mode-hook))
+  (add-hook hook (lambda () (flyspell-mode -1))))
+
+(define-globalized-minor-mode ~flyspell-global-mode
+  flyspell-mode
+  (lambda ()
+    (flyspell-mode t)))
+
+;; on automatically for text-mode
+(add-hook 'org-mode-hook 'flyspell-mode)
+
+
 
 
 (provide 'core-helper)

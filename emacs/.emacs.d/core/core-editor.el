@@ -142,31 +142,6 @@
 
 
 ;;
-;; Flyspell
-;;
-;; Emacs will automatically choose Aspell over Hunspell, then over Ispell.
-;;
-(with-eval-after-load "ispell"
-  (setenv "DICTIONARY" "en_GB-ise")
-  (setq ispell-dictionary "en_GB-ise,en_GB")
-  (ispell-set-spellchecker-params)
-  (ispell-hunspell-add-multi-dic "en_GB-ise,en_GB"))
-
-
-;; disable for log edit and change log
-(dolist (hook '(change-log-mode-hook log-edit-mode-hook))
-  (add-hook hook (lambda () (flyspell-mode -1))))
-
-(define-globalized-minor-mode ~flyspell-global-mode
-  flyspell-mode
-  (lambda ()
-    (flyspell-mode t)))
-
-;; on automatically for text-mode
-(add-hook 'org-mode-hook 'flyspell-mode)
-
-
-;;
 ;; Undo/Redo
 ;; ref: https://gitlab.com/ideasman42/emacs-undo-fu
 ;;
