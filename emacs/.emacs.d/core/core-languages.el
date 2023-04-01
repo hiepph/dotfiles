@@ -265,11 +265,12 @@
 ;; Enable async for code block
 (use-package ob-async)
 
-;; Beautify heading lists
-;; ref: https://github.com/sabof/org-bullets
-(use-package org-bullets
+;; Beautify lists
+(use-package org-superstar
   :hook
-  (org-mode . org-bullets-mode))
+  (org-mode . org-superstar-mode)
+  :config
+  (setq org-superstar-special-todo-items t))
 
 
 ;; Insert HTML attribute for image
