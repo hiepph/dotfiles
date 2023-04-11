@@ -112,12 +112,4 @@
   (global-evil-mc-mode))
 
 
-;;
-;; Set variables depends on mode
-;;
-
-(add-hook 'yaml-mode-hook (lambda ()
-                            (setq evil-shift-width 2)))
-
-
 (provide 'core-evil)
