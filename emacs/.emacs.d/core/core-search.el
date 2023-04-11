@@ -146,7 +146,7 @@ Number registers are not needed because it is easier to refer from the `yank-pop
                  (s-split
                   "\n"
                   (shell-command-to-string
-                   (format "rg -i --line-number --hidden -S -g '!.git' -F '%s' %s"
+                   (format "rg -i --no-ignore-vcs --line-number --hidden -S -g '!.git' -F '%s' %s"
                            q dir)))))
            (candidate (if (= (length res) 1)
                           (user-error (format "'%s' not found." q))
