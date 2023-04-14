@@ -1,28 +1,22 @@
 ;;
-;; LSP mode
-;; ref: https://github.com/emacs-lsp/lsp-mode
+;; Multiple languages
 ;;
-(use-package lsp-mode
-  :hook ((java-mode) . lsp-deferred)
-  :commands lsp)
-
-(use-package groovy-mode)
+(use-package js2-mode)
+(use-package typescript-mode)
+(use-package racket-mode)
+(use-package markdown-mode)
+(use-package julia-mode)
+(use-package zig-mode)
+(use-package nasm-mode)
+(use-package fish-mode)
+(use-package dockerfile-mode)
+(use-package graphviz-dot-mode)
 
 
 ;;
-;; Java
-;; ref: https://github.com/emacs-lsp/lsp-java
+;; Elisp
 ;;
 (use-package dash-functional)
-
-(use-package lsp-java
-  :requires (dash-functional)
-  :after lsp)
-
-(defun ~format-java ()
-  (interactive)
-  (progn (lsp-format-buffer)
-         (basic-save-buffer)))
 
 
 ;;
@@ -42,31 +36,10 @@
     (shell-command (format "zprint -w %s" fname) nil)))
 
 ;;
-;; Javascript
+;; Lua
 ;;
-(use-package js2-mode)
+(use-package lua-mode)
 
-;;
-;; Typescript
-;;
-(use-package typescript-mode)
-
-;;
-;; Racket
-;;
-(use-package racket-mode)
-
-
-;;
-;; markdown
-;;
-(use-package markdown-mode)
-
-
-;;
-;; julia
-;;
-(use-package julia-mode)
 
 
 ;;
@@ -92,17 +65,6 @@
     (shell-command (format "rubocop --auto-correct --format quiet --stderr %s" fname) nil)))
 
 
-;;
-;; Zig
-;;
-(use-package zig-mode)
-
-
-;;
-;; Assembly
-;;
-(use-package nasm-mode)
-
 :;
 ;; C
 ;;
@@ -127,7 +89,7 @@
 (use-package go-mode
   :config
   ;; format and import before saving
-  (setq gofmt-command "goimports") ; requires "goimports"
+  (setq gofmt-command "goimports")
   (add-hook 'before-save-hook 'gofmt-before-save))
 
 
@@ -149,24 +111,6 @@
 
 
 ;;
-;; Nix
-;;
-(use-package nix-mode
-  :mode "\\.nix\\'")
-
-
-;;
-;; Fish
-;;
-(use-package fish-mode)
-
-;;
-;; Lua
-;;
-(use-package lua-mode)
-
-
-;;
 ;; Yaml
 ;;
 (use-package yaml-mode)
@@ -182,11 +126,6 @@
   :hook
   (terraform-mode . terraform-format-on-save-mode))
 
-
-;;
-;; Docker
-;;
-(use-package dockerfile-mode)
 
 ;;
 ;; Org-mode
@@ -287,12 +226,6 @@
   (evil-open-below 1)
   (insert "[[./misc/image.png]]")
   (evil-force-normal-state))
-
-
-;;
-;; DOT-mode for Graphviz
-;;
-(use-package graphviz-dot-mode)
 
 
 ;;
