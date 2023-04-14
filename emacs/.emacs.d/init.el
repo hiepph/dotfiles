@@ -1,11 +1,6 @@
 ;; init.el --- Control all config files
 
 
-;; Startup-hack
-;; Avoid garbage collector at startup
-;; Enable gchm-mode later in core-packages
-(setq gc-cons-threshold most-positive-fixnum)
-
 ;; custom config location
 (setq custom-file (concat user-emacs-directory "custom.el"))
 

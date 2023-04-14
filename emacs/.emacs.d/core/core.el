@@ -42,10 +42,10 @@
 ;;
 ;; Garbage collector hacks
 ;;
-(use-package gcmh
-  :straight (gcmh :type git :host github :repo "emacsmirror/gcmh")
-  :init
-  (gcmh-mode 1))
+;; (use-package gcmh
+;;   :straight (gcmh :type git :host github :repo "emacsmirror/gcmh")
+;;   :init
+;;   (gcmh-mode 1))
 
 ;;
 ;; Modules
