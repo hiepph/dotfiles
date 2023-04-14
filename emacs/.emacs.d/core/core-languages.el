@@ -192,6 +192,10 @@
      (dot . t)
      (R . t)))
 
+
+  ;; disable some warning messages
+  (setq warning-suppress-types (append warning-suppress-types '((org-element-cache))))
+
   :hook
   ;; remove '<' autopair
   (org-mode . (lambda ()
