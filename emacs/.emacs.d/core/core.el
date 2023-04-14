@@ -3,7 +3,9 @@
 ;;
 
 ;; Changes all yes/no questions to y/n type
-(fset 'yes-or-no-p 'y-or-n-p)
+(if (version< emacs-version "28.1")
+    (defalias 'yes-or-no-p 'y-or-n-p)
+  (setq use-short-answers t))
 
 ;; No need for ~ files when editing
 (setq create-lockfiles nil)
