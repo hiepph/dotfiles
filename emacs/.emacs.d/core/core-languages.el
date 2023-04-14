@@ -212,11 +212,9 @@
 (use-package ob-async)
 
 ;; Beautify lists
-(use-package org-superstar
+(use-package org-bullets
   :hook
-  (org-mode . org-superstar-mode)
-  :config
-  (setq org-superstar-special-todo-items t))
+  (org-mode . (lambda () (org-bullets-mode 1))))
 
 
 ;; Insert HTML attribute for image

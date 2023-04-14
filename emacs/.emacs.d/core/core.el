@@ -2,6 +2,9 @@
 ;; Basic
 ;;
 
+;; Enable this to debug error messages
+;; (setq debug-on-error t)
+
 ;; Changes all yes/no questions to y/n type
 (if (version< emacs-version "28.1")
     (defalias 'yes-or-no-p 'y-or-n-p)
