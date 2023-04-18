@@ -153,7 +153,7 @@
   (setq org-src-preserve-indentation t)
 
   ;; Improve readability
-  (setq org-list-indent-offset 4)
+  ;; (setq org-list-indent-offset 4)
 
   ;; Turn on image by default
   (setq org-startup-with-inline-images t)
@@ -204,9 +204,6 @@
                                (if (char-equal c ?<)
                                    t
                                  (,electric-pair-inhibit-predicate c)))))))
-
-(add-hook 'org-mode-hook (lambda ()
-                           (setq evil-shift-width 4)))
 
 ;; Expand snippets defined in ~org-structure-template-alist~
 ;; e.g. <s TAB expands to ~#+begin_src~
