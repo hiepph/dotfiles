@@ -126,6 +126,12 @@
   :hook
   (terraform-mode . terraform-format-on-save-mode))
 
+;;
+;; Nix
+;;
+(use-package nix-mode
+  :mode "\\.nix\\'")
+
 
 ;;
 ;; Org-mode
