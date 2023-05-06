@@ -49,6 +49,16 @@
     pkgs.bat
     pkgs.fd
     pkgs.fzf
+    pkgs.stow
+    pkgs.jump
+    pkgs.tmux
+    pkgs.direnv
+    pkgs.ncdu
+    pkgs.jq
+    pkgs.yq
+    pkgs.jo
+    pkgs.wget
+    pkgs.htop
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the

@@ -8,8 +8,6 @@ to $HOME. This task is done by [GNU Stow](https://www.gnu.org/software/stow/manu
 stow <conf>
 ```
 
-The configuration is mostly done via a provisioner helper (not yet public). Each local machine requires an approximately 20% set of different configuration. For that reason, create a `$HOME/customs` directory and put in custom configurations.
-
 # Linux
 
 Some distros I'm using for my personal machine:
@@ -42,7 +40,7 @@ Some distros I'm using for my personal machine:
 But why mixing instead of committing to one?
 
 - I like Nix, but it doesn't support some packages for Darwin, yet.
-- Homebrew, on the other hand, has strong support from the community and I can find almost any package. But it messes with my systems (a.k.a `/usr/bin`) so I only use it to install some necessary packages.
+- Homebrew, on the other hand, has strong support from the community and I can find almost any package (e.g. `emacs`). But it messes with my systems (a.k.a `/usr/bin`) so I only use it to install some necessary packages. Sometimes I do like Homebrew to mutate my systems (e.g. `fish` shell).
 
 
 ## Homebrew
@@ -50,7 +48,6 @@ But why mixing instead of committing to one?
 ```bash
 cd homebrew
 brew bundle
- ```
 ```
 
 ## Nix

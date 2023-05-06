@@ -1,34 +1,15 @@
 #
-# shell
+# dots
 #
 brew "fish"
-brew "stow"
-brew "ripgrep"
-brew "rga"
-# required by rga
-brew "poppler"
-brew "direnv"
-brew "jump"
-brew "tmux"
-brew "fd"
-brew "bat"
-brew "fzf"
-brew "ncdu"
-brew "jq"
-brew "yq"
-brew "jo"
-brew "wget"
-brew "htop"
-brew "watchman"
-brew "dust"
+
+#
+# languages
+#
+brew "julia"
 
 #
 # editor
 #
 tap "d12frosted/emacs-plus"
 brew "emacs-plus@29"
-
-#
-# languages
-#
-brew "julia"
