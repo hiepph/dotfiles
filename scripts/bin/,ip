@@ -1,0 +1,26 @@
+#!/usr/bin/env fish
+
+#
+# IP utilities
+#
+# EXAMPLES:
+#
+# + show local v4:
+#   $ ,ip local
+#
+# + show public v4:
+#   $ ,ip public
+#
+if test (count $argv) -ne 1
+    echo ",ip {public|local}" >&2
+    exit 1
+end
+
+set subcommand $argv[1]
+
+switch $subcommand
+    case local
+        ipconfig getifaddr en0
+    case public
+        curl https://ipinfo.io/ip
+end

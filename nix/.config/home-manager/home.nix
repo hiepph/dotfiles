@@ -88,6 +88,7 @@ in
     ".tmux.conf".source = ./. + "${rootDir}/tmux/.tmux.conf";
     ".sqliterc".source = ./. + "${rootDir}/sqlite/.sqliterc";
     ".ideavimrc".source = ./. + "${rootDir}/intellij/.ideavimrc";
+    "bin".source = ./. + "${rootDir}/scripts/bin";
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''

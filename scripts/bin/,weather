@@ -1,0 +1,24 @@
+#!/usr/bin/env fish
+
+#
+# USAGE:
+#
+# + Default current location:
+#
+#   $ ,weather
+#
+# + Select a city:
+#
+#   $ ,weather Turin
+#
+#
+
+if test (count $argv) -lt 1
+    echo "Getting weather for current location..."
+    http wttr.in
+else
+    set city $argv[1]
+
+    echo "Getting weather for $city..."
+    http "wttr.in/$city"
+end

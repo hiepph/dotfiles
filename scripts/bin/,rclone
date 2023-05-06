@@ -1,0 +1,2 @@
+#!/usr/bin/env fish
+,sh rclone -P  --no-update-modtime --exclude '.DS_Store' $argv
