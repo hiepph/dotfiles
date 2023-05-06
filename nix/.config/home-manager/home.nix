@@ -81,6 +81,7 @@
     # # the Nix store. Activating the configuration will then make '~/.sqliterc' a
     # # symlink to the Nix store copy.
     ".sqliterc".source = sqlite/.sqliterc;
+    ".hammerspoon".source = hammerspoon/.hammerspoon;
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''

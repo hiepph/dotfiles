@@ -72,6 +72,12 @@ nix-shell '<home-manager>' -A install
 - Shell are not managed with `home-manager` though, for stability reason.
 
 
+- When you need to make change to the packages, edit `~/.config/home-manager/home.nix` and:
+
+```bash
+home-manager switch
+```
+
 ## Hammerspoon: desktop automation
 
 `mac/.hammerspoon`
