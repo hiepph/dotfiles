@@ -37,11 +37,41 @@ Some distros I'm using for my personal machine:
 
 # Mac
 
-+ [Homebrew](https://brew.sh/) is my default package manager.
+[Homebrew](https://brew.sh/) and [Nix](https://nixos.org/) are used to manage packages.
+
+But why mixing instead of committing to one?
+
+- I like Nix, but it doesn't support some packages for Darwin, yet.
+- Homebrew, on the other hand, has strong support from the community and I can find almost any package. But it messes with my systems (a.k.a `/usr/bin`) so I only use it to install some necessary packages.
+
+
+## Homebrew
 
 ```bash
+cd homebrew
 brew bundle
+ ```
 ```
+
+## Nix
+
+- Use the `nix-installer` from [Determinate Systems](https://zero-to-nix.com/) to install Nix on my Mac.
+
+```bash
+curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+```
+
+
+- Install [home-manager](https://nix-community.github.io/home-manager/index.html):
+
+```bash
+nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
+nix-channel --update
+
+set NIX_PATH $HOME/.nix-defexpr/channels /nix/var/nix/profiles/per-user/root/channels
+nix-shell '<home-manager>' -A install
+```
+
 
 ## Hammerspoon: desktop automation
 
