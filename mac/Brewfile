@@ -27,40 +27,8 @@ brew "dust"
 #
 tap "d12frosted/emacs-plus"
 brew "emacs-plus@29"
-brew "hunspell"
-brew "gnu-indent"
-
-#
-# dev
-#
-brew "cmake"
-brew "nasm"
-
-#
-# ops
-#
-brew "pass"
-brew "borgbackup"
-brew "terraform"
-cask "google-cloud-sdk"
-brew "kubectx"
-brew "minikube"
-brew "nmap"
-brew "rclone"
-brew "telnet"
-
-tap "turbot/tap"
-brew "steampipe"
-
-#
-# os
-#
-brew "qemu"
-cask "vagrant"
 
 #
 # languages
 #
-brew "go"
 brew "julia"
-brew "graphviz"
