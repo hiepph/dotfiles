@@ -84,6 +84,8 @@ in
     # # the Nix store. Activating the configuration will then make '~/.sqliterc' a
     # # symlink to the Nix store copy.
     ".hammerspoon".source = modules/hammerspoon/.hammerspoon;
+    ".vimrc".source = ./. + "${rootDir}/vim/.vimrc";
+    ".tmux.conf".source = ./. + "${rootDir}/tmux/.tmux.conf";
     ".sqliterc".source = ./. + "${rootDir}/sqlite/.sqliterc";
     ".ideavimrc".source = ./. + "${rootDir}/intellij/.ideavimrc";
 
