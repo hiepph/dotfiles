@@ -99,6 +99,8 @@
   #  /etc/profiles/per-user/hiepph/etc/profile.d/hm-session-vars.sh
   #
   # if you don't want to manage your shell through Home Manager.
+
+  # Only available when set `programs.fish.enable = true`
   home.sessionVariables = {
     # EDITOR = "emacs";
   };

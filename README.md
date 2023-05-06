@@ -69,6 +69,8 @@ set NIX_PATH $HOME/.nix-defexpr/channels /nix/var/nix/profiles/per-user/root/cha
 nix-shell '<home-manager>' -A install
 ```
 
+- Shell are not managed with `home-manager` though, for stability reason.
+
 
 ## Hammerspoon: desktop automation
 
