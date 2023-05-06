@@ -80,8 +80,6 @@ home-manager switch
 
 ## Hammerspoon: desktop automation
 
-`mac/.hammerspoon`
-
 I missed [i3](https://i3wm.org/) on my Mac. I tried [Rectangle](https://rectangleapp.com/) to bring
 back the feeling of tiling windows but it lacks the power of declarative configuration.
 

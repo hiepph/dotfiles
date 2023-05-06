@@ -1,5 +1,8 @@
 { config, pkgs, ... }:
 
+let
+  rootDir = "/../../..";
+in
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -80,8 +83,9 @@
     # # Building this configuration will create a copy of 'sqlite/.sqliterc' in
     # # the Nix store. Activating the configuration will then make '~/.sqliterc' a
     # # symlink to the Nix store copy.
-    ".sqliterc".source = sqlite/.sqliterc;
-    ".hammerspoon".source = hammerspoon/.hammerspoon;
+    ".hammerspoon".source = modules/hammerspoon/.hammerspoon;
+    ".sqliterc".source = ./. + "${rootDir}/sqlite/.sqliterc";
+    ".ideavimrc".source = ./. + "${rootDir}/intellij/.ideavimrc";
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
