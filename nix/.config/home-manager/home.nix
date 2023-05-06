@@ -23,7 +23,10 @@ in
   home.packages = [
     # ops
     pkgs.google-cloud-sdk
+    pkgs.awscli2
+    pkgs.steampipe # query cloud resources with SQL
     pkgs.terraform
+    (pkgs.pulumi.withPackages (ps: [ ps.pulumi-language-go ]))
     pkgs.rclone
     pkgs.pass
     pkgs.borgbackup
@@ -31,7 +34,6 @@ in
     pkgs.minikube
     pkgs.nmap
     pkgs.inetutils
-    pkgs.steampipe
     pkgs.vagrant
     pkgs.qemu
 
