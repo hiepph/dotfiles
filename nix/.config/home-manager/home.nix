@@ -46,6 +46,7 @@ in
     pkgs.graphviz
 
     # editor
+    pkgs.emacs
     pkgs.hunspell
 
     # dots
