@@ -7,9 +7,3 @@ brew "fish"
 # languages
 #
 brew "julia"
-
-#
-# editor
-#
-tap "d12frosted/emacs-plus"
-brew "emacs-plus@29"
