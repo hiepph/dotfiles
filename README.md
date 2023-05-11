@@ -101,10 +101,11 @@ Hammerspoon solves this problem by being a bridge to Mac's API. It uses Lua as s
 
 # Emacs
 
-+ Config structure and performance optimization are referred from [doom-emacs](https://github.com/hlissner/doom-emacs/).
-A nice explanation of how doom-emacs can achieve state-of-the-art startup time is on the reddit discussion: [How is Doom Emacs so damn fast](https://www.reddit.com/r/emacs/comments/f3ed3r/how_is_doom_emacs_so_damn_fast)
+I decided to switch (and possibly contribute) to [doom-emacs](https://github.com/hlissner/doom-emacs/) instead of writing my vanilla Emacs configurations. 
 
-+ Key bindings and literate functionalites are referred from [emacs-cmpitg](https://github.com/cmpitg/emacs-cmpitg)
+I want to contribute and learn best practice from community, at least until I'm confident enough to maintain my own configurations.
+
+My Doom Emacs' configuration lives in `emacs/.doom.d`.
 
 
 # Vim
