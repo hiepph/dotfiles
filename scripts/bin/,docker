@@ -1,0 +1,28 @@
+#!/usr/bin/env fish
+
+
+#
+# Docker utilities
+#
+# EXAMPLES:
+#
+# + Clean up: e.g. <none> images
+#   $ ,docker clean
+#
+function show_help
+    echo ",docker {clean}" >&2
+    exit 1
+end
+
+if test (count $argv) -ne 1
+    show_help
+end
+
+set subcommand $argv[1]
+
+switch $subcommand
+    case clean
+        ,sh docker image rm -f (docker images -f "dangling=true" -q)
+    case *
+        show_help
+end
