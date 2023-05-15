@@ -89,6 +89,12 @@
   ;; show special symbols
   (setq org-pretty-entities t))
 
+(after! ispell
+  (setenv "DICTIONARY" "en_GB-ise")
+  (setq ispell-dictionary "en_GB-ise,en_GB")
+  (ispell-set-spellchecker-params)
+  (ispell-hunspell-add-multi-dic "en_GB-ise,en_GB"))
+
 
 ;; custom configurations for individual machine
 (load "~/customs/emacs.el" nil 'noerror)
