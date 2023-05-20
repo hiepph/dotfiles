@@ -31,6 +31,3 @@ end
 # default edit everything with vim
 set -x VISUAL vim
 set -x EDITOR vim
-
-# Conda integration
-status is-interactive && eval ~/miniconda3/bin/conda "shell.fish" "hook" $argv | source
