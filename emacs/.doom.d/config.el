@@ -95,6 +95,9 @@
   (ispell-set-spellchecker-params)
   (ispell-hunspell-add-multi-dic "en_GB-ise,en_GB"))
 
+(use-package! terraform-mode
+  :hook
+  (terraform-mode . terraform-format-on-save-mode))
 
 ;; custom configurations for individual machine
 (load "~/customs/emacs.el" nil 'noerror)
