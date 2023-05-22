@@ -75,6 +75,10 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+;;
+;; Packages
+;;
 (use-package! org
   :init
   ;; Turn on image by default
@@ -99,5 +103,17 @@
   :hook
   (terraform-mode . terraform-format-on-save-mode))
 
+(put 'projectile-grep 'disabled nil)
+
+
+;;
+;; Customs keybindings
+;;
+(map! :leader
+      :desc "Yank from killring"
+      "y" #'consult-yank-pop)
+
+;;
 ;; custom configurations for individual machine
+;;
 (load "~/customs/emacs.el" nil 'noerror)
