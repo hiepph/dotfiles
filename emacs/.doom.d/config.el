@@ -113,6 +113,12 @@
       :desc "Yank from killring"
       "y" #'consult-yank-pop)
 
+(map! :desc "Org - Display inline image"
+      :after org
+      :map org-mode-map
+      :localleader
+      "v" #'org-display-inline-images)
+
 ;;
 ;; custom configurations for individual machine
 ;;
