@@ -119,6 +119,13 @@
       :localleader
       "v" #'org-display-inline-images)
 
+(map! :desc "Projectile - Grep the project"
+      :after projectile
+      :map projectile-mode-map
+      :localleader
+      "/" #'projectile-grep)
+
+
 ;;
 ;; custom configurations for individual machine
 ;;
