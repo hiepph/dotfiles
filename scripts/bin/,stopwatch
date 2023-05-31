@@ -1,0 +1,24 @@
+#!/usr/bin/env python
+
+import time
+import sys
+
+
+def print_time(elapsed: float, clear_screen: bool = False):
+    print(time.strftime("%H:%M:%S", time.gmtime(elapsed)),
+          end='\r' if clear_screen else '')
+
+
+start = time.time()
+while True:
+    elapsed = time.time() - start
+    try:
+        print_time(elapsed, clear_screen=True)
+
+        time.sleep(0.3)
+    except KeyboardInterrupt:
+        sys.stdout.write('\r') # clear ^C
+        sys.stdout.flush()
+
+        print_time(elapsed)
+        exit(0)
