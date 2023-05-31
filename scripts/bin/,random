@@ -1,0 +1,34 @@
+#!/usr/bin/env fish
+
+#
+# Random utilities
+#
+# EXAMPLES:
+#
+# + Random password
+#   $ ,ip password -l 20
+#
+
+function show_help
+    echo ",random {password} [--length/-l PASSWORD_LENGTH]" >&2
+    exit 1
+end
+
+argparse 'l/length=' -- $argv
+or show_help
+
+if test (count $argv) -ne 1
+    show_help
+end
+
+set subcommand $argv[1]
+switch $subcommand
+    case password
+        if set -q _flag_length
+            openssl rand -base64 $_flag_length
+        else
+            openssl rand -base64 12
+        end
+    case \*
+        show_help
+end
