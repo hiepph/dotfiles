@@ -26,7 +26,6 @@ in
     pkgs.awscli2
     pkgs.steampipe # query cloud resources with SQL
     pkgs.terraform
-    (pkgs.pulumi.withPackages (ps: [ ps.pulumi-language-go ps.pulumi-language-python ]))
     pkgs.rclone
     pkgs.pass
     pkgs.borgbackup
