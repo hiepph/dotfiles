@@ -6,7 +6,7 @@
 # EXAMPLES:
 #
 # + Random password
-#   $ ,ip password -l 20
+#   $ ,random password -l 20
 #
 
 function show_help
