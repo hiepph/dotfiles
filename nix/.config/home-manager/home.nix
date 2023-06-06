@@ -86,12 +86,9 @@ in
     # # Building this configuration will create a copy of 'sqlite/.sqliterc' in
     # # the Nix store. Activating the configuration will then make '~/.sqliterc' a
     # # symlink to the Nix store copy.
-    ".hammerspoon".source = modules/hammerspoon/.hammerspoon;
-    ".vimrc".source = ./. + "${rootDir}/vim/.vimrc";
     ".tmux.conf".source = ./. + "${rootDir}/tmux/.tmux.conf";
     ".sqliterc".source = ./. + "${rootDir}/sqlite/.sqliterc";
     ".ideavimrc".source = ./. + "${rootDir}/intellij/.ideavimrc";
-    "bin".source = ./. + "${rootDir}/scripts/bin";
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
