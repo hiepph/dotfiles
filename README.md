@@ -8,6 +8,8 @@ This task is done by [GNU Stow](https://www.gnu.org/software/stow/manual/stow.ht
 stow <module>
 ```
 
+Not every module here can be stowed though.
+
 # Linux
 
 Some distros I'm using for my personal machine:
