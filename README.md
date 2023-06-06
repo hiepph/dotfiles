@@ -90,6 +90,15 @@ home.file = {
 ```
 
 
+### Issues
+
+- Broken `home-manager`? Update Nix's channel to pull fixes:
+
+``` bash
+nix-channel --update
+```
+
+
 ## Hammerspoon: desktop automation
 
 I missed [i3](https://i3wm.org/) on my Mac. I tried [Rectangle](https://rectangleapp.com/) to bring
