@@ -20,7 +20,12 @@ set subcommand $argv[1]
 
 switch $subcommand
     case local
-        ipconfig getifaddr en0
+        switch (uname)
+            case Linux
+                hostname -I | awk '{print $1};'
+            case \*
+                ipconfig getifaddr en0
+        end
     case public
         curl https://ipinfo.io/ip
 end
