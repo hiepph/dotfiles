@@ -26,7 +26,6 @@ in
     pkgs.awscli2
     pkgs.steampipe # query cloud resources with SQL
     pkgs.terraform
-    (pkgs.pulumi.withPackages (ps: [ ps.pulumi-language-go ps.pulumi-language-python ]))
     pkgs.rclone
     pkgs.pass
     pkgs.borgbackup
@@ -65,6 +64,7 @@ in
     pkgs.jo
     pkgs.wget
     pkgs.htop
+    pkgs.lf # terminal file manager, ranger-inspired
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -87,11 +87,9 @@ in
     # # the Nix store. Activating the configuration will then make '~/.sqliterc' a
     # # symlink to the Nix store copy.
     ".hammerspoon".source = modules/hammerspoon/.hammerspoon;
-    ".vimrc".source = ./. + "${rootDir}/vim/.vimrc";
     ".tmux.conf".source = ./. + "${rootDir}/tmux/.tmux.conf";
     ".sqliterc".source = ./. + "${rootDir}/sqlite/.sqliterc";
     ".ideavimrc".source = ./. + "${rootDir}/intellij/.ideavimrc";
-    "bin".source = ./. + "${rootDir}/scripts/bin";
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''

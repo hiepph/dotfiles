@@ -2,6 +2,13 @@
 # dots
 #
 brew "fish"
+brew "dust" # ncdu, in rust
+
+
+#
+# ops
+#
+brew "pulumi" # IaC
 
 #
 # languages

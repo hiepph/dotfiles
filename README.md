@@ -1,12 +1,14 @@
 # Stow
 
-Mainly I structure my configurations follow their paths starting from
-$HOME. To activate the configuration, symlink the corresponding folder
-to $HOME. This task is done by [GNU Stow](https://www.gnu.org/software/stow/manual/stow.html).
+Mainly I structure my modules follow their paths starting from `$HOME`. To activate the module, symlink the corresponding folder to `$HOME`. 
+
+This task is done by [GNU Stow](https://www.gnu.org/software/stow/manual/stow.html).
 
 ```
-stow <conf>
+stow <module>
 ```
+
+Not every module here can be stowed though.
 
 # Linux
 
@@ -77,6 +79,27 @@ nix-shell '<home-manager>' -A install
 ```bash
 home-manager switch
 ```
+
+### Symlink with `home-manager`
+
+- `stow` is used when changes are made often: e.g. `fish`, `vim`.
+- Otherwise, some modules are managed and symlinked with `home-manager`. Check what modules are managed with `home-manager` in `home-manager/home.nix`:
+
+```nix
+home.file = { 
+  ...
+}
+```
+
+
+### Issues
+
+- Broken `home-manager`? Update Nix's channel to pull fixes:
+
+``` bash
+nix-channel --update
+```
+
 
 ## Hammerspoon: desktop automation
 

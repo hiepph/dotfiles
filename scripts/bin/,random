@@ -6,11 +6,11 @@
 # EXAMPLES:
 #
 # + Random password
-#   $ ,ip password -l 20
+#   $ ,random password -l 20
 #
 
 function show_help
-    echo ",random {password} [--length/-l PASSWORD_LENGTH]" >&2
+    echo ",random password [--length/-l PASSWORD_LENGTH]" >&2
     exit 1
 end
 

@@ -23,6 +23,6 @@ set subcommand $argv[1]
 switch $subcommand
     case clean
         ,sh docker image rm -f (docker images -f "dangling=true" -q)
-    case *
+    case \*
         show_help
 end
