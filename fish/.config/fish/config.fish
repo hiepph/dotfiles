@@ -3,8 +3,8 @@ if status is-interactive
 end
 
 # Customs for each machine
-if test -f ~/customs/fish.fish
-    . ~/customs/fish.fish
+if test -f ~/customs/env.fish
+    . ~/customs/env.fish
 end
 
 # Abbreviations
