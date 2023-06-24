@@ -105,6 +105,12 @@
 
 (put 'projectile-grep 'disabled nil)
 
+(use-package! go-mode
+  :init
+  (add-hook 'before-save-hook 'gofmt-before-save)
+  :config
+  (setq gofmt-command "goimports"))
+
 
 ;;
 ;; Customs keybindings
