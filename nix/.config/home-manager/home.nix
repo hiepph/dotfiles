@@ -58,7 +58,6 @@ in
     pkgs.jump
     pkgs.tmux
     pkgs.direnv
-    pkgs.ncdu
     pkgs.jq
     pkgs.yq
     pkgs.jo
