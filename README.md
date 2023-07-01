@@ -64,9 +64,15 @@ curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix 
 - Install [home-manager](https://nix-community.github.io/home-manager/index.html):
 
 ```bash
+# with an unstable channel
 nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
-nix-channel --update
 
+# with a stable channel (23.5)
+nix-channel --add https://github.com/nix-community/home-manager/archive/release-23.05.tar.gz home-manager
+```
+
+``` bash
+nix-channel --update
 set NIX_PATH $HOME/.nix-defexpr/channels /nix/var/nix/profiles/per-user/root/channels
 nix-shell '<home-manager>' -A install
 ```
@@ -92,12 +98,30 @@ home.file = {
 ```
 
 
-### Issues
+### Rollbacks
 
-- Broken `home-manager`? Update Nix's channel to pull fixes:
+- List generations:
 
 ``` bash
-nix-channel --update
+home-manager generations
+```
+
+- Perform the rollback:
+
+``` bash
+/nix/store/...-home-manager-generation/activate
+```
+
+
+### Issues
+
+- Broken `home-manager`? Update Nix's channel to pull fixes and install `home-manager` again:
+
+``` bash
+nix-channel --add <fixed-channel> home-manager
+nix-channel --update 
+
+home-manager switch
 ```
 
 
