@@ -62,7 +62,6 @@ in
     pkgs.jo
     pkgs.wget
     pkgs.htop
-    pkgs.clipboard-jh
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
