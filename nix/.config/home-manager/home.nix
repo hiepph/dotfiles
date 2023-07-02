@@ -28,7 +28,6 @@ in
     pkgs.terraform
     pkgs.rclone
     pkgs.pass
-    pkgs.borgbackup
     pkgs.kubectx
     pkgs.minikube
     pkgs.nmap
@@ -63,6 +62,7 @@ in
     pkgs.jo
     pkgs.wget
     pkgs.htop
+    pkgs.clipboard-jh
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
