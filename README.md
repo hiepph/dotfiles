@@ -163,6 +163,33 @@ My Doom Emacs' configuration lives in `emacs/.doom.d`.
 colorscheme alduin
 ```
 
+# Ansible
+
+Used for mutable setup.
+
+1. Edit `/etc/ansible/hosts`:
+    
+```
+[local]
+localhost   ansible_connection=local
+```
+
+2. Run the playbook:
+
+- With root permission:
+        
+``` bash
+ansible-playbook -l local <setup>.yml -K
+```
+
+    
+- Without root permission:
+        
+``` bash
+ansible-playbook -l local <setup>.yml
+```
+
+
 
 # Themes
 
