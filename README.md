@@ -198,3 +198,26 @@ Below is an awesome list of themes done in style. All are eye-care themes.
 + [Nord](https://www.nordtheme.com/)
 + [Solarized](https://ethanschoonover.com/solarized/)
 + [Plan9/Acme](https://github.com/john2x/plan9-theme.el)
+
+
+# Mouse
+
+## Logitech MX Master 3
+
++ Driver on Linux: [logiops](https://github.com/PixlOne/logiops)
+  + Key codes can be found [here](https://github.com/torvalds/linux/blob/master/include/uapi/linux/input-event-codes.h)
+
++ Put the configuration in `mx-master-3/<desktop>/logid.cfg` at `/etc/logid.cfg`:
+
++ Start/Enable the service:
+
+``` bash
+
+sudo systemctl enable --now logid
+```
+
++ Restart the service:
+
+``` bash
+sudo systemctl restart logid
+```
