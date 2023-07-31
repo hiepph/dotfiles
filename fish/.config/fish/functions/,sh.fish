@@ -1,19 +1,25 @@
+#
+# USAGE:
+# - Run a command. The command and its argument are logged to stdout.
+#   Result's stderr is *omitted* unless there is an error.
+#   When there is an error, the script exits with result's status code.
+#
+#   $ ,sh ls -alh
+#
 function ,sh --description "Execute a command, verbosely"
-    echo -e "\t\$ $argv" >&2
+    echo -e "\t\$ $argv"
 
     set tmp_dir (mktemp -d)
     set err_log $tmp_dir/,sh.err
 
-    $argv[1..-1] 2>$err_log
+    $argv 2>$err_log
     set code $status
 
     if test $status -ne 0
-        ,throw "Command failed: \"$argv[1..-1]\" with status code: $code"
-
-        ,throw "STDERR: "
-        cat $err_log >&2
-        ,throw ""
-
+        ,log --error "Command failed: \"$argv\" with status code: $code"
+        if test -f $err_log
+            cat $err_log >&2
+        end
         exit $code
     end
 end
