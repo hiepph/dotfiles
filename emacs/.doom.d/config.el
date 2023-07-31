@@ -79,6 +79,8 @@
 ;;
 ;; Packages
 ;;
+
+;; Docs
 (use-package! org
   :init
   ;; Turn on image by default
@@ -99,12 +101,15 @@
   (ispell-set-spellchecker-params)
   (ispell-hunspell-add-multi-dic "en_GB-ise,en_GB"))
 
+
+;; Ops
 (use-package! terraform-mode
   :hook
   (terraform-mode . terraform-format-on-save-mode))
 
 (put 'projectile-grep 'disabled nil)
 
+;; Languages
 (use-package! go-mode
   :init
   (add-hook 'before-save-hook 'gofmt-before-save)
