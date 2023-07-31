@@ -1,10 +1,5 @@
-function log_error
-    echo -e "\t> $argv[1]" >&2
-end
-
-
 function ,sh --description "Execute a command, verbosely"
-    echo -e "\t\$ $argv"
+    echo -e "\t\$ $argv" >&2
 
     set tmp_dir (mktemp -d)
     set err_log $tmp_dir/,sh.err
@@ -13,14 +8,12 @@ function ,sh --description "Execute a command, verbosely"
     set code $status
 
     if test $status -ne 0
-        log_error "Command failed: \"$argv[1..-1]\" with status code: $code"
+        ,throw "Command failed: \"$argv[1..-1]\" with status code: $code"
 
-        log_error "STDERR: "
+        ,throw "STDERR: "
         cat $err_log >&2
-        log_error ""
+        ,throw ""
 
         exit $code
     end
-
-    echo ""
 end
