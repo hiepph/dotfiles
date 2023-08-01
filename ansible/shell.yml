@@ -1,0 +1,12 @@
+- hosts: all
+  name: Install essential toolboxes
+  tags:
+    - tools
+  tasks:
+    - name: install useful packages
+      pip:
+        name:
+          - httpie # curl alternatives
+          - glances # htop alternatives
+          - speedtest-cli
+          - jc # https://github.com/kellyjonbrazil/jc
