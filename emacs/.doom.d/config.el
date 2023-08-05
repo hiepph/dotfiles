@@ -139,6 +139,12 @@
       :localleader
       "/" #'projectile-grep)
 
+;;
+;; Projects
+;;
+(use-package! projectile
+  :init
+  (setq projectile-enable-caching nil))
 
 ;;
 ;; custom configurations for individual machine
