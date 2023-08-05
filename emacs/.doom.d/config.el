@@ -93,7 +93,10 @@
   (setq org-startup-with-latex-preview t)
 
   ;; show special symbols
-  (setq org-pretty-entities t))
+  (setq org-pretty-entities t)
+
+  :config
+  (setq org-roam-directory (file-truename "~/Notes/Roam")))
 
 (after! ispell
   (setenv "DICTIONARY" "en_GB-ise")
