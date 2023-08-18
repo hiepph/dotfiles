@@ -49,7 +49,6 @@ in
 
     # dots
     pkgs.ripgrep
-    pkgs.ripgrep-all
     pkgs.bat
     pkgs.fd
     pkgs.fzf
