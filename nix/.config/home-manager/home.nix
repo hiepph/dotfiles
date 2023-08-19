@@ -62,7 +62,6 @@ in
     pkgs.jo
     pkgs.wget
     pkgs.htop
-    pkgs.nushell # a new type of shell
     pkgs.tokei # count your code, quickly
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
