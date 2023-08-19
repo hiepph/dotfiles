@@ -34,6 +34,7 @@ in
     pkgs.inetutils
     pkgs.vagrant
     pkgs.qemu
+    pkgs.colima # Container runtimes on macOS (and Linux) with minimal setup
 
     # dev
     pkgs.cmake
