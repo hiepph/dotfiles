@@ -1,0 +1,2 @@
+#!/usr/bin/env fish
+$argv[1..-1] & disown
