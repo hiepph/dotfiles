@@ -34,6 +34,7 @@ in
     pkgs.inetutils
     pkgs.vagrant
     pkgs.qemu
+    pkgs.colima # Container runtimes on macOS (and Linux) with minimal setup
 
     # dev
     pkgs.cmake
@@ -49,7 +50,6 @@ in
 
     # dots
     pkgs.ripgrep
-    pkgs.ripgrep-all
     pkgs.bat
     pkgs.fd
     pkgs.fzf
@@ -62,7 +62,7 @@ in
     pkgs.jo
     pkgs.wget
     pkgs.htop
-    pkgs.nushell
+    pkgs.tokei # count your code, quickly
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the

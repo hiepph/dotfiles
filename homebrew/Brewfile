@@ -2,6 +2,7 @@
 # dots
 #
 brew "fish"
+brew "nushell"
 brew "dust" # ncdu, in rust
 brew "borgbackup"
 
