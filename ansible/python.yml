@@ -1,0 +1,50 @@
+- hosts: all
+  name: install essential packages
+  tags:
+    - packages
+  vars:
+    - conda_env: 'base'
+  pre_tasks:
+    - name: get current environment
+      shell: echo $CONDA_DEFAULT_ENV
+      register: current_conda_env
+    - name: check current environment
+      fail:
+        msg: The conda environment must be '{{ conda_env }}'
+      when: current_conda_env.stdout != conda_env
+  tasks:
+    - name: ansible with batteries included
+      pip:
+        name:
+          - passlib # encrypt password
+          - pyOpenSSL # interact with OpenSSL
+    - name: testing tool
+      pip:
+        name: pytest
+    - name: dev tools
+      pip:
+        name:
+          - 'python-lsp-server'
+          - 'ruff'
+
+# REVIEW
+
+# - hosts: local
+#   name: Install miniconda
+#   tags:
+#     - conda
+#   vars:
+#     - home_dir: "{{ lookup('env', 'HOME') }}"
+#     - download_dir: "{{ home_dir }}/Downloads"
+#     - conda_dir: "{{ home_dir }}/miniconda3"
+#     - conda_version: "py38_4.12.0"
+#   tasks:
+#     - name: Download installation file
+#       get_url:
+#         url: "https://repo.anaconda.com/miniconda/Miniconda3-{{ conda_version }}-Linux-x86_64.sh"
+#         dest: "{{ download_dir }}/Miniconda3-{{ conda_version }}-Linux-x86_64.sh"
+
+#     - name: installing...
+#       command: "bash {{ downloaded_file.stat.path }} -b -p {{ conda_dir }}"
+#       args:
+#         creates: "{{ conda_dir }}"
