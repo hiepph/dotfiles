@@ -28,6 +28,12 @@ if type -q jump
     jump shell fish | source
 end
 
+# integrate zoxide
+# refer: https://github.com/ajeetdsouza/zoxide
+if type -q zoxide
+    zoxide init fish | source
+end
+
 # default edit everything with vim
 set -x VISUAL vim
 set -x EDITOR vim
