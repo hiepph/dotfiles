@@ -48,7 +48,7 @@ in
     pkgs.emacs
     pkgs.hunspell
 
-    # dots
+    # shell
     pkgs.ripgrep
     pkgs.bat
     pkgs.fd
@@ -63,6 +63,7 @@ in
     pkgs.wget
     pkgs.htop
     pkgs.tokei # count your code, quickly
+    pkgs.zoxide # smarter cd
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
