@@ -26,6 +26,12 @@
         name:
           - 'python-lsp-server'
           - 'ruff'
+          - 'yamllint'
+    - name: useful tools
+      pip:
+        name:
+          - 'click' # CLI
+          - 'borgmatic' # backup
 
 # REVIEW
 
