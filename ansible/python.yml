@@ -36,6 +36,7 @@
           - 'click' # CLI
           - 'borgmatic' # backup
           - 'glances' # monitoring
+          - 'pip-autoremove' # remove a package together with unused dependencies
 
 # REVIEW
 
