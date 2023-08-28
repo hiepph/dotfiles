@@ -232,5 +232,5 @@ sudo systemctl restart logid
 - Mac: 
 
 ``` bash
-ln -s firefox/user.js "$HOME/Library/Application Support/Firefox/Profiles"
+ln -s $PWD/firefox/user.js "$HOME/Library/Application Support/Firefox/Profiles"
 ```
