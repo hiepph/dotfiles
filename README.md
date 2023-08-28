@@ -221,3 +221,16 @@ sudo systemctl enable --now logid
 ``` bash
 sudo systemctl restart logid
 ```
+
+
+# Firefox
+
+- I follow recommendations from [Betterfox](https://github.com/yokoffing/BetterFox)
+
+- Note that editing `about:config` won't take effect if you have `user.js` inside your profiles. `user.js` will reset all of your changes when start a new browser.
+
+- Mac: 
+
+``` bash
+ln -s firefox/user.js "$HOME/Library/Application Support/Firefox/Profiles"
+```
