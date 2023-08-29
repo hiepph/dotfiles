@@ -42,7 +42,6 @@
         name:
           - 'click' # CLI
           - 'borgmatic' # backup
-          - 'glances' # htop alternatives
           - 'pip-autoremove' # remove a package together with unused dependencies
           - 'httpie' # curl alternatives
           - 'speedtest-cli'
