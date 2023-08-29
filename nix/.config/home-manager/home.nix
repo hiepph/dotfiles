@@ -26,6 +26,7 @@ in
     pkgs.awscli2
     pkgs.steampipe # query cloud resources with SQL
     pkgs.terraform
+    pkgs.terragrunt # DRY terraform
     pkgs.rclone
     pkgs.pass
     pkgs.kubectx
@@ -35,6 +36,7 @@ in
     pkgs.vagrant
     pkgs.qemu
     pkgs.colima # Container runtimes on macOS (and Linux) with minimal setup
+    pkgs.ansible
 
     # dev
     pkgs.cmake
