@@ -1,0 +1,28 @@
+- hosts: all
+  tags:
+    - pyenv
+  tasks:
+    # TODO: make sure .pyenv doesn't exist
+    - name: (Fedora) Install Pyenv
+      shell: curl https://pyenv.run | bash
+      when: ansible_facts['distribution'] == 'Fedora'
+    - name: (Fedora) install necessary build environment
+      dnf:
+        name:
+          - make
+          - gcc
+          - patch
+          - zlib-devel
+          - bzip2
+          - bzip2-devel
+          - readline-devel
+          - sqlite
+          - sqlite-devel
+          - openssl-devel
+          - tk-devel
+          - libffi-devel
+          - xz-devel
+          - libuuid-devel
+          - gdbm-libs
+          - libnsl2
+        when: ansible_facts['distribution'] == 'Fedora'
