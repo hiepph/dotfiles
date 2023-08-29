@@ -1,0 +1,11 @@
+- hosts: all
+  name: Install essential helper tools
+  tasks:
+    # TODO: pyenv
+
+    - name: dev tools
+      pip:
+        name:
+          - 'python-lsp-server'
+          - 'ruff' # python linter
+          - 'yamllint'
