@@ -163,6 +163,18 @@ My Doom Emacs' configuration lives in `emacs/.doom.d`.
 colorscheme alduin
 ```
 
+# Python
+
+A lot of tools are installed with Python `pip`. I use [pyenv](https://github.com/pyenv/pyenv) to manage my Python environments.
+
+To congigure `pyenv` with Fish shell:
+
+``` fish
+set -Ux PYENV_ROOT $HOME/.pyenv
+fish_add_path $PYENV_ROOT/bin
+pyenv init - | source
+```
+
 # Ansible
 
 Used for mutable setup.
