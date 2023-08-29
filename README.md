@@ -231,6 +231,12 @@ sudo systemctl restart logid
 
 - Mac: 
 
-``` bash
-ln -s $PWD/firefox/user.js "$HOME/Library/Application Support/Firefox/Profiles"
+``` fish
+ln -s $PWD/firefox/user.js "$HOME/Library/Application Support/Firefox/Profiles/"
+```
+
+- Linux:
+
+``` fish
+ln -s $PWD/firefox/user.js (readlink -f (ls -d $HOME/.mozilla/firefox/*.default | head -n 1))/
 ```
