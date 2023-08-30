@@ -39,7 +39,7 @@ I use [Guix](https://guix.gnu.org/) as my package manager, together with the off
 + To make packages update effective:
 
 ``` fish
-guix home reconfigure .config/guix/home-configuration.scm
+guix home reconfigure ~/.config/guix/home-configuration.scm
 ```
 
 + To describe generations:
