@@ -61,7 +61,7 @@ in
     pkgs.direnv
     pkgs.jq
     pkgs.yq
-    pkgs.jo
+    pkgs.jo # JSON output from a shell
     pkgs.wget
     pkgs.htop
     pkgs.tokei # count your code, quickly
