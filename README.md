@@ -30,6 +30,25 @@ Some distros I'm using for my personal machine:
   + Arch's [wiki](https://wiki.archlinux.org/) is awesome.
   + Have fun ricing my desktop.
 
+## Guix
+
+I use [Guix](https://guix.gnu.org/) as my package manager, together with the official package manager (i.e. Fedora's `dnf`)
+
++ Stow `guix` first. 
+
++ To make packages update effective:
+
+``` fish
+guix home reconfigure .config/guix/home-configuration.scm
+```
+
++ To describe generations:
+
+``` fish
+guix home describe
+```
+
+
 # BSD
 
 *TBD*
