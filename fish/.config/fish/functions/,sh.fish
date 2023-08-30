@@ -7,7 +7,7 @@
 #   $ ,sh ls -alh
 #
 function ,sh --description "Execute a command, verbosely"
-    echo -e "\t\$ $argv"
+    ,log "\$ $argv"
 
     set tmp_dir (mktemp -d)
     set err_log $tmp_dir/,sh.err

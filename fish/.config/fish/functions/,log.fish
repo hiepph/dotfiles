@@ -5,21 +5,21 @@
 #
 #   $ ,log "The program ran well."
 #
-#   [OUT]> The program ran well.
-#
 # - To write to stderr:
 #
 #   $ ,log -e "Something happened!"
 #   $ ,log --error "Something happend!"
 #
-#   [ERR]> Error
-#
-function ,log --description "Log a message to the stderr"
+function ,log --description "Log a message"
     argparse --ignore-unknown 'e/error'  -- $argv
 
     if set -q _flag_error
-        echo -e "\tERR> $argv[1..]" >&2
+        set_color red
+        echo -e "[ERROR] $argv[1..]" >&2
     else
-        echo -e "\tOUT> $argv[1..]"
+        set_color green
+        echo -e "[INFO] $argv[1..]"
     end
+
+    set_color normal
 end
