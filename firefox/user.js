@@ -116,7 +116,7 @@ user_pref("dom.security.https_first", true);
 user_pref("dom.security.https_only_mode_error_page_user_suggestions", true);
 
 /** PASSWORDS AND AUTOFILL ***/
-user_pref("signon.rememberSignons", false);
+user_pref("signon.rememberSignons", true); // remember passwords
 user_pref("editor.truncate_user_pastes", false);
 
 /** ADDRESS + CREDIT CARD MANAGER ***/
