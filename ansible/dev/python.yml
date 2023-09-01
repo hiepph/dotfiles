@@ -7,3 +7,10 @@
       pip:
         name:
           - pytest
+
+    - name: dev tools
+      pip:
+        name:
+          - 'python-lsp-server[all]'
+          - 'black' # python formatter
+          - 'ruff' # python linter

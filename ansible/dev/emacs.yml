@@ -6,6 +6,4 @@
     - name: dev tools
       pip:
         name:
-          - 'python-lsp-server'
-          - 'ruff' # python linter
           - 'yamllint'
