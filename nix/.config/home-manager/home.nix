@@ -49,6 +49,7 @@ in
     # editor
     pkgs.emacs
     pkgs.hunspell
+    pkgs.wordnet
 
     # shell
     pkgs.ripgrep
