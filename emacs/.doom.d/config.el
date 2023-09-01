@@ -82,6 +82,8 @@
 
 ;; Docs
 (use-package! org
+  :after (evil)
+
   :init
   ;; Turn on image by default
   (setq org-startup-with-inline-images t)
@@ -94,6 +96,9 @@
 
   ;; show special symbols
   (setq org-pretty-entities t)
+
+  :hook
+  (org-mode . (lambda () (setq-local tab-width 2)))
 
   :config
   (setq org-roam-directory (file-truename "~/Notes/Roam")))
