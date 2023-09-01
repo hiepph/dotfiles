@@ -50,6 +50,11 @@
 ;(unpin! t)
 
 ;;
+;; UI
+;;
+(package! evil-fringe-mark)
+
+;;
 ;; Languages
 ;;
 (package! fish-mode)

@@ -86,6 +86,10 @@
   (setq evil-move-cursor-back nil)
   (setq evil-move-beyond-eol t))
 
+(use-package! evil-fringe-mark
+  :config
+  (global-evil-fringe-mark-mode))
+
 ;; Docs
 (use-package! org
   :after (evil)
