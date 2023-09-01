@@ -120,6 +120,9 @@
   (setq gofmt-command "goimports"))
 
 
+(setq-hook! 'python-mode-hook +format-with 'black)
+
+
 ;;
 ;; Customs keybindings
 ;;
