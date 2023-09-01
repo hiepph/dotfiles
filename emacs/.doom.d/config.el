@@ -80,6 +80,12 @@
 ;; Packages
 ;;
 
+;; Evil
+(use-package! evil
+  :config
+  (setq evil-move-cursor-back nil)
+  (setq evil-move-beyond-eol t))
+
 ;; Docs
 (use-package! org
   :after (evil)
