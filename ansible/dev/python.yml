@@ -11,6 +11,12 @@
     - name: dev tools
       pip:
         name:
-          - 'python-lsp-server[all]'
+          - 'pyright'
           - 'black' # python formatter
           - 'ruff' # python linter
+
+    - name: useful libraries
+      pip:
+        name:
+          - 'click'
+          - 'tqdm'
