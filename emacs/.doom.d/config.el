@@ -41,8 +41,7 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
-
+;; (setq org-directory "~/Notes/Roam")
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
@@ -92,8 +91,6 @@
 
 ;; Docs
 (use-package! org
-  :after (evil)
-
   :init
   ;; Turn on image by default
   (setq org-startup-with-inline-images t)
@@ -107,11 +104,42 @@
   ;; show special symbols
   (setq org-pretty-entities t)
 
+  ;; Monday as the first day of the week
+  (setq calendar-week-start-day 1)
+
   :hook
   (org-mode . (lambda () (setq-local tab-width 2)))
 
   :config
   (setq org-roam-directory (file-truename "~/Notes/Roam")))
+
+(after! org
+  (setq org-directory "~/Notes/Roam/")
+  (setq org-agenda-files '("~/Notes/Roam"))
+  (setq org-todo-keywords
+        '((sequence
+           "TODO(t)" ; A task that needs doing and is ready to do
+           "DOING(s)" ; A task that is in progress
+           "BLOCKED(b)" ; Something is blocking this task
+           "HOLD(h)" ; Maybe do it another time
+           "|"
+           "?(?)" ; A task that needs brainstorming
+           "IDEA(i)" ; Shower thoughts
+           "REVIEW(r)" ; A task that needs review
+           "|"
+           "DONE(d)" ; A finished task
+           "CANCELLED(c)" ; Task is killed, aborted or no longer applicable
+           ))
+        org-todo-keyword-faces
+        '(("TODO" . +org-todo-active)
+          ("DOING" . "#5c9a55") ; green
+          ("BLOCKED" . "#c44536") ; red
+          ("HOLD" . "#e0a458") ; yellow
+          ("?" . "#a68a64") ; brown
+          ("IDEA" . "#d9ae94") ; Pink
+          ("REVIEW" . "#009ddc") ; blue
+          ("DONE" . "#b7b7a4") ; dim
+          ("CANCELLED" . +org-todo-cancel))))
 
 (after! ispell
   (setenv "DICTIONARY" "en_GB-ise")
