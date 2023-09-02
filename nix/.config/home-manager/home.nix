@@ -47,7 +47,7 @@ in
     pkgs.graphviz
 
     # editor
-    pkgs.emacs
+    # pkgs.emacs
     pkgs.hunspell
     pkgs.wordnet
 

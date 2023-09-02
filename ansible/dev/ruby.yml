@@ -1,0 +1,10 @@
+- hosts: all
+  name: install essential packages
+  tasks:
+    # TODO: rbenv
+
+    - name: dev tools
+      gem:
+        name:
+          - 'solargraph' # lsp
+          - 'rubocop' # linter + formatter

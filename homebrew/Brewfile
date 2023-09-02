@@ -1,19 +1,25 @@
 #
+# Editor
+#
+tap "d12frosted/emacs-plus"
+brew "emacs-plus@29"
+
+#
+# Languages
+#
+brew "pyenv"
+brew "rbenv"
+brew "ruby-build" # rbenv plugin
+
+#
 # dots
 #
 brew "fish"
 brew "nushell"
 brew "dust" # ncdu, in rust
 brew "borgbackup"
-brew "pyenv"
-
 
 #
 # ops
 #
 brew "pulumi" # IaC
-
-#
-# languages
-#
-brew "julia"
