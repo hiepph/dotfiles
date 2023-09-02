@@ -3,8 +3,9 @@
   tasks:
     # TODO: rbenv
 
-    - name: dev tools
+    - name: LSP
       gem:
-        name:
-          - 'solargraph' # lsp
-          - 'rubocop' # linter + formatter
+        name: 'solargraph' # lsp
+    - name: Linter and formatter
+      gem:
+        name: 'rubocop' # linter + formatter
