@@ -82,7 +82,7 @@
 ;; Evil
 (use-package! evil
   :config
-  (setq evil-move-cursor-back nil)
+  (setq evil-move-cursor-back t)
   (setq evil-move-beyond-eol t))
 
 (use-package! evil-fringe-mark
@@ -169,8 +169,8 @@
 ;;
 ;; Customs keybindings
 ;;
-(map! :leader
-      :desc "Yank from killring"
+(map! :desc "Yank from killring"
+      :leader
       "y" #'consult-yank-pop)
 
 (map! :desc "Org - Display inline image"
@@ -184,6 +184,28 @@
       :map projectile-mode-map
       :localleader
       "/" #'projectile-grep)
+
+;; Expand region
+;; ref: https://github.com/magnars/expand-region.el
+(map! :map evil-visual-state-map
+      "+" #'er/expand-region)
+
+(map! :desc "Expand Region"
+      :map evil-normal-state-map
+      :leader
+      (:prefix-map ("+" . "expand-region")
+                   :desc "url" "u" #'er/mark-url
+                   :desc "comment" "c" #'er/mark-comment
+                   :desc "function" "f" #'er/mark-defun))
+
+(map! :desc "Expand org element"
+      :map org-mode-map
+      :after org
+      :localleader
+      (:prefix-map ("+" . "expand-org-region")
+                   :desc "element" "." #'er/mark-org-element
+                   :desc "code" "c" #'er/mark-org-code-block
+                   :desc "parent" "p" #'er/mark-org-parent))
 
 ;;
 ;; Projects
