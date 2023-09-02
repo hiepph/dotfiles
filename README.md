@@ -186,7 +186,7 @@ colorscheme alduin
 
 A lot of tools are installed with Python `pip`. I use [pyenv](https://github.com/pyenv/pyenv) to manage my Python environments.
 
-To configure `pyenv` with Fish shell:
+- To configure `pyenv` with Fish shell:
 
 ``` fish
 set -Ux PYENV_ROOT $HOME/.pyenv
@@ -194,14 +194,26 @@ fish_add_path $PYENV_ROOT/bin
 pyenv init - | source
 ```
 
+- To use a Python version globally:
+
+``` fish
+pyenv global <version>
+```
+
 # Ruby
 
-I use `rbenv`  to manage my Ruby environments.
+I use [rbenv](https://github.com/rbenv/rbenv)  to manage my Ruby environments.
 
-To configure `rbenv` with Fish shell:
+- To configure `rbenv` with Fish shell:
 
 ``` fish
 status --is-interactive; and ~/.rbenv/bin/rbenv init - fish | source
+```
+
+- To use a Ruby version globally:
+
+``` fish
+rbenv global <version>
 ```
 
 # Ansible

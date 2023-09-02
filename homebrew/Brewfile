@@ -1,6 +1,8 @@
 #
 # Editor
 #
+
+# ref: https://github.com/d12frosted/homebrew-emacs-plus
 tap "d12frosted/emacs-plus"
 brew "emacs-plus@29"
 
