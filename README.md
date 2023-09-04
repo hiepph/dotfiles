@@ -173,6 +173,13 @@ I want to contribute and learn best practice from community, at least until I'm 
 
 My Doom Emacs' configuration lives in `emacs/.doom.d`.
 
+## Issues
+
+- Broken icons in the modeline: `M-x` to install:
+
+``` emacs-lisp
+nerd-icon-install-fonts
+```
 
 # Vim
 
