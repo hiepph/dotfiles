@@ -207,7 +207,8 @@ I use [rbenv](https://github.com/rbenv/rbenv)  to manage my Ruby environments.
 - To configure `rbenv` with Fish shell:
 
 ``` fish
-status --is-interactive; and ~/.rbenv/bin/rbenv init - fish | source
+fish_add_path $HOME/.rbenv/shims
+status --is-interactive; and rbenv init - fish | source
 ```
 
 - To use a Ruby version globally:

@@ -1,7 +1,5 @@
 - hosts: all
   name: Install essential toolboxes
-  tags:
-    - tools
   tasks:
     - name: Install `goimports`
       shell: go install golang.org/x/tools/cmd/goimports@latest
