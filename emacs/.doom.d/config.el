@@ -214,6 +214,14 @@
   :init
   (setq projectile-enable-caching nil))
 
+
+;;
+;; Navigation
+;;
+
+;; Don't try to guess dired buffer when I copy/move files.
+(setq dired-dwim-target nil)
+
 ;;
 ;; custom configurations for individual machine
 ;;
