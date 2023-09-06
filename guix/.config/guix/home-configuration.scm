@@ -13,12 +13,18 @@
 (home-environment
   ;; Below is the list of packages that will show up in your
   ;; Home profile, under ~/.guix-home/profile.
- (packages (specifications->packages (list
-                                      "docker-compose"
-                                      "glances")))
+ (packages (specifications->packages
+            (list
+             ;; ops
+             "docker-compose"
+             "ansible"
 
-  ;; Below is the list of Home services.  To search for available
-  ;; services, run 'guix home search KEYWORD' in a terminal.
-  (services
-   (list))
-  )
+             ;; tools
+             "glances" ; htop alternatives
+             )))
+
+ ;; Below is the list of Home services.  To search for available
+ ;; services, run 'guix home search KEYWORD' in a terminal.
+ (services
+  (list))
+ )
