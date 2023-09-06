@@ -21,6 +21,9 @@
 
              ;; tools
              "glances" ; htop alternatives
+
+             ;; languages
+             "guile"
              )))
 
  ;; Below is the list of Home services.  To search for available
