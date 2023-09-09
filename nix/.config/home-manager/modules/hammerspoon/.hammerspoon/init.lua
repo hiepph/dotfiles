@@ -163,12 +163,12 @@ hs.hotkey.bind(SUPER_SHIFT, "m", function()
 end)
 
 -- Maximize the size of the window by making it go fullscreen.
-hs.hotkey.bind(SUPER_SHIFT, "f", function()
-      local win = hs.window.focusedWindow()
-      local screen = win:screen()
+-- hs.hotkey.bind(SUPER_SHIFT, "f", function()
+--       local win = hs.window.focusedWindow()
+--       local screen = win:screen()
 
-      win:toggleFullScreen()
-end)
+--       win:toggleFullScreen()
+-- end)
 
 -- Increase the width and height of the window.
 local function resize(wPercent, hPercent)
