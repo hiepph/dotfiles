@@ -9,17 +9,11 @@
 function ,sh --description "Execute a command, verbosely"
     ,log "\$ $argv"
 
-    set tmp_dir (mktemp -d)
-    set err_log $tmp_dir/,sh.err
-
-    $argv 2>$err_log
+    $argv
     set code $status
 
     if test $status -ne 0
         ,log --error "Command failed: \"$argv\" with status code: $code"
-        if test -f $err_log
-            cat $err_log >&2
-        end
         exit $code
     end
 end
