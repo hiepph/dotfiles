@@ -103,6 +103,17 @@ user_pref("privacy.history.custom", true);
 user_pref("browser.search.separatePrivateDefault.ui.enabled", true);
 user_pref("browser.urlbar.update2.engineAliasRefresh", true);
 user_pref("browser.search.suggest.enabled", false);
+// PREF: Disable search suggestions in the search bar
+// http://kb.mozillazine.org/Browser.search.suggest.enabled
+user_pref("browser.search.suggest.enabled", false);
+// PREF: When using the location bar,
+// don't suggest URLs from browsing history
+// don't suggest bookmark
+user_pref("browser.urlbar.suggest.history", false);
+// PREF: Disable Firefox Suggest
+// https://www.ghacks.net/2021/09/09/how-to-disable-firefox-suggest/
+// https://support.mozilla.org/en-US/kb/navigate-web-faster-firefox-suggest
+user_pref("browser.urlbar.groupLabels.enabled", false); // Firefox >= 93
 user_pref("browser.urlbar.suggest.quicksuggest.sponsored", false);
 user_pref("browser.urlbar.suggest.quicksuggest.nonsponsored", false);
 user_pref("browser.formfill.enable", false);
