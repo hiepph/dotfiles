@@ -260,25 +260,6 @@ hs.hotkey.bind(SUPER_ALT, "l", function()
 end)
 
 
---
--- Menubar
---
-
--- Clipboard management.
--- ref: https://www.hammerspoon.org/Spoons/ClipboardTool.html
-function setupClipboardTool()
-    tool = hs.loadSpoon("ClipboardTool")
-    tool.show_copied_alert = false
-    tool.paste_on_select = true
-    tool:start()
-    tool:bindHotkeys({
-            toggle_clipboard = {SUPER_ALT, "p"}
-    })
-end
-
-setupClipboardTool()
-
-
 
 --
 -- Provide URL event to interact with Hammerspoon.
