@@ -25,3 +25,9 @@ brew "borgbackup"
 # ops
 #
 brew "pulumi" # IaC
+
+
+#
+# Tools
+#
+brew "maccy" # MacOS's clipboard manager
