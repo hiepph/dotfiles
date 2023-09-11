@@ -18,5 +18,10 @@
     - name: useful libraries
       pip:
         name:
-          - 'click'
           - 'tqdm'
+          - 'click' # CLI
+
+    - name: useful tools
+      pip:
+        name:
+          - 'pip-autoremove' # remove a package together with unused dependencies
