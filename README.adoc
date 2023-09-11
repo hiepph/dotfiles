@@ -1,6 +1,6 @@
 = dotfiles
 
-:toc
+:toc:
 
 == Stow
 
