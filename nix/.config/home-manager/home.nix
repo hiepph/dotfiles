@@ -66,6 +66,7 @@ in
     pkgs.htop
     pkgs.tokei # count your code, quickly
     pkgs.zoxide # smarter cd
+    pkgs.pandoc # document format converter
 
     # security
     pkgs.pass
