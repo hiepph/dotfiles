@@ -185,6 +185,10 @@
       :localleader
       "/" #'projectile-grep)
 
+(map! :desc "Consult shell history"
+      :leader
+      "s h" #'~consult-shell-history)
+
 ;; Expand region
 ;; ref: https://github.com/magnars/expand-region.el
 (map! :map evil-visual-state-map
