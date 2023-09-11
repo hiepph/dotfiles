@@ -1,3 +1,7 @@
+= dotfiles
+
+:toc
+
 == Stow
 
 Mainly I structure my modules follow their paths starting from
