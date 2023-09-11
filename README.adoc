@@ -1,0 +1,344 @@
+== Stow
+
+Mainly I structure my modules follow their paths starting from
+`+$HOME+`. To activate the module, symlink the corresponding folder to
+`+$HOME+`.
+
+This task is done by
+https://www.gnu.org/software/stow/manual/stow.html[GNU Stow].
+
+[source,fish]
+....
+stow <module>
+....
+
+Not every module here can be stowed though.
+
+== Linux
+
+Some distros I’m using for my personal machine:
+
+* https://www.opensuse.org/[OpenSUSE Tumbleweed]
+** Rolling released.
+** System recovery and snapshot with
+https://doc.opensuse.org/documentation/leap/reference/html/book-reference/cha-snapper.html[Snapper]
+and https://en.wikipedia.org/wiki/Btrfs[btrfs]
+** https://yast.opensuse.org/[YaST] is awesome.
+* https://getfedora.org/[Fedora]
+** Supports a wide range of hardware.
+** Bleeding edge packages.
+** btrfs is the default filesystem since Fedora 36.
+* https://archlinux.org/[Arch]:
+** Rolling released.
+** Total control of my system. KISS (Keep It Simple, Stupid).
+** Arch’s https://wiki.archlinux.org/[wiki] is awesome.
+** Have fun ricing my desktop.
+
+=== Guix
+
+I use https://guix.gnu.org/[Guix] as my package manager, together with
+the official package manager (i.e. Fedora’s `+dnf+`)
+
+* Stow `+guix+` first.
+* To make packages update effective:
+
+[source,fish]
+----
+guix home reconfigure ~/.config/guix/home-configuration.scm
+----
+
+* To describe generations:
+
+[source,fish]
+----
+guix home describe
+----
+
+== BSD
+
+_TBD_
+
+== Mac
+
+https://brew.sh/[Homebrew] and https://nixos.org/[Nix] are used to
+manage packages.
+
+But why mixing instead of committing to one?
+
+* I like Nix, but it doesn’t support some packages for Darwin, yet.
+* Homebrew, on the other hand, has strong support from the community and
+I can find almost any package (e.g. `+emacs+`). But it messes with my
+systems (a.k.a `+/usr/bin+`) so I only use it to install some necessary
+packages. Sometimes I do like Homebrew to mutate my systems
+(e.g. `+fish+` shell).
+
+=== Homebrew
+
+[source,bash]
+----
+cd homebrew
+brew bundle
+----
+
+=== Nix
+
+* Use the `+nix-installer+` from https://zero-to-nix.com/[Determinate
+Systems] to install Nix on my Mac.
+
+[source,bash]
+----
+curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+----
+
+* Install
+https://nix-community.github.io/home-manager/index.html[home-manager]:
+
+[source,bash]
+----
+# with an unstable channel
+nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
+
+# with a stable channel (23.5)
+nix-channel --add https://github.com/nix-community/home-manager/archive/release-23.05.tar.gz home-manager
+----
+
+[source,bash]
+----
+nix-channel --update
+set NIX_PATH $HOME/.nix-defexpr/channels /nix/var/nix/profiles/per-user/root/channels
+nix-shell '<home-manager>' -A install
+----
+
+* Shell are not managed with `+home-manager+` though, for stability
+reason.
+* When you need to make change to the packages, edit
+`+~/.config/home-manager/home.nix+` and:
+
+[source,bash]
+----
+home-manager switch
+----
+
+==== Symlink with `+home-manager+`
+
+* `+stow+` is used when changes are made often: e.g. `+fish+`, `+vim+`.
+* Otherwise, some modules are managed and symlinked with
+`+home-manager+`. Check what modules are managed with `+home-manager+`
+in `+home-manager/home.nix+`:
+
+[source,nix]
+----
+home.file = { 
+  ...
+}
+----
+
+==== Rollbacks
+
+* List generations:
+
+[source,bash]
+----
+home-manager generations
+----
+
+* Perform the rollback:
+
+[source,bash]
+----
+/nix/store/...-home-manager-generation/activate
+----
+
+==== Issues
+
+* Broken `+home-manager+`? Update Nix’s channel to pull fixes and
+install `+home-manager+` again:
+
+[source,bash]
+----
+nix-channel --add <fixed-channel> home-manager
+nix-channel --update 
+
+home-manager switch
+----
+
+=== Hammerspoon: desktop automation
+
+I missed https://i3wm.org/[i3] on my Mac. I tried
+https://rectangleapp.com/[Rectangle] to bring back the feeling of tiling
+windows but it lacks the power of declarative configuration.
+
+Hammerspoon solves this problem by being a bridge to Mac’s API. It uses
+Lua as scripting language.
+
+== Shell
+
+* My default shell is https://fishshell.com/[fish].
+** Pros:
+*** I hate Bash arcane syntax. It’s fast to write a small script in Bash
+but horrible to grow into a larger script. Even
+https://google.github.io/styleguide/shellguide.html#when-to-use-shell[Google
+Shell style guide] recommends not to write a script more than 100 lines
+long.
+*** Seamless interops with shell commands. It makes writing script
+interactively on a shell fun. One-liner manner is achievable. With a
+general purpose language, e.g. Python, I have to wrap shell command with
+`+os.system+` or `+subprocess+`.
+*** References:
+https://fishshell.com/docs/current/tutorial.html#why-fish[Why fish?],
+https://youtu.be/Acjqx1MPkw4[Rash lang].
+** Cons:
+*** It does not follow POSIX shell standards. So if I want to run a
+common Bash or Zsh script, better use `+bash script.sh+`.
+
+== Emacs
+
+I decided to switch (and possibly contribute) to
+https://github.com/hlissner/doom-emacs/[doom-emacs] instead of writing
+my vanilla Emacs configurations.
+
+I want to contribute and learn best practice from community, at least
+until I’m confident enough to maintain my own configurations.
+
+My Doom Emacs’ configuration lives in `+emacs/.doom.d+`.
+
+=== Issues
+
+* Broken icons in the modeline: `+M-x+` to install:
+
+[source,emacs-lisp]
+----
+nerd-icon-install-fonts
+----
+
+== Vim
+
+* Create custom file for each machine: `+~/.custom.vim+`. For example:
+
+....
+colorscheme alduin
+....
+
+== Python
+
+A lot of tools are installed with Python `+pip+`. I use
+https://github.com/pyenv/pyenv[pyenv] to manage my Python environments.
+
+* To configure `+pyenv+` with Fish shell:
+
+[source,fish]
+----
+set -Ux PYENV_ROOT $HOME/.pyenv
+fish_add_path $PYENV_ROOT/bin
+pyenv init - | source
+----
+
+* To use a Python version globally:
+
+[source,fish]
+----
+pyenv global <version>
+----
+
+== Ruby
+
+I use https://github.com/rbenv/rbenv[rbenv] to manage my Ruby
+environments.
+
+* To configure `+rbenv+` with Fish shell:
+
+[source,fish]
+----
+fish_add_path $HOME/.rbenv/shims
+status --is-interactive; and rbenv init - fish | source
+----
+
+* To use a Ruby version globally:
+
+[source,fish]
+----
+rbenv global <version>
+----
+
+== Ansible
+
+Used for mutable setup.
+
+[arabic]
+. Edit `+/etc/ansible/hosts+`:
+
+....
+[local]
+localhost   ansible_connection=local
+....
+
+[arabic, start=2]
+. Run the playbook:
+
+* With root permission:
+
+[source,bash]
+----
+ansible-playbook -l local <setup>.yml -K
+----
+
+* Without root permission:
+
+[source,bash]
+----
+ansible-playbook -l local <setup>.yml
+----
+
+== Themes
+
+Below is an awesome list of themes done in style. All are eye-care
+themes.
+
+* https://www.nordtheme.com/[Nord]
+* https://ethanschoonover.com/solarized/[Solarized]
+* https://github.com/john2x/plan9-theme.el[Plan9/Acme]
+
+== Mouse
+
+=== Logitech MX Master 3
+
+* Driver on Linux: https://github.com/PixlOne/logiops[logiops]
+** Key codes can be found
+https://github.com/torvalds/linux/blob/master/include/uapi/linux/input-event-codes.h[here]
+* Put the configuration in `+mx-master-3/<desktop>/logid.cfg+` at
+`+/etc/logid.cfg+`:
+* Start/Enable the service:
+
+[source,bash]
+----
+
+sudo systemctl enable --now logid
+----
+
+* Restart the service:
+
+[source,bash]
+----
+sudo systemctl restart logid
+----
+
+== Firefox
+
+* I follow recommendations from
+https://github.com/yokoffing/BetterFox[Betterfox]
+* Note that editing `+about:config+` won’t take effect if you have
+`+user.js+` inside your profiles. `+user.js+` will reset all of your
+changes when start a new browser.
+* Mac:
+
+[source,fish]
+----
+ln -s $PWD/firefox/user.js "$HOME/Library/Application Support/Firefox/Profiles/"
+----
+
+* Linux:
+
+[source,fish]
+----
+ln -s $PWD/firefox/user.js (readlink -f (ls -d $HOME/.mozilla/firefox/*.default | head -n 1))/
+----
