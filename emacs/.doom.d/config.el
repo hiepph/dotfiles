@@ -223,6 +223,11 @@
 (setq dired-dwim-target nil)
 
 ;;
+;; Additional helper
+;;
+(load "./helper.el")
+
+;;
 ;; custom configurations for individual machine
 ;;
 (load "~/customs/emacs.el" nil 'noerror)
