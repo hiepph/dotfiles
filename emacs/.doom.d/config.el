@@ -229,7 +229,7 @@
 ;;
 ;; Additional helper
 ;;
-(load "./helper.el")
+(load! "helper.el")
 
 ;;
 ;; custom configurations for individual machine
