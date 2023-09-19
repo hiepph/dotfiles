@@ -21,13 +21,12 @@
 
              ;; tools
              "glances" ; htop alternatives
+             "pandoc" ; document format converter
 
              ;; languages
-             "guile"
-             )))
+             "guile")))
 
  ;; Below is the list of Home services.  To search for available
  ;; services, run 'guix home search KEYWORD' in a terminal.
  (services
-  (list))
- )
+  (list)))
