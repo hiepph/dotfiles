@@ -9,4 +9,5 @@
                    (if (string-empty-p query)
                        "history"
                      (format "history search --contains '%s'" query))))))
-    (insert (completing-read "history: " history))))
+    (insert (completing-read "history: "
+                             (seq-filter (lambda (str) (not (s-blank? str))) history)))))
