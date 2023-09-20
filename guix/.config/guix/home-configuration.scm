@@ -18,6 +18,7 @@
              ;; ops
              "docker-compose"
              "ansible"
+             "terragrunt"
 
              ;; tools
              "glances" ; htop alternatives
