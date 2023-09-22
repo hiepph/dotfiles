@@ -1,27 +1,14 @@
 - hosts: all
   name: install essential packages
+  vars:
+    pip: "{{ lookup('env', 'HOME') }}/.pyenv/shims/pip"
   tasks:
-    # TODO: pyenv
-
-    - name: testing tool
-      pip:
-        name:
-          - pytest
-
-    - name: dev tools
-      pip:
-        name:
-          - 'pyright'
-          - 'black' # python formatter
-          - 'ruff' # python linter
-
-    - name: useful libraries
-      pip:
-        name:
-          - 'tqdm'
-          - 'click' # CLI
-
-    - name: useful tools
-      pip:
-        name:
-          - 'pip-autoremove' # remove a package together with unused dependencies
+    - shell: "{{ pip }} install {{ item }}"
+      loop:
+        - poetry
+        - pyright # lsp
+        - black # formatter
+        - ruff # linter
+        - tqdm # progress
+        - click # cli
+        - pip-autoremove

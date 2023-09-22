@@ -1,13 +1,12 @@
 ---
 - hosts: all
   name: Install essential toolboxes
+  vars:
+    pip: "{{ lookup('env', 'HOME') }}/.pyenv/shims/pip"
   tasks:
-    # TODO: pyenv
-
-    - name: install useful packages
-      pip:
-        name:
-          - 'borgmatic' # backup
-          - 'httpie' # curl alternatives
-          - 'speedtest-cli'
-          - 'jc' # everything to json
+    - shell: "{{ pip }} install {{ item }}"
+      loop:
+        - 'borgmatic' # backup
+        - 'httpie' # curl alternatives
+        - 'speedtest-cli'
+        - 'jc' # everything to json

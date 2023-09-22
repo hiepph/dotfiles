@@ -1,9 +1,8 @@
 ---
 - hosts: all
-  tags:
-    - pyenv
   tasks:
-    # TODO: make sure .pyenv doesn't exist
+    # TODO
+    # ref: https://github.com/markosamuli/ansible-pyenv
     - name: (Fedora) Install Pyenv
       shell: curl https://pyenv.run | bash
       when: ansible_facts['distribution'] == 'Fedora'
