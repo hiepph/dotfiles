@@ -17,8 +17,9 @@
             (list
              ;; ops
              "docker-compose"
-             "ansible"
-             "terragrunt"
+             "ansible" ; procedural IaC
+             "terragrunt" ; DRY terraform
+             "kind" ; supervise local K8s clusters
 
              ;; tools
              "glances" ; htop alternatives
