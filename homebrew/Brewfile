@@ -30,4 +30,6 @@ brew "pulumi" # IaC
 #
 # Tools
 #
-brew "maccy" # MacOS's clipboard manager
+# ref: https://www.gnupg.org/related_software/pinentry/index.html
+brew "pinentry-mac"
+cask "maccy" # MacOS's clipboard manager
