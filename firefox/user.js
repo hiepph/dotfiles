@@ -78,6 +78,7 @@ user_pref("privacy.query_stripping.strip_list", "__hsfp __hssc __hstc __s _hsenc
 user_pref("browser.uitour.enabled", false);
 user_pref("privacy.globalprivacycontrol.enabled", true);
 user_pref("privacy.globalprivacycontrol.functionality.enabled", true);
+user_pref("privacy.privacy.donottrackheader.enabled", true);
 
 /** OCSP & CERTS / HPKP ***/
 user_pref("security.OCSP.enabled", 0);
