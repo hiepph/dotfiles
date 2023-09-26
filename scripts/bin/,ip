@@ -11,9 +11,13 @@
 # + show public v4:
 #   $ ,ip public
 #
+
+function help
+    ,throw ",ip {public|local}"
+end
+
 if test (count $argv) -ne 1
-    echo ",ip {public|local}" >&2
-    exit 1
+    help
 end
 
 set subcommand $argv[1]
@@ -27,5 +31,7 @@ switch $subcommand
                 ipconfig getifaddr en0
         end
     case public
-        curl https://ipinfo.io/ip
+        curl https://ifconfig.me
+    case \*
+        help
 end
