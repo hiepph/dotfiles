@@ -27,6 +27,7 @@ in
     pkgs.pass
 
     # editor
+    pkgs.vim
     pkgs.hunspell
     pkgs.wordnet
 
@@ -48,6 +49,15 @@ in
     pkgs.zoxide # smarter cd
     pkgs.pandoc # document format converter
     pkgs.nushell
+    pkgs.du-dust # like du, but more intuitive
+    pkgs.httpie # glamorous curl
+    pkgs.jc # to JSON!
+    pkgs.glances # htop alternative
+    pkgs.speedtest-cli
+
+    # backup
+    pkgs.borgbackup
+    pkgs.borgmatic
 
     # ops
     pkgs.awscli2
