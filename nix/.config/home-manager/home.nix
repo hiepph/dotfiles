@@ -21,32 +21,12 @@ in
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
-    # ops
-    pkgs.google-cloud-sdk
-    pkgs.awscli2
-    pkgs.steampipe # query cloud resources with SQL
-    pkgs.terraform
-    pkgs.terragrunt # DRY terraform
-    pkgs.rclone
-    pkgs.kubectx
-    pkgs.minikube
-    pkgs.nmap
-    pkgs.inetutils
-    pkgs.vagrant
-    pkgs.qemu
-    pkgs.colima # Container runtimes on macOS (and Linux) with minimal setup
-    pkgs.ansible
-
-    # dev
-    pkgs.cmake
-    pkgs.nasm
-
-    # languages
-    pkgs.go
-    pkgs.graphviz
+    # security
+    pkgs.gnupg
+    pkgs.pinentry_mac
+    pkgs.pass
 
     # editor
-    # pkgs.emacs
     pkgs.hunspell
     pkgs.wordnet
 
@@ -67,10 +47,25 @@ in
     pkgs.tokei # count your code, quickly
     pkgs.zoxide # smarter cd
     pkgs.pandoc # document format converter
+    pkgs.nushell
 
-    # security
-    pkgs.pass
-    pkgs.bitwarden-cli
+    # ops
+    pkgs.awscli2
+    pkgs.steampipe # query cloud resources with SQL
+    pkgs.terraform
+    pkgs.terragrunt # DRY terraform
+    pkgs.rclone
+    pkgs.kubectx
+    pkgs.nmap
+    pkgs.inetutils
+    pkgs.vagrant
+    pkgs.qemu
+    pkgs.colima # Container runtimes on macOS (and Linux) with minimal setup
+    pkgs.ansible
+
+    # languages
+    pkgs.go
+    pkgs.graphviz
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -92,7 +87,6 @@ in
     # # Building this configuration will create a copy of 'sqlite/.sqliterc' in
     # # the Nix store. Activating the configuration will then make '~/.sqliterc' a
     # # symlink to the Nix store copy.
-    ".hammerspoon".source = modules/hammerspoon/.hammerspoon;
     ".tmux.conf".source = ./. + "${rootDir}/tmux/.tmux.conf";
     ".sqliterc".source = ./. + "${rootDir}/sqlite/.sqliterc";
     ".ideavimrc".source = ./. + "${rootDir}/intellij/.ideavimrc";
