@@ -141,12 +141,11 @@
           ("DONE" . "#b7b7a4") ; dim
           ("CANCELLED" . +org-todo-cancel))))
 
-(after! ispell
+(after! flyspell
   (setenv "DICTIONARY" "en_GB-ise")
   (setq ispell-dictionary "en_GB-ise,en_GB")
   (ispell-set-spellchecker-params)
   (ispell-hunspell-add-multi-dic "en_GB-ise,en_GB"))
-
 
 ;; Ops
 (use-package! terraform-mode
@@ -198,18 +197,18 @@
       :map evil-normal-state-map
       :leader
       (:prefix-map ("+" . "expand-region")
-                   :desc "url" "u" #'er/mark-url
-                   :desc "comment" "c" #'er/mark-comment
-                   :desc "function" "f" #'er/mark-defun))
+       :desc "url" "u" #'er/mark-url
+       :desc "comment" "c" #'er/mark-comment
+       :desc "function" "f" #'er/mark-defun))
 
 (map! :desc "Expand org element"
       :map org-mode-map
       :after org
       :localleader
       (:prefix-map ("+" . "expand-org-region")
-                   :desc "element" "." #'er/mark-org-element
-                   :desc "code" "c" #'er/mark-org-code-block
-                   :desc "parent" "p" #'er/mark-org-parent))
+       :desc "element" "." #'er/mark-org-element
+       :desc "code" "c" #'er/mark-org-code-block
+       :desc "parent" "p" #'er/mark-org-parent))
 
 ;;
 ;; Projects
