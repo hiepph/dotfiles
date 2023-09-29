@@ -131,7 +131,7 @@ in `+home-manager/home.nix+`:
 
 [source,nix]
 ----
-home.file = { 
+home.file = {
   ...
 }
 ----
@@ -160,19 +160,10 @@ install `+home-manager+` again:
 [source,bash]
 ----
 nix-channel --add <fixed-channel> home-manager
-nix-channel --update 
+nix-channel --update
 
 home-manager switch
 ----
-
-=== Hammerspoon: desktop automation
-
-I missed https://i3wm.org/[i3] on my Mac. I tried
-https://rectangleapp.com/[Rectangle] to bring back the feeling of tiling
-windows but it lacks the power of declarative configuration.
-
-Hammerspoon solves this problem by being a bridge to Mac’s API. It uses
-Lua as scripting language.
 
 == Shell
 
