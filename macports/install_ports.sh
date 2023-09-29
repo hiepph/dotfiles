@@ -1,3 +1,5 @@
+set -x
+
 #
 # shell
 #
@@ -11,12 +13,14 @@ sudo port install fish
 sudo port install emacs-app +nativecomp +treesitter
 
 #
+# ops
+#
+
+sudo port install borgbackup borgmatic
+sudo port install pulumi
+
+#
 # languages
 #
 
-# sudo port install rbenv ruby-build
-
-#
-# ops
-#
-sudo port install pulumi
+sudo port install rbenv ruby-build

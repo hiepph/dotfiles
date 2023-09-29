@@ -55,10 +55,6 @@ in
     pkgs.glances # htop alternative
     pkgs.speedtest-cli
 
-    # backup
-    pkgs.borgbackup
-    pkgs.borgmatic
-
     # ops
     pkgs.awscli2
     pkgs.steampipe # query cloud resources with SQL
