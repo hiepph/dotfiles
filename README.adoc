@@ -63,30 +63,21 @@ _TBD_
 
 == Mac
 
-https://brew.sh/[Homebrew] and https://nixos.org/[Nix] are used to
-manage packages.
+https://www.macports.org/[MacPorts] and https://nixos.org/[Nix] are used to manage packages.
 
-But why mixing instead of committing to one?
+=== MacPorts
 
-* I like Nix, but it doesn’t support some packages for Darwin, yet.
-* Homebrew, on the other hand, has strong support from the community and
-I can find almost any package (e.g. `+emacs+`). But it messes with my
-systems (a.k.a `+/usr/bin+`) so I only use it to install some necessary
-packages. Sometimes I do like Homebrew to mutate my systems
-(e.g. `+fish+` shell).
-
-=== Homebrew
+* Mainly used for installing the shell (Fish), text editor (Emacs) and packages which I cannot simply install with Nix.
 
 [source,bash]
 ----
-cd homebrew
-brew bundle
+cd macports
+./install_ports.sh
 ----
 
 === Nix
 
-* Use the `+nix-installer+` from https://zero-to-nix.com/[Determinate
-Systems] to install Nix on my Mac.
+* Use the `+nix-installer+` from https://zero-to-nix.com/[Determinate Systems] to install Nix on Mac.
 
 [source,bash]
 ----
@@ -94,6 +85,7 @@ curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix 
 ----
 
 * Install
+
 https://nix-community.github.io/home-manager/index.html[home-manager]:
 
 [source,bash]
@@ -108,12 +100,10 @@ nix-channel --add https://github.com/nix-community/home-manager/archive/release-
 [source,bash]
 ----
 nix-channel --update
-set NIX_PATH $HOME/.nix-defexpr/channels /nix/var/nix/profiles/per-user/root/channels
 nix-shell '<home-manager>' -A install
 ----
 
-* Shell are not managed with `+home-manager+` though, for stability
-reason.
+* Shell are not managed with `+home-manager+` though, for stability reason.
 * When you need to make change to the packages, edit
 `+~/.config/home-manager/home.nix+` and:
 
