@@ -175,6 +175,14 @@ https://youtu.be/Acjqx1MPkw4[Rash lang].
 *** It does not follow POSIX shell standards. So if I want to run a
 common Bash or Zsh script, better use `+bash script.sh+`.
 
+* To change default shell for a user:
+
+[source,bash]
+----
+chsh -s $(which fish)
+----
+
+
 == Emacs
 
 I decided to switch (and possibly contribute) to
@@ -324,3 +332,13 @@ ln -s $PWD/firefox/user.js "$HOME/Library/Application Support/Firefox/Profiles/"
 ----
 ln -s $PWD/firefox/user.js (readlink -f (ls -d $HOME/.mozilla/firefox/*.default | head -n 1))/
 ----
+
+== uBlock Origin Filter Lists
+
+- Go to *Options > Filter Lists > Annoyances* and turn on all of them. Optionally, you can turn on Cloud Storage sync (https://github.com/gorhill/uBlock/wiki/Cloud-storage[refer]).
+
+- Some additional personal filters list:
+
+```
+accounts.google.com/gsi/iframe
+```
