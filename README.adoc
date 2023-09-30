@@ -225,10 +225,11 @@ fish_add_path $PYENV_ROOT/bin
 pyenv init - | source
 ----
 
-* To use a Python version globally:
+* To install and use a Python version globally:
 
 [source,fish]
 ----
+pyenv install 3.10
 pyenv global <version>
 ----
 
@@ -245,10 +246,11 @@ fish_add_path $HOME/.rbenv/shims
 status --is-interactive; and rbenv init - fish | source
 ----
 
-* To use a Ruby version globally:
+* To install and use a Ruby version globally:
 
 [source,fish]
 ----
+rbenv install 3.2.2
 rbenv global <version>
 ----
 
