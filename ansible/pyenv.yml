@@ -1,11 +1,11 @@
 ---
 - hosts: all
   tasks:
-    # TODO
+    # TODO: download the installer, check hash (!), chmod and execute
     # ref: https://github.com/markosamuli/ansible-pyenv
-    - name: (Fedora) Install Pyenv
-      shell: curl https://pyenv.run | bash
-      when: ansible_facts['distribution'] == 'Fedora'
+    #
+    # - name: Install Pyenv
+    #   shell: curl -sSL -o pyenv-installer https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer
     - name: (Fedora) install necessary build environment
       dnf:
         name:
