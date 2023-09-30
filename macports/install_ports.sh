@@ -25,3 +25,6 @@ sudo port install pulumi
 #
 
 sudo port install rbenv ruby-build
+
+# build dependencies for pyenv
+sudo port install sqlite3 xz readline zlib tk lzma
