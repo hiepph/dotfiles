@@ -254,32 +254,6 @@ rbenv install 3.2.2
 rbenv global <version>
 ----
 
-== Ansible
-
-Used for mutable setup.
-
-+ Edit `/etc/ansible/hosts`:
-
-....
-[local]
-localhost   ansible_connection=local
-....
-
-+ Run the playbook:
-
-+ With root permission:
-
-[source,bash]
-----
-ansible-playbook -l local <setup>.yml -K
-----
-
-+ Without root permission:
-
-[source,bash]
-----
-ansible-playbook -l local <setup>.yml
-----
 
 == Themes
 

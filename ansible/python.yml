@@ -1,8 +1,0 @@
-- hosts: all
-  name: install essential packages
-  vars:
-    pip: "{{ lookup('env', 'HOME') }}/.pyenv/shims/pip"
-  tasks:
-    - shell: "{{ pip }} install {{ item }}"
-      loop:
-        - pip-autoremove
