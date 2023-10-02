@@ -73,6 +73,23 @@ in
     pkgs.go
     pkgs.graphviz
 
+    # python
+    pkgs.poetry
+    pkgs.nodePackages.pyright # lsp
+    pkgs.black # formatter
+    pkgs.ruff # linter
+    pkgs.yamllint
+
+    # ruby
+    pkgs.solargraph # lsp
+    pkgs.rubocop # linter, formatter
+
+    # go
+    pkgs.gotools # goimports, gopls
+    pkgs.delve # or `dlv` - debugger
+
+
+
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of

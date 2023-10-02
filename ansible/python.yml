@@ -5,10 +5,4 @@
   tasks:
     - shell: "{{ pip }} install {{ item }}"
       loop:
-        - poetry
-        - pyright # lsp
-        - black # formatter
-        - ruff # linter
-        - tqdm # progress
-        - click # cli
         - pip-autoremove
