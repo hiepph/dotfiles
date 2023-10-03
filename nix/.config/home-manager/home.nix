@@ -32,16 +32,17 @@ in
     pkgs.wordnet
 
     # shell
-    pkgs.ripgrep
+    pkgs.coreutils # md5sum, ...
+    pkgs.ripgrep # rusty grep
     pkgs.bat
-    pkgs.fd
+    pkgs.fd # rusty find
     pkgs.fzf
     pkgs.stow
     pkgs.jump
     pkgs.tmux
     pkgs.direnv
     pkgs.jq
-    pkgs.yq
+    pkgs.yq # jq for YAML
     pkgs.jo # JSON output from a shell
     pkgs.wget
     pkgs.htop
@@ -54,6 +55,7 @@ in
     pkgs.jc # to JSON!
     pkgs.glances # htop alternative
     pkgs.speedtest-cli
+    pkgs.imagemagick
 
     # ops
     pkgs.awscli2
