@@ -131,13 +131,10 @@
            "CANCELLED(c)" ; Task is killed, aborted or no longer applicable
            ))
         org-todo-keyword-faces
-        '(("TODO" . +org-todo-active)
+        '(("TODO" . "#009ddc")
           ("DOING" . "#5c9a55") ; green
           ("BLOCKED" . "#c44536") ; red
           ("HOLD" . "#e0a458") ; yellow
-          ("?" . "#a68a64") ; brown
-          ("IDEA" . "#d9ae94") ; Pink
-          ("REVIEW" . "#009ddc") ; blue
           ("DONE" . "#b7b7a4") ; dim
           ("CANCELLED" . +org-todo-cancel))))
 
