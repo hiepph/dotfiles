@@ -77,7 +77,6 @@ in
 
     # python
     pkgs.poetry
-    pkgs.nodePackages.pyright # lsp
     pkgs.black # formatter
     pkgs.ruff # linter
     pkgs.yamllint
