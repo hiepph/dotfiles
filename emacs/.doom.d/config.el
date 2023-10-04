@@ -122,9 +122,6 @@
            "DOING(s)" ; A task that is in progress
            "BLOCKED(b)" ; Something is blocking this task
            "HOLD(h)" ; Maybe do it another time
-           "|"
-           "?(?)" ; A task that needs brainstorming
-           "IDEA(i)" ; Shower thoughts
            "REVIEW(r)" ; A task that needs review
            "|"
            "DONE(d)" ; A finished task
@@ -135,6 +132,7 @@
           ("DOING" . "#5c9a55") ; green
           ("BLOCKED" . "#c44536") ; red
           ("HOLD" . "#e0a458") ; yellow
+          ("REVIEW" . "#d9ae94")
           ("DONE" . "#b7b7a4") ; dim
           ("CANCELLED" . +org-todo-cancel))))
 
