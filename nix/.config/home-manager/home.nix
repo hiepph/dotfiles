@@ -1,7 +1,8 @@
-{ config, pkgs, ... }:
+{ config, pkgs, ... }: # pkgs = import <nixpkgs> {};
 
 let
   rootDir = "/../../..";
+  pkgsUnstable = import <nixpkgs-unstable> {};
 in
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -16,7 +17,7 @@ in
   # You should not change this value, even if you update Home Manager. If you do
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
-  home.stateVersion = "22.11"; # Please read the comment before changing.
+  home.stateVersion = "23.05"; # Please read the comment before changing.
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
@@ -33,15 +34,15 @@ in
 
     # shell
     pkgs.coreutils # md5sum, ...
-    pkgs.ripgrep # rusty grep
-    pkgs.bat
-    pkgs.fd # rusty find
-    pkgs.fzf
+    pkgsUnstable.ripgrep # rusty grep
+    pkgsUnstable.bat
+    pkgsUnstable.fd # rusty find
+    pkgsUnstable.fzf
     pkgs.stow
     pkgs.jump
     pkgs.tmux
     pkgs.direnv
-    pkgs.jq
+    pkgsUnstable.jq
     pkgs.yq # jq for YAML
     pkgs.jo # JSON output from a shell
     pkgs.wget
@@ -49,7 +50,7 @@ in
     pkgs.tokei # count your code, quickly
     pkgs.zoxide # smarter cd
     pkgs.pandoc # document format converter
-    pkgs.nushell
+    pkgsUnstable.nushell
     pkgs.du-dust # like du, but more intuitive
     pkgs.httpie # glamorous curl
     pkgs.jc # to JSON!
@@ -58,12 +59,12 @@ in
     pkgs.imagemagick
 
     # ops
-    pkgs.awscli2
+    pkgsUnstable.awscli2
     pkgs.steampipe # query cloud resources with SQL
     pkgs.terraform
-    pkgs.terragrunt # DRY terraform
+    pkgsUnstable.terragrunt # DRY terraform
     pkgs.rclone
-    pkgs.kubectx
+    pkgsUnstable.kubectx
     pkgs.nmap
     pkgs.inetutils
     pkgs.vagrant
