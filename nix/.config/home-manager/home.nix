@@ -62,6 +62,7 @@ in
     pkgsUnstable.awscli2
     pkgs.steampipe # query cloud resources with SQL
     pkgs.terraform
+    pkgsUnstable.opentofu # Open Terraform fork
     pkgsUnstable.terragrunt # DRY terraform
     pkgs.rclone
     pkgsUnstable.kubectx
