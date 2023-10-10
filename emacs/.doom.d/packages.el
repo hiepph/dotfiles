@@ -60,6 +60,7 @@
 (package! fish-mode)
 (package! nushell-mode)
 (package! adoc-mode)
+(package! jsonnet-mode)
 
 
 ;;
