@@ -184,6 +184,8 @@
       :leader
       "s h" #'~consult-shell-history)
 
+(map! "M->" #'~shell-command-insert)
+
 ;; Expand region
 ;; ref: https://github.com/magnars/expand-region.el
 (map! :map evil-visual-state-map
