@@ -15,18 +15,26 @@
   ;; Home profile, under ~/.guix-home/profile.
  (packages (specifications->packages
             (list
+             ;;
              ;; ops
+             ;;
              "docker-compose"
              "ansible" ; procedural IaC
              "terragrunt" ; DRY terraform
              "kind" ; supervise local K8s clusters
 
+             ;;
              ;; tools
+             ;;
              "glances" ; htop alternatives
              "pandoc" ; document format converter
 
+             ;;
              ;; languages
+             ;;
              "guile"
+             ;; ref: https://guix.gnu.org/manual/en/html_node/Application-Setup.html#Locales-1
+             "glibc-locales" ; locales for guile
              "jsonnet")))
 
  ;; Below is the list of Home services.  To search for available
