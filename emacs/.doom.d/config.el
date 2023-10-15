@@ -109,6 +109,7 @@
 
   :hook
   (org-mode . (lambda () (setq-local tab-width 2)))
+  (org-mode . (lambda () (auto-fill-mode))) ; auto new line at 'fill-column value
 
   :config
   (setq org-roam-directory (file-truename "~/Notes/Roam")))
