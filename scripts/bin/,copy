@@ -1,0 +1,17 @@
+#!/usr/bin/env fish
+
+#
+# Copy content to the clipboard
+#
+# EXAMPLES:
+#
+# + Copy a text stream
+#   $ echo "Hello" | ,copy
+#
+
+switch (uname)
+    case Darwin
+        pbcopy
+    case Linux
+        xsel --append --clipboard
+end
