@@ -52,9 +52,7 @@ in
     pkgs.pandoc # document format converter
     pkgsUnstable.nushell
     pkgs.du-dust # like du, but more intuitive
-    pkgs.httpie # glamorous curl
     pkgs.jc # to JSON!
-    pkgs.glances # htop alternative
     pkgs.speedtest-cli
     pkgs.imagemagick
 
