@@ -55,6 +55,7 @@ in
     pkgs.jc # to JSON!
     pkgs.speedtest-cli
     pkgs.imagemagick
+    pkgs.hugo # static site generator
 
     # ops
     pkgsUnstable.awscli2
