@@ -137,6 +137,10 @@
           ("DONE" . "#b7b7a4") ; dim
           ("CANCELLED" . +org-todo-cancel))))
 
+(use-package! markdown-mode
+  :hook
+  (markdown-mode . (lambda () (auto-fill-mode))))
+
 (after! flyspell
   (setenv "DICTIONARY" "en_GB-ise")
   (setq ispell-program-name "hunspell")
