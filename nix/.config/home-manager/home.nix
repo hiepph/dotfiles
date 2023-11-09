@@ -75,7 +75,7 @@ in
     # languages
     pkgs.go
     pkgs.graphviz
-    pkgs.asciidoc
+    pkgs.asciidoctor
 
     # python
     pkgs.poetry
