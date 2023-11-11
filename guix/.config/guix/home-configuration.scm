@@ -26,7 +26,6 @@
              ;;
              ;; tools
              ;;
-             "glances" ; htop alternatives
              "pandoc" ; document format converter
 
              ;;
