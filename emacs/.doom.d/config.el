@@ -141,6 +141,10 @@
   :hook
   (markdown-mode . (lambda () (auto-fill-mode))))
 
+(use-package! adoc-mode
+  :hook
+  (adoc-mode . (lambda () (auto-fill-mode))))
+
 (after! flyspell
   (setenv "DICTIONARY" "en_GB-ise")
   (setq ispell-program-name "hunspell")
