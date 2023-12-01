@@ -107,6 +107,9 @@
   ;; Monday as the first day of the week
   (setq calendar-week-start-day 1)
 
+  ;; Turn off tag inheritance
+  (setq org-use-tag-inheritance nil)
+
   :hook
   (org-mode . (lambda () (setq-local tab-width 2)))
   (org-mode . (lambda () (auto-fill-mode))) ; auto new line at 'fill-column value
