@@ -183,12 +183,16 @@
   :init
   (setq projectile-enable-caching nil))
 
-
 ;;
 ;; Navigation
 ;;
 ;; Don't try to guess dired buffer when I copy/move files.
 (setq dired-dwim-target nil)
+
+;;
+;; Shells
+;;
+(setq eshell-buffer-maximum-lines 8192)
 
 ;;
 ;; Additional modules
