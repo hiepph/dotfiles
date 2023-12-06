@@ -76,10 +76,8 @@
 ;; they are implemented.
 
 ;;
-;; Packages
-;;
-
 ;; Evil
+;;
 (use-package! evil
   :config
   (setq evil-move-cursor-back t)
@@ -89,7 +87,9 @@
   :config
   (global-evil-fringe-mark-mode))
 
-;; Docs
+;;
+;; Writings
+;;
 (use-package! org
   :init
   ;; Turn on image by default
@@ -155,70 +155,26 @@
   (ispell-set-spellchecker-params)
   (ispell-hunspell-add-multi-dic "en_GB-ise,en_GB"))
 
+;;
 ;; Ops
+;;
 (use-package! terraform-mode
   :hook
   (terraform-mode . terraform-format-on-save-mode))
 
 (put 'projectile-grep 'disabled nil)
 
+;;
 ;; Languages
+;;
 (use-package! go-mode
   :init
   (add-hook 'before-save-hook 'gofmt-before-save)
   :config
   (setq gofmt-command "goimports"))
 
-
 (setq-hook! 'python-mode-hook +format-with 'black)
 
-
-;;
-;; Customs keybindings
-;;
-(map! :desc "Yank from killring"
-      :leader
-      "y" #'consult-yank-pop)
-
-(map! :desc "Org - Display inline image"
-      :after org
-      :map org-mode-map
-      :localleader
-      "v" #'org-display-inline-images)
-
-(map! :desc "Projectile - Grep the project"
-      :after projectile
-      :map projectile-mode-map
-      :localleader
-      "/" #'projectile-grep)
-
-(map! :desc "Consult shell history"
-      :leader
-      "s h" #'~consult-shell-history)
-
-(map! "M->" #'~shell-command-insert)
-
-;; Expand region
-;; ref: https://github.com/magnars/expand-region.el
-(map! :map evil-visual-state-map
-      "+" #'er/expand-region)
-
-(map! :desc "Expand Region"
-      :map evil-normal-state-map
-      :leader
-      (:prefix-map ("+" . "expand-region")
-       :desc "url" "u" #'er/mark-url
-       :desc "comment" "c" #'er/mark-comment
-       :desc "function" "f" #'er/mark-defun))
-
-(map! :desc "Expand org element"
-      :map org-mode-map
-      :after org
-      :localleader
-      (:prefix-map ("+" . "expand-org-region")
-       :desc "element" "." #'er/mark-org-element
-       :desc "code" "c" #'er/mark-org-code-block
-       :desc "parent" "p" #'er/mark-org-parent))
 
 ;;
 ;; Projects
@@ -231,14 +187,14 @@
 ;;
 ;; Navigation
 ;;
-
 ;; Don't try to guess dired buffer when I copy/move files.
 (setq dired-dwim-target nil)
 
 ;;
-;; Additional helper
+;; Additional modules
 ;;
-(load! "helper.el")
+(load! "helpers.el")
+(load! "keybindings.el")
 
 ;;
 ;; custom configurations for individual machine
