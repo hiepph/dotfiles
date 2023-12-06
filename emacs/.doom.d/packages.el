@@ -62,6 +62,10 @@
 (package! adoc-mode)
 (package! jsonnet-mode)
 
+;;
+;; Org
+;;
+(package! ob-mermaid)
 
 ;;
 ;; Themes

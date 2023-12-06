@@ -138,7 +138,18 @@
           ("HOLD" . "#e0a458") ; yellow
           ("REVIEW" . "#d9ae94")
           ("DONE" . "#b7b7a4") ; dim
-          ("CANCELLED" . +org-todo-cancel))))
+          ("CANCELLED" . +org-todo-cancel)))
+  (org-babel-do-load-languages 'org-babel-load-languages
+                               '((eshell . t)
+                                 (emacs-lisp . t)
+                                 (mermaid . t)
+                                 (python . t)
+                                 (scheme . t)
+                                 (ruby . t))))
+
+(use-package! ob-mermaid
+  :config
+  (setq ob-mermaid-cli-path "~/opt/js/node_modules/.bin/mmdc"))
 
 (use-package! markdown-mode
   :hook
