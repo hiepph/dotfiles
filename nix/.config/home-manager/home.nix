@@ -56,6 +56,7 @@ in
     pkgs.speedtest-cli
     pkgs.imagemagick
     pkgs.hugo # static site generator
+    pkgs.nodejs_20
 
     # ops
     pkgsUnstable.awscli2
