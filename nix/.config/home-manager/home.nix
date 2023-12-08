@@ -92,6 +92,11 @@ in
     pkgs.delve # or `dlv` - debugger
 
 
+    # Clojure
+    pkgs.clojure
+    pkgs.leiningen # project management tool
+    pkgs.clj-kondo # linter
+    pkgs.clojure-lsp
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
