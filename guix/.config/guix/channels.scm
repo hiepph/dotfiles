@@ -10,5 +10,5 @@
   (url "https://git.savannah.gnu.org/git/guix.git")
   (branch "master")
   (commit
-   "7da8a43396006965634931b7f04dbd6d65296db4" ; Oct 21, 2023
-   ))
+   ;; Oct 21, 2023
+   "7da8a43396006965634931b7f04dbd6d65296db4")))
