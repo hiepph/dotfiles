@@ -142,6 +142,10 @@
   ;; improve scrolling speed
   (setq display-line-numbers nil)
   (remove-hook 'org-mode-hook #'org-superstar-mode)
+  ;; turn off eye-candy
+  (setq org-fontify-quote-and-verse-blocks nil
+        org-fontify-whole-heading-line nil
+        org-hide-leading-stars nil)
   (org-babel-do-load-languages 'org-babel-load-languages
                                '((eshell . t)
                                  (emacs-lisp . t)
