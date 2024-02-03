@@ -147,6 +147,11 @@
                                  (scheme . t)
                                  (ruby . t))))
 
+;; Disable marginalia-mode to prevent vertico slow down org-mode
+;; ref: https://github.com/doomemacs/doomemacs/issues/6622
+(use-package! marginalia-mode
+  :disabled)
+
 (use-package! ob-mermaid
   :config
   (setq ob-mermaid-cli-path "~/opt/js/node_modules/.bin/mmdc"))
