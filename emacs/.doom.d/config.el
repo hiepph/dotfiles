@@ -152,6 +152,11 @@
 (use-package! marginalia-mode
   :disabled)
 
+;; Increase GC's threshold to improve performance
+;; ref: https://github.com/doomemacs/doomemacs/issues/3108
+(after! gcmh
+  (setq gcmh-high-cons-threshold 33554432))  ; 32mb, or 64mb, or *maybe* 128mb, BUT NOT 512mb
+
 (use-package! ob-mermaid
   :config
   (setq ob-mermaid-cli-path "~/opt/js/node_modules/.bin/mmdc"))
