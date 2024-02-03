@@ -122,23 +122,26 @@
   (setq org-agenda-files '("~/Notes/Roam"))
   (setq org-todo-keywords
         '((sequence
-           "TODO(t)" ; A task that needs doing and is ready to do
-           "DOING(s)" ; A task that is in progress
-           "BLOCKED(b)" ; Something is blocking this task
-           "HOLD(h)" ; Maybe do it another time
-           "REVIEW(r)" ; A task that needs review
+           "TODO(t)"                ; A task that needs doing and is ready to do
+           "DOING(s)"               ; A task that is in progress
+           "BLOCKED(b)"             ; Something is blocking this task
+           "HOLD(h)"                ; Maybe do it another time
+           "REVIEW(r)"              ; A task that needs review
            "|"
-           "DONE(d)" ; A finished task
-           "CANCELLED(c)" ; Task is killed, aborted or no longer applicable
+           "DONE(d)"           ; A finished task
+           "CANCELLED(c)"      ; Task is killed, aborted or no longer applicable
            ))
         org-todo-keyword-faces
         '(("TODO" . "#009ddc")
-          ("DOING" . "#5c9a55") ; green
-          ("BLOCKED" . "#c44536") ; red
-          ("HOLD" . "#e0a458") ; yellow
+          ("DOING" . "#5c9a55")         ; green
+          ("BLOCKED" . "#c44536")       ; red
+          ("HOLD" . "#e0a458")          ; yellow
           ("REVIEW" . "#d9ae94")
-          ("DONE" . "#b7b7a4") ; dim
+          ("DONE" . "#b7b7a4")          ; dim
           ("CANCELLED" . +org-todo-cancel)))
+  ;; improve scrolling speed
+  (setq display-line-numbers nil)
+  (remove-hook 'org-mode-hook #'org-superstar-mode)
   (org-babel-do-load-languages 'org-babel-load-languages
                                '((eshell . t)
                                  (emacs-lisp . t)
