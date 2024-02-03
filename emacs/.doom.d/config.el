@@ -140,7 +140,7 @@
           ("DONE" . "#b7b7a4")          ; dim
           ("CANCELLED" . +org-todo-cancel)))
   ;; improve scrolling speed
-  (setq display-line-numbers nil)
+  (setq display-line-numbers-type nil)
   (remove-hook 'org-mode-hook #'org-superstar-mode)
   ;; turn off eye-candy
   (setq org-fontify-quote-and-verse-blocks nil
