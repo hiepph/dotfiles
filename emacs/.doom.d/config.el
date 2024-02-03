@@ -113,6 +113,7 @@
   :hook
   (org-mode . (lambda () (setq-local tab-width 2)))
   (org-mode . (lambda () (auto-fill-mode))) ; auto new line at 'fill-column value
+  (org-mode . (lambda () (display-line-numbers-mode -1)))
 
   :config
   (setq org-roam-directory (file-truename "~/Notes/Roam")))
@@ -139,13 +140,13 @@
           ("REVIEW" . "#d9ae94")
           ("DONE" . "#b7b7a4")          ; dim
           ("CANCELLED" . +org-todo-cancel)))
-  ;; improve scrolling speed
-  (setq display-line-numbers-type nil)
+
+  ;; turn off eye-candy to improve speed
   (remove-hook 'org-mode-hook #'org-superstar-mode)
-  ;; turn off eye-candy
   (setq org-fontify-quote-and-verse-blocks nil
         org-fontify-whole-heading-line nil
         org-hide-leading-stars nil)
+
   (org-babel-do-load-languages 'org-babel-load-languages
                                '((eshell . t)
                                  (emacs-lisp . t)
