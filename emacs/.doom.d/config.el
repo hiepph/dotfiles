@@ -140,7 +140,7 @@
           ("DOING" . "#5c9a55")         ; green
           ("BLOCKED" . "#c44536")       ; red
           ("HOLD" . "#e0a458")          ; yellow
-          ("" . "#d9ae94")
+          ("?" . "#d9ae94")
           ("DONE" . "#b7b7a4")          ; dim
           ("CANCELLED" . +org-todo-cancel)))
 
