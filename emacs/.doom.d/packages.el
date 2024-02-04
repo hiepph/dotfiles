@@ -66,6 +66,7 @@
 ;; Org
 ;;
 (package! ob-mermaid)
+(package! org-bullets)
 
 ;;
 ;; Themes

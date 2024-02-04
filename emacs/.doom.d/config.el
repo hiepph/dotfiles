@@ -116,6 +116,7 @@
   (org-mode . (lambda () (setq-local tab-width 2)))
   (org-mode . (lambda () (auto-fill-mode))) ; auto new line at 'fill-column value
   (org-mode . (lambda () (display-line-numbers-mode -1)))
+  (org-mode . (lambda () (org-bullets-mode)))
 
   :config
   (setq org-roam-directory (file-truename "~/Notes/Roam")))
@@ -129,7 +130,7 @@
            "DOING(s)"               ; A task that is in progress
            "BLOCKED(b)"             ; Something is blocking this task
            "HOLD(h)"                ; Maybe do it another time
-           "REVIEW(r)"              ; A task that needs review
+           "?(?)"              ; A task that needs review
            "|"
            "DONE(d)"           ; A finished task
            "CANCELLED(c)"      ; Task is killed, aborted or no longer applicable
@@ -139,7 +140,7 @@
           ("DOING" . "#5c9a55")         ; green
           ("BLOCKED" . "#c44536")       ; red
           ("HOLD" . "#e0a458")          ; yellow
-          ("REVIEW" . "#d9ae94")
+          ("" . "#d9ae94")
           ("DONE" . "#b7b7a4")          ; dim
           ("CANCELLED" . +org-todo-cancel)))
 
