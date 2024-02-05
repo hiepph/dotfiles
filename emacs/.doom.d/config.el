@@ -113,7 +113,6 @@
   (setq org-use-tag-inheritance nil)
 
   :hook
-  (org-mode . (lambda () (setq-local tab-width 2)))
   (org-mode . (lambda () (auto-fill-mode))) ; auto new line at 'fill-column value
   (org-mode . (lambda () (display-line-numbers-mode -1)))
   (org-mode . (lambda () (org-bullets-mode)))
