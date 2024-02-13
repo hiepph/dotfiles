@@ -114,7 +114,6 @@
 
   :hook
   (org-mode . (lambda () (auto-fill-mode))) ; auto new line at 'fill-column value
-  (org-mode . (lambda () (display-line-numbers-mode -1)))
   (org-mode . (lambda () (org-bullets-mode)))
 
   :config
@@ -184,7 +183,10 @@
   (setq ispell-program-name "hunspell")
   (setq ispell-dictionary "en_GB-ise,en_GB")
   (ispell-set-spellchecker-params)
-  (ispell-hunspell-add-multi-dic "en_GB-ise,en_GB"))
+  (ispell-hunspell-add-multi-dic "en_GB-ise,en_GB")
+
+  ;; Ignore all uppercase acronyms
+  (setq flyspell-abbrev-p t))
 
 ;;
 ;; Ops
