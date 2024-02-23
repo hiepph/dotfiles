@@ -113,9 +113,8 @@
   (setq org-use-tag-inheritance nil)
 
   :hook
-  ;; (org-mode . (lambda () (auto-fill-mode)))
-                                        ; auto new line at 'fill-column value
   (org-mode . (lambda () (visual-fill-column-mode)))
+  (org-mode . (lambda () (setq-local fill-column 120)))
   (org-mode . (lambda () (org-bullets-mode)))
 
   :config
@@ -174,7 +173,7 @@
 
 (use-package! markdown-mode
   :hook
-  ;; (markdown-mode . (lambda () (auto-fill-mode)))
+  (markdown-mode . (lambda () (setq-local fill-column 120)))
   (markdown-mode . (lambda () (visual-fill-column-mode))))
 
 (use-package! adoc-mode
