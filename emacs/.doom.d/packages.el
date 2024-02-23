@@ -75,3 +75,12 @@
 (straight-use-package '(colorless-theme :type git
                         :repo "https://git.sr.ht/~lthms/colorless-themes.el"
                         :branch "master"))
+
+;;
+;; UI
+;;
+
+;; Visual Fill Column
+;; - mimics ~fill-column~ and ~visual-line-mode~ visually, without changing the contents of the file
+;; ref: https://codeberg.org/joostkremers/visual-fill-column
+(package! visual-fill-column)
