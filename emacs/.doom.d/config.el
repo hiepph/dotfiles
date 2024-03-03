@@ -129,7 +129,8 @@
            "DOING(s)"               ; A task that is in progress
            "BLOCKED(b)"             ; Something is blocking this task
            "HOLD(h)"                ; Maybe do it another time
-           "?(?)"              ; A task that needs review
+           "?(?)"              ; Should I do this?
+           "REVIEW(r)"
            "|"
            "DONE(d)"           ; A finished task
            "CANCELLED(c)"      ; Task is killed, aborted or no longer applicable
@@ -139,9 +140,10 @@
           ("DOING" . "#5c9a55")         ; green
           ("BLOCKED" . "#c44536")       ; red
           ("HOLD" . "#e0a458")          ; yellow
-          ("?" . "#d9ae94")
+          ("?" . "#84a98c")
+          ("REVIEW" . "#f7b538")
           ("DONE" . "#b7b7a4")          ; dim
-          ("CANCELLED" . +org-todo-cancel)))
+          ("CANCELLED" . "540b0e")))
 
   ;; turn off eye-candy to improve speed
   (remove-hook 'org-mode-hook #'org-superstar-mode)
