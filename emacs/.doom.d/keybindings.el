@@ -37,9 +37,11 @@
       (:prefix-map ("+" . "expand-region")
        :desc "url" "u" #'er/mark-url
        :desc "comment" "c" #'er/mark-comment
-       :desc "function" "f" #'er/mark-defun))
+       :desc "function" "f" #'er/mark-defun
+       :desc "block" "b" #'er/mark-python-block
+       :desc "block" "B" #'er/mark-python-block-and-decorator))
 
-(map! :desc "Expand org element"
+(map! :desc "Expand Org elements"
       :map org-mode-map
       :after org
       :localleader
