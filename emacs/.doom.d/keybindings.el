@@ -38,17 +38,12 @@
        :desc "url" "u" #'er/mark-url
        :desc "comment" "c" #'er/mark-comment
        :desc "function" "f" #'er/mark-defun
-       :desc "block" "b" #'er/mark-python-block
-       :desc "block" "B" #'er/mark-python-block-and-decorator))
+       :desc "Python block" "b" #'er/mark-python-block
+       :desc "Python block + decorator" "B" #'er/mark-python-block-and-decorator
+       :desc "Org's element" "e" #'er/mark-org-element
+       :desc "Org's code block" "c" #'er/mark-org-code-block
+       :desc "Org's parent" "p" #'er/mark-org-parent))
 
-(map! :desc "Expand Org elements"
-      :map org-mode-map
-      :after org
-      :localleader
-      (:prefix-map ("+" . "expand-org-region")
-       :desc "element" "." #'er/mark-org-element
-       :desc "code" "c" #'er/mark-org-code-block
-       :desc "parent" "p" #'er/mark-org-parent))
 
 ;; Bookmarks
 (map! :desc "Edit bookmarks"
