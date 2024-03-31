@@ -66,6 +66,7 @@ in
     pkgsUnstable.terragrunt # DRY terraform
     pkgs.rclone
     pkgsUnstable.kubectx
+    pkgs.kind
     pkgs.nmap
     pkgs.inetutils
     pkgs.vagrant
