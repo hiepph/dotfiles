@@ -80,7 +80,6 @@ in
     pkgs.asciidoctor
 
     # python
-    pkgs.poetry
     pkgs.black # formatter
     pkgs.ruff # linter
     pkgs.yamllint
