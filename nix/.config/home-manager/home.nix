@@ -60,6 +60,7 @@ in
 
     # ops
     pkgsUnstable.awscli2
+    pkgs.eksctl
     pkgs.steampipe # query cloud resources with SQL
     pkgs.terraform
     pkgsUnstable.opentofu # Open Terraform fork
