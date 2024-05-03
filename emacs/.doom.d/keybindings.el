@@ -24,6 +24,7 @@
       :leader
       "s h" #'~consult-shell-history)
 
+;; Shell command
 (map! "M->" #'~shell-command-insert)
 
 ;; Expand region
@@ -50,3 +51,8 @@
       :map evil-normal-state-map
       :leader
       "b e" #'edit-bookmarks)
+
+;; Toggle
+(map! :desc "Visual Fill Column Mode"
+      :leader
+      "t w" #'visual-fill-column-mode)
