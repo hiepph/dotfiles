@@ -55,4 +55,5 @@
 ;; Toggle
 (map! :desc "Visual Fill Column Mode"
       :leader
-      "t w" #'visual-fill-column-mode)
+      "t w" #'visual-fill-column-mode
+      "t W" #'global-visual-fill-column-mode)
