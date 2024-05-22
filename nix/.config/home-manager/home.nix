@@ -68,6 +68,7 @@ in
     pkgs.rclone
     pkgsUnstable.kubectx
     pkgs.kind
+    pkgs.minikube
     pkgs.nmap
     pkgs.inetutils
     pkgs.vagrant
