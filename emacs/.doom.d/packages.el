@@ -61,6 +61,7 @@
 (package! nushell-mode)
 (package! adoc-mode)
 (package! jsonnet-mode)
+(package! jinja2-mode)
 
 ;;
 ;; Org
