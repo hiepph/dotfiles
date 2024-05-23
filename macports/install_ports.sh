@@ -20,6 +20,9 @@ sudo port install emacs-app +nativecomp +treesitter
 sudo port install borgbackup borgmatic
 sudo port install pulumi
 
+sudo port install helm
+sudo port select --set helm helm3.13
+
 #
 # languages
 #
