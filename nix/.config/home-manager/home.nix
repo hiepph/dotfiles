@@ -51,6 +51,7 @@ in
     pkgs.zoxide # smarter cd
     pkgs.pandoc # document format converter
     pkgsUnstable.nushell
+    pkgsUnstable.duckdb # OLAP
     pkgs.du-dust # like du, but more intuitive
     pkgs.jc # to JSON!
     pkgs.speedtest-cli
