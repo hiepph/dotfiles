@@ -7,3 +7,6 @@ TAGS
 # environment
 .envrc
 .DS_Store
+
+# editor
+flycheck_*
