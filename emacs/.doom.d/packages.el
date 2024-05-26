@@ -79,6 +79,11 @@
                         :branch "master"))
 
 ;;
+;; Navigation
+;;
+(package! dired-subtree)
+
+;;
 ;; UI
 ;;
 
