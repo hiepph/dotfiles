@@ -61,6 +61,7 @@ in
 
     # ops
     pkgsUnstable.awscli2
+    pkgs.aws-vault
     pkgsUnstable.eksctl
     pkgs.steampipe # query cloud resources with SQL
     pkgs.terraform
