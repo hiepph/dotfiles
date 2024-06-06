@@ -223,8 +223,9 @@
 ;;
 ;; Navigation
 ;;
+
 ;; Don't try to guess dired buffer when I copy/move files.
-(setq dired-dwim-target nil)
+;; (setq dired-dwim-target nil)
 
 ;;
 ;; Shells
