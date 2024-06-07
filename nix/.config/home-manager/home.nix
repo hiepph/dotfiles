@@ -76,7 +76,6 @@ in
     pkgs.vagrant
     pkgs.packer
     pkgs.qemu
-    pkgs.colima # Container runtimes on macOS (and Linux) with minimal setup
     pkgs.ansible
 
     # languages
