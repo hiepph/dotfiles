@@ -69,6 +69,7 @@ in
     pkgsUnstable.terragrunt # DRY terraform
     pkgs.rclone
     pkgsUnstable.kubectx
+    pkgsUnstable.tilt # docker-compose for Kubernetes
     pkgs.kind
     pkgs.minikube
     pkgs.nmap
@@ -96,12 +97,14 @@ in
     pkgs.gotools # goimports, gopls
     pkgs.delve # or `dlv` - debugger
 
-
     # Clojure
     pkgs.clojure
     pkgs.leiningen # project management tool
     pkgs.clj-kondo # linter
     pkgs.clojure-lsp
+
+    # Database
+    pkgs.postgresql
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
