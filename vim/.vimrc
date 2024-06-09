@@ -5,8 +5,9 @@
 " Unicode
 set encoding=utf-8
 
-" show number
+" show line numbers
 set number
+set relativenumber
 
 " highlight current line
 " set cursorline
