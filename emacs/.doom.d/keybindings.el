@@ -27,11 +27,6 @@
       :localleader
       "/" #'projectile-grep)
 
-;; Helpers
-(map! :desc "Consult shell history"
-      :leader
-      "s h" #'~consult-shell-history)
-
 ;; Shell command
 (map! "M->" #'~shell-command-insert)
 
