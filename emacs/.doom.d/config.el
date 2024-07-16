@@ -168,10 +168,10 @@
 (use-package! marginalia-mode
   :disabled)
 
-;; Increase GC's threshold to improve performance
+;; Increase GC's threshold to improve GC performance
 ;; ref: https://github.com/doomemacs/doomemacs/issues/3108
-(after! gcmh
-  (setq gcmh-high-cons-threshold 33554432))  ; 32mb, or 64mb, or *maybe* 128mb, BUT NOT 512mb
+;; (after! gcmh
+;;   (setq gcmh-high-cons-threshold (* 32 (expt 2 20))))
 
 (use-package! ob-mermaid
   :config
