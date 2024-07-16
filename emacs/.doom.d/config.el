@@ -212,6 +212,8 @@
 
 (setq-hook! 'python-mode-hook +format-with 'black)
 
+;; Associate file types with file modes.
+(add-to-list 'auto-mode-alist '("\\Tiltfile\\'" . python-mode))
 
 ;;
 ;; Projects
