@@ -10,7 +10,15 @@
       :after org
       :map org-mode-map
       :localleader
-      "v" #'org-display-inline-images)
+      "v i" #'org-display-inline-images
+      "v x" #'org-latex-preview)
+
+;; TODO: use ~map!~
+(general-define-key
+ :states 'normal
+ :keymaps 'org-mode-map
+ "[ [" #'org-previous-visible-heading
+ "] ]" #'org-next-visible-heading)
 
 ;; Project
 (map! :desc "Projectile - Grep the project"
