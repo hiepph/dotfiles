@@ -53,6 +53,7 @@
 ;; UI
 ;;
 (package! evil-fringe-mark)
+(package! doom-modeline)
 
 ;;
 ;; Languages
@@ -82,6 +83,7 @@
 ;; Navigation
 ;;
 (package! dired-subtree)
+(package! lispyville)
 
 ;;
 ;; UI

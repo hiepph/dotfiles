@@ -89,6 +89,10 @@
   :config
   (global-evil-fringe-mark-mode))
 
+(use-package! lispyville
+  :init
+  (general-add-hook '(emacs-lisp-mode-hook lisp-mode-hook) #'lispyville-mode))
+
 ;;
 ;; Writings
 ;;
@@ -233,6 +237,16 @@
 ;; Shells
 ;;
 (setq eshell-buffer-maximum-lines 8192)
+
+;;
+;; UI
+;;
+(use-package! doom-modeline
+  :init
+  (doom-modeline-mode 1)
+  :config
+  ;; show current workspace name
+  (setq doom-modeline-persp-name t))
 
 ;;
 ;; Additional modules
