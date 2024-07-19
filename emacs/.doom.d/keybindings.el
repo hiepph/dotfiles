@@ -3,8 +3,6 @@
 ;;
 ;; Editor
 ;;
-(map! :map 'override [f2] #'basic-save-buffer)
-
 (map! :desc "Yank from killring"
       :leader
       "y" #'consult-yank-pop)
@@ -83,14 +81,5 @@
 ;;
 
 (map! [f5] #'+workspace/display)
-(map! [f7] #'+workspace/switch-to)
-(map! :prefix [f6]
-      "1" #'+workspace/switch-to-1
-      "2" #'+workspace/switch-to-2
-      "3" #'+workspace/switch-to-3
-      "4" #'+workspace/switch-to-4
-      "5" #'+workspace/switch-to-5
-      "6" #'+workspace/switch-to-6
-      "7" #'+workspace/switch-to-7
-      "8" #'+workspace/switch-to-8
-      "9" #'+workspace/switch-to-9)
+(map! [f6] #'+workspace/switch-to)
+(map! [f8] #'+workspace/other)
