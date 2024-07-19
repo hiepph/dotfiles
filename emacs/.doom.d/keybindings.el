@@ -82,4 +82,15 @@
 
 (map! [f5] #'+workspace/display)
 (map! [f6] #'+workspace/switch-to)
+(map! :prefix [f7]
+      "1" #'+workspace/switch-to-0
+      "2" #'+workspace/switch-to-1
+      "3" #'+workspace/switch-to-2
+      "4" #'+workspace/switch-to-3
+      "5" #'+workspace/switch-to-4
+      "6" #'+workspace/switch-to-5
+      "7" #'+workspace/switch-to-6
+      "8" #'+workspace/switch-to-7
+      "9" #'+workspace/switch-to-8
+      "0" #'+workspace/switch-to-9)
 (map! [f8] #'+workspace/other)
