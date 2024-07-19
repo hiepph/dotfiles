@@ -53,7 +53,6 @@
 ;; UI
 ;;
 (package! evil-fringe-mark)
-(package! doom-modeline)
 
 ;;
 ;; Languages
@@ -75,9 +74,6 @@
 ;; Themes
 ;;
 (package! plan9-theme)
-(straight-use-package '(colorless-theme :type git
-                        :repo "https://git.sr.ht/~lthms/colorless-themes.el"
-                        :branch "master"))
 
 ;;
 ;; Navigation

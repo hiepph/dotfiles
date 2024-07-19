@@ -239,16 +239,6 @@
 (setq eshell-buffer-maximum-lines 8192)
 
 ;;
-;; UI
-;;
-(use-package! doom-modeline
-  :init
-  (doom-modeline-mode 1)
-  :config
-  ;; show current workspace name
-  (setq doom-modeline-persp-name t))
-
-;;
 ;; Additional modules
 ;;
 (load! "helpers.el")
