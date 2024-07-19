@@ -1,34 +1,13 @@
 ;;; $DOOMDIR/keybindings.el -*- lexical-binding: t; -*-
 
+;;
 ;; Editor
+;;
+(map! :map 'override [f2] #'basic-save-buffer)
+
 (map! :desc "Yank from killring"
       :leader
       "y" #'consult-yank-pop)
-
-;; Org
-(map! :desc "Org - Display inline image"
-      :after org
-      :map org-mode-map
-      :localleader
-      "v i" #'org-display-inline-images
-      "v x" #'org-latex-preview)
-
-;; TODO: use ~map!~
-(general-define-key
- :states 'normal
- :keymaps 'org-mode-map
- "[ [" #'org-previous-visible-heading
- "] ]" #'org-next-visible-heading)
-
-;; Project
-(map! :desc "Projectile - Grep the project"
-      :after projectile
-      :map projectile-mode-map
-      :localleader
-      "/" #'projectile-grep)
-
-;; Shell command
-(map! "M->" #'~shell-command-insert)
 
 ;; Expand region
 ;; ref: https://github.com/magnars/expand-region.el
@@ -48,6 +27,40 @@
        :desc "Org's code block" "c" #'er/mark-org-code-block
        :desc "Org's parent" "p" #'er/mark-org-parent))
 
+;;
+;; Org
+;;
+(map! :desc "Org - Display inline image"
+      :after org
+      :map org-mode-map
+      :localleader
+      "v i" #'org-display-inline-images
+      "v x" #'org-latex-preview)
+
+(general-define-key
+ :states 'normal
+ :keymaps 'org-mode-map
+ "[ [" #'org-previous-visible-heading
+ "] ]" #'org-next-visible-heading)
+
+;;
+;; Projects
+;;
+(map! :desc "Projectile - Grep the project"
+      :after projectile
+      :map projectile-mode-map
+      :localleader
+      "/" #'projectile-grep)
+
+;;
+;; Shell
+;;
+(map! "M->" #'~shell-command-insert)
+
+
+;;
+;; Navigation
+;;
 
 ;; Bookmarks
 (map! :desc "Edit bookmarks"
@@ -55,8 +68,29 @@
       :leader
       "b e" #'edit-bookmarks)
 
+;;
+;; UI
+;;
+
 ;; Toggle
 (map! :desc "Visual Fill Column Mode"
       :leader
       "t w" #'visual-fill-column-mode
       "t W" #'global-visual-fill-column-mode)
+
+;;
+;; Workspace
+;;
+
+(map! [f5] #'+workspace/display)
+(map! [f7] #'+workspace/switch-to)
+(map! :prefix [f6]
+      "1" #'+workspace/switch-to-1
+      "2" #'+workspace/switch-to-2
+      "3" #'+workspace/switch-to-3
+      "4" #'+workspace/switch-to-4
+      "5" #'+workspace/switch-to-5
+      "6" #'+workspace/switch-to-6
+      "7" #'+workspace/switch-to-7
+      "8" #'+workspace/switch-to-8
+      "9" #'+workspace/switch-to-9)
