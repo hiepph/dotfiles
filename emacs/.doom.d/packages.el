@@ -50,6 +50,11 @@
 ;;(unpin! t)
 
 ;;
+;; Editor
+;;
+(package! super-save)
+
+;;
 ;; UI
 ;;
 (package! evil-fringe-mark)
@@ -80,10 +85,6 @@
 ;;
 (package! dired-subtree)
 (package! lispyville)
-
-;;
-;; UI
-;;
 
 ;; Visual Fill Column
 ;; - mimics ~fill-column~ and ~visual-line-mode~ visually, without changing the contents of the file

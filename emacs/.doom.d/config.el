@@ -78,8 +78,9 @@
 ;; they are implemented.
 
 ;;
-;; Evil
+;; Editor
 ;;
+
 (use-package! evil
   :config
   (setq evil-move-cursor-back t)
@@ -93,9 +94,15 @@
   :init
   (general-add-hook '(emacs-lisp-mode-hook lisp-mode-hook) #'lispyville-mode))
 
+;; Auto-save when a buffer loses focus
+(use-package! super-save
+  :config
+  (super-save-mode +1))
+
 ;;
-;; Writings
+;; Org
 ;;
+
 (use-package! org
   :init
   ;; Turn on image by default
