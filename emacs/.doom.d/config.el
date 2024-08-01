@@ -145,6 +145,7 @@
            "|"
            "DONE(d)"           ; A finished task
            "CANCELLED(c)"      ; Task is killed, aborted or no longer applicable
+           "ARCHIVED(a)"       ; Deprecated, but still contains valuable information
            ))
         org-todo-keyword-faces
         '(("TODO" . "#009ddc")
@@ -152,9 +153,11 @@
           ("BLOCKED" . "#c44536")       ; red
           ("HOLD" . "#e0a458")          ; yellow
           ("?" . "#84a98c")
-          ("REVIEW" . "#f7b538")
+          ("REVIEW" . "#588157")
           ("DONE" . "#b7b7a4")          ; dim
-          ("CANCELLED" . "540b0e")))
+          ("CANCELLED" . "#540b0e")
+          ("ARCHIVED" . "#e07a5f")
+          ))
 
   ;; turn off eye-candy to improve speed
   (remove-hook 'org-mode-hook #'org-superstar-mode)
