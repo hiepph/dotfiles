@@ -84,6 +84,7 @@ in
     pkgs.go
     pkgs.graphviz
     pkgs.asciidoctor
+    pkgs.sbcl
 
     # python
     pkgs.black # formatter
