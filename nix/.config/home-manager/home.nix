@@ -75,10 +75,12 @@ in
     pkgs.minikube
     pkgs.nmap
     pkgs.inetutils
-    pkgs.vagrant
-    pkgs.packer
+    # pkgs.vagrant
+    # pkgs.packer
     pkgs.qemu
     pkgs.ansible
+    pkgs.argocd
+    pkgs.fluxcd
 
     # languages
     pkgs.go
@@ -92,8 +94,8 @@ in
     pkgs.yamllint
 
     # ruby
-    pkgs.solargraph # lsp
-    pkgs.rubocop # linter, formatter
+    # pkgs.solargraph # lsp
+    # pkgs.rubocop # linter, formatter
 
     # go
     pkgs.gotools # goimports, gopls
