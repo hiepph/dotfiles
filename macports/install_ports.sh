@@ -4,6 +4,7 @@ set -x
 # shell
 #
 sudo port install fish
+sudo port install stow
 
 #
 # text editors
