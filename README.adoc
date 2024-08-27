@@ -94,7 +94,7 @@ https://nix-community.github.io/home-manager/index.html[home-manager]:
 nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
 
 # with a stable channel (23.5)
-nix-channel --add https://github.com/nix-community/home-manager/archive/release-23.05.tar.gz home-manager
+nix-channel --add https://github.com/nix-community/home-manager/archive/release-24.05.tar.gz home-manager
 ----
 
 [source,bash]
