@@ -84,16 +84,14 @@ cd macports
 curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
 ----
 
-* Install
-
-https://nix-community.github.io/home-manager/index.html[home-manager]:
+* Install https://nix-community.github.io/home-manager/index.html[home-manager]:
 
 [source,bash]
 ----
 # with an unstable channel
 nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
 
-# with a stable channel (23.5)
+# with a stable channel
 nix-channel --add https://github.com/nix-community/home-manager/archive/release-24.05.tar.gz home-manager
 ----
 
@@ -104,8 +102,15 @@ nix-shell '<home-manager>' -A install
 ----
 
 * Shell are not managed with `+home-manager+` though, for stability reason.
-* When you need to make change to the packages, edit
-`+~/.config/home-manager/home.nix+` and:
+
+* Add a +nixpkgs+ channel:
+
+[source,bash]
+----
+nix-channel --add https://channels.nixos.org/nixpkgs-24.05-darwin nixpkgs
+----
+
+* When you need to make change to the packages, edit `+~/.config/home-manager/home.nix+` and:
 
 [source,bash]
 ----
