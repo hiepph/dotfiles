@@ -103,11 +103,12 @@ nix-shell '<home-manager>' -A install
 
 * Shell are not managed with `+home-manager+` though, for stability reason.
 
-* Add a +nixpkgs+ channel:
+* Add +nixpkgs+ channels:
 
 [source,bash]
 ----
 nix-channel --add https://channels.nixos.org/nixpkgs-24.05-darwin nixpkgs
+nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs-unstable
 ----
 
 * When you need to make change to the packages, edit `+~/.config/home-manager/home.nix+` and:
