@@ -200,7 +200,7 @@ My Doom Emacs’ configuration lives in `+emacs/.doom.d+`.
 
 [source,emacs-lisp]
 ----
-nerd-icon-install-fonts
+nerd-icons-install-fonts
 ----
 
 == Vim
