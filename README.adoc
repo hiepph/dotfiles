@@ -109,6 +109,7 @@ nix-shell '<home-manager>' -A install
 ----
 nix-channel --add https://channels.nixos.org/nixpkgs-24.05-darwin nixpkgs
 nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs-unstable
+nix-channel --update
 ----
 
 * When you need to make change to the packages, edit `+~/.config/home-manager/home.nix+` and:
