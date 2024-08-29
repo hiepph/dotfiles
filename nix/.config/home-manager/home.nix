@@ -79,8 +79,9 @@ in
     # pkgs.packer
     pkgs.qemu
     pkgs.ansible
-    pkgs.argocd
-    pkgs.fluxcd
+    pkgs.argocd # gitops
+    pkgs.fluxcd # gitops
+    pkgs.linkerd # service mesh
 
     # languages
     pkgs.go
