@@ -7,8 +7,8 @@ in
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "hiepph";
-  home.homeDirectory = "/Users/hiepph";
+  home.username = builtins.getEnv "USER";
+  home.homeDirectory = builtins.getEnv "HOME";
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -82,12 +82,13 @@ in
     pkgs.ansible
     pkgs.argocd
     pkgs.fluxcd
+    pkgs.cloudfoundry-cli
 
     # languages
     pkgs.go
     pkgs.graphviz
     pkgs.asciidoctor
-    pkgs.sbcl
+    # pkgs.sbcl
 
     # python
     pkgs.black # formatter
