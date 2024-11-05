@@ -58,6 +58,7 @@ in
     pkgs.imagemagick
     pkgs.hugo # static site generator
     pkgs.nodejs_20
+    pkgs.atuin
 
     # ops
     pkgsUnstable.awscli2
