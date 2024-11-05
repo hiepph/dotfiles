@@ -109,6 +109,7 @@ nix-shell '<home-manager>' -A install
 ----
 nix-channel --add https://channels.nixos.org/nixpkgs-24.05-darwin nixpkgs
 nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs-unstable
+nix-channel --update
 ----
 
 * When you need to make change to the packages, edit `+~/.config/home-manager/home.nix+` and:
@@ -194,6 +195,16 @@ chsh -s $(which fish)
 I decided to switch (and possibly contribute) to
 https://github.com/hlissner/doom-emacs/[doom-emacs] instead of writing
 my vanilla Emacs configurations.
+
+Install:
+
+[source,bash]
+----
+git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d
+~/.emacs.d/bin/doom install
+----
+
+Then +stow emacs+.
 
 I want to contribute and learn best practice from community, at least
 until I’m confident enough to maintain my own configurations.

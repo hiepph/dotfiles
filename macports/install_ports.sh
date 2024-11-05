@@ -10,7 +10,9 @@ sudo port install stow
 # text editors
 #
 
-# refer: https://ports.macports.org/port/emacs-app/details/
+# CLI
+sudo port install emacs +nativecomp +treesitter
+# App. Refer: https://ports.macports.org/port/emacs-app/details/
 sudo port install emacs-app +nativecomp +treesitter
 
 #
