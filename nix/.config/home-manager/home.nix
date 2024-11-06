@@ -5,6 +5,14 @@ let
   pkgsUnstable = import <nixpkgs-unstable> {};
 in
 {
+  imports = [
+
+  ] ++ (
+    if builtins.pathExists "${builtins.getEnv "HOME"}/customs/packages.nix"
+    then ["${builtins.getEnv "HOME"}/customs/packages.nix"]
+    else []
+  );
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = builtins.getEnv "USER";
@@ -67,6 +75,7 @@ in
     pkgsUnstable.eksctl
     pkgs.steampipe # query cloud resources with SQL
     pkgs.terraform
+    pkgs.pulumi-bin
     pkgsUnstable.opentofu # Open Terraform fork
     pkgsUnstable.terragrunt # DRY terraform
     pkgs.rclone
@@ -80,7 +89,6 @@ in
     # pkgs.packer
     pkgs.qemu
     pkgs.ansible
-    pkgs.cloudfoundry-cli
     pkgs.argocd # gitops
     pkgs.fluxcd # gitops
     pkgs.linkerd # service mesh
