@@ -142,21 +142,22 @@
            "HOLD(h)"                ; Maybe do it another time
            "?(?)"              ; Should I do this?
            "REVIEW(r)"
-           "|"
            "DONE(d)"           ; A finished task
            "CANCELLED(c)"      ; Task is killed, aborted or no longer applicable
            "ARCHIVED(a)"       ; Deprecated, but still contains valuable information
+           "UNFINISHED(u)"
            ))
         org-todo-keyword-faces
-        '(("TODO" . "#009ddc")
+        '(("TODO" . "#009ddc")          ; blue
           ("DOING" . "#5c9a55")         ; green
           ("BLOCKED" . "#c44536")       ; red
           ("HOLD" . "#e0a458")          ; yellow
-          ("?" . "#84a98c")
-          ("REVIEW" . "#588157")
-          ("DONE" . "#b7b7a4")          ; dim
-          ("CANCELLED" . "#540b0e")
-          ("ARCHIVED" . "#e07a5f")
+          ("?" . "#000000")             ; black
+          ("REVIEW" . "#588157")        ; dark green
+          ("DONE" . "#b7b7a4")          ; grey
+          ("CANCELLED" . "#540b0e")     ; dark brown
+          ("ARCHIVED" . "#e07a5f")      ; orange
+          ("UNFINISHED" . "#636363")    ; dark grey
           ))
 
   ;; turn off eye-candy to improve speed
