@@ -92,6 +92,7 @@ in
     pkgs.argocd # gitops
     pkgs.fluxcd # gitops
     pkgs.linkerd # service mesh
+    pkgs.step-cli # https://github.com/smallstep/cli
 
     # languages
     pkgs.go
