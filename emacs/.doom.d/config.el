@@ -145,6 +145,7 @@
            "DONE(d)"           ; A finished task
            "CANCELLED(c)"      ; Task is killed, aborted or no longer applicable
            "ARCHIVED(a)"       ; Deprecated, but still contains valuable information
+           "DOCUMENTATION(o)"       ; Approved. Need to move to my permanent notes
            "UNFINISHED(u)"
            ))
         org-todo-keyword-faces
@@ -158,6 +159,7 @@
           ("CANCELLED" . "#540b0e")     ; dark brown
           ("ARCHIVED" . "#e07a5f")      ; orange
           ("UNFINISHED" . "#636363")    ; dark grey
+          ("DOCUMENTATION" . "#918936")    ; khaki
           ))
 
   ;; turn off eye-candy to improve speed
