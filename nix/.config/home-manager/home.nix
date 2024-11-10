@@ -33,7 +33,6 @@ in
     # security
     pkgs.gnupg
     pkgs.pinentry_mac
-    pkgs.pass
 
     # editor
     pkgs.vim
