@@ -76,6 +76,11 @@
 (package! org-bullets)
 
 ;;
+;; Shell
+;;
+(package! exec-path-from-shell)
+
+;;
 ;; Themes
 ;;
 (package! plan9-theme)

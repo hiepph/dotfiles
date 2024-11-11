@@ -249,7 +249,12 @@
 ;;
 ;; Shells
 ;;
+
 (setq eshell-buffer-maximum-lines 8192)
+
+;; Command works in shell, but not in Emacs?
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
 
 ;;
 ;; Additional modules
