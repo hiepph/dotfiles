@@ -78,7 +78,7 @@ in
     pkgsUnstable.opentofu # Open Terraform fork
     pkgsUnstable.terragrunt # DRY terraform
     pkgs.rclone
-    pkgsUnstable.kubectx
+    # pkgsUnstable.kubectx
     pkgsUnstable.tilt # docker-compose for Kubernetes
     pkgs.kind
     pkgs.minikube

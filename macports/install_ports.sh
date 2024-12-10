@@ -24,3 +24,6 @@ sudo port install rbenv ruby-build
 
 # build dependencies for pyenv
 sudo port install sqlite3 xz readline zlib tk lzma
+
+# Kubernetes
+sudo port install kubectl kubectx
