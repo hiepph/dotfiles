@@ -26,4 +26,4 @@ sudo port install rbenv ruby-build
 sudo port install sqlite3 xz readline zlib tk lzma
 
 # Kubernetes
-sudo port install kubectl kubectx
+sudo port install kubectl kubectx helm
