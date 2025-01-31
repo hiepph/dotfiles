@@ -66,6 +66,7 @@ in
     pkgs.hugo # static site generator
     pkgs.nodejs_20
     pkgs.atuin
+    pkgs.tree
 
     # ops
     pkgsUnstable.awscli2
