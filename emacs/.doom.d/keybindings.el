@@ -3,6 +3,7 @@
 ;;
 ;; F keys
 ;;
+(map! [f2] #'save-buffer)
 (map! [f5] #'+workspace/switch-to)
 (map! [f8] #'+workspace/other)
 (map! [f9] #'org-roam-node-find)
