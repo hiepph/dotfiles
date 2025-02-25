@@ -141,7 +141,7 @@
            "BLOCKED(b)"             ; Something is blocking this task
            "HOLD(h)"                ; Maybe do it another time
            "?(?)"              ; Should I do this?
-           "REVIEW(r)"
+           "REFACTOR(r)"       ; required reviewing and refactoring
            "DONE(d)"           ; A finished task
            "CANCELLED(c)"      ; Task is killed, aborted or no longer applicable
            "ARCHIVED(a)"       ; Deprecated, but still contains valuable information
@@ -154,7 +154,7 @@
           ("BLOCKED" . "#c44536")       ; red
           ("HOLD" . "#e0a458")          ; yellow
           ("?" . "#000000")             ; black
-          ("REVIEW" . "#588157")        ; dark green
+          ("REFACTOR" . "#588157")        ; dark green
           ("DONE" . "#b7b7a4")          ; grey
           ("CANCELLED" . "#540b0e")     ; dark brown
           ("ARCHIVED" . "#e07a5f")      ; orange
