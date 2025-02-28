@@ -74,7 +74,6 @@ in
     pkgs.ssm-session-manager-plugin
     pkgsUnstable.eksctl
     pkgs.steampipe # query cloud resources with SQL
-    pkgs.terraform
     pkgs.pulumi-bin
     pkgsUnstable.opentofu # Open Terraform fork
     pkgsUnstable.terragrunt # DRY terraform
@@ -115,9 +114,9 @@ in
 
     # Clojure
     pkgs.clojure
-    pkgs.leiningen # project management tool
-    pkgs.clj-kondo # linter
-    pkgs.clojure-lsp
+    # pkgs.leiningen # project management tool
+    # pkgs.clj-kondo # linter
+    # pkgs.clojure-lsp
 
     # Database
     pkgs.postgresql
