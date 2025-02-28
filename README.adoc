@@ -92,7 +92,7 @@ curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix 
 nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
 
 # with a stable channel
-nix-channel --add https://github.com/nix-community/home-manager/archive/release-24.05.tar.gz home-manager
+nix-channel --add https://github.com/nix-community/home-manager/archive/release-24.11.tar.gz home-manager
 ----
 
 [source,bash]
