@@ -1,22 +1,47 @@
-" Show line numbers
+""" Common settings -------------------------
+
+" Line numbers
 set number
 set relativenumber
 
+" Incremental search
+set incsearch
+
 " Leader key
-let mapleader=","
+let mapleader=" "
 
 " copy to/paste from clipboard
 set clipboard+=unnamed
 
+
 """ Plugins  --------------------------------
-set surround
 set commentary
 set argtextobj
-set sneak
 set textobj-entire
 set ReplaceWithRegister
-set multiple-cursors
-set easymotion
+
+Plug 'justinmk/vim-sneak'
+Plug 'tpope/vim-surround'
+Plug 'terryma/vim-multiple-cursors'
+
+
+""" Mappings --------------------------------
+map <leader>f <Plug>(easymotion-s)
+map <leader>e <Plug>(easymotion-f)
+
+map <leader>d <Action>(Debug)
+map <leader>r <Action>(RenameElement)
+map <leader>c <Action>(Stop)
+map <leader>z <Action>(ToggleDistractionFreeMode)
+
+map <leader>s <Action>(SelectInProjectView)
+map <leader>a <Action>(Annotate)
+map <leader>h <Action>(Vcs.ShowTabbedFileHistory)
+map <S-Space> <Action>(GotoNextError)
+
+map <leader>b <Action>(ToggleLineBreakpoint)
+map <leader>o <Action>(FileStructurePopup)
+
 
 """ Plugin settings -------------------------
 let g:argtextobj_pairs="[:],(:),<:>"
@@ -26,16 +51,21 @@ nmap <C-n> <Plug>NextWholeOccurrence
 xmap <C-n> <Plug>NextWholeOccurrence
 nmap g<C-n> <Plug>NextOccurrence
 xmap g<C-n> <Plug>NextOccurrence
-nmap <C-x> <Plug>SkipOccurrence
 xmap <C-x> <Plug>SkipOccurrence
-nmap <C-p> <Plug>RemoveOccurrence
 xmap <C-p> <Plug>RemoveOccurrence
 
-" Easymotion
-map <Leader> <Plug>(easymotion-prefix)
+" Note that the default <A-n> and g<A-n> shortcuts don't work on Mac due to dead keys.
+" <A-n> is used to enter accented text e.g. ñ
+nmap <leader><C-n> <Plug>AllWholeOccurrences
+xmap <leader><C-n> <Plug>AllWholeOccurrences
+nmap <leader>g<C-n> <Plug>AllOccurrences
+xmap <leader>g<C-n> <Plug>AllOccurrences
+
 
 """ Idea specific settings ------------------
+
 " refer: https://github.com/JetBrains/ideavim/blob/master/doc/ideajoin-examples.md
 set ideajoin
+
 set ideastatusicon=gray
 set idearefactormode=keep

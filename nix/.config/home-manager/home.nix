@@ -143,7 +143,6 @@ in
     # # symlink to the Nix store copy.
     ".tmux.conf".source = ./. + "${rootDir}/tmux/.tmux.conf";
     ".sqliterc".source = ./. + "${rootDir}/sqlite/.sqliterc";
-    ".ideavimrc".source = ./. + "${rootDir}/intellij/.ideavimrc";
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
