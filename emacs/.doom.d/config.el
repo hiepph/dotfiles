@@ -141,12 +141,11 @@
            "BLOCKED(b)"             ; Something is blocking this task
            "HOLD(h)"                ; Maybe do it another time
            "?(?)"              ; Should I do this?
-           "REFACTOR(r)"       ; required reviewing and refactoring
+           "REVIEW(r)"       ; required reviewing and refactoring
            "DONE(d)"           ; A finished task
            "CANCELLED(c)"      ; Task is killed, aborted or no longer applicable
            "ARCHIVED(a)"       ; Deprecated, but still contains valuable information
            "DOCUMENTATION(o)"       ; Approved. Need to move to my permanent notes
-           "UNFINISHED(u)"
            ))
         org-todo-keyword-faces
         '(("TODO" . "#009ddc")          ; blue
@@ -154,11 +153,10 @@
           ("BLOCKED" . "#c44536")       ; red
           ("HOLD" . "#e0a458")          ; yellow
           ("?" . "#000000")             ; black
-          ("REFACTOR" . "#588157")        ; dark green
+          ("REVIEW" . "#588157")        ; dark green
           ("DONE" . "#b7b7a4")          ; grey
           ("CANCELLED" . "#540b0e")     ; dark brown
           ("ARCHIVED" . "#e07a5f")      ; orange
-          ("UNFINISHED" . "#636363")    ; dark grey
           ("DOCUMENTATION" . "#918936")    ; khaki
           ))
 
