@@ -75,6 +75,7 @@
 ;;
 (package! ob-mermaid)
 (package! org-bullets)
+(package! ob-kotlin)
 
 ;;
 ;; Shell
