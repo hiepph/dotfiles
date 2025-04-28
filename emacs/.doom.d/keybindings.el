@@ -42,7 +42,8 @@
       :map org-mode-map
       :localleader
       "v i" #'org-display-inline-images
-      "v x" #'org-latex-preview)
+      "v x" #'org-latex-preview
+      "i" #'org-insert-item)
 
 (general-define-key
  :states 'normal
