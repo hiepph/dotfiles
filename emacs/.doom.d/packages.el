@@ -69,6 +69,7 @@
 (package! json-mode)
 (package! jinja2-mode)
 (package! vim-mode)
+(package! protobuf-mode)
 
 ;;
 ;; Org
