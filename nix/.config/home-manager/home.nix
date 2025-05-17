@@ -92,6 +92,7 @@ in
     pkgs.fluxcd # gitops
     pkgs.linkerd # service mesh
     pkgs.step-cli # https://github.com/smallstep/cli
+    pkgs.grype # security scanning
 
     # languages
     pkgs.go
