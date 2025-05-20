@@ -82,6 +82,7 @@ in
     pkgsUnstable.tilt # docker-compose for Kubernetes
     pkgs.kind
     pkgs.minikube
+    pkgs.k9s
     pkgs.nmap
     pkgs.inetutils
     # pkgs.vagrant
