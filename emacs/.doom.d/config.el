@@ -106,7 +106,7 @@
 (use-package! org
   :init
   ;; Turn on image by default
-  (setq org-startup-with-inline-images t)
+  ;; (setq org-startup-with-inline-images t)
 
   ;; Don't display full width of the image
   (setq org-image-actual-width nil)
