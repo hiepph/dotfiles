@@ -64,7 +64,6 @@ in
     pkgs.speedtest-cli
     pkgs.imagemagick
     pkgs.hugo # static site generator
-    pkgs.nodejs_20
     pkgs.atuin
     pkgs.tree
 
@@ -122,6 +121,7 @@ in
 
     # Database
     pkgs.postgresql
+    pkgs.mariadb
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
