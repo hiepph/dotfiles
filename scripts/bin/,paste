@@ -1,0 +1,8 @@
+#!/usr/bin/env fish
+
+switch (uname)
+    case Darwin
+        pbpaste
+    case Linux
+        xsel --clipboard --output
+end
