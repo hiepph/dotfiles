@@ -149,6 +149,7 @@ home-manager generations
 /nix/store/...-home-manager-generation/activate
 ----
 
+
 ==== Issues
 
 * Broken `+home-manager+`? Update Nix’s channel to pull fixes and
@@ -222,7 +223,7 @@ nerd-icons-install-fonts
 
 == Vim
 
-* Create custom file for each machine: `+~/.custom.vim+`. For example:
+* Create custom file for each machine: `+~/customs/custom.vim+`. For example:
 
 ....
 colorscheme alduin
