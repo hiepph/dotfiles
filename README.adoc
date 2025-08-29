@@ -149,7 +149,6 @@ home-manager generations
 /nix/store/...-home-manager-generation/activate
 ----
 
-
 ==== Issues
 
 * Broken `+home-manager+`? Update Nix’s channel to pull fixes and
@@ -165,29 +164,28 @@ home-manager switch
 
 == Shell
 
-* My default shell is https://fishshell.com/[fish].
-** Pros:
-*** I hate Bash arcane syntax. It’s fast to write a small script in Bash
-but horrible to grow into a larger script. Even
-https://google.github.io/styleguide/shellguide.html#when-to-use-shell[Google
-Shell style guide] recommends not to write a script more than 100 lines
-long.
-*** Seamless interops with shell commands. It makes writing script
-interactively on a shell fun. One-liner manner is achievable. With a
-general purpose language, e.g. Python, I have to wrap shell command with
-`+os.system+` or `+subprocess+`.
-*** References:
-https://fishshell.com/docs/current/tutorial.html#why-fish[Why fish?],
-https://youtu.be/Acjqx1MPkw4[Rash lang].
-** Cons:
-*** It does not follow POSIX shell standards. So if I want to run a
-common Bash or Zsh script, better use `+bash script.sh+`.
+My default shell is Zsh with https://zimfw.sh/docs/install/[Zim].
 
-* To change default shell for a user:
+This dotfiles contains the universal configuration: `stow zsh`. It will put the
+universal default configuration inside +~/.config/zsh/zsh.sh~.
+
+Create custom file for each machine: `+~/customs/zsh.sh+`.
+
+After the installation of Zim, in your +~/.zhsrc+:
 
 [source,bash]
 ----
-chsh -s $(which fish)
+# ------------------------------
+# Fixed
+# ------------------------------
+
+[[ -f $HOME/.config/zsh/zsh.sh ]]  && source $HOME/.config/zsh/zsh.sh
+
+# ------------------------------
+# Custom
+# ------------------------------
+
+[[ -f $HOME/customs/zsh.sh ]]  && source $HOME/customs/zsh.sh
 ----
 
 
