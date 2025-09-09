@@ -122,6 +122,8 @@ in
     # Database
     pkgs.postgresql
     pkgs.mariadb
+    pkgs.mongosh
+    pkgs.mongodb-tools
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
