@@ -85,6 +85,8 @@ in
     pkgs.k9s
     pkgs.nmap
     pkgs.inetutils
+    pkgs.colima
+    pkgs.docker
     # pkgs.vagrant
     # pkgs.packer
     pkgs.qemu
