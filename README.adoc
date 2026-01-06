@@ -67,13 +67,7 @@ https://www.macports.org/[MacPorts] and https://nixos.org/[Nix] are used to mana
 
 === MacPorts
 
-* Mainly used for installing the shell (Fish), text editor (Emacs) and packages which I cannot simply install with Nix.
-
-[source,bash]
-----
-cd macports
-./install_ports.sh
-----
+Mainly used for installing the text editor (Emacs) and packages which I cannot simply install with Nix.
 
 === Nix
 
