@@ -84,9 +84,6 @@ in
     pkgs.nmap
     pkgs.inetutils
     pkgs.colima
-    pkgs.docker
-    # pkgs.vagrant
-    # pkgs.packer
     pkgs.qemu
     pkgs.ansible
     pkgs.argocd # gitops
@@ -106,19 +103,9 @@ in
     pkgs.ruff # linter
     pkgs.yamllint
 
-    # ruby
-    # pkgs.solargraph # lsp
-    # pkgs.rubocop # linter, formatter
-
     # go
     pkgs.gotools # goimports, gopls
     pkgs.delve # or `dlv` - debugger
-
-    # Clojure
-    pkgs.clojure
-    # pkgs.leiningen # project management tool
-    # pkgs.clj-kondo # linter
-    # pkgs.clojure-lsp
 
     # Database
     pkgs.postgresql
