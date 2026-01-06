@@ -72,7 +72,6 @@ in
     pkgs.aws-vault
     pkgs.ssm-session-manager-plugin
     pkgsUnstable.eksctl
-    pkgs.steampipe # query cloud resources with SQL
     pkgsUnstable.opentofu # Open Terraform fork
     pkgsUnstable.terragrunt # DRY terraform
     pkgs.rclone
