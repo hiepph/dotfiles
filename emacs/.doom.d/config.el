@@ -94,10 +94,12 @@
   :init
   (general-add-hook '(emacs-lisp-mode-hook lisp-mode-hook) #'lispyville-mode))
 
+
 ;; Auto-save when a buffer loses focus
 (use-package! super-save
   :config
-  (super-save-mode +1))
+  (setq super-save-auto-save-when-idle t) 
+  (super-save-mode) +1)
 
 ;;
 ;; Org
