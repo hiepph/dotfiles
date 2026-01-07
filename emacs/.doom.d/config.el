@@ -140,29 +140,29 @@
            "DOING(s)"               ; A task that is in progress
            "BLOCKED(b)"             ; Something is blocking this task
            "HOLD(h)"                ; Maybe do it another time
-           "?(?)"              ; Should I do this?
-           "REVIEW(r)"       ; required reviewing and refactoring
-           "DONE(d)"           ; A finished task
            "CANCELLED(c)"      ; Task is killed, aborted or no longer applicable
            "ARCHIVED(a)"       ; Deprecated, but still contains valuable information
+           "REVIEW(r)"       ; required reviewing and refactoring
+           "?(?)"              ; Should I do this?
+           "DONE(d)"           ; A finished task
            ))
         org-todo-keyword-faces
         '(("TODO" . "#009ddc")          ; blue
           ("DOING" . "#5c9a55")         ; green
           ("BLOCKED" . "#c44536")       ; red
           ("HOLD" . "#e0a458")          ; yellow
-          ("?" . "#000000")             ; black
-          ("REVIEW" . "#588157")        ; dark green
-          ("DONE" . "#b7b7a4")          ; grey
           ("CANCELLED" . "#540b0e")     ; dark brown
           ("ARCHIVED" . "#e07a5f")      ; orange
+          ("REVIEW" . "#588157")        ; dark green
+          ("?" . "#000000")             ; black
+          ("DONE" . "#b7b7a4")          ; grey
           ))
 
   ;; turn off eye-candy to improve speed
-  (remove-hook 'org-mode-hook #'org-superstar-mode)
-  (setq org-fontify-quote-and-verse-blocks nil
-        org-fontify-whole-heading-line nil
-        org-hide-leading-stars nil)
+  ;; (remove-hook 'org-mode-hook #'org-superstar-mode)
+  ;; (setq org-fontify-quote-and-verse-blocks nil
+  ;;       org-fontify-whole-heading-line nil
+  ;;       org-hide-leading-stars nil)
 
   (org-babel-do-load-languages 'org-babel-load-languages
                                '((eshell . t)
