@@ -79,16 +79,15 @@ in
     pkgs.kubectx
     pkgsUnstable.tilt # docker-compose for Kubernetes
     pkgs.kind
+    pkgs.docker
     pkgs.minikube
     pkgs.k9s
     pkgs.nmap
     pkgs.inetutils
     pkgs.colima
     pkgs.qemu
-    pkgs.ansible
     pkgs.argocd # gitops
     pkgs.fluxcd # gitops
-    pkgs.linkerd # service mesh
     pkgs.step-cli # https://github.com/smallstep/cli
     pkgs.grype # security scanning
 
