@@ -66,6 +66,7 @@ in
     pkgs.hugo # static site generator
     pkgs.atuin
     pkgs.tree
+    pkgs.unrar
 
     # ops
     pkgsUnstable.awscli2
