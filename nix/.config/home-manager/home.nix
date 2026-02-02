@@ -101,6 +101,7 @@ in
     pkgs.black # formatter
     pkgs.ruff # linter
     pkgs.yamllint
+    pkgs.uv
 
     # go
     pkgs.gotools # goimports, gopls
